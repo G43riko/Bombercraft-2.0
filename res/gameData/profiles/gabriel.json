@@ -1,0 +1,9 @@
+{
+	"userInfo" : {
+		"name" : "Gabriel",
+		"avatar" : "player1.png",
+		"playingTime" : 0,
+		"lastLogin" : 0,
+		"newGames" : 0,
+		"profilLoaded" : 0
+	}

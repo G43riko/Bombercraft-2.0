@@ -1,0 +1,103 @@
+{
+  "data": {
+    "helpers": {
+      "towers": {
+        "towerMachineGun": {
+          "offset": "0",
+          "backgroundColor": "255_0_255",
+          "demage": "1",
+          "bulletSpeed": "12",
+          "buletHealt": "1",
+          "range": "200",
+          "cadence": "400",
+          "canonSpeed": "5",
+          "canonColor": "255_0_255",
+          "canonWidth": "5",
+          "canonLength": "40"
+        }
+      },
+      "bombs": {
+        
+      },
+      "weapons": {
+        "basic": {
+          
+        },
+        "laser": {
+          "cadence": "200",
+          "demage": "1",
+          "bulletSpeed": "40",
+          "healt": "1"
+        },
+        "bow": {
+          "cadence": "800",
+          "demage": "1",
+          "bulletSpeed": "20",
+          "healt": "1"
+        },
+        "stick": {
+          "cadence": "400",
+          "demage": "1",
+          "bulletSpeed": "5",
+          "healt": "1"
+        },
+        "boomerang": {
+          "cadence": "400",
+          "demage": "1",
+          "bulletSpeed": "20",
+          "healt": "3"
+        }
+      }
+    },
+    "enemies": {
+      "a": {
+        "offset": "5",
+        "speed": "1",
+        "demage": "1",
+        "cadence": "200",
+        "bulletSpeed": "4",
+        "healt": "1"
+      },
+      "b": {
+        "offset": "5",
+        "speed": "1",
+        "demage": "1",
+        "cadence": "200",
+        "bulletSpeed": "4",
+        "healt": "1"
+      },
+      "c": {
+        "offset": "5",
+        "speed": "1",
+        "demage": "1",
+        "cadence": "2000",
+        "bulletSpeed": "4",
+        "healt": "1"
+      }
+    },
+    "particles": {
+      "emmiters": {
+        "a" {
+	      "color": "GREEN",
+	      "speed": "2_0",
+	      "healt": "100_100",
+	      "rotation": "0_0",
+	      "direction": "0_360",
+	      "size": "3_3",
+	      "sizeRandomness": "1",
+	      "positionRandomness": "10_10",
+	      "particlePerFrame": "1",
+	      "particlesOnStart": "0"
+        }
+      }
+    },
+    "bullets": {
+      
+    },
+    "levels": {
+      "levelFrozen": {
+        
+      }
+    }
+  }
+}

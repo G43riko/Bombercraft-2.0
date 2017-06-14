@@ -1,0 +1,52 @@
+pouzit gameState
+
+pri pauseMenu vykreslovať aj scenu ale priehladne
+
+//dedenie
+Interactable
+	Entity
+		Bullet	--pohybuje sa, kontroluje kolizie a pri naraza interaguje s elemetami
+		Helper	--nehybe sa ale kontroluje kolizie z Playerom alebo z Bulletom
+		Bot		--pohybuje sa a ma AI(kontroluje pozicie s Mapou)
+			Enemy
+		Wall	--vlastni ho mapa
+		Tower			-implements Shootable
+		
+//vlastnenie
+CoreGame
+	GuiManager
+	Profil
+	Game
+		MyPlayer
+			Selector
+		Gui
+			Minimap
+			SideBar
+			NawBar
+		Players
+		Helpers
+		Bots
+			HealtBar
+		Emitters
+			Particles
+		Entities
+			Explosions
+		Lights
+		Level
+			Map
+			RespawnZones
+			Walls
+		
+//spustanie
+App
+	Bombercraft	--zbytocny medzyskok
+		CoreGame	--stara sa o GameStatementy
+			ProfilMenu	--gameState pre vyber profilu
+			CoreEngine 	--pracuje s uzivatelskym profilom
+				MainMenu	--nastavenia a moznosti profilu
+				Game		--hra
+					Level	--level hry
+					MyPlayer	--ovladatelny hrac
+					GameGui		--vsetko co vidi hrac
+						GameLogs	--vyvojarske udaje o aplikacii
+	

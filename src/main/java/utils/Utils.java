@@ -1,0 +1,113 @@
+package utils;
+
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
+import java.awt.image.ColorModel;
+import java.awt.image.DataBufferInt;
+import java.awt.image.WritableRaster;
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+
+import Bombercraft2.Bombercraft2.game.Player;
+import utils.math.GVector2f;
+
+public final class Utils {
+//	public static  GVector2f getMoveFromDir(int dir){
+//		switch(dir){
+//			case 0:
+//				return new GVector2f(00, -1);
+//			case 1:
+//				return new GVector2f(01, 00);
+//			case 2:
+//				return new GVector2f(00, 01);
+//			case 3:
+//				return new GVector2f(-1, 00);
+//			default:
+//				return new GVector2f();
+//		}
+//	}
+	
+	public static URL File2URL(File file) throws MalformedURLException{
+		return file.toURI().toURL();
+	}
+	
+	public static BufferedImage getFullscreenScreenshotImage() throws AWTException{
+		Robot robot = new Robot();
+        Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
+        return robot.createScreenCapture(screenRect);
+	}
+	public static void takeFullscreenScreenshot(String fileName){takeFullscreenScreenshot(fileName, "jpg");}
+	public static void takeFullscreenScreenshot(String fileName, String format){
+		try {
+            BufferedImage screenFullImage = getFullscreenScreenshotImage();
+            ImageIO.write(screenFullImage, format, new File(fileName));
+             
+            System.out.println("A full screenshot saved!");
+        } catch (AWTException | IOException ex) {
+            System.err.println(ex);
+        }
+	}
+
+	public static GVector2f getNormalMoveFromDir(Player.Direction dir) {
+		switch(dir){
+			case LEFT:
+				return new GVector2f(-1, 0);
+			case RIGHT:
+				return new GVector2f(01, 00);
+			case UP:
+				return new GVector2f(00, -1);
+			case DOWN:
+				return new GVector2f(00, 01);
+			default:
+				return new GVector2f();
+		}
+	}
+	
+	public static void sleep(int time){
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	public static <T> T nvl(T option1, T option2){
+		return option1 == null ? option2 : option1;
+	}
+	
+	public static <T> boolean isIn(T value, T ...items){
+		for(int i=0 ; i<items.length ; i++){
+			if(value.equals(items[i])){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static BufferedImage deepCopy(BufferedImage bi) {
+		 ColorModel cm = bi.getColorModel();
+		 boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
+		 WritableRaster raster = bi.copyData(null);
+		 return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
+	}
+	
+	public static BufferedImage deepCopy2(final BufferedImage src) {
+		BufferedImage dst 	= new BufferedImage(src.getWidth(), src.getHeight(),src.getType());
+	    int[] srcbuf 		= ((DataBufferInt) src.getRaster().getDataBuffer()).getData();
+	    int[] dstbuf 		= ((DataBufferInt) dst.getRaster().getDataBuffer()).getData();
+	    int width 			= src.getWidth();
+	    int height 			= src.getHeight();
+	    int dstoffs 		= 0 + 0 * dst.getWidth();
+	    int srcoffs 		= 0;
+	    for (int y = 0 ; y < height ; y++ , dstoffs += dst.getWidth(), srcoffs += width ) {
+	        System.arraycopy(srcbuf, srcoffs , dstbuf, dstoffs, width);
+	    }
+	    return dst;
+	}
+}

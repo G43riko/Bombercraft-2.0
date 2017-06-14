@@ -1,0 +1,11 @@
+{
+	"towerLasers" : true,
+	"towerRange" : true,
+	"renderShadow" : false,
+	"renderMiniMap" : true,
+	"renderLogs" : false,
+	"renderLights" : true,
+	"renderBombRange" : true,
+	"renderOnlyLightMap" : true,
+	"renderMapWalls" : true
+}

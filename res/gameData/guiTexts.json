@@ -1,0 +1,38 @@
+{
+	"newGame" : {
+		"sk" : "Nova hra",
+		"en" : "New game"
+	},
+	"continue" : {
+		"sk" : "Pokracovat",
+		"en" : "Continue"
+	},
+	"stopGame" : {
+		"sk" : "Stopnut hru",
+		"en" : "Stop game"
+	},
+	"joinGame" : {
+		"sk" : "Pripojit sa k hre",
+		"en" : "Join game"
+	},
+	"changeProfil" : {
+		"sk" : "Zmenit profil",
+		"en" : "Change profile"
+	},
+	"options" : {
+		"sk" : "Nastavenia",
+		"en" : "Options"
+	},
+	"exit" : {
+		"sk" : "Koniec",
+		"en" : "Exit"
+	},
+	"createProfile" : {
+		"sk" : "Vytvorit novy profil",
+		"en" : "Create new prifile"
+	},
+	"undefinedLabel" : {
+		"sk" : "Neznami text menu",
+		"en" : "Undefined label"
+	}
+}
