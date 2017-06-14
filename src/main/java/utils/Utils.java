@@ -90,6 +90,7 @@ public final class Utils {
 		return false;
 	}
 	
+	
 	public static BufferedImage deepCopy(BufferedImage bi) {
 		 ColorModel cm = bi.getColorModel();
 		 boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
