@@ -20,12 +20,12 @@ public class PlayerSprite {
 	private GVector2f 	imageSize;
 	
 	public PlayerSprite(String name, int numX, int numY,int positions, int delay) {
-		this.image = ResourceLoader.loadTexture(name);
-		this.delay = delay;
-		numberOfImages = numX * numY;
-		actDelay = delay;
-		numberOfSteps = numberOfImages / positions ;
-		imageSize = new GVector2f(image.getWidth(null) / numX, image.getHeight(null) / numY);
+		this.delay 		= delay;
+		image 			= ResourceLoader.loadTexture(name);
+		numberOfImages 	= numX * numY;
+		actDelay 		= delay;
+		numberOfSteps 	= numberOfImages / positions ;
+		imageSize 		= new GVector2f(image.getWidth(null) / numX, image.getHeight(null) / numY);
 	}
 	
 	public static void setSprite(String name,  int numX, int numY, int positions, int delay){
@@ -41,15 +41,17 @@ public class PlayerSprite {
 								  boolean isRunning){
 		PlayerSprite sprite = animations.get(name);
 		
-		if(sprite == null)
+		if(sprite == null){
 			return;
+		}
 
 		GVector2f position2 = position.add(size);
 		int sourceX = sprite.step * sprite.imageSize.getXi();
 		int sourceY = type.getID() * sprite.imageSize.getXi();
 		
-		if(!isRunning)
+		if(!isRunning){
 			sourceX = 0;
+		}
 		
 		g2.drawImage(sprite.image, 
 					 position.getXi(), position.getYi(), 
@@ -66,11 +68,13 @@ public class PlayerSprite {
 			sprite.actDelay = sprite.delay;
 			
 			sprite.step++;
-			if(sprite.step + 1 == sprite.numberOfSteps)
+			if(sprite.step + 1 == sprite.numberOfSteps){
 				sprite.step = 0;
+			}
 		}
-		else
+		else{
 			sprite.actDelay--;
+		}
 	}
 
 }

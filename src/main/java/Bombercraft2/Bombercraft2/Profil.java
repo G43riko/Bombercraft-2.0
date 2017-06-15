@@ -3,26 +3,21 @@ package Bombercraft2.Bombercraft2;
 
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import Bombercraft2.Bombercraft2.gui.menus.ProfileMenu;
 import utils.resouces.JSONAble;
 import utils.resouces.ResourceLoader;
 
 /*
- * kolko bolo minut hrania kolko bolo novych hier kolko krat bol profil nacitany
+ * kolko bolo minut hrania 
+ * kolko bolo novych hier 
+ * kolko krat bol profil nacitany
  * kedy bol naposledy ulozeny
  */
 public class Profil implements JSONAble{
-	private OptionsManager options;
 	
 	private final static String NAME 			= "name";
 	private final static String AVATAR 			= "avatar";
@@ -30,14 +25,15 @@ public class Profil implements JSONAble{
 	private final static String LAST_LOGIN 		= "lastLogin";
 	private final static String PLAYING_TIME 	= "playingTime";
 	private final static String PROFIL_LOADED	= "profilLoaded";
-	
-	private String	name			= "playerName";
-	private String	avatar			= "player1.png";
-	private String  profilName		= null;
-	private float	msOfPlaying		= 0;
-	private int		newGames		= 0;
-	private int		profilLoaded	= 0;
-	private float	lastLogin		= System.currentTimeMillis();
+
+	private OptionsManager 	options;
+	private String			name			= "playerName";
+	private String			avatar			= "player1.png";
+	private String  		profilName		= null;
+	private float			msOfPlaying		= 0;
+	private int				newGames		= 0;
+	private int				profilLoaded	= 0;
+	private float			lastLogin		= System.currentTimeMillis();
 	
 	// CONTRUCTORS
 	public Profil(String profilName) {
@@ -80,6 +76,7 @@ public class Profil implements JSONAble{
 			result.put(NAME, name);
 			result.put(AVATAR, avatar);
 			result.put(NEW_GAMES, newGames);
+			result.put(LAST_LOGIN, lastLogin);
 			result.put(PLAYING_TIME, msOfPlaying);
 			result.put(PROFIL_LOADED, profilLoaded);
 		} catch (JSONException e) {
@@ -96,13 +93,13 @@ public class Profil implements JSONAble{
 
 	// GETTERS
 
-	public int getNewGames() {return newGames;}
-	public int getProfilLoaded() {return profilLoaded;}
-	public float getLastLogin() {return lastLogin;}
-	public float getMsOfPlaying() {return msOfPlaying;}
-	public String getName() {return name;}
-	public String getAvatar() {return avatar;}
-	public OptionsManager getOptions(){return options;}
+	public String 			getName() {return name;}
+	public String 			getAvatar() {return avatar;}
+	public OptionsManager 	getOptions() {return options;}
+	public int 				getNewGames() {return newGames;}
+	public float 			getLastLogin() {return lastLogin;}
+	public int 				getProfilLoaded() {return profilLoaded;}
+	public float 			getMsOfPlaying() {return msOfPlaying;}
 
 	public static void saveProfil(Profil profil) {
 		JSONObject result = new JSONObject();
