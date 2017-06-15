@@ -11,8 +11,8 @@ import utils.math.GVector2f;
 
 public class PlayerSelector {
 	private MyPlayer 	parent;
-	private int			selectorWidth	= Config.PLAYER_DEFAULT_SELECTOR_WIDTH;
-	private Color		selectorColor	= Config.PLAYER_DEFAULT_SELECTOR_COLOR;
+	private int			selectorWidth	= Config.PLAYER_SELECTOR_WIDTH;
+	private Color		selectorColor	= Config.PLAYER_SELECTOR_COLOR;
 	
 	public PlayerSelector(MyPlayer parent){
 		this.parent = parent;

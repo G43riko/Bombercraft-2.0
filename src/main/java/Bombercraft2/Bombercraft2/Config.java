@@ -19,6 +19,14 @@ public class Config {
 	public final static Color	LOG_BORDER_COLOR	= Color.white;
 	public final static int		LOG_BORDER_WIDTH	= 2;
 
+	public final static int 	HEATLBAR_VERTICAL_OFFSET 	= 0;
+	public final static int 	HEATLBAR_HORIZONTAL_OFFSET 	= 0;
+	public final static int 	HEATLBAR_HORIZONTAL_HEIGHT 	= 10;
+	public final static int 	HEATLBAR_BORDER_WIDTH 		= 1;
+	public static final Color 	HEATLBAR_BORDER_COLOR 		= Color.WHITE;
+	public static final Color 	HEATLBAR_FILL_COLOR 		= Color.GREEN;
+	
+	
 	public final static Color	BAR_BACKGROUND_COLOR	= Color.WHITE;
 	public final static Color	BAR_BORDER_COLOR		= Color.DARK_GRAY;
 	public final static int		BAR_BORDER_WIDTH		= 3;
@@ -52,8 +60,9 @@ public class Config {
 	public final static String 	DEFAULT_LANGUAGE		= "sk";
 	public final static float	DEFAULT_ZOOM			= 1.0f;
 
-	public final static Color	PLAYER_DEFAULT_SELECTOR_COLOR	= Color.MAGENTA;
-	public final static int		PLAYER_DEFAULT_SELECTOR_WIDTH	= 2;
+	public static final int 	PLAYER_MAX_HEALT 		= 10;
+	public final static Color	PLAYER_SELECTOR_COLOR	= Color.MAGENTA;
+	public final static int		PLAYER_SELECTOR_WIDTH	= 2;
 	
 
 	public final static Color	LOADING_DEFAULT_BACKGROUND_COLOR	= Color.green;

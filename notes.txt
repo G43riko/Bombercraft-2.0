@@ -36,6 +36,7 @@ CoreGame
 			Map
 			RespawnZones
 			Walls
+			FloraManager
 		
 //spustanie
 App

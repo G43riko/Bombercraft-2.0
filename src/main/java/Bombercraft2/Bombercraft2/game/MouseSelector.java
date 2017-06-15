@@ -10,8 +10,8 @@ import Bombercraft2.engine.Input;
 import utils.math.GVector2f;
 
 public class MouseSelector {
-	private int			selectorWidth	= Config.PLAYER_DEFAULT_SELECTOR_WIDTH;
-	private Color		selectorColor	= Config.PLAYER_DEFAULT_SELECTOR_COLOR;
+	private int			selectorWidth	= Config.PLAYER_SELECTOR_WIDTH;
+	private Color		selectorColor	= Config.PLAYER_SELECTOR_COLOR;
 	private GameAble 	parent;
 	
 	public MouseSelector(GameAble parent){

@@ -17,27 +17,28 @@ import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import utils.ImageUtils;
 import utils.SpriteViewer;
-import utils.Utils;
 import utils.math.GVector2f;
 import utils.math.LineLineIntersect;
 import utils.resouces.ResourceLoader;
 
 public class Block extends Entity{
 	public enum Type implements Iconable{
-		NOTHING	("block_floor",  0),
-		GRASS	("block_grass",  0),
-		WOOD	("block_wood",   1),
-		IRON	("block_iron",  10),
-		WATER	("block_water",  0),
-		PATH	("block_path",   0),
-		STONE	("block_stone",  7),
-		FUTURE	("block_future", 0);
+		NOTHING	("block_floor",  0, true),
+		WOOD	("block_wood",   1, false),
+		IRON	("block_iron",  10, false),
+		GRASS	("block_grass",  0, true),
+		WATER	("block_water",  0, true),
+//		PATH	("block_path",   0, true),
+//		STONE	("block_stone",  7, false),
+		FUTURE	("block_future", 0, true);
 		
 		private Image 	image;
 		private Color	minimapColor;
 		private int 	healt;
-		Type(String imageName, int healt){
+		private boolean walkable;
+		Type(String imageName, int healt, boolean walkable){
 			this.healt = healt;
+			this.walkable = walkable;
 			image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
 			final BufferedImage bimage = new BufferedImage(image.getWidth(null), 
 													       image.getHeight(null), 
@@ -49,7 +50,8 @@ public class Block extends Entity{
 		    
 		    minimapColor = ImageUtils.getAverageColor(bimage, 0, 0, image.getWidth(null), image.getHeight(null));
 		}
-
+		
+		public boolean isWalkable(){return walkable;}
 		public int getHealt(){return healt;}
 		public Image getImage(){return image;}
 		public Color getMinimapColor(){return minimapColor;}
@@ -202,7 +204,8 @@ public class Block extends Entity{
 	public int getHealt() {return healt;}
 	public Type getType() {return type;}
 	public boolean isWalkable() {
-		return Utils.isIn(type, Type.WATER, Type.PATH, Type.NOTHING, Type.FUTURE, Type.GRASS);
+		return type.isWalkable();
+//		return Utils.isIn(type, Type.WATER, Type.PATH, Type.NOTHING, Type.FUTURE, Type.GRASS);
 	}
 	
 	public GVector2f getInterSect(GVector2f ss, GVector2f se){

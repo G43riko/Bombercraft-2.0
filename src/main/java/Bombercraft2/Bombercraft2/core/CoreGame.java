@@ -90,7 +90,9 @@ public class CoreGame extends CoreEngine implements MenuAble{
 
 	@Override
 	public void onExit() {
-		Profil.saveProfil(profil);
+		if(profil != null){
+			Profil.saveProfil(profil);
+		}
 	}
 	
 	@Override

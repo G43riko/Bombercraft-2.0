@@ -15,6 +15,7 @@ public class MyPlayer extends Player{
 	private boolean			showSelector	= true;
 	private PlayerSelector 	selector 		= new PlayerSelector(this);
 	private PlayerPointer	pointer			= new PlayerPointer(this);
+	private HealtBar		healtBar		= new HealtBar(this);
 	
 	private HashMap<Integer, Boolean> keys = new HashMap<Integer, Boolean>(); 
 		
@@ -93,6 +94,7 @@ public class MyPlayer extends Player{
 	public void render(Graphics2D g2) {
 		super.render(g2);
 		pointer.render(g2);
+		healtBar.render(g2, getOffset());
 	}
 
 	public void update(float delta){
@@ -183,13 +185,13 @@ public class MyPlayer extends Player{
 				e.printStackTrace();
 			}
         
-        GVector2f nums = getParent().getLevel().getMap().getNumberOfBlocks();
+        GVector2f nums = getParent().getLevel().getMap().getSize();
         
-        if(position.getX() * getParent().getZoom() + Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom() > nums.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom())
-        	position.setX((nums.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom() - Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) / getParent().getZoom());
+        if(position.getX() * getParent().getZoom() + Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom() > nums.getX() * getParent().getZoom())
+        	position.setX((nums.getX() * getParent().getZoom() - Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) / getParent().getZoom());
         
-        if(position.getY() * getParent().getZoom() + Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom() > nums.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom())
-        	position.setY((nums.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom() - Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom())  / getParent().getZoom());
+        if(position.getY() * getParent().getZoom() + Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom() > nums.getY() * getParent().getZoom())
+        	position.setY((nums.getY() * getParent().getZoom() - Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom())  / getParent().getZoom());
 	}
 	
 	public void clearTotalMove(){

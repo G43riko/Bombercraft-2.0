@@ -5,13 +5,14 @@ import java.awt.Graphics2D;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.PlayerSprite;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.Utils;
 import utils.math.GVector2f;
 
-public class Player extends Entity{
+public class Player extends Entity implements Healtable{
 	public enum Direction{
 		UP(2), DOWN(3), LEFT(0), RIGHT(1);
 		
@@ -123,6 +124,16 @@ public class Player extends Entity{
 	public void setImage(String image) {
 		this.image = image;
 		PlayerSprite.setSprite(image, 5, 5, 4, 6);
+	}
+
+	@Override
+	public int getMaxHealt() {
+		return Config.PLAYER_MAX_HEALT;
+	}
+
+	@Override
+	public int getActHealt() {
+		return healt;
 	}
 
 	

@@ -72,7 +72,8 @@ public class Game extends GameState implements GameAble{
 											.map(a -> a.getValue())
 											.filter(this::isVisible)
 											.forEach(a -> a.render(g2));
-		
+
+		level.renderUpperFlora(g2);
 
 		if(myPlayer.showSelector()){
 			myPlayer.renderSelector(g2);
@@ -150,8 +151,13 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public boolean isVisible(Visible b) {
-		return !(b.getPosition().getX() * getZoom()  + Config.DEFAULT_BLOCK_WIDTH * getZoom()  < getOffset().getX() || 
-				 b.getPosition().getY() * getZoom()  + Config.DEFAULT_BLOCK_HEIGHT * getZoom()  < getOffset().getY() || 
+//		return !(b.getPosition().getX() * getZoom()  + Config.DEFAULT_BLOCK_WIDTH * getZoom()  < getOffset().getX() || 
+//				 b.getPosition().getY() * getZoom()  + Config.DEFAULT_BLOCK_HEIGHT * getZoom()  < getOffset().getY() || 
+//				   getOffset().getX() + getCanvas().getWidth() < b.getPosition().getX() * getZoom()    ||
+//				   getOffset().getY() + getCanvas().getHeight() < b.getPosition().getY() * getZoom() );
+
+		return !(b.getPosition().getX() * getZoom()  + b.getSize().getX() * getZoom()  < getOffset().getX() || 
+				 b.getPosition().getY() * getZoom()  + b.getSize().getY() * getZoom()  < getOffset().getY() || 
 				   getOffset().getX() + getCanvas().getWidth() < b.getPosition().getX() * getZoom()    ||
 				   getOffset().getY() + getCanvas().getHeight() < b.getPosition().getY() * getZoom() );
 	}

@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.game.entity.flora.FloraManager;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import utils.math.GVector2f;
@@ -15,9 +16,10 @@ import utils.math.GVector2f;
 public class Level implements Interactable {
 	private Map 			map;
 	private GameAble 		parent;
-	private List<GVector2f> respawnZones = new ArrayList<GVector2f>();
+	private List<GVector2f> respawnZones 	= new ArrayList<GVector2f>();
 	private String 			mapData;
 	private JSONObject 		playerInfo;
+	private FloraManager	floraManager;
 	//CONSTRUCTORS
 	
 	public Level(JSONObject object){
@@ -38,6 +40,7 @@ public class Level implements Interactable {
 		respawnZones.add(Block.SIZE);
 		System.out.println("Level vytvoreny");
 		setDefaultPlayerInfo();
+		
 	}
 	
 	//OTHERS
@@ -51,8 +54,13 @@ public class Level implements Interactable {
 	@Override
 	public void render(Graphics2D g2) {
 		map.render(g2);
+		floraManager.renderLowerLevel(g2);
 	}
-
+	
+	public void renderUpperFlora(Graphics2D g2) {
+		floraManager.renderUpperLevel(g2);
+	}
+	
 	public String toJSON(){
 		JSONObject result = new JSONObject();
 		try {
@@ -93,15 +101,20 @@ public class Level implements Interactable {
 	public void setGame(GameAble game){
 		parent = game;
 		
-		if(mapData != null)
+		if(mapData != null){
 			try {
 				map = new Map(new JSONObject(mapData), parent);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-		else
+		}
+		else{
 			map = new Map(game);
+		}
+		floraManager = new FloraManager(game, map);
+
 	}
+	
 
 	public JSONObject getDefaultPlayerInfo() {
 		return playerInfo;

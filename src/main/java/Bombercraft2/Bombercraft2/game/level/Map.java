@@ -113,8 +113,9 @@ public class Map implements Interactable{
 	}
 	
 	private void postEdit(){
-		//odstranit osamele policka z vodou(vacsinu)
-		//clearRespawnZones() //odstrani policka z respawnovacich zon
+		//TODO odstranit osamele policka z vodou(vacsinu)
+
+		clearRespawnZones(parent.getLevel().getRespawnZones());
 	}
 	
 	public String toJSON(){
@@ -138,7 +139,11 @@ public class Map implements Interactable{
 	public void createRandomMap(){
 		render = false;
 		blocks = new HashMap<String, Block>();
-		float[][] data = PerlinNoise.GeneratePerlinNoise(PerlinNoise.generateWhiteNoise(numberOfBlocks.getXi(), numberOfBlocks.getXi()), 6, 0.7f, true);
+		float[][] data = PerlinNoise.GeneratePerlinNoise(PerlinNoise.generateWhiteNoise(numberOfBlocks.getXi(), 
+																						numberOfBlocks.getXi()), 
+																						6, 
+																						0.7f, 
+																						true);
 		
 		for(int i=0 ; i<numberOfBlocks.getXi() ; i++){
 			for(int j=0 ; j<numberOfBlocks.getYi() ; j++){
@@ -148,7 +153,7 @@ public class Map implements Interactable{
 										 parent));
 			}
 		}
-		clearRespawnZones(parent.getLevel().getRespawnZones());
+		postEdit();
 		render = true;
 	}
 	
@@ -168,6 +173,10 @@ public class Map implements Interactable{
 		render = true;
 	}
 	
+	/**
+	 * Odstrani bloky z respawnovacich zon
+	 * @param zones
+	 */
 	private void clearRespawnZones(List<GVector2f> zones){
 		zones.stream().forEach(a -> {
 			remove(a.div(Block.SIZE).toInt());
@@ -176,8 +185,9 @@ public class Map implements Interactable{
 	
 	public void remove(GVector2f sur){
 		Block b = getBlock(sur.getXi(), sur.getYi());
-		if(b != null && b.getType() != Block.Type.NOTHING)
+		if(b != null && b.getType() != Block.Type.NOTHING){
 			b.remove();
+		}
 	}
 	
 	public void resetMap() {
@@ -239,11 +249,19 @@ public class Map implements Interactable{
 		return ret;
 	}
 	
+	/**
+	 * @deprecated since 15.6.2017 - use Map.getRandomBlockByType(Block.Type.NOTHING)
+	 * @return
+	 */
 	public Block getRandomEmptyBlock(){
+		return getRandomBlockByType(Block.Type.NOTHING);
+	}
+	
+	public Block getRandomBlockByType(Block.Type type){
 		ArrayList<Block> b = blocks.entrySet()
 								   .stream()
 								   .map(a -> a.getValue())
-								   .filter(a -> a.getType() == Block.Type.NOTHING)
+								   .filter(a -> a.getType() == type)
 								   .collect(Collectors.toCollection(ArrayList<Block>::new));
 		return b.get((int)(Math.random() * b.size()));
 	}
@@ -255,6 +273,10 @@ public class Map implements Interactable{
 		return getBlock(pos.getXi(), pos.getYi());
 	}
 
+	/**
+	 * @deprecated since 15.6.2017 - vsetky operacie z blokmi by maly byt vykonane v tejto triede
+	 * @return
+	 */
 	public ArrayList<Block> getBlocks(){
 		if(render){
 			return new ArrayList<Block>(blocks.values());
