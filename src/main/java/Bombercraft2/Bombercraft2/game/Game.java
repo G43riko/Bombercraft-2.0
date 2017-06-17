@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
@@ -18,6 +19,7 @@ import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
@@ -26,6 +28,7 @@ import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import Bombercraft2.Bombercraft2.multiplayer.GameServer;
 import Bombercraft2.engine.Input;
 import utils.GLogger;
+import utils.Utils;
 import utils.math.GVector2f;
 
 public class Game extends GameState implements GameAble{
@@ -33,7 +36,6 @@ public class Game extends GameState implements GameAble{
 	private Level					level;
 	private float					zoom			= Config.DEFAULT_ZOOM;
 	private GameGui					gui;
-	private Connector				connector		= new GameServer(this);
 	private ToolManager				toolManager		= new ToolManager(this);
 	private HashMap<String, Helper>	helpers			= new HashMap<String, Helper>();
 	private CoreGame				parent;
@@ -45,7 +47,8 @@ public class Game extends GameState implements GameAble{
 	private boolean					render		= true;
 	private boolean					update		= true;
 	private boolean					input		= true;
-	public Game(Level level, CoreGame parent, String game) {
+	
+	public Game(Level level, CoreGame parent, JSONObject gameData) {
 		super(GameState.Type.Game);
 		this.level = level;
 		this.parent = parent;
@@ -53,14 +56,13 @@ public class Game extends GameState implements GameAble{
 		
 		try {
 			myPlayer = new MyPlayer(this,
-									level.getPlayerRespawnZone() , 
+									level.getRandomRespawnZone() , 
 									getProfil().getName(), 
 									level.getDefaultPlayerInfo().getInt("speed"), 
 									level.getDefaultPlayerInfo().getInt("healt"), 
 									getProfil().getAvatar(), 
 									level.getDefaultPlayerInfo().getInt("range"));
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -118,12 +120,12 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public GVector2f getPosition() {
-		// TODO Auto-generated method stub
+		GLogger.notImplemented();
 		return null;
 	}
 	@Override
 	public GVector2f getSize() {
-		// TODO Auto-generated method stub
+		GLogger.notImplemented();
 		return null;
 	}
 	@Override
@@ -138,7 +140,6 @@ public class Game extends GameState implements GameAble{
 	public Canvas 					getCanvas(){return parent.getCanvas();}
 	@Override
 	public Profil getProfil() {
-		// TODO Auto-generated method stub
 		return parent.getProfil();
 	}
 	@Override
@@ -181,7 +182,7 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public boolean hasWall(float i, float j) {
-		// TODO Auto-generated method stub
+		GLogger.notImplemented();
 		return false;
 	}
 	public boolean getVisibleOption(String key) {
@@ -191,41 +192,42 @@ public class Game extends GameState implements GameAble{
 		parent.switchVisibleOption(key);
 	}
 	@Override
-	public void addHelper(GVector2f selectorSur, int cadenceBonus, GVector2f pos, int demage, String type,
-			GVector2f target) {
-		// TODO Auto-generated method stub
-		
+	public void addHelper(GVector2f selectorSur, 
+						  int cadenceBonus, 
+						  GVector2f pos, 
+						  int demage, 
+						  String type,
+						  GVector2f target) {
+		GLogger.notImplemented();
 	}
 	@Override
 	public void addBomb(GVector2f position, int range, int time, int demage) {
-		// TODO Auto-generated method stub
-		
+		GLogger.notImplemented();
 	}
 	@Override
-	public void addBullet(GVector2f position, GVector2f direction, int bulletSpeed, int attack, String bulletType,
-			int bulletDefaultHealt) {
-		// TODO Auto-generated method stub
-		
+	public void addBullet(GVector2f position, 
+						  GVector2f direction, 
+						  int bulletSpeed, 
+						  int attack, 
+						  String bulletType,
+						  int bulletDefaultHealt) {
+		GLogger.notImplemented();
 	}
 	@Override
 	public void addPlayer(String name, String image) {
-		// TODO Auto-generated method stub
-		
+		GLogger.notImplemented();
 	}
 	@Override
 	public void addExplosion(GVector2f position, GVector2f size, Color color, int number) {
-		// TODO Auto-generated method stub
-		
+		GLogger.notImplemented();
 	}
 	@Override
 	public void addEmmiter(GVector2f position, String type) {
-		// TODO Auto-generated method stub
-		
+		GLogger.notImplemented();
 	}
 	@Override
 	public void addEnemy(GVector2f position, String type) {
-		// TODO Auto-generated method stub
-		
+		GLogger.notImplemented();
 	}
 	@Override
 	public void calcPosition() {
@@ -256,9 +258,9 @@ public class Game extends GameState implements GameAble{
 		calcPosition();
 	}
 	@Override
-	public String toJSON() {
-		// TODO Auto-generated method stub
-		return null;
+	public JSONObject toJSON() {
+		GLogger.notImplemented();
+		return new JSONObject();
 	}
 	@Override
 	public void changeZoom(float value){
@@ -294,7 +296,7 @@ public class Game extends GameState implements GameAble{
 
 	@Override
 	public Connector getConnector() {
-		return connector;
+		return parent.getConnector();
 	}
 
 	@Override
@@ -304,7 +306,7 @@ public class Game extends GameState implements GameAble{
 		
 		String key = localPos.getXi() + "_" + localPos.getYi();
 		if(helpers.containsKey(key)){
-			GLogger.printLint("Vytvara sa helper na helpere");
+			GLogger.printLine("Vytvara sa helper na helpere");
 			return;
 		}
 		switch(type){
@@ -319,9 +321,32 @@ public class Game extends GameState implements GameAble{
 		String key = pos.getXi() + "_" + pos.getYi();
 		
 		if(!helpers.containsKey(key)){
-			GLogger.printLint("Explodovala neexistujuca bomba na: " + pos);
+			GLogger.printLine("Explodovala neexistujuca bomba na: " + pos);
 			return;
 		}
 		helpersRemoved.add(helpers.get(key));
+	}
+
+	@Override
+	public MyPlayer getMyPlayer() {
+		return myPlayer;
+	}
+
+	@Override
+	public HashMap<String, Player> getPlayers() {
+		return players;
+	}
+
+	@Override
+	public String getBasicInfo() {
+		try {
+			JSONObject o = new JSONObject();
+			o.put("level", level.toJSON());
+			o.put("game", toJSON());
+			return o.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

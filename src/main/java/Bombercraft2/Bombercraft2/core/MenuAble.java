@@ -2,8 +2,12 @@ package Bombercraft2.Bombercraft2.core;
 
 import java.awt.Canvas;
 
-import Bombercraft2.Bombercraft2.game.Level;
+import org.json.JSONObject;
+
+import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.gui.GuiManager;
+import Bombercraft2.Bombercraft2.multiplayer.Connector;
 
 
 public interface MenuAble extends Visible{
@@ -15,7 +19,7 @@ public interface MenuAble extends Visible{
 	public void 		exitGame();
 	public GuiManager	getGuiManager();
 	
-	public void 		createGame(Level level, String string);
+	public void 		createGame(JSONObject string);
 	
 	public boolean 		isGameLauched();
 	public Canvas 		getCanvas();
@@ -24,4 +28,6 @@ public interface MenuAble extends Visible{
 	
 	public void 		showProfileMenu();
 	public void 		showMainMenu();
+	public GameAble 	getGame();
+	public Connector 	getConnector();
 }

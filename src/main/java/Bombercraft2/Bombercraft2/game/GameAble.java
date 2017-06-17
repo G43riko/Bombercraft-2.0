@@ -4,10 +4,15 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.json.JSONObject;
+
 import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
+import Bombercraft2.Bombercraft2.game.level.Level;
+import Bombercraft2.Bombercraft2.game.player.MyPlayer;
+import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import utils.math.GVector2f;
 
@@ -19,8 +24,8 @@ public interface GameAble extends Interactable, Visible{
 	public GVector2f 				getOffset();
 	public Canvas 					getCanvas();
 //	public NavBar 					getNavBar();
-//	public MyPlayer 				getMyPlayer();
-//	public HashMap<String, Player> 	getPlayers();
+	public MyPlayer 				getMyPlayer();
+	public HashMap<String, Player> 	getPlayers();
 //	public ArrayList<Enemy> 		getEnemiesAround(GVector2f position, int range);
 	public ToolManager				getToolsManager();
 	public Profil 					getProfil();
@@ -54,7 +59,7 @@ public interface GameAble extends Interactable, Visible{
 	public void 	calcPosition();
 	public void 	newGame();
 	public void 	resetGame();
-	public String 	toJSON();
+	public JSONObject 	toJSON();
 	public void 	changeZoom(float f);
 	
 	/**
@@ -65,5 +70,6 @@ public interface GameAble extends Interactable, Visible{
 	 */
 	public void 	putHelper(GVector2f pos, Type type, long createdTime);
 	public void		explodeBombAt(GVector2f globalPosToLocalPos);
+	public String 	getBasicInfo();
 	
 }

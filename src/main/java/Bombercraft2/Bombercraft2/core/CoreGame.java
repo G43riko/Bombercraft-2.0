@@ -3,16 +3,21 @@ package Bombercraft2.Bombercraft2.core;
 import java.awt.Graphics2D;
 import java.util.Stack;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.game.Game;
-import Bombercraft2.Bombercraft2.game.Level;
+import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.LoadingScreen;
+import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.gui.GuiManager;
 import Bombercraft2.Bombercraft2.gui.menus.MainMenu;
 import Bombercraft2.Bombercraft2.gui.menus.ProfileMenu;
+import Bombercraft2.Bombercraft2.multiplayer.Connector;
+import Bombercraft2.Bombercraft2.multiplayer.GameClient;
+import Bombercraft2.Bombercraft2.multiplayer.GameServer;
 import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import utils.Utils;
@@ -22,6 +27,7 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	private Profil 				profil;
 	private Game 				game;
 	private Level 				level;
+	private Connector			connector;
 	private GuiManager 			guiManager	= new GuiManager();
 	private boolean				gameLauched	= false;
 	private boolean 			focused		= true;
@@ -139,10 +145,16 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		}
 		showLoading();
 		
-		level = new Level();
-		createGame(level, null);
+		connector = new GameServer(this);
 	}
-	public void joinGame() {}
+	public void joinGame() {
+		if(gameLauched){
+			stopGame();
+		}
+		showLoading();
+		
+		connector = new GameClient(this);
+	}
 	public void continueGame() {
 		if(game != null){
 			states.push(game);
@@ -158,18 +170,31 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	public void stopGame() {
 		
 	}
-	public void createGame(Level level, String gameData) {
+	public void createGame(JSONObject gameData) {
 		if(gameLauched)
 			stopGame();
 		
-		game = new Game(level, this, gameData);
-		gameLauched = true;
+			if(gameData == null){
+				game = new Game(new Level(), this, null);
+			}
+			else{
+				try {
+					Level level = new Level(gameData.getJSONObject("level"));
+					game = new Game(level, this, gameData.getJSONObject("game"));
+				} catch (JSONException e) {
+					System.out.println("gameData: " + gameData);
+					e.printStackTrace();
+				}
+			}
+			
+			gameLauched = true;
+			
+			removeLoading();
+			
+			states.push(game);
+			Input.setTarget(game);
 		
 		
-		removeLoading();
-		
-		states.push(game);
-		Input.setTarget(game);
 	}
 	public boolean isGameLauched() {return false;}
 	public int getGameIs() {return 0;}
@@ -179,21 +204,27 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		
 		profil = new Profil(profilName);
 	}
+	
+	public void initDefaultProfil(){
+		setProfile("template");
+	}
 
-	@Override
 	public void showMainMenu() {
 		states.push(new MainMenu(this));
 		Input.setTarget(states.peek());
 	}
-	@Override
 	public void showProfileMenu() {
 		states.pop().cleanUp();
 		Input.setTarget(states.peek());
 	}
-
-	@Override
 	public GuiManager getGuiManager() {
 		return guiManager;
+	}
+	public GameAble getGame() {
+		return game;
+	}
+	public Connector getConnector() {
+		return connector;
 	}
 
 }

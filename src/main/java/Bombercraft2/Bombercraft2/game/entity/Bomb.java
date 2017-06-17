@@ -3,6 +3,9 @@ package Bombercraft2.Bombercraft2.game.entity;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import org.json.JSONObject;
+
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Timer;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -11,10 +14,6 @@ import utils.GLogger;
 import utils.math.GVector2f;
 
 public class Bomb extends Helper{
-	public final static int 	BOMB_WIDTH 		= 64;
-	public final static int 	BOMB_HEIGHT 	= 64;
-	public final static Color	BOMB_AREA_COLOR = new Color(255, 255, 0, 100);
-	public final static int 	BOMB_AREA_ROUND	= 10;
 	
 	private Helper.Type type;
 	private long 		addedAt;
@@ -36,13 +35,13 @@ public class Bomb extends Helper{
 		
 		timer.render(g2);
 		g2.setColor(Color.BLACK);
-		g2.fillArc(actPos.getXi(), actPos.getYi(), BOMB_WIDTH, BOMB_HEIGHT, 0, 360);
+		g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);
 	}
 	
 	private void renderSimpleArea(Graphics2D g2, GVector2f actPos){
 		GVector2f localPos = Map.globalPosToLocalPos(position);
 		int value, counter;
-		g2.setColor(BOMB_AREA_COLOR);
+		g2.setColor(Config.BOMB_AREA_COLOR);
 		
 		
 		//RIGHT
@@ -113,7 +112,7 @@ public class Bomb extends Helper{
 	}
 	
 	@Override
-	public String toJSON() {
+	public JSONObject toJSON() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -27,17 +27,20 @@ public class MainMenu extends Menu{
 	}
 	@Override
 	public void doAct(GVector2f click) {
-		if(components.get("exit").isClickIn(click)){
+		if(components.get(Texts.EXIT_GAME).isClickIn(click)){
 			parent.exitGame();
 		}
-		else if(components.get("changeProfil").isClickIn(click)){
+		else if(components.get(Texts.CHANGE_PROFIL).isClickIn(click)){
 			parent.showProfileMenu();
 		}
-		else if(components.get("newGame").isClickIn(click)){
+		else if(components.get(Texts.NEW_GAME).isClickIn(click)){
 			parent.startNewGame();
 		}
-		else if(components.get("continue").isClickIn(click)){
+		else if(components.get(Texts.CONTINUE_GAME).isClickIn(click)){
 			parent.continueGame();
+		}
+		else if(components.get(Texts.JOIN_GAME).isClickIn(click)){
+			parent.joinGame();
 		}
 	}
 	@Override

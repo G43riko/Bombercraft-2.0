@@ -2,6 +2,8 @@ package Bombercraft2.Bombercraft2.game.entity.flora;
 
 import java.awt.Graphics2D;
 
+import org.json.JSONObject;
+
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.math.GVector2f;
 
@@ -24,7 +26,7 @@ public class Plant extends Flora{
 	}
 	
 	@Override
-	public String toJSON() {
+	public JSONObject toJSON() {
 		return null;
 	}
 

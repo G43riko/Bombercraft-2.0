@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.game.level;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -8,9 +8,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.flora.FloraManager;
-import Bombercraft2.Bombercraft2.game.level.Block;
-import Bombercraft2.Bombercraft2.game.level.Map;
+import utils.Utils;
 import utils.math.GVector2f;
 
 public class Level implements Interactable {
@@ -61,7 +61,7 @@ public class Level implements Interactable {
 		floraManager.renderUpperLevel(g2);
 	}
 	
-	public String toJSON(){
+	public JSONObject toJSON(){
 		JSONObject result = new JSONObject();
 		try {
 			result.put("map", map.toJSON());
@@ -73,8 +73,7 @@ public class Level implements Interactable {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
-		return result.toString();
+		return result;
 	}
 	
 	//GETTERS
@@ -83,7 +82,7 @@ public class Level implements Interactable {
 	public GameAble getParent() {return parent;}
 	public boolean isReady(){return parent != null && map != null;}
 	public List<GVector2f> getRespawnZones() {return new ArrayList<GVector2f>(respawnZones);}
-	public GVector2f getPlayerRespawnZone(){return new GVector2f(respawnZones.get((int)(Math.random() * respawnZones.size())));}
+	public GVector2f getRandomRespawnZone(){return new GVector2f(Utils.choose(respawnZones));}
 	
 	//SETTERS
 	

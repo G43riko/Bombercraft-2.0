@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
@@ -33,6 +34,14 @@ public final class Utils {
 //				return new GVector2f();
 //		}
 //	}
+	@SuppressWarnings("unchecked")
+	public static <T> T choose(T ... argc){
+		return argc[(int)(Math.random() * argc.length)];
+	};
+	
+	public static <T> T choose(List<T> list){
+		return list.get((int)(Math.random() * list.size()));
+	};
 	
 	public static URL File2URL(File file) throws MalformedURLException{
 		return file.toURI().toURL();
@@ -110,9 +119,5 @@ public final class Utils {
 	        System.arraycopy(srcbuf, srcoffs , dstbuf, dstoffs, width);
 	    }
 	    return dst;
-	}
-
-	public static void notImplemented() {
-		System.err.println("nieje implementovane");
 	}
 }

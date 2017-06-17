@@ -100,7 +100,7 @@ public class Block extends Entity{
 	}
 
 	@Override
-	public String toJSON() {
+	public JSONObject toJSON() {
 		JSONObject result = new JSONObject();
 		
 		try {
@@ -111,7 +111,7 @@ public class Block extends Entity{
 			e.printStackTrace();
 		}
 		
-		return result.toString();
+		return result;
 	}
 	
 	//OTHERS

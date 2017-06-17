@@ -13,34 +13,34 @@ import utils.math.GColision;
 import utils.math.GVector2f;
 
 public abstract class GuiComponent implements Interactable, Visible{
-	protected final static int 		SIDEBAR_DEFAULT_BUTTON_HEIGHT = 30;
-	protected final static float 	CENTER_ALIGN = -1.111111f;
+	protected final static int 		SIDEBAR_DEFAULT_BUTTON_HEIGHT 	= 30;
+	protected final static float 	CENTER_ALIGN					= -1.111111f;
 
-	public static HashMap<Visible, Integer> buttons = new HashMap<Visible, Integer>();
+	public static HashMap<Visible, Integer> buttons 			= new HashMap<Visible, Integer>();
 	private Visible 						parent;
-	protected GVector2f 					offset = new GVector2f();
-	protected GVector2f 					textOffset = new GVector2f();
+	protected GVector2f 					offset 				= new GVector2f();
+	protected GVector2f 					textOffset 			= new GVector2f();
 	protected GVector2f 					position;
 	protected GVector2f 					size;
-	protected int 							textSize = 20;
-	protected int 							round = 0;
-	protected int 							borderWidth = 0;
+	protected int 							textSize 			= 20;
+	protected int 							round 				= 0;
+	protected int 							borderWidth 		= 0;
 	protected int 							topCousePrevButtons = 0;
 	protected boolean 						hover;
 	protected boolean 						disable;
-	protected boolean 						value = true;
-	protected String 						text = "";
-	protected Color 						backgroundColor = Color.WHITE;
-	protected Color 						borderColor = Color.black;
-	protected Color 						textColor = Color.black;
-	protected Color 						hoverColor = Color.lightGray;
-	protected Color 						diableColor = Color.DARK_GRAY;
-	protected String 						font = "Garamond";
+	protected boolean 						value 				= true;
+	protected String 						text 				= "";
+	protected Color 						backgroundColor 	= Color.WHITE;
+	protected Color 						borderColor 		= Color.black;
+	protected Color 						textColor 			= Color.black;
+	protected Color 						hoverColor 			= Color.lightGray;
+	protected Color 						diableColor 		= Color.DARK_GRAY;
+	protected String 						font 				= "Garamond";
 	
 	public GuiComponent(Visible parent) {
 		this.parent = parent;
-		position = parent.getPosition();
-		size = parent.getSize();
+		position 	= parent.getPosition();
+		size 		= parent.getSize();
 	}
 	
 	protected abstract void init();
@@ -50,13 +50,15 @@ public abstract class GuiComponent implements Interactable, Visible{
 	};
 	
 	public boolean isClickIn(GVector2f click){
-		if(disable)
+		if(disable){
 			return false;
+		}
 			
 		boolean result = GColision.pointRectCollision(position, size, click);
 		
-		if(result)
+		if(result){
 			clickIn();
+		}
 		
 		return result; 
 	}
@@ -83,12 +85,15 @@ public abstract class GuiComponent implements Interactable, Visible{
 
 	@Override
 	public void render(Graphics2D g2) {
-		if(disable)
+		if(disable){
 			g2.setColor(diableColor);
-		else if(hover)
+		}
+		else if(hover){
 			g2.setColor(hoverColor);
-		else
+		}
+		else{
 			g2.setColor(backgroundColor);
+		}
 		
 		g2.fillRoundRect(position.getXi(), position.getYi(), size.getXi(), size.getYi(), round, round);
 		
@@ -101,14 +106,16 @@ public abstract class GuiComponent implements Interactable, Visible{
 		g2.setColor(textColor);
 		g2.setFont(new Font(font, Font.BOLD | Font.ITALIC , textSize));
 		if(text != null && text != "" && textSize > 0){
-			if(textOffset.getX() == CENTER_ALIGN)
+			if(textOffset.getX() == CENTER_ALIGN){
 				g2.drawString(text, 
 							  position.getX() + (size.getX() - g2.getFontMetrics().stringWidth(text)) / 2, 
 							  position.getY() + textSize + textOffset.getY());
-			else
+			}
+			else{
 				g2.drawString(text, 
 							  position.getX() + textOffset.getX(), 
 							  position.getY() + textSize + textOffset.getY());
+			}
 		}
 	}
 	

@@ -11,14 +11,14 @@ import utils.math.GVector2f;
 public abstract class Bar implements Interactable, Clicable, Visible{
 	private Color backgroundColor 	= Config.BAR_BACKGROUND_COLOR;
 	private Color borderColor 		= Config.BAR_BORDER_COLOR;
-	
+	private int borderWidth 		= Config.BAR_BORDER_WIDTH;
+
+	private boolean visible 		= true;
 	protected GVector2f size;
 	protected GVector2f totalSize;
 	protected GVector2f totalPos;
 	
-	private boolean visible = true;
 	private GameAble parent;
-	private int borderWidth = Config.BAR_BORDER_WIDTH;
 	
 	//CONTRUCTORS
 	

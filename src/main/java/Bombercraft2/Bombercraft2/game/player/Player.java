@@ -82,7 +82,7 @@ public class Player extends Entity implements Healtable{
 	}
 	
 	@Override
-	public String toJSON() {
+	public JSONObject toJSON() {
 		JSONObject result = new JSONObject();
 		try {
 			result.put("position", position);
@@ -95,11 +95,11 @@ public class Player extends Entity implements Healtable{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return result.toString();
+		return result;
 	}
 
 	public void respawn() {
-		position = getParent().getLevel().getPlayerRespawnZone();
+		position = getParent().getLevel().getRandomRespawnZone();
 	}
 	
 	public GVector2f getSelectorPos(){

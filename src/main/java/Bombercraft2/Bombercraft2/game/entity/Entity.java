@@ -38,7 +38,7 @@ public abstract class Entity implements Visible, Interactable{
 	
 	//ABSTRACT
 	
-	public abstract String toJSON();
+	public abstract JSONObject toJSON();
 	public abstract GVector2f getSur();
 	public abstract GVector2f getSize();
 	

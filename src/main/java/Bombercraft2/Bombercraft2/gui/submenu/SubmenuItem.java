@@ -6,15 +6,11 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.Iconable;
 
 public class SubmenuItem implements Iconable{
-	private final static int	SUBMENU_LINE_HEIGHT 			= 30;
-	private final static Color	SUBMENU_FONT_COLOR				= Color.WHITE;
-	private final static int	SUBMENU_ICON_OFFSET				= 3;
-	private final static Color	SUBMENU_ICON_BORDER_COLOR		= Color.BLACK;
-	private final static int	SUBMENU_ICON_BORDER_WIDTH		= 1;
-	
 	public interface GAction{
 		public boolean fire();
 	}
@@ -30,7 +26,6 @@ public class SubmenuItem implements Iconable{
 	private GAction				action;
 	
 	public SubmenuItem(String label){this(label, (List<SubmenuItem>)null);}
-	
 	public SubmenuItem(String label, Image image){this(label, image, null);}
 	public SubmenuItem(String label, Image image, GAction action){
 		this.action = action;
@@ -83,51 +78,51 @@ public class SubmenuItem implements Iconable{
 	}
 
 	public void renderIcon(Graphics2D g2, int beginTextX, int beginTextY){
-		int maxIconHeight = SUBMENU_LINE_HEIGHT - (SUBMENU_ICON_OFFSET << 1);
+		int maxIconHeight = Config.SUBMENU_LINE_HEIGHT - (Config.SUBMENU_ICON_OFFSET << 1);
 		float ratio = (float)image.getWidth(null) / (float)image.getHeight(null);
 		g2.drawImage(image, 
 					 beginTextX, 
-					 beginTextY + SUBMENU_ICON_OFFSET, 
+					 beginTextY + Config.SUBMENU_ICON_OFFSET, 
 					 (int)(maxIconHeight * ratio), 
 					 maxIconHeight, 
 					 null);
 		
 		//TODO bud to nenakresli ram alebo sa obrazok zmensi ak je sirka vacsia ako maximalna vyska
-		g2.setColor(SUBMENU_ICON_BORDER_COLOR);
-		g2.setStroke(new BasicStroke(SUBMENU_ICON_BORDER_WIDTH));
+		g2.setColor(Config.SUBMENU_ICON_BORDER_COLOR);
+		g2.setStroke(new BasicStroke(Config.SUBMENU_ICON_BORDER_WIDTH));
 		g2.drawRect(beginTextX, 
-					beginTextY + SUBMENU_ICON_OFFSET, 
+					beginTextY + Config.SUBMENU_ICON_OFFSET, 
 					maxIconHeight, 
 					maxIconHeight);
 	}
 	
 
 	public void renderCheckbox(Graphics2D g2, int beginTextX, int beginTextY){
-		int maxIconHeight = SUBMENU_LINE_HEIGHT - (SUBMENU_ICON_OFFSET << 1);
+		int maxIconHeight = Config.SUBMENU_LINE_HEIGHT - (Config.SUBMENU_ICON_OFFSET << 1);
 		g2.setColor(value ? Color.GREEN : Color.RED);
 		g2.fillRect(beginTextX, 
-					beginTextY + SUBMENU_ICON_OFFSET, 
+					beginTextY + Config.SUBMENU_ICON_OFFSET, 
 					maxIconHeight, 
 					maxIconHeight);
 		
-		g2.setColor(SUBMENU_ICON_BORDER_COLOR);
-		g2.setStroke(new BasicStroke(SUBMENU_ICON_BORDER_WIDTH));
+		g2.setColor(Config.SUBMENU_ICON_BORDER_COLOR);
+		g2.setStroke(new BasicStroke(Config.SUBMENU_ICON_BORDER_WIDTH));
 		g2.drawRect(beginTextX, 
-					beginTextY + SUBMENU_ICON_OFFSET, 
+					beginTextY + Config.SUBMENU_ICON_OFFSET, 
 					maxIconHeight, 
 					maxIconHeight);
 	}
 	
 	public void renderRadio(Graphics2D g2, int beginTextX, int beginTextY) {
-		int maxIconHeight = SUBMENU_LINE_HEIGHT - (SUBMENU_ICON_OFFSET << 1);
-		g2.setColor(SUBMENU_FONT_COLOR);
+		int maxIconHeight = Config.SUBMENU_LINE_HEIGHT - (Config.SUBMENU_ICON_OFFSET << 1);
+		g2.setColor(Config.SUBMENU_FONT_COLOR);
 		
 		g2.fillPolygon(new int[]{beginTextX, 
 				  				 beginTextX + maxIconHeight, 
 				  				 beginTextX}, 
-					   new int[]{beginTextY + SUBMENU_ICON_OFFSET, 
-							     beginTextY + SUBMENU_ICON_OFFSET + maxIconHeight / 2,
-							     beginTextY + SUBMENU_ICON_OFFSET + maxIconHeight}, 3);		
+					   new int[]{beginTextY + Config.SUBMENU_ICON_OFFSET, 
+							     beginTextY + Config.SUBMENU_ICON_OFFSET + maxIconHeight / 2,
+							     beginTextY + Config.SUBMENU_ICON_OFFSET + maxIconHeight}, 3);		
 	}
 
 

@@ -52,7 +52,7 @@ public class Map implements Interactable{
 		this.numberOfBlocks = numberOfBlocks;
 		
 		createRandomMap();
-		defaultMap = toJSON();
+		defaultMap = toJSON().toString();
 		size = numberOfBlocks.mul(Block.SIZE);
 	}
 	
@@ -119,7 +119,7 @@ public class Map implements Interactable{
 		clearRespawnZones(parent.getLevel().getRespawnZones());
 	}
 	
-	public String toJSON(){
+	public JSONObject toJSON(){
 		JSONObject result = new JSONObject();
 		try {
 			for(int i=0 ; i<numberOfBlocks.getXi() ; i++){
@@ -132,7 +132,7 @@ public class Map implements Interactable{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return result.toString();
+		return result;
 	}
 	
 	//OTHERS
