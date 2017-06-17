@@ -4,7 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 import java.util.HashMap;
 
-import Bombercraft2.Bombercraft2.game.Player.Direction;
+import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 

@@ -60,9 +60,8 @@ public class Block extends Entity{
 														Config.DEFAULT_BLOCK_HEIGHT);
 
 	private static HashMap<String, Type> blocks = new HashMap<String, Type>();
-	
-	private Type type;	
-	private int healt;
+	private Type 	type;	
+	private int 	healt;
 	
 	//CONTRUCTORS
 	
@@ -193,40 +192,7 @@ public class Block extends Entity{
 
 	public void build(Type type) {
 		this.type = type;
-		this.healt = blocks.get(type).getHealt();
-	}
-
-	//GETTERS
-	
-	public GVector2f getSur() {return position.div(SIZE).toInt();}
-	public GVector2f getPosition() {return position.mul(SIZE);}
-	public GVector2f getSize() {return SIZE;}
-	public int getHealt() {return healt;}
-	public Type getType() {return type;}
-	public boolean isWalkable() {
-		return type.isWalkable();
-//		return Utils.isIn(type, Type.WATER, Type.PATH, Type.NOTHING, Type.FUTURE, Type.GRASS);
-	}
-	
-	public GVector2f getInterSect(GVector2f ss, GVector2f se){
-		ArrayList<GVector2f> res = new ArrayList<GVector2f>();
-		
-		GVector2f p = position.mul(Block.SIZE);
-		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p));
-		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p));
-		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p.add(Block.SIZE)));
-		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p.add(Block.SIZE)));
-		
-		res = res.stream().filter(a -> a != null).collect(Collectors.toCollection(ArrayList::new));
-		if(res.size() == 0)
-			return null;
-
-		return res.stream().reduce((a, b) -> a.dist(ss) < b.dist(ss) ? a : b).get();
-	}
-
-	public static Type getTypeFromInt(int num){
-		return num > 0 && num < Type.values().length ?  Type.values()[num] : Type.NOTHING;
-
+		this.healt = type.getHealt();
 	}
 
 	public void renderWalls(Graphics2D g2) {
@@ -316,6 +282,36 @@ public class Block extends Entity{
 				   	   	   		4);
 			}
 		}
+	}
+	
+
+	//GETTERS
+	
+	public GVector2f 	getSur() 		{return position.div(SIZE).toInt();}
+	public GVector2f 	getPosition() 	{return position.mul(SIZE);}
+	public GVector2f 	getSize() 		{return SIZE;}
+	public Type 		getType() 		{return type;}
+	public int 			getHealt() 		{return healt;}
+	public boolean 		isWalkable()	{return type.isWalkable();}
+
+	public static Type getTypeFromInt(int num){
+		return num > 0 && num < Type.values().length ?  Type.values()[num] : Type.NOTHING;
+	}
+	public GVector2f getInterSect(GVector2f ss, GVector2f se){
+		ArrayList<GVector2f> res = new ArrayList<GVector2f>();
+		
+		GVector2f p = position.mul(Block.SIZE);
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p));
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p));
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p.add(Block.SIZE)));
+		res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p.add(Block.SIZE)));
+		
+		res = res.stream().filter(a -> a != null).collect(Collectors.toCollection(ArrayList::new));
+		if(res.size() == 0){
+			return null;
+		}
+
+		return res.stream().reduce((a, b) -> a.dist(ss) < b.dist(ss) ? a : b).get();
 	}
 }
 	

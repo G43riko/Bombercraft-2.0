@@ -3,23 +3,25 @@ package Bombercraft2.Bombercraft2.core;
 import java.awt.Canvas;
 
 import Bombercraft2.Bombercraft2.game.Level;
+import Bombercraft2.Bombercraft2.gui.GuiManager;
 
 
 public interface MenuAble extends Visible{
-	public void 	startNewGame();
-	public void 	joinGame();
-	public void 	continueGame();
-	public void 	pausedGame();
-	public void 	stopGame();
-	public void 	exitGame();
+	public void 		startNewGame();
+	public void 		joinGame();
+	public void 		continueGame();
+	public void 		pausedGame();
+	public void 		stopGame();
+	public void 		exitGame();
+	public GuiManager	getGuiManager();
 	
-	public void 	createGame(Level level, String string);
+	public void 		createGame(Level level, String string);
 	
-	public boolean 	isGameLauched();
-	public Canvas 	getCanvas();
-	public int 		getGameIs();
-	public void 	setProfile(String profilName);
+	public boolean 		isGameLauched();
+	public Canvas 		getCanvas();
+	public int 			getGameIs();
+	public void 		setProfile(String profilName);
 	
-	public void showProfileMenu();
-	public void showMainMenu();
+	public void 		showProfileMenu();
+	public void 		showMainMenu();
 }

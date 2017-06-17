@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.MenuAble;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.GuiManager;
 import Bombercraft2.Bombercraft2.gui.components.Button;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
@@ -19,9 +20,8 @@ public class ProfileMenu extends Menu{
 	private ArrayList<String> availableProfiles = loadProfiles();
 	private MenuAble parent;
 	
-	public ProfileMenu(MenuAble parent, GuiManager manager) {
+	public ProfileMenu(MenuAble parent) {
 		super(parent, GameState.Type.ProfileMenu);
-		this.manager = manager;
 		this.parent = parent;
 		position.setY(100);
 		init();
@@ -34,10 +34,10 @@ public class ProfileMenu extends Menu{
 				selectProfile(a);
 			}
 		});
-		if(components.get("createProfile").isClickIn(click)){
+		if(components.get(Texts.CREATE_PROFIL).isClickIn(click)){
 			createProfile();
 		}
-		if(components.get("exit").isClickIn(click)){
+		if(components.get(Texts.EXIT_GAME).isClickIn(click)){
 			parent.exitGame();
 		}
 	}

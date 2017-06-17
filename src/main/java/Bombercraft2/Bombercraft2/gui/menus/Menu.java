@@ -17,10 +17,11 @@ public abstract class Menu extends GameState implements Clicable, Visible{
 	protected HashMap<String, GuiComponent> components = new HashMap<String, GuiComponent>();
 	protected GVector2f 					position;
 	protected GVector2f 					size;
-	protected GuiManager 					manager;
+	protected MenuAble 						parent;
 	
 	public Menu(MenuAble parent, GameState.Type type){
 		super(type);
+		this.parent = parent;
 		position = parent.getPosition();
 		size = parent.getSize();
 		//position = new GVector2f(0, 100);
@@ -36,7 +37,7 @@ public abstract class Menu extends GameState implements Clicable, Visible{
 //	}
 
 	protected void setItem(String key){
-		addComponent(key, new Button(this, manager.getLabelOf(key)));
+		addComponent(key, new Button(this, parent.getGuiManager().getLabelOf(key)));
 	}
 	public GVector2f getPosition() {
 		return position;

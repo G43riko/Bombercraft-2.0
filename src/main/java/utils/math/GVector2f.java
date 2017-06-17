@@ -37,7 +37,12 @@ public final class GVector2f implements Serializable{
 		this.x = v.x;
 		this.y = v.y;
 	};
-	
+	public GVector2f min(GVector2f v){
+		return new GVector2f(Math.min(x, v.x), Math.min(y, v.y));
+	};
+	public GVector2f max(GVector2f v){
+		return new GVector2f(Math.max(x, v.x), Math.max(y, v.y));
+	};
 	public float dot(GVector2f v){
         return x * v.x + y * v.y;
     };

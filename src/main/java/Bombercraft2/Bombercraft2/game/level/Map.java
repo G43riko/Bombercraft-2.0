@@ -13,6 +13,7 @@ import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.PerlinNoise;
 import utils.SimplexNoise;
@@ -100,7 +101,7 @@ public class Map implements Interactable{
 		      							  				   .peek(a -> a.render(g2))
 		      							  				   .filter(a -> a.getType() != Block.Type.NOTHING)
 		      							  				   .count();
-		if(parent.getVisibleOption("renderMapWalls")){
+		if(parent.getVisibleOption(Render.MAP_WALLS)){
 			new HashMap<String, Block>(blocks).entrySet()
 			   								  .stream()
 			   								  .map(a -> a.getValue())
@@ -265,7 +266,12 @@ public class Map implements Interactable{
 								   .collect(Collectors.toCollection(ArrayList<Block>::new));
 		return b.get((int)(Math.random() * b.size()));
 	}
-	
+	public static GVector2f globalPosToLocalPos(GVector2f pos){
+		return pos.sub(pos.mod(Block.SIZE)).div(Block.SIZE);
+	}
+	public static GVector2f localPosToGlobalPos(GVector2f pos){
+		return pos.mul(Block.SIZE);
+	}
 	public Block getBlockOnPosition(GVector2f sur){
 		GVector2f blockSize = Block.SIZE;
 		GVector2f pos = sur.sub(sur.mod(blockSize)).div(blockSize);

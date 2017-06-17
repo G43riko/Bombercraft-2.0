@@ -12,7 +12,7 @@ import Bombercraft2.Bombercraft2.gui.Clicable;
 import utils.math.GVector2f;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
-	private HashMap<Integer,Boolean> mouses = new HashMap<Integer,Boolean>();
+	private HashMap<Integer,Boolean> buttons = new HashMap<Integer,Boolean>();
 	private HashMap<Integer,Boolean> keys 	= new HashMap<Integer,Boolean>();
 	
 	public final static int KEY_W 			= 87;
@@ -44,14 +44,48 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	public Input() {
 		input = this;
 	}
+	public static final int NUM_KEYCODES = 256;
+	public static final int NUM_MOUSEBUTTONS = 5;
 	
-//	private static ArrayList<Clicable> menus = new ArrayList<Clicable>();
+	private static boolean[] lastKeys = new boolean[NUM_KEYCODES];
+	private static boolean[] lastMouse = new boolean[NUM_MOUSEBUTTONS];
+	
+	public static void update(){
+		for(int i = 0; i < NUM_KEYCODES; i++){
+			lastKeys[i] = isKeyDown(i);
+		}
+
+		for(int i = 0; i < NUM_MOUSEBUTTONS; i++){
+			lastMouse[i] = isButtonDown(i);
+		}
+	}
+	public static boolean getKeyDown(int keyCode){
+		return isKeyDown(keyCode) && !lastKeys[keyCode];
+	}
+	
+	public static boolean getKeyUp(int keyCode){
+		return !isKeyDown(keyCode) && lastKeys[keyCode];
+	}
+	public static boolean getMouseDown(int mouseButton){
+		return isButtonDown(mouseButton) && !lastMouse[mouseButton];
+	}
+	
+	public static boolean getMouseUp(int mouseButton){
+		return !isButtonDown(mouseButton) && lastMouse[mouseButton];
+	}
 	private static Clicable actMenu = null;
 	
 	private static GVector2f mousePosition = new GVector2f();
 	
 	public static GVector2f getMousePosition(){
 		return mousePosition;
+	}
+	
+	public static boolean isButtonDown(int key){
+		if(input.buttons.containsKey(key)){
+			return input.buttons.get(key);
+		}
+		return false;
 	}
 	
 	public static boolean isKeyDown(int key){
@@ -92,11 +126,11 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 	}
 
 	public void mousePressed(MouseEvent e) {
-		mouses.put(e.getButton(), true);
+		buttons.put(e.getButton(), true);
 	}
 
 	public void mouseReleased(MouseEvent e) {
-		mouses.put(e.getButton(), false);
+		buttons.put(e.getButton(), false);
 	}
 
 	public void keyPressed(KeyEvent e) {

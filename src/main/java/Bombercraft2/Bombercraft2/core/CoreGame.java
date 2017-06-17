@@ -22,8 +22,8 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	private Profil 				profil;
 	private Game 				game;
 	private Level 				level;
+	private GuiManager 			guiManager	= new GuiManager();
 	private boolean				gameLauched	= false;
-	private GuiManager 			guiManager 	= new GuiManager();
 	private boolean 			focused		= true;
 	private Stack<GameState> 	states 		= new Stack<GameState>();
 	
@@ -31,7 +31,7 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		super(Config.WINDOW_DEFAULT_FPS, Config.WINDOW_DEFAULT_UPS, Config.WINDOW_DEFAULT_RENDER_TEXT);
 
 		Utils.sleep(100);
-		states.push(new ProfileMenu(this, guiManager));
+		states.push(new ProfileMenu(this));
 		Input.setTarget(states.peek());
 		
 	}
@@ -69,7 +69,7 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		}
 		states.peek().input();
 		
-		if(Input.isKeyDown(Input.KEY_ESCAPE)){
+		if(Input.getKeyDown(Input.KEY_ESCAPE)){
 			if(states.peek().getType() == GameState.Type.Game){
 				pausedGame();
 			}
@@ -79,7 +79,6 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		}
 	}
 
-	
 	@Override
 	public void onResize() {
 		getPosition().set(getWindow().getWidth(), getWindow().getHeight());
@@ -133,7 +132,7 @@ public class CoreGame extends CoreEngine implements MenuAble{
 			Input.setTarget(states.peek());
 		}
 	}
-	
+
 	public void startNewGame() {
 		if(gameLauched){
 			stopGame();
@@ -183,13 +182,18 @@ public class CoreGame extends CoreEngine implements MenuAble{
 
 	@Override
 	public void showMainMenu() {
-		states.push(new MainMenu(this, guiManager));
+		states.push(new MainMenu(this));
 		Input.setTarget(states.peek());
 	}
 	@Override
 	public void showProfileMenu() {
 		states.pop().cleanUp();
 		Input.setTarget(states.peek());
+	}
+
+	@Override
+	public GuiManager getGuiManager() {
+		return guiManager;
 	}
 
 }

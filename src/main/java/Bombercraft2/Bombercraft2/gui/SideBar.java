@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
 import Bombercraft2.Bombercraft2.gui.components.MiniButton;
@@ -21,11 +22,11 @@ public class SideBar extends Bar{
 		calcPosition();
 		buttons.put("newGame" ,		new MiniButton(this, "New game"));
 		buttons.put("resetGame", 	new MiniButton(this, "Reset game"));
-		buttons.put("showLogs", 	new MiniSwitch(this, "Show logs", 		parent.getVisibleOption("renderLogs")));
-		buttons.put("showMinimap", 	new MiniSwitch(this, "Show minimap", 	parent.getVisibleOption("renderMiniMap")));
-		buttons.put("showLights", 	new MiniSwitch(this, "Show shadows", 	parent.getVisibleOption("renderLights")));
-		buttons.put("showLightMap", new MiniSwitch(this, "Show light map", 	parent.getVisibleOption("renderOnlyLightMap")));
-		buttons.put("showWalls", 	new MiniSwitch(this, "Show walls", 		parent.getVisibleOption("renderMapWalls")));
+		buttons.put("showLogs", 	new MiniSwitch(this, "Show logs", 		parent.getVisibleOption(Render.LOGS)));
+		buttons.put("showMinimap", 	new MiniSwitch(this, "Show minimap", 	parent.getVisibleOption(Render.MINIMAP)));
+		buttons.put("showLights", 	new MiniSwitch(this, "Show shadows", 	parent.getVisibleOption(Render.LIGHTS)));
+		buttons.put("showLightMap", new MiniSwitch(this, "Show light map", 	parent.getVisibleOption(Render.ONLY_SHADOW_MAP)));
+		buttons.put("showWalls", 	new MiniSwitch(this, "Show walls", 		parent.getVisibleOption(Render.MAP_WALLS)));
 		
 		init();
 		
@@ -107,19 +108,19 @@ public class SideBar extends Bar{
 			getParent().resetGame();
 		}
 		else if(buttons.get("showLogs").isClickIn(click)){
-			getParent().switchVisibleOption("renderLogs");
+			getParent().switchVisibleOption(Render.LOGS);
 		}
 		else if(buttons.get("showMinimap").isClickIn(click)){
-			getParent().switchVisibleOption("renderMiniMap");
+			getParent().switchVisibleOption(Render.MINIMAP);
 		}
 		else if(buttons.get("showLights").isClickIn(click)){
-			getParent().switchVisibleOption("renderLights");
+			getParent().switchVisibleOption(Render.LIGHTS);
 		}
 		else if(buttons.get("showLightMap").isClickIn(click)){
-			getParent().switchVisibleOption("renderOnlyLightMap");
+			getParent().switchVisibleOption(Render.ONLY_SHADOW_MAP);
 		}
 		else if(buttons.get("showWalls").isClickIn(click)){
-			getParent().switchVisibleOption("renderMapWalls");
+			getParent().switchVisibleOption(Render.MAP_WALLS);
 		}
 		
 		

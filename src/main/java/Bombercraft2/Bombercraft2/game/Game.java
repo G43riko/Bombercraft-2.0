@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.json.JSONException;
 
@@ -14,21 +15,31 @@ import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.CoreGame;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.Bombercraft2.game.entity.Bomb;
+import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.level.Map;
+import Bombercraft2.Bombercraft2.game.player.MyPlayer;
+import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.gui.GameGui;
+import Bombercraft2.Bombercraft2.multiplayer.Connector;
+import Bombercraft2.Bombercraft2.multiplayer.GameServer;
 import Bombercraft2.engine.Input;
-import utils.ImageUtils;
+import utils.GLogger;
 import utils.math.GVector2f;
-import utils.resouces.ResourceSaver;
 
 public class Game extends GameState implements GameAble{
 	private MyPlayer				myPlayer;
 	private Level					level;
 	private float					zoom			= Config.DEFAULT_ZOOM;
 	private GameGui					gui;
+	private Connector				connector		= new GameServer(this);
+	private ToolManager				toolManager		= new ToolManager(this);
+	private HashMap<String, Helper>	helpers			= new HashMap<String, Helper>();
 	private CoreGame				parent;
 	private MouseSelector			mouseSelector;//	= new MouseSelector(this);
 	private HashMap<String, Player>	players			= new HashMap<String, Player>();
+	private HashSet<Helper>			helpersRemoved	= new HashSet<Helper>();
 	
 	//pre pripadny currentModificationException ak sa chce upravit nieco co sa pouziva
 	private boolean					render		= true;
@@ -66,12 +77,11 @@ public class Game extends GameState implements GameAble{
 		}
 		g2.clearRect(0, 0, parent.getSize().getXi(), parent.getSize().getYi());
 		level.render(g2);
-
-		new HashMap<String, Player>(players).entrySet()
-											.stream()
-											.map(a -> a.getValue())
-											.filter(this::isVisible)
-											.forEach(a -> a.render(g2));
+		
+		toolManager.render(g2);
+		
+		players.values().stream().filter(this::isVisible).forEach(a -> a.render(g2));
+		helpers.values().stream().filter(this::isVisible).forEach(a -> a.render(g2));
 
 		level.renderUpperFlora(g2);
 
@@ -92,6 +102,10 @@ public class Game extends GameState implements GameAble{
 			return;
 		}
 		myPlayer.update(delta);
+		
+		helpers.values().removeAll(helpersRemoved);
+		helpersRemoved.clear();
+		helpers.values().stream().filter(this::isVisible).forEach(a -> a.update(delta));
 		gui.update(delta);
 	}
 
@@ -160,6 +174,10 @@ public class Game extends GameState implements GameAble{
 				 b.getPosition().getY() * getZoom()  + b.getSize().getY() * getZoom()  < getOffset().getY() || 
 				   getOffset().getX() + getCanvas().getWidth() < b.getPosition().getX() * getZoom()    ||
 				   getOffset().getY() + getCanvas().getHeight() < b.getPosition().getY() * getZoom() );
+	}
+
+	public String getLabelOf(String key){
+		return parent.getGuiManager().getLabelOf(key);
 	}
 	@Override
 	public boolean hasWall(float i, float j) {
@@ -262,5 +280,48 @@ public class Game extends GameState implements GameAble{
 	@Override
 	public void doAct(GVector2f click) {
 		gui.doAct(click);
+	}
+
+	@Override
+	public ToolManager getToolsManager() {
+		return toolManager;
+	}
+
+	@Override
+	public GVector2f getPlayerTarget() {
+		return myPlayer.getTargetLocation();
+	}
+
+	@Override
+	public Connector getConnector() {
+		return connector;
+	}
+
+	@Override
+	public void putHelper(GVector2f pos, Helper.Type type, long createTime) {
+		GVector2f localPos = Map.globalPosToLocalPos(pos);
+		pos = pos.div(Block.SIZE).toInt().mul(Block.SIZE);
+		
+		String key = localPos.getXi() + "_" + localPos.getYi();
+		if(helpers.containsKey(key)){
+			GLogger.printLint("Vytvara sa helper na helpere");
+			return;
+		}
+		switch(type){
+			case BOMB_NORMAL:
+				helpers.put(key, new Bomb(pos, this, type, createTime));
+				break;
+		}
+	}
+
+	@Override
+	public void explodeBombAt(GVector2f pos) {
+		String key = pos.getXi() + "_" + pos.getYi();
+		
+		if(!helpers.containsKey(key)){
+			GLogger.printLint("Explodovala neexistujuca bomba na: " + pos);
+			return;
+		}
+		helpersRemoved.add(helpers.get(key));
 	}
 }

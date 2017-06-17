@@ -7,5 +7,13 @@
 	"renderLights" : true,
 	"renderBombRange" : true,
 	"renderOnlyLightMap" : true,
-	"renderMapWalls" : true
+	"renderMapWalls" : true,
+	"renderNavbar" : true,
+	"renderSubmenu" : true,
+	"renderPlayerSelector" : true,
+	"renderMouseSelector" : true,
+	"renderHealtBar" : true,
+	"renderPlayers" : true,
+	"renderFloor" : true,
+	"renderFlora" : true
 }

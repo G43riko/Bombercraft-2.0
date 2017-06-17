@@ -4,15 +4,15 @@ import java.awt.Image;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
-import Bombercraft2.Bombercraft2.game.entity.flora.Flora.Bushes;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 public abstract class Flora extends Entity{
 	protected Florable type;
-	protected interface Florable{
-		public Image getImage();
+	protected interface Florable extends Iconable{
+		
 		public GVector2f getSize();
 		public FloraType getType();
 	}

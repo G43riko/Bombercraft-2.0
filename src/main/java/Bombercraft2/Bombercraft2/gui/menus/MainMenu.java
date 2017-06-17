@@ -4,28 +4,26 @@ import java.awt.Graphics2D;
 
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.MenuAble;
-import Bombercraft2.Bombercraft2.gui.GuiManager;
-import Bombercraft2.Bombercraft2.gui.components.Button;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
 import utils.math.GVector2f;
 
 public class MainMenu extends Menu{
 	private MenuAble parent;
-	public MainMenu(MenuAble parent, GuiManager manager){
+	public MainMenu(MenuAble parent){
 		super(parent, GameState.Type.MainMenu);
-		this.manager = manager;
 		this.parent = parent;
 		position.setY(100);
 		init();
 	}
 	protected void init() {
-		setItem("newGame");
-		setItem("continue");
-		setItem("stopGame");
-		setItem("joinGame");
-		setItem("changeProfil");
-		setItem("options");
-		setItem("exit");
+		setItem(Texts.NEW_GAME);
+		setItem(Texts.CONTINUE_GAME);
+		setItem(Texts.STOP_GAME);
+		setItem(Texts.JOIN_GAME);
+		setItem(Texts.CHANGE_PROFIL);
+		setItem(Texts.OPTIONS);
+		setItem(Texts.EXIT_GAME);
 	}
 	@Override
 	public void doAct(GVector2f click) {

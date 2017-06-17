@@ -15,7 +15,7 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
-import Bombercraft2.Bombercraft2.game.Player;
+import Bombercraft2.Bombercraft2.game.player.Player;
 import utils.math.GVector2f;
 
 public final class Utils {
@@ -110,5 +110,9 @@ public final class Utils {
 	        System.arraycopy(srcbuf, srcoffs , dstbuf, dstoffs, width);
 	    }
 	    return dst;
+	}
+
+	public static void notImplemented() {
+		System.err.println("nieje implementovane");
 	}
 }

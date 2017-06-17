@@ -1,5 +1,7 @@
 package Bombercraft2.Bombercraft2.game.entity;
 
+import java.awt.Image;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -14,7 +16,6 @@ public abstract class Entity implements Visible, Interactable{
 	private 	GameAble 	parent;
 	protected 	GVector2f 	position;
 	protected 	boolean 	alive 	= true;
-	
 	//CONSTRUCTORS
 	
 	public Entity(JSONObject json, GameAble parent){

@@ -1,9 +1,11 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.game.player;
 
 import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.HealtBar;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import utils.math.GVector2f;
@@ -76,6 +78,10 @@ public class MyPlayer extends Player{
 		
 		setMoving(!move.isNull());
 		
+		if(Input.getKeyDown(Input.KEY_LCONTROL)){
+			doAction();
+		}
+		
 		
 		if(move.getX() < 0 && move.getY() == 0)
 			setDirection(Direction.LEFT);
@@ -90,6 +96,12 @@ public class MyPlayer extends Player{
 
 	}
 	
+	public void doAction(){
+		getParent().getToolsManager().getSelectedTool().useOnGlobalPos(getTargetLocation());
+	}
+	public GVector2f getTargetLocation(){
+		return pointer.getEndPos(position.add(Block.SIZE.div(2)));
+	}
 	@Override
 	public void render(Graphics2D g2) {
 		super.render(g2);

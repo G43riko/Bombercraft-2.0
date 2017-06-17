@@ -122,6 +122,7 @@ public abstract class CoreEngine {
 	}
 	
 	private void defaultUpdate(float delta){
+		Input.update();
 		update(delta);
 	}
 	

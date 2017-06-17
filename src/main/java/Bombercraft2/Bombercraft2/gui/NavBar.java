@@ -4,11 +4,15 @@ import java.awt.BasicStroke;
 import java.awt.Graphics2D;
 import java.util.HashMap;
 
+import org.junit.runners.ParentRunner;
+
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
+import Bombercraft2.Bombercraft2.game.ToolManager;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.player.Showel;
 import Bombercraft2.engine.Input;
 import utils.math.GColision;
 import utils.math.GVector2f;
@@ -19,10 +23,10 @@ public class NavBar extends Bar{
 	
 	public NavBar(GameAble parent) {
 		super(parent, Config.NAVBAR_SIZE);
-		
-		items.put(0, Helper.Type.TOWER_LASER);
-		items.put(1, Helper.Type.TOWER_MACHINE_GUN);
-		items.put(2, Helper.Type.SHOVEL);
+
+		items.put(0, Helper.Type.SHOVEL);
+		items.put(1, Helper.Type.TOWER_LASER);
+		items.put(2, Helper.Type.TOWER_MACHINE_GUN);
 		items.put(3, Helper.Type.WEAPON_LASER);
 		items.put(4, Helper.Type.WEAPON_BOW);
 		items.put(5, Helper.Type.BOMB_NORMAL);
@@ -43,8 +47,12 @@ public class NavBar extends Bar{
 		setBackgroundColor(Config.NAVBAR_BACKGROUND_COLOR);
 		setBorderColor(Config.NAVBAR_BORDER_COLOR);
 		setBorderWidth(Config.NAVBAR_BORDER_WIDTH);
+		
+		getParent().getToolsManager().setSelectedTool(getSelectedIcon());
 	}
-	
+	public Iconable getSelectedIcon(){
+		return items.get(selectedItem);
+	}
 	public void removeItem(int index){
 		items.remove(index);
 	}
@@ -91,6 +99,7 @@ public class NavBar extends Bar{
 	public void doAct(GVector2f click) {
 		if(GColision.pointRectCollision(totalPos, totalSize, Input.getMousePosition())){
 			selectedItem = Input.getMousePosition().sub(totalPos).div(size).getXi();
+			getParent().getToolsManager().setSelectedTool(getSelectedIcon());
 		}
 	}
 

@@ -7,10 +7,12 @@ import java.util.HashMap;
 import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
+import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import utils.math.GVector2f;
 
 public interface GameAble extends Interactable, Visible{
-//	public Communicable 			getConnection();
+	public Connector 				getConnector();
 //	public Item 					getItem(String string);
 	public Level 					getLevel();
 	public float 					getZoom();
@@ -20,10 +22,12 @@ public interface GameAble extends Interactable, Visible{
 //	public MyPlayer 				getMyPlayer();
 //	public HashMap<String, Player> 	getPlayers();
 //	public ArrayList<Enemy> 		getEnemiesAround(GVector2f position, int range);
+	public ToolManager				getToolsManager();
 	public Profil 					getProfil();
 	public ArrayList<String> 		getLogInfos();
+	public GVector2f				getPlayerTarget();
 	public boolean 					isVisible(Visible b);
-	
+	public String 					getLabelOf(String key);
 	public void addHelper(GVector2f selectorSur, 
 						  int cadenceBonus,
 						  GVector2f pos, 
@@ -52,5 +56,14 @@ public interface GameAble extends Interactable, Visible{
 	public void 	resetGame();
 	public String 	toJSON();
 	public void 	changeZoom(float f);
+	
+	/**
+	 * 
+	 * @param pos
+	 * @param type
+	 * @param createdTime - cas vytvorenie objektu u klienta pre pripadny delay siete
+	 */
+	public void 	putHelper(GVector2f pos, Type type, long createdTime);
+	public void		explodeBombAt(GVector2f globalPosToLocalPos);
 	
 }

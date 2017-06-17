@@ -1,22 +1,22 @@
 {
 	"newGame" : {
-		"sk" : "Nova hra",
+		"sk" : "Nová hra",
 		"en" : "New game"
 	},
 	"continue" : {
-		"sk" : "Pokracovat",
+		"sk" : "Pokračovať",
 		"en" : "Continue"
 	},
 	"stopGame" : {
-		"sk" : "Stopnut hru",
+		"sk" : "Stopnút hru",
 		"en" : "Stop game"
 	},
 	"joinGame" : {
-		"sk" : "Pripojit sa k hre",
+		"sk" : "Pripojiť sa k hre",
 		"en" : "Join game"
 	},
 	"changeProfil" : {
-		"sk" : "Zmenit profil",
+		"sk" : "Zmeniť profil",
 		"en" : "Change profile"
 	},
 	"options" : {
@@ -28,11 +28,44 @@
 		"en" : "Exit"
 	},
 	"createProfile" : {
-		"sk" : "Vytvorit novy profil",
+		"sk" : "Vytvoriť nový profil",
 		"en" : "Create new prifile"
 	},
 	"undefinedLabel" : {
-		"sk" : "Neznami text menu",
+		"sk" : "Neznámi text menu",
 		"en" : "Undefined label"
-	}
+	},
+	"showLogs" : {
+		"sk" : "Zobraziť logy",
+		"en" : "Show logs"
+	},
+	"restarGame" : {
+		"sk" : "Reštartovať hru",
+		"en" : "Restart game"
+	},
+	"trees" : {
+		"sk" : "Stromy",
+		"en" : "Trees"
+	},
+	"plants" : {
+		"sk" : "Rastliny",
+		"en" : "Plants"
+	},
+	"bushes" : {
+		"sk" : "Kríky",
+		"en" : "Bushes"
+	},
+	"blocks" : {
+		"sk" : "Bloky",
+		"en" : "Blocks"
+	},
+	"flora" : {
+		"sk" : "Flóra",
+		"en" : "Flora"
+	},
+	"showWalls" : {
+		"sk" : "Zobraziť steny",
+		"en" : "Show walls"
+	} 
+
 }

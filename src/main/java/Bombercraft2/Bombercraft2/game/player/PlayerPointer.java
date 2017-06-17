@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.game.player;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -12,20 +12,21 @@ public class PlayerPointer {
 	private MyPlayer 	parent;
 	private float 		angle 		= 0;
 	private float 		rotSpeed 	= 0.1f;
-	private int 		length 		= 60;
+	private int 		length 		= 100;
 	private int			width 		= 5;
 	private Color		color		= Color.white;
 	public PlayerPointer(MyPlayer parent){
 		this.parent = parent;
 	}
-	
-
-	public void render(Graphics2D g2){
-		GVector2f positionStart = parent.getPosition().add(Block.SIZE.div(2).sub(parent.getOffset()));
-		GVector2f positionEnd 	= new GVector2f(positionStart);
+	public GVector2f getEndPos(GVector2f positionStart){
+		GVector2f positionEnd = new GVector2f(positionStart);
 		positionEnd.addToX((float)Math.cos(angle) * length);
 		positionEnd.addToY((float)Math.sin(-angle) * length);
-		
+		return positionEnd;
+	}
+	public void render(Graphics2D g2){
+		GVector2f positionStart = parent.getPosition().add(Block.SIZE.div(2).sub(parent.getOffset()));
+		GVector2f positionEnd 	= getEndPos(positionStart);
 
 		g2.setStroke(new BasicStroke(width));
 		g2.setColor(color);

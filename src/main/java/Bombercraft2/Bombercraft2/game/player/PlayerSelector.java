@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.game.player;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

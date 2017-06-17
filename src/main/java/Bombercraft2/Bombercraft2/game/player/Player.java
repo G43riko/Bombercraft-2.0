@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.game.player;
 
 import java.awt.Graphics2D;
 
@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.PlayerSprite;
+import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.Healtable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.Utils;
