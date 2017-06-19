@@ -4,13 +4,19 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import utils.math.GVector2f;
+import utils.resouces.JSONAble;
 
 
-public class FloraManager {
+public class FloraManager implements JSONAble{
 	private List<Bush> 		bushes 	= new ArrayList<Bush>();
 	private List<Plant> 	plants 	= new ArrayList<Plant>();
 	private List<Tree> 		trees 	= new ArrayList<Tree>();
@@ -76,5 +82,52 @@ public class FloraManager {
 				cretePlantByType(Flora.Plants.values()[j], nums);	
 			}
 		}
+	}
+
+	@Override
+	public void fromJSON(JSONObject data) {
+		bushes.clear();
+		plants.clear();
+		trees.clear();
+		try {
+			JSONArray bushesArray = data.getJSONArray(Texts.BUSHES);
+			for(int i=0 ; i<bushesArray.length() ; i++){
+				bushes.add(new Bush(parent, bushesArray.getJSONObject(i)));
+			}
+			
+			JSONArray plantsArray = data.getJSONArray(Texts.PLANTS);
+			for(int i=0 ; i<plantsArray.length() ; i++){
+				plants.add(new Plant(parent, plantsArray.getJSONObject(i)));
+			}
+			
+			JSONArray treesArray = data.getJSONArray(Texts.TREES);
+			for(int i=0 ; i<treesArray.length() ; i++){
+				trees.add(new Tree(parent, treesArray.getJSONObject(i)));
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public JSONObject toJSON() {
+		JSONObject result = new JSONObject();
+		try {
+			JSONArray bushesArray = new JSONArray();
+			bushes.stream().forEach(a -> bushesArray.put(a.toJSON()));
+			result.put(Texts.BUSHES, bushesArray);
+
+			JSONArray plantsArray = new JSONArray();
+			plants.stream().forEach(a -> plantsArray.put(a.toJSON()));
+			result.put(Texts.PLANTS, plantsArray);
+
+			JSONArray treesArray = new JSONArray();
+			trees.stream().forEach(a -> treesArray.put(a.toJSON()));
+			result.put(Texts.TREES, treesArray);
+			return result;
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 }

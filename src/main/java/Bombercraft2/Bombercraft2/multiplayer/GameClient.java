@@ -1,11 +1,17 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.core.CoreGame;
 import Bombercraft2.Bombercraft2.core.MenuAble;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
+import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.Player;
@@ -18,10 +24,11 @@ import utils.math.GVector2f;
 
 public class GameClient extends Client implements Connector{
 	private MenuAble parent;
-	
+	private CommonMethods methods;
 	//CONTRUCTORS
 	
-	public GameClient(MenuAble coreGame){
+	public GameClient(MenuAble coreGame, String ip){
+		super(ip);
 		this.parent = coreGame;
 //		GLog.write(GLog.CREATE, "GameClient vytvoren�");
 	}
@@ -34,6 +41,25 @@ public class GameClient extends Client implements Connector{
 //	public Level getLevel() {
 //		return actLevel;
 //	}
+	@Override
+	public void setBombExplode(GVector2f position, List<Block> blocks) {
+		parent.getGame().explodeBombAt(position);
+	}
+	@Override
+	public void onBombExplode(JSONObject data) {
+		try {
+//			JSONObject object = new JSONObject();
+//			object.put(Texts.POSITION, position);
+			JSONArray blocks = data.getJSONArray(Texts.HITTED_BLOCKS);
+//			parent.getGame().explodeBombAt(new GVector2f(data.getString(Texts.POSITION)));
+			for(int i=0 ; i<blocks.length() ; i++){
+				GVector2f position = new GVector2f(blocks.getString(i));
+				parent.getGame().getLevel().getMap().getBlock(position.getXi(), position.getYi()).remove();;
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public int getNumberPlayersInGame() {
 		GLogger.notImplemented();
@@ -52,17 +78,6 @@ public class GameClient extends Client implements Connector{
 
 	//OTHERS
 	
-	public void playerNewPos(Player player) {
-		try {
-			JSONObject object = new JSONObject();
-			object.put("position", player.getPosition());
-			object.put("direction", player.getDirection());
-			object.put("player", player.getName());
-			write(object.toString(), Server.PLAYER_MOVE);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-	}
 
 	public void eatItem(GVector2f sur, int type) {
 		GLogger.notImplemented();
@@ -71,37 +86,46 @@ public class GameClient extends Client implements Connector{
 		GLogger.notImplemented();
 	}
 
+	public void connectToGame(){
+		sendPlayerInfo();
+	}
+	
+	public void onPutHelper(JSONObject data){
+		methods.onPutHelper(data);
+	}
+	
 	protected void processMessage(String data) {
 		try{
 			JSONObject txt = new JSONObject(data);
-			JSONObject msg = new JSONObject(txt.getString("msg"));
+			JSONObject msg = new JSONObject(txt.getString(Texts.MESSAGE));
 			
-			switch(txt.getString("type")){
-				case Server.LEVEL_INFO :
-//					actLevel = new Level(new JSONObject(msg.getString("level")));
-					parent.createGame(msg);
-					Utils.sleep(100);
-					sendPlayerInfo();
+			switch(txt.getString(Texts.TYPE)){
+				case Server.BOMB_EXPLODE:
+					onBombExplode(msg);
 					break;
-				case Server.PLAYER_MOVE :
-					
-					Player p = parent.getGame().getPlayers().get(msg.getString("player"));
-					p.setDirection(Direction.valueOf(msg.getString("direction")));
-					p.setPosition(new GVector2f(msg.getString("position")));
+				case Server.GAME_INFO:
+					parent.createGame(msg);
+					methods = new CommonMethods(parent.getGame(), this);
+					break;
+				case Server.BASIC_INFO :
+//					actLevel = new Level(new JSONObject(msg.getString("level")));
+					connectToGame();
+					break;
+				case Server.CLOSE_CONNECTION:
+					onCloseConnection();
+					break;
+				case Server.PLAYER_CHANGE :				
+					onPlayerChange(msg);
+					break;
+				case Server.BUILD_BLOCK :
+					onBuildBlock(msg);
+					break;
+				case Server.REMOVE_BLOCK :
+					onRemoveBlock(msg);
 					break;
 				case Server.PUT_HELPER :
-					parent.getGame().addHelper(new GVector2f(msg.getString("selectorSur")),
-												 msg.getInt("cadenceBonus"),
-												 new GVector2f(msg.getString("position")),
-												 msg.getInt("demage"),
-												 msg.getString("type"),
-												 new GVector2f(msg.getString("target")));
+					onPutHelper(msg);
 					break;
-				case Server.PUT_BOMB :
-					parent.getGame().addBomb(new GVector2f(msg.getString("position")), 
-											   msg.getInt("range"),
-											   msg.getInt("time"),
-											   msg.getInt("demage"));
 				case Server.HIT_BLOCK :
 	//				GVector2f pos = new GVector2f(msg.getString("position"));
 	//				actLevel.getParent().getLevel().getMap().getBlockOnPosition(pos).hit(msg.getInt("demage"));
@@ -120,34 +144,62 @@ public class GameClient extends Client implements Connector{
 
 	@Override
 	public void sendPlayerInfo() {
-		try {
-			JSONObject result = new JSONObject();
-//			result.put("name", actLevel.getParent().getProfil().getName());
-			result.put("name", parent.getGame().getMyPlayer().getName());
-			result.put("avatar", parent.getGame().getProfil().getAvatar());
-			write(result.toString() , Server.PLAYER_NAME);
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
+		write(parent.getPlayerInfo().toString() , Server.PLAYER_DATA);
 	}
 
 	@Override
-	public void removeBlock(GVector2f pos) {
-		GLogger.notImplemented();
+	public void setRemoveBlock(GVector2f position) {
+		methods.setRemoveBlock(position);
 	}
 
 	@Override
-	public void buildBlock(GVector2f pos, Type blockType) {
-		GLogger.notImplemented();
+	public void setBuildBlock(GVector2f position, Type type) {
+		methods.setBuildBlock(position, type);
 	}
 
 	@Override
-	public void buildBlockArea(GVector2f minPos, GVector2f maxPos, Type blockType) {
-		GLogger.notImplemented();
+	public void setBuildBlockArea(GVector2f minPos, GVector2f maxPos, Type blockType) {
+		methods.setBuildBlockArea(minPos, maxPos, blockType);
 	}
 
 	@Override
-	public void putHelper(GVector2f pos, Bombercraft2.Bombercraft2.game.entity.Helper.Type type) {
-		GLogger.notImplemented();
+	public void setPutHelper(GVector2f position, Helper.Type type) {
+		methods.setPutHelper(position, type);
+	}
+
+	@Override
+	public void setPlayerChange(Player player) {
+		methods.setPlayerChange(player);
+	}
+
+	@Override
+	protected void onConnectionBroken() {
+		parent.showMessage(Texts.BROKEN_CONNECTION);
+		parent.stopGame();
+	}
+	
+	private void onCloseConnection(){
+		parent.showMessage(Texts.GAME_CLOSED);
+		parent.stopGame();
+	}
+
+	@Override
+	public void setCloseConnection() {
+		write("{}", Server.CLOSE_CONNECTION);
+	}
+
+	@Override
+	public void onRemoveBlock(JSONObject data) {
+		methods.onRemoveBlock(data);
+	}
+
+	@Override
+	public void onBuildBlock(JSONObject data) {
+		methods.onBuildBlock(data);
+	}
+
+	@Override
+	public void onPlayerChange(JSONObject data) {
+		methods.onPlayerChange(data);
 	}
 }

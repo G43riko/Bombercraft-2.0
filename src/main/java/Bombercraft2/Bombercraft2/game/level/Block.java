@@ -12,6 +12,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
@@ -59,7 +60,7 @@ public class Block extends Entity{
 	public final static GVector2f SIZE  = new GVector2f(Config.DEFAULT_BLOCK_WIDTH, 
 														Config.DEFAULT_BLOCK_HEIGHT);
 
-	private static HashMap<String, Type> blocks = new HashMap<String, Type>();
+//	private static HashMap<String, Type> blocks = new HashMap<String, Type>();
 	private Type 	type;	
 	private int 	healt;
 	
@@ -69,9 +70,9 @@ public class Block extends Entity{
 		super(new GVector2f(), parent);
 		
 		try {
-			position 	= new GVector2f(object.getString("position"));
-			healt 		= object.getInt("healt");
-			type 		= Type.valueOf(object.getString("type"));
+			position 	= new GVector2f(object.getString(Texts.BLOCK_POSITION));
+			healt 		= object.getInt(Texts.BLOCK_HEALT);
+			type 		= Type.valueOf(object.getString(Texts.BLOCK_TYPE));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -104,9 +105,9 @@ public class Block extends Entity{
 		JSONObject result = new JSONObject();
 		
 		try {
-			result.put("healt", healt);
-			result.put("type", type);
-			result.put("position", position);
+			result.put(Texts.BLOCK_HEALT, healt);
+			result.put(Texts.BLOCK_TYPE, type);
+			result.put(Texts.BLOCK_POSITION, position);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -119,16 +120,19 @@ public class Block extends Entity{
 	public boolean hit(int demage){
 		healt -= demage;
 		boolean res = healt <= 0;
-		if(res)
+		if(res){
 			remove();
+		}
 		return res;
 	}
-
-	public void remove() {
-		getParent().addExplosion(getPosition().add(Block.SIZE.div(2)), 
-								 Block.SIZE, 
-								 type.getMinimapColor(), 
-								 5);
+	public void remove(){remove(false);}
+	public void remove(boolean addExplosion) {
+		if(addExplosion){
+			getParent().addExplosion(getPosition().add(Block.SIZE.div(2)), 
+									 Block.SIZE, 
+									 type.getMinimapColor(), 
+									 5);
+		}
 		type = Type.NOTHING; 
 		healt = 0;
 	}
@@ -287,7 +291,7 @@ public class Block extends Entity{
 
 	//GETTERS
 	
-	public GVector2f 	getSur() 		{return position.div(SIZE).toInt();}
+	public GVector2f 	getSur() 		{return position/*.div(SIZE).toInt()*/;}
 	public GVector2f 	getPosition() 	{return position.mul(SIZE);}
 	public GVector2f 	getSize() 		{return SIZE;}
 	public Type 		getType() 		{return type;}

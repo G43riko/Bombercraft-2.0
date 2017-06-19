@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.gui;
 
 import java.awt.Canvas;
 import java.awt.Font;
@@ -10,9 +10,10 @@ import utils.math.GVector2f;
 
 public class LoadingScreen extends GameState{
 	private Canvas canvas;
-	
-	public LoadingScreen(Canvas canvas) {
+	private String text;
+	public LoadingScreen(Canvas canvas, String text) {
 		super(GameState.Type.LoadingScreen);
+		this.text = text;
 		this.canvas = canvas;
 	}
 	@Override
@@ -21,8 +22,8 @@ public class LoadingScreen extends GameState{
 		g2.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 		g2.setFont(new Font("Monospaced", Font.BOLD | Font.ITALIC , Config.LOADING_DEFAULT_FONT));
 		g2.setColor(Config.LOADING_DEFAULT_TEXT_COLOR);
-		g2.drawString("Loading",
-					  (canvas.getWidth()  - g2.getFontMetrics().stringWidth("Loading")) / 2, 
+		g2.drawString(text,
+					  (canvas.getWidth()  - g2.getFontMetrics().stringWidth(text)) / 2, 
 					  (canvas.getHeight() - Config.LOADING_DEFAULT_FONT) / 2);
 	}
 	@Override

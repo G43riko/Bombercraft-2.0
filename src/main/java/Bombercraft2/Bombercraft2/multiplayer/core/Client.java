@@ -10,8 +10,9 @@ import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.Texts;
 
-public abstract class Client {
+public abstract class Client implements Writable{
 	private ObjectInputStream objectReader;
 	private ObjectOutputStream objectWritter;
 
@@ -19,9 +20,10 @@ public abstract class Client {
 
 	private boolean readerIsRunning = true;
 	
-	public Client() {
+	public Client(String ip) {
+		
 		try {
-			socket = new Socket("localhost", Config.SERVER_PORT);
+			socket = new Socket(ip, Config.SERVER_PORT);
 			objectWritter = new ObjectOutputStream(socket.getOutputStream());
 			objectWritter.flush();
 			objectReader = new ObjectInputStream(socket.getInputStream());
@@ -62,37 +64,43 @@ public abstract class Client {
 		}
 	}
 	
-	
+	/**
+	 * Tato funkcia je zavolana ak sa bezdovodne prerusi spojenie zo serverom
+	 */
+	protected abstract void onConnectionBroken();
 	
 	public void write(String o, String type){
+		if(!socket.isConnected()){
+			onConnectionBroken();
+		}
 		JSONObject object = new JSONObject();
 		try {
-			object.put("type", type);
-			object.put("msg", o.toString());
+			object.put(Texts.TYPE, type);
+			object.put(Texts.MESSAGE, o.toString());
 		} catch (JSONException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			objectWritter.writeObject(object.toString());
 			Bombercraft.sendMessages++;
 		} catch (IOException e) {
-			e.printStackTrace();
+			onConnectionBroken();
 		}
 	}
 	
 
 	public void cleanUp() {
-readerIsRunning = false;
+		readerIsRunning = false;
 		
 		try {
-			if(socket != null)
+			if(socket != null){
 				socket.close();
+			}
 			
 			objectReader.close();
 			objectWritter.close();
 		} catch (IOException e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 		}
 	}
 }

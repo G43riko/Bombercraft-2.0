@@ -2,6 +2,8 @@ package Bombercraft2.Bombercraft2.game.entity;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONObject;
 
@@ -20,6 +22,7 @@ public class Bomb extends Helper{
 	private int 		detonationTime			= 2000;
 	private Timer		timer;
 	private int 		range					= 3;
+	private List<Block> blocks					= new ArrayList<Block>();
 	public Bomb(GVector2f position, GameAble parent, Helper.Type type, long addedAt) {
 		super(position, parent);
 		this.type = type;
@@ -98,7 +101,70 @@ public class Bomb extends Helper{
 					Block.SIZE.getYi() * counter);
 	}
 	
-	
+	private void calcTargetBlocks(){
+		GVector2f localPos = Map.globalPosToLocalPos(position);
+		int value, counter;
+		Block b;
+		
+		
+		//RIGHT
+		value = localPos.getXi() + 1;
+		counter = 0;
+		b = getParent().getLevel().getMap().getBlock(value, localPos.getYi());
+		while(b != null && b.isWalkable() && counter + 1 < range){
+			value++;
+			counter++;
+			blocks.add(b);
+			b = getParent().getLevel().getMap().getBlock(value, localPos.getYi());
+		}
+		if(b != null && !b.isWalkable()){
+			blocks.add(b);
+		}
+
+		
+		//LEFT
+		value = localPos.getXi() - 1;
+		counter = 0;
+		b = getParent().getLevel().getMap().getBlock(value, localPos.getYi());
+		while(b != null && b.isWalkable() && counter + 1 < range){
+			value--;
+			counter++;
+			blocks.add(b);
+			b = getParent().getLevel().getMap().getBlock(value, localPos.getYi());
+		}
+		if(b != null && !b.isWalkable()){
+			blocks.add(b);
+		}
+		
+		
+		//DOWN
+		value = localPos.getYi() + 1;
+		counter = 0;
+		b = getParent().getLevel().getMap().getBlock(localPos.getXi(), value);
+		while(b != null && b.isWalkable() && counter + 1 < range){
+			value++;
+			counter++;
+			blocks.add(b);
+			b = getParent().getLevel().getMap().getBlock(localPos.getXi(), value);
+		}
+		if(b != null && !b.isWalkable()){
+			blocks.add(b);
+		}
+		
+		//UP
+		value = localPos.getYi() - 1;
+		counter = 0;
+		b = getParent().getLevel().getMap().getBlock(localPos.getXi(), value);
+		while(b != null && b.isWalkable() && counter + 1 < range){
+			value--;
+			counter++;
+			blocks.add(b);
+			b = getParent().getLevel().getMap().getBlock(localPos.getXi(), value);
+		}
+		if(b != null && !b.isWalkable()){
+			blocks.add(b);
+		}
+	}
 	@Override
 	public void update(float delta) {
 		timer.update(delta);
@@ -108,7 +174,9 @@ public class Bomb extends Helper{
 	}
 	
 	public void explode(){
-		getParent().explodeBombAt(Map.globalPosToLocalPos(position));
+		calcTargetBlocks();
+		getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks);
+		getParent().addExplosion(position.add(Block.SIZE.div(2)), Block.SIZE, Color.black, 15);
 	}
 	
 	@Override

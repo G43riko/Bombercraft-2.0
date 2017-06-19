@@ -12,22 +12,24 @@ import Bombercraft2.Bombercraft2.multiplayer.Connector;
 
 public interface MenuAble extends Visible{
 	public void 		startNewGame();
-	public void 		joinGame();
+	public void 		showJoinMenu();
 	public void 		continueGame();
+	public void 		connectToGame(String ip);
 	public void 		pausedGame();
 	public void 		stopGame();
 	public void 		exitGame();
 	public GuiManager	getGuiManager();
-	
+	public JSONObject	getPlayerInfo();
 	public void 		createGame(JSONObject string);
-	
+	public void 		showMessage(String message, String ...args);
 	public boolean 		isGameLauched();
 	public Canvas 		getCanvas();
-	public int 			getGameIs();
+//	public int 			getGameIs();
 	public void 		setProfile(String profilName);
 	
 	public void 		showProfileMenu();
 	public void 		showMainMenu();
 	public GameAble 	getGame();
 	public Connector 	getConnector();
+	public void 		showOptions();
 }

@@ -44,5 +44,7 @@
 			<artifactId>json</artifactId>
 			<version>20090211</version>
 		</dependency>
+		<!-- JAVAFX -->
+
 	</dependencies>
 </project>

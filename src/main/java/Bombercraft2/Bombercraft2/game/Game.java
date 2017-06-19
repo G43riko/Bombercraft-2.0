@@ -4,9 +4,6 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,20 +12,22 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.CoreGame;
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.level.Map;
+import Bombercraft2.Bombercraft2.game.lights.Light;
+import Bombercraft2.Bombercraft2.game.lights.LightsManager;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.gui.GameGui;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
-import Bombercraft2.Bombercraft2.multiplayer.GameServer;
 import Bombercraft2.engine.Input;
 import utils.GLogger;
-import utils.Utils;
 import utils.math.GVector2f;
 
 public class Game extends GameState implements GameAble{
@@ -37,11 +36,11 @@ public class Game extends GameState implements GameAble{
 	private float					zoom			= Config.DEFAULT_ZOOM;
 	private GameGui					gui;
 	private ToolManager				toolManager		= new ToolManager(this);
-	private HashMap<String, Helper>	helpers			= new HashMap<String, Helper>();
 	private CoreGame				parent;
 	private MouseSelector			mouseSelector;//	= new MouseSelector(this);
-	private HashMap<String, Player>	players			= new HashMap<String, Player>();
-	private HashSet<Helper>			helpersRemoved	= new HashSet<Helper>();
+	private SceneManager 			sceneManager 	= new SceneManager(this);
+	private LightsManager			lightsManager;
+
 	
 	//pre pripadny currentModificationException ak sa chce upravit nieco co sa pouziva
 	private boolean					render		= true;
@@ -53,23 +52,38 @@ public class Game extends GameState implements GameAble{
 		this.level = level;
 		this.parent = parent;
 		level.setGame(this);
-		
 		try {
 			myPlayer = new MyPlayer(this,
 									level.getRandomRespawnZone() , 
 									getProfil().getName(), 
-									level.getDefaultPlayerInfo().getInt("speed"), 
-									level.getDefaultPlayerInfo().getInt("healt"), 
+									level.getDefaultPlayerInfo().getInt(Texts.PLAYER_SPEED), 
+									level.getDefaultPlayerInfo().getInt(Texts.PLAYER_HEALT), 
 									getProfil().getAvatar(), 
-									level.getDefaultPlayerInfo().getInt("range"));
+									level.getDefaultPlayerInfo().getInt(Texts.PLAYER_RANGE));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		
-		gui = new GameGui(this);
+		if(gameData != null){
+			try {
+				for(int i=0 ; i < gameData.getInt(Texts.PLAYERS_NUMBER) ;  i++){
+					sceneManager.addPlayer(new Player(this, new JSONObject(gameData.getString("player_" + i))));
+				}
+			} catch (JSONException e) {
+				e.printStackTrace();
+			};
+		}
 		
-		players.put(myPlayer.getName(), myPlayer);
-		//parent.getCanvas().addMouseWheelListener(this);
+		lightsManager = new LightsManager(this);
+		gui = new GameGui(this);
+		sceneManager.addPlayer(myPlayer);
+//		parent.getCanvas().addMouseWheelListener(this);
+		
+		
+
+		lightsManager.addLight(new Light(this, new GVector2f(300,300), new GVector2f(300, 300), myPlayer));
+		
+		
 	}
 
 	@Override
@@ -77,13 +91,13 @@ public class Game extends GameState implements GameAble{
 		if(!render){
 			return;
 		}
+		
 		g2.clearRect(0, 0, parent.getSize().getXi(), parent.getSize().getYi());
 		level.render(g2);
 		
 		toolManager.render(g2);
 		
-		players.values().stream().filter(this::isVisible).forEach(a -> a.render(g2));
-		helpers.values().stream().filter(this::isVisible).forEach(a -> a.render(g2));
+		sceneManager.render(g2);
 
 		level.renderUpperFlora(g2);
 
@@ -94,20 +108,27 @@ public class Game extends GameState implements GameAble{
 		if(mouseSelector != null){
 			mouseSelector.render(g2);
 		}
+
+		lightsManager.render(g2);
+
+//		g2.setE
+//		g2.setG
+//		GraphicsContext
+		
 		gui.render(g2);
-		
-		
 	}
+	
+	
 	
 	public void update(float delta) {
 		if(!update){
 			return;
 		}
+
 		myPlayer.update(delta);
 		
-		helpers.values().removeAll(helpersRemoved);
-		helpersRemoved.clear();
-		helpers.values().stream().filter(this::isVisible).forEach(a -> a.update(delta));
+		sceneManager.update(delta);
+		
 		gui.update(delta);
 	}
 
@@ -166,11 +187,6 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public boolean isVisible(Visible b) {
-//		return !(b.getPosition().getX() * getZoom()  + Config.DEFAULT_BLOCK_WIDTH * getZoom()  < getOffset().getX() || 
-//				 b.getPosition().getY() * getZoom()  + Config.DEFAULT_BLOCK_HEIGHT * getZoom()  < getOffset().getY() || 
-//				   getOffset().getX() + getCanvas().getWidth() < b.getPosition().getX() * getZoom()    ||
-//				   getOffset().getY() + getCanvas().getHeight() < b.getPosition().getY() * getZoom() );
-
 		return !(b.getPosition().getX() * getZoom()  + b.getSize().getX() * getZoom()  < getOffset().getX() || 
 				 b.getPosition().getY() * getZoom()  + b.getSize().getY() * getZoom()  < getOffset().getY() || 
 				   getOffset().getX() + getCanvas().getWidth() < b.getPosition().getX() * getZoom()    ||
@@ -191,7 +207,6 @@ public class Game extends GameState implements GameAble{
 	public void switchVisibleOption(String key){
 		parent.switchVisibleOption(key);
 	}
-	@Override
 	public void addHelper(GVector2f selectorSur, 
 						  int cadenceBonus, 
 						  GVector2f pos, 
@@ -200,11 +215,9 @@ public class Game extends GameState implements GameAble{
 						  GVector2f target) {
 		GLogger.notImplemented();
 	}
-	@Override
 	public void addBomb(GVector2f position, int range, int time, int demage) {
 		GLogger.notImplemented();
 	}
-	@Override
 	public void addBullet(GVector2f position, 
 						  GVector2f direction, 
 						  int bulletSpeed, 
@@ -215,15 +228,25 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public void addPlayer(String name, String image) {
-		GLogger.notImplemented();
+		try {
+			sceneManager.addPlayer(new Player(this, 
+											  level.getRandomRespawnZone(), 
+											  name, 
+											  level.getDefaultPlayerInfo().getInt("speed"), 
+											  level.getDefaultPlayerInfo().getInt("healt"), 
+											  "player1.png", 
+											  level.getDefaultPlayerInfo().getInt("range")));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 	@Override
 	public void addExplosion(GVector2f position, GVector2f size, Color color, int number) {
-		GLogger.notImplemented();
+		sceneManager.addExplosion(position, size, color, number);
 	}
 	@Override
 	public void addEmmiter(GVector2f position, String type) {
-		GLogger.notImplemented();
+		sceneManager.addEmmiter(position, type);
 	}
 	@Override
 	public void addEnemy(GVector2f position, String type) {
@@ -259,8 +282,7 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public JSONObject toJSON() {
-		GLogger.notImplemented();
-		return new JSONObject();
+		return sceneManager.toJSON();
 	}
 	@Override
 	public void changeZoom(float value){
@@ -305,13 +327,13 @@ public class Game extends GameState implements GameAble{
 		pos = pos.div(Block.SIZE).toInt().mul(Block.SIZE);
 		
 		String key = localPos.getXi() + "_" + localPos.getYi();
-		if(helpers.containsKey(key)){
+		if(sceneManager.existHelperOn(key)){
 			GLogger.printLine("Vytvara sa helper na helpere");
 			return;
 		}
 		switch(type){
 			case BOMB_NORMAL:
-				helpers.put(key, new Bomb(pos, this, type, createTime));
+				sceneManager.addHelper(key,  new Bomb(pos, this, type, createTime));
 				break;
 		}
 	}
@@ -319,12 +341,11 @@ public class Game extends GameState implements GameAble{
 	@Override
 	public void explodeBombAt(GVector2f pos) {
 		String key = pos.getXi() + "_" + pos.getYi();
-		
-		if(!helpers.containsKey(key)){
+		if(!sceneManager.existHelperOn(key)){
 			GLogger.printLine("Explodovala neexistujuca bomba na: " + pos);
 			return;
 		}
-		helpersRemoved.add(helpers.get(key));
+		sceneManager.removeHelper(key);
 	}
 
 	@Override
@@ -332,21 +353,46 @@ public class Game extends GameState implements GameAble{
 		return myPlayer;
 	}
 
+//	@Override
+//	public HashMap<String, Player> getPlayers() {
+//		return players;
+//	}
+	
 	@Override
-	public HashMap<String, Player> getPlayers() {
-		return players;
-	}
-
-	@Override
-	public String getBasicInfo() {
+	public String getGameInfo() {
 		try {
 			JSONObject o = new JSONObject();
-			o.put("level", level.toJSON());
-			o.put("game", toJSON());
+			o.put(Texts.LEVEL_DATA, level.toJSON());
+			o.put(Texts.GAME_DATA, toJSON());
 			return o.toString();
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	@Override
+	public String getBasicInfo() {
+		try {
+			JSONObject result = new JSONObject();
+			result.put(Texts.LEVEL_NAME, "randomLevel");
+			result.put(Texts.PLAYER_NAME, getProfil().getName());
+			result.put(Texts.MAX_PLAYERS, "5");
+			result.put(Texts.PLAYERS_NUMBER, sceneManager.getPlayersCount());
+			return result.toString();
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return "{}";
+
+	}
+
+	@Override
+	public void removePlayer(String name) {
+		sceneManager.removePlayer(name);
+	}
+
+	@Override
+	public Player getPlayerByName(String name) {
+		return sceneManager.getPlayerByName(name);
 	}
 }

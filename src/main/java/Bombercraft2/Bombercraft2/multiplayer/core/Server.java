@@ -7,17 +7,23 @@ import java.util.HashMap;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
+import utils.GLogger;
 import utils.IDGenerator;
 import utils.Utils;
 
-public abstract class Server {
-	public static final String LEVEL_INFO      = "LEVEL INFO";
-	public static final String PLAYER_MOVE     = "PLAYER MOVE";
-	public static final String PLAYER_NAME     = "PLAYER NAME";
-	public static final String PLAYER_IS_READY = "PLAYER IS READY";
-	public static final String PUT_HELPER      = "PUT HELPER";
-	public static final String HIT_BLOCK       = "BLOCK CHANGE";
-	public static final String PUT_BOMB 	   = "PUT BOMB";
+public abstract class Server implements Writable{
+	public static final String BASIC_INFO      	= "LEVEL INFO";
+	public static final String GAME_INFO		= "GAME INFO";
+	public static final String PLAYER_CHANGE	= "PLAYER MOVE";
+	public static final String PLAYER_DATA     	= "PLAYER NAME";
+	public static final String PLAYER_IS_READY 	= "PLAYER IS READY";
+	public static final String PUT_HELPER      	= "PUT HELPER";
+	public static final String HIT_BLOCK       	= "BLOCK CHANGE";
+	public static final String PUT_BOMB 	   	= "PUT BOMB";
+	public static final String CLOSE_CONNECTION = "CLOSE_CONNECTION";
+	public static final String BUILD_BLOCK 		= "BUILD_BLOCK";
+	public static final String REMOVE_BLOCK 	= "REMOVE_BLOCK";
+	public static final String BOMB_EXPLODE 	= "BOMB_EXPLODE";
 	
 	private ServerSocket serverSocket;
 	private boolean readerIsRunning = true;
@@ -26,6 +32,10 @@ public abstract class Server {
 	private Thread listenThread;
 	private HashMap<String, ClientPlayer> clients = new HashMap<String, ClientPlayer>();
 	
+	
+	protected void removeClient(String name){
+		clients.remove(name);
+	}
 	public Server(){
 		try {
 			serverSocket = new ServerSocket(Config.SERVER_PORT);
@@ -85,14 +95,18 @@ public abstract class Server {
 				while(accepterIsRunning){
 					try {
 						Socket client = serverSocket.accept();
-						ClientPlayer c = new ClientPlayer(client, IDGenerator.getId());
+						
+						ClientPlayer c = new ClientPlayer(client, client.getInetAddress().toString().hashCode());
+						if(clients.containsKey(c.getId())){
+							clients.get(c.getId()).cleanUp();
+						}
 						clients.put(c.getId() + "", c);
-						c.write(getBasicInfo(), LEVEL_INFO);
+						c.write(getBasicInfo(), BASIC_INFO);
 						
 //						GLog.write(GLog.SITE, "S: Client sa pripojil");
 						
 					} catch (IOException e) {
-						e.printStackTrace();
+//						e.printStackTrace();
 //						GLog.write(GLog.SITE, "S: Server bol ukončený");
 					}
 				}

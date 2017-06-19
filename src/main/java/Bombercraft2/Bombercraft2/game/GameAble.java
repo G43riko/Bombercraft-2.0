@@ -25,7 +25,7 @@ public interface GameAble extends Interactable, Visible{
 	public Canvas 					getCanvas();
 //	public NavBar 					getNavBar();
 	public MyPlayer 				getMyPlayer();
-	public HashMap<String, Player> 	getPlayers();
+	public Player 					getPlayerByName(String name);
 //	public ArrayList<Enemy> 		getEnemiesAround(GVector2f position, int range);
 	public ToolManager				getToolsManager();
 	public Profil 					getProfil();
@@ -33,12 +33,12 @@ public interface GameAble extends Interactable, Visible{
 	public GVector2f				getPlayerTarget();
 	public boolean 					isVisible(Visible b);
 	public String 					getLabelOf(String key);
-	public void addHelper(GVector2f selectorSur, 
-						  int cadenceBonus,
-						  GVector2f pos, 
-						  int demage,  
-						  String type, 
-						  GVector2f target);
+//	public void addHelper(GVector2f selectorSur, 
+//						  int cadenceBonus,
+//						  GVector2f pos, 
+//						  int demage,  
+//						  String type, 
+//						  GVector2f target);
 	public void addBullet(GVector2f position, 
 						  GVector2f direction, 
 						  int bulletSpeed, 
@@ -49,18 +49,25 @@ public interface GameAble extends Interactable, Visible{
 	public boolean hasWall(float i, float j);
 	public boolean getVisibleOption(String key);
 	public void switchVisibleOption(String key);
+	/**
+	 * @deprecated since 19.6.2017 - use {@link GameAble#putHelper}
+	 * @param position
+	 * @param range
+	 * @param time
+	 * @param demage
+	 */
 	public void addBomb(GVector2f position, int range, int time, int demage);
 	public void addPlayer(String name, String image);
 	public void addExplosion(GVector2f position, GVector2f size, Color color, int number);
 	public void addEmmiter(GVector2f position, String type);
 	public void addEnemy(GVector2f position, String type);
 	
-//	public boolean 	bulletHitEnemy(Bullet bullet);
-	public void 	calcPosition();
-	public void 	newGame();
-	public void 	resetGame();
+//	public boolean 		bulletHitEnemy(Bullet bullet);
+	public void 		calcPosition();
+	public void 		newGame();
+	public void 		resetGame();
 	public JSONObject 	toJSON();
-	public void 	changeZoom(float f);
+	public void 		changeZoom(float f);
 	
 	/**
 	 * 
@@ -71,5 +78,7 @@ public interface GameAble extends Interactable, Visible{
 	public void 	putHelper(GVector2f pos, Type type, long createdTime);
 	public void		explodeBombAt(GVector2f globalPosToLocalPos);
 	public String 	getBasicInfo();
+	public String 	getGameInfo();
+	public void removePlayer(String name);
 	
 }

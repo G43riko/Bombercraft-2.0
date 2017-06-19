@@ -1,0 +1,47 @@
+LeftUpPanel
+	Options
+		New game
+		Restart game
+		Exit game
+	Show
+		Logs
+		Walls
+		Lights
+		Ligt map
+	Blocks
+	Placers
+		Simple
+		Area
+	Floras
+		Trees
+		Plants
+		Bushes
+
+RightUpPanel
+	Logs
+	
+	
+LeftDownPanel
+	blockInfo
+	Heal: act/max
+	
+	
+RightDownPanel
+	ICON, name,
+	Healt: act/max
+	Bombs: left/max
+	Fire: distance
+	Speed: 1
+	Lifes: 3
+	
+	Kills: num
+	Deads
+	D/K: Deadts/Kills
+	
+RightCenterPanel
+	levelName
+	Players: act/max
+	Time: elapsed time
+	Players: Name(Level), Kills, Deads, D/K
+
+	

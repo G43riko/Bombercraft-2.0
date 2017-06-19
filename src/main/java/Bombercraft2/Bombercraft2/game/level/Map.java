@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Render;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.PerlinNoise;
 import utils.SimplexNoise;
@@ -35,7 +36,7 @@ public class Map implements Interactable{
 	public Map(JSONObject object, GameAble parent){
 		this.parent = parent;
 		try {
-			this.numberOfBlocks = new GVector2f(object.getString("numberOfBlocks"));
+			this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -127,7 +128,7 @@ public class Map implements Interactable{
 					result.put("b" + i + "_" + j, getBlock(i, j).toJSON());
 				}
 			}
-			result.put("numberOfBlocks", numberOfBlocks);
+			result.put(Texts.BLOCKS_NUMBER, numberOfBlocks);
 
 		} catch (JSONException e) {
 			e.printStackTrace();

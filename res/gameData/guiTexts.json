@@ -66,6 +66,83 @@
 	"showWalls" : {
 		"sk" : "Zobraziť steny",
 		"en" : "Show walls"
-	} 
+	} ,
+	"back" : {
+		"sk" : "Naspäť",
+		"en" : "Back"
+	},
+	"brokenConnection" : {
+		"sk" : "Spojenie bolo prerušené",
+		"en" : "----------"
+	},
+	"gameClosed" : {
+		"sk" : "Hra bola ukončená",
+		"en" : "----------"
+	},
+	"playerConnected" : {
+		"sk" : "Hráč ##### sa pripojil",
+		"en" : "----------"
+	},
+	"playerDisconnected" : {
+		"sk" : "Hráč ##### sa odpojil",
+		"en" : "----------"
+	},
+	"connect" : {
+		"sk" : "Pripojiť",
+		"en" : "Connect"
+	},
+	"level" : {
+		"sk" : "Level",
+		"en" : "level"
+	},
+	"ip" : {
+		"sk" : "IP",
+		"en" : "IP"
+	},
+	"host" : {
+		"sk" : "Hosť",
+		"en" : "Host"
+	},
+	"playersNumber" : {
+		"sk" : "Hráčov",
+		"en" : "Players"
+	},
+	"ping" : {
+		"sk" : "Ping",
+		"en" : "Ping"
+	},
+	"showLights" : {
+		"sk" : "Zobraziť svetlá",
+		"en" : "Show lights"
+	},
+	"showLightMap" : {
+		"sk" : "Zobraziť iba svetlá",
+		"en" : "Show only lights"
+	},
+	"show" : {
+		"sk" : "Zobraziť",
+		"en" : "Show"
+	},
+	"lights" : {
+		"sk" : "Svetlá",
+		"en" : "Lights"
+	},
+	"lightMap" : {
+		"sk" : "Mapu svetiel",
+		"en" : "Light map"
+	},
+	"logs" : {
+		"sk" : "Logy",
+		"en" : "Logs"
+	},
+	"walls" : {
+		"sk" : "Steny",
+		"en" : "Walls"
+	},
+	"loading" : {
+		"sk" : "Načítavanie",
+		"en" : "Loading"
+	}
+	
 
 }

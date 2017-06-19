@@ -36,15 +36,11 @@ public abstract class Menu extends GameState implements Clicable, Visible{
 //		}
 //	}
 
+	public void setDisabled(String key, boolean value){
+		components.get(key).setDisable(value);
+	}
 	protected void setItem(String key){
 		addComponent(key, new Button(this, parent.getGuiManager().getLabelOf(key)));
-	}
-	public GVector2f getPosition() {
-		return position;
-	}
-	
-	public GVector2f getSize() {
-		return size;
 	}
 	public void render(Graphics2D g2) {
 		components.entrySet()
@@ -64,4 +60,8 @@ public abstract class Menu extends GameState implements Clicable, Visible{
 	protected void addComponent(String name, GuiComponent component){
 		components.put(name, component);
 	}
+	
+	public GVector2f getPosition() {return position;}
+	public MenuAble getParent(){return parent;}
+	public GVector2f getSize() {return size;}
 }

@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.flora.FloraManager;
 import utils.Utils;
@@ -18,19 +19,21 @@ public class Level implements Interactable {
 	private GameAble 		parent;
 	private List<GVector2f> respawnZones 	= new ArrayList<GVector2f>();
 	private String 			mapData;
+	private JSONObject		floraData;
 	private JSONObject 		playerInfo;
 	private FloraManager	floraManager;
 	//CONSTRUCTORS
 	
 	public Level(JSONObject object){
 		try {
-			mapData = object.getString("map");
-			playerInfo = object.getJSONObject("playerInfo");
+			mapData = object.getString(Texts.MAP);
+			playerInfo = object.getJSONObject(Texts.PLAYER_INFO);
 			int i = 0;
-			while(object.has("respawnZone" + i)){
-				respawnZones.add(new GVector2f(object.getString(("respawnZone" + i))));
+			while(object.has(Texts.RESPAWN_ZONE + i)){
+				respawnZones.add(new GVector2f(object.getString((Texts.RESPAWN_ZONE + i))));
 				i++;
 			}
+			floraData = object.getJSONObject(Texts.FLORA);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -64,12 +67,13 @@ public class Level implements Interactable {
 	public JSONObject toJSON(){
 		JSONObject result = new JSONObject();
 		try {
-			result.put("map", map.toJSON());
+			result.put(Texts.MAP, map.toJSON());
 			for(int i=0 ; i<respawnZones.size() ; i++){
-				result.put("respawnZone" + i, respawnZones.get(i));
+				result.put(Texts.RESPAWN_ZONE + i, respawnZones.get(i));
 			}
 				
-			result.put("playerInfo", playerInfo);
+			result.put(Texts.PLAYER_INFO, playerInfo);
+			result.put(Texts.FLORA, floraManager.toJSON());
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -89,9 +93,9 @@ public class Level implements Interactable {
 	public void setDefaultPlayerInfo(){
 		playerInfo = new JSONObject();
 		try {
-			playerInfo.put("speed", 4);
-			playerInfo.put("range", 2);
-			playerInfo.put("healt", 10);
+			playerInfo.put(Texts.PLAYER_SPEED, 4);
+			playerInfo.put(Texts.PLAYER_RANGE, 2);
+			playerInfo.put(Texts.PLAYER_HEALT, 10);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -110,7 +114,11 @@ public class Level implements Interactable {
 		else{
 			map = new Map(game);
 		}
+
 		floraManager = new FloraManager(game, map);
+		if(floraData != null){
+			floraManager.fromJSON(floraData);
+		}
 
 	}
 	

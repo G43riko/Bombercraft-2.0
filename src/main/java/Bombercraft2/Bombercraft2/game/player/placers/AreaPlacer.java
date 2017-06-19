@@ -21,7 +21,7 @@ public class AreaPlacer extends Placer{
 			GVector2f minPos = pos.min(starPos);
 			GVector2f maxPos = pos.max(starPos);
 			
-			parent.getConnector().buildBlockArea(minPos, maxPos, blockType);
+			parent.getConnector().setBuildBlockArea(minPos, maxPos, blockType);
 			
 			starPos = null;
 		}
@@ -38,7 +38,6 @@ public class AreaPlacer extends Placer{
 		GVector2f globalPosEnd 		= parent.getPlayerTarget().sub(parent.getOffset()).add(Block.SIZE);
 		GVector2f size				= globalPosEnd.sub(globalPosStart).div(Block.SIZE).toInt().mul(Block.SIZE).abs();
 		
-		System.out.println("size: " + size);
 		g2.setColor(Color.ORANGE);
 		g2.fillRect(globalPosStart.getXi(), globalPosStart.getYi(), size.getXi(), size.getYi());
 	}

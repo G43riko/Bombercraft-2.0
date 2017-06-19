@@ -1,0 +1,123 @@
+package Bombercraft2.Bombercraft2.gui.components;
+
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+
+import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.MenuAble;
+import Bombercraft2.Bombercraft2.core.Texts;
+import Bombercraft2.Bombercraft2.gui.Clicable;
+import Bombercraft2.Bombercraft2.gui.menus.JoinMenu;
+import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
+import utils.math.GVector2f;
+
+public class RemoteGamePanel extends GuiComponent implements Clicable{
+	private RemoteGameData data;
+	private int localOffset = 8;
+	private Button joinButton;
+	private MenuAble coreGame;
+	public RemoteGamePanel(MenuAble coreGame, JoinMenu parent, RemoteGameData data, int order) {
+		super(parent);
+		this.data = data;
+		this.coreGame = coreGame;
+		init();
+
+		topCousePrevButtons = order * (size.getYi() + 30) + 80;
+		calcPosAndSize();
+		
+		
+		joinButton = new Button(this, getLabelOf(Texts.CONNECT));
+		joinButton.size.setX(200);
+		joinButton.position.set(position.add(size).sub(localOffset).sub(joinButton.size));
+	}
+	
+	private String getLabelOf(String key){
+		return coreGame.getGuiManager().getLabelOf(key);
+	}
+
+	@Override
+	protected void init() {
+		diableColor 	= Color.LIGHT_GRAY;
+		backgroundColor = new Color(0, 255, 0, 100);
+		hoverColor 		= Color.DARK_GRAY;
+		borderColor 	= Color.black;
+		borderWidth 	= 5;
+		textColor 		= Color.BLACK;
+		textOffset 		= new GVector2f();
+		offset 			= new GVector2f(40, 5);
+		round 			= Config.DEFAULT_ROUND;
+		font 			= "Monospaced";
+		size 			= new GVector2f(600, 150);
+		textSize 		= 32;
+	}
+	
+	public void reping(){
+		data.reping();
+	}
+	@Override
+	public void render(Graphics2D g2) {
+//		if(disable){
+//			g2.setColor(diableColor);
+//		}
+//		else if(hover){
+//			g2.setColor(hoverColor);
+//		}
+//		else{
+			g2.setColor(backgroundColor);
+//		}
+		
+		g2.fillRoundRect(position.getXi(), position.getYi(), size.getXi(), size.getYi(), round, round);
+		
+		if(borderWidth > 0){
+			g2.setColor(borderColor);
+			g2.setStroke(new BasicStroke(borderWidth));
+			g2.drawRoundRect(position.getXi(), position.getYi(), size.getXi(), size.getYi(), round, round);
+		}
+		
+		g2.setColor(textColor);
+		g2.setFont(new Font(font, Font.BOLD | Font.ITALIC , textSize));
+		
+
+		g2.drawString(getLabelOf(Texts.IP) + ": " + data.getIp(), 
+				  	  position.getX() + localOffset, 
+				  	  position.getY() + (localOffset + textSize));
+		
+		g2.drawString(getLabelOf(Texts.HOST) + ": " + data.getHostName(), 
+			  	  	  position.getX() + localOffset, 
+			  	  	  position.getY() + (localOffset + textSize) * 2);
+
+		g2.drawString(getLabelOf(Texts.LEVEL) + ": " + data.getLevel(), 
+			  	  	  position.getX() + localOffset, 
+			  	  	  position.getY() + (localOffset + textSize) * 3);
+		
+		
+		String capacity = getLabelOf(Texts.PLAYERS_NUMBER);
+		capacity += ": " + data.getPlayers() + "/" + data.getMaxPlayers();
+
+		g2.drawString(capacity, 
+				  	  position.getX() + size.getX() - g2.getFontMetrics().stringWidth(capacity) - localOffset, 
+				  	  position.getY() + (localOffset + textSize));
+		
+		String ping = getLabelOf(Texts.PING) + ": " + data.getPing();
+		g2.drawString(ping, 
+			  	  position.getX() + size.getX() - g2.getFontMetrics().stringWidth(ping) - localOffset, 
+			  	  position.getY() + (localOffset + textSize) * 2);
+		
+		joinButton.render(g2);
+	}
+	@Override
+	public void update(float delta) {
+		joinButton.update(delta);
+	}
+
+
+	@Override
+	public void doAct(GVector2f click) {
+		if(joinButton.isClickIn(click)){
+			((JoinMenu)getParent()).stopSearch();
+			coreGame.connectToGame(data.getIp());;
+		}
+	}
+}

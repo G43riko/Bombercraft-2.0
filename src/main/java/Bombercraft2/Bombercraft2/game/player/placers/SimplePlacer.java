@@ -11,7 +11,7 @@ public class SimplePlacer extends Placer{
 
 	@Override
 	public void useOnLocalPos(GVector2f pos) {
-		parent.getConnector().buildBlock(pos, blockType);
+		parent.getConnector().setBuildBlock(pos, blockType);
 		
 	}
 

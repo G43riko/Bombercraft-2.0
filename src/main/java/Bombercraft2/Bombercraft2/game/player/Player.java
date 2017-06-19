@@ -6,7 +6,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.PlayerSprite;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Healtable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
@@ -19,12 +19,8 @@ public class Player extends Entity implements Healtable{
 		UP(2), DOWN(3), LEFT(0), RIGHT(1);
 		
 		private int id;
-		private Direction(int id){
-			this.id = id;
-		}
-		public int getID(){
-			return id;
-		}
+		private Direction(int id){this.id = id;}
+		public int getID(){return id;}
 	}
 	private int			speed;
 	private int			healt;
@@ -35,18 +31,21 @@ public class Player extends Entity implements Healtable{
 	private String		name;
 	private String		image;
 	private boolean		moving;
+	private boolean		wasMoving		= false;
+	private final int	movingLimit		= 1; 
+	private int 		movingCounter	= 0;
 
 	
 	public Player(GameAble parent, JSONObject object){
 		super(new GVector2f(), parent);
 		try{
-			position = new GVector2f(object.getString("position"));
-			speed = object.getInt("speed");
-			healt = object.getInt("healt");
-			range = object.getInt("range");
-			name = object.getString("name");
-			demage = 1;
-			setImage(object.getString("image"));
+			position 	= new GVector2f(object.getString(Texts.PLAYER_POSITION));
+			speed 		= object.getInt(Texts.PLAYER_SPEED);
+			healt 		= object.getInt(Texts.PLAYER_HEALT);
+			range 		= object.getInt(Texts.PLAYER_RANGE);
+			name 		= object.getString(Texts.PLAYER_NAME);
+			demage 		= 1;
+			setImage(object.getString(Texts.PLAYER_IMAGE));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -55,10 +54,10 @@ public class Player extends Entity implements Healtable{
 	
 	public Player(GameAble parent, GVector2f position, String name, int speed, int healt, String image, int range) {
 		super(position, parent);
-		this.speed = speed;
-		this.healt = healt;
-		this.range = range;
-		this.name = name;
+		this.speed 	= speed;
+		this.healt 	= healt;
+		this.range 	= range;
+		this.name 	= name;
 		this.demage = 1;
 		setImage(image);
 	}
@@ -71,6 +70,13 @@ public class Player extends Entity implements Healtable{
 	public void render(Graphics2D g2) {
 		if(getParent() == null || position == null)
 			return;
+		
+
+		if(moving){
+			if(movingCounter++ >= movingLimit){
+				moving = false;
+			}
+		}
 		
 		GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
 
@@ -85,12 +91,12 @@ public class Player extends Entity implements Healtable{
 	public JSONObject toJSON() {
 		JSONObject result = new JSONObject();
 		try {
-			result.put("position", position);
-			result.put("name", name);
-			result.put("speed", speed);
-			result.put("healt", healt);
-			result.put("image", image);
-			result.put("range", range);
+			result.put(Texts.PLAYER_POSITION, position);
+			result.put(Texts.PLAYER_SPEED, speed);
+			result.put(Texts.PLAYER_HEALT, healt);
+			result.put(Texts.PLAYER_IMAGE, image);
+			result.put(Texts.PLAYER_RANGE, range);
+			result.put(Texts.PLAYER_NAME, name);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -98,6 +104,10 @@ public class Player extends Entity implements Healtable{
 		return result;
 	}
 
+	@Override
+	public String toString() {
+		return name + ": [image: " + image + ", pos: " + position +"]"; 
+	}
 	public void respawn() {
 		position = getParent().getLevel().getRandomRespawnZone();
 	}
@@ -122,7 +132,10 @@ public class Player extends Entity implements Healtable{
 	public int 			getCadenceBonus() {return cadenceBonus;}
 
 	public void setDirection(Direction direction) {this.direction = direction;}
-	public void setMoving(boolean moving) {this.moving = moving;}
+	public void setMoving(boolean moving) {
+		this.moving = moving;
+		movingCounter = 0;
+	}
 	public void setImage(String image) {
 		this.image = image;
 		PlayerSprite.setSprite(image, 5, 5, 4, 6);

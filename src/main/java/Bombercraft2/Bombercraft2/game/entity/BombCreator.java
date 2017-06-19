@@ -20,6 +20,6 @@ public class BombCreator implements Toolable{
 	
 	@Override
 	public void useOnGlobalPos(GVector2f pos) {
-		parent.getConnector().putHelper(pos, type);
+		parent.getConnector().setPutHelper(pos, type);
 	}
 }

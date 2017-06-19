@@ -110,9 +110,10 @@ public class MyPlayer extends Player{
 	}
 
 	public void update(float delta){
-		if(position == null)
+		if(position == null){
 			return;
-
+		}
+		
 		totalMove = totalMove.add(move);
 		
 		position.addToX(move.getX() * getSpeed() * delta);
@@ -127,8 +128,8 @@ public class MyPlayer extends Player{
 		checkOffset();
 
 		pointer.update(delta);
-//		if(!move.isNull())
-//			getParent().getConnection().playerNewPos(this);
+		if(!move.isNull())
+			getParent().getConnector().setPlayerChange(this);
 	}
 	
 	private boolean isInBlock(){

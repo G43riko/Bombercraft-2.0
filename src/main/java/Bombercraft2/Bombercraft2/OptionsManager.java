@@ -14,14 +14,15 @@ public class OptionsManager implements JSONAble{
 	private HashMap<String, Boolean> viewOptions = new HashMap<String, Boolean>();
 
 	public void fromJSON(JSONObject data) {
-		Iterator<?> keys = data.keys();
-		while(keys.hasNext()) {
-		    String key = (String)keys.next();
-	    	try {
-				viewOptions.put(key, data.getBoolean(key));
-			} catch (JSONException e) {
-				e.printStackTrace();
+    	try {
+			Iterator<?> keys = data.keys();
+			while(keys.hasNext()) {
+			    String key = (String)keys.next();
+					viewOptions.put(key, data.getBoolean(key));
 			}
+		} catch (JSONException e) {
+//			e.printStackTrace();
+			initDefault();
 		}
 	}
 

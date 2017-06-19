@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2;
+package Bombercraft2.Bombercraft2.game.player;
 
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -49,8 +49,12 @@ public class PlayerSprite {
 		int sourceX = sprite.step * sprite.imageSize.getXi();
 		int sourceY = type.getID() * sprite.imageSize.getXi();
 		
+		//nastavuje to aby ked sa panacik nehybe tak aby sa stale renderoval obrazok kde sa nehybe
 		if(!isRunning){
 			sourceX = 0;
+			if(type == Direction.RIGHT){
+				sourceX = (sprite.numberOfSteps - 2) * sprite.imageSize.getXi();
+			}
 		}
 		
 		g2.drawImage(sprite.image, 

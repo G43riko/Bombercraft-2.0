@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2;
 
 
+import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import utils.Utils;
 
 public class App{
@@ -23,7 +24,7 @@ public class App{
 			public void run() {
 				Bombercraft client = new Bombercraft();
 		    	client.initDefaultProfil();
-		    	client.joinGame();
+		    	client.showJoinMenu();
 		    	client.run();
 			}
 		});

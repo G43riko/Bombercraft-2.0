@@ -39,8 +39,14 @@ public class MainMenu extends Menu{
 		else if(components.get(Texts.CONTINUE_GAME).isClickIn(click)){
 			parent.continueGame();
 		}
+		else if(components.get(Texts.STOP_GAME).isClickIn(click)){
+			parent.stopGame();
+		}
 		else if(components.get(Texts.JOIN_GAME).isClickIn(click)){
-			parent.joinGame();
+			parent.showJoinMenu();
+		}
+		else if(components.get(Texts.OPTIONS).isClickIn(click)){
+			parent.showOptions();
 		}
 	}
 	@Override

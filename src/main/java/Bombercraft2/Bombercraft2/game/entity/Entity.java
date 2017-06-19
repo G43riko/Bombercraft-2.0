@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import utils.IDGenerator;
 import utils.math.GVector2f;
 

@@ -5,7 +5,8 @@ import Bombercraft2.Bombercraft2.gui.Clicable;
 public abstract class GameState implements Interactable, Clicable{
 	public enum Type{
 		CreateGameMenu("CreateGameMenu"), 
-		LoadingScreen("LoadingScreen"), 
+		LoadingScreen("LoadingScreen"),
+		JoinMenu("JoinMenu"), 
 		ProfileMenu("ProfileMenu"), 
 		OptionsMenu("OptionsMenu"), 
 		PauseMenu("PauseMenu"), 

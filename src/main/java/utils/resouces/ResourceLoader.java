@@ -88,7 +88,9 @@ public final class ResourceLoader {
 	public static AudioPlayer checkAndGetSound(String name){
 		return soundManager.checkAndGetAudio(name);
 	}
-	
+	public static JSONObject getJSONThrowing(String name) throws JSONException{
+		return new JSONObject(getFileCOntent(name));
+	}
 	public static JSONObject getJSON(String name){
 		JSONObject result = null;
 		try {

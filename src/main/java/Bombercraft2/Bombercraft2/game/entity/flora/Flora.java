@@ -2,19 +2,50 @@ package Bombercraft2.Bombercraft2.game.entity.flora;
 
 import java.awt.Image;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.Bombercraft2.game.entity.flora.Flora.Bushes;
+import Bombercraft2.Bombercraft2.game.entity.flora.Flora.Plants;
+import utils.GLogger;
+import utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 public abstract class Flora extends Entity{
 	protected Florable type;
+	protected float scale = 1.0f;
 	protected interface Florable extends Iconable{
-		
 		public GVector2f getSize();
 		public FloraType getType();
+		public static Florable valueOf(String value){
+			if(Utils.isInStringable(value, Plants.values())){
+				return Plants.valueOf(value);
+			}
+			if(Utils.isInStringable(value, Bushes.values())){
+				return Bushes.valueOf(value);
+			}
+			if(Utils.isInStringable(value, Trees.values())){
+				return Trees.valueOf(value);
+			}
+			GLogger.printLine("nerozpoznalo to floru typu: " + value);
+			return null;
+		}
+	}
+
+	protected void fromJSON(JSONObject data){
+		try {
+			setPosition(new GVector2f(data.getString(Texts.POSITION)));
+			setType(Florable.valueOf(data.getString(Texts.TYPE)));
+			scale = (float)data.getDouble(Texts.SCALE);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
 	}
 	public enum FloraType{
 		BUSH, TREE, PLANT;
@@ -27,7 +58,21 @@ public abstract class Flora extends Entity{
 	public Florable getType(){
 		return type;
 	}
-
+	@Override
+	public JSONObject toJSON() {
+		JSONObject result = new JSONObject();
+		try {
+			result.put(Texts.POSITION, position);
+			result.put(Texts.TYPE, type);
+			result.put(Texts.SCALE, scale);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	protected void setType(Florable type){
+		this.type = type;
+	}
 	public static enum Bushes implements Florable{
 		BUSH1("bush1", FloraType.BUSH),
 		BUSH2("bush2", FloraType.BUSH),

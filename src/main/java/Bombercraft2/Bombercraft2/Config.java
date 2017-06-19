@@ -96,7 +96,13 @@ public class Config {
 	public final static String		EXTENSION_IMAGE						= ".png";
 	
 	public final static String		FILE_GUI_TEXTS						= "/gameData/guiTexts.json";
+	public final static String		FILE_PARTICLES						= "/gameData/particles.json";
 	public final static String		FILE_VISIBLE_OPTIONS				= "/gameData/visibleOptions.json";
 	
 	public static final int 		SERVER_PORT 						= 4321;
+	public static final int 		ALERT_VERTICAL_OFFSET 				= 10;
+	public static final int			PING_REFRESH_TIME 					= 1000;
+	public static final int			SCANNING_TIMEOUT 					= 100;
+	public static final int			SCANNING_RANGE 						= 20;
+	public static final String 		TEXT_ARG_PLACEHOLDER 				= "#####";
 }

@@ -2,17 +2,25 @@ package Bombercraft2.Bombercraft2.game.entity.flora;
 
 import java.awt.Graphics2D;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.entity.flora.Flora.Bushes;
 import utils.math.GVector2f;
 
 public class Bush extends Flora{
-	private float scale = (float)Math.random() + 0.5f;
+	
 	public Bush(Bushes type, GVector2f position, GameAble parent) {
 		super(position, parent, type);
+		scale = (float)Math.random() + 0.5f;
 	}
 	
+	public Bush(GameAble parent, JSONObject data) {
+		super(new GVector2f(), parent, Bushes.BUSH1);
+		fromJSON(data);
+	}
 	@Override
 	public void render(Graphics2D g2) {
 		GVector2f pos = position.sub(getParent().getOffset());
@@ -25,10 +33,6 @@ public class Bush extends Flora{
 		super.render(g2);
 	}
 	
-	@Override
-	public JSONObject toJSON() {
-		return null;
-	}
 
 	@Override
 	public GVector2f getSur() {

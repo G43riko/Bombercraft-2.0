@@ -14,6 +14,7 @@ public class SubMenuCreator {
 	public static List<SubmenuItem> generateSubmenu(GameAble game){
 		ArrayList<SubmenuItem> items = new ArrayList<SubmenuItem>();
 		items.add(new SubmenuItem(game.getLabelOf(Texts.OPTIONS), getOptions(game)));
+		items.add(new SubmenuItem(game.getLabelOf(Texts.SHOW), getShowOptions(game)));
 		items.add(new SubmenuItem(game.getLabelOf(Texts.BLOCKS), getBlocks()));
 		items.add(new SubmenuItem("Placer", getPlacers(game)));
 		items.add(new SubmenuItem(game.getLabelOf(Texts.FLORA), getFloras(game)));
@@ -24,6 +25,32 @@ public class SubMenuCreator {
 		
 		return items;
 	}
+	private static List<SubmenuItem> getShowOptions(GameAble game) {
+		ArrayList<SubmenuItem> options = new ArrayList<SubmenuItem>();
+
+		options.add(new SubmenuItem(game.getLabelOf(Texts.LOGS), game.getVisibleOption(Render.LOGS), () -> {
+			game.switchVisibleOption(Render.LOGS);
+			return false;
+		}));
+		
+		options.add(new SubmenuItem(game.getLabelOf(Texts.WALLS), game.getVisibleOption(Render.MAP_WALLS), () -> {
+			game.switchVisibleOption(Render.MAP_WALLS);
+			return false;
+		}));
+
+		options.add(new SubmenuItem(game.getLabelOf(Texts.LIGHTS), game.getVisibleOption(Render.LIGHTS), () -> {
+			game.switchVisibleOption(Render.LIGHTS);
+			return false;
+		}));
+
+		options.add(new SubmenuItem(game.getLabelOf(Texts.LIGHT_MAP), game.getVisibleOption(Render.ONLY_SHADOW_MAP), () -> {
+			game.switchVisibleOption(Render.ONLY_SHADOW_MAP);
+			return false;
+		}));
+		
+		return options;
+	}
+		
 	private static List<SubmenuItem> getPlacers(GameAble game) {
 		ArrayList<SubmenuItem> placers = new ArrayList<SubmenuItem>();
 		
@@ -42,14 +69,6 @@ public class SubMenuCreator {
 	private static List<SubmenuItem> getOptions(GameAble game){
 		ArrayList<SubmenuItem> options = new ArrayList<SubmenuItem>();
 		
-		options.add(new SubmenuItem(game.getLabelOf(Texts.SHOW_LOGS), game.getVisibleOption(Render.LOGS), () -> {
-			game.switchVisibleOption(Render.LOGS);
-			return false;
-		}));
-		options.add(new SubmenuItem(game.getLabelOf(Texts.SHOW_WALS), game.getVisibleOption(Render.MAP_WALLS), () -> {
-			game.switchVisibleOption(Render.MAP_WALLS);
-			return false;
-		}));
 		options.add(new SubmenuItem(game.getLabelOf(Texts.NEW_GAME), () -> {
 			game.newGame();
 			return true;

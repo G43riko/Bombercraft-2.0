@@ -19,7 +19,7 @@ public class Showel implements Toolable, Iconable{
 
 	@Override
 	public void useOnLocalPos(GVector2f pos) {
-		parent.getConnector().removeBlock(pos);
+		parent.getConnector().setRemoveBlock(pos);
 	}
 	
 

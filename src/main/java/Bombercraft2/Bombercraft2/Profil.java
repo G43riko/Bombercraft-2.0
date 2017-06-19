@@ -37,7 +37,18 @@ public class Profil implements JSONAble{
 	
 	// CONTRUCTORS
 	public Profil(String profilName) {
-		fromJSON(ResourceLoader.getJSON(Config.FOLDER_PROFILE + profilName + Config.EXTENSION_PROFILE));
+		try {
+			fromJSON(ResourceLoader.getJSONThrowing(Config.FOLDER_PROFILE + profilName + Config.EXTENSION_PROFILE));
+		} catch (JSONException e) {
+			try {
+				JSONObject data = new JSONObject();
+				data.put("userInfo", new JSONObject());
+//				data.put("gameOptions", new JSONObject());
+				fromJSON(data);
+			} catch (JSONException ee) {
+				ee.printStackTrace();
+			}
+		}
 		this.profilName = profilName;
 	}
 	private void initDefault(){
@@ -62,7 +73,6 @@ public class Profil implements JSONAble{
 			msOfPlaying 	= data.getInt(PLAYING_TIME);
 		}
 		catch(Exception e){
-			e.printStackTrace();
 			initDefault();
 		}
 		lastLogin = System.currentTimeMillis();

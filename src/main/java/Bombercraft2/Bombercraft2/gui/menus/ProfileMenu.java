@@ -63,10 +63,10 @@ public class ProfileMenu extends Menu{
 	protected void init() {
 		availableProfiles.stream().forEach(a -> addComponent(a, new Button(this, a)));
 		
-		setItem("createProfile");
-		components.get("createProfile").setDisable(true);
+		setItem(Texts.CREATE_PROFIL);
+		components.get(Texts.CREATE_PROFIL).setDisable(true);
 		
-		setItem("exit");
+		setItem(Texts.EXIT_GAME);
 	}
 
 	private void selectProfile(String profile){

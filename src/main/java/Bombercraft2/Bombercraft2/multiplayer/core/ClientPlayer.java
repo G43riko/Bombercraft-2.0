@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
+import Bombercraft2.Bombercraft2.core.Texts;
 
 public class ClientPlayer {
 	private Socket socket;
@@ -71,8 +72,8 @@ public class ClientPlayer {
 		Bombercraft.sendMessages++;
 		JSONObject object = new JSONObject();
 		try {
-			object.put("type", type);
-			object.put("msg", o.toString());
+			object.put(Texts.TYPE, type);
+			object.put(Texts.MESSAGE, o.toString());
 		} catch (JSONException e1) {
 			e1.printStackTrace();
 		}
@@ -83,6 +84,10 @@ public class ClientPlayer {
 			e.printStackTrace();
 //			GLog.write(GLog.SITE_MESSAGES, "S: Nepodailo sa odosla správu " + o + " hráèovy: " + name);
 		}
+	}
+	
+	public boolean isConnected(){
+		return socket.isConnected();
 	}
 
 }

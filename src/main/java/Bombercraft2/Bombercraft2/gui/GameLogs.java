@@ -12,6 +12,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 
 public class GameLogs implements Interactable{
 	private GameAble parent;
+	final int offset = 10; 
 	
 	public GameLogs(GameAble parent){
 		this.parent = parent;
@@ -22,35 +23,39 @@ public class GameLogs implements Interactable{
 		ArrayList<String> data = parent.getLogInfos();
 
 		g2.setFont(new Font("Garamond", Font.BOLD | Font.ITALIC , Config.LOG_TEXT_SIZE));
-		g2.setColor(Config.LOG_TEXT_COLOR);
 		
 		int maxWidth = 0;
 		for(int i=0 ; i< data.size() ; i++){
 			maxWidth = Math.max(g2.getFontMetrics().stringWidth(data.get(i)), maxWidth);
 		}
-		final int offset = 10; 
+
+		int height = Config.LOG_TEXT_SIZE * data.size() + 5;
+		int width = maxWidth + offset;
+		int positionX = parent.getCanvas().getWidth() - width;
 		
 		g2.setColor(Config.LOG_BG_COLOR);
-		
-		g2.fillRoundRect(0, 
+		g2.fillRoundRect(positionX, 
 						 0,  
-						 maxWidth + offset, 
-						 Config.LOG_TEXT_SIZE * data.size() + 5, 
-						 Config.DEFAULT_ROUND, Config.DEFAULT_ROUND);
+						 width, 
+						 height, 
+						 Config.DEFAULT_ROUND, 
+						 Config.DEFAULT_ROUND);
 		
 		g2.setStroke(new BasicStroke(Config.LOG_BORDER_WIDTH));
 		g2.setColor(Config.LOG_BORDER_COLOR);
-		g2.drawRoundRect(0, 
+		g2.drawRoundRect(positionX, 
 						 0,  
-						 maxWidth + offset, 
-						 Config.LOG_TEXT_SIZE * data.size() + 5, 
-						 Config.DEFAULT_ROUND, Config.DEFAULT_ROUND);
+						 width, 
+						 height, 
+						 Config.DEFAULT_ROUND, 
+						 Config.DEFAULT_ROUND);
 
 		
 		
-		
+
+		g2.setColor(Config.LOG_TEXT_COLOR);
 		for(int i=0 ; i< data.size() ; i++){
-			g2.drawString(data.get(i), 6, Config.LOG_TEXT_SIZE * i + Config.LOG_TEXT_SIZE);
+			g2.drawString(data.get(i), positionX + 6, Config.LOG_TEXT_SIZE * i + Config.LOG_TEXT_SIZE);
 		}
 		
 	}

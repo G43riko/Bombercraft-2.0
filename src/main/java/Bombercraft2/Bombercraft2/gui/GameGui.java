@@ -18,13 +18,14 @@ public class GameGui  implements Interactable, Clicable{
 	NavBar		navBar;
 	SideBar		sideBar;
 	Submenu		subMenu;
+	PlayerPanel	playerPanel;
 	GameAble 	parent;
 	public GameGui(GameAble parent) {
 		this.parent = parent;
 		gameLogs 	= new GameLogs(parent);
 		navBar 		= new NavBar(parent);
 		sideBar 	= new SideBar(parent);
-		
+		playerPanel = new PlayerPanel(parent);
 		subMenu		= new Submenu(parent, SubMenuCreator.generateSubmenu(parent));
 		
 	}
@@ -52,6 +53,9 @@ public class GameGui  implements Interactable, Clicable{
 			subMenu.render(g2);
 		}
 		
+		if(playerPanel.isVisible()){
+			playerPanel.render(g2);
+		}
 //		if(Bombercraft.getViewOption("renderMiniMap"))
 //			minimap.render(g2);
 		
