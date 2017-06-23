@@ -50,10 +50,10 @@ public abstract class Entity implements Visible, Interactable{
 	public GVector2f 	getPosition() {return position;}
 	protected GVector2f getTotalPosition(){return position.mul(parent.getZoom()).sub(getParent().getOffset());}
 	protected GVector2f getTotalSize(){return getSize().mul(parent.getZoom()); }
+	public GVector2f	getCenter(){return getPosition().add(getSize().div(2)); }
 
 	public boolean 		isAlive() {return alive;}
 	
 	//SETTERS
-
 	public void setPosition(GVector2f position) {this.position = position;}
 }

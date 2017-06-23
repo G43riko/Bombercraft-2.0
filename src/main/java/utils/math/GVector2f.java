@@ -17,7 +17,7 @@ public final class GVector2f implements Serializable{
 	};
 	
 	public GVector2f toInt(){
-		return new GVector2f((int)x, (int)y);
+		return new GVector2f(Math.floor(x), Math.floor(y));
 	}
 	
 	public GVector2f(String s){

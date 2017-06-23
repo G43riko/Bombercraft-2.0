@@ -6,6 +6,8 @@ import java.util.HashMap;
 import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.weapons.Weapon;
+import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.player.placers.AreaPlacer;
 import Bombercraft2.Bombercraft2.game.player.placers.Placer;
@@ -28,6 +30,7 @@ public class ToolManager {
 	private void init(){
 		setActualPlacer(Types.SIMPLE);
 		tools.put(Helper.Type.SHOVEL, new Showel(parent));
+		tools.put(Helper.Type.WEAPON_LASER, new WeaponLaser(parent, parent.getWeapon("laser")));
 		tools.put(Helper.Type.BOMB_NORMAL, new BombCreator(parent, Helper.Type.BOMB_NORMAL));
 	}
 

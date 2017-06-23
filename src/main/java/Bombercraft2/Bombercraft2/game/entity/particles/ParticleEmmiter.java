@@ -13,11 +13,11 @@ public class ParticleEmmiter extends Emitter{
 	private Entity target;
 	
 	//CONSTRUCTORS
-	public ParticleEmmiter(String type, GVector2f position, GameAble parent){
+	public ParticleEmmiter(Emitter.Types type, GVector2f position, GameAble parent){
 		this(type, position, parent, null);
 	}
 	
-	public ParticleEmmiter(String type, GVector2f position, GameAble parent, Entity target) {
+	public ParticleEmmiter(Emitter.Types type, GVector2f position, GameAble parent, Entity target) {
 		super(type, position, parent);
 		this.target = target;
 	}

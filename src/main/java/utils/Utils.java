@@ -87,6 +87,17 @@ public final class Utils {
     return result;
    }
 	
+	public static String getHostName(){
+		try{
+		    InetAddress addr = InetAddress.getLocalHost();
+		    return addr.getHostName();
+		}
+		catch (UnknownHostException e){
+		    e.printStackTrace();
+		}
+		return "Unknown";
+	}
+	
 	@SuppressWarnings("unchecked")
 	public static <T> T choose(T ... argc){
 		return argc[(int)(Math.random() * argc.length)];

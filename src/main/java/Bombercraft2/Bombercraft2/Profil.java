@@ -8,6 +8,7 @@ import java.io.IOException;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import utils.Utils;
 import utils.resouces.JSONAble;
 import utils.resouces.ResourceLoader;
 
@@ -25,6 +26,7 @@ public class Profil implements JSONAble{
 	private final static String LAST_LOGIN 		= "lastLogin";
 	private final static String PLAYING_TIME 	= "playingTime";
 	private final static String PROFIL_LOADED	= "profilLoaded";
+	public static final String 	GUEST 			= "GUEST_PROFILE";
 
 	private OptionsManager 	options;
 	private String			name			= "playerName";
@@ -37,6 +39,11 @@ public class Profil implements JSONAble{
 	
 	// CONTRUCTORS
 	public Profil(String profilName) {
+		this.profilName = profilName;
+		if(profilName.equals(GUEST)){
+			initDefaultProfile();
+			return;
+		}
 		try {
 			fromJSON(ResourceLoader.getJSONThrowing(Config.FOLDER_PROFILE + profilName + Config.EXTENSION_PROFILE));
 		} catch (JSONException e) {
@@ -49,7 +56,6 @@ public class Profil implements JSONAble{
 				ee.printStackTrace();
 			}
 		}
-		this.profilName = profilName;
 	}
 	private void initDefault(){
 		name 			= Config.PROFILE_DEFAULT_NAME;
@@ -58,7 +64,13 @@ public class Profil implements JSONAble{
 		msOfPlaying 	= 0;
 		profilLoaded 	= 0;
 	}
-
+	
+	private void initDefaultProfile(){
+		options = new OptionsManager();
+		options.initDefault();
+		initDefault();
+		name = Utils.getHostName();
+	}
 	public void fromJSON(JSONObject profileData){
 		options = new OptionsManager();
 		try{options.fromJSON(profileData.getJSONObject("gameOptions"));}
@@ -112,6 +124,9 @@ public class Profil implements JSONAble{
 	public float 			getMsOfPlaying() {return msOfPlaying;}
 
 	public static void saveProfil(Profil profil) {
+		if(profil.profilName.equals(GUEST)){
+			return;
+		}
 		JSONObject result = new JSONObject();
 		try {
 			result.put("userInfo", profil.toJSON());

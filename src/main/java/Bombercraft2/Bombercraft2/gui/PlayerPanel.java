@@ -5,6 +5,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 
 import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 
@@ -39,25 +40,27 @@ public class PlayerPanel implements Interactable{
 						 PLAYER_PANEL_RADIUS);
 		
 		g2.setColor(PLAYER_PANEL_FONT_COLOR);
-		g2.setFont(new Font("Garamond", Font.BOLD | Font.ITALIC , PLAYER_PANEL_FONT_SIZE));
+		g2.setFont(new Font("Garamond", Font.BOLD , PLAYER_PANEL_FONT_SIZE));
 		
 		int verticalOffset = PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
-		g2.drawString("Name: " + parent.getMyPlayer().getName(), 
+		g2.drawString(parent.getLabelOf(Texts.NAME) + ": " + parent.getMyPlayer().getName(), 
 					  posX + PLAYER_PANEL_FONT_OFFSET, 
 					  posY + verticalOffset);
 		
 		verticalOffset += PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
-		g2.drawString("Healt: " + parent.getMyPlayer().getActHealt() + "/" + parent.getMyPlayer().getMaxHealt(), 
+		g2.drawString(parent.getLabelOf(Texts.HEALTH) + ": " + 
+					  parent.getMyPlayer().getActHealt() + "/" + 
+					  parent.getMyPlayer().getMaxHealt(), 
 				  posX + PLAYER_PANEL_FONT_OFFSET, 
 				  posY + verticalOffset);
 		
 		verticalOffset += PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
-		g2.drawString("Demage: " + parent.getMyPlayer().getDemage(), 
+		g2.drawString(parent.getLabelOf(Texts.DEMAGE) + ": " + parent.getMyPlayer().getDemage(), 
 				  posX + PLAYER_PANEL_FONT_OFFSET, 
 				  posY + verticalOffset);
 		
 		verticalOffset += PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
-		g2.drawString("Speed: " + parent.getMyPlayer().getSpeed(), 
+		g2.drawString(parent.getLabelOf(Texts.SPEED) + ": " + parent.getMyPlayer().getSpeed(), 
 				  posX + PLAYER_PANEL_FONT_OFFSET, 
 				  posY + verticalOffset);
 

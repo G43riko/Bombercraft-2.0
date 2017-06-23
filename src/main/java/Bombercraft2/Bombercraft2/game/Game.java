@@ -16,6 +16,10 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Level;
@@ -35,7 +39,7 @@ public class Game extends GameState implements GameAble{
 	private Level					level;
 	private float					zoom			= Config.DEFAULT_ZOOM;
 	private GameGui					gui;
-	private ToolManager				toolManager		= new ToolManager(this);
+	private ToolManager				toolManager;
 	private CoreGame				parent;
 	private MouseSelector			mouseSelector;//	= new MouseSelector(this);
 	private SceneManager 			sceneManager 	= new SceneManager(this);
@@ -52,6 +56,7 @@ public class Game extends GameState implements GameAble{
 		this.level = level;
 		this.parent = parent;
 		level.setGame(this);
+		toolManager = new ToolManager(this);
 		try {
 			myPlayer = new MyPlayer(this,
 									level.getRandomRespawnZone() , 
@@ -166,6 +171,7 @@ public class Game extends GameState implements GameAble{
 	@Override
 	public ArrayList<String> getLogInfos() {
 		ArrayList<String> result = new ArrayList<String>();
+		result.addAll(sceneManager.getLogInfos());
 		result.add("FPS: " 				+ parent.getFPS());
 		result.add("UPS: " 				+ parent.getUPS());
 		result.add("loops: " 			+ parent.getLoops());
@@ -245,7 +251,7 @@ public class Game extends GameState implements GameAble{
 		sceneManager.addExplosion(position, size, color, number);
 	}
 	@Override
-	public void addEmmiter(GVector2f position, String type) {
+	public void addEmmiter(GVector2f position, Emitter.Types type) {
 		sceneManager.addEmmiter(position, type);
 	}
 	@Override
@@ -312,17 +318,12 @@ public class Game extends GameState implements GameAble{
 	}
 
 	@Override
-	public GVector2f getPlayerTarget() {
-		return myPlayer.getTargetLocation();
-	}
-
-	@Override
 	public Connector getConnector() {
 		return parent.getConnector();
 	}
 
 	@Override
-	public void putHelper(GVector2f pos, Helper.Type type, long createTime) {
+	public void putHelper(GVector2f pos, Helper.Type type, long createTime) {//TODO playerov bonus k poskodeniu tu ma byt
 		GVector2f localPos = Map.globalPosToLocalPos(pos);
 		pos = pos.div(Block.SIZE).toInt().mul(Block.SIZE);
 		
@@ -395,4 +396,40 @@ public class Game extends GameState implements GameAble{
 	public Player getPlayerByName(String name) {
 		return sceneManager.getPlayerByName(name);
 	}
+
+	@Override
+	public SceneManager getSceneManager() {
+		return sceneManager;
+	}
+
+	@Override
+	public JSONObject getWeapon(String type) {
+		return parent.getWeapon(type);
+	}
+	
+	
+	@Override
+	public GVector2f gePlyerDirection() {
+		//return Input.getMousePosition().add(myPlayer.getOffset()).sub(myPlayer.getCenter());
+		return myPlayer.getTagetDirection();
+	}
+	@Override
+	public GVector2f getPlayerTarget() {
+		return myPlayer.getTargetLocation();
+	}
+
+	@Override
+	public void addBullet(Types bulletType, GVector2f angle, GVector2f position) {
+		Bullet bullet = null;
+		switch(bulletType) {		
+			case LASER:
+				bullet = new BulletLaser(position, parent.getGame(), angle);
+				break;
+			case BASIC:
+				bullet = new BulletBasic(position, parent.getGame(), angle);
+				break;
+		}
+		sceneManager.addBullet(bullet);
+	}
+
 }

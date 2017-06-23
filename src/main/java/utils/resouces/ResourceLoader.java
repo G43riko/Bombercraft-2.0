@@ -32,6 +32,18 @@ public final class ResourceLoader {
 		if(input == null){
 			input = ResourceLoader.class.getResourceAsStream("/" + fileName);
 		}
+		if(input == null){
+			input = ResourceLoader.class.getResourceAsStream("./" + fileName);
+		}
+		if(input == null){
+			input = ResourceLoader.class.getResourceAsStream("res" + fileName);
+		}
+		if(input == null){
+			input = ResourceLoader.class.getResourceAsStream("/res" + fileName);
+		}
+		if(input == null){
+			input = ResourceLoader.class.getResourceAsStream("./res" + fileName);
+		}
 		return input;
 	}
 
@@ -92,13 +104,13 @@ public final class ResourceLoader {
 		return new JSONObject(getFileCOntent(name));
 	}
 	public static JSONObject getJSON(String name){
-		JSONObject result = null;
+		System.out.println("nacitava sa: " + name);
 		try {
-			result = new JSONObject(getFileCOntent(name));
+			return  new JSONObject(getFileCOntent(name));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		return result;
+		return null;
 	}
 
 	public static URL getURL(String path) {

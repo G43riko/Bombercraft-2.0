@@ -27,7 +27,6 @@ public class Player extends Entity implements Healtable{
 	private int			range;
 	private Direction	direction		= Direction.DOWN;
 	private int			demage;
-	private int			cadenceBonus	= 0;
 	private String		name;
 	private String		image;
 	private boolean		moving;
@@ -129,7 +128,6 @@ public class Player extends Entity implements Healtable{
 	public int 			getSpeed() {return speed;}
 	public int 			getDemage() {return demage;}
 	public Direction	getDirection() {return direction;}
-	public int 			getCadenceBonus() {return cadenceBonus;}
 
 	public void setDirection(Direction direction) {this.direction = direction;}
 	public void setMoving(boolean moving) {
@@ -145,10 +143,19 @@ public class Player extends Entity implements Healtable{
 	public int getMaxHealt() {
 		return Config.PLAYER_MAX_HEALT;
 	}
+	
+	@Override
+	public boolean isAlive() {
+		return healt > 0;
+	}
 
 	@Override
 	public int getActHealt() {
 		return healt;
+	}
+
+	public void hit(int demage) {
+		healt -= demage;
 	}
 
 	

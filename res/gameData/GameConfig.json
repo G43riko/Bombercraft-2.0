@@ -27,7 +27,7 @@
 				"freeze" : {},
 				"slime" : {},
 				"fire" : {},
-				"mine" : {},
+				"mine" : {}
 			},
 			"weapons": {
 				"basic": {
@@ -40,7 +40,8 @@
 					"cadence": 200,
 					"demage": 1,
 					"bulletSpeed": 40,
-					"healt": 1
+					"healt": 1,
+					"type" : "LASER"
 		        },
 	        	"bow": {
 					"cadence": 800,
@@ -95,7 +96,7 @@
 		},
 	    "particles": {
 			"emmiters": {
-				"a" {
+				"a" : {
 					"color": "GREEN",
 					"speed": "2_0",
 					"healt": "100_100",
@@ -111,7 +112,16 @@
 	    },
 	    "bullets": {
 			"classic" : {},
-			"laser" : {},
+			"laser" : {
+				"cadence": 200,
+				"speed": 30,
+				"color": 16711680,
+				"size": "[50_50]",
+				"demage": 1,
+				"type" : "LASER",
+				"bulletSpeed": 40,
+				"healt": 1
+			},
 			"bow" : {},
 			"granade" : {},
 			"rocket" : {},

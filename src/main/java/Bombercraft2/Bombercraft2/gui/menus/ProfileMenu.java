@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
@@ -34,6 +35,9 @@ public class ProfileMenu extends Menu{
 				selectProfile(a);
 			}
 		});
+		if(components.get(Texts.PLAY_AS_GUEST).isClickIn(click)){
+			selectGuestProfile();
+		}
 		if(components.get(Texts.CREATE_PROFIL).isClickIn(click)){
 			createProfile();
 		}
@@ -61,6 +65,7 @@ public class ProfileMenu extends Menu{
 	}
 
 	protected void init() {
+		setItem(Texts.PLAY_AS_GUEST);
 		availableProfiles.stream().forEach(a -> addComponent(a, new Button(this, a)));
 		
 		setItem(Texts.CREATE_PROFIL);
@@ -68,7 +73,11 @@ public class ProfileMenu extends Menu{
 		
 		setItem(Texts.EXIT_GAME);
 	}
-
+	
+	private void selectGuestProfile(){
+		parent.setProfile(Profil.GUEST);
+		parent.showMainMenu();
+	}
 	private void selectProfile(String profile){
 		parent.setProfile(profile);
 		parent.showMainMenu();

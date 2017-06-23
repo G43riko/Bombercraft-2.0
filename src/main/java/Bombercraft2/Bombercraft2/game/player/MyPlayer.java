@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.util.HashMap;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.GameState.Type;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.HealtBar;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -18,6 +19,9 @@ public class MyPlayer extends Player{
 	private PlayerSelector 	selector 		= new PlayerSelector(this);
 	private PlayerPointer	pointer			= new PlayerPointer(this);
 	private HealtBar		healtBar		= new HealtBar(this);
+	private int				cadenceBonus	= 0;
+	private int				speedBonus		= 0;
+	private int				demageBonus		= 0;
 	
 	private HashMap<Integer, Boolean> keys = new HashMap<Integer, Boolean>(); 
 		
@@ -99,9 +103,7 @@ public class MyPlayer extends Player{
 	public void doAction(){
 		getParent().getToolsManager().getSelectedTool().useOnGlobalPos(getTargetLocation());
 	}
-	public GVector2f getTargetLocation(){
-		return pointer.getEndPos(position.add(Block.SIZE.div(2)));
-	}
+	
 	@Override
 	public void render(Graphics2D g2) {
 		super.render(g2);
@@ -113,16 +115,20 @@ public class MyPlayer extends Player{
 		if(position == null){
 			return;
 		}
-		
+		if(getParent().getLevel().getMap().getBlockOnPosition(getCenter()).getType() == Block.Type.WATER){
+			move = move.mul(Config.WATER_TILE_SPEED_COEFFICIENT);
+		}
 		totalMove = totalMove.add(move);
 		
 		position.addToX(move.getX() * getSpeed() * delta);
-		if(isInBlock())
+		if(!isOnWalkableBlock()){
 			position.addToX(-move.getX() * getSpeed() * delta);
+		}
 		
 		position.addToY(move.getY() * getSpeed() * delta);
-		if(isInBlock())
+		if(!isOnWalkableBlock()){
 			position.addToY(-move.getY() * getSpeed() * delta);
+		}
 		
 		checkBorders();
 		checkOffset();
@@ -132,7 +138,7 @@ public class MyPlayer extends Player{
 			getParent().getConnector().setPlayerChange(this);
 	}
 	
-	private boolean isInBlock(){
+	private boolean isOnWalkableBlock() {
 //		//pri 40x40
 //		final float topOffset 		= 20;
 //		final float bottomOffset 	= 35;
@@ -144,21 +150,26 @@ public class MyPlayer extends Player{
 		final float bottomOffset 	= 65;
 		final float rightOffset 	= 21;
 		final float leftOffset 		= 19;
-		
+	
 		GVector2f t = position.add(new GVector2f(Block.SIZE.getX(), Block.SIZE.getY() - topOffset).div(2)).div(Block.SIZE).toInt();
 		GVector2f b = position.add(new GVector2f(Block.SIZE.getX(), Block.SIZE.getY() + bottomOffset).div(2)).div(Block.SIZE).toInt();
 		GVector2f r = position.add(new GVector2f(Block.SIZE.getX() - rightOffset, Block.SIZE.getY()).div(2)).div(Block.SIZE).toInt();
 		GVector2f l = position.add(new GVector2f(Block.SIZE.getX() + leftOffset , Block.SIZE.getY()).div(2)).div(Block.SIZE).toInt();
-		
+	
 		try{
-			return !getParent().getLevel().getMap().getBlock(t.getXi(), t.getYi()).isWalkable() ||
-				   !getParent().getLevel().getMap().getBlock(b.getXi(), b.getYi()).isWalkable() ||
-				   !getParent().getLevel().getMap().getBlock(r.getXi(), r.getYi()).isWalkable() ||
-				   !getParent().getLevel().getMap().getBlock(l.getXi(), l.getYi()).isWalkable();
+			return !getParent().getSceneManager().isBombOn(t.getXi(), t.getYi()) &&
+				   !getParent().getSceneManager().isBombOn(b.getXi(), b.getYi()) &&
+				   !getParent().getSceneManager().isBombOn(r.getXi(), r.getYi()) &&
+				   !getParent().getSceneManager().isBombOn(l.getXi(), l.getYi()) &&
+				   getParent().getLevel().getMap().getBlock(t.getXi(), t.getYi()).isWalkable() &&
+				   getParent().getLevel().getMap().getBlock(b.getXi(), b.getYi()).isWalkable() &&
+				   getParent().getLevel().getMap().getBlock(r.getXi(), r.getYi()).isWalkable() &&
+				   getParent().getLevel().getMap().getBlock(l.getXi(), l.getYi()).isWalkable();
 		}catch(NullPointerException e){
-			return true;
+			return false;
 		}
 	}
+
 	
 	public void checkOffset(){
 		
@@ -220,8 +231,13 @@ public class MyPlayer extends Player{
 	}
 
 	public GVector2f getOffset() {return offset;}
-	public GVector2f getBulletDirection() {
-		GVector2f sur = position.add(Block.SIZE.mul(getParent().getZoom() / 2));
-		return Input.getMousePosition().add(getOffset()).sub(sur).Normalized();
-	}
+//	public GVector2f getBulletDirection() {
+//		GVector2f sur = position.add(Block.SIZE.mul(getParent().getZoom() / 2));
+//		return Input.getMousePosition().add(getOffset()).sub(sur).Normalized();
+//	}
+
+	public int	getCadenceBonus() {return cadenceBonus;}
+	public int	getSpeedBonus() {return speedBonus;}
+	public GVector2f getTargetLocation(){return pointer.getEndPos(getCenter());}
+	public GVector2f getTagetDirection() {return getTargetLocation().sub(getCenter());}
 }

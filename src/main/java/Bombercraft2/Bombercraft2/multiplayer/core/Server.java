@@ -24,6 +24,7 @@ public abstract class Server implements Writable{
 	public static final String BUILD_BLOCK 		= "BUILD_BLOCK";
 	public static final String REMOVE_BLOCK 	= "REMOVE_BLOCK";
 	public static final String BOMB_EXPLODE 	= "BOMB_EXPLODE";
+	public static final String PUT_BULLET 		= "PUB_BULLET";
 	
 	private ServerSocket serverSocket;
 	private boolean readerIsRunning = true;

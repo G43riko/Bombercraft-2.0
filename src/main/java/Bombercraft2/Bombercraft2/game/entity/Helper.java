@@ -5,10 +5,14 @@ import java.awt.Image;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
+import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
+import Bombercraft2.Bombercraft2.game.level.Block;
+import utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 public abstract class Helper extends Entity {
+	private Helper.Type type;
 	public enum Type implements Iconable{
 		TOWER_LASER			("icon_laser_tower"),
 		TOWER_MACHINE_GUN	("icon_machine_gun_tower"),
@@ -45,8 +49,22 @@ public abstract class Helper extends Entity {
 	public final static String WEAPON_GRANADE		= "weaponGranade";
 	public final static String WEAPON_SHOTGUN		= "weaponShotgun";
 	
-	public Helper(GVector2f position, GameAble parent) {
+	public Helper(GVector2f position, GameAble parent, Type type) {
 		super(position, parent);
+		this.type = type;
+	}
+	
+	public final Type getType(){
+		return type;
+	}
+
+	public static boolean isBomb(Type type) {
+		return Utils.isIn(type, Helper.Type.BOMB_NORMAL);
+	}
+	
+	@Override
+	public GVector2f getSur() {
+		return position.div(Block.SIZE).toInt();
 	}
 
 }

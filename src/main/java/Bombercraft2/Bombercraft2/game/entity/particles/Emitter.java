@@ -48,12 +48,12 @@ public abstract class Emitter extends Entity{
 //	
 	//CONTRUCTORS
 	
-	public Emitter(String type, GVector2f position, GameAble parent) {
+	public Emitter(Emitter.Types type, GVector2f position, GameAble parent) {
 		super(position, parent);
 		
 		loadDataFromJSON(predefinedParticles.get(type));
 		
-		if(type == Types.PARTICLE_EXPLOSION_BLUE_SPARK.toString()){
+		if(type == Types.PARTICLE_EXPLOSION_BLUE_SPARK){
 			color = Utils.choose(Color.WHITE, Color.RED, Color.ORANGE, Color.YELLOW, Color.LIGHT_GRAY, Color.BLUE);
 		}
 			

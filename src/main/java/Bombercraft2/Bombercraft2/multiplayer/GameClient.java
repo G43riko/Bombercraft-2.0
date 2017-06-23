@@ -11,9 +11,13 @@ import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
+import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
+import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
 import Bombercraft2.Bombercraft2.game.level.Level;
+import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import Bombercraft2.Bombercraft2.multiplayer.core.Client;
@@ -25,12 +29,12 @@ import utils.math.GVector2f;
 public class GameClient extends Client implements Connector{
 	private MenuAble parent;
 	private CommonMethods methods;
+	
 	//CONTRUCTORS
 	
 	public GameClient(MenuAble coreGame, String ip){
 		super(ip);
 		this.parent = coreGame;
-//		GLog.write(GLog.CREATE, "GameClient vytvoren�");
 	}
 	
 	//PUTTERS
@@ -38,23 +42,22 @@ public class GameClient extends Client implements Connector{
 
 	//GETTERS
 
-//	public Level getLevel() {
-//		return actLevel;
-//	}
 	@Override
-	public void setBombExplode(GVector2f position, List<Block> blocks) {
+	public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> areas) {
 		parent.getGame().explodeBombAt(position);
 	}
 	@Override
 	public void onBombExplode(JSONObject data) {
 		try {
-//			JSONObject object = new JSONObject();
-//			object.put(Texts.POSITION, position);
+			int demage = data.getInt(Texts.DEMAGE);
 			JSONArray blocks = data.getJSONArray(Texts.HITTED_BLOCKS);
-//			parent.getGame().explodeBombAt(new GVector2f(data.getString(Texts.POSITION)));
 			for(int i=0 ; i<blocks.length() ; i++){
 				GVector2f position = new GVector2f(blocks.getString(i));
 				parent.getGame().getLevel().getMap().getBlock(position.getXi(), position.getYi()).remove();;
+			}
+			JSONArray players = data.getJSONArray(Texts.HITTED_PLAYERS);
+			for(int i=0 ; i<players.length() ; i++){
+				parent.getGame().getPlayerByName(players.getString(i)).hit(demage);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -103,6 +106,9 @@ public class GameClient extends Client implements Connector{
 				case Server.BOMB_EXPLODE:
 					onBombExplode(msg);
 					break;
+				case Server.PUT_BULLET :
+					onPutBullet(msg);
+					break;
 				case Server.GAME_INFO:
 					parent.createGame(msg);
 					methods = new CommonMethods(parent.getGame(), this);
@@ -135,11 +141,6 @@ public class GameClient extends Client implements Connector{
 			e.printStackTrace();
 		}
 		
-	}
-
-	@Override
-	public void hitBlock(GVector2f position, int demage) {
-		GLogger.notImplemented();
 	}
 
 	@Override
@@ -202,4 +203,34 @@ public class GameClient extends Client implements Connector{
 	public void onPlayerChange(JSONObject data) {
 		methods.onPlayerChange(data);
 	}
+
+	@Override
+	public void setPutEmmiter(Types emitterOnHit, GVector2f position) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean bulletHitEnemy(Bullet bulletInstance) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void hitBlock(GVector2f position, int demage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser) {
+		methods.setPutBullet(myPlayer, weaponLaser);
+	}
+
+	@Override
+	public void onPutBullet(JSONObject data) {
+		methods.onPutBullet(data);
+	}
+	
+	
 }

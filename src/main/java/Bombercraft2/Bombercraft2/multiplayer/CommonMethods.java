@@ -6,8 +6,11 @@ import org.json.JSONObject;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
+import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
+import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import Bombercraft2.Bombercraft2.multiplayer.core.Server;
@@ -110,7 +113,31 @@ public class CommonMethods {
 			}
 		}
 	}
-	
+	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser) {
+		GVector2f angle = game.gePlyerDirection();
+		angle.normalize();
+		//TODO tu treba spracovať už aj bonusy od hraca
+		try {
+			JSONObject object = new JSONObject();
+			object.put(Texts.POSITION, myPlayer.getTargetLocation());
+			object.put(Texts.DIRECTION, angle);
+			object.put(Texts.TYPE, weaponLaser.getBulletType());
+			parent.write(object.toString(), Server.PUT_BULLET);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		game.addBullet(weaponLaser.getBulletType(), angle, myPlayer.getTargetLocation());
+		
+	}
+	public void onPutBullet(JSONObject data){
+		try {
+			game.addBullet(Types.valueOf(data.getString(Texts.TYPE)), 
+						   new GVector2f(data.getString(Texts.DIRECTION)), 
+						   new GVector2f(data.getString(Texts.POSITION)));
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 	public void setPlayerChange(Player player) {
 		try {
 			JSONObject object = new JSONObject();

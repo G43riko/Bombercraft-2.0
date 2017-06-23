@@ -17,21 +17,23 @@ import utils.math.GVector2f;
 
 public class Bomb extends Helper{
 	
-	private Helper.Type type;
-	private long 		addedAt;
-	private int 		detonationTime			= 2000;
-	private Timer		timer;
-	private int 		range					= 3;
-	private List<Block> blocks					= new ArrayList<Block>();
+	private long 			addedAt;
+	private int 			detonationTime	= 2000;
+	private Timer			timer;
+	private int 			range			= 3;
+	private List<Block> 	blocks			= new ArrayList<Block>();
+	private List<GVector2f> demageAreas		= new ArrayList<GVector2f>();
 	public Bomb(GVector2f position, GameAble parent, Helper.Type type, long addedAt) {
-		super(position, parent);
-		this.type = type;
+		super(position, parent, type);
 		this.addedAt = addedAt;
 		timer = new Timer(this, addedAt, detonationTime);
 	}
 	
 	@Override
 	public void render(Graphics2D g2) {
+		if(!alive){
+			return;
+		}
 		GVector2f actPos = position.sub(getParent().getOffset());
 
 		renderSimpleArea(g2, actPos);
@@ -54,7 +56,6 @@ public class Bomb extends Helper{
 			value++;
 			counter++;
 		}
-
 		g2.fillRect(actPos.getXi() + Block.SIZE.getXi(), 
 					actPos.getYi(), 
 					Block.SIZE.getXi() * counter, 
@@ -102,6 +103,7 @@ public class Bomb extends Helper{
 	}
 	
 	private void calcTargetBlocks(){
+		GVector2f actPos = position.sub(getParent().getOffset());
 		GVector2f localPos = Map.globalPosToLocalPos(position);
 		int value, counter;
 		Block b;
@@ -120,6 +122,10 @@ public class Bomb extends Helper{
 		if(b != null && !b.isWalkable()){
 			blocks.add(b);
 		}
+		counter++;
+		demageAreas.add(new GVector2f(position.getXi() + Block.SIZE.getXi(), position.getYi()));
+		demageAreas.add(new GVector2f(Block.SIZE.getXi() * counter, Block.SIZE.getYi()));
+		
 
 		
 		//LEFT
@@ -135,6 +141,9 @@ public class Bomb extends Helper{
 		if(b != null && !b.isWalkable()){
 			blocks.add(b);
 		}
+		counter++;
+		demageAreas.add(new GVector2f(position.getXi() - Block.SIZE.getXi() * counter, position.getYi()));
+		demageAreas.add(new GVector2f(Block.SIZE.getXi() * counter, Block.SIZE.getYi()));
 		
 		
 		//DOWN
@@ -150,6 +159,9 @@ public class Bomb extends Helper{
 		if(b != null && !b.isWalkable()){
 			blocks.add(b);
 		}
+		counter++;
+		demageAreas.add(new GVector2f(position.getXi(), position.getYi() + Block.SIZE.getYi()));
+		demageAreas.add(new GVector2f(Block.SIZE.getXi(), Block.SIZE.getYi() * counter));
 		
 		//UP
 		value = localPos.getYi() - 1;
@@ -164,6 +176,10 @@ public class Bomb extends Helper{
 		if(b != null && !b.isWalkable()){
 			blocks.add(b);
 		}
+		counter++;
+		demageAreas.add(new GVector2f(position.getXi(), position.getYi() - Block.SIZE.getYi() * counter));
+		demageAreas.add(new GVector2f(Block.SIZE.getXi(), Block.SIZE.getYi() * counter));
+		
 	}
 	@Override
 	public void update(float delta) {
@@ -174,19 +190,14 @@ public class Bomb extends Helper{
 	}
 	
 	public void explode(){
+		alive = false;
 		calcTargetBlocks();
-		getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks);
+		getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks, demageAreas);
 		getParent().addExplosion(position.add(Block.SIZE.div(2)), Block.SIZE, Color.black, 15);
 	}
 	
 	@Override
 	public JSONObject toJSON() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public GVector2f getSur() {
 		// TODO Auto-generated method stub
 		return null;
 	}

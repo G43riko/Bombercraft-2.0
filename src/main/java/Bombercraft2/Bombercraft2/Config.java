@@ -39,10 +39,11 @@ public class Config {
 	public final static Color		LOG_BG_COLOR						= new Color(0, 0, 0, 200);
 	public final static Color		LOG_BORDER_COLOR					= Color.white;
 	public final static int			LOG_BORDER_WIDTH					= 2;
+	public final static float		WATER_TILE_SPEED_COEFFICIENT		= 0.7f;
 
 	public final static int 		HEATLBAR_VERTICAL_OFFSET 			= 0;
 	public final static int 		HEATLBAR_HORIZONTAL_OFFSET 			= 0;
-	public final static int 		HEATLBAR_HORIZONTAL_HEIGHT 			= 10;
+	public final static int 		HEATLBAR_HORIZONTAL_HEIGHT 			= 3;
 	public final static int 		HEATLBAR_BORDER_WIDTH 				= 1;
 	public static final Color 		HEATLBAR_BORDER_COLOR 				= Color.WHITE;
 	public static final Color 		HEATLBAR_FILL_COLOR 				= Color.GREEN;
@@ -98,6 +99,7 @@ public class Config {
 	public final static String		FILE_GUI_TEXTS						= "/gameData/guiTexts.json";
 	public final static String		FILE_PARTICLES						= "/gameData/particles.json";
 	public final static String		FILE_VISIBLE_OPTIONS				= "/gameData/visibleOptions.json";
+	public static final String 		FILE_GAME_CONFIG 						= "/gameData/GameConfig.json";
 	
 	public static final int 		SERVER_PORT 						= 4321;
 	public static final int 		ALERT_VERTICAL_OFFSET 				= 10;

@@ -10,6 +10,7 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.game.Game;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.gui.AlertManager;
 import Bombercraft2.Bombercraft2.gui.GuiManager;
@@ -28,6 +29,7 @@ import Bombercraft2.engine.Input;
 import utils.GLogger;
 import utils.Utils;
 import utils.math.GVector2f;
+import utils.resouces.ResourceLoader;
 
 public class CoreGame extends CoreEngine implements MenuAble{
 	private Profil 				profil;
@@ -39,6 +41,7 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	private boolean				gameLauched		= false;
 	private boolean 			focused			= true;
 	private Stack<GameState> 	states 			= new Stack<GameState>();
+	private JSONObject			gameConfig;
 	
 	public CoreGame(){
 		super(Config.WINDOW_DEFAULT_FPS, Config.WINDOW_DEFAULT_UPS, Config.WINDOW_DEFAULT_RENDER_TEXT);
@@ -47,6 +50,14 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		states.push(new ProfileMenu(this));
 		Input.setTarget(states.peek());
 		
+		
+		try {
+			gameConfig = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG).getJSONObject("data");
+			BulletManager.init(gameConfig.getJSONObject("bullets"));
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	public void switchVisibleOption(String key){
 		profil.getOptions().switchVisibleOption(key);
@@ -296,7 +307,15 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	}
 	public void showMessage(String key, String ...args){
 		alertManager.addAlert(guiManager.getLabelOf(key, args));
-		;
+		
+	}
+	public JSONObject getWeapon(String type) {
+		try {
+			return gameConfig.getJSONObject("helpers").getJSONObject("weapons").getJSONObject("laser");
+		} catch (JSONException e) {
+			e.printStackTrace();
+			return null;
+		}
 	};
 
 }

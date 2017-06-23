@@ -19,7 +19,7 @@ public class Texts {
 	public static final String BUSHES 				= "bushes";
 	public static final String PLANTS 				= "plants";
 	public static final String BLOCKS 				= "blocks";
-	public static final String PLAYER_IMAGE 		= "image";
+	public static final String PLAYER_IMAGE 		= "image";			//TODO duplicate of IMAGE
 	public static final String PLAYER_SPEED 		= "speed";
 	public static final String PLAYER_HEALT 		= "healt";			//TODO duplicate of HEALT
 	public static final String PLAYER_RANGE 		= "range";			//TODO duplicate of RANGE
@@ -48,7 +48,7 @@ public class Texts {
 	public static final String PLAYER_DISCONNECTED	= "playerDisconnected";
 	public static final String PLAYER_AVATAR 		= "avatar";			//TODO should be IMAGE
 	public static final String PLAYER 				= "player";
-	public static final String PLAYER_DIRECTION 	= "direction";
+	public static final String PLAYER_DIRECTION 	= "direction";		//TODO duplicate of DIRECTION
 	public static final String DEMAGE 				= "demage";
 	public static final String RANGE 				= "range";
 	public static final String TIME 				= "time";
@@ -70,5 +70,16 @@ public class Texts {
 	public static final String LOADING 				= "loading";
 	public static final String CREATED_AT 			= "createdAt";
 	public static final String HITTED_BLOCKS 		= "hittedBlocks";
+	public static final String NAME 				= "name";
+	public static final String HEALTH 				= "health";
+	public static final String SPEED 				= "speed";
+	public static final String HITTED_PLAYERS 		= "hittedPlayers";
+	public static final String PLAY_AS_GUEST 		= "playAsGuest";
+	public static final String EMITTER_ON_HIT 		= "emitterOnHit";
+	public static final String DIRECTION 			= "direction";
+	public static final String COLOR 				= "color";
+	public static final String SIZE 				= "size";
+	public static final String CADENCE 				= "cadence";
+	public static final String IMAGE 				= "image";
 
 }

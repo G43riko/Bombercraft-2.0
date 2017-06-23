@@ -20,6 +20,9 @@ public class BombCreator implements Toolable{
 	
 	@Override
 	public void useOnGlobalPos(GVector2f pos) {
-		parent.getConnector().setPutHelper(pos, type);
+		//bombu chcemepoložiť iba tam kde sa da
+		if(parent.getLevel().getMap().getBlockOnPosition(pos).isWalkable()){
+			parent.getConnector().setPutHelper(pos, type);
+		}
 	}
 }

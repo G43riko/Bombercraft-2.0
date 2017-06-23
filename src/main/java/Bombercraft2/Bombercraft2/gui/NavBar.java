@@ -36,9 +36,11 @@ public class NavBar extends Bar{
 		
 		items.put(9, Block.Type.IRON);
 		items.put(10, Block.Type.WOOD);
+		items.put(11, Block.Type.WATER);
+		items.put(12, Block.Type.GRASS);
 		
-		items.put(11, Helper.Type.OTHER_RESPAWNER);
-		items.put(12, Helper.Type.OTHER_ADDUCTOR);
+		items.put(13, Helper.Type.OTHER_RESPAWNER);
+		items.put(14, Helper.Type.OTHER_ADDUCTOR);
 		
 		calcPosition();
 		init();

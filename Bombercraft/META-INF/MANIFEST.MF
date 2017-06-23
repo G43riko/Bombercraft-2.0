@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: .
+Main-Class: Bombercraft2.Bombercraft2.App
+

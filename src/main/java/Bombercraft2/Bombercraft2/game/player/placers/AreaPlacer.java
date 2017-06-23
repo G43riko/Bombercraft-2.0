@@ -8,6 +8,9 @@ import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.math.GVector2f;
 
 public class AreaPlacer extends Placer{
+	public final static Color 	AREA_PLACER_FILL_COLOR 	= new Color(255, 173, 43, 150);
+	public final static int 	AREA_PLACER_OFFSET 		= -5;
+	public final static int 	AREA_PLACER_ROUND 		= 10;
 	private GVector2f starPos = null;
 	public AreaPlacer(GameAble parent) {
 		super(parent);
@@ -36,9 +39,31 @@ public class AreaPlacer extends Placer{
 		
 		GVector2f globalPosStart 	= starPos.mul(Block.SIZE).sub(parent.getOffset());
 		GVector2f globalPosEnd 		= parent.getPlayerTarget().sub(parent.getOffset()).add(Block.SIZE);
-		GVector2f size				= globalPosEnd.sub(globalPosStart).div(Block.SIZE).toInt().mul(Block.SIZE).abs();
+		GVector2f size				= globalPosEnd.sub(globalPosStart).div(Block.SIZE).toInt().mul(Block.SIZE);
 		
-		g2.setColor(Color.ORANGE);
-		g2.fillRect(globalPosStart.getXi(), globalPosStart.getYi(), size.getXi(), size.getYi());
+		
+		
+//		System.out.println("size: " + size + ", globalPosStart: " + globalPosStart + ", globalPosEnd: " + globalPosEnd);
+//		
+		if(size.getX() <= 0){
+			globalPosStart.addToX(size.getX() - Block.SIZE.getX());
+			size.addToX(-Block.SIZE.getX() * 2);
+		}
+		if(size.getY() <= 0){
+			globalPosStart.addToY(size.getY() - Block.SIZE.getY());
+			size.addToY(-Block.SIZE.getY() * 2);
+		}
+		
+		
+		g2.setColor(AREA_PLACER_FILL_COLOR);
+		globalPosStart = globalPosStart.add(AREA_PLACER_OFFSET);
+		size = size.abs().sub(AREA_PLACER_OFFSET * 2);
+		
+		g2.fillRoundRect(globalPosStart.getXi(), 	
+						 globalPosStart.getYi(), 
+						 size.getXi(), 
+						 size.getYi(),
+						 AREA_PLACER_ROUND,
+						 AREA_PLACER_ROUND);
 	}
 }

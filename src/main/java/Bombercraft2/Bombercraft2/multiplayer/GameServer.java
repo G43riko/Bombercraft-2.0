@@ -11,14 +11,22 @@ import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
+import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
+import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
+import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import Bombercraft2.Bombercraft2.multiplayer.core.ClientPlayer;
 import Bombercraft2.Bombercraft2.multiplayer.core.Server;
+import Bombercraft2.engine.Input;
 import utils.GLogger;
 import utils.Utils;
 import utils.math.GVector2f;
@@ -50,18 +58,31 @@ public class GameServer extends Server implements Connector{
 	}
 	
 	@Override
-	public void setBombExplode(GVector2f position, List<Block> blocks) {
-
+	public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> areas) {
+		final int demage = 1;
 		parent.getGame().explodeBombAt(position);
 		List<String> hittedBlocks = blocks.stream()
 										  .filter(a -> !a.isWalkable())
 										  .peek(a -> a.remove())
 										  .map(a -> a.getSur().toString())
 										  .collect(Collectors.toList());
+		int i = 0;
+		JSONArray hittedPlayers = new JSONArray();
+		while(i < areas.size()){
+			parent.getGame()
+				  .getSceneManager()
+				  .getPlayersInArea(areas.get(i++), areas.get(i++))
+				  .stream()
+				  .peek(a -> a.hit(demage))
+				  .map(a -> a.getName())
+				  .forEach(hittedPlayers::put);
+		}
 		try {
 			JSONObject object = new JSONObject();
 			object.put(Texts.POSITION, position);
 			object.put(Texts.HITTED_BLOCKS, new JSONArray(hittedBlocks));
+			object.put(Texts.HITTED_PLAYERS, hittedPlayers);
+			object.put(Texts.DEMAGE, demage);
 			write(object.toString(), Server.BOMB_EXPLODE);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -85,8 +106,12 @@ public class GameServer extends Server implements Connector{
 			String type = txt.getString(Texts.TYPE);
 			switch(type){
 				case PUT_HELPER :
-					writeExcept(o.toString(), PUT_HELPER, client);
+					writeExcept(o.toString(), type, client);
 					onPutHelper(o);
+					break;
+				case PUT_BULLET :
+					writeExcept(o.toString(), type, client);
+					onPutBullet(o);
 					break;
 				case PLAYER_DATA :
 					renameClient(client.getId() + "", o.getString(Texts.PLAYER_NAME));
@@ -134,10 +159,6 @@ public class GameServer extends Server implements Connector{
 		return parent.getGame().getBasicInfo();
 	}
 
-	@Override
-	public void hitBlock(GVector2f position, int demage) {
-		GLogger.notImplemented();
-	}
 
 	@Override
 	public void setCloseConnection() {
@@ -157,5 +178,37 @@ public class GameServer extends Server implements Connector{
 	@Override
 	public void onPlayerChange(JSONObject data) {
 		methods.onPlayerChange(data);
+	}
+
+	@Override
+	public void onHitPlayer(String name, int demage) {
+		parent.getGame().getSceneManager().getPlayerByName(name).hit(demage);
+	}
+	@Override
+	public void setPutEmmiter(Types emitterOnHit, GVector2f position) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean bulletHitEnemy(Bullet bulletInstance) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void hitBlock(GVector2f position, int demage) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser) {
+		methods.setPutBullet(myPlayer, weaponLaser);
+	}
+
+	@Override
+	public void onPutBullet(JSONObject data) {
+		methods.onPutBullet(data);
 	}
 }

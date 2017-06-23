@@ -10,6 +10,9 @@ import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
+import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
+import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
@@ -30,6 +33,7 @@ public interface GameAble extends Interactable, Visible{
 	public ToolManager				getToolsManager();
 	public Profil 					getProfil();
 	public ArrayList<String> 		getLogInfos();
+	public SceneManager 			getSceneManager();
 	public GVector2f				getPlayerTarget();
 	public boolean 					isVisible(Visible b);
 	public String 					getLabelOf(String key);
@@ -59,7 +63,7 @@ public interface GameAble extends Interactable, Visible{
 	public void addBomb(GVector2f position, int range, int time, int demage);
 	public void addPlayer(String name, String image);
 	public void addExplosion(GVector2f position, GVector2f size, Color color, int number);
-	public void addEmmiter(GVector2f position, String type);
+	public void addEmmiter(GVector2f position, Emitter.Types type);
 	public void addEnemy(GVector2f position, String type);
 	
 //	public boolean 		bulletHitEnemy(Bullet bullet);
@@ -80,5 +84,9 @@ public interface GameAble extends Interactable, Visible{
 	public String 	getBasicInfo();
 	public String 	getGameInfo();
 	public void removePlayer(String name);
+	public JSONObject getWeapon(String weaponLaser);
+//	public void addBullet(Bullet bullet);
+	public GVector2f gePlyerDirection();
+	public void addBullet(BulletManager.Types bulletType, GVector2f angle,GVector2f position);
 	
 }
