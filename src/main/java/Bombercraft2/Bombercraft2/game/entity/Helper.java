@@ -14,21 +14,24 @@ import utils.resouces.ResourceLoader;
 public abstract class Helper extends Entity {
 	private Helper.Type type;
 	public enum Type implements Iconable{
-		TOWER_LASER			("icon_laser_tower"),
-		TOWER_MACHINE_GUN	("icon_machine_gun_tower"),
-		SHOVEL				("icon_shovel"),
-		BOMB_NORMAL			("icon_bomb"),
-		WEAPON_LASER		("icon_weapon_laser"),
-		WEAPON_BOW			("icon_weapon_bow"),
-		WEAPON_LIGHTNING	("icon_light"),
-		WEAPON_STICK		("icon_stick"),
-		WEAPON_BOOMERANG	("icon_bumerang"),
-		OTHER_RESPAWNER		("respawner"),
-		OTHER_ADDUCTOR		("adductor");
+		TOWER_LASER			("icon_laser_tower", ""),
+		TOWER_MACHINE_GUN	("icon_machine_gun_tower", "machineGun"),
+		SHOVEL				("icon_shovel", ""),
+		BOMB_NORMAL			("icon_bomb", ""),
+		WEAPON_LASER		("icon_weapon_laser", ""),
+		WEAPON_BOW			("icon_weapon_bow", ""),
+		WEAPON_LIGHTNING	("icon_light", ""),
+		WEAPON_STICK		("icon_stick", ""),
+		WEAPON_BOOMERANG	("icon_bumerang", ""),
+		OTHER_RESPAWNER		("respawner", ""),
+		OTHER_ADDUCTOR		("adductor", "");
 		private Image image;
-		Type(String imageName){
+		private String name;
+		Type(String imageName, String name){
+			this.name = name;
 			image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);;
 		}
+		public String getName(){return name;}
 		public Image getImage(){return image;}
 	}
 	

@@ -6,7 +6,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.Shootable;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletModel;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
 import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
@@ -49,7 +51,7 @@ public interface Connector {
 	public void hitBlock(GVector2f position, int demage);
 	
 	public void onPutBullet(JSONObject data);
-	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser);
+	public void setPutBullet(MyPlayer myPlayer, Shootable shooter);
 
 
 }

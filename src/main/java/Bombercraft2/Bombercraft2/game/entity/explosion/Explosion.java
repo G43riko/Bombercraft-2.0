@@ -19,21 +19,25 @@ public class Explosion extends Entity{
 	private ArrayList<SpriteAnimation>	animations 	= new ArrayList<SpriteAnimation>();
 	private GVector2f size;
 	
-	public Explosion(GVector2f position, GameAble parent, GVector2f size, Color color, int number) {
+	public Explosion(GVector2f position, GameAble parent, GVector2f size, Color color, int number, boolean explosion, boolean shockwave) {
 		super(position, parent);
 		
 		this.size = size;
 		
 		createParticles(color, number);
-		
-		waves.add(new Shockwave(getParent(), position, 120, 5, 5, Color.yellow, true));
-		animations.add(new SpriteAnimation("explosion1.png", 5, 5, 2));
+		if(shockwave){
+			waves.add(new Shockwave(getParent(), position, 120, 5, 5, Color.yellow, true));
+		}
+		if(explosion){
+			animations.add(new SpriteAnimation("explosion1.png", 5, 5, 2));
+		}
 	}
 
 	private void createParticles(Color color, int number) {
 		GVector2f particleSize = size.div(number);
-		for(int i=-number / 2 ; i<number / 2 ; i++){
-			for(int j=-number / 2 ; j<number / 2 ; j++){
+		int particlesCount = number / 2;
+		for(int i=-particlesCount ; i<particlesCount ; i++){
+			for(int j=-particlesCount ; j<particlesCount ; j++){
 				GVector2f dir = new GVector2f(i,j);
 				particles.add(new Particle(position.add(particleSize.mul(dir)), 
 										   getParent(), 
@@ -71,8 +75,9 @@ public class Explosion extends Entity{
 													  .peek(a -> a.update(delta))
 													  .collect(Collectors.toCollection(ArrayList::new));
 		
-		if(waves.isEmpty() && particles.isEmpty() && animations.isEmpty())
+		if(waves.isEmpty() && particles.isEmpty() && animations.isEmpty()){
 			alive = false;
+		}
 	}
 	
 	@Override

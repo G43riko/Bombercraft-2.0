@@ -193,7 +193,7 @@ public class Bomb extends Helper{
 		alive = false;
 		calcTargetBlocks();
 		getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks, demageAreas);
-		getParent().addExplosion(position.add(Block.SIZE.div(2)), Block.SIZE, Color.black, 15);
+		getParent().addExplosion(position.add(Block.SIZE.div(2)), Block.SIZE, Color.black, 15, true, true);
 	}
 	
 	@Override

@@ -8,6 +8,7 @@ public abstract class GameState implements Interactable, Clicable{
 		LoadingScreen("LoadingScreen"),
 		JoinMenu("JoinMenu"), 
 		ProfileMenu("ProfileMenu"), 
+		EndGameMenu("EndGameMenu"), 
 		OptionsMenu("OptionsMenu"), 
 		PauseMenu("PauseMenu"), 
 		MainMenu("MainMenu"), 

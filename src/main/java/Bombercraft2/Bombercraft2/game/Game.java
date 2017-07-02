@@ -4,6 +4,8 @@ import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,12 +17,15 @@ import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
+import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.towers.Tower;
+import Bombercraft2.Bombercraft2.game.entity.towers.TowerMachineGun;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.level.Map;
@@ -44,9 +49,10 @@ public class Game extends GameState implements GameAble{
 	private MouseSelector			mouseSelector;//	= new MouseSelector(this);
 	private SceneManager 			sceneManager 	= new SceneManager(this);
 	private LightsManager			lightsManager;
+	private long					startTime		= System.currentTimeMillis();
 
 	
-	//pre pripadny currentModificationException ak sa chce upravit nieco co sa pouziva
+	//pre pripadny currentModificationException ak sa chce upravit nieco co sa pouziva//todo treba to osetrit inac
 	private boolean					render		= true;
 	private boolean					update		= true;
 	private boolean					input		= true;
@@ -61,10 +67,10 @@ public class Game extends GameState implements GameAble{
 			myPlayer = new MyPlayer(this,
 									level.getRandomRespawnZone() , 
 									getProfil().getName(), 
-									level.getDefaultPlayerInfo().getInt(Texts.PLAYER_SPEED), 
-									level.getDefaultPlayerInfo().getInt(Texts.PLAYER_HEALT), 
+									level.getDefaultPlayerInfo().getInt(Texts.SPEED), 
+									level.getDefaultPlayerInfo().getInt(Texts.HEALT), 
 									getProfil().getAvatar(), 
-									level.getDefaultPlayerInfo().getInt(Texts.PLAYER_RANGE));
+									level.getDefaultPlayerInfo().getInt(Texts.RANGE));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -87,8 +93,6 @@ public class Game extends GameState implements GameAble{
 		
 
 		lightsManager.addLight(new Light(this, new GVector2f(300,300), new GVector2f(300, 300), myPlayer));
-		
-		
 	}
 
 	@Override
@@ -145,33 +149,8 @@ public class Game extends GameState implements GameAble{
 		gui.input();
 	}
 	@Override
-	public GVector2f getPosition() {
-		GLogger.notImplemented();
-		return null;
-	}
-	@Override
-	public GVector2f getSize() {
-		GLogger.notImplemented();
-		return null;
-	}
-	@Override
-	public Level getLevel() {
-		return level;
-	}
-	@Override
-	public float getZoom() {
-		return 1;
-	}
-	public GVector2f 				getOffset() {return myPlayer.getOffset();}
-	public Canvas 					getCanvas(){return parent.getCanvas();}
-	@Override
-	public Profil getProfil() {
-		return parent.getProfil();
-	}
-	@Override
 	public ArrayList<String> getLogInfos() {
 		ArrayList<String> result = new ArrayList<String>();
-		result.addAll(sceneManager.getLogInfos());
 		result.add("FPS: " 				+ parent.getFPS());
 		result.add("UPS: " 				+ parent.getUPS());
 		result.add("loops: " 			+ parent.getLoops());
@@ -184,9 +163,8 @@ public class Game extends GameState implements GameAble{
 		Runtime runtime = Runtime.getRuntime();
 		final long usedMem = (runtime.totalMemory() - runtime.freeMemory()) / 1000000;
 		result.add("memory: " + String.format("%03d ", usedMem)  + " / " + String.format("%03d ", runtime.totalMemory() / 1000000) + "MB");
-//		result.add("helpers: " + renderedHelpers + "/" + helpers.size());
-//		result.add("enemies: " + renderedEnemies + "/" + enemies.size());
-//		result.add("particles: " + renderedParticles);
+
+		result.addAll(sceneManager.getLogInfos());
 		result.add("blocks: " + level.getMap().getRenderedBlocks() + "/" + (int)level.getMap().getNumberOfBlocks().mul());
 		result.add("Zoom: " + getZoom());
 		return result;
@@ -213,25 +191,7 @@ public class Game extends GameState implements GameAble{
 	public void switchVisibleOption(String key){
 		parent.switchVisibleOption(key);
 	}
-	public void addHelper(GVector2f selectorSur, 
-						  int cadenceBonus, 
-						  GVector2f pos, 
-						  int demage, 
-						  String type,
-						  GVector2f target) {
-		GLogger.notImplemented();
-	}
-	public void addBomb(GVector2f position, int range, int time, int demage) {
-		GLogger.notImplemented();
-	}
-	public void addBullet(GVector2f position, 
-						  GVector2f direction, 
-						  int bulletSpeed, 
-						  int attack, 
-						  String bulletType,
-						  int bulletDefaultHealt) {
-		GLogger.notImplemented();
-	}
+
 	@Override
 	public void addPlayer(String name, String image) {
 		try {
@@ -247,8 +207,13 @@ public class Game extends GameState implements GameAble{
 		}
 	}
 	@Override
-	public void addExplosion(GVector2f position, GVector2f size, Color color, int number) {
-		sceneManager.addExplosion(position, size, color, number);
+	public void addExplosion(GVector2f position, 
+							 GVector2f size, 
+							 Color color, 
+							 int number,
+							 boolean explosion,
+							 boolean shockwave) {
+		sceneManager.addExplosion(position, size, color, number, explosion,shockwave);
 	}
 	@Override
 	public void addEmmiter(GVector2f position, Emitter.Types type) {
@@ -264,10 +229,12 @@ public class Game extends GameState implements GameAble{
 	}
 	@Override
 	public void newGame() {
+		startTime = System.currentTimeMillis();
 		parent.showLoading();
 		resetGame();
 		getLevel().getMap().createRandomMap();
 		myPlayer.respawn();
+		sceneManager.reset();
 		parent.removeLoading();
 	}
 	@Override
@@ -313,17 +280,7 @@ public class Game extends GameState implements GameAble{
 	}
 
 	@Override
-	public ToolManager getToolsManager() {
-		return toolManager;
-	}
-
-	@Override
-	public Connector getConnector() {
-		return parent.getConnector();
-	}
-
-	@Override
-	public void putHelper(GVector2f pos, Helper.Type type, long createTime) {//TODO playerov bonus k poskodeniu tu ma byt
+	public void addHelper(GVector2f pos, Helper.Type type, long createTime) {//TODO playerov bonus k poskodeniu tu ma byt
 		GVector2f localPos = Map.globalPosToLocalPos(pos);
 		pos = pos.div(Block.SIZE).toInt().mul(Block.SIZE);
 		
@@ -332,9 +289,16 @@ public class Game extends GameState implements GameAble{
 			GLogger.printLine("Vytvara sa helper na helpere");
 			return;
 		}
+		if(level.getMap().getBlock(key).getType() == Block.Type.WATER){
+			GLogger.printLine("Vytvara sa helper na vode");
+			return;
+		}
 		switch(type){
 			case BOMB_NORMAL:
 				sceneManager.addHelper(key,  new Bomb(pos, this, type, createTime));
+				break;
+			case TOWER_MACHINE_GUN:
+				sceneManager.addHelper(key, new TowerMachineGun(pos, this));
 				break;
 		}
 	}
@@ -349,18 +313,23 @@ public class Game extends GameState implements GameAble{
 		sceneManager.removeHelper(key);
 	}
 
-	@Override
-	public MyPlayer getMyPlayer() {
-		return myPlayer;
-	}
-
 //	@Override
 //	public HashMap<String, Player> getPlayers() {
 //		return players;
 //	}
-	
+
 	@Override
-	public String getGameInfo() {
+	public GVector2f 	getPosition() {return new GVector2f();}
+	public GVector2f 	getSize() {return new GVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
+	public Level 		getLevel() {return level;}
+	public Profil 		getProfil() {return parent.getProfil();}
+	public float 		getZoom() {return 1;}
+	public GVector2f 	getOffset() {return myPlayer.getOffset();}
+	public Canvas 		getCanvas(){return parent.getCanvas();}
+	public ToolManager 	getToolsManager() {return toolManager;}
+	public Connector 	getConnector() {return parent.getConnector();}
+	public MyPlayer 	getMyPlayer() {return myPlayer;}
+	public String 		getGameInfo() {
 		try {
 			JSONObject o = new JSONObject();
 			o.put(Texts.LEVEL_DATA, level.toJSON());
@@ -375,8 +344,8 @@ public class Game extends GameState implements GameAble{
 	public String getBasicInfo() {
 		try {
 			JSONObject result = new JSONObject();
-			result.put(Texts.LEVEL_NAME, "randomLevel");
-			result.put(Texts.PLAYER_NAME, getProfil().getName());
+			result.put(Texts.LEVEL, "randomLevel");
+			result.put(Texts.NAME, getProfil().getName());
 			result.put(Texts.MAX_PLAYERS, "5");
 			result.put(Texts.PLAYERS_NUMBER, sceneManager.getPlayersCount());
 			return result.toString();
@@ -410,7 +379,6 @@ public class Game extends GameState implements GameAble{
 	
 	@Override
 	public GVector2f gePlyerDirection() {
-		//return Input.getMousePosition().add(myPlayer.getOffset()).sub(myPlayer.getCenter());
 		return myPlayer.getTagetDirection();
 	}
 	@Override
@@ -430,6 +398,22 @@ public class Game extends GameState implements GameAble{
 				break;
 		}
 		sceneManager.addBullet(bullet);
+	}
+
+	@Override
+	public void endGame() {
+		parent.endGame();
+	}
+
+	@Override
+	public HashMap<String, String> getStats() {
+		HashMap<String, String> stats = new HashMap<String, String>();
+		int duration = (int)(System.currentTimeMillis() - startTime) / 1000;
+		int minutes = duration  / 60;
+		int seconds = duration - minutes * 60;
+		stats.putAll(sceneManager.getStats());
+		stats.put("Cas hry", minutes + ":" + seconds);
+		return stats;
 	}
 
 }

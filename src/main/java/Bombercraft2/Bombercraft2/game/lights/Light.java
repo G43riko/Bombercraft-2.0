@@ -15,8 +15,8 @@ import Bombercraft2.Bombercraft2.game.entity.Entity;
 import utils.math.GVector2f;
 
 public class Light extends Entity{
-	private static float[]	borders	= new float[] { 0, 1 };
-	private static Color[]	colors	= new Color[] { Color.BLACK, new Color(0, 0, 0, 0) };
+	private static float[]	borders		= new float[] { 0, 1 };
+	private static Color[]	colors		= new Color[] { Color.BLACK, new Color(0, 0, 0, 0) };
 	private GVector2f		size;
 	private Entity			target;
 	private BufferedImage	image;
@@ -45,12 +45,12 @@ public class Light extends Entity{
 	
 	public Light(GameAble parent, GVector2f position, int radius, double angle, int offset, int luminence, Entity target) {
 		super(position, parent);
-		
-		this.target = target;
-		this.offset = offset;
-		this.luminence = luminence;
-		this.radius = radius;
-		this.angle = -(angle > Math.PI * 2 ? angle = Math.toRadians(angle) : angle);
+
+		this.luminence 	= luminence;
+		this.target 	= target;
+		this.offset 	= offset;
+		this.radius 	= radius;
+		this.angle 		= -(angle > Math.PI * 2 ? angle = Math.toRadians(angle) : angle);
 		
 		size = new GVector2f(radius, radius);
 		
@@ -59,11 +59,11 @@ public class Light extends Entity{
 	}
 
 	private void calcImage(){
-		image = new BufferedImage(size.getXi() * 2, size.getYi() * 2, BufferedImage.TYPE_INT_ARGB);
-		
-		Graphics2D g2 = (Graphics2D) image.getGraphics();
-		Point2D center = new Point2D.Float(radius, radius);
-		Point2D focus = center;
+		image 			= new BufferedImage(size.getXi() * 2, size.getYi() * 2, BufferedImage.TYPE_INT_ARGB);
+
+		Point2D center 	= new Point2D.Float(radius, radius);
+		Graphics2D g2 	= (Graphics2D) image.getGraphics();
+		Point2D focus 	= center;
 		
 		if(radius != 0 && offset != 0){
 			focus = new Point2D.Double(radius + Math.cos(angle) * offset, radius + Math.sin(angle) * offset);
@@ -143,8 +143,9 @@ public class Light extends Entity{
 	public void update(float delta) {
 		if(target != null){
 			setPosition(target.getPosition().add(target.getSize().div(2)));
-			if(!target.isAlive())
+			if(!target.isAlive()){
 				alive = false;
+			}
 		}
 		
 	}

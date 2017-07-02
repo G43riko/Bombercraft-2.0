@@ -8,13 +8,17 @@ import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.Profil;
+import Bombercraft2.Bombercraft2.core.GameState.Type;
 import Bombercraft2.Bombercraft2.game.Game;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
+import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
+import Bombercraft2.Bombercraft2.game.entity.towers.TowerMachineGun;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.gui.AlertManager;
 import Bombercraft2.Bombercraft2.gui.GuiManager;
 import Bombercraft2.Bombercraft2.gui.LoadingScreen;
+import Bombercraft2.Bombercraft2.gui.menus.EndGameMenu;
 import Bombercraft2.Bombercraft2.gui.menus.JoinMenu;
 import Bombercraft2.Bombercraft2.gui.menus.MainMenu;
 import Bombercraft2.Bombercraft2.gui.menus.Menu;
@@ -54,6 +58,8 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		try {
 			gameConfig = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG).getJSONObject("data");
 			BulletManager.init(gameConfig.getJSONObject("bullets"));
+			JSONObject helpers = gameConfig.getJSONObject("helpers");
+			TowerCreator.init(helpers.getJSONObject("towers"));
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -87,6 +93,11 @@ public class CoreGame extends CoreEngine implements MenuAble{
 			return;
 		}
 		states.peek().input();
+		
+		if(Input.getKeyDown(Input.KEY_E)){
+			endGame();
+			return;
+		}
 		
 		if(Input.getKeyDown(Input.KEY_ESCAPE)){
 			if(states.peek().getType() == GameState.Type.Game){
@@ -169,7 +180,7 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	}
 	@Override
 	public void connectToGame(String ip) {
-		
+		//odstranime joinMenu
 		states.pop();
 		Input.setTarget(null);
 		
@@ -180,14 +191,24 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		
 		connector = new GameClient(this, ip);
 	}
-	
+	public void endGame(){
+		states.pop();
+		states.push(new EndGameMenu(this));
+		Input.setTarget(states.peek());
+	}
 	public void continueGame() {
+		
+		
 		if(game != null){
 			states.push(game);
 		}
 		Input.setTarget(game);
 	}
 	public void pausedGame() {
+		if(states.peek().getType() == Type.EndGameMenu){
+			states.pop();
+		}
+		
 		//vyberie game
 		states.pop();
 		Input.setTarget(states.peek());
@@ -209,7 +230,6 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		}
 		gameLauched = false;
 		
-
 		game = null;
 		
 		if(!Utils.isIn(states.peek().getType(), GameState.Type.MainMenu, GameState.Type.ProfileMenu)){
@@ -223,7 +243,6 @@ public class CoreGame extends CoreEngine implements MenuAble{
 			menu.setDisabled(Texts.STOP_GAME, menu != null);
 			menu.setDisabled(Texts.JOIN_GAME, game != null);
 		}
-		
 	}
 	public void createGame(JSONObject gameData) {
 		if(gameLauched)
@@ -296,9 +315,8 @@ public class CoreGame extends CoreEngine implements MenuAble{
 	public JSONObject getPlayerInfo() {
 		try {
 			JSONObject result = new JSONObject();
-//			result.put("name", actLevel.getParent().getProfil().getName());
-			result.put("name", profil.getName());
-			result.put("avatar", profil.getAvatar());
+			result.put(Texts.NAME, profil.getName());
+			result.put(Texts.IMAGE, profil.getAvatar());
 			return result;
 		} catch (JSONException e) {
 			e.printStackTrace();

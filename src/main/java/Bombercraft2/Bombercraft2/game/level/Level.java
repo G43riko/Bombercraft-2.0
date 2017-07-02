@@ -93,9 +93,9 @@ public class Level implements Interactable {
 	public void setDefaultPlayerInfo(){
 		playerInfo = new JSONObject();
 		try {
-			playerInfo.put(Texts.PLAYER_SPEED, 4);
-			playerInfo.put(Texts.PLAYER_RANGE, 2);
-			playerInfo.put(Texts.PLAYER_HEALT, 10);
+			playerInfo.put(Texts.SPEED, 4);
+			playerInfo.put(Texts.RANGE, 2);
+			playerInfo.put(Texts.HEALT, 10);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

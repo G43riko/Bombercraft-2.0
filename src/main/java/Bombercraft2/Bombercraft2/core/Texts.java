@@ -8,7 +8,6 @@ public class Texts {
 	public static final String MAX_PLAYERS 			= "maxPlayers";
 	public static final String LEVEL_DATA 			= "levelData";
 	public static final String SHOW_WALS 			= "showWalls";
-	public static final String PLAYER_POSITION		= "position";		//TODO duplicate of POSITION
 	public static final String CONTINUE_GAME		= "continue";
 	public static final String SHOW_LOGS 			= "showLogs";
 	public static final String STOP_GAME 			= "stopGame";
@@ -19,22 +18,13 @@ public class Texts {
 	public static final String BUSHES 				= "bushes";
 	public static final String PLANTS 				= "plants";
 	public static final String BLOCKS 				= "blocks";
-	public static final String PLAYER_IMAGE 		= "image";			//TODO duplicate of IMAGE
-	public static final String PLAYER_SPEED 		= "speed";
-	public static final String PLAYER_HEALT 		= "healt";			//TODO duplicate of HEALT
-	public static final String PLAYER_RANGE 		= "range";			//TODO duplicate of RANGE
 	public static final String HEALT 				= "healt";
-	public static final String LEVEL_NAME 			= "level";			//TODO duplicate of LEVEL
 	public static final String TREES 				= "trees";
 	public static final String FLORA 				= "flora";
-	public static final String PLAYER_NAME 			= "name";
 	public static final String EXIT_GAME 			= "exit";
 	public static final String BACK					= "back";
 	public static final String GAME 				= "game";
 	public static final String MESSAGE				= "msg";
-	public static final String BLOCK_POSITION 		= "position";		//TODO duplicate of POSITION
-	public static final String BLOCK_HEALT 			= "healt";			//TODO duplicate of HEALT
-	public static final String BLOCK_TYPE 			= "type";			//TODO duplicate of TYPE
 	public static final String BLOCKS_NUMBER 		= "numberOfBlocks";
 	public static final String MAP 					= "map";
 	public static final String PLAYER_INFO 			= "playerInfo";
@@ -46,9 +36,7 @@ public class Texts {
 	public static final String GAME_CLOSED			= "gameClosed";
 	public static final String PLAYER_CONNECTED		= "playerConnected";
 	public static final String PLAYER_DISCONNECTED	= "playerDisconnected";
-	public static final String PLAYER_AVATAR 		= "avatar";			//TODO should be IMAGE
 	public static final String PLAYER 				= "player";
-	public static final String PLAYER_DIRECTION 	= "direction";		//TODO duplicate of DIRECTION
 	public static final String DEMAGE 				= "demage";
 	public static final String RANGE 				= "range";
 	public static final String TIME 				= "time";
@@ -81,5 +69,5 @@ public class Texts {
 	public static final String SIZE 				= "size";
 	public static final String CADENCE 				= "cadence";
 	public static final String IMAGE 				= "image";
-
+	public static final String BULLET_TYPE 			= "bulletType";
 }

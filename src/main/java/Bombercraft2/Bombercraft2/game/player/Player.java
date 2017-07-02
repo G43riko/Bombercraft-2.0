@@ -38,13 +38,13 @@ public class Player extends Entity implements Healtable{
 	public Player(GameAble parent, JSONObject object){
 		super(new GVector2f(), parent);
 		try{
-			position 	= new GVector2f(object.getString(Texts.PLAYER_POSITION));
-			speed 		= object.getInt(Texts.PLAYER_SPEED);
-			healt 		= object.getInt(Texts.PLAYER_HEALT);
-			range 		= object.getInt(Texts.PLAYER_RANGE);
-			name 		= object.getString(Texts.PLAYER_NAME);
+			position 	= new GVector2f(object.getString(Texts.POSITION));
+			speed 		= object.getInt(Texts.SPEED);
+			healt 		= object.getInt(Texts.HEALT);
+			range 		= object.getInt(Texts.RANGE);
+			name 		= object.getString(Texts.NAME);
 			demage 		= 1;
-			setImage(object.getString(Texts.PLAYER_IMAGE));
+			setImage(object.getString(Texts.IMAGE));
 		}
 		catch (Exception e) {
 			e.printStackTrace();
@@ -90,12 +90,12 @@ public class Player extends Entity implements Healtable{
 	public JSONObject toJSON() {
 		JSONObject result = new JSONObject();
 		try {
-			result.put(Texts.PLAYER_POSITION, position);
-			result.put(Texts.PLAYER_SPEED, speed);
-			result.put(Texts.PLAYER_HEALT, healt);
-			result.put(Texts.PLAYER_IMAGE, image);
-			result.put(Texts.PLAYER_RANGE, range);
-			result.put(Texts.PLAYER_NAME, name);
+			result.put(Texts.POSITION, position);
+			result.put(Texts.SPEED, speed);
+			result.put(Texts.HEALT, healt);
+			result.put(Texts.IMAGE, image);
+			result.put(Texts.RANGE, range);
+			result.put(Texts.NAME, name);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

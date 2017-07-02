@@ -6,6 +6,8 @@ import org.json.JSONObject;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.Shootable;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -52,8 +54,8 @@ public class CommonMethods {
 	public void onPlayerChange(JSONObject data) {
 		try {
 			Player p = game.getPlayerByName(data.getString(Texts.PLAYER));
-			p.setDirection(Direction.valueOf(data.getString(Texts.PLAYER_DIRECTION)));
-			p.setPosition(new GVector2f(data.getString(Texts.PLAYER_POSITION)));
+			p.setDirection(Direction.valueOf(data.getString(Texts.DIRECTION)));
+			p.setPosition(new GVector2f(data.getString(Texts.POSITION)));
 			p.setMoving(true);
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -61,7 +63,7 @@ public class CommonMethods {
 	}
 	public void setPutHelper(GVector2f position, Helper.Type type) {
 		long createdAt = System.currentTimeMillis();
-		game.putHelper(position, type, createdAt);
+		game.addHelper(position, type, createdAt);
 
 		try {
 			JSONObject result = new JSONObject();
@@ -75,7 +77,7 @@ public class CommonMethods {
 	}
 	public void onPutHelper(JSONObject data){
 		try {
-			game.putHelper(new GVector2f(data.getString(Texts.POSITION)), 
+			game.addHelper(new GVector2f(data.getString(Texts.POSITION)), 
 									   Helper.Type.valueOf(data.getString(Texts.TYPE)), 
 									   data.getLong(Texts.CREATED_AT));
 		} catch (JSONException e) {
@@ -113,22 +115,37 @@ public class CommonMethods {
 			}
 		}
 	}
-	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser) {
-		GVector2f angle = game.gePlyerDirection();
+	public void setPutBullet(MyPlayer myPlayer, Shootable shooter) {
+		GVector2f angle = myPlayer.getTagetDirection();
 		angle.normalize();
 		//TODO tu treba spracovať už aj bonusy od hraca
 		try {
 			JSONObject object = new JSONObject();
 			object.put(Texts.POSITION, myPlayer.getTargetLocation());
 			object.put(Texts.DIRECTION, angle);
-			object.put(Texts.TYPE, weaponLaser.getBulletType());
+			object.put(Texts.TYPE, shooter.getBulletType());
 			parent.write(object.toString(), Server.PUT_BULLET);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		game.addBullet(weaponLaser.getBulletType(), angle, myPlayer.getTargetLocation());
-		
+		game.addBullet(shooter.getBulletType(), angle, myPlayer.getTargetLocation());
 	}
+//	public void setPutBullet(MyPlayer myPlayer, BulletManager.Types bulletType) {
+//		GVector2f angle = myPlayer.getTagetDirection();
+//		angle.normalize();
+//		//TODO tu treba spracovať už aj bonusy od hraca
+//		try {
+//			JSONObject object = new JSONObject();
+//			object.put(Texts.POSITION, myPlayer.getTargetLocation());
+//			object.put(Texts.DIRECTION, angle);
+//			object.put(Texts.TYPE, bulletType);
+//			parent.write(object.toString(), Server.PUT_BULLET);
+//		} catch (JSONException e) {
+//			e.printStackTrace();
+//		}
+//		game.addBullet(bulletType, angle, myPlayer.getTargetLocation());
+//		
+//	}
 	public void onPutBullet(JSONObject data){
 		try {
 			game.addBullet(Types.valueOf(data.getString(Texts.TYPE)), 
@@ -141,8 +158,8 @@ public class CommonMethods {
 	public void setPlayerChange(Player player) {
 		try {
 			JSONObject object = new JSONObject();
-			object.put(Texts.PLAYER_POSITION, player.getPosition());
-			object.put(Texts.PLAYER_DIRECTION, player.getDirection());
+			object.put(Texts.POSITION, player.getPosition());
+			object.put(Texts.DIRECTION, player.getDirection());
 			object.put(Texts.PLAYER, player.getName());
 			parent.write(object.toString(), Server.PLAYER_CHANGE);
 		} catch (JSONException e) {

@@ -50,4 +50,16 @@ App
 					MyPlayer	--ovladatelny hrac
 					GameGui		--vsetko co vidi hrac
 						GameLogs	--vyvojarske udaje o aplikacii
+						
+						
+CONSTRAINS
++helper nemoze byt polozeny na iny helper
++voda spomaluje
++cez bombu sa neda prejst
++na vodu sa nedaju davat helpery
+	-nejake specialne vodne helpery by malo byt mozne tam polozit
++
++
++
++
 	

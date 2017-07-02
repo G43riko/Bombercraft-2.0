@@ -16,6 +16,7 @@ public interface MenuAble extends Visible{
 	public void 		continueGame();
 	public void 		connectToGame(String ip);
 	public void 		pausedGame();
+	public void 		endGame();
 	public void 		stopGame();
 	public void 		exitGame();
 	public GuiManager	getGuiManager();

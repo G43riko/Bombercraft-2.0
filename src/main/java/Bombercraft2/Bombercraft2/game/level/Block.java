@@ -70,9 +70,9 @@ public class Block extends Entity{
 		super(new GVector2f(), parent);
 		
 		try {
-			position 	= new GVector2f(object.getString(Texts.BLOCK_POSITION));
-			healt 		= object.getInt(Texts.BLOCK_HEALT);
-			type 		= Type.valueOf(object.getString(Texts.BLOCK_TYPE));
+			position 	= new GVector2f(object.getString(Texts.POSITION));
+			healt 		= object.getInt(Texts.HEALT);
+			type 		= Type.valueOf(object.getString(Texts.TYPE));
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -105,9 +105,9 @@ public class Block extends Entity{
 		JSONObject result = new JSONObject();
 		
 		try {
-			result.put(Texts.BLOCK_HEALT, healt);
-			result.put(Texts.BLOCK_TYPE, type);
-			result.put(Texts.BLOCK_POSITION, position);
+			result.put(Texts.HEALT, healt);
+			result.put(Texts.TYPE, type);
+			result.put(Texts.POSITION, position);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -125,13 +125,13 @@ public class Block extends Entity{
 		}
 		return res;
 	}
-	public void remove(){remove(false);}
+	public void remove(){remove(true);}
 	public void remove(boolean addExplosion) {
 		if(addExplosion){
 			getParent().addExplosion(getPosition().add(Block.SIZE.div(2)), 
 									 Block.SIZE, 
 									 type.getMinimapColor(), 
-									 5);
+									 5, false, false);
 		}
 		type = Type.NOTHING; 
 		healt = 0;

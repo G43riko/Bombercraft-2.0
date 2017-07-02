@@ -11,7 +11,9 @@ import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.Shootable;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
 import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -223,8 +225,8 @@ public class GameClient extends Client implements Connector{
 	}
 
 	@Override
-	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser) {
-		methods.setPutBullet(myPlayer, weaponLaser);
+	public void setPutBullet(MyPlayer myPlayer, Shootable shooter) {
+		methods.setPutBullet(myPlayer, shooter);
 	}
 
 	@Override

@@ -65,9 +65,9 @@ public class JoinMenu extends Menu{
 							String message = String.valueOf(data.get(Texts.MESSAGE));
 							
 							JSONObject msg = new JSONObject(message);
-							addRemoteData(new RemoteGameData(msg.getString(Texts.PLAYER_NAME), 
+							addRemoteData(new RemoteGameData(msg.getString(Texts.NAME), 
 															 address.toString().replace("/", ""), 
-															 msg.getString(Texts.LEVEL_NAME), 
+															 msg.getString(Texts.LEVEL), 
 															 msg.getInt(Texts.MAX_PLAYERS), 
 															 msg.getInt(Texts.PLAYERS_NUMBER)));
 						}

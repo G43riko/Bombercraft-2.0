@@ -11,6 +11,7 @@ import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.entity.Shootable;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
@@ -114,8 +115,8 @@ public class GameServer extends Server implements Connector{
 					onPutBullet(o);
 					break;
 				case PLAYER_DATA :
-					renameClient(client.getId() + "", o.getString(Texts.PLAYER_NAME));
-					parent.getGame().addPlayer(o.getString(Texts.PLAYER_NAME), o.getString(Texts.PLAYER_AVATAR));
+					renameClient(client.getId() + "", o.getString(Texts.NAME));
+					parent.getGame().addPlayer(o.getString(Texts.NAME), o.getString(Texts.IMAGE));
 					client.write(getGameInfo(), GAME_INFO);
 					parent.showMessage(Texts.PLAYER_CONNECTED, client.getName());
 					break;
@@ -203,8 +204,8 @@ public class GameServer extends Server implements Connector{
 	}
 
 	@Override
-	public void setPutBullet(MyPlayer myPlayer, WeaponLaser weaponLaser) {
-		methods.setPutBullet(myPlayer, weaponLaser);
+	public void setPutBullet(MyPlayer myPlayer, Shootable shooter) {
+		methods.setPutBullet(myPlayer, shooter);
 	}
 
 	@Override
