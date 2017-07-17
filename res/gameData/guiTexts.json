@@ -151,9 +151,9 @@
 		"sk" : "Zdravie",
 		"en" : "Health"
 	},
-	"demage" : {
+	"damage" : {
 		"sk" : "Poškodenie",
-		"en" : "Demage"
+		"en" : "Damage"
 	},
 	"speed" : {
 		"sk" : "Rýchlosť",

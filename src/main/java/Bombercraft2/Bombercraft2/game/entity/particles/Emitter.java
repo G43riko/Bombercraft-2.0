@@ -111,7 +111,6 @@ public abstract class Emitter extends Entity{
 		
 	}
 
-	public GVector2f getSur() {return getPosition().div(Block.SIZE).toInt();}
 	public long getRenderedParticles() {return renderedParticles;}
 	public GVector2f getSize() {return size;}
 	public boolean isAlive() {return alive || !particles.isEmpty();}

@@ -83,7 +83,7 @@ public class GameServer extends Server implements Connector{
 			object.put(Texts.POSITION, position);
 			object.put(Texts.HITTED_BLOCKS, new JSONArray(hittedBlocks));
 			object.put(Texts.HITTED_PLAYERS, hittedPlayers);
-			object.put(Texts.DEMAGE, demage);
+			object.put(Texts.DAMAGE, demage);
 			write(object.toString(), Server.BOMB_EXPLODE);
 		} catch (JSONException e) {
 			e.printStackTrace();

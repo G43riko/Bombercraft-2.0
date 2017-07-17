@@ -11,6 +11,7 @@ import Bombercraft2.Bombercraft2.Profil;
 import Bombercraft2.Bombercraft2.core.GameState.Type;
 import Bombercraft2.Bombercraft2.game.Game;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.bots.BotManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerMachineGun;
@@ -57,9 +58,11 @@ public class CoreGame extends CoreEngine implements MenuAble{
 		
 		try {
 			gameConfig = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG).getJSONObject("data");
+			BotManager.init(gameConfig.getJSONObject("enemies"));
 			BulletManager.init(gameConfig.getJSONObject("bullets"));
 			JSONObject helpers = gameConfig.getJSONObject("helpers");
 			TowerCreator.init(helpers.getJSONObject("towers"));
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

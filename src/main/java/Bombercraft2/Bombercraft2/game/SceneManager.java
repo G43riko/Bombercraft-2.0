@@ -14,6 +14,9 @@ import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Texts;
+import Bombercraft2.Bombercraft2.game.bots.BotManager.Types;
+import Bombercraft2.Bombercraft2.game.bots.Enemy;
+import Bombercraft2.Bombercraft2.game.bots.EnemyA;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
@@ -30,10 +33,20 @@ import utils.math.GVector2f;
 import utils.resouces.JSONAble;
 
 public class SceneManager implements Interactable, JSONAble{
-	private final static String			KEY_BULLETS			= "bullets";
-	private final static String			KEY_HELPERS			= "helpers";
-	private final static String			KEY_BOMBS			= "bombs";
-	private final static String			KEY_EXPLOSIONS		= "explosions";
+	private enum Keys{
+		BULLETS("bullets"),
+		BULLETS_RENDERED("bulletsRendered"),
+		HELPERS("helpers"),
+		HELPERS_RENDERED("helpersRendered"),
+		BOMBS("bombs"),
+		PARTICLES("particles"),
+		PARTICLES_RENDERED("particlesRendered"),
+		ENEMIES("enemies"),
+		ENEMIES_RENDERED("enemiesRendered"),
+		EXPLOSIONS("explosions");
+		String key;
+		Keys(String key){this.key = key;}
+	}
 	private HashMap<String, Player>		players				= new HashMap<String, Player>();
 //	private HashMap<String, Player>		playersNew			= new HashMap<String, Player>();
 	private HashMap<String, Helper>		helpers				= new HashMap<String, Helper>();
@@ -41,10 +54,11 @@ public class SceneManager implements Interactable, JSONAble{
 	private HashSet<Helper>				helpersRemoved		= new HashSet<Helper>();
 	private ArrayList<Entity>			explosions			= new ArrayList<Entity>();
 	private ArrayList<Bullet>			bullets				= new ArrayList<Bullet>();
+	private ArrayList<Enemy>			enemies				= new ArrayList<Enemy>();
 	private GameAble 					parent;
 	private Bomb						lastBomb			= null;
-	private HashMap<String, Integer> 	stats 				= new HashMap<String, Integer>();
-	private long						renderedParticles	= 0;
+	private HashMap<Keys, Integer> 		stats 				= new HashMap<Keys, Integer>();
+//	private long						renderedParticles	= 0;
 	
 	public SceneManager(GameAble parent){
 		this.parent = parent;
@@ -53,7 +67,7 @@ public class SceneManager implements Interactable, JSONAble{
 	
 	public void addBullet(Bullet bullet){
 		bullets.add(bullet);
-		stats.put(KEY_BULLETS, stats.get(KEY_BULLETS) + 1);
+		stats.put(Keys.BULLETS, stats.get(Keys.BULLETS) + 1);
 	}
 	
 	public void addPlayer(Player player){
@@ -63,22 +77,36 @@ public class SceneManager implements Interactable, JSONAble{
 	public void addHelper(String key, Helper helper){
 		if(Helper.isBomb(helper.getType())){
 			lastBomb = (Bomb)helper;
-			stats.put(KEY_BOMBS, stats.get(KEY_BOMBS) + 1);
+			stats.put(Keys.BOMBS, stats.get(Keys.BOMBS) + 1);
 		}
-		stats.put(KEY_HELPERS, stats.get(KEY_HELPERS) + 1);
+		stats.put(Keys.HELPERS, stats.get(Keys.HELPERS) + 1);
 		helpers.put(key, helper);
 	}
 	
 	@Override
 	public void render(Graphics2D g2) {
-		bullets.stream().filter(parent::isVisible).forEach(a -> a.render(g2));
-		players.values().stream().filter(parent::isVisible).forEach(a -> a.render(g2));
-		helpers.values().stream().filter(parent::isVisible).forEach(a -> a.render(g2));
+		stats.put(Keys.BULLETS_RENDERED, (int)bullets.stream()
+													 .filter(parent::isVisible)
+													 .peek(a -> a.render(g2))
+													 .count());
 		
-		renderedParticles = new ArrayList<Emitter>(emitters).stream()
-				.peek(a -> a.render(g2))
-				.mapToLong(a -> a.getRenderedParticles())
-				.sum();
+		players.values().stream().filter(parent::isVisible).forEach(a -> a.render(g2));
+		
+		stats.put(Keys.ENEMIES_RENDERED, (int)enemies.stream()
+													 .filter(parent::isVisible)
+													 .peek(a -> a.render(g2))
+													 .count());
+		
+		stats.put(Keys.HELPERS_RENDERED, (int)helpers.values().stream()
+															  .filter(parent::isVisible)
+															  .peek(a -> a.render(g2))
+															  .count());
+		
+		stats.put(Keys.PARTICLES_RENDERED, (int)new ArrayList<Emitter>(emitters).stream()
+																				.peek(a -> a.render(g2))
+																				.mapToLong(a -> a.getRenderedParticles())
+																				.sum());
+		
 		
 		
 		new ArrayList<Entity>(explosions).stream().forEach(a -> a.render(g2));
@@ -89,16 +117,19 @@ public class SceneManager implements Interactable, JSONAble{
 //		playersNew.forEach((a, b)-> players.put(a, b));
 //		playersNew.clear();
 		
-
 		emitters = new ArrayList<Emitter>(emitters).stream()
 											  	   .peek(a -> a.update(delta))
 											  	   .collect(Collectors.toCollection(ArrayList::new));
 		
-//		bullets.stream().forEach(a -> a.update(delta));
 		bullets = new ArrayList<Bullet>(bullets).stream()
 												.peek(a -> a.update(delta))
 												.filter(a -> a.isAlive())
 												.collect(Collectors.toCollection(ArrayList::new));
+		
+		enemies = new ArrayList<Enemy>(enemies).stream()
+											   .peek(a -> a.update(delta))
+											   .filter(a -> a.isAlive())
+											   .collect(Collectors.toCollection(ArrayList::new));
 		
 		helpers.values().removeAll(helpersRemoved);
 		helpersRemoved.clear();
@@ -134,6 +165,16 @@ public class SceneManager implements Interactable, JSONAble{
 	public void fromJSON(JSONObject data) {
 		
 	}
+	
+	public void addEnemy(GVector2f position, Types type){
+		stats.put(Keys.ENEMIES, stats.get(Keys.ENEMIES) + 1);
+		switch(type){
+			case A:
+				enemies.add(new EnemyA(position, parent));
+				break;
+		}
+		
+	}
 	public void addEmmiter(GVector2f position, Emitter.Types type) {
 		emitters.add(new ParticleEmmiter(type, position,  parent));
 	}
@@ -143,7 +184,7 @@ public class SceneManager implements Interactable, JSONAble{
 							 int number, 
 							 boolean explosion, 
 							 boolean shockwave){
-		stats.put(KEY_EXPLOSIONS, stats.get(KEY_EXPLOSIONS) + 1);
+		stats.put(Keys.EXPLOSIONS, stats.get(Keys.EXPLOSIONS) + 1);
 		explosions.add(new Explosion(position, parent, size, color, number, explosion, shockwave));
 	}
 	@Override
@@ -182,10 +223,11 @@ public class SceneManager implements Interactable, JSONAble{
 	}
 	
 	public void reset(){
-		stats.put(KEY_BULLETS, 0);
-		stats.put(KEY_HELPERS, 0);
-		stats.put(KEY_BOMBS, 0);
-		stats.put(KEY_EXPLOSIONS, 0);
+		Keys[] values = Keys.values();
+		
+		for(int i=0 ; i<values.length ; i++){
+			stats.put(values[i], 0);
+		}
 		
 		helpers.clear();
 		emitters.clear();
@@ -195,8 +237,11 @@ public class SceneManager implements Interactable, JSONAble{
 
 	public Collection<? extends String> getLogInfos() {
 		ArrayList<String> result = new ArrayList<String>();
-		result.add("Helpers: " + helpers.size());
-		result.add("Bullets: " + bullets.size());
+		result.add("Helpers: " + stats.get(Keys.HELPERS_RENDERED) + "/" + helpers.size() + "/" + stats.get(Keys.HELPERS));
+		
+		result.add("Bullets: " + stats.get(Keys.BULLETS_RENDERED) + "/" + bullets.size() + "/" + stats.get(Keys.BULLETS));
+		
+		result.add("Enemies: " + stats.get(Keys.ENEMIES_RENDERED) + "/" + enemies.size() + "/" + stats.get(Keys.ENEMIES));
 		return result;
 	}
 
@@ -204,11 +249,11 @@ public class SceneManager implements Interactable, JSONAble{
 
 	public HashMap<String, String> getStats() {
 		HashMap<String, String> result = new HashMap<String, String>();
-		
-		result.put(KEY_BULLETS, String.valueOf(stats.get(KEY_BULLETS)));
-		result.put(KEY_HELPERS, String.valueOf(stats.get(KEY_HELPERS)));
-		result.put(KEY_BOMBS, String.valueOf(stats.get(KEY_BOMBS)));
-		result.put(KEY_EXPLOSIONS, String.valueOf(stats.get(KEY_EXPLOSIONS)));
+		//RENDER/EXIST/ALL
+		result.put(Keys.BULLETS.key, String.valueOf(stats.get(Keys.BULLETS)));
+		result.put(Keys.HELPERS.key, String.valueOf(stats.get(Keys.HELPERS)));
+		result.put(Keys.BOMBS.key, String.valueOf(stats.get(Keys.BOMBS)));
+		result.put(Keys.EXPLOSIONS.key, String.valueOf(stats.get(Keys.EXPLOSIONS)));
 		return result;
 	}
 }

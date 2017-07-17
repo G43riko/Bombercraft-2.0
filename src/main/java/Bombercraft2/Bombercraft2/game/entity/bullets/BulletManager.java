@@ -19,6 +19,7 @@ public class BulletManager {
 	private static HashMap<Types, BulletModel> bullets = new HashMap<Types, BulletModel>();
 	public static void init(JSONObject data){
 		try {
+			//TODO toto prerobit na tento loop hned ako bude BasicBullet pripraveny
 //			Types[] types = Types.values();
 //			for(int i=0 ; i<types.length ; i++){
 //				bullets.put(types[i], new BulletModel(data.getJSONObject(types[i].getName())));

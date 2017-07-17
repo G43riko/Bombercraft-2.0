@@ -16,6 +16,7 @@ import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import utils.PerlinNoise;
 import utils.SimplexNoise;
 import utils.math.GVector2f;
@@ -219,31 +220,31 @@ public class Map implements Interactable{
 		return b != null && b.isWalkable();
 	}
 
-	public int[] getPossibleWays(GVector2f sur){
-		ArrayList<Integer> result = new ArrayList<Integer>();
+	public Direction[] getPossibleWays(GVector2f sur){
+		ArrayList<Direction> result = new ArrayList<Direction>();
 		Block b;
 		
 		b = getBlock(sur.getXi(), sur.getYi() - 1);
 		if(b != null && b.isWalkable()){
-			result.add(0);
+			result.add(Direction.UP);
 		}
 		
 		b = getBlock(sur.getXi() + 1, sur.getYi());
 		if(b != null && b.isWalkable()){
-			result.add(1);
+			result.add(Direction.RIGHT);
 		}
 		
 		b = getBlock(sur.getXi(), sur.getYi() + 1);
 		if(b != null && b.isWalkable()){
-			result.add(2);
+			result.add(Direction.DOWN);
 		}
 		
 		b = getBlock(sur.getXi() - 1, sur.getYi());
 		if(b != null && b.isWalkable()){
-			result.add(3);
+			result.add(Direction.LEFT);
 		}
 		
-		int[] ret = new int[result.size()];
+		Direction[] ret = new Direction[result.size()];
 		for(int i=0 ; i<result.size() ; i++){
 			ret[i] = result.get(i);
 		}

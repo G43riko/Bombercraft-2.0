@@ -72,9 +72,8 @@ public abstract class Bullet extends Entity{
 
 	//GETTERS
 	
-	@Override
-	public GVector2f getSur() {return getPosition().div(Block.SIZE).toInt();}
 	public int getMaxHealt() {return model.getMaxHealt();}
+	@Override
 	public GVector2f getSize() {return model.getSize();}
 	public GVector2f getDirection() {return direction;}
 	public int getDemage() {return model.getDemage();}

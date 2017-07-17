@@ -55,7 +55,7 @@ public class PlayerPanel implements Interactable{
 				  posY + verticalOffset);
 		
 		verticalOffset += PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
-		g2.drawString(parent.getLabelOf(Texts.DEMAGE) + ": " + parent.getMyPlayer().getDemage(), 
+		g2.drawString(parent.getLabelOf(Texts.DAMAGE) + ": " + parent.getMyPlayer().getDemage(), 
 				  posX + PLAYER_PANEL_FONT_OFFSET, 
 				  posY + verticalOffset);
 		

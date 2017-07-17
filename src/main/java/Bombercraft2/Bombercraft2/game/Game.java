@@ -19,6 +19,7 @@ import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
+import Bombercraft2.Bombercraft2.game.bots.BotManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
@@ -68,7 +69,7 @@ public class Game extends GameState implements GameAble{
 									level.getRandomRespawnZone() , 
 									getProfil().getName(), 
 									level.getDefaultPlayerInfo().getInt(Texts.SPEED), 
-									level.getDefaultPlayerInfo().getInt(Texts.HEALT), 
+									level.getDefaultPlayerInfo().getInt(Texts.HEALTH), 
 									getProfil().getAvatar(), 
 									level.getDefaultPlayerInfo().getInt(Texts.RANGE));
 		} catch (JSONException e) {
@@ -144,6 +145,9 @@ public class Game extends GameState implements GameAble{
 	public void input() {
 		if(!input){
 			return;
+		}
+		if(Input.isKeyDown(Input.KEY_ENTER)){
+			sceneManager.addEnemy(myPlayer.getSelectorPos(), BotManager.Types.A);
 		}
 		myPlayer.input();
 		gui.input();

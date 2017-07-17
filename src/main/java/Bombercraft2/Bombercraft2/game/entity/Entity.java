@@ -9,6 +9,7 @@ import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.IDGenerator;
 import utils.math.GVector2f;
 
@@ -40,17 +41,17 @@ public abstract class Entity implements Visible, Interactable{
 	//ABSTRACT
 	
 	public abstract JSONObject toJSON();
-	public abstract GVector2f getSur();
-	public abstract GVector2f getSize();
+	public GVector2f getSur(){return position.div(Block.SIZE).toInt();};
+	public GVector2f getSize(){return Block.SIZE; };
 	
 	//GETTERS
 	
-	public int 			getID(){return id;}
-	public GameAble 	getParent() {return parent;}
-	public GVector2f 	getPosition() {return position;}
-	protected GVector2f getTotalPosition(){return position.mul(parent.getZoom()).sub(getParent().getOffset());}
-	protected GVector2f getTotalSize(){return getSize().mul(parent.getZoom()); }
-	public GVector2f	getCenter(){return getPosition().add(getSize().div(2)); }
+	public final int 			getID(){return id;}
+	public final GameAble 		getParent() {return parent;}
+	public GVector2f 			getPosition() {return position;}
+	protected final GVector2f 	getTotalPosition(){return position.mul(parent.getZoom()).sub(getParent().getOffset());}
+	protected final GVector2f 	getTotalSize(){return getSize().mul(parent.getZoom()); }
+	public final GVector2f		getCenter(){return getPosition().add(getSize().div(2)); }
 
 	public boolean 		isAlive() {return alive;}
 	

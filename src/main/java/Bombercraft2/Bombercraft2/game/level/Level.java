@@ -95,7 +95,7 @@ public class Level implements Interactable {
 		try {
 			playerInfo.put(Texts.SPEED, 4);
 			playerInfo.put(Texts.RANGE, 2);
-			playerInfo.put(Texts.HEALT, 10);
+			playerInfo.put(Texts.HEALTH, 10);
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}

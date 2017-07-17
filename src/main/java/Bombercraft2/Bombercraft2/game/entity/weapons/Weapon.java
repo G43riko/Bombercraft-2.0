@@ -38,7 +38,7 @@ public abstract class Weapon implements Shootable, Toolable{
 	}
 	private void fromJSON(JSONObject data){
 		try {
-			this.demage 		= data.getInt(Texts.DEMAGE);
+			this.demage 		= data.getInt(Texts.DAMAGE);
 			this.cadence 		= data.getInt(Texts.CADENCE);
 			this.bulletType		= BulletManager.getBulletModel(data.getString(Texts.TYPE));
 			lastShot = System.currentTimeMillis() - cadence;

@@ -157,12 +157,6 @@ public class Light extends Entity{
 	}
 
 	@Override
-	public GVector2f getSur() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public GVector2f getSize() {
 		return size;
 	}

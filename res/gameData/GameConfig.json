@@ -5,13 +5,13 @@
 				"machineGun": {
 					"offset": 0,
 					"backgroundColor": "255_0_255",
-					"demage": 1,
+					"damage": 1,
 					"bulletSpeed": 12,
 					"buletHealt": 1,
 					"range": 200,
 					"type" : "TOWER_MACHINE_GUN",
 					"bulletType" : "LASER",
-					"healt": 50,
+					"health": 50,
 					"cadence": 400,
 					"canonSpeed": 5,
 					"canonColor": "255_0_255",
@@ -35,34 +35,34 @@
 			"weapons": {
 				"basic": {
 					"cadence": 0,
-					"demage": 1,
+					"damage": 1,
 					"bulletSpeed": 40,
-					"healt": 1
+					"health": 1
 				},
 				"laser": {
 					"cadence": 200,
-					"demage": 1,
+					"damage": 1,
 					"bulletSpeed": 40,
-					"healt": 1,
+					"health": 1,
 					"type" : "LASER"
 		        },
 	        	"bow": {
 					"cadence": 800,
-					"demage": 1,
+					"damage": 1,
 					"bulletSpeed": 20,
-					"healt": 1
+					"health": 1
 		        },
 		        "stick": {
 					"cadence": 400,
-					"demage": 1,
+					"damage": 1,
 					"bulletSpeed": 5,
-					"healt": 1
+					"health": 1
 		        },
 		        "boomerang": {
 					"cadence": 400,
-					"demage": 1,
+					"damage": 1,
 					"bulletSpeed": 20,
-					"healt": 3
+					"health": 3
 	        	},
 	        	"granade" : {},
 	        	"targetableRocket" : {},
@@ -75,26 +75,27 @@
 			"a": {
 		        "offset": 5,
 		        "speed": 1,
-		        "demage": 1,
+		        "damage": 1,
 		        "cadence": 200,
 		        "bulletSpeed": 4,
-		        "healt": 1
+		        "health": 1,
+		        "type": "A"
 			},
 	      	"b": {
 		        "offset": 5,
 		        "speed": 1,
-		        "demage": 1,
+		        "damage": 1,
 		        "cadence": 200,
 		        "bulletSpeed": 4,
-		        "healt": 1
+		        "health": 1
 			},
 			"c": {
 		        "offset": 5,
 		        "speed": 1,
-		        "demage": 1,
+		        "damage": 1,
 		        "cadence": 2000,
 		        "bulletSpeed": 4,
-		        "healt": 1
+		        "health": 1
 			}
 		},
 	    "particles": {
@@ -102,7 +103,7 @@
 				"a" : {
 					"color": "GREEN",
 					"speed": "2_0",
-					"healt": "100_100",
+					"health": "100_100",
 					"rotation": "0_0",
 					"direction": "0_360",
 					"size": "3_3",
@@ -120,10 +121,10 @@
 				"speed": 30,
 				"color": 16711680,
 				"size": "[50_50]",
-				"demage": 1,
+				"damage": 1,
 				"type" : "LASER",
 				"bulletSpeed": 40,
-				"healt": 1
+				"health": 1
 			},
 			"bow" : {},
 			"granade" : {},

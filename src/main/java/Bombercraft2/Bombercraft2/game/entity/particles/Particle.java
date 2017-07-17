@@ -56,7 +56,6 @@ public class Particle extends Entity{
 	
 	//GETTERS
 	
-	public GVector2f getSur() {return position.div(Block.SIZE).toInt();}
 	public GVector2f getSize() {return size;}
 
 }

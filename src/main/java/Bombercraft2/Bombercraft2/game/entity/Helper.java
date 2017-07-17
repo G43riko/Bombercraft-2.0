@@ -64,10 +64,5 @@ public abstract class Helper extends Entity {
 	public static boolean isBomb(Type type) {
 		return Utils.isIn(type, Helper.Type.BOMB_NORMAL);
 	}
-	
-	@Override
-	public GVector2f getSur() {
-		return position.div(Block.SIZE).toInt();
-	}
 
 }

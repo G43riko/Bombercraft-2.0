@@ -71,7 +71,7 @@ public class Block extends Entity{
 		
 		try {
 			position 	= new GVector2f(object.getString(Texts.POSITION));
-			healt 		= object.getInt(Texts.HEALT);
+			healt 		= object.getInt(Texts.HEALTH);
 			type 		= Type.valueOf(object.getString(Texts.TYPE));
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -105,7 +105,7 @@ public class Block extends Entity{
 		JSONObject result = new JSONObject();
 		
 		try {
-			result.put(Texts.HEALT, healt);
+			result.put(Texts.HEALTH, healt);
 			result.put(Texts.TYPE, type);
 			result.put(Texts.POSITION, position);
 		} catch (JSONException e) {
@@ -293,7 +293,6 @@ public class Block extends Entity{
 	
 	public GVector2f 	getSur() 		{return position/*.div(SIZE).toInt()*/;}
 	public GVector2f 	getPosition() 	{return position.mul(SIZE);}
-	public GVector2f 	getSize() 		{return SIZE;}
 	public Type 		getType() 		{return type;}
 	public int 			getHealt() 		{return healt;}
 	public boolean 		isWalkable()	{return type.isWalkable();}

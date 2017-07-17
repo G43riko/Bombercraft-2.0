@@ -31,12 +31,7 @@ public class Plant extends Flora{
 					 null);
 		super.render(g2);
 	}
-
-	@Override
-	public GVector2f getSur() {
-		return null;
-	}
-
+	
 	@Override
 	public GVector2f getSize() {
 		return type.getSize().mul(scale);

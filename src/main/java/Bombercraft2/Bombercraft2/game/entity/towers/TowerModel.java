@@ -26,9 +26,9 @@ public class TowerModel implements JSONAble{
 	@Override
 	public void fromJSON(JSONObject data) {
 		try {
-			this.demage 		= data.getInt(Texts.DEMAGE);
+			this.demage 		= data.getInt(Texts.DAMAGE);
 			this.canonSpeed 	= data.getInt("canonSpeed");
-			this.maxHealt 		= data.getInt(Texts.HEALT);
+			this.maxHealt 		= data.getInt(Texts.HEALTH);
 			this.bulletType		= BulletManager.getBulletModel(data.getString(Texts.BULLET_TYPE));
 //			this.size 			= new GVector2f(data.getString(Texts.SIZE));
 			this.type 			= Helper.Type.valueOf(data.getString(Texts.TYPE));

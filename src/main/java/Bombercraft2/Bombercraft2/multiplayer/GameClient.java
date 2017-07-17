@@ -51,7 +51,7 @@ public class GameClient extends Client implements Connector{
 	@Override
 	public void onBombExplode(JSONObject data) {
 		try {
-			int demage = data.getInt(Texts.DEMAGE);
+			int demage = data.getInt(Texts.DAMAGE);
 			JSONArray blocks = data.getJSONArray(Texts.HITTED_BLOCKS);
 			for(int i=0 ; i<blocks.length() ; i++){
 				GVector2f position = new GVector2f(blocks.getString(i));

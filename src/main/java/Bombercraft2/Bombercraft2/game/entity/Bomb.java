@@ -201,10 +201,4 @@ public class Bomb extends Helper{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
-	public GVector2f getSize() {
-		return Block.SIZE;
-	}
-	
 }

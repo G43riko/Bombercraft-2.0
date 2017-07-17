@@ -34,10 +34,6 @@ public class Bush extends Flora{
 	}
 	
 
-	@Override
-	public GVector2f getSur() {
-		return null;
-	}
 
 	@Override
 	public GVector2f getSize() {

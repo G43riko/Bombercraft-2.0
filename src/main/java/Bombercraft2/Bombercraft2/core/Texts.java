@@ -18,7 +18,6 @@ public class Texts {
 	public static final String BUSHES 				= "bushes";
 	public static final String PLANTS 				= "plants";
 	public static final String BLOCKS 				= "blocks";
-	public static final String HEALT 				= "healt";
 	public static final String TREES 				= "trees";
 	public static final String FLORA 				= "flora";
 	public static final String EXIT_GAME 			= "exit";
@@ -37,7 +36,7 @@ public class Texts {
 	public static final String PLAYER_CONNECTED		= "playerConnected";
 	public static final String PLAYER_DISCONNECTED	= "playerDisconnected";
 	public static final String PLAYER 				= "player";
-	public static final String DEMAGE 				= "demage";
+	public static final String DAMAGE 				= "damage";
 	public static final String RANGE 				= "range";
 	public static final String TIME 				= "time";
 	public static final String TARGET 				= "target";

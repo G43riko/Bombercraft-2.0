@@ -41,16 +41,6 @@ public abstract class Tower extends Helper implements Shootable{
 	}
 
 	@Override
-	public GVector2f getSur() {
-		return null;
-	}
-
-	@Override
-	public GVector2f getSize() {
-		return Block.SIZE;
-	}
-
-	@Override
 	public GVector2f getDirection() {
 		return new GVector2f(Math.sin(actAngle), Math.cos(actAngle)).negate();
 	}

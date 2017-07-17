@@ -11,16 +11,26 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Healtable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import utils.Utils;
 import utils.math.GVector2f;
 
 public class Player extends Entity implements Healtable{
 	public enum Direction{
-		UP(2), DOWN(3), LEFT(0), RIGHT(1);
+		UP(2, new GVector2f(0, -1)), 
+		DOWN(3, new GVector2f(0, 1)), 
+		LEFT(0, new GVector2f(-1, 0)), 
+		RIGHT(1, new GVector2f(1, 0));
 		
 		private int id;
-		private Direction(int id){this.id = id;}
+		private GVector2f direction;
+		private Direction(int id, GVector2f direction){
+			this.id = id;
+			this.direction = direction;
+		}
 		public int getID(){return id;}
+		public GVector2f getDirection(){return direction;}
+		public static Direction getRandomDirection() {return Direction.values()[(int)(Math.random() * 4)];}
 	}
 	private int			speed;
 	private int			healt;
@@ -40,7 +50,7 @@ public class Player extends Entity implements Healtable{
 		try{
 			position 	= new GVector2f(object.getString(Texts.POSITION));
 			speed 		= object.getInt(Texts.SPEED);
-			healt 		= object.getInt(Texts.HEALT);
+			healt 		= object.getInt(Texts.HEALTH);
 			range 		= object.getInt(Texts.RANGE);
 			name 		= object.getString(Texts.NAME);
 			demage 		= 1;
@@ -92,7 +102,7 @@ public class Player extends Entity implements Healtable{
 		try {
 			result.put(Texts.POSITION, position);
 			result.put(Texts.SPEED, speed);
-			result.put(Texts.HEALT, healt);
+			result.put(Texts.HEALTH, healt);
 			result.put(Texts.IMAGE, image);
 			result.put(Texts.RANGE, range);
 			result.put(Texts.NAME, name);
@@ -117,11 +127,7 @@ public class Player extends Entity implements Healtable{
 		return pos;
 	}
 	
-	@Override
-	public GVector2f getSur() {return position.div(Block.SIZE).toInt();}
 	
-	@Override
-	public GVector2f	getSize() {return Block.SIZE;}
 	public boolean 		isMoving() {return moving;}
 	public String 		getImage() {return image;}
 	public String 		getName() {return name;}
