@@ -147,7 +147,7 @@ public class Profile implements JSONAble {
 
         try {
             String fileName = Config.FOLDER_PROFILE + profile.profileName + Config.EXTENSION_PROFILE;
-            BufferedWriter out = ResourceLoader.getBufferredWritter(fileName);
+            BufferedWriter out = ResourceLoader.getBufferedWriter(fileName);
             out.write(result.toString());
             out.close();
         }

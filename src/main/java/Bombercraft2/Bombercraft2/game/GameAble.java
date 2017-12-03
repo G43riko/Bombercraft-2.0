@@ -61,7 +61,7 @@ public interface GameAble extends Interactable, Visible {
                              Color color,
                              int number,
                              boolean explosion,
-                             boolean shockwave
+                             boolean shockWave
                             );
 
     /**

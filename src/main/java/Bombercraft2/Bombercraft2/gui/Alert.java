@@ -25,8 +25,8 @@ public class Alert implements Interactable {
         g2.setColor(parent.getColor());
         g2.setFont(parent.getFont());
 
-        int getposX = parent.getScreenWidth() - g2.getFontMetrics().stringWidth(text) >> 1;
-        g2.drawString(text, getposX, verticalOffset);
+        int getPosX = parent.getScreenWidth() - g2.getFontMetrics().stringWidth(text) >> 1;
+        g2.drawString(text, getPosX, verticalOffset);
     }
 
     public boolean isAlive() {

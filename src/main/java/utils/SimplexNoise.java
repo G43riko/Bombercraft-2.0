@@ -4,7 +4,7 @@ public final class SimplexNoise {
 	private static int grad3[][] = {{1,1,0},{-1,1,0},{1,-1,0},{-1,-1,0},
 									{1,0,1},{-1,0,1},{1,0,-1},{-1,0,-1},
 									{0,1,1},{0,-1,1},{0,1,-1},{0,-1,-1}};
-	
+
 	private static int grad4[][]= {{0,1,1,1}, {0,1,1,-1}, {0,1,-1,1}, {0,1,-1,-1},
 								   {0,-1,1,1}, {0,-1,1,-1}, {0,-1,-1,1}, {0,-1,-1,-1},
 								   {1,0,1,1}, {1,0,1,-1}, {1,0,-1,1}, {1,0,-1,-1},
@@ -26,12 +26,12 @@ public final class SimplexNoise {
 							  49,192,214, 31,181,199,106,157,184, 84,204,176,115,121,50,45,127, 4,150,254,
 							  138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180};
 	private static int perm[] = new int[512];
-	
+
 	static {
-		for(int i=0; i<512; i++) 
-			perm[i] = p[i & 255]; 
+		for(int i=0; i<512; i++)
+			perm[i] = p[i & 255];
 	}
-	
+
 	private static int simplex[][] = {{0,1,2,3},{0,1,3,2},{0,0,0,0},{0,2,3,1},{0,0,0,0},{0,0,0,0},{0,0,0,0},{1,2,3,0},
 									  {0,2,1,3},{0,0,0,0},{0,3,1,2},{0,3,2,1},{0,0,0,0},{0,0,0,0},{0,0,0,0},{1,3,2,0},
 									  {0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},
@@ -40,25 +40,25 @@ public final class SimplexNoise {
 									  {0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},
 									  {2,0,1,3},{0,0,0,0},{0,0,0,0},{0,0,0,0},{3,0,1,2},{3,0,2,1},{0,0,0,0},{3,1,2,0},
 									  {2,1,0,3},{0,0,0,0},{0,0,0,0},{0,0,0,0},{3,1,0,2},{0,0,0,0},{3,2,0,1},{3,2,1,0}};
-	
+
 	private static double dot(int g[], double x, double y) {
-		return g[0]*x + g[1]*y; 
+		return g[0]*x + g[1]*y;
 	}
-	
+
 	private static double dot(int g[], double x, double y, double z) {
-		return g[0]*x + g[1]*y + g[2]*z; 
+		return g[0]*x + g[1]*y + g[2]*z;
 	}
-	
+
 	private static double dot(int g[], double x, double y, double z, double w) {
-		return g[0]*x + g[1]*y + g[2]*z + g[3]*w; 
-	} 
-	
+		return g[0]*x + g[1]*y + g[2]*z + g[3]*w;
+	}
+
 	public static float[][] generateOctavedSimplexNoise(int width, int height, int octaves, float roughness, float scale){
 		float[][] totalNoise = new float[width][height];
 		float layerFrequency = scale;
 		float layerWeight = 1;
 //		float weightSum = 0;
-	
+
 		for (int octave = 0; octave < octaves; octave++) {
 			for(int x = 0; x < width; x++){
 				for(int y = 0; y < height; y++){
@@ -67,17 +67,17 @@ public final class SimplexNoise {
 			}
 			layerFrequency *= 2;
 //			weightSum += layerWeight;
-			layerWeight *= roughness;	       
+			layerWeight *= roughness;
 		}
 		return totalNoise;
 	}
-	
+
 	public static float[][][] generateOctavedSimplexNoise(int width, int height, int depth, int octaves, float roughness, float scale){
 		float[][][] totalNoise = new float[width][height][depth];
 		float layerFrequency = scale;
 		float layerWeight = 1;
 //		float weightSum = 0;
-	
+
 		for (int octave = 0; octave < octaves; octave++) {
 			for(int x = 0; x < width; x++){
 				for(int y = 0; y < height; y++){
@@ -88,11 +88,11 @@ public final class SimplexNoise {
 			}
 			layerFrequency *= 2;
 //			weightSum += layerWeight;
-			layerWeight *= roughness;	       
+			layerWeight *= roughness;
 		}
 		return totalNoise;
 	}
-	
+
 	public static float[][] generateSimplexNoise(int width, int height){
 	      float[][] simplexnoise = new float[width][height];
 	      float frequency = 5.0f / (float) width;
@@ -102,10 +102,10 @@ public final class SimplexNoise {
 	    		  simplexnoise[x][y] = (simplexnoise[x][y] + 1) / 2;   //generate values between 0 and 1
 	    	  }
 	      }
-	      
+
 	      return simplexnoise;
 	}
-	
+
 	public static double noise(double xin, double yin) {
 		double n0, n1, n2;
 		final double F2 = 0.5*(Math.sqrt(3.0)-1.0);
@@ -124,7 +124,7 @@ public final class SimplexNoise {
 			j1=0;
 		}
 		else {
-			i1=0; 
+			i1=0;
 			j1=1;
 		}
 		double x1 = x0 - i1 + G2;
@@ -137,21 +137,21 @@ public final class SimplexNoise {
 		int gi1 = perm[ii+i1+perm[jj+j1]] % 12;
 		int gi2 = perm[ii+1+perm[jj+1]] % 12;
 		double t0 = 0.5 - x0*x0-y0*y0;
-		if(t0<0) 
+		if(t0<0)
 			n0 = 0.0;
 		else {
 			t0 *= t0;
 			n0 = t0 * t0 * dot(grad3[gi0], x0, y0); // (x,y) of grad3 used for 2D gradient
 		}
 		double t1 = 0.5 - x1*x1-y1*y1;
-		if(t1<0) 
+		if(t1<0)
 			n1 = 0.0;
 		else {
 			t1 *= t1;
 			n1 = t1 * t1 * dot(grad3[gi1], x1, y1);
-		} 
+		}
 		double t2 = 0.5 - x2*x2-y2*y2;
-		if(t2<0) 
+		if(t2<0)
 			n2 = 0.0;
 		else {
 			t2 *= t2;
@@ -159,7 +159,7 @@ public final class SimplexNoise {
 		}
 		return 70.0 * (n0 + n1 + n2);
 	}
-	
+
 	public static double noise(double xin, double yin, double zin){
 		double n0, n1, n2, n3;
 		final double F3 = 1.0/3.0;
@@ -169,10 +169,10 @@ public final class SimplexNoise {
 		int k = (int)(zin+s);
 		final double G3 = 1.0/6.0;
 		double t = (i+j+k)*G3;
-		double X0 = i-t; 
+		double X0 = i-t;
 		double Y0 = j-t;
 		double Z0 = k-t;
-		double x0 = xin-X0; 
+		double x0 = xin-X0;
 		double y0 = yin-Y0;
 		double z0 = zin-Z0;
 	    int i1, j1, k1;
@@ -228,7 +228,7 @@ public final class SimplexNoise {
 	            k2=0;
 	        }
 	    }
-	    double x1 = x0 - i1 + G3; 
+	    double x1 = x0 - i1 + G3;
 	    double y1 = y0 - j1 + G3;
 	    double z1 = z0 - k1 + G3;
 	    double x2 = x0 - i2 + 2.0*G3;
@@ -245,13 +245,13 @@ public final class SimplexNoise {
 	    int gi2 = perm[ii+i2+perm[jj+j2+perm[kk+k2]]] % 12;
 	    int gi3 = perm[ii+1+perm[jj+1+perm[kk+1]]] % 12;
 	    double t0 = 0.5 - x0*x0 - y0*y0 - z0*z0;
-	    if(t0<0) 
+	    if(t0<0)
 	    	n0 = 0.0;
 	    else{
 	        t0 *= t0;
 	        n0 = t0 * t0 * dot(grad3[gi0], x0, y0, z0);
 	    }
-	    
+
 	    double t1 = 0.6 - x1*x1 - y1*y1 - z1*z1;
 	    if(t1<0) n1 = 0.0;
 	    else{
@@ -272,7 +272,7 @@ public final class SimplexNoise {
 	    }
 	    return 32.0*(n0 + n1 + n2 + n3);
 	}
-	
+
 	public static double noise(double x, double y, double z, double w){
 	    final double F4 = (Math.sqrt(5.0)-1.0)/4.0;
 	    final double G4 = (5.0-Math.sqrt(5.0))/20.0;
@@ -282,7 +282,7 @@ public final class SimplexNoise {
 	    int j = (int)(y + s);
 	    int k = (int)(z + s);
 	    int l = (int)(w + s);
-	    
+
 	    double t = (i + j + k + l) * G4;
 	    double X0 = i - t;
 	    double Y0 = j - t;
@@ -292,7 +292,7 @@ public final class SimplexNoise {
 	    double y0 = y - Y0;
 	    double z0 = z - Z0;
 	    double w0 = w - W0;
-	    
+
 	    int c1 = (x0 > y0) ? 32 : 0;
 	    int c2 = (x0 > z0) ? 16 : 0;
 	    int c3 = (y0 > z0) ? 8 : 0;
@@ -303,7 +303,7 @@ public final class SimplexNoise {
 	    int i1, j1, k1, l1;
 	    int i2, j2, k2, l2;
 	    int i3, j3, k3, l3;
-	    
+
 	    i1 = simplex[c][0]>=3 ? 1 : 0;
 	    j1 = simplex[c][1]>=3 ? 1 : 0;
 	    k1 = simplex[c][2]>=3 ? 1 : 0;
@@ -335,12 +335,12 @@ public final class SimplexNoise {
 	    double y4 = y0 - 1.0 + 4.0*G4;
 	    double z4 = z0 - 1.0 + 4.0*G4;
 	    double w4 = w0 - 1.0 + 4.0*G4;
-	    
+
 	    int ii = i & 255;
 	    int jj = j & 255;
 	    int kk = k & 255;
 	    int ll = l & 255;
-	    
+
 	    int gi0 = perm[ii+perm[jj+perm[kk+perm[ll]]]] % 32;
 	    int gi1 = perm[ii+i1+perm[jj+j1+perm[kk+k1+perm[ll+l1]]]] % 32;
 	    int gi2 = perm[ii+i2+perm[jj+j2+perm[kk+k2+perm[ll+l2]]]] % 32;
@@ -354,28 +354,28 @@ public final class SimplexNoise {
 	        n0 = t0 * t0 * dot(grad4[gi0], x0, y0, z0, w0);
 	    }
 	    double t1 = 0.6 - x1*x1 - y1*y1 - z1*z1 - w1*w1;
-	    if(t1<0) 
+	    if(t1<0)
 	    	n1 = 0.0;
 	    else{
 	        t1 *= t1;
 	        n1 = t1 * t1 * dot(grad4[gi1], x1, y1, z1, w1);
 	    }
 	    double t2 = 0.6 - x2*x2 - y2*y2 - z2*z2 - w2*w2;
-	    if(t2<0) 
+	    if(t2<0)
 	    	n2 = 0.0;
 	    else{
 	        t2 *= t2;
 	        n2 = t2 * t2 * dot(grad4[gi2], x2, y2, z2, w2);
 	    }
 	    double t3 = 0.6 - x3*x3 - y3*y3 - z3*z3 - w3*w3;
-	    if(t3<0) 
+	    if(t3<0)
 	    	n3 = 0.0;
 	    else{
 	        t3 *= t3;
 	        n3 = t3 * t3 * dot(grad4[gi3], x3, y3, z3, w3);
 	    }
 	    double t4 = 0.6 - x4*x4 - y4*y4 - z4*z4 - w4*w4;
-	    if(t4<0) 
+	    if(t4<0)
 	    	n4 = 0.0;
 	    else{
 	        t4 *= t4;

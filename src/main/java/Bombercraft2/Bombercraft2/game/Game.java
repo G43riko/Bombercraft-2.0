@@ -221,9 +221,9 @@ public class Game extends GameState implements GameAble {
                              Color color,
                              int number,
                              boolean explosion,
-                             boolean shockwave
+                             boolean shockWave
                             ) {
-        sceneManager.addExplosion(position, size, color, number, explosion, shockwave);
+        sceneManager.addExplosion(position, size, color, number, explosion, shockWave);
     }
 
     @Override

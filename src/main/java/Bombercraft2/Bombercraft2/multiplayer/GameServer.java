@@ -47,7 +47,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> areas) {
+    public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> damageAreas) {
         final int damage = 1;
         parent.getGame().explodeBombAt(position);
         List<String> hitBlocks = blocks.stream()
@@ -57,10 +57,10 @@ public class GameServer extends Server implements Connector {
                                        .collect(Collectors.toList());
         int i = 0;
         JSONArray hitPlayers = new JSONArray();
-        while (i < areas.size()) {
+        while (i < damageAreas.size()) {
             parent.getGame()
                   .getSceneManager()
-                  .getPlayersInArea(areas.get(i++), areas.get(i++))
+                  .getPlayersInArea(damageAreas.get(i++), damageAreas.get(i++))
                   .stream()
                   .peek(a -> a.hit(damage))
                   .map(Player::getName)
@@ -175,8 +175,8 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void onHitPlayer(String name, int demage) {
-        parent.getGame().getSceneManager().getPlayerByName(name).hit(demage);
+    public void onHitPlayer(String name, int damage) {
+        parent.getGame().getSceneManager().getPlayerByName(name).hit(damage);
     }
 
     @Override
@@ -192,7 +192,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void hitBlock(GVector2f position, int demage) {
+    public void hitBlock(GVector2f position, int damage) {
         // TODO Auto-generated method stub
 
     }

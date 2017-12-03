@@ -3,8 +3,8 @@ package Bombercraft2.Bombercraft2.core;
 public class Texts {
     public static final String PLAYERS_NUMBER      = "playersNumber";
     public static final String CREATE_PROFILE      = "createProfile";
-    public static final String CHANGE_PROFILE      = "changeProfil";
-    public static final String RESTART_GAME        = "restarGame";
+    public static final String CHANGE_PROFILE      = "changeProfile";
+    public static final String RESTART_GAME        = "restartGame";
     public static final String MAX_PLAYERS         = "maxPlayers";
     public static final String LEVEL_DATA          = "levelData";
     public static final String SHOW_WALLS          = "showWalls";
@@ -56,11 +56,11 @@ public class Texts {
     public static final String LIGHT_MAP           = "lightMap";
     public static final String LOADING             = "loading";
     public static final String CREATED_AT          = "createdAt";
-    public static final String HIT_BLOCKS          = "hittedBlocks";
+    public static final String HIT_BLOCKS          = "hitBlocks";
     public static final String NAME                = "name";
     public static final String HEALTH              = "health";
     public static final String SPEED               = "speed";
-    public static final String HIT_PLAYERS         = "hittedPlayers";
+    public static final String HIT_PLAYERS         = "hitPlayers";
     public static final String PLAY_AS_GUEST       = "playAsGuest";
     public static final String EMITTER_ON_HIT      = "emitterOnHit";
     public static final String DIRECTION           = "direction";

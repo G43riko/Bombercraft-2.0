@@ -1,7 +1,7 @@
 {
-   "emmiterTest" : {
+   "emitterTest" : {
       "color":-65281,
-      "healt":"[100.0x100.0]",
+      "health":"[100.0x100.0]",
       "size":"[3.0x3.0]",
       "particlesOnStart":0,
       "rotation":"[0.0x0.0]",
@@ -13,7 +13,7 @@
    },
    "explosionTest" : {
       "color":-65536,
-      "healt":"[20.0x40.0]",
+      "health":"[20.0x40.0]",
       "size":"[3.0x3.0]",
       "particlesOnStart":10,
       "rotation":"[0.0x0.0]",
@@ -25,7 +25,7 @@
    },
    "particleExplosionBlueSpark" : {
       "color":-16776961,
-      "healt":"[20.0x40.0]",
+      "health":"[20.0x40.0]",
       "size":"[3.0x3.0]",
       "particlesOnStart":5,
       "rotation":"[0.0x0.0]",
@@ -37,7 +37,7 @@
    },
    "explosionBowHit" : {
       "color":-14336,
-      "healt":"[30.0x30.0]",
+      "health":"[30.0x30.0]",
       "size":"[3.0x3.0]",
       "particlesOnStart":10,
       "rotation":"[0.0x0.0]",
@@ -49,7 +49,7 @@
    },
    "explosionDefaultHit" : {
       "color":-16776961,
-      "healt":"[20.0x30.0]",
+      "health":"[20.0x30.0]",
       "size":"[6.0x4.0]",
       "particlesOnStart":10,
       "rotation":"[0.0x0.0]",
@@ -59,9 +59,9 @@
       "direction":"[0.0x360.0]",
       "sizeRandomness":1
    },
-   "particleEmmiterGreenMagic" : {
+   "particleEmitterGreenMagic" : {
       "color":-16711936,
-      "healt":"[10.0x30.0]",
+      "health":"[10.0x30.0]",
       "size":"[5.0x4.0]",
       "particlesOnStart":0,
       "rotation":"[0.0x0.0]",

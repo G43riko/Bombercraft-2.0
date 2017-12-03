@@ -38,7 +38,7 @@ public class GameClient extends Client implements Connector {
     //GETTERS
 
     @Override
-    public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> areas) {
+    public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> damageAreas) {
         parent.getGame().explodeBombAt(position);
     }
 
@@ -216,7 +216,7 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void hitBlock(GVector2f position, int demage) {
+    public void hitBlock(GVector2f position, int damage) {
         // TODO Auto-generated method stub
 
     }

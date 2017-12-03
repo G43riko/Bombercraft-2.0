@@ -61,7 +61,7 @@ public class NavBar extends Bar {
         items.put(to, items.remove(from));
     }
 
-    public int getSelecedIndex() {
+    public int getSelectedIndex() {
         return selectedItem;
     }
 

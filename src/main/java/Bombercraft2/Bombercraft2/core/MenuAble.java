@@ -38,7 +38,7 @@ public interface MenuAble extends Visible {
     Canvas getCanvas();
 
     //	int 			getGameIs();
-    void setProfile(String profilName);
+    void setProfile(String profileName);
 
     void showProfileMenu();
 

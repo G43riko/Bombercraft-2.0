@@ -68,10 +68,10 @@ public class MiniSwitch extends GuiComponent{
 
 
 		int indicatorOffset = (int)(size.getY() - indicatorSize.getY()) / 2;
-		GVector2f inticatorPosition = new GVector2f(position.getX() + size.getX() - indicatorOffset - indicatorSize.getX(),
+		GVector2f indicatorPosition = new GVector2f(position.getX() + size.getX() - indicatorOffset - indicatorSize.getX(),
 									  position.getY() + indicatorOffset );
 		g2.setPaint(value ? Color.GREEN : Color.red);
-		g2.fillRoundRect(inticatorPosition.getXi(), inticatorPosition.getYi(), indicatorSize.getXi(), indicatorSize.getYi(), round, round);
+		g2.fillRoundRect(indicatorPosition.getXi(), indicatorPosition.getYi(), indicatorSize.getXi(), indicatorSize.getYi(), round, round);
 		
 		
 		g2.setColor(borderColor);

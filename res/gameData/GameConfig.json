@@ -7,7 +7,7 @@
 					"backgroundColor": "255_0_255",
 					"damage": 1,
 					"bulletSpeed": 12,
-					"buletHealt": 1,
+					"bulletHealth": 1,
 					"range": 200,
 					"type" : "TOWER_MACHINE_GUN",
 					"bulletType" : "LASER",
@@ -64,7 +64,7 @@
 					"bulletSpeed": 20,
 					"health": 3
 	        	},
-	        	"granade" : {},
+	        	"grenade" : {},
 	        	"targetableRocket" : {},
 	        	"gun" : {},
 	        	"shotGun" : {},
@@ -99,7 +99,7 @@
 			}
 		},
 	    "particles": {
-			"emmiters": {
+			"emitters": {
 				"a" : {
 					"color": "GREEN",
 					"speed": "2_0",
@@ -127,7 +127,7 @@
 				"health": 1
 			},
 			"bow" : {},
-			"granade" : {},
+			"grenade" : {},
 			"rocket" : {},
 			"boomerang" : {}
 	    },

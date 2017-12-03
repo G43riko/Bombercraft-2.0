@@ -6,7 +6,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class Shockwave implements Interactable {
+public class ShockWave implements Interactable {
     private GameAble  parent    = null;
     private int       maxRadius = 0;
     private int       stroke    = 0;
@@ -18,7 +18,7 @@ public class Shockwave implements Interactable {
     private GVector2f position  = null;
     //CONTRUCTORS
 
-    public Shockwave(GameAble parent,
+    public ShockWave(GameAble parent,
                      GVector2f position,
                      int maxRadius,
                      int stroke,

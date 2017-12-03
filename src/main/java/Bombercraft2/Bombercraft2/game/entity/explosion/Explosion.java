@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Explosion extends Entity {
-    private ArrayList<Shockwave>       waves      = new ArrayList<>();
+    private ArrayList<ShockWave>       waves      = new ArrayList<>();
     private ArrayList<Particle>        particles  = new ArrayList<>();
     private ArrayList<SpriteAnimation> animations = new ArrayList<>();
     private GVector2f                  size       = null;
@@ -31,7 +31,7 @@ public class Explosion extends Entity {
 
         createParticles(color, number);
         if (shockWave) {
-            waves.add(new Shockwave(getParent(), position, 120, 5, 5, Color.yellow, true));
+            waves.add(new ShockWave(getParent(), position, 120, 5, 5, Color.yellow, true));
         }
         if (explosion) {
             animations.add(new SpriteAnimation("explosion1.png", 5, 5, 2));
@@ -71,7 +71,7 @@ public class Explosion extends Entity {
     @Override
     public void update(float delta) {
         waves = new ArrayList<>(waves).stream()
-                                      .filter(Shockwave::isAlive)
+                                      .filter(ShockWave::isAlive)
                                       .peek(a -> a.update(delta))
                                       .collect(Collectors.toCollection(ArrayList::new));
 

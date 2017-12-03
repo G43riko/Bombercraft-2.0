@@ -22,41 +22,45 @@ import java.util.stream.Collectors;
 public class Block extends Entity {
     public enum Type implements Iconable {
         NOTHING("block_floor", 0, true),
-        WOOD   ("block_wood", 1, false),
-        IRON   ("block_iron", 10, false),
-        GRASS  ("block_grass", 0, true),
-        WATER  ("block_water", 0, true),
+        WOOD("block_wood", 1, false),
+        IRON("block_iron", 10, false),
+        GRASS("block_grass", 0, true),
+        WATER("block_water", 0, true),
         //		PATH	("block_path",   0, true),
 //		STONE	("block_stone",  7, false),
         FUTURE("block_future", 0, true);
 
         private final Image   image;
-        private final Color   minimapColor;
-        private final int     healt;
+        private final Color   miniMapColor;
+        private final int     health;
         private final boolean walkable;
 
-        Type(String imageName, int healt, boolean walkable) {
-            this.healt = healt;
+        Type(String imageName, int health, boolean walkable) {
+            this.health = health;
             this.walkable = walkable;
             image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
-            final BufferedImage bimage = new BufferedImage(image.getWidth(null),
-                                                           image.getHeight(null),
-                                                           BufferedImage.TYPE_INT_ARGB);
+            final BufferedImage bufferedImage = new BufferedImage(image.getWidth(null),
+                                                                  image.getHeight(null),
+                                                                  BufferedImage.TYPE_INT_ARGB);
 
-            final Graphics2D bGr = bimage.createGraphics();
+            final Graphics2D bGr = bufferedImage.createGraphics();
             bGr.drawImage(image, 0, 0, null);
             bGr.dispose();
 
-            minimapColor = ImageUtils.getAverageColor(bimage, 0, 0, image.getWidth(null), image.getHeight(null));
+            miniMapColor = ImageUtils.getAverageColor(bufferedImage,
+                                                      0,
+                                                      0,
+                                                      image.getWidth(null),
+                                                      image.getHeight(null));
         }
 
         public boolean isWalkable() {return walkable;}
 
-        public int getHealt() {return healt;}
+        public int getHealth() {return health;}
 
         public Image getImage() {return image;}
 
-        public Color getMinimapColor() {return minimapColor;}
+        public Color getMiniMapColor() {return miniMapColor;}
     }
 
     public final static GVector2f SIZE = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
@@ -82,7 +86,7 @@ public class Block extends Entity {
     }
 
     public Block(GVector2f position, int type, GameAble parent) {
-        this(position, getTypeFromInt(type), parent, getTypeFromInt(type).getHealt());
+        this(position, getTypeFromInt(type), parent, getTypeFromInt(type).getHealth());
     }
 
     public Block(GVector2f position, Type type, GameAble parent, int healt) {
@@ -136,7 +140,7 @@ public class Block extends Entity {
         if (addExplosion) {
             getParent().addExplosion(getPosition().add(Block.SIZE.div(2)),
                                      Block.SIZE,
-                                     type.getMinimapColor(),
+                                     type.getMiniMapColor(),
                                      5, false, false);
         }
         type = Type.NOTHING;
@@ -198,7 +202,7 @@ public class Block extends Entity {
         g2.setColor(color);
 
 		/*   2---3
-		 *  /    |
+         *  /    |
 		 * 1     4
 		 *      /
 		 *     5
@@ -225,7 +229,7 @@ public class Block extends Entity {
 
     public void build(Type type) {
         this.type = type;
-        this.healt = type.getHealt();
+        this.healt = type.getHealth();
     }
 
     public void renderWalls(Graphics2D g2) {
@@ -347,13 +351,13 @@ public class Block extends Entity {
         ArrayList<GVector2f> res = new ArrayList<>();
 
         GVector2f p = position.mul(Block.SIZE);
-        res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p));
-        res.add(LineLineIntersect.linesIntersetc(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p));
-        res.add(LineLineIntersect.linesIntersetc(ss,
+        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p));
+        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p));
+        res.add(LineLineIntersect.linesIntersect(ss,
                                                  se,
                                                  p.add(new GVector2f(Block.SIZE.getX(), 0)),
                                                  p.add(Block.SIZE)));
-        res.add(LineLineIntersect.linesIntersetc(ss,
+        res.add(LineLineIntersect.linesIntersect(ss,
                                                  se,
                                                  p.add(new GVector2f(0, Block.SIZE.getY())),
                                                  p.add(Block.SIZE)));
@@ -366,5 +370,5 @@ public class Block extends Entity {
         return res.stream().reduce((a, b) -> a.dist(ss) < b.dist(ss) ? a : b).get();
     }
 }
-	
+
 	

@@ -64,10 +64,10 @@ public class Player extends Entity implements Healthable {
         }
     }
 
-    public Player(GameAble parent, GVector2f position, String name, int speed, int healt, String image, int range) {
+    public Player(GameAble parent, GVector2f position, String name, int speed, int health, String image, int range) {
         super(position, parent);
         this.speed = speed;
-        this.health = healt;
+        this.health = health;
         this.range = range;
         this.name = name;
         this.damage = 1;
@@ -171,8 +171,8 @@ public class Player extends Entity implements Healthable {
         return health;
     }
 
-    public void hit(int demage) {
-        health -= demage;
+    public void hit(int damage) {
+        health -= damage;
     }
 
 

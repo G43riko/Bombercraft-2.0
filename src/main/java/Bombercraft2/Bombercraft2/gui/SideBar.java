@@ -21,7 +21,7 @@ public class SideBar extends Bar {
         buttons.put("newGame", new MiniButton(this, "New game"));
         buttons.put("resetGame", new MiniButton(this, "Reset game"));
         buttons.put("showLogs", new MiniSwitch(this, "Show logs", parent.getVisibleOption(Render.LOGS)));
-        buttons.put("showMinimap", new MiniSwitch(this, "Show minimap", parent.getVisibleOption(Render.MINI_MAP)));
+        buttons.put("showMiniMap", new MiniSwitch(this, "Show miniMap", parent.getVisibleOption(Render.MINI_MAP)));
         buttons.put("showLights", new MiniSwitch(this, "Show shadows", parent.getVisibleOption(Render.LIGHTS)));
         buttons.put("showLightMap",
                     new MiniSwitch(this, "Show light map", parent.getVisibleOption(Render.ONLY_SHADOW_MAP)));
@@ -108,7 +108,7 @@ public class SideBar extends Bar {
         else if (buttons.get("showLogs").isClickIn(click)) {
             getParent().switchVisibleOption(Render.LOGS);
         }
-        else if (buttons.get("showMinimap").isClickIn(click)) {
+        else if (buttons.get("showMiniMap").isClickIn(click)) {
             getParent().switchVisibleOption(Render.MINI_MAP);
         }
         else if (buttons.get("showLights").isClickIn(click)) {

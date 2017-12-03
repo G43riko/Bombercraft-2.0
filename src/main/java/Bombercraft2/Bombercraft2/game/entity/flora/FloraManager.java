@@ -73,16 +73,16 @@ public class FloraManager implements JSONAble {
     }
 
     private void createFlora() {
-        GVector2f nums = map.getSize().sub(Block.SIZE);
+        GVector2f numbers = map.getSize().sub(Block.SIZE);
         for (int i = 0; i < 33; i++) {
             for (int j = 0; j < Flora.Bushes.values().length; j++) {
-                creteBushByType(Flora.Bushes.values()[j], nums);
+                creteBushByType(Flora.Bushes.values()[j], numbers);
             }
             for (int j = 0; j < Flora.Trees.values().length; j++) {
-                creteTreeByType(Flora.Trees.values()[j], nums);
+                creteTreeByType(Flora.Trees.values()[j], numbers);
             }
             for (int j = 0; j < Flora.Plants.values().length; j++) {
-                cretePlantByType(Flora.Plants.values()[j], nums);
+                cretePlantByType(Flora.Plants.values()[j], numbers);
             }
         }
     }

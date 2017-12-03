@@ -17,11 +17,11 @@ public abstract class Emitter extends Entity {
     private static final HashMap<Types, JSONObject> predefinedParticles = new HashMap<>();
 
     public enum Types {
-        PARTICLE_EMITTER_TEST("emmiterTest"),
+        PARTICLE_EMITTER_TEST("emitterTest"),
         PARTICLE_EXPLOSION_TEST("explosionTest"),
         PARTICLE_EXPLOSION_BOW_HIT("explosionBowHit"),
         PARTICLE_EXPLOSION_DEFAULT_HIT("explosionDefaultHit"),
-        PARTICLE_EMITTER_GREEN_MAGIC("particleEmmiterGreenMagic"),
+        PARTICLE_EMITTER_GREEN_MAGIC("particleEmitterGreenMagic"),
         PARTICLE_EXPLOSION_BLUE_SPARK("particleExplosionBlueSpark");
         private final String name;
 

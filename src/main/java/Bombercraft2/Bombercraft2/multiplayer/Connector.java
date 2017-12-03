@@ -30,14 +30,14 @@ public interface Connector {
 
     default void onBombExplode(JSONObject data) {}
 
-    default void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> demageAreas) {}
+    default void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> damageAreas) {}
 
     void onPutHelper(JSONObject data);
 
     void setPutHelper(GVector2f pos, Helper.Type type);
 
-    //	void hitBlock(GVector2f position, int demage);
-    default void onHitPlayer(String name, int demage) {}
+    //	void hitBlock(GVector2f position, int damage);
+    default void onHitPlayer(String name, int damage) {}
 
     /**
      * Tato funkcia sa vola pri presusenie hry aby sa dalo ostatnym hracom vediet ze bola hra prerusena
@@ -50,7 +50,7 @@ public interface Connector {
 
     boolean bulletHitEnemy(Bullet bulletInstance);
 
-    void hitBlock(GVector2f position, int demage);
+    void hitBlock(GVector2f position, int damage);
 
     void onPutBullet(JSONObject data);
 

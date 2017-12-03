@@ -15,7 +15,7 @@
 		"sk" : "Pripojiť sa k hre",
 		"en" : "Join game"
 	},
-	"changeProfil" : {
+	"changeProfile" : {
 		"sk" : "Zmeniť profil",
 		"en" : "Change profile"
 	},
@@ -39,7 +39,7 @@
 		"sk" : "Zobraziť logy",
 		"en" : "Show logs"
 	},
-	"restarGame" : {
+	"restartGame" : {
 		"sk" : "Reštartovať hru",
 		"en" : "Restart game"
 	},

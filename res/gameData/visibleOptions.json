@@ -8,11 +8,11 @@
 	"renderBombRange" : true,
 	"renderOnlyLightMap" : false,
 	"renderMapWalls" : true,
-	"renderNavbar" : true,
+	"renderNavBar" : true,
 	"renderSubmenu" : true,
 	"renderPlayerSelector" : true,
 	"renderMouseSelector" : true,
-	"renderHealtBar" : true,
+	"renderHealthBar" : true,
 	"renderPlayers" : true,
 	"renderFloor" : true,
 	"renderFlora" : true

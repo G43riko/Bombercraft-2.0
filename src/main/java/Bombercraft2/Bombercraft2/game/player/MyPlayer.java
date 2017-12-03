@@ -222,16 +222,16 @@ public class MyPlayer extends Player {
         offset.setX(pos.getX() - getParent().getCanvas().getWidth() / 2);
         offset.setY(pos.getY() - getParent().getCanvas().getHeight() / 2);
 
-        GVector2f nums = getParent().getLevel().getMap().getNumberOfBlocks();
+        GVector2f numbers = getParent().getLevel().getMap().getNumberOfBlocks();
 
         //skontroluje posun
         if (offset.getX() < 0) {
             offset.setX(0);
         }
 
-        if (offset.getX() > (nums.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
+        if (offset.getX() > (numbers.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
                                                                                                             .getWidth()) {
-            offset.setX((nums.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
+            offset.setX((numbers.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
                                                                                                         .getWidth());
         }
 
@@ -239,9 +239,9 @@ public class MyPlayer extends Player {
             offset.setY(0);
         }
 
-        if (offset.getY() > (nums.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
+        if (offset.getY() > (numbers.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
                                                                                                              .getHeight()) {
-            offset.setY((nums.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
+            offset.setY((numbers.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
                                                                                                          .getHeight());
         }
     }

@@ -48,7 +48,7 @@ public class Level implements Interactable {
 
     //OTHERS
 
-    public void changeBlock(GVector2f position, int healt, int type) {
+    public void changeBlock(GVector2f position, int health, int type) {
 
     }
 
