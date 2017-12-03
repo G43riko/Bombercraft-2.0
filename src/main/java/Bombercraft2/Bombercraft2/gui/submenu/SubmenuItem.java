@@ -1,23 +1,20 @@
 package Bombercraft2.Bombercraft2.gui.submenu;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.util.ArrayList;
-import java.util.List;
-
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.Iconable;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class SubmenuItem implements Iconable{
 	public interface GAction{
-		public boolean fire();
+		boolean fire();
 	}
 	public enum Types{
-		CHECHKBOX, TEXT, PARENT, ICONABLE, RADIO
+		CHECKBOX, TEXT, PARENT, ICONABLE, RADIO
 	}
-	private List<SubmenuItem> 	items	= new ArrayList<SubmenuItem>();
+	private List<SubmenuItem> 	items	= new ArrayList<>();
 	private String 				label;
 	private Types 				type	= Types.TEXT;
 	private SubmenuRadioGroup	group;
@@ -38,7 +35,7 @@ public class SubmenuItem implements Iconable{
 		this.action = action;
 		this.label 	= label;
 		this.value	= value;
-		this.type 	= Types.CHECHKBOX;
+		this.type 	= Types.CHECKBOX;
 	}
 	public SubmenuItem(String label, SubmenuRadioGroup group){this(label, group, null);}
 	public SubmenuItem(String label, SubmenuRadioGroup group, GAction action){
@@ -66,15 +63,12 @@ public class SubmenuItem implements Iconable{
 			type = Types.PARENT;
 		}
 	}
-	public boolean fire(){
-		if(type == Types.RADIO){
+	public boolean fire() {
+		if (type == Types.RADIO) {
 			group.setActive(this);
 		}
 		value = !value;
-		if(action != null){
-			return action.fire();
-		}
-		return false;	
+		return action != null && action.fire();
 	}
 
 	public void renderIcon(Graphics2D g2, int beginTextX, int beginTextY){

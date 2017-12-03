@@ -1,12 +1,12 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import java.awt.Color;
-
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.math.GVector2f;
+
+import java.awt.*;
 
 public abstract class Bar implements Interactable, Clicable, Visible{
 	private Color backgroundColor 	= Config.BAR_BACKGROUND_COLOR;

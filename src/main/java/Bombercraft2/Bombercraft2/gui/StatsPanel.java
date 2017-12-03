@@ -1,17 +1,16 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import java.awt.Font;
-import java.awt.Graphics2D;
-import java.util.HashMap;
-import java.util.Map.Entry;
-
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.math.GVector2f;
 
+import java.awt.*;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 public class StatsPanel  implements Interactable{
 	private GameAble parent;
-	private HashMap<String, String> stats = new HashMap<String, String>();
+	private HashMap<String, String> stats = new HashMap<>();
 	private int width = 600;
 	private int verticalOffset = 10;
 	private GVector2f position;

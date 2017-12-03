@@ -1,12 +1,9 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-
 import Bombercraft2.Bombercraft2.core.Visible;
 import utils.math.GVector2f;
+
+import java.awt.*;
 
 public class MiniSwitch extends GuiComponent{
 	GVector2f indicatorSize = new GVector2f(24, 24);

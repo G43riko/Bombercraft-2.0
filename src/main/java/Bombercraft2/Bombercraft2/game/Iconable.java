@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.game;
 
-import java.awt.Image;
+import java.awt.*;
 
 public interface Iconable {
-	public Image getImage();
+    Image getImage();
 }

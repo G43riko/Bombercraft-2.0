@@ -1,57 +1,60 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
-import java.util.List;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.Shootable;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
-import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
-import Bombercraft2.Bombercraft2.game.entity.bullets.BulletModel;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
-import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
-import Bombercraft2.Bombercraft2.multiplayer.core.Server;
+import org.json.JSONObject;
 import utils.math.GVector2f;
 
+import java.util.List;
+
 public interface Connector {
-	public void onPlayerChange(JSONObject data);
-	public void setPlayerChange(Player player);
-	
-	public void onRemoveBlock(JSONObject data);
-	public void setRemoveBlock(GVector2f position);
+    void onPlayerChange(JSONObject data);
 
-	public void onBuildBlock(JSONObject data);
-	public void setBuildBlock(GVector2f position, Type type);
+    void setPlayerChange(Player player);
 
-	public void setBuildBlockArea(GVector2f minPosition, GVector2f maxPosition, Type type);
+    void onRemoveBlock(JSONObject data);
 
-	default public void onBombExplode(JSONObject data){};
-	default public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> demageAreas){};
-	
-	public void onPutHelper(JSONObject data);
-	public void setPutHelper(GVector2f pos, Helper.Type type);
+    void setRemoveBlock(GVector2f position);
 
-//	public void hitBlock(GVector2f position, int demage);
-	default public void onHitPlayer(String name, int demage){};
+    void onBuildBlock(JSONObject data);
 
-	/**
-	 * Tato funkcia sa vola pri presusenie hry aby sa dalo ostatnym hracom vediet ze bola hra prerusena
-	 */
-	public void setCloseConnection();
+    void setBuildBlock(GVector2f position, Type type);
 
-	public void cleanUp();
-	public void setPutEmmiter(Types emitterOnHit, GVector2f position);
-	public boolean bulletHitEnemy(Bullet bulletInstance);
-	public void hitBlock(GVector2f position, int demage);
-	
-	public void onPutBullet(JSONObject data);
-	public void setPutBullet(MyPlayer myPlayer, Shootable shooter);
+    void setBuildBlockArea(GVector2f minPosition, GVector2f maxPosition, Type type);
+
+    default void onBombExplode(JSONObject data) {}
+
+    default void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> demageAreas) {}
+
+    void onPutHelper(JSONObject data);
+
+    void setPutHelper(GVector2f pos, Helper.Type type);
+
+    //	void hitBlock(GVector2f position, int demage);
+    default void onHitPlayer(String name, int demage) {}
+
+    /**
+     * Tato funkcia sa vola pri presusenie hry aby sa dalo ostatnym hracom vediet ze bola hra prerusena
+     */
+    void setCloseConnection();
+
+    void cleanUp();
+
+    void setPutEmitter(Types emitterOnHit, GVector2f position);
+
+    boolean bulletHitEnemy(Bullet bulletInstance);
+
+    void hitBlock(GVector2f position, int demage);
+
+    void onPutBullet(JSONObject data);
+
+    void setPutBullet(MyPlayer myPlayer, Shootable shooter);
 
 
 }

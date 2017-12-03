@@ -1,10 +1,5 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Graphics2D;
-
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
@@ -12,6 +7,8 @@ import Bombercraft2.Bombercraft2.gui.Clicable;
 import Bombercraft2.Bombercraft2.gui.menus.JoinMenu;
 import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
 import utils.math.GVector2f;
+
+import java.awt.*;
 
 public class RemoteGamePanel extends GuiComponent implements Clicable{
 	private RemoteGameData data;
@@ -39,7 +36,7 @@ public class RemoteGamePanel extends GuiComponent implements Clicable{
 
 	@Override
 	protected void init() {
-		diableColor 	= Color.LIGHT_GRAY;
+		disabledColor = Color.LIGHT_GRAY;
 		backgroundColor = new Color(0, 255, 0, 100);
 		hoverColor 		= Color.DARK_GRAY;
 		borderColor 	= Color.black;
@@ -59,7 +56,7 @@ public class RemoteGamePanel extends GuiComponent implements Clicable{
 	@Override
 	public void render(Graphics2D g2) {
 //		if(disable){
-//			g2.setColor(diableColor);
+//			g2.setColor(disabledColor);
 //		}
 //		else if(hover){
 //			g2.setColor(hoverColor);
@@ -117,7 +114,7 @@ public class RemoteGamePanel extends GuiComponent implements Clicable{
 	public void doAct(GVector2f click) {
 		if(joinButton.isClickIn(click)){
 			((JoinMenu)getParent()).stopSearch();
-			coreGame.connectToGame(data.getIp());;
+			coreGame.connectToGame(data.getIp());
 		}
 	}
 }
