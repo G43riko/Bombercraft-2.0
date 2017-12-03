@@ -30,10 +30,10 @@ public class Block extends Entity {
 //		STONE	("block_stone",  7, false),
         FUTURE("block_future", 0, true);
 
-        private Image   image;
-        private Color   minimapColor;
-        private int     healt;
-        private boolean walkable;
+        private final Image   image;
+        private final Color   minimapColor;
+        private final int     healt;
+        private final boolean walkable;
 
         Type(String imageName, int healt, boolean walkable) {
             this.healt = healt;

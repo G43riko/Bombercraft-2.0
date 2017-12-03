@@ -8,9 +8,9 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class EndGameMenu extends Menu {
-    private StatsPanel panel;
-    private Button mainMenuButton = new Button(this, "Hlavné menu");
-    private Button newGameButton  = new Button(this, "Nová hra");
+    private final StatsPanel panel;
+    private final Button mainMenuButton = new Button(this, "Hlavné menu");
+    private final Button newGameButton  = new Button(this, "Nová hra");
 
     public EndGameMenu(MenuAble parent) {
         super(parent, Type.EndGameMenu);

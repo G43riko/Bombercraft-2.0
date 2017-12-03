@@ -11,9 +11,9 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class EnemyA extends Enemy {
-    private float borderSize  = 3;
-    private Color color       = Color.RED;
-    private Color borderColor = Color.WHITE;
+    private final float borderSize  = 3;
+    private final Color color       = Color.RED;
+    private final Color borderColor = Color.WHITE;
 
     public EnemyA(GVector2f position, GameAble parent) {
         this(position, parent, getRandPossibleDir(parent.getLevel().getMap(), position.div(Block.SIZE).toInt()));

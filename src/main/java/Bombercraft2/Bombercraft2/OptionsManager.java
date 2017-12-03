@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.Map.Entry;
 
 public class OptionsManager implements JSONAble {
-    private HashMap<String, Boolean> viewOptions = new HashMap<>();
+    private final HashMap<String, Boolean> viewOptions = new HashMap<>();
 
     public void fromJSON(JSONObject data) {
         try {

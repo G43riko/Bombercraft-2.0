@@ -12,7 +12,7 @@ public abstract class Placer implements Toolable {
         SIMPLE("Simple"),
         AREA("Area");
 
-        private String label;
+        private final String label;
 
         Types(String label) {
             this.label = label;
@@ -23,8 +23,8 @@ public abstract class Placer implements Toolable {
         }
     }
 
-    protected GameAble   parent;
-    protected Block.Type blockType;
+    protected final GameAble   parent;
+    protected       Block.Type blockType;
 
     public Placer(GameAble parent) {
         this.parent = parent;

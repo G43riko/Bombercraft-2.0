@@ -17,8 +17,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class ProfileMenu extends Menu{
-	private ArrayList<String> availableProfiles = loadProfiles();
-	private MenuAble parent;
+	private final ArrayList<String> availableProfiles = loadProfiles();
+	private final MenuAble parent;
 	
 	public ProfileMenu(MenuAble parent) {
 		super(parent, GameState.Type.ProfileMenu);

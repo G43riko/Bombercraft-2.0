@@ -6,8 +6,8 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class BulletBasic extends Bullet {
-    private int offset = 10;
-    private int round  = 15;
+    private final int offset = 10;
+    private final int round  = 15;
 
     public BulletBasic(GVector2f position, GameAble parent, GVector2f direction) {
         super(position, parent, BulletManager.Types.BASIC, direction);

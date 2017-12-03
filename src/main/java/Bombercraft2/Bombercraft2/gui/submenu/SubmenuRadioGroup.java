@@ -9,9 +9,9 @@ public class SubmenuRadioGroup {
         void run(SubmenuItem item);
     }
 
-    private HashMap<String, SubmenuItem> values       = new HashMap<>();
-    private Action                       action       = null;
-    private SubmenuItem                  selectedItem = null;
+    private final HashMap<String, SubmenuItem> values       = new HashMap<>();
+    private       Action                       action       = null;
+    private       SubmenuItem                  selectedItem = null;
 
     public SubmenuRadioGroup() {this(null);}
 

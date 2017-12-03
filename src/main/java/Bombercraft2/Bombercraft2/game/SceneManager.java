@@ -35,22 +35,22 @@ public class SceneManager implements Interactable, JSONAble {
         ENEMIES("enemies"),
         ENEMIES_RENDERED("enemiesRendered"),
         EXPLOSIONS("explosions");
-        String key;
+        final String key;
 
         Keys(String key) {this.key = key;}
     }
 
-    private HashMap<String, Player> players        = new HashMap<>();
+    private final HashMap<String, Player> players        = new HashMap<>();
     //	private HashMap<String, Player>		playersNew			= new HashMap<>();
-    private HashMap<String, Helper> helpers        = new HashMap<>();
-    private ArrayList<Emitter>      emitters       = new ArrayList<>();
-    private HashSet<Helper>         helpersRemoved = new HashSet<>();
-    private ArrayList<Entity>       explosions     = new ArrayList<>();
-    private ArrayList<Bullet>       bullets        = new ArrayList<>();
-    private ArrayList<Enemy>        enemies        = new ArrayList<>();
-    private GameAble                parent         = null;
-    private Bomb                    lastBomb       = null;
-    private HashMap<Keys, Integer>  stats          = new HashMap<>();
+    private final HashMap<String, Helper> helpers        = new HashMap<>();
+    private       ArrayList<Emitter>      emitters       = new ArrayList<>();
+    private final HashSet<Helper>         helpersRemoved = new HashSet<>();
+    private       ArrayList<Entity>       explosions     = new ArrayList<>();
+    private       ArrayList<Bullet>       bullets        = new ArrayList<>();
+    private       ArrayList<Enemy>        enemies        = new ArrayList<>();
+    private       GameAble                parent         = null;
+    private       Bomb                    lastBomb       = null;
+    private final HashMap<Keys, Integer>  stats          = new HashMap<>();
 //	private long						renderedParticles	= 0;
 
     public SceneManager(GameAble parent) {

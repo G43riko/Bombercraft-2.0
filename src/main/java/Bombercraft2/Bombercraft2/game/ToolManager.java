@@ -16,10 +16,10 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class ToolManager {
-    private HashMap<Iconable, Toolable> tools = new HashMap<>();
-    private Placer   actualPlacer;
-    private Toolable selectedTool;
-    private GameAble parent;
+    private final HashMap<Iconable, Toolable> tools = new HashMap<>();
+    private       Placer   actualPlacer;
+    private       Toolable selectedTool;
+    private final GameAble parent;
 
     public ToolManager(GameAble parent) {
         this.parent = parent;

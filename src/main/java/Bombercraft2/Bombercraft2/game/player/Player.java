@@ -20,8 +20,8 @@ public class Player extends Entity implements Healthable {
         LEFT(0, new GVector2f(-1, 0)),
         RIGHT(1, new GVector2f(1, 0));
 
-        private int       id;
-        private GVector2f direction;
+        private final int       id;
+        private final GVector2f direction;
 
         Direction(int id, GVector2f direction) {
             this.id = id;

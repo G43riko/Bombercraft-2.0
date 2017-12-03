@@ -37,21 +37,21 @@ import java.util.HashMap;
 
 public class Game extends GameState implements GameAble {
     private MouseSelector mouseSelector;//	= new MouseSelector(this);
-    private MyPlayer      myPlayer      = null;
-    private Level         level         = null;
-    private float         zoom          = Config.DEFAULT_ZOOM;
-    private GameGui       gui           = null;
-    private ToolManager   toolManager   = null;
-    private CoreGame      parent        = null;
-    private SceneManager  sceneManager  = new SceneManager(this);
-    private LightsManager lightsManager = null;
-    private long          startTime     = System.currentTimeMillis();
+    private       MyPlayer      myPlayer      = null;
+    private       Level         level         = null;
+    private       float         zoom          = Config.DEFAULT_ZOOM;
+    private       GameGui       gui           = null;
+    private       ToolManager   toolManager   = null;
+    private       CoreGame      parent        = null;
+    private final SceneManager  sceneManager  = new SceneManager(this);
+    private       LightsManager lightsManager = null;
+    private       long          startTime     = System.currentTimeMillis();
 
 
     //pre pripadny currentModificationException ak sa chce upravit nieco co sa pouziva//todo treba to osetrit inac
-    private boolean render = true;
-    private boolean update = true;
-    private boolean input  = true;
+    private final boolean render = true;
+    private final boolean update = true;
+    private final boolean input  = true;
 
     public Game(Level level, CoreGame parent, JSONObject gameData) {
         super(GameState.Type.Game);

@@ -11,9 +11,9 @@ import utils.math.GVector2f;
 import java.util.HashMap;
 
 public class TowerCreator implements Toolable {
-    private static HashMap<Type, TowerModel> towers = new HashMap<>();
-    private GameAble parent;
-    private Type     type;
+    private static final HashMap<Type, TowerModel> towers = new HashMap<>();
+    private final GameAble parent;
+    private final Type     type;
 
     public static void init(JSONObject data) {
         try {

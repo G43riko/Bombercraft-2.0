@@ -8,9 +8,9 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class PlayerSelector {
-    private MyPlayer parent        = null;
-    private int      selectorWidth = Config.PLAYER_SELECTOR_WIDTH;
-    private Color    selectorColor = Config.PLAYER_SELECTOR_COLOR;
+    private       MyPlayer parent        = null;
+    private final int      selectorWidth = Config.PLAYER_SELECTOR_WIDTH;
+    private final Color    selectorColor = Config.PLAYER_SELECTOR_COLOR;
 
     public PlayerSelector(MyPlayer parent) {
         this.parent = parent;

@@ -11,10 +11,10 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public abstract class Bullet extends Entity {
-    protected Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
-    private   GVector2f     direction;
-    private   BulletModel   model;
-    private   int           health;
+    protected     Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
+    private final GVector2f     direction;
+    private final BulletModel   model;
+    private       int           health;
 
     public Bullet(GVector2f position, GameAble parent, Types type, GVector2f direction) {
         super(position, parent);

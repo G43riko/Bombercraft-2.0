@@ -7,8 +7,8 @@ import java.awt.event.*;
 import java.util.HashMap;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
-    private HashMap<Integer, Boolean> buttons = new HashMap<>();
-    private HashMap<Integer, Boolean> keys    = new HashMap<>();
+    private final HashMap<Integer, Boolean> buttons = new HashMap<>();
+    private final HashMap<Integer, Boolean> keys    = new HashMap<>();
 
     public final static int KEY_W           = 87;
     public final static int KEY_A           = 65;
@@ -43,8 +43,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
     public static final int NUM_KEY_CODES     = 256;
     public static final int NUM_MOUSE_BUTTONS = 5;
 
-    private static boolean[] lastKeys  = new boolean[NUM_KEY_CODES];
-    private static boolean[] lastMouse = new boolean[NUM_MOUSE_BUTTONS];
+    private static final boolean[] lastKeys  = new boolean[NUM_KEY_CODES];
+    private static final boolean[] lastMouse = new boolean[NUM_MOUSE_BUTTONS];
 
     public static void update() {
         for (int i = 0; i < NUM_KEY_CODES; i++) {

@@ -81,16 +81,16 @@ public abstract class Flora extends Entity {
     }
 
     public enum Bushes implements Florable {
-        BUSH1("bush1", FloraType.BUSH),
-        BUSH2("bush2", FloraType.BUSH),
-        BUSH3("bush3", FloraType.BUSH);
+        BUSH1("bush1"),
+        BUSH2("bush2"),
+        BUSH3("bush3");
 
-        private Image     image;
-        private FloraType type;
-        private GVector2f size;
+        private final Image     image;
+        private final FloraType type;
+        private final GVector2f size;
 
-        Bushes(String imageName, FloraType type) {
-            this.type = type;
+        Bushes(String imageName) {
+            this.type = FloraType.BUSH;
             image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
@@ -104,19 +104,19 @@ public abstract class Flora extends Entity {
     }
 
     public enum Trees implements Florable {
-        TREE1("tree1", FloraType.TREE),
-        TREE2("tree2", FloraType.TREE),
-        TREE3("tree3", FloraType.TREE),
-        TREE4("tree4", FloraType.TREE),
-        TREE5("tree5", FloraType.TREE),
-        TREE6("tree6", FloraType.TREE);
+        TREE1("tree1"),
+        TREE2("tree2"),
+        TREE3("tree3"),
+        TREE4("tree4"),
+        TREE5("tree5"),
+        TREE6("tree6");
 
-        private Image     image;
-        private FloraType type;
-        private GVector2f size;
+        private final Image     image;
+        private final FloraType type;
+        private final GVector2f size;
 
-        Trees(String imageName, FloraType type) {
-            this.type = type;
+        Trees(String imageName) {
+            this.type = FloraType.TREE;
             image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
@@ -129,18 +129,18 @@ public abstract class Flora extends Entity {
     }
 
     public enum Plants implements Florable {
-        PLANT1("plant1", FloraType.PLANT),
-        PLANT2("plant2", FloraType.PLANT),
-        PLANT3("plant3", FloraType.PLANT),
-        PLANT4("plant4", FloraType.PLANT),
-        PLANT5("plant5", FloraType.PLANT);
+        PLANT1("plant1"),
+        PLANT2("plant2"),
+        PLANT3("plant3"),
+        PLANT4("plant4"),
+        PLANT5("plant5");
 
-        private Image     image;
-        private FloraType type;
-        private GVector2f size;
+        private final Image     image;
+        private final FloraType type;
+        private final GVector2f size;
 
-        Plants(String imageName, FloraType type) {
-            this.type = type;
+        Plants(String imageName) {
+            this.type = FloraType.PLANT;
             image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }

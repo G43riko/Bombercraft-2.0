@@ -9,11 +9,11 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class StatsPanel  implements Interactable{
-	private GameAble parent;
-	private HashMap<String, String> stats = new HashMap<>();
-	private int width = 600;
-	private int verticalOffset = 10;
-	private GVector2f position;
+	private final GameAble parent;
+	private       HashMap<String, String> stats          = new HashMap<>();
+	private       int                     width          = 600;
+	private final int                     verticalOffset = 10;
+	private final GVector2f position;
 	
 	public StatsPanel(GameAble parent, GVector2f position, HashMap<String, String> hashMap){
 		this.position = position;

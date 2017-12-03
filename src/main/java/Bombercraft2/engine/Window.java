@@ -8,7 +8,7 @@ import java.awt.event.WindowListener;
 
 public class Window extends JFrame implements ComponentListener, WindowListener {
     private static final long serialVersionUID = 1L;
-    private CoreEngine parent;
+    private final CoreEngine parent;
 
     public Window(CoreEngine parent, String title, int width, int height) {
         this.parent = parent;

@@ -3,12 +3,12 @@ package Bombercraft2.Bombercraft2.multiplayer;
 import utils.Utils;
 
 public class RemoteGameData {
-    private String hostName;
-    private String ip;
-    private String level;
-    private int    maxPlayers;
-    private int    players;
-    private long   ping;
+    private final String hostName;
+    private final String ip;
+    private final String level;
+    private final int    maxPlayers;
+    private final int    players;
+    private       long   ping;
 
     public RemoteGameData(String hostName, String ip, String level, int maxPlayers, int players) {
         this.maxPlayers = maxPlayers;

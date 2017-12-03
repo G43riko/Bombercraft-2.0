@@ -13,19 +13,19 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class MyPlayer extends Player {
-    private GVector2f      offset       = null;
-    private GVector2f      move         = new GVector2f();
-    private GVector2f      totalMove    = new GVector2f();
-    private boolean        showSelector = true;
-    private PlayerSelector selector     = new PlayerSelector(this);
-    private PlayerPointer  pointer      = new PlayerPointer(this);
-    private HealthBar      healthBar    = new HealthBar(this);
-    private int            cadenceBonus = 0;
-    private int            speedBonus   = 0;
-    private int            damageBonus  = 0;
-    private Bomb           lastPutBomb  = null;
+    private       GVector2f      offset       = null;
+    private       GVector2f      move         = new GVector2f();
+    private       GVector2f      totalMove    = new GVector2f();
+    private final boolean        showSelector = true;
+    private final PlayerSelector selector     = new PlayerSelector(this);
+    private final PlayerPointer  pointer      = new PlayerPointer(this);
+    private final HealthBar      healthBar    = new HealthBar(this);
+    private final int            cadenceBonus = 0;
+    private final int            speedBonus   = 0;
+    private       int            damageBonus  = 0;
+    private       Bomb           lastPutBomb  = null;
 
-    private HashMap<Integer, Boolean> keys = new HashMap<>();
+    private final HashMap<Integer, Boolean> keys = new HashMap<>();
 
     public MyPlayer(GameAble parent,
                     GVector2f position,

@@ -5,12 +5,12 @@ import Bombercraft2.Bombercraft2.core.Interactable;
 import java.awt.*;
 
 public class Alert implements Interactable {
-    private long         createdAt      = System.currentTimeMillis();
-    private boolean      alive          = true;
-    private String       text           = null;
-    private AlertManager parent         = null;
-    private long         duration       = 0;
-    private int          verticalOffset = 0;
+    private final long         createdAt      = System.currentTimeMillis();
+    private       boolean      alive          = true;
+    private       String       text           = null;
+    private       AlertManager parent         = null;
+    private       long         duration       = 0;
+    private       int          verticalOffset = 0;
 
 
     public Alert(String text, AlertManager parent, long duration, int verticalOffset) {

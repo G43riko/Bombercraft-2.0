@@ -8,9 +8,9 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class MouseSelector {
-    private int      selectorWidth = Config.PLAYER_SELECTOR_WIDTH;
-    private Color    selectorColor = Config.PLAYER_SELECTOR_COLOR;
-    private GameAble parent        = null;
+    private final int      selectorWidth = Config.PLAYER_SELECTOR_WIDTH;
+    private final Color    selectorColor = Config.PLAYER_SELECTOR_COLOR;
+    private       GameAble parent        = null;
 
     public MouseSelector(GameAble parent) {
         this.parent = parent;

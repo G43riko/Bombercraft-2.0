@@ -8,10 +8,10 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class Particle extends Entity {
-    private GVector2f direction;
-    private GVector2f size;
-    private Color     color;
-    private int       health;
+    private final GVector2f direction;
+    private final GVector2f size;
+    private final Color     color;
+    private       int       health;
 
     //CONTRUCTORS
 

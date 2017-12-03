@@ -11,10 +11,10 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class RemoteGamePanel extends GuiComponent implements Clicable{
-	private RemoteGameData data;
-	private int localOffset = 8;
-	private Button joinButton;
-	private MenuAble coreGame;
+	private final RemoteGameData data;
+	private final int localOffset = 8;
+	private final Button   joinButton;
+	private final MenuAble coreGame;
 	public RemoteGamePanel(MenuAble coreGame, JoinMenu parent, RemoteGameData data, int order) {
 		super(parent);
 		this.data = data;

@@ -15,7 +15,7 @@ public class Timer {
     long startTime = 0;
     long duration  = 0;
     long angle     = 0;
-    private Entity parent;
+    private final Entity parent;
 
     public Timer(Entity parent, long startTime, long duration) {
         this.parent = parent;

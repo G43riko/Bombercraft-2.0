@@ -29,16 +29,16 @@ import java.awt.*;
 import java.util.Stack;
 
 public class CoreGame extends CoreEngine implements MenuAble {
-    private Profile          profile      = null;
-    private Game             game         = null;
+    private       Profile          profile      = null;
+    private       Game             game         = null;
     //	private Level 				level;
-    private Connector        connector    = null;
-    private GuiManager       guiManager   = new GuiManager();
-    private AlertManager     alertManager = new AlertManager(this);
-    private boolean          gameLaunched = false;
-    private boolean          focused      = true;
-    private Stack<GameState> states       = new Stack<>();
-    private JSONObject       gameConfig   = null;
+    private       Connector        connector    = null;
+    private final GuiManager       guiManager   = new GuiManager();
+    private final AlertManager     alertManager = new AlertManager(this);
+    private       boolean          gameLaunched = false;
+    private       boolean          focused      = true;
+    private final Stack<GameState> states       = new Stack<>();
+    private       JSONObject       gameConfig   = null;
 
     public CoreGame() {
         super(Config.WINDOW_DEFAULT_FPS, Config.WINDOW_DEFAULT_UPS, Config.WINDOW_DEFAULT_RENDER_TEXT);

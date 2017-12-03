@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 
 public class GameLogs implements Interactable {
-    private GameAble parent;
+    private final GameAble parent;
     final int offset = 10;
 
     public GameLogs(GameAble parent) {

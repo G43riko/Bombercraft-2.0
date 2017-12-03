@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Emitter extends Entity {
-    private static HashMap<Types, JSONObject> predefinedParticles = new HashMap<>();
+    private static final HashMap<Types, JSONObject> predefinedParticles = new HashMap<>();
 
     public enum Types {
         PARTICLE_EMITTER_TEST("emmiterTest"),
@@ -23,7 +23,7 @@ public abstract class Emitter extends Entity {
         PARTICLE_EXPLOSION_DEFAULT_HIT("explosionDefaultHit"),
         PARTICLE_EMITTER_GREEN_MAGIC("particleEmmiterGreenMagic"),
         PARTICLE_EXPLOSION_BLUE_SPARK("particleExplosionBlueSpark");
-        private String name;
+        private final String name;
 
         Types(String name) {this.name = name;}
 
@@ -65,10 +65,10 @@ public abstract class Emitter extends Entity {
 
     @Override
     public void render(Graphics2D g2) {
-        renderedParticles = new ArrayList<Particle>(particles).stream()
-                                                              .filter(a -> getParent().isVisible(a))
-                                                              .peek(a -> a.render(g2))
-                                                              .count();
+        renderedParticles = new ArrayList<>(particles).stream()
+                                                      .filter(a -> getParent().isVisible(a))
+                                                      .peek(a -> a.render(g2))
+                                                      .count();
     }
 
     protected void createParticles(int numOfParticles) {

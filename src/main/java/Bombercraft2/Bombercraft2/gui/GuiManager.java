@@ -6,8 +6,8 @@ import org.json.JSONObject;
 import utils.resouces.ResourceLoader;
 
 public class GuiManager {
-    private String lang = Config.DEFAULT_LANGUAGE;
-    JSONObject data;
+    private final String lang = Config.DEFAULT_LANGUAGE;
+    final JSONObject data;
 
     public GuiManager() {
         data = ResourceLoader.getJSON(Config.FILE_GUI_TEXTS);

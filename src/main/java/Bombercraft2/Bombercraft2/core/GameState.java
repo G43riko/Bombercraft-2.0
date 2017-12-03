@@ -15,7 +15,7 @@ public abstract class GameState implements Interactable, Clicable {
         Game("Game");
 
 
-        private String name;
+        private final String name;
 
         Type(String name) {
             this.name = name;
@@ -24,7 +24,7 @@ public abstract class GameState implements Interactable, Clicable {
         public String getName() { return name; }
     }
 
-    private Type type;
+    private final Type type;
 
     public GameState(Type type) {
         this.type = type;

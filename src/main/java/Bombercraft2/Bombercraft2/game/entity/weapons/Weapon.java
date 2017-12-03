@@ -14,7 +14,7 @@ public abstract class Weapon implements Shootable, Toolable {
     public enum Types {
         LASER("laser");
 
-        private String name;
+        private final String name;
 
         Types(String name) {this.name = name;}
 
@@ -22,12 +22,12 @@ public abstract class Weapon implements Shootable, Toolable {
     }
 
     //	private static HashMap<Helper.Type, Weapon> weapons = new HashMap<Helper.Type, Weapon>();
-    private int         damage;
-    private int         cadence;
-    private Types       type;
-    private BulletModel bulletType;
-    private long        lastShot;
-    private GameAble    parent;
+    private       int         damage;
+    private       int         cadence;
+    private final Types       type;
+    private       BulletModel bulletType;
+    private       long        lastShot;
+    private final GameAble    parent;
 
     //CONSTRUCTORS
     public Weapon(GameAble parent, Types type, JSONObject data) {

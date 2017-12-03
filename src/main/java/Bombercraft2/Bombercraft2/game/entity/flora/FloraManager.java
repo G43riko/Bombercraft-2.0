@@ -16,9 +16,9 @@ import java.util.List;
 
 
 public class FloraManager implements JSONAble {
-    private List<Bush>  bushes = new ArrayList<>();
-    private List<Plant> plants = new ArrayList<>();
-    private List<Tree>  trees  = new ArrayList<>();
+    private final List<Bush>  bushes = new ArrayList<>();
+    private final List<Plant> plants = new ArrayList<>();
+    private final List<Tree>  trees  = new ArrayList<>();
     private final GameAble parent;
     private final Map      map;
 

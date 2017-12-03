@@ -14,13 +14,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level implements Interactable {
-    private Map             map          = null;
-    private GameAble        parent       = null;
-    private List<GVector2f> respawnZones = new ArrayList<>();
-    private String          mapData      = null;
-    private JSONObject      floraData    = null;
-    private JSONObject      playerInfo   = null;
-    private FloraManager    floraManager = null;
+    private       Map             map          = null;
+    private       GameAble        parent       = null;
+    private final List<GVector2f> respawnZones = new ArrayList<>();
+    private       String          mapData      = null;
+    private       JSONObject      floraData    = null;
+    private       JSONObject      playerInfo   = null;
+    private       FloraManager    floraManager = null;
     //CONSTRUCTORS
 
     public Level(JSONObject object) {

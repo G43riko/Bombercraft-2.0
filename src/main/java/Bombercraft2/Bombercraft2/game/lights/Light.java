@@ -11,16 +11,16 @@ import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
 public class Light extends Entity {
-    private static float[]       borders   = new float[]{0, 1};
-    private static Color[]       colors    = new Color[]{Color.BLACK, new Color(0, 0, 0, 0)};
-    private        GVector2f     size      = null;
-    private        Entity        target    = null;
-    private        BufferedImage image     = null;
-    private        int           radius    = 0;
-    private        int           luminance = 255;
-    private        int           offset    = 0;
-    private        double        angle     = 10;
-    private        int           flash     = 0;
+    private static final float[]       borders   = new float[]{0, 1};
+    private static final Color[]       colors    = new Color[]{Color.BLACK, new Color(0, 0, 0, 0)};
+    private              GVector2f     size      = null;
+    private              Entity        target    = null;
+    private              BufferedImage image     = null;
+    private              int           radius    = 0;
+    private              int           luminance = 255;
+    private              int           offset    = 0;
+    private              double        angle     = 10;
+    private              int           flash     = 0;
 
     //CONSTRUCTORS
 

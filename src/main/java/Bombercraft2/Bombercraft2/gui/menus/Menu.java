@@ -13,10 +13,10 @@ import java.util.HashMap;
 
 //public abstract class Menu extends GuiComponent implements Clicable{
 public abstract class Menu extends GameState implements Clicable, Visible {
-    protected HashMap<String, GuiComponent> components = new HashMap<>();
-    protected GVector2f                     position   = null;
-    protected GVector2f                     size       = null;
-    protected MenuAble                      parent     = null;
+    protected final HashMap<String, GuiComponent> components = new HashMap<>();
+    protected       GVector2f                     position   = null;
+    protected       GVector2f                     size       = null;
+    protected       MenuAble                      parent     = null;
 
     public Menu(MenuAble parent, GameState.Type type) {
         super(type);

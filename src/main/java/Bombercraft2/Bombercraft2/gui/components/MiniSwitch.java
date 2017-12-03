@@ -6,7 +6,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class MiniSwitch extends GuiComponent{
-	GVector2f indicatorSize = new GVector2f(24, 24);
+    final GVector2f indicatorSize = new GVector2f(24, 24);
 	
 	public MiniSwitch(Visible parent, String text){
 		this(parent, text, true, SIDEBAR_DEFAULT_BUTTON_HEIGHT);

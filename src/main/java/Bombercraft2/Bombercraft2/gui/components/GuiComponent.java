@@ -13,13 +13,13 @@ public abstract class GuiComponent implements Interactable, Visible {
     protected final static int   SIDEBAR_DEFAULT_BUTTON_HEIGHT = 30;
     protected final static float CENTER_ALIGN                  = -1.111111f;
 
-    public static HashMap<Visible, Integer> buttons             = new HashMap<>();
-    private       Visible                   parent              = null;
-    protected     GVector2f                 offset              = new GVector2f();
-    protected     GVector2f                 textOffset          = new GVector2f();
-    protected     GVector2f                 position            = null;
-    protected     GVector2f                 size                = null;
-    protected     int                       textSize            = 20;
+    public static final HashMap<Visible, Integer> buttons    = new HashMap<>();
+    private             Visible                   parent     = null;
+    protected           GVector2f                 offset     = new GVector2f();
+    protected           GVector2f                 textOffset = new GVector2f();
+    protected           GVector2f                 position   = null;
+    protected           GVector2f                 size       = null;
+    protected           int                       textSize   = 20;
     protected     int                       round               = 0;
     protected     int                       borderWidth         = 0;
     protected     int     topCousePrevButtons = 0;

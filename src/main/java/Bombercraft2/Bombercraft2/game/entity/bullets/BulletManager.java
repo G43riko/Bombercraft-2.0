@@ -10,14 +10,14 @@ public class BulletManager {
         BASIC("basic"),
         LASER("laser");
 
-        private String name;
+        private final String name;
 
         Types(String name) {this.name = name;}
 
         public String getName() {return name;}
     }
 
-    private static HashMap<Types, BulletModel> bullets = new HashMap<>();
+    private static final HashMap<Types, BulletModel> bullets = new HashMap<>();
 
     public static void init(JSONObject data) {
         try {

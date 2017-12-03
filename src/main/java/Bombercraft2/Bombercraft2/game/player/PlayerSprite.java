@@ -8,7 +8,7 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class PlayerSprite {
-    private static HashMap<String, PlayerSprite> animations = new HashMap<>();
+    private static final HashMap<String, PlayerSprite> animations = new HashMap<>();
 
     private Image     image          = null;
     private int       numberOfImages = 0;

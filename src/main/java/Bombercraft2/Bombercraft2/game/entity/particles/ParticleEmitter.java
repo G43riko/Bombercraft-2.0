@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class ParticleEmitter extends Emitter {
-    private Entity target;
+    private final Entity target;
 
     //CONSTRUCTORS
     public ParticleEmitter(Emitter.Types type, GVector2f position, GameAble parent) {

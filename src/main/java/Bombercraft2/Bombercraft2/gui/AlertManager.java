@@ -10,11 +10,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AlertManager implements Interactable {
-    private List<Alert> alerts   = new ArrayList<>();
-    private Color       color    = Color.BLACK;
-    private int         fontSize = 33;
-    private Font        font     = new Font("Garamond", Font.BOLD | Font.ITALIC, fontSize);
-    private CoreEngine  parent   = null;
+    private final List<Alert> alerts   = new ArrayList<>();
+    private final Color       color    = Color.BLACK;
+    private final int         fontSize = 33;
+    private final Font        font     = new Font("Garamond", Font.BOLD | Font.ITALIC, fontSize);
+    private       CoreEngine  parent   = null;
 
     public AlertManager(CoreEngine parent) {
         this.parent = parent;

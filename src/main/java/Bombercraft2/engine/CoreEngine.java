@@ -17,8 +17,8 @@ public abstract class CoreEngine {
     private        float      actUPS      = UPS;
     private        float      actLoops    = 0;
     private        Window     window      = null;
-    private        Input      input       = new Input();
-    private        Canvas     canvas      = new Canvas();
+    private final  Input      input       = new Input();
+    private final  Canvas     canvas      = new Canvas();
     private        Graphics2D g2          = null;
 
 //	public CoreEngine(){

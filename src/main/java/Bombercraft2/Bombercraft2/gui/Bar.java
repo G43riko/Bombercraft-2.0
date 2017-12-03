@@ -14,11 +14,11 @@ public abstract class Bar implements Interactable, Clicable, Visible{
 	private int borderWidth 		= Config.BAR_BORDER_WIDTH;
 
 	private boolean visible 		= true;
-	protected GVector2f size;
-	protected GVector2f totalSize;
-	protected GVector2f totalPos;
+	protected final GVector2f size;
+	protected       GVector2f totalSize;
+	protected       GVector2f totalPos;
 	
-	private GameAble parent;
+	private final GameAble parent;
 	
 	//CONTRUCTORS
 	

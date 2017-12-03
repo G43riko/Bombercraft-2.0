@@ -8,7 +8,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class Shovel implements Toolable, Iconable {
-    private GameAble parent;
+    private final GameAble parent;
 
     public Shovel(GameAble parent) {
         this.parent = parent;

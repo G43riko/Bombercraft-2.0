@@ -9,10 +9,10 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 public class LightsManager implements Interactable {
-    private BufferedImage    lightMap       = null;
-    private BufferedImage    lightMapOrigin = null;
-    private ArrayList<Light> lights         = new ArrayList<>();
-    private GameAble         parent         = null;
+    private       BufferedImage    lightMap       = null;
+    private       BufferedImage    lightMapOrigin = null;
+    private final ArrayList<Light> lights         = new ArrayList<>();
+    private       GameAble         parent         = null;
 
     public LightsManager(GameAble parent) {
         this.parent = parent;

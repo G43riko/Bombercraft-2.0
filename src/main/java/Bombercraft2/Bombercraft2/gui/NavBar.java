@@ -13,8 +13,8 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class NavBar extends Bar {
-    private HashMap<Integer, Iconable> items        = new HashMap<>();
-    private int                        selectedItem = 0;
+    private final HashMap<Integer, Iconable> items        = new HashMap<>();
+    private       int                        selectedItem = 0;
 
     public NavBar(GameAble parent) {
         super(parent, Config.NAV_BAR_SIZE);

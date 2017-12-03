@@ -10,7 +10,7 @@ import utils.resouces.ResourceLoader;
 import java.awt.*;
 
 public abstract class Helper extends Entity {
-    private Helper.Type type;
+    private final Helper.Type type;
 
     public enum Type implements Iconable {
         TOWER_LASER("icon_laser_tower", ""),
@@ -24,8 +24,8 @@ public abstract class Helper extends Entity {
         WEAPON_BOOMERANG("icon_bumerang", ""),
         OTHER_RESPAWNER("respawner", ""),
         OTHER_ADDUCTOR("adductor", "");
-        private Image  image;
-        private String name;
+        private final Image  image;
+        private final String name;
 
         Type(String imageName, String name) {
             this.name = name;

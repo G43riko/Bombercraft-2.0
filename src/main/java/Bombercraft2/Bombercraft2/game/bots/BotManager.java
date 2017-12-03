@@ -8,14 +8,14 @@ import java.util.HashMap;
 public class BotManager {
     public enum Types {
         A("a");
-        private String name;
+        private final String name;
 
         Types(String name) {this.name = name;}
 
         public String getName() {return name;}
     }
 
-    private static HashMap<Types, BotModel> bots = new HashMap<>();
+    private static final HashMap<Types, BotModel> bots = new HashMap<>();
 
     public static void init(JSONObject data) {
         try {

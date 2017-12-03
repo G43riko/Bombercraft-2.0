@@ -7,12 +7,12 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class PlayerPointer {
-    private MyPlayer parent   = null;
-    private float    angle    = 0;
-    private float    rotSpeed = 0.1f;
-    private int      length   = 100;
-    private int      width    = 5;
-    private Color    color    = Color.white;
+    private       MyPlayer parent   = null;
+    private       float    angle    = 0;
+    private final float    rotSpeed = 0.1f;
+    private final int      length   = 100;
+    private final int      width    = 5;
+    private final Color    color    = Color.white;
 
     public PlayerPointer(MyPlayer parent) {
         this.parent = parent;

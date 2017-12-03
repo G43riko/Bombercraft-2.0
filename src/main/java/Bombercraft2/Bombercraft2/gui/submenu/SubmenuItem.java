@@ -14,8 +14,8 @@ public class SubmenuItem implements Iconable{
 	public enum Types{
 		CHECKBOX, TEXT, PARENT, ICONABLE, RADIO
 	}
-	private List<SubmenuItem> 	items	= new ArrayList<>();
-	private String 				label;
+	private final List<SubmenuItem> items = new ArrayList<>();
+	private final String label;
 	private Types 				type	= Types.TEXT;
 	private SubmenuRadioGroup	group;
 	private Image 				image;

@@ -30,7 +30,7 @@ public abstract class Server implements Writable {
     private boolean accepterIsRunning = true;
     private Thread acceptThread;
     private Thread listenThread;
-    private HashMap<String, ClientPlayer> clients = new HashMap<>();
+    private final HashMap<String, ClientPlayer> clients = new HashMap<>();
 
 
     protected void removeClient(String name) {

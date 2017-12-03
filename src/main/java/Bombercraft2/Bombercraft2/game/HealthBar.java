@@ -6,7 +6,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class HealthBar {
-	private Healthable target;
+	private final Healthable target;
 	
 	public HealthBar(Healthable target){
 		this.target = target;

@@ -12,8 +12,8 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class SideBar extends Bar {
-    private int                           offset  = Config.SIDEBAR_OFFSET;
-    private HashMap<String, GuiComponent> buttons = new HashMap<>();
+    private final int                           offset  = Config.SIDEBAR_OFFSET;
+    private final HashMap<String, GuiComponent> buttons = new HashMap<>();
 
     public SideBar(GameAble parent) {
         super(parent, new GVector2f(200, 0));

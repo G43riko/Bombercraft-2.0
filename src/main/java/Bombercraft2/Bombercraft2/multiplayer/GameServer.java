@@ -21,8 +21,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class GameServer extends Server implements Connector {
-    private MenuAble      parent;
-    private CommonMethods methods;
+    private final MenuAble      parent;
+    private final CommonMethods methods;
 
     public GameServer(MenuAble parent) {
         this.parent = parent;

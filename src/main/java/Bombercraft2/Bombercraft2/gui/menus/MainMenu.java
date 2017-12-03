@@ -9,7 +9,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class MainMenu extends Menu {
-    private MenuAble parent;
+    private final MenuAble parent;
 
     public MainMenu(MenuAble parent) {
         super(parent, GameState.Type.MainMenu);

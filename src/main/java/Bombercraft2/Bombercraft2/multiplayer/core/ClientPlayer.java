@@ -12,11 +12,11 @@ import java.io.Serializable;
 import java.net.Socket;
 
 public class ClientPlayer {
-    private Socket             socket;
-    private ObjectInputStream  objectReader;
-    private ObjectOutputStream objectWriter;
-    private String             name;
-    private int                id;
+    private final Socket             socket;
+    private       ObjectInputStream  objectReader;
+    private       ObjectOutputStream objectWriter;
+    private       String             name;
+    private final int                id;
 
     public String getName() {
         return name;

@@ -15,8 +15,8 @@ public class PlayerPanel implements Interactable {
     public final static int   PLAYER_PANEL_FONT_SIZE   = 15;
     public final static int   PLAYER_PANEL_FONT_OFFSET = 5;
     public final static Color PLAYER_PANEL_FONT_COLOR  = Color.WHITE;
-    private GameAble parent;
-    private boolean visible = true;
+    private final GameAble parent;
+    private final boolean visible = true;
 
     public PlayerPanel(GameAble parent) {
         this.parent = parent;

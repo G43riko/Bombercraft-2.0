@@ -7,8 +7,8 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class LoadingScreen extends GameState {
-    private Canvas canvas;
-    private String text;
+    private final Canvas canvas;
+    private final String text;
 
     public LoadingScreen(Canvas canvas, String text) {
         super(GameState.Type.LoadingScreen);

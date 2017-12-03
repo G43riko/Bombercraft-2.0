@@ -20,12 +20,12 @@ import java.util.ArrayList;
 
 
 public class JoinMenu extends Menu {
-    private java.util.List<RemoteGameData> games    = new ArrayList<>();
-    private java.util.List<RemoteGameData> gamesNew = new ArrayList<>();
-    private long                           lastPing = 0;
-    private int                            scanned  = 0;
+    private final java.util.List<RemoteGameData> games    = new ArrayList<>();
+    private final java.util.List<RemoteGameData> gamesNew = new ArrayList<>();
+    private       long                           lastPing = 0;
+    private       int                            scanned  = 0;
 
-    private Thread t = new Thread(() -> {
+    private final Thread t = new Thread(() -> {
         scanned = 0;
         try {
             InetAddress localhost = InetAddress.getByName(Utils.getLocalIP());
