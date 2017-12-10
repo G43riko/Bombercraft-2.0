@@ -10,6 +10,11 @@ public class BorderLayout extends Layout{
     public final static byte CENTER = 5;
 
     private boolean changeAnotherDirection = true;
+
+    public BorderLayout(byte align) {
+        this.align = align;
+    }
+
     @Override
     public void resize() {
         if(align == NORTH) {

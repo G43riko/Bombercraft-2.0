@@ -26,6 +26,8 @@ public final class GuiConnector {
         return isMouseOn(component.getX(), component.getY(), component.getWidth(), component.getHeight());
     }
 
+    public static int getScroll() {return connector == null ? 0 : connector.getScroll(); }
+
     public static boolean isSet() {
         return connector != null;
     }

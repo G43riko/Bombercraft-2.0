@@ -8,9 +8,7 @@ import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnectAble;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.PositionableComponent;
-import Bombercraft2.Bombercraft2.gui2.layouts.DividedVerticalLayout;
-import Bombercraft2.Bombercraft2.gui2.layouts.Layout;
-import Bombercraft2.Bombercraft2.gui2.layouts.VerticalLayout;
+import Bombercraft2.Bombercraft2.gui2.layouts.*;
 import Bombercraft2.engine.Input;
 
 import java.awt.Graphics2D;
@@ -38,10 +36,48 @@ public class GuiTester {
                 return Input.isButtonDown(Input.BUTTON_LEFT);
             }
 
+            @Override
+            public int getScroll() { return Input.getScroll(); }
         });
+
         // testPanel();
-        testScrollPanel();
+        // testScrollPanel();
         // testLayout();
+
+    }
+
+    public static void init() {
+        manager.getMainPanel().setLayout(new BorderLayout(BorderLayout.NORTH));
+
+        manager.getMainPanel().addComponent(tester.getTopPanel());
+        manager.getMainPanel().addComponent(tester.getBottomPanel());
+    }
+    private Panel getTopPanel() {
+        Panel panel = new Panel();
+        panel.setHeight(manager.getMainPanel().getHeight() - 200);
+        panel.getColorBox().setBackgroundColor(Color.BLUE);
+        panel.setLayout(new BorderLayout(BorderLayout.WEST));
+        panel.addComponent(testScrollPanel());
+        return panel;
+    }
+    private Panel getBottomPanel() {
+        Panel panel = new Panel();
+        panel.getColorBox().setBackgroundColor(Color.GREEN);
+        panel.setHeight(170);
+        VerticalFlowLayout layout = new VerticalFlowLayout();
+        panel.setLayout(layout);
+        layout.setAutoFixGaps(true);
+        layout.setChangeHeight(VerticalFlowLayout.AVERAGE);
+
+        for(int i=1 ; i<=30 ; i++) {
+            Button button = new Button("text-" + i);
+            button.setHeight((int)(Math.random() * 20) + 20);
+            button.setWidth((int)(Math.random() * 60) + 30);
+            panel.addComponent(button);
+        }
+
+
+        return panel;
     }
     private void testBox(Graphics2D g2) {
         PositionableComponent window = new PositionableComponent();
@@ -64,7 +100,7 @@ public class GuiTester {
 
         button.render(g2);
     }
-    private void testScrollPanel() {
+    private Panel testScrollPanel() {
         ColorBox colorBox = new ColorBox();
         colorBox.setBorderWidth(1);
 
@@ -88,10 +124,10 @@ public class GuiTester {
             panel.addComponent(button);
         }
         panel.getLayout().resize();
-        manager.add(panel);
-
+        //manager.add(panel);
+        return panel;
     }
-    private void testLayout() {
+    private Panel testLayout() {
         ColorBox colorBox = new ColorBox();
         colorBox.setBorderWidth(2);
         Panel panel = new Panel();
@@ -112,9 +148,9 @@ public class GuiTester {
         panel.addComponent(panel3);
         panel.addComponent(panel4);
         layout.resize();
-        manager.add(panel);
+        return panel;
     }
-    private void testPanel() {
+    private Panel testPanel() {
         Button button = new Button("Tlacitko");
         button.getColorBox().setBackgroundColor(Color.cyan);
         button.setActiveColorBox(new ColorBox(Color.RED, Color.blue, 5));
@@ -160,7 +196,6 @@ public class GuiTester {
         panel.setLayout(layout);
         layout.resize();
 
-        manager.add(panel);
+        return panel;
     }
-
 }

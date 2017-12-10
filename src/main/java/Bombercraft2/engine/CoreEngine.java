@@ -107,6 +107,7 @@ public abstract class CoreEngine {
 
         canvas.addMouseListener(input);
         canvas.addKeyListener(input);
+        canvas.addMouseWheelListener(input);
         canvas.addMouseMotionListener(input);
         init();
     }
@@ -123,12 +124,13 @@ public abstract class CoreEngine {
     private void defaultRender() {
         BufferStrategy buffer = canvas.getBufferStrategy();
         if (buffer == null) {
+            GuiTester.manager.createMainPanel(canvas);
+            GuiTester.init();
             canvas.createBufferStrategy(3);
             return;
         }
         g2 = (Graphics2D) buffer.getDrawGraphics();
         render(g2);
-
         GuiTester.manager.render(g2);
         canvas.setCursor(GuiTester.manager.getCursor());
 

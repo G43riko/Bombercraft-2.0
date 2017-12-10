@@ -8,10 +8,11 @@ import java.awt.event.*;
 import java.util.HashMap;
 import java.util.function.Function;
 
-public class Input implements KeyListener, MouseListener, MouseMotionListener {
+public class Input implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
     private final HashMap<Integer, Boolean> buttons = new HashMap<>();
     private final HashMap<Integer, Boolean> keys    = new HashMap<>();
-
+    private int scroll = 0;
+    private int lastScroll = scroll;
     public final static int KEY_W           = 87;
     public final static int KEY_A           = 65;
     public final static int KEY_S           = 83;
@@ -48,6 +49,10 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
     private static final boolean[] lastKeys  = new boolean[NUM_KEY_CODES];
     private static final boolean[] lastMouse = new boolean[NUM_MOUSE_BUTTONS];
 
+    public static int getScroll() {
+        return input.lastScroll - input.scroll;
+    }
+
     public static void update() {
         for (int i = 0; i < NUM_KEY_CODES; i++) {
             lastKeys[i] = isKeyDown(i);
@@ -56,6 +61,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
         for (int i = 0; i < NUM_MOUSE_BUTTONS; i++) {
             lastMouse[i] = isButtonDown(i);
         }
+
+        input.lastScroll = input.scroll;
     }
 
     public static boolean getKeyDown(int keyCode) {
@@ -139,5 +146,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
     public static void removeTarget() {
         actMenu = null;
     }
-
+    @Override
+    public void mouseWheelMoved(MouseWheelEvent e) {
+        input.scroll += e.getWheelRotation();
+    }
 }

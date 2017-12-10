@@ -28,6 +28,38 @@ public class Panel extends DrawableComponent {
     }
 
     @Override
+    public void setX(int x) {
+        super.setX(x);
+        if(getLayout() != null) {
+            getLayout().resize();
+        }
+    }
+
+    @Override
+    public void setY(int y) {
+        super.setY(y);
+        if(getLayout() != null) {
+            getLayout().resize();
+        }
+    }
+
+    @Override
+    public void setWidth(int width) {
+        super.setWidth(width);
+        if(getLayout() != null) {
+            getLayout().resize();
+        }
+    }
+
+    @Override
+    public void setHeight(int height) {
+        super.setHeight(height);
+        if(getLayout() != null) {
+            getLayout().resize();
+        }
+    }
+
+    @Override
     public void render(Graphics2D g2) {
         if (!visible) {
             return;
@@ -52,7 +84,9 @@ public class Panel extends DrawableComponent {
     public void addComponent(Drawable component) {
         components.add(component);
         component.setManager(getManager());
-        getLayout().resize();
+        if(getLayout() != null) {
+            getLayout().resize();
+        }
     }
 
 
