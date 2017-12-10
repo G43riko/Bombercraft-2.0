@@ -58,9 +58,11 @@ public abstract class Menu extends GameState implements Clicable, Visible {
         components.put(name, component);
     }
 
+    @Override
     public GVector2f getPosition() {return position;}
 
     public MenuAble getParent() {return parent;}
 
+    @Override
     public GVector2f getSize() {return size;}
 }

@@ -13,7 +13,7 @@ public class AlertManager implements Interactable {
     private final List<Alert> alerts   = new ArrayList<>();
     private final Color       color    = Color.BLACK;
     private final int         fontSize = 33;
-    private final Font        font     = new Font("Garamond", Font.BOLD | Font.ITALIC, fontSize);
+    private final Font        font     = new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, fontSize);
     private       CoreEngine  parent   = null;
 
     public AlertManager(CoreEngine parent) {

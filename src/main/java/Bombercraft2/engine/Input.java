@@ -94,10 +94,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
         return false;
     }
 
-    public static void cleanUp() {
-        // TODO Auto-generated method stub
-
-    }
+    public static void cleanUp() { }
 
     public void mouseDragged(MouseEvent e) {
         mousePosition = new GVector2f(e.getX(), e.getY());
@@ -111,18 +108,11 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
         if (actMenu != null) {
             actMenu.doAct(new GVector2f(e.getX(), e.getY()));
         }
-//		new ArrayList<Clicable>(menus).stream().forEach(a -> a.doAct(new GVector2f(e.getX(), e.getY())));
     }
 
-    public void mouseEntered(MouseEvent arg0) {
-        // TODO Auto-generated method stub
+    public void mouseEntered(MouseEvent arg0) { }
 
-    }
-
-    public void mouseExited(MouseEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
+    public void mouseExited(MouseEvent arg0) { }
 
     public void mousePressed(MouseEvent e) {
         buttons.put(e.getButton(), true);
@@ -132,21 +122,15 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
         buttons.put(e.getButton(), false);
     }
 
-    public void keyPressed(KeyEvent e) {
-        keys.put(e.getKeyCode(), true);
-    }
+    public void keyPressed(KeyEvent e) { keys.put(e.getKeyCode(), true); }
 
     public void keyReleased(KeyEvent e) {
         keys.put(e.getKeyCode(), false);
     }
 
-    public void keyTyped(KeyEvent arg0) {
-        // TODO Auto-generated method stub
-
-    }
+    public void keyTyped(KeyEvent arg0) { }
 
     public static void setTarget(Clicable menu) {
-        //menus.add(menu);
         actMenu = menu;
     }
 

@@ -14,6 +14,7 @@ import Bombercraft2.Bombercraft2.gui.GuiManager;
 import Bombercraft2.Bombercraft2.gui.LoadingScreen;
 import Bombercraft2.Bombercraft2.gui.menus.*;
 import Bombercraft2.Bombercraft2.gui.menus.Menu;
+import Bombercraft2.Bombercraft2.gui2.GuiTester;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import Bombercraft2.Bombercraft2.multiplayer.GameClient;
 import Bombercraft2.Bombercraft2.multiplayer.GameServer;
@@ -21,6 +22,7 @@ import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
@@ -31,25 +33,30 @@ import java.util.Stack;
 public class CoreGame extends CoreEngine implements MenuAble {
     private       Profile          profile      = null;
     private       Game             game         = null;
+    private       boolean          ignoreBlur   = true;
     //	private Level 				level;
     private       Connector        connector    = null;
     private final GuiManager       guiManager   = new GuiManager();
     private final AlertManager     alertManager = new AlertManager(this);
     private       boolean          gameLaunched = false;
-    private       boolean          focused      = true;
     private final Stack<GameState> states       = new Stack<>();
     private       JSONObject       gameConfig   = null;
 
     public CoreGame() {
-        super(Config.WINDOW_DEFAULT_FPS, Config.WINDOW_DEFAULT_UPS, Config.WINDOW_DEFAULT_RENDER_TEXT);
+        super(Config.WINDOW_DEFAULT_FPS,
+              Config.WINDOW_DEFAULT_UPS,
+              Config.WINDOW_DEFAULT_RENDER_TEXT);
 
         Utils.sleep(100);
         states.push(new ProfileMenu(this));
         Input.setTarget(states.peek());
 
-
         try {
-            gameConfig = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG).getJSONObject("data");
+            JSONObject jsonResult = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG);
+            if (jsonResult == null) {
+                Error.makeError(Error.CANNOT_READ_JSON);
+            }
+            gameConfig = jsonResult.getJSONObject("data");
             BotManager.init(gameConfig.getJSONObject("enemies"));
             BulletManager.init(gameConfig.getJSONObject("bullets"));
             JSONObject helpers = gameConfig.getJSONObject("helpers");
@@ -57,8 +64,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
         }
         catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+            GLogger.printLine(e);
         }
     }
 
@@ -68,16 +74,19 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
     @Override
     protected void render(Graphics2D g2) {
-        if (!focused) {
+        if (!ignoreBlur && !getWindow().isFocused()) {
             return;
         }
+
+
         states.peek().render(g2);
         alertManager.render(g2);
+        GuiTester.renderTest(g2);
     }
 
     @Override
     protected void update(float delta) {
-        if (!focused) {
+        if (!ignoreBlur && !getWindow().isFocused()) {
             return;
         }
         states.peek().update(delta);
@@ -86,7 +95,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
     @Override
     protected void input() {
-        if (!focused) {
+        if (!ignoreBlur && !getWindow().isFocused()) {
             return;
         }
         states.peek().input();
@@ -125,20 +134,6 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     @Override
-    public void onFocus() {
-        focused = true;
-    }
-
-    @Override
-    public void onBlur() {
-
-//		if(states != null && states.peek().getType() == GameState.Type.Game){
-//			pausedGame();
-//		}
-//		focused = false;
-    }
-
-    @Override
     public void exitGame() {
         stopGame();
         stop();
@@ -152,7 +147,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     public void showLoading() {
-        states.push(new LoadingScreen(getCanvas(), getGuiManager().getLabelOf(Texts.LOADING)));
+        states.push(new LoadingScreen(getCanvas(), guiManager.getLabelOf(Texts.LOADING)));
         Input.removeTarget();
     }
 
@@ -176,7 +171,6 @@ public class CoreGame extends CoreEngine implements MenuAble {
     public void showJoinMenu() {
         states.push(new JoinMenu(this));
         Input.setTarget(states.peek());
-
     }
 
     @Override
@@ -200,8 +194,6 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     public void continueGame() {
-
-
         if (game != null) {
             states.push(game);
         }

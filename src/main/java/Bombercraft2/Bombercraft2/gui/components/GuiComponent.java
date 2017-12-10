@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Interactable;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
@@ -13,26 +14,26 @@ public abstract class GuiComponent implements Interactable, Visible {
     protected final static int   SIDEBAR_DEFAULT_BUTTON_HEIGHT = 30;
     protected final static float CENTER_ALIGN                  = -1.111111f;
 
-    public static final HashMap<Visible, Integer> buttons    = new HashMap<>();
-    private             Visible                   parent     = null;
-    protected           GVector2f                 offset     = new GVector2f();
-    protected           GVector2f                 textOffset = new GVector2f();
-    protected           GVector2f                 position   = null;
-    protected           GVector2f                 size       = null;
-    protected           int                       textSize   = 20;
-    protected     int                       round               = 0;
-    protected     int                       borderWidth         = 0;
-    protected     int     topCousePrevButtons = 0;
-    protected     boolean hover               = false;
-    protected     boolean disable             = false;
-    protected     boolean value               = true;
-    protected     String  text                = "";
-    protected     Color   backgroundColor     = Color.WHITE;
-    protected     Color   borderColor         = Color.black;
-    protected     Color   textColor           = Color.black;
-    protected     Color   hoverColor          = Color.lightGray;
-    protected     Color   disabledColor       = Color.DARK_GRAY;
-    protected     String  font                = "Garamond";
+    public static final HashMap<Visible, Integer> buttons             = new HashMap<>();
+    private             Visible                   parent              = null;
+    protected           GVector2f                 offset              = new GVector2f();
+    protected           GVector2f                 textOffset          = new GVector2f();
+    protected           GVector2f                 position            = null;
+    protected           GVector2f                 size                = null;
+    protected           int                       textSize            = 20;
+    protected           int                       round               = 0;
+    protected           int                       borderWidth         = 0;
+    protected           int                       topCousePrevButtons = 0;
+    protected           boolean                   hover               = false;
+    protected           boolean                   disable             = false;
+    protected           boolean                   value               = true;
+    protected           String                    text                = "";
+    protected           Color                     backgroundColor     = Color.WHITE;
+    protected           Color                     borderColor         = Color.black;
+    protected           Color                     textColor           = Color.black;
+    protected           Color                     hoverColor          = Color.lightGray;
+    protected           Color                     disabledColor       = Color.DARK_GRAY;
+    protected           String                    font                = Config.DEFAULT_FONT;
 
     public GuiComponent(Visible parent) {
         this.parent = parent;
@@ -103,7 +104,7 @@ public abstract class GuiComponent implements Interactable, Visible {
 
         g2.setColor(textColor);
         g2.setFont(new Font(font, Font.BOLD | Font.ITALIC, textSize));
-        if (text != null && text.isEmpty() && textSize > 0) {
+        if (text != null && !text.isEmpty() && textSize > 0) {
             if (textOffset.getX() == CENTER_ALIGN) {
                 g2.drawString(text,
                               position.getX() + (size.getX() - g2.getFontMetrics().stringWidth(text)) / 2,

@@ -14,7 +14,6 @@ public abstract class GameState implements Interactable, Clicable {
         MainMenu("MainMenu"),
         Game("Game");
 
-
         private final String name;
 
         Type(String name) {

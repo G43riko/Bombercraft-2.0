@@ -7,9 +7,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 public class Window extends JFrame implements ComponentListener, WindowListener {
-    private static final long serialVersionUID = 1L;
     private final CoreEngine parent;
-
+    private boolean focused = true;
     public Window(CoreEngine parent, String title, int width, int height) {
         this.parent = parent;
         setTitle(title);
@@ -37,13 +36,13 @@ public class Window extends JFrame implements ComponentListener, WindowListener 
 
     public void componentShown(ComponentEvent e) {}
 
-    public void windowDeactivated(WindowEvent e) {parent.onBlur();}
+    public void windowDeactivated(WindowEvent e) {parent.onBlur(); focused = false;}
 
-    public void windowDeiconified(WindowEvent e) {parent.onFocus();}
+    public void windowDeiconified(WindowEvent e) {parent.onFocus(); focused = true;}
 
-    public void windowActivated(WindowEvent e) {parent.onFocus();}
+    public void windowActivated(WindowEvent e) {parent.onFocus(); focused = true;}
 
-    public void windowIconified(WindowEvent e) {parent.onBlur();}
+    public void windowIconified(WindowEvent e) {parent.onBlur(); focused = false;}
 
     public void windowClosing(WindowEvent e) {parent.onExit();}
 
@@ -52,4 +51,6 @@ public class Window extends JFrame implements ComponentListener, WindowListener 
     public void windowClosed(WindowEvent e) {}
 
     public void componentResized(ComponentEvent e) {parent.onResize();}
+
+    public boolean isFocused() { return this.focused;}
 }

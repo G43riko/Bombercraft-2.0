@@ -3,10 +3,7 @@ package Bombercraft2.Bombercraft2.game;
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.Profile;
-import Bombercraft2.Bombercraft2.core.CoreGame;
-import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.core.Texts;
-import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.Bombercraft2.core.*;
 import Bombercraft2.Bombercraft2.game.bots.BotManager;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
@@ -36,7 +33,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game extends GameState implements GameAble {
-    private MouseSelector mouseSelector;//	= new MouseSelector(this);
+    private       MouseSelector mouseSelector;//	= new MouseSelector(this);
     private       MyPlayer      myPlayer      = null;
     private       Level         level         = null;
     private       float         zoom          = Config.DEFAULT_ZOOM;
@@ -387,7 +384,6 @@ public class Game extends GameState implements GameAble {
             e.printStackTrace();
         }
         return "{}";
-
     }
 
     @Override

@@ -8,22 +8,8 @@ import org.json.JSONObject;
 import java.awt.*;
 
 
-public interface MenuAble extends Visible {
-    void startNewGame();
-
-    void showJoinMenu();
-
-    void continueGame();
-
+public interface MenuAble extends Visible, StateAble {
     void connectToGame(String ip);
-
-    void pausedGame();
-
-    void endGame();
-
-    void stopGame();
-
-    void exitGame();
 
     GuiManager getGuiManager();
 

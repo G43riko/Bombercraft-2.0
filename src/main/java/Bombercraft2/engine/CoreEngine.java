@@ -9,34 +9,28 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public abstract class CoreEngine {
-    private static boolean    RENDER_TIME = false;
-    private static int        FPS         = 60;
-    private static int        UPS         = 60;
-    private        boolean    running     = false;
-    private        float      actFPS      = FPS;
-    private        float      actUPS      = UPS;
-    private        float      actLoops    = 0;
-    private        Window     window      = null;
-    private final  Input      input       = new Input();
-    private final  Canvas     canvas      = new Canvas();
-    private        Graphics2D g2          = null;
+    private static boolean    renderTime = false;
+    private static int        fps        = 60;
+    private static int        ups        = 60;
+    private        boolean    running    = false;
+    private        float      actFPS     = fps;
+    private        float      actUPS     = ups;
+    private        float      actLoops   = 0;
+    private        Window     window     = null;
+    private final  Input      input      = new Input();
+    private final  Canvas     canvas     = new Canvas();
+    private        Graphics2D g2         = null;
 
-//	public CoreEngine(){
-//		this(60, 60, true);
-//	}
 
     public CoreEngine(int fps, int ups, boolean renderTime) {
         defaultInit();
-
-
-        RENDER_TIME = renderTime;
-        FPS = fps;
-        UPS = ups;
+        CoreEngine.renderTime = renderTime;
+        CoreEngine.fps = fps;
+        CoreEngine.ups = ups;
     }
 
     public void run() {
         running = true;
-
         mainLoop();
     }
 
@@ -44,7 +38,6 @@ public abstract class CoreEngine {
         window.dispose();
         window.removeAll();
         Input.cleanUp();
-
     }
 
     public void stop() {
@@ -53,8 +46,8 @@ public abstract class CoreEngine {
 
     private void mainLoop() {
         long initialTime = System.nanoTime();
-        final double timeU = 1000000000 / UPS;
-        final double timeF = 1000000000 / FPS;
+        final double timeU = 1000000000 / ups;
+        final double timeF = 1000000000 / fps;
         double deltaU = 0, deltaF = 0;
         int frames = 0, ticks = 0, loops = 0;
         long timer = System.currentTimeMillis();
@@ -83,8 +76,8 @@ public abstract class CoreEngine {
             }
 
             if (System.currentTimeMillis() - timer > 1000) {
-                if (RENDER_TIME) {
-                    System.out.println(String.format("UPS: %s, FPS: %s, LOOPS: %s", ticks, frames, loops));
+                if (renderTime) {
+                    System.out.println(String.format("ups: %s, fps: %s, LOOPS: %s", ticks, frames, loops));
                 }
 
                 Bombercraft.totalMessages = new GVector2f(Bombercraft.sendMessages, Bombercraft.receiveMessages);
@@ -145,21 +138,13 @@ public abstract class CoreEngine {
 
     //MAIN METHODS
 
-    protected void init() {
+    protected void init() { }
 
-    }
+    protected void input() { }
 
-    protected void input() {
+    protected void update(float delta) { }
 
-    }
-
-    protected void update(float delta) {
-
-    }
-
-    protected void render(Graphics2D g2) {
-
-    }
+    protected void render(Graphics2D g2) { }
 
     //GETTERS
 
@@ -191,13 +176,12 @@ public abstract class CoreEngine {
         return actUPS;
     }
 
-
     public abstract void onResize();
 
     public abstract void onExit();
 
-    public abstract void onFocus();
+    public void onFocus() { }
 
-    public abstract void onBlur();
+    public void onBlur() { }
 }
 

@@ -100,7 +100,7 @@ public class Submenu {
 
 
         g2.setColor(Config.SUBMENU_FONT_COLOR);
-        g2.setFont(new Font("Garamond", Font.BOLD | Font.ITALIC, 20));
+        g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.DEFAULT_FONT_SIZE));
         for (int i = 0; i < items.size(); i++) {
 
             if (selectedIndex == i) {
@@ -143,7 +143,7 @@ public class Submenu {
                 }
 
                 g2.setColor(Config.SUBMENU_FONT_COLOR);
-                g2.setFont(new Font("Garamond", Font.BOLD | Font.ITALIC, 20));
+                g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.DEFAULT_FONT_SIZE));
                 g2.drawString(a.getLabel(),
                               beginTextX + Config.SUBMENU_FONT_HORIZONTAL_OFFSET + imageOffset,
                               beginTextY + Config.SUBMENU_FONT_VERTICAL_OFFSET + Config.SUBMENU_FONT_SIZE);
@@ -153,7 +153,7 @@ public class Submenu {
             else {
                 int yOffset = i * Config.SUBMENU_LINE_HEIGHT + Config.SUBMENU_FONT_VERTICAL_OFFSET + Config.SUBMENU_FONT_SIZE;
                 g2.setColor(Config.SUBMENU_FONT_COLOR);
-                g2.setFont(new Font("Garamond", Font.BOLD | Font.ITALIC, Config.SUBMENU_FONT_SIZE));
+                g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.SUBMENU_FONT_SIZE));
                 g2.drawString(a.getLabel(),
                               position.getXi() + Config.SUBMENU_FONT_HORIZONTAL_OFFSET,
                               position.getYi() + yOffset);

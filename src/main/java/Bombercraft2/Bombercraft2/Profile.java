@@ -17,7 +17,6 @@ import java.io.IOException;
  * kedy bol naposledy ulozeny
  */
 public class Profile implements JSONAble {
-
     private final static String NAME           = "name";
     private final static String AVATAR         = "avatar";
     private final static String NEW_GAMES      = "newGames";

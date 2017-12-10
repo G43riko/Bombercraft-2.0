@@ -51,7 +51,7 @@ public class ProfileMenu extends Menu{
 			component.calcPosAndSize();
 		}
 	}
-	
+
 	@Override
 	public void render(Graphics2D g2) {
 		g2.clearRect(0, 0, size.getXi(), size.getYi());
@@ -77,6 +77,7 @@ public class ProfileMenu extends Menu{
 		parent.setProfile(Profile.GUEST);
 		parent.showMainMenu();
 	}
+
 	private void selectProfile(String profile){
 		parent.setProfile(profile);
 		parent.showMainMenu();

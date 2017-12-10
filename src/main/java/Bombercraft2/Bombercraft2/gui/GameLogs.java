@@ -20,7 +20,7 @@ public class GameLogs implements Interactable {
     public void render(Graphics2D g2) {
         ArrayList<String> data = parent.getLogInfo();
 
-        g2.setFont(new Font("Garamond", Font.BOLD | Font.ITALIC, Config.LOG_TEXT_SIZE));
+        g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.LOG_TEXT_SIZE));
 
         int maxWidth = 0;
         for (String aData : data) {

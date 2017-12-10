@@ -108,6 +108,8 @@ public class Config {
     public static final int    SCANNING_RANGE        = 20;
     public static final String TEXT_ARG_PLACEHOLDER  = "#####";
 
-    public static final float ENEMY_DEFAULT_ROUND  = 4;
-    public static final float ENEMY_DEFAULT_OFFSET = 5;
+    public static final float  ENEMY_DEFAULT_ROUND  = 4;
+    public static final float  ENEMY_DEFAULT_OFFSET = 5;
+    public static final String DEFAULT_FONT         = "Garamond";
+    public static final int DEFAULT_FONT_SIZE    = 20;
 }
