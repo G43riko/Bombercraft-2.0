@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 import utils.AudioPlayer;
 
-public final class SoundManager {
-    private HashMap<String, AudioPlayer> sounds = new HashMap<>();
+final class SoundManager {
+    private final HashMap<String, AudioPlayer> sounds = new HashMap<>();
 
     public AudioPlayer loadAudio(String name) {
         AudioPlayer result = null;

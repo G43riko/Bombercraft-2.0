@@ -2,15 +2,15 @@ package Bombercraft2.Bombercraft2.game.entity.weapons;
 
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.entity.Shootable;
+import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletModel;
-import Bombercraft2.Bombercraft2.game.player.Toolable;
+import Bombercraft2.Bombercraft2.game.player.ToolAble;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
-public abstract class Weapon implements Shootable, Toolable {
+public abstract class Weapon implements ShootAble, ToolAble {
     public enum Types {
         LASER("laser");
 
@@ -30,7 +30,7 @@ public abstract class Weapon implements Shootable, Toolable {
     private final GameAble    parent;
 
     //CONSTRUCTORS
-    public Weapon(GameAble parent, Types type, JSONObject data) {
+    Weapon(GameAble parent, Types type, JSONObject data) {
         this.parent = parent;
         this.type = type;
         fromJSON(data);
@@ -48,7 +48,7 @@ public abstract class Weapon implements Shootable, Toolable {
         }
     }
 
-    protected GameAble getParent() {
+    GameAble getParent() {
         return parent;
     }
     //OTHERS
@@ -57,7 +57,7 @@ public abstract class Weapon implements Shootable, Toolable {
         return canShot(parent.getMyPlayer().getCadenceBonus());
     }
 
-    public boolean canShot(int bonus) {
+    private boolean canShot(int bonus) {
         return System.currentTimeMillis() - lastShot > cadence - bonus;
     }
 

@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.gui;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.math.GVector2f;
 
@@ -9,10 +9,10 @@ import java.awt.*;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
-public class StatsPanel  implements Interactable{
+public class StatsPanel implements InteractAble {
 	private final GameAble parent;
-	private       HashMap<String, String> stats          = new HashMap<>();
-	private       int                     width          = 600;
+	private       HashMap<String, String> stats;
+	private       int                     width;
 	private final int                     verticalOffset = 10;
 	private final int 					  fontSize		 = 22;
 	private final GVector2f position;

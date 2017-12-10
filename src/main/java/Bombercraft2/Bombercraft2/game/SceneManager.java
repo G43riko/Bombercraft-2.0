@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.bots.BotManager.Types;
 import Bombercraft2.Bombercraft2.game.bots.Enemy;
@@ -23,7 +23,7 @@ import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class SceneManager implements Interactable, JSONAble {
+public class SceneManager implements InteractAble, JSONAble {
     private enum Keys {
         BULLETS("bullets"),
         BULLETS_RENDERED("bulletsRendered"),
@@ -48,7 +48,7 @@ public class SceneManager implements Interactable, JSONAble {
     private       ArrayList<Entity>       explosions     = new ArrayList<>();
     private       ArrayList<Bullet>       bullets        = new ArrayList<>();
     private       ArrayList<Enemy>        enemies        = new ArrayList<>();
-    private       GameAble                parent         = null;
+    private       GameAble                parent;
     private       Bomb                    lastBomb       = null;
     private final HashMap<Keys, Integer>  stats          = new HashMap<>();
 //	private long						renderedParticles	= 0;

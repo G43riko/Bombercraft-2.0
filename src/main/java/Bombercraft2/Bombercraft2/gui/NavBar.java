@@ -49,7 +49,7 @@ public class NavBar extends Bar {
         getParent().getToolsManager().setSelectedTool(getSelectedIcon());
     }
 
-    public Iconable getSelectedIcon() {
+    private Iconable getSelectedIcon() {
         return items.get(selectedItem);
     }
 

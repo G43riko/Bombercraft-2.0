@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
 import utils.math.GColision;
@@ -10,32 +10,32 @@ import utils.math.GVector2f;
 import java.awt.*;
 import java.util.HashMap;
 
-public abstract class GuiComponent implements Interactable, Visible {
-    protected final static int   SIDEBAR_DEFAULT_BUTTON_HEIGHT = 30;
-    protected final static float CENTER_ALIGN                  = -1.111111f;
+public abstract class GuiComponent implements InteractAble, Visible {
+    final static int   SIDEBAR_DEFAULT_BUTTON_HEIGHT = 30;
+    final static float CENTER_ALIGN                  = -1.111111f;
 
-    public static final HashMap<Visible, Integer> buttons             = new HashMap<>();
-    private             Visible                   parent              = null;
-    protected           GVector2f                 offset              = new GVector2f();
-    protected           GVector2f                 textOffset          = new GVector2f();
-    protected           GVector2f                 position            = null;
-    protected           GVector2f                 size                = null;
-    protected           int                       textSize            = 20;
-    protected           int                       round               = 0;
-    protected           int                       borderWidth         = 0;
-    protected           int                       topCousePrevButtons = 0;
-    protected           boolean                   hover               = false;
-    protected           boolean                   disable             = false;
-    protected           boolean                   value               = true;
-    protected           String                    text                = "";
-    protected           Color                     backgroundColor     = Color.WHITE;
-    protected           Color                     borderColor         = Color.black;
-    protected           Color                     textColor           = Color.black;
-    protected           Color                     hoverColor          = Color.lightGray;
-    protected           Color                     disabledColor       = Color.DARK_GRAY;
-    protected           String                    font                = Config.DEFAULT_FONT;
+    static final HashMap<Visible, Integer> buttons             = new HashMap<>();
+    private             Visible                   parent;
+    GVector2f                 offset              = new GVector2f();
+    GVector2f                 textOffset          = new GVector2f();
+    GVector2f                 position;
+    GVector2f                 size;
+    int                       textSize            = 20;
+    int                       round               = 0;
+    int                       borderWidth         = 0;
+    int                       topCousePrevButtons = 0;
+    boolean                   hover               = false;
+    private boolean disable = false;
+    boolean                   value               = true;
+    String                    text                = "";
+    Color                     backgroundColor     = Color.WHITE;
+    Color                     borderColor         = Color.black;
+    Color                     textColor           = Color.black;
+    Color                     hoverColor          = Color.lightGray;
+    Color                     disabledColor       = Color.DARK_GRAY;
+    String                    font                = Config.DEFAULT_FONT;
 
-    public GuiComponent(Visible parent) {
+    GuiComponent(Visible parent) {
         this.parent = parent;
         position = parent.getPosition();
         size = parent.getSize();
@@ -43,7 +43,7 @@ public abstract class GuiComponent implements Interactable, Visible {
 
     protected abstract void init();
 
-    protected void clickIn() {
+    private void clickIn() {
         value = !value;
     }
 
@@ -127,7 +127,7 @@ public abstract class GuiComponent implements Interactable, Visible {
 
     public void setDisable(boolean disable) {this.disable = disable;}
 
-    public Visible getParent() {return parent;}
+    Visible getParent() {return parent;}
 
     public GVector2f getPosition() {return position;}
 

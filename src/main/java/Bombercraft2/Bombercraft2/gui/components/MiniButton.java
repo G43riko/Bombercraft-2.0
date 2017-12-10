@@ -10,7 +10,7 @@ public class MiniButton extends GuiComponent {
         this(parent, text, SIDEBAR_DEFAULT_BUTTON_HEIGHT);
     }
 
-    public MiniButton(Visible parent, String text, int height) {
+    private MiniButton(Visible parent, String text, int height) {
         super(parent);
         this.size = new GVector2f(0, height);
         this.text = text;

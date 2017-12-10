@@ -3,7 +3,7 @@ package Bombercraft2.Bombercraft2.game.entity;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import utils.math.GVector2f;
 
-public interface Shootable {
+public interface ShootAble {
     GVector2f getPosition();
 
     //	GVector2f 			getTargetLocation();

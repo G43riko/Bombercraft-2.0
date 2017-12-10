@@ -1,7 +1,7 @@
 package utils.math;
 
 public final class LineLineIntersect {
-    public boolean sameString(long a, long b) {
+    private boolean sameString(long a, long b) {
         return ((a ^ b) >= 0);
     }
 
@@ -12,7 +12,7 @@ public final class LineLineIntersect {
                                                       (long) d.getX(), (long) d.getY());
     }
 
-    public GVector2f linesIntersect(long x1, long y1, long x2, long y2, long x3, long y3, long x4, long y4) {
+    private GVector2f linesIntersect(long x1, long y1, long x2, long y2, long x3, long y3, long x4, long y4) {
         long a1, a2, b1, b2, c1, c2; /* Coefficients of line eqns. */
         long r1, r2, r3, r4;         /* 'Sign' values */
         long denom, offset, num;     /* Intermediate values */

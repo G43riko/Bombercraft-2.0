@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.gui2.components;
 
+import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import Bombercraft2.Bombercraft2.gui2.core.DrawableComponent;
@@ -9,12 +10,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Panel extends DrawableComponent{
-    private List<Drawable> components       = new ArrayList<>();
-    private int            verticalOffset   = 10;
-    private int            horizontalOffset = 10;
-    private ColorBox       colorBox         = new ColorBox();
-    private Layout         layout           = null;
+public class Panel extends DrawableComponent {
+    protected final List<Drawable> components       = new ArrayList<>();
+    private         int            verticalOffset   = 10;
+    private         int            horizontalOffset = 10;
+    protected       ColorBox       colorBox         = new ColorBox();
+    private         Layout         layout           = null;
+
+    public Panel() { }
+
+    public Panel(ColorBox colorBox) {
+        this.colorBox = colorBox;
+    }
 
     public List<Drawable> getComponents() {
         return components;
@@ -31,6 +38,12 @@ public class Panel extends DrawableComponent{
         components.forEach((component) -> component.render(g2));
     }
 
+    @Override
+    public void setManager(GuiManager manager) {
+        super.setManager(manager);
+        components.forEach((component) -> component.setManager(manager));
+    }
+
     public void setLayout(Layout layout) {
         this.layout = layout;
         layout.setTarget(this);
@@ -38,8 +51,9 @@ public class Panel extends DrawableComponent{
 
     public void addComponent(Drawable component) {
         components.add(component);
+        component.setManager(getManager());
+        getLayout().resize();
     }
-
 
 
     public ColorBox getColorBox() {return colorBox;}

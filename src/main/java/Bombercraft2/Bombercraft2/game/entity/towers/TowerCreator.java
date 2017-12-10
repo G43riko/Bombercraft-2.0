@@ -3,14 +3,14 @@ package Bombercraft2.Bombercraft2.game.entity.towers;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
 import Bombercraft2.Bombercraft2.game.level.Map;
-import Bombercraft2.Bombercraft2.game.player.Toolable;
+import Bombercraft2.Bombercraft2.game.player.ToolAble;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
 import java.util.HashMap;
 
-public class TowerCreator implements Toolable {
+public class TowerCreator implements ToolAble {
     private static final HashMap<Type, TowerModel> towers = new HashMap<>();
     private final GameAble parent;
     private final Type     type;

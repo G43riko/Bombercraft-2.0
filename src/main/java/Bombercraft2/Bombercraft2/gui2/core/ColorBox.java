@@ -3,9 +3,9 @@ package Bombercraft2.Bombercraft2.gui2.core;
 import java.awt.*;
 
 public class ColorBox {
-    protected Color borderColor     = Color.BLACK;
-    protected Color backgroundColor = Color.WHITE;
-    protected int   borderWidth     = 0;
+    Color borderColor     = Color.BLACK;
+    Color backgroundColor = Color.WHITE;
+    int   borderWidth     = 0;
 
     public ColorBox(Color backgroundColor, Color borderColor, int borderWidth) {
         this.borderColor = borderColor;
@@ -24,23 +24,35 @@ public class ColorBox {
 
     public ColorBox() { }
 
+    public  void render(Graphics2D g2, int x, int y, int width, int height) {
+        renderBackground(g2, x, y, width, height);
+        renderBorder(g2, x, y, width, height);
+    }
     public void render(Graphics2D g2, PositionableComponent target) {
         renderBackground(g2, target);
         renderBorder(g2, target);
     }
 
     public void renderBorder(Graphics2D g2, PositionableComponent target) {
+        renderBorder(g2, target.getX(), target.getY(), target.getWidth(), target.getHeight());
+    }
+    private void renderBorder(Graphics2D g2, int x, int y, int width, int height) {
         if (borderWidth <= 0) {
             return;
         }
+
+
         g2.setColor(borderColor);
         g2.setStroke(new BasicStroke(borderWidth));
-        g2.drawRect(target.getX(), target.getY(), target.getWidth(), target.getHeight());
+        g2.drawRect(x, y, width, height);
     }
 
     public void renderBackground(Graphics2D g2, PositionableComponent target) {
+        renderBackground(g2, target.getX(), target.getY(), target.getWidth(), target.getHeight());
+    }
+    private void renderBackground(Graphics2D g2, int x, int y, int width, int height) {
         g2.setColor(backgroundColor);
-        g2.fillRect(target.getX(), target.getY(), target.getWidth(), target.getHeight());
+        g2.fillRect(x, y, width, height);
     }
 
 

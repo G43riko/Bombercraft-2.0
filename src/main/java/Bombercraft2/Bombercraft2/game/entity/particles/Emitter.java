@@ -27,29 +27,29 @@ public abstract class Emitter extends Entity {
 
         Types(String name) {this.name = name;}
 
-        public String getName() {return name;}
+        String getName() {return name;}
     }
 
-    protected ArrayList<Particle> particles = new ArrayList<>();
-    protected Color     color;
-    protected float     particlePerFrame;
-    protected GVector2f speed; // x - value, y - randomness
-    protected GVector2f rotation; // - speed, y - randomness
-    protected GVector2f health; // - normal, y - randomness
-    protected GVector2f direction; // x - start angle, y - end angle
-    protected GVector2f size;
-    protected int       sizeRandomness;
-    protected GVector2f positionRandomness;
-    protected long      renderedParticles;
-    private   int       particlesOnStart;
+    ArrayList<Particle> particles = new ArrayList<>();
+    private Color color;
+    float     particlePerFrame;
+    private GVector2f speed; // x - value, y - randomness
+    private GVector2f rotation; // - speed, y - randomness
+    private GVector2f health; // - normal, y - randomness
+    private GVector2f direction; // x - start angle, y - end angle
+    private GVector2f size;
+    private int       sizeRandomness;
+    private GVector2f positionRandomness;
+    private long      renderedParticles;
+    private int       particlesOnStart;
 
     static {
         initDefault();
     }
 //	
-    //CONTRUCTORS
+    //CONSTRUCTORS
 
-    public Emitter(Emitter.Types type, GVector2f position, GameAble parent) {
+    Emitter(Emitter.Types type, GVector2f position, GameAble parent) {
         super(position, parent);
 
         loadDataFromJSON(predefinedParticles.get(type));
@@ -71,7 +71,7 @@ public abstract class Emitter extends Entity {
                                                       .count();
     }
 
-    protected void createParticles(int numOfParticles) {
+    void createParticles(int numOfParticles) {
         for (int i = 0; i < numOfParticles; i++) {
             particles.add(new Particle(position.add(new GVector2f(Math.random() - 0.5, Math.random() - 0.5).mul(
                     positionRandomness)),
@@ -102,7 +102,7 @@ public abstract class Emitter extends Entity {
     }
 
 
-    public static void initDefault() {
+    private static void initDefault() {
         try {
             Types[] types = Types.values();
             JSONObject object = ResourceLoader.getJSON(Config.FILE_PARTICLES);

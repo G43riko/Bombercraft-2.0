@@ -7,7 +7,7 @@ import utils.resouces.ResourceLoader;
 
 public class GuiManager {
     private final String lang = Config.DEFAULT_LANGUAGE;
-    final JSONObject data;
+    private final JSONObject data;
 
     public GuiManager() {
         data = ResourceLoader.getJSON(Config.FILE_GUI_TEXTS);

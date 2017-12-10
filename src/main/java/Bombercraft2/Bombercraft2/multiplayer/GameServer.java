@@ -3,7 +3,7 @@ package Bombercraft2.Bombercraft2.multiplayer;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
-import Bombercraft2.Bombercraft2.game.entity.Shootable;
+import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -144,7 +144,7 @@ public class GameServer extends Server implements Connector {
         methods.setPlayerChange(player);
     }
 
-    protected String getGameInfo() {
+    private String getGameInfo() {
         return parent.getGame().getGameInfo();
     }
 
@@ -198,7 +198,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setPutBullet(MyPlayer myPlayer, Shootable shooter) {
+    public void setPutBullet(MyPlayer myPlayer, ShootAble shooter) {
         methods.setPutBullet(myPlayer, shooter);
     }
 

@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class EndGameMenu extends Menu {
     private final StatsPanel panel;
+    //TODO texts pick up from file
     private final Button mainMenuButton = new Button(this, "Hlavné menu");
     private final Button newGameButton  = new Button(this, "Nová hra");
 

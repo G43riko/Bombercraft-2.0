@@ -3,7 +3,7 @@ package Bombercraft2.Bombercraft2.multiplayer;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
-import Bombercraft2.Bombercraft2.game.entity.Shootable;
+import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
@@ -17,9 +17,9 @@ import org.json.JSONObject;
 import utils.GLogger;
 import utils.math.GVector2f;
 
-public class CommonMethods {
-    private GameAble game   = null;
-    private Writable parent = null;
+class CommonMethods {
+    private GameAble game;
+    private Writable parent;
 
     public CommonMethods(GameAble game, Writable parent) {
         this.game = game;
@@ -122,7 +122,7 @@ public class CommonMethods {
         }
     }
 
-    public void setPutBullet(MyPlayer myPlayer, Shootable shooter) {
+    public void setPutBullet(MyPlayer myPlayer, ShootAble shooter) {
         GVector2f angle = myPlayer.getTagetDirection();
         angle.normalize();
         //TODO tu treba spracovať už aj bonusy od hraca

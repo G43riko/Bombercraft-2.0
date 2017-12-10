@@ -5,7 +5,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public interface Toolable {
+public interface ToolAble {
     default void onSelect() {}
 
     default void onUnselect() {}

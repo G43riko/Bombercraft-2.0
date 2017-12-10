@@ -3,14 +3,14 @@ package Bombercraft2.Bombercraft2.gui.components;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
-import Bombercraft2.Bombercraft2.gui.Clicable;
+import Bombercraft2.Bombercraft2.gui.ClickAble;
 import Bombercraft2.Bombercraft2.gui.menus.JoinMenu;
 import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
 import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class RemoteGamePanel extends GuiComponent implements Clicable{
+public class RemoteGamePanel extends GuiComponent implements ClickAble {
 	private final RemoteGameData data;
 	private final int localOffset = 8;
 	private final Button   joinButton;
@@ -50,7 +50,7 @@ public class RemoteGamePanel extends GuiComponent implements Clicable{
 		textSize 		= 32;
 	}
 	
-	public void reping(){
+	public void rePing(){
 		data.reping();
 	}
 	@Override

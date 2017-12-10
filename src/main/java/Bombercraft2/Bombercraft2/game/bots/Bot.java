@@ -8,11 +8,11 @@ import org.json.JSONObject;
 import utils.math.GVector2f;
 
 public abstract class Bot extends Entity {
-    protected Direction direction = null;
-    protected int       health    = 0;
-    protected BotModel  model     = null;
+    Direction direction;
+    private int      health;
+    private BotModel model;
 
-    public Bot(GVector2f position, GameAble parent, Types type, Direction direction) {
+    Bot(GVector2f position, GameAble parent, Types type, Direction direction) {
         super(position, parent);
         model = BotManager.getBotModel(type);
         this.direction = direction;
@@ -32,6 +32,6 @@ public abstract class Bot extends Entity {
         }
     }
 
-    public int getSpeed() {return model.getSpeed();}
+    int getSpeed() {return model.getSpeed();}
 
 }

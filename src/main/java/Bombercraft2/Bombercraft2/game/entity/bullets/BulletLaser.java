@@ -6,7 +6,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class BulletLaser extends Bullet {
-    final int width = 3;
+    private final int width = 3;
 
     public BulletLaser(GVector2f position, GameAble parent, GVector2f direction) {
         super(position, parent, BulletManager.Types.LASER, direction);

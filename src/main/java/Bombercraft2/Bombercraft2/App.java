@@ -9,7 +9,7 @@ public class App {
         game.run();
     }
 
-    private static void testMultiplayer() {
+    private static void testMultiPlayer() {
         Thread t1 = new Thread(() -> {
             Bombercraft server = new Bombercraft();
             server.initDefaultProfile();

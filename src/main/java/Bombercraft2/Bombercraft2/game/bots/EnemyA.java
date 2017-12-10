@@ -19,7 +19,7 @@ public class EnemyA extends Enemy {
         this(position, parent, getRandPossibleDir(parent.getLevel().getMap(), position.div(Block.SIZE).toInt()));
     }
 
-    public EnemyA(GVector2f position, GameAble parent, Direction direction) {
+    private EnemyA(GVector2f position, GameAble parent, Direction direction) {
         super(position, parent, Types.A, direction);
     }
 
@@ -67,8 +67,8 @@ public class EnemyA extends Enemy {
         position = position.add(direction.getDirection().mul(getSpeed()));
     }
 
-    private static Direction getRandPossibleDir(Map mapa, GVector2f sur) {
-        Direction[] ret = mapa.getPossibleWays(sur);
+    private static Direction getRandPossibleDir(Map map, GVector2f sur) {
+        Direction[] ret = map.getPossibleWays(sur);
         if (ret.length == 0) {
             return null;
         }

@@ -6,7 +6,7 @@ import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.player.Shovel;
-import Bombercraft2.Bombercraft2.game.player.Toolable;
+import Bombercraft2.Bombercraft2.game.player.ToolAble;
 import Bombercraft2.Bombercraft2.game.player.placers.AreaPlacer;
 import Bombercraft2.Bombercraft2.game.player.placers.Placer;
 import Bombercraft2.Bombercraft2.game.player.placers.Placer.Types;
@@ -16,9 +16,9 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class ToolManager {
-    private final HashMap<Iconable, Toolable> tools = new HashMap<>();
+    private final HashMap<Iconable, ToolAble> tools = new HashMap<>();
     private       Placer   actualPlacer;
-    private       Toolable selectedTool;
+    private       ToolAble selectedTool;
     private final GameAble parent;
 
     public ToolManager(GameAble parent) {
@@ -38,13 +38,13 @@ public class ToolManager {
         actualPlacer.render(g2);
     }
 
-    //GETTES
+    //GETTERS
 
-    public Toolable getTool(Iconable icon) {return tools.get(icon);}
+    public ToolAble getTool(Iconable icon) {return tools.get(icon);}
 
-    public Toolable getSelectedTool() {return selectedTool;}
+    public ToolAble getSelectedTool() {return selectedTool;}
 
-    private Toolable getItemByIconable(Iconable selectedIcon) {
+    private ToolAble getItemByIconable(Iconable selectedIcon) {
         if (selectedIcon.getClass().isAssignableFrom(Block.Type.class)) {
             actualPlacer.setBlockType((Block.Type) selectedIcon);
             return actualPlacer;

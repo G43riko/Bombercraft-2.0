@@ -21,7 +21,6 @@ public class OptionsManager implements JSONAble {
             }
         }
         catch (JSONException e) {
-//			e.printStackTrace();
             initDefault();
         }
     }

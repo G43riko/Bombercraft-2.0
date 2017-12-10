@@ -5,9 +5,9 @@ import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import java.util.List;
 
 public class VerticalLayout extends Layout {
-    public static byte ALIGN_UP     = 0;
-    public static byte ALIGN_MIDDLE = 1;
-    public static byte ALIGN_BOTTOM = 2;
+    public static final byte ALIGN_UP     = 0;
+    public static final byte ALIGN_MIDDLE = 1;
+    public static final byte ALIGN_BOTTOM = 2;
 
     private boolean changeHorizontallyToo  = true;
     private boolean changeComponentsHeight = false;

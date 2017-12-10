@@ -15,15 +15,15 @@ import utils.resouces.ResourceLoader;
 import java.awt.*;
 
 public abstract class Flora extends Entity {
-    protected Florable type  = null;
-    protected float    scale = 1.0f;
+    FlorAble type;
+    float    scale = 1.0f;
 
-    protected interface Florable extends Iconable {
+    protected interface FlorAble extends Iconable {
         GVector2f getSize();
 
         FloraType getType();
 
-        static Florable valueOf(String value) {
+        static FlorAble valueOf(String value) {
             if (Utils.isInStringable(value, Plants.values())) {
                 return Plants.valueOf(value);
             }
@@ -38,10 +38,10 @@ public abstract class Flora extends Entity {
         }
     }
 
-    protected void fromJSON(JSONObject data) {
+    void fromJSON(JSONObject data) {
         try {
             setPosition(new GVector2f(data.getString(Texts.POSITION)));
-            setType(Florable.valueOf(data.getString(Texts.TYPE)));
+            setType(FlorAble.valueOf(data.getString(Texts.TYPE)));
             scale = (float) data.getDouble(Texts.SCALE);
         }
         catch (JSONException e) {
@@ -53,12 +53,12 @@ public abstract class Flora extends Entity {
         BUSH, TREE, PLANT
     }
 
-    public Flora(GVector2f position, GameAble parent, Florable type) {
+    Flora(GVector2f position, GameAble parent, FlorAble type) {
         super(position, parent);
         this.type = type;
     }
 
-    public Florable getType() {
+    public FlorAble getType() {
         return type;
     }
 
@@ -76,11 +76,11 @@ public abstract class Flora extends Entity {
         return result;
     }
 
-    protected void setType(Florable type) {
+    private void setType(FlorAble type) {
         this.type = type;
     }
 
-    public enum Bushes implements Florable {
+    public enum Bushes implements FlorAble {
         BUSH1("bush1"),
         BUSH2("bush2"),
         BUSH3("bush3");
@@ -103,7 +103,7 @@ public abstract class Flora extends Entity {
 
     }
 
-    public enum Trees implements Florable {
+    public enum Trees implements FlorAble {
         TREE1("tree1"),
         TREE2("tree2"),
         TREE3("tree3"),
@@ -128,7 +128,7 @@ public abstract class Flora extends Entity {
         public FloraType getType() {return type;}
     }
 
-    public enum Plants implements Florable {
+    public enum Plants implements FlorAble {
         PLANT1("plant1"),
         PLANT2("plant2"),
         PLANT3("plant3"),

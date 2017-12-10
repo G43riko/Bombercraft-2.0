@@ -1,11 +1,12 @@
 package Bombercraft2.Bombercraft2.game.level;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.flora.FloraManager;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.Utils;
 import utils.math.GVector2f;
 
@@ -13,7 +14,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level implements Interactable {
+public class Level implements InteractAble {
     private       Map             map          = null;
     private       GameAble        parent       = null;
     private final List<GVector2f> respawnZones = new ArrayList<>();
@@ -33,17 +34,17 @@ public class Level implements Interactable {
                 i++;
             }
             floraData = object.getJSONObject(Texts.FLORA);
+            GLogger.log(GLogger.GLog.LEVEL_CREATED);
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CREATE_LEVEL_FAILED, e);
         }
     }
 
     public Level() {
         respawnZones.add(Block.SIZE);
-        System.out.println("Level vytvoreny");
         setDefaultPlayerInfo();
-
+        GLogger.log(GLogger.GLog.LEVEL_CREATED);
     }
 
     //OTHERS
@@ -95,7 +96,7 @@ public class Level implements Interactable {
 
     //SETTERS
 
-    public void setDefaultPlayerInfo() {
+    private void setDefaultPlayerInfo() {
         playerInfo = new JSONObject();
         try {
             playerInfo.put(Texts.SPEED, 4);

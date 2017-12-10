@@ -37,7 +37,7 @@ public abstract class Server implements Writable {
         clients.remove(name);
     }
 
-    public Server() {
+    protected Server() {
         try {
             serverSocket = new ServerSocket(Config.SERVER_PORT);
 //			GLog.write(GLog.SITE, "S: Server sa vytvoril");

@@ -7,18 +7,18 @@ import utils.resouces.ResourceLoader;
 import java.awt.*;
 import java.util.HashMap;
 
-public class PlayerSprite {
+class PlayerSprite {
     private static final HashMap<String, PlayerSprite> animations = new HashMap<>();
 
-    private Image     image          = null;
-    private int       numberOfImages = 0;
-    private int       numberOfSteps  = 0;
+    private Image     image;
+    private int       numberOfImages;
+    private int       numberOfSteps;
     private int       step           = 0;
-    private int       delay          = 0;
-    private int       actDelay       = 0;
-    private GVector2f imageSize      = null;
+    private int       delay;
+    private int       actDelay;
+    private GVector2f imageSize;
 
-    public PlayerSprite(String name, int numX, int numY, int positions, int delay) {
+    private PlayerSprite(String name, int numX, int numY, int positions, int delay) {
         this.delay = delay;
         image = ResourceLoader.loadTexture(name);
         numberOfImages = numX * numY;

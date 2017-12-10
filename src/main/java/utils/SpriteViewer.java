@@ -9,7 +9,7 @@ import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 public final class SpriteViewer {
-    private static HashMap<String, SpriteViewer> loadedImages = new HashMap<>();
+    private static final HashMap<String, SpriteViewer> loadedImages = new HashMap<>();
 
     private GVector2f images;
     private GVector2f imageSize;
@@ -32,7 +32,7 @@ public final class SpriteViewer {
         imageSize = new GVector2f(image.getWidth(null), image.getHeight(null)).div(images);
     }
 
-    public static void setImage(String name, int x, int y) {
+    private static void setImage(String name, int x, int y) {
         if (loadedImages.containsKey(name)) {
             return;
         }

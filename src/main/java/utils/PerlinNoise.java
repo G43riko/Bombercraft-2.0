@@ -61,11 +61,11 @@ public class PerlinNoise {
         return result;
     }
 
-    public static float Interpolate(float x0, float x1, float alpha) {
+    private static float Interpolate(float x0, float x1, float alpha) {
         return x0 * (1 - alpha) + alpha * x1;
     }
 
-    public static float[][] GenerateSmoothNoise(float[][] baseNoise, int octave) {
+    private static float[][] GenerateSmoothNoise(float[][] baseNoise, int octave) {
         int width = baseNoise.length;
         int height = baseNoise[0].length;
 

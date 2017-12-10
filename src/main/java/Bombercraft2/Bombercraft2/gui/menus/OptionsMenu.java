@@ -16,7 +16,7 @@ public class OptionsMenu extends Menu {
         init();
     }
 
-    protected void init() {
+    private void init() {
         setItem(Texts.BACK);
     }
 

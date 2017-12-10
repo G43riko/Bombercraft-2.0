@@ -3,12 +3,12 @@ package Bombercraft2.Bombercraft2.gui2.core;
 import java.awt.*;
 
 public class TextAlignment {
-    public static byte HORIZONTAL_ALIGN_LEFT   = 0;
-    public static byte HORIZONTAL_ALIGN_CENTER = 1;
-    public static byte HORIZONTAL_ALIGN_RIGHT  = 2;
-    public static byte VERTICAL_ALIGN_TOP      = 3;
-    public static byte VERTICAL_ALIGN_MIDDLE   = 4;
-    public static byte VERTICAL_ALIGN_BOTTOM   = 5;
+    public static final byte HORIZONTAL_ALIGN_LEFT   = 0;
+    public static final byte HORIZONTAL_ALIGN_CENTER = 1;
+    public static final byte HORIZONTAL_ALIGN_RIGHT  = 2;
+    public static final byte VERTICAL_ALIGN_TOP      = 3;
+    public static final byte VERTICAL_ALIGN_MIDDLE   = 4;
+    public static final byte VERTICAL_ALIGN_BOTTOM   = 5;
 
     private byte verticalAlign    = VERTICAL_ALIGN_MIDDLE;
     private byte horizontalAlign  = HORIZONTAL_ALIGN_CENTER;
@@ -30,11 +30,18 @@ public class TextAlignment {
     }
 
     public void renderText(Graphics2D g2, TextField text, PositionableComponent target) {
+        renderText(g2, text, target, 0, 0);
+    }
+
+    public void renderText(Graphics2D g2,
+                           TextField text,
+                           PositionableComponent target,
+                           int localVerticalOffset,
+                           int localHorizontalOffset) {
         g2.setFont(text.getFont());
         g2.setColor(text.getColor());
-
-        int x = target.getX();
-        int y = target.getY() + text.getSize();
+        int x = target.getX() + localHorizontalOffset;
+        int y = target.getY() + text.getSize() + localVerticalOffset;
         final int textWidth = g2.getFontMetrics().stringWidth(text.getText());
 
         if (horizontalAlign == HORIZONTAL_ALIGN_CENTER) {

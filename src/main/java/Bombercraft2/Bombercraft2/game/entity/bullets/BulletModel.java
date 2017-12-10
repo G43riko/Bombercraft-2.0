@@ -16,7 +16,7 @@ public class BulletModel {
 //	public final static String BULLET_MAGIC 	= "bulletMagic";
 //	public final static String BULLET_BOOMERANG = "bulletBoomerang";
 
-    protected Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
+    private Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
 
     private GVector2f size;
     private int       speed;
@@ -24,7 +24,7 @@ public class BulletModel {
     private int       damage;
     private Color     color;
     private Types     type;
-    //CONTRUCTORS
+    //CONSTRUCTORS
 
     public BulletModel(JSONObject data) {
         fromJSON(data);

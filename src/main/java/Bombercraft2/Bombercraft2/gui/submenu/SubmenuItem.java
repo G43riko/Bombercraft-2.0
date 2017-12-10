@@ -24,7 +24,7 @@ public class SubmenuItem implements Iconable{
 	
 	public SubmenuItem(String label){this(label, (List<SubmenuItem>)null);}
 	public SubmenuItem(String label, Image image){this(label, image, null);}
-	public SubmenuItem(String label, Image image, GAction action){
+	private SubmenuItem(String label, Image image, GAction action){
 		this.action = action;
 		this.label 	= label;
 		this.image 	= image;
@@ -47,7 +47,7 @@ public class SubmenuItem implements Iconable{
 	}
 	
 	
-	public SubmenuItem(String label, Types type, GAction action){
+	private SubmenuItem(String label, Types type, GAction action){
 		this.action = action;
 		this.label 	= label;
 		this.type 	= type;

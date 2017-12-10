@@ -1,8 +1,8 @@
 package Bombercraft2.Bombercraft2.core;
 
-import Bombercraft2.Bombercraft2.gui.Clicable;
+import Bombercraft2.Bombercraft2.gui.ClickAble;
 
-public abstract class GameState implements Interactable, Clicable {
+public abstract class GameState implements InteractAble, ClickAble {
     public enum Type {
         CreateGameMenu("CreateGameMenu"),
         LoadingScreen("LoadingScreen"),
@@ -25,7 +25,7 @@ public abstract class GameState implements Interactable, Clicable {
 
     private final Type type;
 
-    public GameState(Type type) {
+    protected GameState(Type type) {
         this.type = type;
     }
 

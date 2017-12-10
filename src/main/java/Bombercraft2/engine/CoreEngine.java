@@ -2,6 +2,7 @@ package Bombercraft2.engine;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.gui2.GuiTester;
 import utils.Utils;
 import utils.math.GVector2f;
 
@@ -22,7 +23,7 @@ public abstract class CoreEngine {
     private        Graphics2D g2         = null;
 
 
-    public CoreEngine(int fps, int ups, boolean renderTime) {
+    protected CoreEngine(int fps, int ups, boolean renderTime) {
         defaultInit();
         CoreEngine.renderTime = renderTime;
         CoreEngine.fps = fps;
@@ -40,7 +41,7 @@ public abstract class CoreEngine {
         Input.cleanUp();
     }
 
-    public void stop() {
+    protected void stop() {
         running = false;
     }
 
@@ -128,6 +129,9 @@ public abstract class CoreEngine {
         g2 = (Graphics2D) buffer.getDrawGraphics();
         render(g2);
 
+        GuiTester.manager.render(g2);
+        canvas.setCursor(GuiTester.manager.getCursor());
+
 //		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
 //		render((Graphics2D)image.getGraphics());
 //		g2.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
@@ -138,7 +142,7 @@ public abstract class CoreEngine {
 
     //MAIN METHODS
 
-    protected void init() { }
+    private void init() { }
 
     protected void input() { }
 
@@ -148,7 +152,7 @@ public abstract class CoreEngine {
 
     //GETTERS
 
-    public Window getWindow() {
+    protected Window getWindow() {
         return window;
     }
 

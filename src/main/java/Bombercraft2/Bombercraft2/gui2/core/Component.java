@@ -4,11 +4,11 @@ public abstract class Component {
     private int width  = 0;
     private int height = 0;
 
-    public Component() {
+    Component() {
 
     }
 
-    public Component(int width, int height) {
+    Component(int width, int height) {
         this.width = width;
         this.height = height;
     }

@@ -1,28 +1,28 @@
 package Bombercraft2.Bombercraft2.gui;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.math.GVector2f;
 
 import java.awt.*;
 
-public abstract class Bar implements Interactable, Clicable, Visible{
+abstract class Bar implements InteractAble, ClickAble, Visible{
 	private Color backgroundColor 	= Config.BAR_BACKGROUND_COLOR;
 	private Color borderColor 		= Config.BAR_BORDER_COLOR;
 	private int borderWidth 		= Config.BAR_BORDER_WIDTH;
 
 	private boolean visible 		= true;
-	protected final GVector2f size;
-	protected       GVector2f totalSize;
-	protected       GVector2f totalPos;
+	final GVector2f size;
+	GVector2f totalSize;
+	GVector2f totalPos;
 	
 	private final GameAble parent;
 	
-	//CONTRUCTORS
+	//CONSTRUCTORS
 	
-	public Bar(GameAble parent, GVector2f size) {
+	Bar(GameAble parent, GVector2f size) {
 		this.parent = parent;
 		this.size = size;
 	}
@@ -34,16 +34,16 @@ public abstract class Bar implements Interactable, Clicable, Visible{
 	//SETTERS
 
 	public void setVisible(boolean visible) {this.visible = visible;}
-	public void setBorderWidth(int borderWidth) {this.borderWidth = borderWidth;}
-	public void setBorderColor(Color borderColor) {this.borderColor = borderColor;}
-	public void setBackgroundColor(Color backgroundColor) {this.backgroundColor = backgroundColor;}
+	void setBorderWidth(int borderWidth) {this.borderWidth = borderWidth;}
+	void setBorderColor(Color borderColor) {this.borderColor = borderColor;}
+	void setBackgroundColor(Color backgroundColor) {this.backgroundColor = backgroundColor;}
 	
 	//GETTERS
 	
 	public boolean isVisible() {return visible;}
-	public GameAble getParent() {return parent;}
-	public int getBorderWidth() {return borderWidth;}
-	public Color getBorderColor() {return borderColor;}
-	public Color getBackgroundColor() {return backgroundColor;}
+	GameAble getParent() {return parent;}
+	int getBorderWidth() {return borderWidth;}
+	Color getBorderColor() {return borderColor;}
+	Color getBackgroundColor() {return backgroundColor;}
 
 }

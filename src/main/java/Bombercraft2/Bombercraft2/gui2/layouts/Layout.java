@@ -3,9 +3,9 @@ package Bombercraft2.Bombercraft2.gui2.layouts;
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
 
 public abstract class Layout {
-    protected Panel target = null;
-    protected int   gap    = 10;
-    protected byte  align  = 0;
+    Panel target = null;
+    int   gap    = 10;
+    byte  align  = 0;
 
     public abstract void resize();
 

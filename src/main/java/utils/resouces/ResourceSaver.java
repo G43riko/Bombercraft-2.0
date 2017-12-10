@@ -6,10 +6,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-public final class ResourceSaver {
+final class ResourceSaver {
     public static void saveImage(BufferedImage image, String fileName) { saveImage(image, fileName, "png");}
 
-    public static void saveImage(BufferedImage image, String fileName, String format) {
+    private static void saveImage(BufferedImage image, String fileName, String format) {
         try {
 
             File outputFile = new File(fileName + "." + format);

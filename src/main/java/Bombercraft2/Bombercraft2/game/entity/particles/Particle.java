@@ -13,7 +13,7 @@ public class Particle extends Entity {
     private final Color     color;
     private       int       health;
 
-    //CONTRUCTORS
+    //CONSTRUCTORS
 
     public Particle(GVector2f position, GameAble parent, Color color, GVector2f direction, GVector2f size, int health) {
         super(position, parent);

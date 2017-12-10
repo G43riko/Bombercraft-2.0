@@ -115,7 +115,7 @@ public class MyPlayer extends Player {
 
     }
 
-    public void doAction() {
+    private void doAction() {
         getParent().getToolsManager().getSelectedTool().useOnGlobalPos(getTargetLocation());
 
         if (getParent().getToolsManager().getSelectedTool() instanceof BombCreator) {
@@ -215,7 +215,7 @@ public class MyPlayer extends Player {
     }
 
 
-    public void checkOffset() {
+    private void checkOffset() {
 
         GVector2f pos = getPosition().mul(getParent().getZoom()).add(Block.SIZE.mul(getParent().getZoom() / 2));
 

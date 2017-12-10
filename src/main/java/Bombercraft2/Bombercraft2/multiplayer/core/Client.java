@@ -19,7 +19,7 @@ public abstract class Client implements Writable {
 
     private boolean readerIsRunning = true;
 
-    public Client(String ip) {
+    protected Client(String ip) {
 
         try {
             socket = new Socket(ip, Config.SERVER_PORT);

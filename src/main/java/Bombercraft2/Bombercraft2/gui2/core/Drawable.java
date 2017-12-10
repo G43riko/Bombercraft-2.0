@@ -1,11 +1,16 @@
 package Bombercraft2.Bombercraft2.gui2.core;
 
+import Bombercraft2.Bombercraft2.gui2.GuiManager;
+
 import java.awt.*;
 
 public interface Drawable {
     void render(Graphics2D g2);
-    default void update(float delta) {}
     void setX(int x);
+
+    GuiManager getManager();
+
+    void setManager(GuiManager manager);
 
     void setY(int y);
 

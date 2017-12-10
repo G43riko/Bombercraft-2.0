@@ -18,7 +18,7 @@ public class MainMenu extends Menu {
         init();
     }
 
-    protected void init() {
+    private void init() {
         setItem(Texts.NEW_GAME);
         setItem(Texts.CONTINUE_GAME);
         setItem(Texts.STOP_GAME);

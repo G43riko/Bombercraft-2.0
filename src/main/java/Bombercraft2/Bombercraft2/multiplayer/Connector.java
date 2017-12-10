@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
 import Bombercraft2.Bombercraft2.game.entity.Helper;
-import Bombercraft2.Bombercraft2.game.entity.Shootable;
+import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -54,7 +54,7 @@ public interface Connector {
 
     void onPutBullet(JSONObject data);
 
-    void setPutBullet(MyPlayer myPlayer, Shootable shooter);
+    void setPutBullet(MyPlayer myPlayer, ShootAble shooter);
 
 
 }

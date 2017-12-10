@@ -33,7 +33,7 @@ import java.util.Stack;
 public class CoreGame extends CoreEngine implements MenuAble {
     private       Profile          profile      = null;
     private       Game             game         = null;
-    private       boolean          ignoreBlur   = true;
+    private final boolean          ignoreBlur   = true;
     //	private Level 				level;
     private       Connector        connector    = null;
     private final GuiManager       guiManager   = new GuiManager();
@@ -42,29 +42,30 @@ public class CoreGame extends CoreEngine implements MenuAble {
     private final Stack<GameState> states       = new Stack<>();
     private       JSONObject       gameConfig   = null;
 
-    public CoreGame() {
+    protected CoreGame() {
         super(Config.WINDOW_DEFAULT_FPS,
               Config.WINDOW_DEFAULT_UPS,
               Config.WINDOW_DEFAULT_RENDER_TEXT);
 
-        Utils.sleep(100);
-        states.push(new ProfileMenu(this));
-        Input.setTarget(states.peek());
 
         try {
+            Utils.sleep(100);
+            states.push(new ProfileMenu(this));
+            Input.setTarget(states.peek());
+
             JSONObject jsonResult = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG);
             if (jsonResult == null) {
-                Error.makeError(Error.CANNOT_READ_JSON);
+                GLogger.makeError(GLogger.GError.CANNOT_READ_JSON);
             }
             gameConfig = jsonResult.getJSONObject("data");
             BotManager.init(gameConfig.getJSONObject("enemies"));
             BulletManager.init(gameConfig.getJSONObject("bullets"));
             JSONObject helpers = gameConfig.getJSONObject("helpers");
             TowerCreator.init(helpers.getJSONObject("towers"));
-
+            GLogger.log(GLogger.GLog.CORE_GAME_CREATED);
         }
         catch (JSONException e) {
-            GLogger.printLine(e);
+            GLogger.error(GLogger.GError.CREATE_CORE_GAME_FAILED, e);
         }
     }
 
@@ -81,7 +82,6 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
         states.peek().render(g2);
         alertManager.render(g2);
-        GuiTester.renderTest(g2);
     }
 
     @Override
@@ -152,7 +152,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     public void removeLoading() {
-        //vyberieme loading state
+        // pop loading state
         if (states.peek().getType() == GameState.Type.LoadingScreen) {
             states.pop();
             Input.setTarget(states.peek());
@@ -175,7 +175,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
     @Override
     public void connectToGame(String ip) {
-        //odstranime joinMenu
+        //pop join menu
         states.pop();
         Input.setTarget(null);
 
@@ -205,7 +205,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
             states.pop();
         }
 
-        //vyberie game
+        //pop game
         states.pop();
         Input.setTarget(states.peek());
 
@@ -273,6 +273,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
         if (profile != null) {
             Profile.saveProfile(profile);
         }
+
 
         profile = new Profile(profileName);
     }

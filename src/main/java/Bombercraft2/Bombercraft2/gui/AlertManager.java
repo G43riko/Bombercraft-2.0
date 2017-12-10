@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.gui;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.engine.CoreEngine;
 
 import java.awt.*;
@@ -9,12 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AlertManager implements Interactable {
+public class AlertManager implements InteractAble {
     private final List<Alert> alerts   = new ArrayList<>();
     private final Color       color    = Color.BLACK;
     private final int         fontSize = 33;
     private final Font        font     = new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, fontSize);
-    private       CoreEngine  parent   = null;
+    private       CoreEngine  parent;
 
     public AlertManager(CoreEngine parent) {
         this.parent = parent;

@@ -7,13 +7,13 @@ import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 public class SpriteAnimation {
-    private int       delay;
-    private int       actDelay;
-    private GVector2f imageSize;
-    private GVector2f images;
-    private int       numberOfImages;
-    private Image     image;
-    private int       frame;
+    private final int       delay;
+    private       int       actDelay;
+    private final GVector2f imageSize;
+    private final GVector2f images;
+    private final int       numberOfImages;
+    private final Image     image;
+    private       int       frame;
 
     public SpriteAnimation(String name, int numX, int numY, int delay) {
         this.delay = delay;

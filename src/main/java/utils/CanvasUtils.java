@@ -29,7 +29,7 @@ public class CanvasUtils {
         fillArcAround(g2, pos, size, DEFAULT_COLOR);
     }
 
-    public static void fillArcAround(Graphics2D g2, GVector2f pos, GVector2f size, Color color) {
+    private static void fillArcAround(Graphics2D g2, GVector2f pos, GVector2f size, Color color) {
         GVector2f realPos = calcPosition(pos, size, Position.CENTERED);
 
         if (color != DEFAULT_COLOR) {
@@ -39,14 +39,14 @@ public class CanvasUtils {
     }
 
     public static void drawArcCentered(Graphics2D g2, GVector2f pos, GVector2f size) {
-        drawArcCenterd(g2, pos, size, null, DEFAULT_BORDER_WIDTH);
+        drawArcCentered(g2, pos, size, null, DEFAULT_BORDER_WIDTH);
     }
 
     public static void drawArcCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color) {
-        drawArcCenterd(g2, pos, size, color, DEFAULT_BORDER_WIDTH);
+        drawArcCentered(g2, pos, size, color, DEFAULT_BORDER_WIDTH);
     }
 
-    public static void drawArcCenterd(Graphics2D g2, GVector2f pos, GVector2f size, Color color, float width) {
+    private static void drawArcCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color, float width) {
         GVector2f realPos = calcPosition(pos, size, Position.CENTERED);
 
         if (width != DEFAULT_BORDER_WIDTH) {
@@ -62,7 +62,7 @@ public class CanvasUtils {
         fillRectCentered(g2, pos, size, DEFAULT_COLOR);
     }
 
-    public static void fillRectCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color) {
+    private static void fillRectCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color) {
         GVector2f realPos = calcPosition(pos, size, Position.CENTERED);
 
         if (color != null) {
@@ -79,7 +79,7 @@ public class CanvasUtils {
         drawRectCentered(g2, pos, size, color, DEFAULT_BORDER_WIDTH);
     }
 
-    public static void drawRectCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color, float width) {
+    private static void drawRectCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color, float width) {
         GVector2f realPos = calcPosition(pos, size, Position.CENTERED);
 
         if (width != DEFAULT_BORDER_WIDTH) {

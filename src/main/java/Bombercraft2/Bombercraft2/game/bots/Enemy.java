@@ -7,7 +7,7 @@ import utils.math.GVector2f;
 
 public class Enemy extends Bot {
 
-    public Enemy(GVector2f position, GameAble parent, Types type, Direction direction) {
+    Enemy(GVector2f position, GameAble parent, Types type, Direction direction) {
         super(position, parent, type, direction);
     }
 

@@ -1,13 +1,14 @@
 package Bombercraft2.Bombercraft2.game.level;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 
@@ -18,7 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Map implements Interactable {
+public class Map implements InteractAble {
     private              HashMap<String, Block> blocks         = null;
     private              GVector2f              numberOfBlocks = null;
     private              GameAble               parent         = null;
@@ -35,19 +36,20 @@ public class Map implements Interactable {
         this.parent = parent;
         try {
             this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
+            loadMap(object);
+            size = numberOfBlocks.mul(Block.SIZE);
+            GLogger.log(GLogger.GLog.MAP_CREATED);
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CREATE_MAP_FAILED, e);
         }
-        loadMap(object);
-        size = numberOfBlocks.mul(Block.SIZE);
     }
 
     public Map(GameAble parent) {
         this(parent, new GVector2f(40, 40)); //300 x 300 - je max
     }
 
-    public Map(GameAble parent, GVector2f numberOfBlocks) {
+    private Map(GameAble parent, GVector2f numberOfBlocks) {
         this.parent = parent;
         this.numberOfBlocks = numberOfBlocks;
 
@@ -91,7 +93,7 @@ public class Map implements Interactable {
 
     }
 
-    public void renderToImage(Graphics2D g2) {
+    private void renderToImage(Graphics2D g2) {
         if (!render) {
             return;
         }
@@ -160,7 +162,7 @@ public class Map implements Interactable {
         render = true;
     }
 
-    public void loadMap(JSONObject object) {
+    private void loadMap(JSONObject object) {
         render = false;
         blocks = new HashMap<>();
         try {
@@ -218,7 +220,7 @@ public class Map implements Interactable {
 
     public Block getBlock(int i, int j) {return blocks.get(i + "_" + j);}
 
-    public GameAble getParent() {return parent;}
+    private GameAble getParent() {return parent;}
 
     public boolean isWalkable(int i, int j) {
         Block b = getBlock(i, j);
@@ -265,7 +267,7 @@ public class Map implements Interactable {
         return getRandomBlockByType(Block.Type.NOTHING);
     }
 
-    public Block getRandomBlockByType(Block.Type type) {
+    private Block getRandomBlockByType(Block.Type type) {
         ArrayList<Block> b = blocks.entrySet()
                                    .stream()
                                    .map(java.util.Map.Entry::getValue)

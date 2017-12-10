@@ -29,7 +29,7 @@ public final class GColision {
         return circleCircleCollision(new GVector2f(ax, ay), aradius, new GVector2f(bx, by), beadius);
     }
 
-    public static boolean circleCircleCollision(GVector2f a, float aradius, GVector2f b, float bradius) {
+    private static boolean circleCircleCollision(GVector2f a, float aradius, GVector2f b, float bradius) {
         double dist = a.dist(b);
         return dist <= aradius + bradius;
     }
@@ -57,7 +57,7 @@ public final class GColision {
         return pointCircleCollision(new GVector2f(ax, ay), new GVector2f(bx, by), bradius);
     }
 
-    public static boolean pointCircleCollision(GVector2f a, GVector2f b, float bradius) {
+    private static boolean pointCircleCollision(GVector2f a, GVector2f b, float bradius) {
         return a.dist(b) < bradius;
     }
 

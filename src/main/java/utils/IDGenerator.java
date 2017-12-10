@@ -5,7 +5,7 @@ import java.util.Set;
 
 public final class IDGenerator {
     private final static int          MAX_ID = 2147483647;
-    private static       Set<Integer> ides   = new HashSet<>();
+    private static final Set<Integer> ides   = new HashSet<>();
     private static       int          id     = 0;
 
     public static int getId() {

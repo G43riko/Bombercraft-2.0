@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.Utils;
 import utils.resouces.JSONAble;
 import utils.resouces.ResourceLoader;
@@ -28,13 +29,13 @@ public class Profile implements JSONAble {
     private OptionsManager options;
     private String name          = "playerName";
     private String avatar        = "player1.png";
-    private String profileName   = null;
+    private String profileName;
     private float  msOfPlaying   = 0;
     private int    newGames      = 0;
     private int    profileLoaded = 0;
     private float  lastLogin     = System.currentTimeMillis();
 
-    // CONTRUCTORS
+    // CONSTRUCTORS
     public Profile(String profileName) {
         this.profileName = profileName;
         if (profileName.equals(GUEST)) {
@@ -43,8 +44,10 @@ public class Profile implements JSONAble {
         }
         try {
             fromJSON(ResourceLoader.getJSONThrowing(Config.FOLDER_PROFILE + profileName + Config.EXTENSION_PROFILE));
+            GLogger.log(GLogger.GLog.PROFILE_LOADED);
         }
         catch (JSONException e) {
+            GLogger.error(GLogger.GError.CANNON_PARSE_PROFILE, profileName);
             try {
                 JSONObject data = new JSONObject();
                 data.put("userInfo", new JSONObject());

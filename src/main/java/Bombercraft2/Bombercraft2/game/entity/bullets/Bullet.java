@@ -11,12 +11,12 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public abstract class Bullet extends Entity {
-    protected     Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
+    private       Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
     private final GVector2f     direction;
     private final BulletModel   model;
     private       int           health;
 
-    public Bullet(GVector2f position, GameAble parent, Types type, GVector2f direction) {
+    Bullet(GVector2f position, GameAble parent, Types type, GVector2f direction) {
         super(position, parent);
         this.model = BulletManager.getBulletModel(type);
         this.direction = direction;
@@ -50,7 +50,7 @@ public abstract class Bullet extends Entity {
 
     //OTHERS
 
-    protected void hit() {
+    private void hit() {
         health--;
         if (emitterOnHit != null) {
             getParent().addEmitter(position, emitterOnHit);
@@ -58,7 +58,7 @@ public abstract class Bullet extends Entity {
         }
     }
 
-    protected void checkBorders() {
+    private void checkBorders() {
         GVector2f a = position.add(model.getSize());
         GVector2f b = getParent().getLevel().getMap().getNumberOfBlocks().mul(Block.SIZE).div(getParent().getZoom());
         if (a.getX() < 0 ||
@@ -76,13 +76,13 @@ public abstract class Bullet extends Entity {
     @Override
     public GVector2f getSize() {return model.getSize();}
 
-    public GVector2f getDirection() {return direction;}
+    GVector2f getDirection() {return direction;}
 
     public int getDamage() {return model.getDamage();}
 
-    public Color getColor() {return model.getColor();}
+    Color getColor() {return model.getColor();}
 
-    public int getSpeed() {return model.getSpeed();}
+    int getSpeed() {return model.getSpeed();}
 
     public int getHealth() {return health;}
 

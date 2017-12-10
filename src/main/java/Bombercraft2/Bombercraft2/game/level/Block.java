@@ -54,13 +54,13 @@ public class Block extends Entity {
                                                       image.getHeight(null));
         }
 
-        public boolean isWalkable() {return walkable;}
+        boolean isWalkable() {return walkable;}
 
-        public int getHealth() {return health;}
+        int getHealth() {return health;}
 
         public Image getImage() {return image;}
 
-        public Color getMiniMapColor() {return miniMapColor;}
+        Color getMiniMapColor() {return miniMapColor;}
     }
 
     public final static GVector2f SIZE = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
@@ -68,16 +68,16 @@ public class Block extends Entity {
 
     //	private static HashMap<String, Type> blocks = new HashMap<String, Type>();
     private Type type;
-    private int  healt;
+    private int  health;
 
-    //CONTRUCTORS
+    //CONSTRUCTORS
 
     public Block(JSONObject object, GameAble parent) {
         super(new GVector2f(), parent);
 
         try {
             position = new GVector2f(object.getString(Texts.POSITION));
-            healt = object.getInt(Texts.HEALTH);
+            health = object.getInt(Texts.HEALTH);
             type = Type.valueOf(object.getString(Texts.TYPE));
         }
         catch (JSONException e) {
@@ -89,9 +89,9 @@ public class Block extends Entity {
         this(position, getTypeFromInt(type), parent, getTypeFromInt(type).getHealth());
     }
 
-    public Block(GVector2f position, Type type, GameAble parent, int healt) {
+    private Block(GVector2f position, Type type, GameAble parent, int health) {
         super(position, parent);
-        this.healt = healt;
+        this.health = health;
         this.type = type;
     }
 
@@ -112,7 +112,7 @@ public class Block extends Entity {
         JSONObject result = new JSONObject();
 
         try {
-            result.put(Texts.HEALTH, healt);
+            result.put(Texts.HEALTH, health);
             result.put(Texts.TYPE, type);
             result.put(Texts.POSITION, position);
         }
@@ -126,8 +126,8 @@ public class Block extends Entity {
     //OTHERS
 
     public boolean hit(int damage) {
-        healt -= damage;
-        boolean res = healt <= 0;
+        health -= damage;
+        boolean res = health <= 0;
         if (res) {
             remove();
         }
@@ -136,7 +136,7 @@ public class Block extends Entity {
 
     public void remove() {remove(true);}
 
-    public void remove(boolean addExplosion) {
+    private void remove(boolean addExplosion) {
         if (addExplosion) {
             getParent().addExplosion(getPosition().add(Block.SIZE.div(2)),
                                      Block.SIZE,
@@ -144,7 +144,7 @@ public class Block extends Entity {
                                      5, false, false);
         }
         type = Type.NOTHING;
-        healt = 0;
+        health = 0;
     }
 
     public void drawSprites(Graphics2D g2) {
@@ -196,8 +196,8 @@ public class Block extends Entity {
     public void drawShadow(Graphics2D g2, Color color, int length, int angle) {
         if (type == Type.NOTHING) { return; }
 
-        double uhol = Math.toRadians(angle + 90);
-        GVector2f offset = new GVector2f(-Math.cos(uhol), Math.sin(uhol)).mul(length);
+        double finalAngle = Math.toRadians(angle + 90);
+        GVector2f offset = new GVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).mul(length);
         GVector2f pos = position.mul(Block.SIZE).sub(getParent().getOffset());
         g2.setColor(color);
 
@@ -229,7 +229,7 @@ public class Block extends Entity {
 
     public void build(Type type) {
         this.type = type;
-        this.healt = type.getHealth();
+        this.health = type.getHealth();
     }
 
     public void renderWalls(Graphics2D g2) {
@@ -339,11 +339,11 @@ public class Block extends Entity {
 
     public Type getType() {return type;}
 
-    public int getHealt() {return healt;}
+    public int getHealth() {return health;}
 
     public boolean isWalkable() {return type.isWalkable();}
 
-    public static Type getTypeFromInt(int num) {
+    private static Type getTypeFromInt(int num) {
         return num > 0 && num < Type.values().length ? Type.values()[num] : Type.NOTHING;
     }
 

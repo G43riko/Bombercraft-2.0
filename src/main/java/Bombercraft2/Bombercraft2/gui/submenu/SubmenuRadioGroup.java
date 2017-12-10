@@ -4,8 +4,8 @@ import Bombercraft2.Bombercraft2.gui.submenu.SubmenuItem.GAction;
 
 import java.util.HashMap;
 
-public class SubmenuRadioGroup {
-    public interface Action {
+class SubmenuRadioGroup {
+    interface Action {
         void run(SubmenuItem item);
     }
 
@@ -15,7 +15,7 @@ public class SubmenuRadioGroup {
 
     public SubmenuRadioGroup() {this(null);}
 
-    public SubmenuRadioGroup(Action action) {
+    private SubmenuRadioGroup(Action action) {
         this.action = action;
     }
 

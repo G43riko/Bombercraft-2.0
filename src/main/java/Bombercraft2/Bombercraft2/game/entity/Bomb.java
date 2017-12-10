@@ -14,9 +14,9 @@ import java.util.List;
 
 public class Bomb extends Helper {
 
-    private       long            addedAt        = 0;
+    private       long            addedAt;
     private final int             detonationTime = 2000;
-    private       Timer           timer          = null;
+    private       Timer           timer;
     private final int             range          = 3;
     private final List<Block>     blocks         = new ArrayList<>();
     private final List<GVector2f> damageAreas    = new ArrayList<>();
@@ -187,7 +187,7 @@ public class Bomb extends Helper {
         }
     }
 
-    public void explode() {
+    private void explode() {
         alive = false;
         calcTargetBlocks();
         getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks, damageAreas);

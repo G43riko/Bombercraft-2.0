@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.game;
 
 import Bombercraft2.Bombercraft2.Profile;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
@@ -17,7 +17,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface GameAble extends Interactable, Visible {
+public interface GameAble extends InteractAble, Visible {
     JSONObject getWeapon(String weaponLaser);
 
     boolean getVisibleOption(String key);
@@ -65,9 +65,9 @@ public interface GameAble extends Interactable, Visible {
                             );
 
     /**
-     * @param pos - pozicia explozie
-     * @param type - typ explozie
-     * @param createdTime - cas vytvorenie objektu u klienta pre pripadny delay siete
+     * @param pos - position of explosion
+     * @param type - type of explosion
+     * @param createdTime - time when bomb was created by client - prevent network delay
      */
     void addHelper(GVector2f pos, Type type, long createdTime);
 

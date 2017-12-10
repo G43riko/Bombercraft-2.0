@@ -6,25 +6,54 @@ import Bombercraft2.Bombercraft2.gui2.core.TextField;
 import java.awt.*;
 
 public class Button extends DrawableComponent {
-    private TextAlignment textAlignment    = new TextAlignment();
-    private TextField     textField        = null;
-    private ColorBox      colorBox         = new ColorBox();
-    private ColorBox      disabledColorBox = null;
-    private ColorBox      hoverColorBox    = null;
-    private ColorBox      activeColorBox   = null;
+    protected TextAlignment textAlignment    = new TextAlignment();
+    protected TextField     textField;
+    protected boolean       disabled         = false;
+    protected ColorBox      colorBox         = new ColorBox();
+    protected ColorBox      disabledColorBox = null;
+    protected ColorBox      hoverColorBox    = null;
+    protected ColorBox      activeColorBox   = null;
 
 
     public Button(String text) {
-        textField = new TextField(text);
+        this(text, TextAlignment.HORIZONTAL_ALIGN_CENTER);
     }
-
+    public Button(String text, byte horizontalAlignment) {
+        textField = new TextField(text);
+        textAlignment.setHorizontalAlign(horizontalAlignment);
+    }
+    protected void renderBackground(Graphics2D g2) {
+        if(disabled && disabledColorBox != null) {
+            disabledColorBox.render(g2, this);
+            getManager().setDisabledCursor();
+        }
+        else if(!GuiConnector.isMouseOn(this)) {
+            colorBox.render(g2, this);
+        }
+        else {
+            getManager().setHoverCursor();
+            if (activeColorBox != null && GuiConnector.isButtonDown()) {
+                activeColorBox.render(g2, this);
+            }
+            else if (hoverColorBox != null) {
+                hoverColorBox.render(g2, this);
+            }
+            else {
+                colorBox.render(g2, this);
+            }
+        }
+    }
     public void render(Graphics2D g2) {
         if (!visible) {
             return;
         }
-        colorBox.render(g2, this);
+        renderBackground(g2);
         textAlignment.renderText(g2, textField, this);
     }
+
+    public boolean isDisabled() {return disabled;}
+
+    public void setDisabled(boolean disabled) {this.disabled = disabled;}
 
     public TextAlignment getTextAlignment() {return textAlignment;}
 

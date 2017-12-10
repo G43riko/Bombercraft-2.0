@@ -1,22 +1,22 @@
 package Bombercraft2.Bombercraft2.game.entity.explosion;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class ShockWave implements Interactable {
-    private GameAble  parent    = null;
-    private int       maxRadius = 0;
-    private int       stroke    = 0;
-    private int       speed     = 0;
+public class ShockWave implements InteractAble {
+    private GameAble  parent;
+    private int       maxRadius;
+    private int       stroke;
+    private int       speed;
     private int       radius    = 0;
     private int       alphaDiff = 0;
     private boolean   alive     = true;
-    private Color     color     = null;
-    private GVector2f position  = null;
-    //CONTRUCTORS
+    private Color     color;
+    private GVector2f position;
+    //CONSTRUCTORS
 
     public ShockWave(GameAble parent,
                      GVector2f position,

@@ -23,7 +23,7 @@ public class Submenu {
         this(game, items, null);
     }
 
-    public Submenu(GameAble game, List<SubmenuItem> items, Submenu parent) {
+    private Submenu(GameAble game, List<SubmenuItem> items, Submenu parent) {
         this.parent = parent;
         this.items = items;
         this.game = game;

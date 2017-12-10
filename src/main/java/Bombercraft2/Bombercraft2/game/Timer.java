@@ -7,14 +7,14 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class Timer {
-    public final static GVector2f TIMER_SIZE         = Block.SIZE.mul(1.5f);
-    public final static Color     TIMER_FILL_COLOR   = new Color(255, 0, 0, 100);
-    public final static Color     TIMER_BORDER_COLOR = new Color(0, 0, 0, 255);
-    public final static int       TIMER_BORDER_WIDTH = 3;
+    private final static GVector2f TIMER_SIZE         = Block.SIZE.mul(1.5f);
+    private final static Color     TIMER_FILL_COLOR   = new Color(255, 0, 0, 100);
+    private final static Color     TIMER_BORDER_COLOR = new Color(0, 0, 0, 255);
+    private final static int       TIMER_BORDER_WIDTH = 3;
 
-    long startTime = 0;
-    long duration  = 0;
-    long angle     = 0;
+    private long startTime;
+    private long duration;
+    private long angle     = 0;
     private final Entity parent;
 
     public Timer(Entity parent, long startTime, long duration) {

@@ -4,7 +4,7 @@ import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
-import Bombercraft2.Bombercraft2.game.entity.Shootable;
+import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -22,10 +22,10 @@ import utils.math.GVector2f;
 import java.util.List;
 
 public class GameClient extends Client implements Connector {
-    private MenuAble      parent  = null;
+    private MenuAble      parent;
     private CommonMethods methods = null;
 
-    //CONTRUCTORS
+    //CONSTRUCTORS
 
     public GameClient(MenuAble coreGame, String ip) {
         super(ip);
@@ -87,7 +87,7 @@ public class GameClient extends Client implements Connector {
         GLogger.notImplemented();
     }
 
-    public void connectToGame() {
+    private void connectToGame() {
         sendPlayerInfo();
     }
 
@@ -132,7 +132,7 @@ public class GameClient extends Client implements Connector {
                     break;
                 case Server.HIT_BLOCK:
                     //				GVector2f pos = new GVector2f(msg.getString("position"));
-                    //				actLevel.getParent().getLevel().getMap().getBlockOnPosition(pos).hit(msg.getInt("demage"));
+                    //				actLevel.getParent().getLevel().getMap().getBlockOnPosition(pos).hit(msg.getInt("damage"));
                     break;
             }
         }
@@ -222,7 +222,7 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void setPutBullet(MyPlayer myPlayer, Shootable shooter) {
+    public void setPutBullet(MyPlayer myPlayer, ShootAble shooter) {
         methods.setPutBullet(myPlayer, shooter);
     }
 

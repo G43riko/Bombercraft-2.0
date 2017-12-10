@@ -1,16 +1,16 @@
 package Bombercraft2.Bombercraft2.gui;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.GameAble;
 
 import java.awt.*;
 import java.util.ArrayList;
 
 
-public class GameLogs implements Interactable {
+public class GameLogs implements InteractAble {
     private final GameAble parent;
-    final int offset = 10;
+    private final int offset = 10;
 
     public GameLogs(GameAble parent) {
         this.parent = parent;

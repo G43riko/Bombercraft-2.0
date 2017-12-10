@@ -28,7 +28,7 @@ public class FloraManager implements JSONAble {
         createFlora();
     }
 
-    public void addFlora(Flora flora) {
+    private void addFlora(Flora flora) {
         switch (flora.getType().getType()) {
             case BUSH:
                 bushes.add((Bush) flora);

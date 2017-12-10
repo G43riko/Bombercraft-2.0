@@ -46,7 +46,7 @@ public final class GVector2f implements Serializable {
         return new GVector2f(Math.max(x, v.x), Math.max(y, v.y));
     }
 
-    public float dot(GVector2f v) {
+    private float dot(GVector2f v) {
         return x * v.x + y * v.y;
     }
 

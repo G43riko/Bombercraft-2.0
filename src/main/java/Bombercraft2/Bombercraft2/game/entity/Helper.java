@@ -54,7 +54,7 @@ public abstract class Helper extends Entity {
     public final static String WEAPON_GRANADE = "weaponGranade";
     public final static String WEAPON_SHOTGUN = "weaponShotgun";
 
-    public Helper(GVector2f position, GameAble parent, Type type) {
+    protected Helper(GVector2f position, GameAble parent, Type type) {
         super(position, parent);
         this.type = type;
     }

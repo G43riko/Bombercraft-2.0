@@ -14,7 +14,7 @@ public class BulletManager {
 
         Types(String name) {this.name = name;}
 
-        public String getName() {return name;}
+        String getName() {return name;}
     }
 
     private static final HashMap<Types, BulletModel> bullets = new HashMap<>();

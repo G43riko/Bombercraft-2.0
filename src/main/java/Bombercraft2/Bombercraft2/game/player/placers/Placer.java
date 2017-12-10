@@ -3,11 +3,11 @@ package Bombercraft2.Bombercraft2.game.player.placers;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
-import Bombercraft2.Bombercraft2.game.player.Toolable;
+import Bombercraft2.Bombercraft2.game.player.ToolAble;
 
 import java.awt.*;
 
-public abstract class Placer implements Toolable {
+public abstract class Placer implements ToolAble {
     public enum Types {
         SIMPLE("Simple"),
         AREA("Area");
@@ -23,10 +23,10 @@ public abstract class Placer implements Toolable {
         }
     }
 
-    protected final GameAble   parent;
-    protected       Block.Type blockType;
+    final GameAble   parent;
+    Block.Type blockType;
 
-    public Placer(GameAble parent) {
+    Placer(GameAble parent) {
         this.parent = parent;
     }
 

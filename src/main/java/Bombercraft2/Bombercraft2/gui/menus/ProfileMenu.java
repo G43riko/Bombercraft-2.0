@@ -63,7 +63,7 @@ public class ProfileMenu extends Menu{
 		
 	}
 
-	protected void init() {
+	private void init() {
 		setItem(Texts.PLAY_AS_GUEST);
 		availableProfiles.forEach(a -> addComponent(a, new Button(this, a)));
 		

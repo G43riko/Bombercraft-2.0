@@ -1,16 +1,16 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 
 import java.awt.*;
 
-public class Alert implements Interactable {
+public class Alert implements InteractAble {
     private final long         createdAt      = System.currentTimeMillis();
     private       boolean      alive          = true;
-    private       String       text           = null;
-    private       AlertManager parent         = null;
-    private       long         duration       = 0;
-    private       int          verticalOffset = 0;
+    private       String       text;
+    private       AlertManager parent;
+    private       long         duration;
+    private       int          verticalOffset;
 
 
     public Alert(String text, AlertManager parent, long duration, int verticalOffset) {

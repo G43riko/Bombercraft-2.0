@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.lights;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.game.GameAble;
 
@@ -8,11 +8,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
-public class LightsManager implements Interactable {
+public class LightsManager implements InteractAble {
     private       BufferedImage    lightMap       = null;
-    private       BufferedImage    lightMapOrigin = null;
+    private       BufferedImage    lightMapOrigin;
     private final ArrayList<Light> lights         = new ArrayList<>();
-    private       GameAble         parent         = null;
+    private       GameAble         parent;
 
     public LightsManager(GameAble parent) {
         this.parent = parent;

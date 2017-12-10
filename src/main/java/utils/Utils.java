@@ -41,7 +41,7 @@ public final class Utils {
 //	}
     public static long ping(String ip) {return ping(ip, 1000);}
 
-    public static long ping(String ip, int timeout) {
+    private static long ping(String ip, int timeout) {
         try {
             long currentTime = System.currentTimeMillis();
             InetAddress.getByName(ip).isReachable(timeout);
@@ -60,7 +60,7 @@ public final class Utils {
         catch (UnknownHostException e) {
             e.printStackTrace();
         }
-        return "Error";
+        return "GError";
     }
 
     static public String getLocalIP() {
@@ -73,14 +73,14 @@ public final class Utils {
                 if (!current.isUp() || current.isLoopback() || current.isVirtual()) { continue; }
                 Enumeration<InetAddress> addresses = current.getInetAddresses();
                 while (addresses.hasMoreElements()) {
-                    InetAddress current_addr = addresses.nextElement();
-                    if (current_addr.isLoopbackAddress()) { continue; }
-                    if (current_addr instanceof Inet4Address) {
-                        result = result.concat(current_addr.getHostAddress() + "\n");
+                    InetAddress current_address = addresses.nextElement();
+                    if (current_address.isLoopbackAddress()) { continue; }
+                    if (current_address instanceof Inet4Address) {
+                        result = result.concat(current_address.getHostAddress() + "\n");
                     }
-                    //else if (current_addr instanceof Inet6Address)
-                    // System.out.println(current_addr.getHostAddress());
-                    //System.out.println(current_addr.getHostAddress());
+                    //else if (current_address instanceof Inet6Address)
+                    // System.out.println(current_address.getHostAddress());
+                    //System.out.println(current_address.getHostAddress());
                 }
             }
         }
@@ -113,7 +113,7 @@ public final class Utils {
         return file.toURI().toURL();
     }
 
-    public static BufferedImage getFullscreenScreenshotImage() throws AWTException {
+    private static BufferedImage getFullscreenScreenshotImage() throws AWTException {
         Robot robot = new Robot();
         Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         return robot.createScreenCapture(screenRect);
@@ -121,7 +121,7 @@ public final class Utils {
 
     public static void takeFullscreenScreenshot(String fileName) {takeFullscreenScreenshot(fileName, "jpg");}
 
-    public static void takeFullscreenScreenshot(String fileName, String format) {
+    private static void takeFullscreenScreenshot(String fileName, String format) {
         try {
             BufferedImage screenFullImage = getFullscreenScreenshotImage();
             ImageIO.write(screenFullImage, format, new File(fileName));
@@ -181,6 +181,7 @@ public final class Utils {
         return false;
     }
 
+    @SafeVarargs
     public static <T> boolean isInStringable(T value, T... items) {
         for (T item : items) {
             if (value.toString().equals(item.toString())) {
@@ -199,14 +200,14 @@ public final class Utils {
 
     public static BufferedImage deepCopy2(final BufferedImage src) {
         BufferedImage dst = new BufferedImage(src.getWidth(), src.getHeight(), src.getType());
-        int[] srcbuf = ((DataBufferInt) src.getRaster().getDataBuffer()).getData();
-        int[] dstbuf = ((DataBufferInt) dst.getRaster().getDataBuffer()).getData();
+        int[] srcBuffer = ((DataBufferInt) src.getRaster().getDataBuffer()).getData();
+        int[] dstBuffer = ((DataBufferInt) dst.getRaster().getDataBuffer()).getData();
         int width = src.getWidth();
         int height = src.getHeight();
-        int dstoffs = 0 + 0 * dst.getWidth();
-        int srcoffs = 0;
-        for (int y = 0; y < height; y++, dstoffs += dst.getWidth(), srcoffs += width) {
-            System.arraycopy(srcbuf, srcoffs, dstbuf, dstoffs, width);
+        int dstOffset = 0 + 0 * dst.getWidth();
+        int srcoffset = 0;
+        for (int y = 0; y < height; y++, dstOffset += dst.getWidth(), srcoffset += width) {
+            System.arraycopy(srcBuffer, srcoffset, dstBuffer, dstOffset, width);
         }
         return dst;
     }

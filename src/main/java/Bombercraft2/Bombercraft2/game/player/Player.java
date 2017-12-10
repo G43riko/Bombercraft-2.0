@@ -3,7 +3,7 @@ package Bombercraft2.Bombercraft2.game.player;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.Healthable;
+import Bombercraft2.Bombercraft2.game.HealthAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import org.json.JSONException;
@@ -13,7 +13,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class Player extends Entity implements Healthable {
+public class Player extends Entity implements HealthAble {
     public enum Direction {
         UP(2, new GVector2f(0, -1)),
         DOWN(3, new GVector2f(0, 1)),
@@ -132,9 +132,9 @@ public class Player extends Entity implements Healthable {
     }
 
 
-    public boolean isMoving() {return moving;}
+    private boolean isMoving() {return moving;}
 
-    public String getImage() {return image;}
+    private String getImage() {return image;}
 
     public String getName() {return name;}
 
@@ -151,7 +151,7 @@ public class Player extends Entity implements Healthable {
         movingCounter = 0;
     }
 
-    public void setImage(String image) {
+    private void setImage(String image) {
         this.image = image;
         PlayerSprite.setSprite(image, 5, 5, 4, 6);
     }

@@ -7,10 +7,10 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class AreaPlacer extends Placer {
-    public final static Color     AREA_PLACER_FILL_COLOR = new Color(255, 173, 43, 150);
-    public final static int       AREA_PLACER_OFFSET     = -5;
-    public final static int       AREA_PLACER_ROUND      = 10;
-    private             GVector2f starPos                = null;
+    private final static Color     AREA_PLACER_FILL_COLOR = new Color(255, 173, 43, 150);
+    private final static int       AREA_PLACER_OFFSET     = -5;
+    private final static int       AREA_PLACER_ROUND      = 10;
+    private              GVector2f starPos                = null;
 
     public AreaPlacer(GameAble parent) {
         super(parent);

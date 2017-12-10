@@ -35,13 +35,13 @@ import java.util.HashMap;
 public class Game extends GameState implements GameAble {
     private       MouseSelector mouseSelector;//	= new MouseSelector(this);
     private       MyPlayer      myPlayer      = null;
-    private       Level         level         = null;
+    private       Level         level;
     private       float         zoom          = Config.DEFAULT_ZOOM;
-    private       GameGui       gui           = null;
-    private       ToolManager   toolManager   = null;
-    private       CoreGame      parent        = null;
+    private       GameGui       gui;
+    private       ToolManager   toolManager;
+    private       CoreGame      parent;
     private final SceneManager  sceneManager  = new SceneManager(this);
-    private       LightsManager lightsManager = null;
+    private       LightsManager lightsManager;
     private       long          startTime     = System.currentTimeMillis();
 
 
@@ -52,11 +52,11 @@ public class Game extends GameState implements GameAble {
 
     public Game(Level level, CoreGame parent, JSONObject gameData) {
         super(GameState.Type.Game);
-        this.level = level;
-        this.parent = parent;
-        level.setGame(this);
-        toolManager = new ToolManager(this);
         try {
+            this.level = level;
+            this.parent = parent;
+            level.setGame(this);
+            toolManager = new ToolManager(this);
             myPlayer = new MyPlayer(this,
                                     level.getRandomRespawnZone(),
                                     getProfile().getName(),
@@ -64,29 +64,31 @@ public class Game extends GameState implements GameAble {
                                     level.getDefaultPlayerInfo().getInt(Texts.HEALTH),
                                     getProfile().getAvatar(),
                                     level.getDefaultPlayerInfo().getInt(Texts.RANGE));
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
 
-        if (gameData != null) {
-            try {
-                for (int i = 0; i < gameData.getInt(Texts.PLAYERS_NUMBER); i++) {
-                    sceneManager.addPlayer(new Player(this, new JSONObject(gameData.getString("player_" + i))));
+
+            if (gameData != null) {
+                try {
+                    for (int i = 0; i < gameData.getInt(Texts.PLAYERS_NUMBER); i++) {
+                        sceneManager.addPlayer(new Player(this, new JSONObject(gameData.getString("player_" + i))));
+                    }
+                }
+                catch (JSONException e) {
+                    e.printStackTrace();
                 }
             }
-            catch (JSONException e) {
-                e.printStackTrace();
-            }
+
+            lightsManager = new LightsManager(this);
+            gui = new GameGui(this);
+            sceneManager.addPlayer(myPlayer);
+//		    parent.getCanvas().addMouseWheelListener(this);
+            lightsManager.addLight(new Light(this,
+                                             new GVector2f(300, 300),
+                                             new GVector2f(300, 300), myPlayer));
+            GLogger.log(GLogger.GLog.GAME_CREATED);
         }
-
-        lightsManager = new LightsManager(this);
-        gui = new GameGui(this);
-        sceneManager.addPlayer(myPlayer);
-//		parent.getCanvas().addMouseWheelListener(this);
-
-
-        lightsManager.addLight(new Light(this, new GVector2f(300, 300), new GVector2f(300, 300), myPlayer));
+        catch (JSONException e) {
+            GLogger.error(GLogger.GError.CREATE_GAME_FAILED, e);
+        }
     }
 
     @Override
@@ -438,11 +440,10 @@ public class Game extends GameState implements GameAble {
 
     @Override
     public HashMap<String, String> getStats() {
-        HashMap<String, String> stats = new HashMap<>();
+        HashMap<String, String> stats = new HashMap<>(sceneManager.getStats());
         int duration = (int) (System.currentTimeMillis() - startTime) / 1000;
         int minutes = duration / 60;
         int seconds = duration - minutes * 60;
-        stats.putAll(sceneManager.getStats());
         stats.put("Cas hry", minutes + ":" + seconds);
         return stats;
     }

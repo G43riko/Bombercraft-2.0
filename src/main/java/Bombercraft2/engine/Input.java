@@ -1,10 +1,12 @@
 package Bombercraft2.engine;
 
-import Bombercraft2.Bombercraft2.gui.Clicable;
+import Bombercraft2.Bombercraft2.core.BasicListener;
+import Bombercraft2.Bombercraft2.gui.ClickAble;
 import utils.math.GVector2f;
 
 import java.awt.event.*;
 import java.util.HashMap;
+import java.util.function.Function;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener {
     private final HashMap<Integer, Boolean> buttons = new HashMap<>();
@@ -40,8 +42,8 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
         input = this;
     }
 
-    public static final int NUM_KEY_CODES     = 256;
-    public static final int NUM_MOUSE_BUTTONS = 5;
+    private static final int NUM_KEY_CODES     = 256;
+    private static final int NUM_MOUSE_BUTTONS = 5;
 
     private static final boolean[] lastKeys  = new boolean[NUM_KEY_CODES];
     private static final boolean[] lastMouse = new boolean[NUM_MOUSE_BUTTONS];
@@ -72,7 +74,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
         return !isButtonDown(mouseButton) && lastMouse[mouseButton];
     }
 
-    private static Clicable actMenu = null;
+    private static ClickAble actMenu = null;
 
     private static GVector2f mousePosition = new GVector2f();
 
@@ -130,7 +132,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener {
 
     public void keyTyped(KeyEvent arg0) { }
 
-    public static void setTarget(Clicable menu) {
+    public static void setTarget(ClickAble menu) {
         actMenu = menu;
     }
 

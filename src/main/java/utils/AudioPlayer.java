@@ -45,7 +45,7 @@ public final class AudioPlayer {
         clip.start();
     }
 
-    public void stop() {
+    private void stop() {
         if (clip == null) {
             return;
         }

@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.gui.submenu.SubMenuCreator;
@@ -10,13 +10,13 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class GameGui implements Interactable, Clicable {
-    GameLogs    gameLogs    = null;
-    NavBar      navBar      = null;
-    SideBar     sideBar     = null;
-    Submenu     subMenu     = null;
-    PlayerPanel playerPanel = null;
-    GameAble    parent      = null;
+public class GameGui implements InteractAble, ClickAble {
+    private GameLogs    gameLogs;
+    private NavBar      navBar;
+    private SideBar     sideBar;
+    private Submenu     subMenu;
+    private PlayerPanel playerPanel;
+    private GameAble    parent;
 
     public GameGui(GameAble parent) {
         this.parent = parent;
@@ -55,7 +55,7 @@ public class GameGui implements Interactable, Clicable {
             playerPanel.render(g2);
         }
 //		if(Bombercraft.getViewOption("renderMiniMap"))
-//			minimap.render(g2);
+//			miniMap.render(g2);
 
         if (parent.getVisibleOption(Render.LOGS)) {
             gameLogs.render(g2);

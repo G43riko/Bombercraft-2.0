@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity;
 
-import Bombercraft2.Bombercraft2.core.Interactable;
+import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -9,9 +9,9 @@ import org.json.JSONObject;
 import utils.IDGenerator;
 import utils.math.GVector2f;
 
-public abstract class Entity implements Visible, Interactable {
+public abstract class Entity implements Visible, InteractAble {
     private   int       id       = IDGenerator.getId();
-    private   GameAble  parent   = null;
+    private   GameAble  parent;
     protected GVector2f position = null;
     protected boolean   alive    = true;
     //CONSTRUCTORS
@@ -30,7 +30,7 @@ public abstract class Entity implements Visible, Interactable {
 
     }
 
-    public Entity(GVector2f position, GameAble parent) {
+    protected Entity(GVector2f position, GameAble parent) {
         this.position = position;
         this.parent = parent;
     }
