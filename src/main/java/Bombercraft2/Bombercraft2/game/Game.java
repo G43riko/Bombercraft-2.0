@@ -10,8 +10,10 @@ import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
+import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerMachineGun;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Level;
@@ -27,28 +29,52 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
 import utils.math.GVector2f;
+import utils.resouces.ResourceLoader;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Game extends GameState implements GameAble {
-    private       MouseSelector mouseSelector;//	= new MouseSelector(this);
-    private       MyPlayer      myPlayer      = null;
-    private       Level         level;
-    private       float         zoom          = Config.DEFAULT_ZOOM;
-    private       GameGui       gui;
-    private       ToolManager   toolManager;
-    private       CoreGame      parent;
-    private final SceneManager  sceneManager  = new SceneManager(this);
-    private       LightsManager lightsManager;
-    private       long          startTime     = System.currentTimeMillis();
+    private MouseSelector mouseSelector;//	= new MouseSelector(this);
+    private       MyPlayer     myPlayer     = null;
+    private       float        zoom         = Config.DEFAULT_ZOOM;
+    private final SceneManager sceneManager = new SceneManager(this);
+    private       long         startTime    = System.currentTimeMillis();
+
+    private        Level         level;
+    private        GameGui       gui;
+    private        ToolManager   toolManager;
+    private        CoreGame      parent;
+    private        LightsManager lightsManager;
+    private static JSONObject    gameConfig;
 
 
     //pre pripadny currentModificationException ak sa chce upravit nieco co sa pouziva//todo treba to osetrit inac
     private final boolean render = true;
     private final boolean update = true;
     private final boolean input  = true;
+
+    static {
+        try {
+            JSONObject jsonResult = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG);
+            if (jsonResult == null) {
+                GLogger.makeError(GLogger.GError.CANNOT_READ_JSON);
+            }
+            gameConfig = jsonResult.getJSONObject("data");
+            BotManager.init(gameConfig.getJSONObject("enemies"));
+            BulletManager.init(gameConfig.getJSONObject("bullets"));
+            JSONObject helpers = gameConfig.getJSONObject("helpers");
+            TowerCreator.init(helpers.getJSONObject("towers"));
+        }
+        catch (JSONException e) {
+            GLogger.error(GLogger.GError.CREATE_CORE_GAME_FAILED, e);
+        }
+    }
+
+    public static JSONObject getConfig() {
+        return gameConfig;
+    }
 
     public Game(Level level, CoreGame parent, JSONObject gameData) {
         super(GameState.Type.Game);
@@ -73,7 +99,7 @@ public class Game extends GameState implements GameAble {
                     }
                 }
                 catch (JSONException e) {
-                    e.printStackTrace();
+                    GLogger.error(GLogger.GError.CANNOT_ADD_PLAYERS, e);
                 }
             }
 
@@ -210,7 +236,7 @@ public class Game extends GameState implements GameAble {
                                               level.getDefaultPlayerInfo().getInt("range")));
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_ADD_PLAYER, e);
         }
     }
 
@@ -367,7 +393,7 @@ public class Game extends GameState implements GameAble {
             return o.toString();
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_GAME_INFO, e);
         }
         return null;
     }
@@ -383,7 +409,7 @@ public class Game extends GameState implements GameAble {
             return result.toString();
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BASIC_INFO, e);
         }
         return "{}";
     }
@@ -447,5 +473,4 @@ public class Game extends GameState implements GameAble {
         stats.put("Cas hry", minutes + ":" + seconds);
         return stats;
     }
-
 }

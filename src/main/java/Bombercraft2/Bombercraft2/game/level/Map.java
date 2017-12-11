@@ -134,7 +134,7 @@ public class Map implements InteractAble {
 
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_MAP, e);
         }
         return result;
     }
@@ -174,7 +174,7 @@ public class Map implements InteractAble {
 
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_LOAD_MAP, e);
         }
         render = true;
     }
@@ -200,7 +200,7 @@ public class Map implements InteractAble {
             loadMap(new JSONObject(defaultMap));
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_RESET_MAP, e);
         }
     }
 

@@ -15,6 +15,7 @@ import Bombercraft2.Bombercraft2.game.entity.particles.ParticleEmitter;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.math.GVector2f;
 import utils.resouces.JSONAble;
 
@@ -195,7 +196,7 @@ public class SceneManager implements InteractAble, JSONAble {
             result.put(Texts.PLAYERS_NUMBER, players.size());
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_SCENE_MANAGER, e);
         }
 
         return result;

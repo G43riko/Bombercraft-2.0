@@ -77,7 +77,7 @@ public class Level implements InteractAble {
             result.put(Texts.FLORA, floraManager.toJSON());
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_LEVEL, e);
         }
         return result;
     }
@@ -104,7 +104,7 @@ public class Level implements InteractAble {
             playerInfo.put(Texts.HEALTH, 10);
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SET_DEFAULT_PLAYER_INFO, e);
         }
     }
 
@@ -116,7 +116,7 @@ public class Level implements InteractAble {
                 map = new Map(new JSONObject(mapData), parent);
             }
             catch (JSONException e) {
-                e.printStackTrace();
+                GLogger.error(GLogger.GError.CANNOT_CREATE_MAP, e);
             }
         }
         else {

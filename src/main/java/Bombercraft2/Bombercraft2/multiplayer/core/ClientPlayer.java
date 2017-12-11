@@ -4,6 +4,7 @@ import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.core.Texts;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -29,11 +30,10 @@ public class ClientPlayer {
             objectWriter = new ObjectOutputStream(socket.getOutputStream());
             objectWriter.flush();
             objectReader = new ObjectInputStream(socket.getInputStream());
-//			GLog.write(GLog.SITE, "S: Profile hráèa " + name + " bol vytvorený");
+            GLogger.log(GLogger.GLog.CLIENT_PLAYER_SUCCESSFULLY_INITIALIZED);
         }
         catch (IOException e) {
-            e.printStackTrace();
-//			GLog.write(GLog.SITE, "S: Nepodarilo sa vytvori profil hráèovy " + name); 
+            GLogger.error(GLogger.GError.CANNOT_INITIAL_CLIENT_PLAYER, e);
         }
     }
 
@@ -61,11 +61,10 @@ public class ClientPlayer {
 
             objectReader.close();
             objectWriter.close();
-//			GLog.write(GLog.SITE, "S: Úspešne sa zmazal hráè: " + name);
+            GLogger.log(GLogger.GLog.CLIENT_PLAYER_CLEANED);
         }
         catch (IOException e) {
-            e.printStackTrace();
-//			GLog.write(GLog.SITE, "S: Nepodarilo sa zmaza hráèa menom: " + name);
+            GLogger.error(GLogger.GError.CANNOT_CLEAN_CLIENT_PLAYER, e);
         }
     }
 
@@ -76,16 +75,15 @@ public class ClientPlayer {
             object.put(Texts.TYPE, type);
             object.put(Texts.MESSAGE, o.toString());
         }
-        catch (JSONException e1) {
-            e1.printStackTrace();
+        catch (JSONException e) {
+            GLogger.error(GLogger.GError.CANNOT_PARSE_MESSAGE, e);
         }
         try {
             objectWriter.writeObject(object.toString());
             objectWriter.flush();
         }
         catch (IOException e) {
-            e.printStackTrace();
-//			GLog.write(GLog.SITE_MESSAGES, "S: Nepodailo sa odosla správu " + o + " hráèovy: " + name);
+            GLogger.error(GLogger.GError.CANNOT_SEND_MESSAGE, e);
         }
     }
 

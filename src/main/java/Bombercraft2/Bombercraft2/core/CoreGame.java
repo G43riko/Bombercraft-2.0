@@ -5,16 +5,12 @@ import Bombercraft2.Bombercraft2.Profile;
 import Bombercraft2.Bombercraft2.core.GameState.Type;
 import Bombercraft2.Bombercraft2.game.Game;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.bots.BotManager;
-import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
-import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.gui.AlertManager;
 import Bombercraft2.Bombercraft2.gui.GuiManager;
 import Bombercraft2.Bombercraft2.gui.LoadingScreen;
 import Bombercraft2.Bombercraft2.gui.menus.*;
 import Bombercraft2.Bombercraft2.gui.menus.Menu;
-import Bombercraft2.Bombercraft2.gui2.GuiTester;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import Bombercraft2.Bombercraft2.multiplayer.GameClient;
 import Bombercraft2.Bombercraft2.multiplayer.GameServer;
@@ -25,7 +21,6 @@ import org.json.JSONObject;
 import utils.GLogger;
 import utils.Utils;
 import utils.math.GVector2f;
-import utils.resouces.ResourceLoader;
 
 import java.awt.*;
 import java.util.Stack;
@@ -40,33 +35,15 @@ public class CoreGame extends CoreEngine implements MenuAble {
     private final AlertManager     alertManager = new AlertManager(this);
     private       boolean          gameLaunched = false;
     private final Stack<GameState> states       = new Stack<>();
-    private       JSONObject       gameConfig   = null;
 
     protected CoreGame() {
         super(Config.WINDOW_DEFAULT_FPS,
               Config.WINDOW_DEFAULT_UPS,
               Config.WINDOW_DEFAULT_RENDER_TEXT);
 
-
-        try {
-            Utils.sleep(100);
-            states.push(new ProfileMenu(this));
-            Input.setTarget(states.peek());
-
-            JSONObject jsonResult = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG);
-            if (jsonResult == null) {
-                GLogger.makeError(GLogger.GError.CANNOT_READ_JSON);
-            }
-            gameConfig = jsonResult.getJSONObject("data");
-            BotManager.init(gameConfig.getJSONObject("enemies"));
-            BulletManager.init(gameConfig.getJSONObject("bullets"));
-            JSONObject helpers = gameConfig.getJSONObject("helpers");
-            TowerCreator.init(helpers.getJSONObject("towers"));
-            GLogger.log(GLogger.GLog.CORE_GAME_CREATED);
-        }
-        catch (JSONException e) {
-            GLogger.error(GLogger.GError.CREATE_CORE_GAME_FAILED, e);
-        }
+        Utils.sleep(100);
+        states.push(new ProfileMenu(this));
+        Input.setTarget(states.peek());
     }
 
     public void switchVisibleOption(String key) {
@@ -252,10 +229,10 @@ public class CoreGame extends CoreEngine implements MenuAble {
             try {
                 Level level = new Level(gameData.getJSONObject(Texts.LEVEL_DATA));
                 game = new Game(level, this, gameData.getJSONObject(Texts.GAME_DATA));
+                GLogger.log(GLogger.GLog.LEVEL_SUCCESSFULLY_PARSED);
             }
             catch (JSONException e) {
-//					System.out.println("gameData: " + gameData);
-                e.printStackTrace();
+                GLogger.error(GLogger.GError.CANNOT_PARSE_LEVEL, e);
             }
         }
 
@@ -345,7 +322,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
             return result;
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_PLAYER_INFO, e);
         }
         return null;
     }
@@ -357,10 +334,10 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
     public JSONObject getWeapon(String type) {
         try {
-            return gameConfig.getJSONObject("helpers").getJSONObject("weapons").getJSONObject("laser");
+            return Game.getConfig().getJSONObject("helpers").getJSONObject("weapons").getJSONObject("laser");
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_GET_WEAPON_BY_TYPE, e);
             return null;
         }
     }

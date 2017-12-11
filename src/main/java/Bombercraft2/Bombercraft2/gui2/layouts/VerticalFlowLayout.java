@@ -92,7 +92,6 @@ public class VerticalFlowLayout extends Layout {
                 component.setX(x);
                 x += component.getWidth() + gap;
             }
-            System.out.println(lastChange + " " + target.getComponents().size());
             setItems(lastChange, maxHeight, minHeight, sumHeight, sumWidth, target.getComponents().size(), true);
         }
     }

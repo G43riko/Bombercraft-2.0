@@ -50,7 +50,7 @@ public final class ResourceLoader {
             return new FileWriter(new File(ProfileMenu.class.getResource(fileName).toURI()));
         }
         catch (URISyntaxException | IOException e) {
-            GLogger.error(GLogger.GError.CANNON_CREATE_FILEWRITTER, e, fileName);
+            GLogger.error(GLogger.GError.CANNON_CREATE_FILE_WRITER, e, fileName);
         }
         return null;
     }

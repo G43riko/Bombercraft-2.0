@@ -68,7 +68,6 @@ public abstract class CoreEngine {
                 deltaU--;
                 Utils.sleep(1);
             }
-
             if (deltaF >= 1) {
                 defaultRender();
                 frames++;
@@ -131,8 +130,8 @@ public abstract class CoreEngine {
         }
         g2 = (Graphics2D) buffer.getDrawGraphics();
         render(g2);
-        GuiTester.manager.render(g2);
-        canvas.setCursor(GuiTester.manager.getCursor());
+        // GuiTester.manager.render(g2);
+        // canvas.setCursor(GuiTester.manager.getCursor());
 
 //		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
 //		render((Graphics2D)image.getGraphics());

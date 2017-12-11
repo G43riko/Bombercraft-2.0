@@ -1,7 +1,5 @@
 package utils;
 
-
-
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.LinkedList;
@@ -15,16 +13,54 @@ public class GLogger extends PrintStream {
         PROFILE_LOADED,
         FILE_READ,
         CORE_GAME_CREATED,
-        TEXTURE_LOAD, GAME_CREATED
+        TEXTURE_LOAD,
+        SERVER_CREATED,
+        CLIENT_CONNECTED_TO_SERVER,
+        SUCCESSFULLY_CONNECTED_TO_THE_SERVER,
+        CLIENT_PLAYER_SUCCESSFULLY_INITIALIZED,
+        CLIENT_PLAYER_CLEANED,
+        LEVEL_SUCCESSFULLY_PARSED,
+        GAME_CREATED
     }
     public enum GError {
         CANNOT_READ_JSON,
         CREATE_LEVEL_FAILED,
+        CANNOT_SCAN_LOCALHOST,
         CREATE_MAP_FAILED,
         CANNON_READ_FILE,
         CANNON_PARSE_PROFILE,
         CREATE_CORE_GAME_FAILED,
-        CANNON_READ_TEXTURE, CANNON_WRITE_FILE, CANNON_CREATE_FILEWRITTER, CANNOT_PARSE_JSON_FILE, CREATE_GAME_FAILED
+        CANNON_READ_TEXTURE,
+        CANNON_WRITE_FILE,
+        CANNON_CREATE_FILE_WRITER,
+        CANNOT_PARSE_JSON_FILE,
+        CANNOT_CREATE_SOCKET,
+        CANNOT_CREATE_SERVER,
+        SERVER_CANNOT_ACCEPT_CONNECTION,
+        CLOSE_SERVER_FAILED,
+        CANNOT_CONNECT_TO_SERVER,
+        CANNOT_CLEAN_CLIENT,
+        CANNOT_SEND_MESSAGE,
+        CANNOT_PARSE_MESSAGE,
+        CANNOT_INITIAL_CLIENT_PLAYER,
+        CANNOT_CLEAN_CLIENT_PLAYER,
+        CANNOT_PARSE_LEVEL,
+        CANNOT_SERIALIZE_PLAYER_INFO,
+        CANNOT_GET_WEAPON_BY_TYPE,
+        CANNOT_ADD_PLAYER,
+        CANNOT_SERIALIZE_GAME_INFO,
+        CANNOT_SERIALIZE_BASIC_INFO,
+        CANNOT_ADD_PLAYERS,
+        CANNOT_PARSE_BLOCK,
+        CANNOT_SERIALIZE_BLOCK,
+        CANNOT_SERIALIZE_LEVEL,
+        CANNOT_SET_DEFAULT_PLAYER_INFO,
+        CANNOT_CREATE_MAP,
+        CANNOT_SERIALIZE_MAP,
+        CANNOT_RESET_MAP,
+        CANNOT_LOAD_MAP,
+        CANNOT_SERIALIZE_SCENE_MANAGER,
+        CREATE_GAME_FAILED
     }
     private static class Wrapper {
         Exception exception;
@@ -43,7 +79,6 @@ public class GLogger extends PrintStream {
     private static Error getError(GError GError) {
         return new Error(GError.toString());
     }
-    // private static Map<Long, Wrapper> logs = new HashMap<>();
     private static List<Wrapper> logs = new LinkedList<>();
     private GLogger(OutputStream stream) {super(stream);}
 

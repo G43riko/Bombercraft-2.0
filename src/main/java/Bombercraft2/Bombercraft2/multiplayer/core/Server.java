@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.multiplayer.core;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
+import utils.GLogger;
 import utils.Utils;
 
 import java.io.IOException;
@@ -40,11 +41,11 @@ public abstract class Server implements Writable {
     protected Server() {
         try {
             serverSocket = new ServerSocket(Config.SERVER_PORT);
+            GLogger.log(GLogger.GLog.SERVER_CREATED);
 //			GLog.write(GLog.SITE, "S: Server sa vytvoril");
         }
         catch (IOException e) {
-            e.printStackTrace();
-//			GLog.write(GLog.SITE, "S: Server sa nepodarilo vytvoriť");
+            GLogger.error(GLogger.GError.CANNOT_CREATE_SERVER, e);
         }
 
         listen();
@@ -99,12 +100,10 @@ public abstract class Server implements Writable {
                     clients.put(c.getId() + "", c);
                     c.write(getBasicInfo(), BASIC_INFO);
 
-//						GLog.write(GLog.SITE, "S: Client sa pripojil");
-
+                    GLogger.log(GLogger.GLog.CLIENT_CONNECTED_TO_SERVER);
                 }
                 catch (IOException e) {
-//						e.printStackTrace();
-//						GLog.write(GLog.SITE, "S: Server bol ukončený");
+                    GLogger.error(GLogger.GError.SERVER_CANNOT_ACCEPT_CONNECTION, e);
                 }
             }
         });
@@ -139,10 +138,12 @@ public abstract class Server implements Writable {
         clients.clear();
 
         try {
-            if (serverSocket != null) { serverSocket.close(); }
+            if (serverSocket != null) {
+                serverSocket.close();
+            }
         }
         catch (IOException e) {
-            System.out.println("nepodarilo sa zavrie server");
+            GLogger.error(GLogger.GError.CLOSE_SERVER_FAILED, e);
         }
         serverSocket = null;
     }

@@ -7,6 +7,7 @@ import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.ImageUtils;
 import utils.SpriteViewer;
 import utils.math.GVector2f;
@@ -81,7 +82,7 @@ public class Block extends Entity {
             type = Type.valueOf(object.getString(Texts.TYPE));
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_PARSE_BLOCK, e);
         }
     }
 
@@ -117,7 +118,7 @@ public class Block extends Entity {
             result.put(Texts.POSITION, position);
         }
         catch (JSONException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BLOCK, e);
         }
 
         return result;

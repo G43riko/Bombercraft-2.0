@@ -8,6 +8,7 @@ import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
 import Bombercraft2.Bombercraft2.gui.components.RemoteGamePanel;
 import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.Utils;
 import utils.math.GVector2f;
 
@@ -28,7 +29,9 @@ public class JoinMenu extends Menu {
     private final Thread t = new Thread(() -> {
         scanned = 0;
         try {
-            InetAddress localhost = InetAddress.getByName(Utils.getLocalIP());
+            System.out.println(Utils.getLocalIP());
+            // InetAddress localhost = InetAddress.getByName(Utils.getLocalIP());
+            InetAddress localhost = InetAddress.getByName("localhost");
             byte[] ip = localhost.getAddress();
             for (int i = 0; i < Config.SCANNING_RANGE; i++) {
                 ip[3] = (byte) i;
@@ -57,7 +60,7 @@ public class JoinMenu extends Menu {
                                                          msg.getInt(Texts.PLAYERS_NUMBER)));
                     }
                     catch (Exception ee) {
-//					    	ee.printStackTrace();
+                        GLogger.error(GLogger.GError.CANNOT_CREATE_SOCKET, ee);
                     }
                     if (socket != null) {
                         socket.close();
@@ -77,7 +80,7 @@ public class JoinMenu extends Menu {
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.CANNOT_SCAN_LOCALHOST, e);
         }
     });
 
