@@ -1,11 +1,13 @@
 package Bombercraft2.Bombercraft2;
 
+import Bombercraft2.playGround.PlayGround;
 import utils.Utils;
 
 public class App {
 
     public static void main(String[] args) {
-        Bombercraft game = new Bombercraft();
+        // Bombercraft game = new Bombercraft();
+        PlayGround game = new PlayGround();
         game.run();
     }
 

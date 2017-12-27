@@ -4,6 +4,10 @@ import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 
 import java.util.List;
 
+
+/**
+ * Tento layout vkladá objekty vertikálne do rodičovského komponentu
+ */
 public class VerticalLayout extends Layout {
     public static final byte ALIGN_UP     = 0;
     public static final byte ALIGN_MIDDLE = 1;

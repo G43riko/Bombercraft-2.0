@@ -8,11 +8,16 @@ public abstract class GameState implements InteractAble, ClickAble {
         LoadingScreen("LoadingScreen"),
         JoinMenu("JoinMenu"),
         ProfileMenu("ProfileMenu"),
+        BasicDemo("BasicDemo"),
         EndGameMenu("EndGameMenu"),
         OptionsMenu("OptionsMenu"),
         PauseMenu("PauseMenu"),
         MainMenu("MainMenu"),
-        Game("Game");
+        Game("Game"),
+        CollisionDemo("CollisionDemo"),
+        ParticlesDemo("ParticlesDemo"),
+        ShootingDemo("ShootingDemo"),
+        PerlinDemo("PerlinDemo");
 
         private final String name;
 

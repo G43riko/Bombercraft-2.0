@@ -1,9 +1,6 @@
 package utils;
 
-import java.awt.AWTException;
-import java.awt.Rectangle;
-import java.awt.Robot;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorModel;
 import java.awt.image.DataBufferInt;
@@ -182,7 +179,7 @@ public final class Utils {
     }
 
     @SafeVarargs
-    public static <T> boolean isInStringable(T value, T... items) {
+    public static <T> boolean isInByString(T value, T... items) {
         for (T item : items) {
             if (value.toString().equals(item.toString())) {
                 return true;
@@ -196,6 +193,21 @@ public final class Utils {
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
         WritableRaster raster = bi.copyData(null);
         return new BufferedImage(cm, raster, isAlphaPremultiplied, null);
+    }
+
+    public static int clamp(int min, int max, int value) {
+        return value < min ? min : value > max ? max : value;
+    }
+
+    public static Color lerpColor(Color a, Color b, float ratio) {
+        final int red = (int) ((ratio * a.getRed()) + ((1 - ratio) * b.getRed()));
+        final int green = (int) ((ratio * a.getGreen()) + ((1 - ratio) * b.getGreen()));
+        final int blue = (int) ((ratio * a.getBlue()) + ((1 - ratio) * b.getBlue()));
+        final int alpha = (int) ((ratio * a.getAlpha()) + ((1 - ratio) * b.getAlpha()));
+        return new Color(clamp(0, 255, red),
+                         clamp(0, 255, green),
+                         clamp(0, 255, blue),
+                         clamp(0, 255, alpha));
     }
 
     public static BufferedImage deepCopy2(final BufferedImage src) {

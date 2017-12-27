@@ -39,8 +39,17 @@ public final class GuiConnector {
     public static int getMouseY() {
         return connector == null ? -1 : connector.getMouseY();
     }
-
     public static boolean isButtonDown() {
         return connector != null && connector.isButtonDown();
+    }
+
+    public static boolean isMouseOn(PositionableComponent component, UpdateData data) {
+        return isMouseOn(component.getX(), component.getY(), component.getWidth(), component.getHeight(), data);
+    }
+    public static boolean isMouseOn(int x, int y, int width, int height, UpdateData data) {
+        return  data.mouseX > x &&
+                data.mouseX < x + width &&
+                data.mouseY > y &&
+                data.mouseY < y + height;
     }
 }

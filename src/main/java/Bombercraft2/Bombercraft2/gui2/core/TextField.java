@@ -47,15 +47,13 @@ public class TextField {
 
     public int getStyle() {return style;}
 
-    public void setSize(int size) {this.size = size;}
-
     public void setColor(Color color) {this.color = color;}
-
-    public void setName(String name) {this.name = name;}
-
-    public void setStyle(int style) {this.style = style;}
 
     public void setText(String text) {this.text = text;}
 
-    public void setFont(Font font) {this.font = font;}
+    public void setSize(int size) {this.size = size; font = new Font(name, style, size);}
+
+    public void setName(String name) {this.name = name; font = new Font(name, style, size);}
+
+    public void setStyle(int style) {this.style = style; font = new Font(name, style, size);}
 }

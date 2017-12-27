@@ -24,13 +24,13 @@ public abstract class Flora extends Entity {
         FloraType getType();
 
         static FlorAble valueOf(String value) {
-            if (Utils.isInStringable(value, Plants.values())) {
+            if (Utils.isInByString(value, Plants.values())) {
                 return Plants.valueOf(value);
             }
-            if (Utils.isInStringable(value, Bushes.values())) {
+            if (Utils.isInByString(value, Bushes.values())) {
                 return Bushes.valueOf(value);
             }
-            if (Utils.isInStringable(value, Trees.values())) {
+            if (Utils.isInByString(value, Trees.values())) {
                 return Trees.valueOf(value);
             }
             GLogger.printLine("nerozpoznalo to floru typu: " + value);

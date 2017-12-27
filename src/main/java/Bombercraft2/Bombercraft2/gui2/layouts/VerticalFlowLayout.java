@@ -2,6 +2,9 @@ package Bombercraft2.Bombercraft2.gui2.layouts;
 
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 
+/**
+ * Tento layout vkladá objekty do jedného riadku a keď sa nezmestía tak ich začne dávať do ďalšieho riadku
+ */
 public class VerticalFlowLayout extends Layout {
     public final static byte LEFT   = 1;
     public final static byte CENTER = 2;
@@ -62,6 +65,9 @@ public class VerticalFlowLayout extends Layout {
 
     @Override
     public void resize() {
+        if (target.getComponents().isEmpty()) {
+            return;
+        }
         availableWidth = target.getWidth() - (target.getHorizontalOffset() << 1);
         if (align == LEFT) {
             int x = target.getX() + target.getHorizontalOffset();

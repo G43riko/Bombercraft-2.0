@@ -131,6 +131,7 @@ public abstract class CoreEngine {
         g2 = (Graphics2D) buffer.getDrawGraphics();
         render(g2);
         // GuiTester.manager.render(g2);
+        // GuiTester.manager.update();
         // canvas.setCursor(GuiTester.manager.getCursor());
 
 //		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
@@ -188,5 +189,6 @@ public abstract class CoreEngine {
     public void onFocus() { }
 
     public void onBlur() { }
+
 }
 

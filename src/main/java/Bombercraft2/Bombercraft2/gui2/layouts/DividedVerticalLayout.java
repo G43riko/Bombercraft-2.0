@@ -4,6 +4,9 @@ import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 
 import java.util.List;
 
+/**
+ * Tento layout rozdelí obrazku vertikálne na X rovnakých časti podla počtu komponentov
+ */
 public class DividedVerticalLayout extends Layout{
     private boolean changeComponentsWidth = true;
     private int gap = 0;

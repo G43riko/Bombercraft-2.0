@@ -1,6 +1,6 @@
 package utils;
 
-final class SimplexNoise {
+public final class SimplexNoise {
 	private static final int[][] grad3 = {{1, 1, 0}, {-1, 1, 0}, {1, -1, 0}, {-1, -1, 0},
 										  {1,0,1}, {-1,0,1}, {1,0,-1}, {-1,0,-1},
 										  {0,1,1}, {0,-1,1}, {0,1,-1}, {0,-1,-1}};

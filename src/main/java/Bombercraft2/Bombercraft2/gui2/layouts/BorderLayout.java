@@ -2,6 +2,9 @@ package Bombercraft2.Bombercraft2.gui2.layouts;
 
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 
+/**
+ * Tento layout natlačí objekty na jednu stranu a vykresluje ich od okraja obrazovky smerom do stredu
+ */
 public class BorderLayout extends Layout{
     public final static byte SOUTH = 1;
     public final static byte EAST = 2;

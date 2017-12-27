@@ -32,7 +32,7 @@ public abstract class Emitter extends Entity {
 
     ArrayList<Particle> particles = new ArrayList<>();
     private Color color;
-    float     particlePerFrame;
+    float particlePerFrame;
     private GVector2f speed; // x - value, y - randomness
     private GVector2f rotation; // - speed, y - randomness
     private GVector2f health; // - normal, y - randomness

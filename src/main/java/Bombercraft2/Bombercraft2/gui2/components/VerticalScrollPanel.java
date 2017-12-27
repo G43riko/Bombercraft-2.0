@@ -4,21 +4,23 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
+import Bombercraft2.Bombercraft2.gui2.core.translation.TranslateColor;
 import Bombercraft2.Bombercraft2.gui2.layouts.VerticalLayout;
 
 import java.awt.*;
 
 public class VerticalScrollPanel extends Panel {
-    private int      scrollBarWidth         = 20;
-    private ColorBox scrollBarBackground    = new ColorBox(Color.YELLOW, Color.BLACK, 1);
-    private ColorBox scrollBarMovable       = new ColorBox(Color.GREEN, Color.BLACK, 1);
-    private int      componentsHeight       = 0;
-    private int      scrollBarHeight        = 0;
-    private int      initMousePosition      = 0;
-    private int      offset                 = 0;
-    private int      maxOffset              = 0;
-    private int      relativeVerticalOffset = super.getVerticalOffset();
-    private boolean  renderScrollBar        = false;
+    protected int      scrollBarWidth         = 20;
+    private   ColorBox scrollBarBackground    = new ColorBox(Color.YELLOW, Color.BLACK, 1);
+    private   ColorBox scrollBarMovable       = new ColorBox(Color.GREEN, Color.BLACK, 1);
+    private   int      componentsHeight       = 0;
+    protected int      scrollBarHeight        = 0;
+    private   int      initMousePosition      = 0;
+    protected int      offset                 = 0;
+    private   int      maxOffset              = 0;
+    private   int      relativeVerticalOffset = super.getVerticalOffset();
+    private   boolean  renderScrollBar        = false;
+    // private TranslateColor scrollBarBackgroundColor = new TranslateColor(Color.WHITE, Color.BLACK, 1000);
 
     public VerticalScrollPanel() {
         setLayout(new VerticalLayout(VerticalLayout.ALIGN_UP));
@@ -28,6 +30,8 @@ public class VerticalScrollPanel extends Panel {
     public int getWidth() {
         return renderScrollBar ? super.getWidth() - scrollBarWidth : super.getWidth();
     }
+
+    public int getRealWidth() { return super.getWidth();}
 
     private void calcScrollBar() {
         componentsHeight = components.stream().mapToInt(a -> a.getHeight() + getLayout().getGap()).sum();
@@ -50,11 +54,21 @@ public class VerticalScrollPanel extends Panel {
     }
 
     @Override
+    public void setHeight(int height) {
+        super.setHeight(height);
+        calcScrollBar();
+    }
+
+    @Override
     public int getVerticalOffset() {
         return relativeVerticalOffset;
     }
 
-    private void renderPanel(Graphics2D g2) {
+    public boolean isMoving() {
+        return initMousePosition != 0;
+    }
+
+    protected void updatePanel() {
         final boolean isOnScrollBar = GuiConnector.isMouseOn(getX() + getWidth(),
                                                              getY() + offset,
                                                              scrollBarWidth,
@@ -69,7 +83,7 @@ public class VerticalScrollPanel extends Panel {
         }
         if (GuiConnector.isButtonDown()) {
             if (initMousePosition == 0) {
-                if(isOnScrollBar) {
+                if (isOnScrollBar) {
                     initMousePosition = GuiConnector.getMouseY();
                 }
             }
@@ -85,12 +99,30 @@ public class VerticalScrollPanel extends Panel {
         else {
             initMousePosition = 0;
         }
-        scrollBarBackground.render(g2, getX() + getWidth(), getY(), scrollBarWidth, getHeight());
 
         if (isOnScrollBar) {
             getManager().setHoverCursor();
 
         }
+    }
+
+    protected void renderPanel(Graphics2D g2) {
+        updatePanel();
+
+        final boolean isOnScrollBarBackground = GuiConnector.isMouseOn(getX() + getWidth(),
+                                                                       getY(),
+                                                                       scrollBarWidth,
+                                                                       getHeight());
+
+        /*
+        if (scrollBarBackgroundColor.setValue(isOnScrollBarBackground)) {
+            scrollBarBackground.setBackgroundColor(scrollBarBackgroundColor.getActualColor());
+        }
+        */
+
+        scrollBarBackground.render(g2, getX() + getWidth(), getY(), scrollBarWidth, getHeight());
+
+
         scrollBarMovable.render(g2, getX() + getWidth(), getY() + offset, scrollBarWidth, scrollBarHeight);
     }
 
@@ -113,5 +145,11 @@ public class VerticalScrollPanel extends Panel {
         //TODO filter na viditelne
         components.forEach((component) -> component.render(g2));
         g2.setClip(clip);
+    }
+
+    public void scrollToTop() {
+        offset = 0;
+        relativeVerticalOffset = 0;
+        getLayout().resize();
     }
 }

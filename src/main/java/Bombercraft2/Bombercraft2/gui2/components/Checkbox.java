@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.gui2.components;
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.TextAlignment;
+import Bombercraft2.Bombercraft2.gui2.core.UpdateData;
 
 import java.awt.*;
 
@@ -16,55 +17,54 @@ public class Checkbox extends Button {
     private ColorBox trueBox      = new ColorBox(Color.green);
     private ColorBox falseBox     = new ColorBox(Color.red);
     private byte     buttonAlign  = LEFT;
-    private boolean  wasDown      = false;
+
     public Checkbox(String text) {
         super(text, TextAlignment.HORIZONTAL_ALIGN_LEFT);
+        mouseInteractive.setClickHandler(() -> value = !value);
     }
 
-    protected void renderBackground(Graphics2D g2) {
-        if(disabled && disabledColorBox != null) {
-            disabledColorBox.render(g2, this);
+    @Override
+    public void update(UpdateData data) {
+        super.update(data);
+        if (disabled && disabledColorBox != null) {
+            currentColor = disabledColorBox;
             getManager().setDisabledCursor();
         }
-        else if(!GuiConnector.isMouseOn(this)) {
-            colorBox.render(g2, this);
+        else if (!mouseInteractive.isHover()) {
+            currentColor = colorBox;
         }
         else {
             getManager().setHoverCursor();
-            if (GuiConnector.isButtonDown()) {
+            if (mouseInteractive.isActive()) {
                 getManager().setActiveCursor();
-                if( activeColorBox != null) {
-                    activeColorBox.render(g2, this);
+                if (activeColorBox != null) {
+                    currentColor = activeColorBox;
                 }
                 else if (hoverColorBox != null) {
-                    hoverColorBox.render(g2, this);
+                    currentColor = hoverColorBox;
                 }
                 else {
-                    colorBox.render(g2, this);
+                    currentColor = colorBox;
                 }
-                wasDown = true;
             }
             else {
-                if(wasDown){
-                    value = !value;
-                    wasDown = false;
-                }
                 if (hoverColorBox != null) {
-                    hoverColorBox.render(g2, this);
+                    currentColor = hoverColorBox;
                 }
-                else{
-                    colorBox.render(g2, this);
+                else {
+                    currentColor = colorBox;
                 }
             }
 
         }
     }
+
     @Override
     public void render(Graphics2D g2) {
         if (!visible) {
             return;
         }
-        renderBackground(g2);
+        currentColor.render(g2, this);
         final int buttonHeight = getHeight() - (buttonOffset << 1);
         if (buttonAlign == LEFT) {
             (value ? trueBox : falseBox).render(g2,
@@ -74,7 +74,6 @@ public class Checkbox extends Button {
         }
         textAlignment.renderText(g2, textField, this, 0, getHeight());
     }
-
 
 
 }

@@ -4,6 +4,7 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import Bombercraft2.Bombercraft2.gui2.core.DrawableComponent;
+import Bombercraft2.Bombercraft2.gui2.core.UpdateData;
 import Bombercraft2.Bombercraft2.gui2.layouts.Layout;
 
 import java.awt.*;
@@ -30,32 +31,39 @@ public class Panel extends DrawableComponent {
     @Override
     public void setX(int x) {
         super.setX(x);
-        if(getLayout() != null) {
-            getLayout().resize();
-        }
+        onResize();
     }
 
     @Override
     public void setY(int y) {
         super.setY(y);
-        if(getLayout() != null) {
-            getLayout().resize();
-        }
+        onResize();
     }
 
     @Override
     public void setWidth(int width) {
         super.setWidth(width);
-        if(getLayout() != null) {
-            getLayout().resize();
-        }
+        onResize();
     }
 
     @Override
     public void setHeight(int height) {
         super.setHeight(height);
-        if(getLayout() != null) {
-            getLayout().resize();
+        onResize();
+    }
+
+    @Override
+    public void onResize() {
+        if(layout != null) {
+            layout.resize();
+        }
+        else {
+            components.forEach((component) -> {
+                component.setX(getX());
+                component.setY(getY());
+                component.setWidth(getWidth());
+                component.setHeight(getHeight());
+            });
         }
     }
 
@@ -84,11 +92,13 @@ public class Panel extends DrawableComponent {
     public void addComponent(Drawable component) {
         components.add(component);
         component.setManager(getManager());
-        if(getLayout() != null) {
-            getLayout().resize();
-        }
+        onResize();
     }
 
+    @Override
+    public void update(UpdateData data) {
+        components.forEach(drawable -> drawable.update(data));
+    }
 
     public ColorBox getColorBox() {return colorBox;}
 

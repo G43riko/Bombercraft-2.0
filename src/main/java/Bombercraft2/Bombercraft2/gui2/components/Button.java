@@ -1,53 +1,72 @@
 package Bombercraft2.Bombercraft2.gui2.components;
 
+import Bombercraft2.Bombercraft2.core.BasicListener;
 import Bombercraft2.Bombercraft2.gui2.core.*;
 import Bombercraft2.Bombercraft2.gui2.core.TextField;
 
 import java.awt.*;
 
 public class Button extends DrawableComponent {
-    protected TextAlignment textAlignment    = new TextAlignment();
-    protected TextField     textField;
-    protected boolean       disabled         = false;
-    protected ColorBox      colorBox         = new ColorBox();
-    protected ColorBox      disabledColorBox = null;
-    protected ColorBox      hoverColorBox    = null;
-    protected ColorBox      activeColorBox   = null;
-
+    protected TextField textField;
+    protected int              round            = 0;
+    protected TextAlignment    textAlignment    = new TextAlignment();
+    protected boolean          disabled         = false;
+    protected ColorBox         colorBox         = new ColorBox();
+    protected ColorBox         disabledColorBox = null;
+    protected ColorBox         hoverColorBox    = null;
+    protected ColorBox         activeColorBox   = null;
+    protected ColorBox         currentColor     = colorBox;
+    protected MouseInteractive mouseInteractive = new MouseInteractive(this);
 
     public Button(String text) {
         this(text, TextAlignment.HORIZONTAL_ALIGN_CENTER);
     }
+
     public Button(String text, byte horizontalAlignment) {
         textField = new TextField(text);
         textAlignment.setHorizontalAlign(horizontalAlignment);
     }
-    protected void renderBackground(Graphics2D g2) {
-        if(disabled && disabledColorBox != null) {
-            disabledColorBox.render(g2, this);
+
+    public void update(UpdateData data) {
+        mouseInteractive.update(data);
+
+        if (disabled && disabledColorBox != null) {
+            currentColor = disabledColorBox;
             getManager().setDisabledCursor();
         }
-        else if(!GuiConnector.isMouseOn(this)) {
-            colorBox.render(g2, this);
+        else if (!mouseInteractive.isHover()) {
+            currentColor = colorBox;
         }
         else {
             getManager().setHoverCursor();
-            if (activeColorBox != null && GuiConnector.isButtonDown()) {
-                activeColorBox.render(g2, this);
+            if (activeColorBox != null && mouseInteractive.isActive()) {
+                currentColor = activeColorBox;
             }
             else if (hoverColorBox != null) {
-                hoverColorBox.render(g2, this);
+                currentColor = hoverColorBox;
             }
             else {
-                colorBox.render(g2, this);
+                currentColor = colorBox;
             }
         }
     }
+
+    @Override
+    public void onResize() {
+
+    }
+
+    public void setClickHandler(BasicListener handler) {
+        mouseInteractive.setClickHandler(handler);
+    }
+
     public void render(Graphics2D g2) {
         if (!visible) {
             return;
         }
-        renderBackground(g2);
+        if(round > 0) {
+        }
+        currentColor.render(g2, this);
         textAlignment.renderText(g2, textField, this);
     }
 

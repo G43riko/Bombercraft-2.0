@@ -1,14 +1,13 @@
 package Bombercraft2.Bombercraft2.gui2;
 
-import Bombercraft2.Bombercraft2.gui2.components.Button;
-import Bombercraft2.Bombercraft2.gui2.components.Checkbox;
-import Bombercraft2.Bombercraft2.gui2.components.Panel;
-import Bombercraft2.Bombercraft2.gui2.components.VerticalScrollPanel;
+import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.gui2.components.*;
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnectAble;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.PositionableComponent;
 import Bombercraft2.Bombercraft2.gui2.layouts.*;
+import Bombercraft2.Bombercraft2.gui2.styles.ButtonStyles;
 import Bombercraft2.engine.Input;
 
 import java.awt.Graphics2D;
@@ -46,11 +45,34 @@ public class GuiTester {
 
     }
 
-    public static void init() {
-        manager.getMainPanel().setLayout(new BorderLayout(BorderLayout.NORTH));
+    private Panel mainMenu() {
+        Panel result = new Panel();
+        result.setLayout(new VerticalLayout());
+        result.setHorizontalOffset(150);
+        ButtonStyles style = new ButtonStyles();
+        style.backgroundColor = Color.GREEN;;
+        style.borderWidth = 5;
+        style.fontColor = Color.BLACK;
+        style.fontSize = 36;
+        style.round = Config.DEFAULT_ROUND;
+        style.fontName = "Monospaced";
 
-        manager.getMainPanel().addComponent(tester.getTopPanel());
-        manager.getMainPanel().addComponent(tester.getBottomPanel());
+
+        Button button = new Button("Nová hra");
+        button.getColorBox().setBackgroundColor(Color.cyan);
+        button.setActiveColorBox(new ColorBox(Color.RED, Color.blue, 5));
+        button.setHeight(40);
+        button.setWidth(100);
+        style.setTo(button);
+        result.addComponent(button);
+        return result;
+    }
+
+    public static void init() {
+        // manager.getMainPanel().setLayout(new BorderLayout(BorderLayout.NORTH));
+        manager.getMainPanel().addComponent(tester.mainMenu());
+        // manager.getMainPanel().addComponent(tester.getTopPanel());
+        // manager.getMainPanel().addComponent(tester.getBottomPanel());
     }
     private Panel getTopPanel() {
         Panel panel = new Panel();
@@ -69,7 +91,7 @@ public class GuiTester {
         layout.setAutoFixGaps(true);
         layout.setChangeHeight(VerticalFlowLayout.AVERAGE);
 
-        for(int i=1 ; i<=30 ; i++) {
+        for(int i=1 ; i<=0 ; i++) {
             Button button = new Button("text-" + i);
             button.setHeight((int)(Math.random() * 20) + 20);
             button.setWidth((int)(Math.random() * 60) + 30);
@@ -113,8 +135,25 @@ public class GuiTester {
 
         final int items = 15;
 
+
+        Button button = new Button("Tlacitko " + 0);
+        button.setHeight(40);
+        button.setWidth(100);
+        button.getColorBox().setBackgroundColor(new Color(0, 255, 255));
+        button.setHoverColorBox(new ColorBox(new Color(255,
+                                                       255,
+                                                       255), Color.blue, 5));
+        panel.addComponent(button);
+
+
+        SelectBox selectBox = new SelectBox();
+        panel.addComponent(selectBox);
+        selectBox.addItem("name", "Meno");
+        selectBox.addItem("surName", "Priezvisko");
+        selectBox.addItem("age", "Vek");
+
         for (int i=1 ; i<=items ;  i++) {
-            Button button = new Checkbox("Tlacitko " + i);
+            button = new Checkbox("Tlacitko " + i);
             button.setHeight(40);
             button.setWidth(100);
             button.getColorBox().setBackgroundColor(new Color(255 / items * i, 255, 255));
@@ -122,6 +161,7 @@ public class GuiTester {
                                                            255 - 255 / items * i,
                                                            255), Color.blue, 5));
             panel.addComponent(button);
+            selectBox.addItem("button" + i, "Tlačítko " + i);
         }
         panel.getLayout().resize();
         //manager.add(panel);

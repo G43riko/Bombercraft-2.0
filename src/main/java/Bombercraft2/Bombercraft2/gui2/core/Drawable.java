@@ -10,6 +10,8 @@ public interface Drawable {
 
     GuiManager getManager();
 
+    void update(UpdateData data);
+
     void setManager(GuiManager manager);
 
     void setY(int y);
@@ -29,4 +31,6 @@ public interface Drawable {
     boolean isVisible();
 
     void setVisible(boolean value);
+
+    void onResize();
 }

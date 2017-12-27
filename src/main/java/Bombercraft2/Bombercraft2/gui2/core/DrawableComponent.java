@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 public abstract class DrawableComponent extends PositionableComponent implements Drawable  {
     protected boolean visible = true;
     private GuiManager manager;
+
     public DrawableComponent() {
         GuiConnector.register(this);
     }
