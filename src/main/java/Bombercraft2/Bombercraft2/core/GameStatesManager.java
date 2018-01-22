@@ -20,6 +20,12 @@ public class GameStatesManager {
             states.peek().update(delta);
         }
     }
+    
+    public void onResize() {
+        if(!states.empty()) {
+            states.peek().onResize();
+        }
+    }
 
     public GameState pop() {
         return states.pop();

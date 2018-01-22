@@ -14,6 +14,7 @@ public abstract class GameState implements InteractAble, ClickAble {
         PauseMenu("PauseMenu"),
         MainMenu("MainMenu"),
         Game("Game"),
+        MapDemo("ProfileMenu"),
         CollisionDemo("CollisionDemo"),
         ParticlesDemo("ParticlesDemo"),
         ShootingDemo("ShootingDemo"),

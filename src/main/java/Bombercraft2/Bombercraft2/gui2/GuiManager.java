@@ -26,7 +26,7 @@ public class GuiManager {
     }
 
     public void onResize() {
-        if(mainPanel != null) {
+        if(mainPanel != null && canvas != null) {
             mainPanel.setX(canvas.getX());
             mainPanel.setY(canvas.getY());
             mainPanel.setWidth(canvas.getWidth());

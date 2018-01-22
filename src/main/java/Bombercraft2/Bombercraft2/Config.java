@@ -112,4 +112,5 @@ public class Config {
     public static final float  ENEMY_DEFAULT_OFFSET = 5;
     public static final String DEFAULT_FONT         = "Garamond";
     public static final int DEFAULT_FONT_SIZE    = 20;
+    public static final float MIN_ZOOM    = 0.2f;
 }

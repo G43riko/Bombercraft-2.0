@@ -344,7 +344,7 @@ public class Block extends Entity {
 
     public boolean isWalkable() {return type.isWalkable();}
 
-    private static Type getTypeFromInt(int num) {
+    public static Type getTypeFromInt(int num) {
         return num > 0 && num < Type.values().length ? Type.values()[num] : Type.NOTHING;
     }
 

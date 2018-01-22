@@ -198,6 +198,9 @@ public final class Utils {
     public static int clamp(int min, int max, int value) {
         return value < min ? min : value > max ? max : value;
     }
+    public static float clamp(float min, float max, float value) {
+        return value < min ? min : value > max ? max : value;
+    }
 
     public static Color lerpColor(Color a, Color b, float ratio) {
         final int red = (int) ((ratio * a.getRed()) + ((1 - ratio) * b.getRed()));

@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Demos.*;
+import Bombercraft2.playGround.Demos.mapDemo.MapDemo;
 
 import java.awt.*;
 
@@ -26,6 +27,7 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Particles", () -> setScene(new ParticlesDemo(this)));
         mainMenu.addButton("Shooting", () -> setScene(new ShootingDemo(this)));
         mainMenu.addButton("Perlin", () -> setScene(new PerlinDemo(this)));
+        mainMenu.addButton("Map", () -> setScene(new MapDemo(this)));
         mainMenu.addButton("Exit", () -> exitGame());
     }
 
@@ -46,7 +48,6 @@ public class CorePlayGround extends CoreEngine {
         }
         states.render(g2);
     }
-
     @Override
     protected void input() {
         if (!runningGame && Input.getKeyDown(Input.KEY_ESCAPE)) {
@@ -74,6 +75,9 @@ public class CorePlayGround extends CoreEngine {
     public void onResize() {
         if (guiManager != null) {
             guiManager.onResize();
+        }
+        if (states != null) {
+        	states.onResize();
         }
     }
 
