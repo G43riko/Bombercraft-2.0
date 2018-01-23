@@ -7,7 +7,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 class PlayerPointer {
-    private       MyPlayer parent;
+    private final MyPlayer parent;
     private       float    angle    = 0;
     private final float    rotSpeed = 0.1f;
     private final int      length   = 100;

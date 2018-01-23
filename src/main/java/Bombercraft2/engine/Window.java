@@ -9,6 +9,7 @@ import java.awt.event.WindowListener;
 public class Window extends JFrame implements ComponentListener, WindowListener {
     private final CoreEngine parent;
     private boolean focused = true;
+
     public Window(CoreEngine parent, String title, int width, int height) {
         this.parent = parent;
         setTitle(title);

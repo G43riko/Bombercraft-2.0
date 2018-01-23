@@ -1,8 +1,6 @@
 package Bombercraft2.playGround.Demos;
 
-import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleParticle;
@@ -15,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClosestDemo extends GameState {
-    private List<SimpleParticle> barrels = new ArrayList<>();
-    private CorePlayGround parent;
-    private SimplePlayer mySimplePlayer = new SimplePlayer();
+    private final List<SimpleParticle> barrels = new ArrayList<>();
+    private final CorePlayGround parent;
+    private final SimplePlayer mySimplePlayer = new SimplePlayer();
 
 
     public ClosestDemo(CorePlayGround parent) {

@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2;
 
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -29,14 +30,14 @@ public class Profile implements JSONAble {
     private OptionsManager options;
     private String name          = "playerName";
     private String avatar        = "player1.png";
-    private String profileName;
+    private final String profileName;
     private float  msOfPlaying   = 0;
     private int    newGames      = 0;
     private int    profileLoaded = 0;
     private float  lastLogin     = System.currentTimeMillis();
 
     // CONSTRUCTORS
-    public Profile(String profileName) {
+    public Profile(@NotNull String profileName) {
         this.profileName = profileName;
         if (profileName.equals(GUEST)) {
             initDefaultProfile();
@@ -134,7 +135,7 @@ public class Profile implements JSONAble {
 
     public float getMsOfPlaying() {return msOfPlaying;}
 
-    public static void saveProfile(Profile profile) {
+    public static void saveProfile(@NotNull Profile profile) {
         if (profile.profileName.equals(GUEST)) {
             return;
         }

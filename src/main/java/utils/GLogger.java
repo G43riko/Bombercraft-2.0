@@ -79,7 +79,7 @@ public class GLogger extends PrintStream {
     private static Error getError(GError GError) {
         return new Error(GError.toString());
     }
-    private static List<Wrapper> logs = new LinkedList<>();
+    private static final List<Wrapper> logs = new LinkedList<>();
     private GLogger(OutputStream stream) {super(stream);}
 
     public static void log(GLog log, String ... params) {

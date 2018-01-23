@@ -10,7 +10,7 @@ import java.awt.*;
 class MouseSelector {
     private final int      selectorWidth = Config.PLAYER_SELECTOR_WIDTH;
     private final Color    selectorColor = Config.PLAYER_SELECTOR_COLOR;
-    private       GameAble parent;
+    private final GameAble parent;
 
     public MouseSelector(GameAble parent) {
         this.parent = parent;

@@ -7,8 +7,8 @@ import Bombercraft2.Bombercraft2.game.player.ToolAble;
 import utils.math.GVector2f;
 
 public class BombCreator implements ToolAble {
-    private GameAble parent;
-    private Type     type;
+    private final GameAble parent;
+    private final Type     type;
 
     public BombCreator(GameAble parent, Type type) {
         this.parent = parent;

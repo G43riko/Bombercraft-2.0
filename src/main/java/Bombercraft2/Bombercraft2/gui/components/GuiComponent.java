@@ -15,7 +15,7 @@ public abstract class GuiComponent implements InteractAble, Visible {
     final static float CENTER_ALIGN                  = -1.111111f;
 
     static final HashMap<Visible, Integer> buttons             = new HashMap<>();
-    private             Visible                   parent;
+    private final Visible parent;
     GVector2f                 offset              = new GVector2f();
     GVector2f                 textOffset          = new GVector2f();
     GVector2f                 position;

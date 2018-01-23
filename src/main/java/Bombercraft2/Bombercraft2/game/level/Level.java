@@ -4,6 +4,7 @@ import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.flora.FloraManager;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -24,7 +25,7 @@ public class Level implements InteractAble {
     private       FloraManager    floraManager = null;
     //CONSTRUCTORS
 
-    public Level(JSONObject object) {
+    public Level(@NotNull JSONObject object) {
         try {
             mapData = object.getString(Texts.MAP);
             playerInfo = object.getJSONObject(Texts.PLAYER_INFO);
@@ -120,7 +121,7 @@ public class Level implements InteractAble {
             }
         }
         else {
-            map = new Map(game);
+            map = new Map(game, new GVector2f(40, 40));
         }
 
         floraManager = new FloraManager(game, map);

@@ -10,13 +10,13 @@ import java.util.HashMap;
 class PlayerSprite {
     private static final HashMap<String, PlayerSprite> animations = new HashMap<>();
 
-    private Image     image;
-    private int       numberOfImages;
-    private int       numberOfSteps;
+    private final Image image;
+    private final int   numberOfImages;
+    private final int   numberOfSteps;
     private int       step           = 0;
-    private int       delay;
-    private int       actDelay;
-    private GVector2f imageSize;
+    private final int       delay;
+    private       int       actDelay;
+    private final GVector2f imageSize;
 
     private PlayerSprite(String name, int numX, int numY, int positions, int delay) {
         this.delay = delay;

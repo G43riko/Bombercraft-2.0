@@ -108,9 +108,13 @@ public class Config {
     public static final int    SCANNING_RANGE        = 20;
     public static final String TEXT_ARG_PLACEHOLDER  = "#####";
 
-    public static final float  ENEMY_DEFAULT_ROUND  = 4;
-    public static final float  ENEMY_DEFAULT_OFFSET = 5;
-    public static final String DEFAULT_FONT         = "Garamond";
-    public static final int DEFAULT_FONT_SIZE    = 20;
-    public static final float MIN_ZOOM    = 0.2f;
+    public static final float     ENEMY_DEFAULT_ROUND  = 4;
+    public static final float     ENEMY_DEFAULT_OFFSET = 5;
+    public static final String    DEFAULT_FONT         = "Garamond";
+    public static final int       DEFAULT_FONT_SIZE    = 20;
+    public static final GVector2f CHUNK_SIZE           = new GVector2f(32, 32);
+    public final static GVector2f BLOCK_SIZE         = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
+                                                                     Config.DEFAULT_BLOCK_HEIGHT);
+    public static final boolean   SHOW_CHUNK_BORDERS = false;
+    public static final float     MIN_ZOOM           = 0.2f;
 }

@@ -3,25 +3,18 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
+import Bombercraft2.playGround.Misc.SimpleMap_old;
 import utils.math.GVector2f;
 
 import java.awt.*;
 
 public class BasicDemo extends GameState {
-    private class Field {
-        public int x;
-        public int y;
-        public boolean selected = false;
-
-        Field(int x, int y) {this.x = x; this.y = y;}
-    }
-
-    private Field[][] fields;
-    private int blockSize   = 50;
-    private int playerSize  = 20;
-    private int playerSpeed = 1;
-    private CorePlayGround parent;
-    private Field player = new Field(50, 50);
+    private final SimpleMap_old.Field[][] fields;
+    private final int blockSize   = 50;
+    private final int playerSize  = 20;
+    private final int playerSpeed = 1;
+    private final CorePlayGround parent;
+    private final SimpleMap_old.Field player = new SimpleMap_old.Field(50, 50);
 
     public BasicDemo(CorePlayGround parent) {
         super(Type.BasicDemo);
@@ -30,10 +23,10 @@ public class BasicDemo extends GameState {
         final int numX = (int) Math.ceil((float) parent.getCanvas().getWidth() / blockSize);
         final int numY = (int) Math.ceil((float) parent.getCanvas().getHeight() / blockSize);
         System.out.println("numX: " + numX + ", numY: " + numY);
-        fields = new Field[numX][numY];
+        fields = new SimpleMap_old.Field[numX][numY];
         for (int i = 0; i < numX; i++) {
             for (int j = 0; j < numY; j++) {
-                fields[i][j] = new Field(i, j);
+                fields[i][j] = new SimpleMap_old.Field(i, j);
             }
         }
     }
@@ -43,18 +36,20 @@ public class BasicDemo extends GameState {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
 
 
-        for (Field[] field : fields) {
-            for (Field aField : field) {
+        for (SimpleMap_old.Field[] field : fields) {
+            for (SimpleMap_old.Field aField : field) {
                 aField.selected = false;
             }
         }
+
+
 
         GVector2f mousePos = Input.getMousePosition();
         preRayCast(player.x + (playerSize >> 1), player.y + (playerSize >> 1), mousePos.getXi(), mousePos.getYi());
 
         g2.setColor(Color.GRAY);
-        for (Field[] field : fields) {
-            for (Field aField : field) {
+        for (SimpleMap_old.Field[] field : fields) {
+            for (SimpleMap_old.Field aField : field) {
                 if (!aField.selected) {
                     int posX = aField.x * blockSize;
                     int posY = aField.y * blockSize;
@@ -64,8 +59,8 @@ public class BasicDemo extends GameState {
         }
 
         g2.setColor(Color.GREEN);
-        for (Field[] field : fields) {
-            for (Field aField : field) {
+        for (SimpleMap_old.Field[] field : fields) {
+            for (SimpleMap_old.Field aField : field) {
                 if (aField.selected) {
                     int posX = aField.x * blockSize;
                     int posY = aField.y * blockSize;

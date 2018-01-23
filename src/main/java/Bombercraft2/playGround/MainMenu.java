@@ -12,8 +12,8 @@ import java.awt.*;
 
 
 public class MainMenu extends Panel {
-    private final static int BUTTON_HEIGHT = 40;
-    private ButtonStyles style = new ButtonStyles();
+    private final static int          BUTTON_HEIGHT = 40;
+    private final        ButtonStyles style         = new ButtonStyles();
 
     public MainMenu() {
         setLayout(new VerticalLayout());

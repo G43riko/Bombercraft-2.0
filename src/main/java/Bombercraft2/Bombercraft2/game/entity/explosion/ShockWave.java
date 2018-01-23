@@ -7,15 +7,15 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class ShockWave implements InteractAble {
-    private GameAble  parent;
-    private int       maxRadius;
-    private int       stroke;
-    private int       speed;
+    private final GameAble parent;
+    private final int      maxRadius;
+    private final int      stroke;
+    private final int      speed;
     private int       radius    = 0;
     private int       alphaDiff = 0;
     private boolean   alive     = true;
-    private Color     color;
-    private GVector2f position;
+    private       Color     color;
+    private final GVector2f position;
     //CONSTRUCTORS
 
     public ShockWave(GameAble parent,

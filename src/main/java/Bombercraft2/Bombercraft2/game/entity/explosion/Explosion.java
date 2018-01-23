@@ -15,7 +15,7 @@ public class Explosion extends Entity {
     private ArrayList<ShockWave>       waves      = new ArrayList<>();
     private ArrayList<Particle>        particles  = new ArrayList<>();
     private ArrayList<SpriteAnimation> animations = new ArrayList<>();
-    private GVector2f                  size;
+    private final GVector2f size;
 
     public Explosion(GVector2f position,
                      GameAble parent,

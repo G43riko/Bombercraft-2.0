@@ -18,7 +18,8 @@ public abstract class GameState implements InteractAble, ClickAble {
         CollisionDemo("CollisionDemo"),
         ParticlesDemo("ParticlesDemo"),
         ShootingDemo("ShootingDemo"),
-        PerlinDemo("PerlinDemo");
+        PerlinDemo("PerlinDemo"),
+        ChunkedMapDemo("ChunkedMapDemo");
 
         private final String name;
 

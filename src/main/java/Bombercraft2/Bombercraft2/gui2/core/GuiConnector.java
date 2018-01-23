@@ -4,7 +4,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public final class GuiConnector {
-    private static Set<DrawableComponent> drawableComponents = new LinkedHashSet<>();
+    private static final Set<DrawableComponent> drawableComponents = new LinkedHashSet<>();
     private static GuiConnectAble connector;
 
     public static void register(DrawableComponent component) {

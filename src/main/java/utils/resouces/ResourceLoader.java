@@ -14,6 +14,8 @@ import java.util.HashMap;
 
 import javax.imageio.ImageIO;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,6 +47,7 @@ public final class ResourceLoader {
         return input;
     }
 
+    @Nullable
     private static FileWriter getFileWriter(String fileName) {
         try {
             return new FileWriter(new File(ProfileMenu.class.getResource(fileName).toURI()));
@@ -55,6 +58,7 @@ public final class ResourceLoader {
         return null;
     }
 
+    @NotNull
     public static BufferedWriter getBufferedWriter(String fileName) {
         return new BufferedWriter(getFileWriter(fileName));
     }
@@ -73,6 +77,7 @@ public final class ResourceLoader {
         }
     }
 
+    @NotNull
     private static String getFileContent(String name) {
         BufferedReader buf = new BufferedReader(new InputStreamReader(load(name)));
         StringBuilder sb = new StringBuilder();
@@ -104,10 +109,12 @@ public final class ResourceLoader {
         return soundManager.checkAndGetAudio(name);
     }
 
+    @NotNull
     public static JSONObject getJSONThrowing(String name) throws JSONException {
         return new JSONObject(getFileContent(name));
     }
 
+    @Nullable
     public static JSONObject getJSON(String name) {
         try {
             return new JSONObject(getFileContent(name));

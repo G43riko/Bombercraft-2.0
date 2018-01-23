@@ -8,7 +8,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 class PlayerSelector {
-    private       MyPlayer parent;
+    private final MyPlayer parent;
     private final int      selectorWidth = Config.PLAYER_SELECTOR_WIDTH;
     private final Color    selectorColor = Config.PLAYER_SELECTOR_COLOR;
 

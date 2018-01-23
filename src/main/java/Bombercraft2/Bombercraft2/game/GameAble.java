@@ -10,6 +10,7 @@ import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -17,7 +18,10 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public interface GameAble extends InteractAble, Visible {
+public interface GameAble extends InteractAble, Visible, SimpleGameAble {
+
+    Canvas getCanvas();
+
     JSONObject getWeapon(String weaponLaser);
 
     boolean getVisibleOption(String key);
@@ -44,29 +48,23 @@ public interface GameAble extends InteractAble, Visible {
 
     String getGameInfo();
 
-    GVector2f getOffset();
-
-    Canvas getCanvas();
-
     Profile getProfile();
 
     Level getLevel();
 
-    float getZoom();
-
     void addBullet(BulletManager.Types bulletType, GVector2f angle, GVector2f position);
 
     void addExplosion(GVector2f position,
-                             GVector2f size,
-                             Color color,
-                             int number,
-                             boolean explosion,
-                             boolean shockWave
-                            );
+                      GVector2f size,
+                      Color color,
+                      int number,
+                      boolean explosion,
+                      boolean shockWave
+                     );
 
     /**
-     * @param pos - position of explosion
-     * @param type - type of explosion
+     * @param pos         - position of explosion
+     * @param type        - type of explosion
      * @param createdTime - time when bomb was created by client - prevent network delay
      */
     void addHelper(GVector2f pos, Type type, long createdTime);
@@ -84,8 +82,6 @@ public interface GameAble extends InteractAble, Visible {
     boolean hasWall(float i, float j);
 
     void removePlayer(String name);
-
-    boolean isVisible(Visible b);
 
     void changeZoom(float f);
 

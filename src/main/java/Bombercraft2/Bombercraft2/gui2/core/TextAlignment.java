@@ -44,15 +44,17 @@ public class TextAlignment {
         int y = target.getY() + text.getSize() + localVerticalOffset;
         final int textWidth = g2.getFontMetrics().stringWidth(text.getText());
 
-        if (horizontalAlign == HORIZONTAL_ALIGN_CENTER) {
-            x += (target.getWidth() - textWidth) >> 1;
-            x += horizontalOffset;
-        }
-        else if (horizontalAlign == HORIZONTAL_ALIGN_LEFT) {
-            x += horizontalOffset;
-        }
-        else if (horizontalAlign == HORIZONTAL_ALIGN_RIGHT) {
-            x += target.getWidth() - textWidth - horizontalOffset;
+        switch (horizontalAlign) {
+            case HORIZONTAL_ALIGN_CENTER:
+                x += (target.getWidth() - textWidth) >> 1;
+                x += horizontalOffset;
+                break;
+            case HORIZONTAL_ALIGN_LEFT:
+                x += horizontalOffset;
+                break;
+            case HORIZONTAL_ALIGN_RIGHT:
+                x += target.getWidth() - textWidth - horizontalOffset;
+                break;
         }
 
         if (verticalAlign == VERTICAL_ALIGN_MIDDLE) {

@@ -1,22 +1,21 @@
 package Bombercraft2.Bombercraft2.gui2.components;
 
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
-import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.TextAlignment;
 import Bombercraft2.Bombercraft2.gui2.core.UpdateData;
 
 import java.awt.*;
 
 public class Checkbox extends Button {
-    public static byte LEFT  = 1;
-    public static byte RIGHT = 2;
-    public static byte NONE  = 3;
+    public static final byte LEFT  = 1;
+    public static       byte RIGHT = 2;
+    public static       byte NONE  = 3;
 
-    private boolean  value        = false;
-    private int      buttonOffset = 5;
-    private ColorBox trueBox      = new ColorBox(Color.green);
-    private ColorBox falseBox     = new ColorBox(Color.red);
-    private byte     buttonAlign  = LEFT;
+    private       boolean  value        = false;
+    private final int      buttonOffset = 5;
+    private final ColorBox trueBox      = new ColorBox(Color.green);
+    private final ColorBox falseBox     = new ColorBox(Color.red);
+    private final byte     buttonAlign  = LEFT;
 
     public Checkbox(String text) {
         super(text, TextAlignment.HORIZONTAL_ALIGN_LEFT);

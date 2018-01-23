@@ -18,12 +18,12 @@ public class SelectBox extends Button {
     }
 
     private Item selectedItem;
-    private boolean             visibleBody = false;
-    private VerticalScrollPanel body        = new VerticalScrollPanel();
-    private boolean             multiSelect = false;
-    private String              placeHolder = "";
-    private TranslateInt        translation = new TranslateInt(0, 300, 200);
-    private List<Item>          items       = new ArrayList<>();
+    private       boolean             visibleBody = false;
+    private final VerticalScrollPanel body        = new VerticalScrollPanel();
+    private       boolean             multiSelect = false;
+    private       String              placeHolder = "";
+    private final TranslateInt        translation = new TranslateInt(0, 300, 200);
+    private final List<Item>          items       = new ArrayList<>();
 
     public SelectBox() {
         super(DEFAULT_TEXT);

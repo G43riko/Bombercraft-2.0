@@ -14,9 +14,9 @@ import java.util.List;
 
 public class Bomb extends Helper {
 
-    private       long            addedAt;
+    private final long addedAt;
     private final int             detonationTime = 2000;
-    private       Timer           timer;
+    private final Timer timer;
     private final int             range          = 3;
     private final List<Block>     blocks         = new ArrayList<>();
     private final List<GVector2f> damageAreas    = new ArrayList<>();

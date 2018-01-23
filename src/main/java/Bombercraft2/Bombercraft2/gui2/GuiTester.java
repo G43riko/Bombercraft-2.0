@@ -15,9 +15,9 @@ import java.awt.Color;
 
 
 public class GuiTester {
-    public static GuiManager manager = new GuiManager();
-    private static GuiTester tester = new GuiTester();
-    private Checkbox checkbox = new Checkbox("Checkbox");
+    public static final  GuiManager manager  = new GuiManager();
+    private static final GuiTester  tester   = new GuiTester();
+    private final        Checkbox   checkbox = new Checkbox("Checkbox");
     private GuiTester() {
         GuiConnector.setConnector(new GuiConnectAble() {
             @Override
@@ -50,7 +50,7 @@ public class GuiTester {
         result.setLayout(new VerticalLayout());
         result.setHorizontalOffset(150);
         ButtonStyles style = new ButtonStyles();
-        style.backgroundColor = Color.GREEN;;
+        style.backgroundColor = Color.GREEN;
         style.borderWidth = 5;
         style.fontColor = Color.BLACK;
         style.fontSize = 36;

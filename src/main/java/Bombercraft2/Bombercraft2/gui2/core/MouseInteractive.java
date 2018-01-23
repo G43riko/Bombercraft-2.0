@@ -4,11 +4,11 @@ import Bombercraft2.Bombercraft2.core.BasicListener;
 import utils.math.GVector2f;
 
 public class MouseInteractive {
-    private PositionableComponent parent;
-    private boolean   hover                = false;
-    private boolean   dragged              = false;
-    private boolean   active               = false;
-    private GVector2f startDraggedPosition = new GVector2f();
+    private final PositionableComponent parent;
+    private       boolean   hover                = false;
+    private       boolean   dragged              = false;
+    private       boolean   active               = false;
+    private final GVector2f startDraggedPosition = new GVector2f();
     private BasicListener clickHandler;
 
     public MouseInteractive(PositionableComponent parent) {

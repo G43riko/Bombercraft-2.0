@@ -14,7 +14,7 @@ public class AlertManager implements InteractAble {
     private final Color       color    = Color.BLACK;
     private final int         fontSize = 33;
     private final Font        font     = new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, fontSize);
-    private       CoreEngine  parent;
+    private final CoreEngine parent;
 
     public AlertManager(CoreEngine parent) {
         this.parent = parent;

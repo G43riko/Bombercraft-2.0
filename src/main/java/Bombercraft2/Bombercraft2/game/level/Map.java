@@ -6,6 +6,8 @@ import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -22,17 +24,17 @@ import java.util.stream.Collectors;
 public class Map implements InteractAble {
     private              HashMap<String, Block> blocks         = null;
     private              GVector2f              numberOfBlocks = null;
-    private              GameAble               parent         = null;
     private              boolean                render         = true;
     private              long                   renderedBlocks = 0;
     private              String                 defaultMap     = null;    //zaloha mapy pre reset
     private              BufferedImage          image          = null;
-    private final static boolean                PRERENDER      = false;
+    private final static boolean                PRE_RENDER     = false;
     private              GVector2f              size           = null;
+    private final GameAble parent;
 
     //CONSTRUCTORS
 
-    public Map(JSONObject object, GameAble parent) {
+    public Map(@NotNull JSONObject object, @NotNull GameAble parent) {
         this.parent = parent;
         try {
             this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
@@ -45,11 +47,7 @@ public class Map implements InteractAble {
         }
     }
 
-    public Map(GameAble parent) {
-        this(parent, new GVector2f(40, 40)); //300 x 300 - je max
-    }
-
-    private Map(GameAble parent, GVector2f numberOfBlocks) {
+    public Map(@NotNull GameAble parent, @NotNull GVector2f numberOfBlocks) {
         this.parent = parent;
         this.numberOfBlocks = numberOfBlocks;
 
@@ -65,7 +63,7 @@ public class Map implements InteractAble {
         if (!render) {
             return;
         }
-        if (!PRERENDER) {
+        if (!PRE_RENDER) {
             renderToImage(g2);
             return;
         }
@@ -98,19 +96,19 @@ public class Map implements InteractAble {
             return;
         }
         renderedBlocks = new HashMap<>(blocks).entrySet()
-                                                           .stream()
-                                                           .map(java.util.Map.Entry::getValue)
-                                                           .filter(getParent()::isVisible)//dame prec nevyditelne
-                                                           .peek(a -> a.render(g2))
-                                                           .filter(a -> a.getType() != Block.Type.NOTHING)
-                                                           .count();
-        if (parent.getVisibleOption(Render.MAP_WALLS)) {
-            new HashMap<>(blocks).entrySet()
                                               .stream()
                                               .map(java.util.Map.Entry::getValue)
                                               .filter(getParent()::isVisible)//dame prec nevyditelne
-                                              .filter(a -> !a.isWalkable())    //dame prec take ktore nevrhaju tien
-                                              .forEach(a -> a.renderWalls(g2));
+                                              .peek(a -> a.render(g2))
+                                              .filter(a -> a.getType() != Block.Type.NOTHING)
+                                              .count();
+        if (parent.getVisibleOption(Render.MAP_WALLS)) {
+            new HashMap<>(blocks).entrySet()
+                                 .stream()
+                                 .map(java.util.Map.Entry::getValue)
+                                 .filter(getParent()::isVisible)//dame prec nevyditelne
+                                 .filter(a -> !a.isWalkable())    //dame prec take ktore nevrhaju tien
+                                 .forEach(a -> a.renderWalls(g2));
         }
 
 
@@ -184,7 +182,7 @@ public class Map implements InteractAble {
      *
      * @param zones - zoznam zón
      */
-    private void clearRespawnZones(List<GVector2f> zones) {
+    private void clearRespawnZones(@NotNull List<GVector2f> zones) {
         zones.forEach(a -> remove(a.div(Block.SIZE).toInt()));
     }
 
@@ -220,6 +218,7 @@ public class Map implements InteractAble {
 
     public Block getBlock(int i, int j) {return blocks.get(i + "_" + j);}
 
+    @Contract(pure = true)
     private GameAble getParent() {return parent;}
 
     public boolean isWalkable(int i, int j) {
@@ -276,10 +275,12 @@ public class Map implements InteractAble {
         return b.get((int) (Math.random() * b.size()));
     }
 
+    @NotNull
     public static GVector2f globalPosToLocalPos(GVector2f pos) {
         return pos.sub(pos.mod(Block.SIZE)).div(Block.SIZE);
     }
 
+    @NotNull
     public static GVector2f localPosToGlobalPos(GVector2f pos) {
         return pos.mul(Block.SIZE);
     }

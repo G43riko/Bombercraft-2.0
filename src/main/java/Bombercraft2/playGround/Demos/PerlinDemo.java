@@ -3,8 +3,6 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.SimpleExtension;
-import utils.PerlinNoise;
 import utils.SimplexNoise;
 import utils.Utils;
 import utils.math.GVector2f;
@@ -16,8 +14,8 @@ public class PerlinDemo extends GameState {
         Color color;
     }
 
-    private CorePlayGround parent;
-    private int itemSize = 2;
+    private final CorePlayGround parent;
+    private final int itemSize = 2;
     private Item[][] map;
 
     public PerlinDemo(CorePlayGround parent) {

@@ -8,18 +8,18 @@ import Bombercraft2.Bombercraft2.gui2.core.TextField;
 import java.awt.*;
 
 public class ButtonStyles {
-    public  String fontName             = "Garamond";
-    public  int    fontSize             = 20;
-    public  Color  fontColor            = Color.BLACK;
-    public  int    fontStyle            = Font.BOLD | Font.ITALIC;
-    public  Color  backgroundColor      = Color.WHITE;
-    public  Color  borderColor          = Color.BLACK;
-    public  int    borderWidth          = 1;
-    public  int    round                = 2;
-    public byte    verticalTextAlign    = TextAlignment.VERTICAL_ALIGN_MIDDLE;
-    public byte    horizontalTextAlign  = TextAlignment.HORIZONTAL_ALIGN_CENTER;
-    public int     verticalTextOffset   = 0;
-    public int     horizontalTextOffset = 0;
+    public       String fontName             = "Garamond";
+    public       int    fontSize             = 20;
+    public       Color  fontColor            = Color.BLACK;
+    public final int    fontStyle            = Font.BOLD | Font.ITALIC;
+    public       Color  backgroundColor      = Color.WHITE;
+    public       Color  borderColor          = Color.BLACK;
+    public       int    borderWidth          = 1;
+    public       int    round                = 2;
+    public       byte   verticalTextAlign    = TextAlignment.VERTICAL_ALIGN_MIDDLE;
+    public       byte   horizontalTextAlign  = TextAlignment.HORIZONTAL_ALIGN_CENTER;
+    public       int    verticalTextOffset   = 0;
+    public       int    horizontalTextOffset = 0;
 
     public void setTo(Button button) {
         if (button.getTextField() == null) {

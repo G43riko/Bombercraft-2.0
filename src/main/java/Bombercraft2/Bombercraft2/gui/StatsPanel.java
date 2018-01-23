@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class StatsPanel implements InteractAble {
-	private final GameAble parent;
-	private       HashMap<String, String> stats;
-	private       int                     width;
+	private final GameAble                parent;
+	private final HashMap<String, String> stats;
+	private final int                     width;
 	private final int                     verticalOffset = 10;
 	private final int 					  fontSize		 = 22;
 	private final GVector2f position;

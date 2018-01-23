@@ -9,8 +9,8 @@ import utils.math.GVector2f;
 
 public abstract class Bot extends Entity {
     Direction direction;
-    private int      health;
-    private BotModel model;
+    private       int      health;
+    private final BotModel model;
 
     Bot(GVector2f position, GameAble parent, Types type, Direction direction) {
         super(position, parent);

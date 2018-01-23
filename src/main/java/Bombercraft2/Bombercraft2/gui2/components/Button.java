@@ -8,15 +8,15 @@ import java.awt.*;
 
 public class Button extends DrawableComponent {
     protected TextField textField;
-    protected int              round            = 0;
-    protected TextAlignment    textAlignment    = new TextAlignment();
-    protected boolean          disabled         = false;
-    protected ColorBox         colorBox         = new ColorBox();
-    protected ColorBox         disabledColorBox = null;
-    protected ColorBox         hoverColorBox    = null;
-    protected ColorBox         activeColorBox   = null;
-    protected ColorBox         currentColor     = colorBox;
-    protected MouseInteractive mouseInteractive = new MouseInteractive(this);
+    protected final int              round            = 0;
+    protected       TextAlignment    textAlignment    = new TextAlignment();
+    protected       boolean          disabled         = false;
+    protected       ColorBox         colorBox         = new ColorBox();
+    protected       ColorBox         disabledColorBox = null;
+    protected       ColorBox         hoverColorBox    = null;
+    protected       ColorBox         activeColorBox   = null;
+    protected       ColorBox         currentColor     = colorBox;
+    protected final MouseInteractive mouseInteractive = new MouseInteractive(this);
 
     public Button(String text) {
         this(text, TextAlignment.HORIZONTAL_ALIGN_CENTER);

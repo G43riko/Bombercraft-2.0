@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class LightsManager implements InteractAble {
     private       BufferedImage    lightMap       = null;
-    private       BufferedImage    lightMapOrigin;
+    private final BufferedImage lightMapOrigin;
     private final ArrayList<Light> lights         = new ArrayList<>();
-    private       GameAble         parent;
+    private final GameAble parent;
 
     public LightsManager(GameAble parent) {
         this.parent = parent;

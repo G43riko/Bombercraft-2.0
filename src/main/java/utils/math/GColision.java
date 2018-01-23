@@ -1,14 +1,18 @@
 package utils.math;
 
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+
 public final class GColision {
     /*
-	 * 2D COLLISIONS 
-	 */
+     * 2D COLLISIONS
+     */
 
     /**
      * Rectangle - Rectangle collision
      */
 
+    @Contract(pure = true)
     public static boolean rectRectCollision(float ax,
                                             float ay,
                                             float aw,
@@ -29,7 +33,7 @@ public final class GColision {
         return circleCircleCollision(new GVector2f(ax, ay), aradius, new GVector2f(bx, by), beadius);
     }
 
-    private static boolean circleCircleCollision(GVector2f a, float aradius, GVector2f b, float bradius) {
+    private static boolean circleCircleCollision(@NotNull GVector2f a, float aradius, GVector2f b, float bradius) {
         double dist = a.dist(b);
         return dist <= aradius + bradius;
     }
@@ -42,7 +46,7 @@ public final class GColision {
         return pointRectCollision(new GVector2f(ax, ay), new GVector2f(awidth, aheight), new GVector2f(bx, by));
     }
 
-    public static boolean pointRectCollision(GVector2f aPos, GVector2f aSize, GVector2f bPos) {
+    public static boolean pointRectCollision(@NotNull GVector2f aPos, GVector2f aSize, @NotNull GVector2f bPos) {
         return bPos.getX() > aPos.getX() &&
                 bPos.getX() < aPos.getX() + aSize.getX() &&
                 bPos.getY() > aPos.getY() &&
@@ -57,7 +61,7 @@ public final class GColision {
         return pointCircleCollision(new GVector2f(ax, ay), new GVector2f(bx, by), bradius);
     }
 
-    private static boolean pointCircleCollision(GVector2f a, GVector2f b, float bradius) {
+    private static boolean pointCircleCollision(@NotNull GVector2f a, GVector2f b, float bradius) {
         return a.dist(b) < bradius;
     }
 

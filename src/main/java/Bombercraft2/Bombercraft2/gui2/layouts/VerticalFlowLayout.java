@@ -46,20 +46,22 @@ public class VerticalFlowLayout extends Layout {
                                                                                               .getWidth());
         }
 
-        if (changeHeight == MAXIMALIZE) {
-            for (int j = lastChange; j < i; j++) {
-                target.getComponents().get(j).setHeight(maxHeight);
-            }
-        }
-        else if (changeHeight == MINIMALIZE) {
-            for (int j = lastChange; j < i; j++) {
-                target.getComponents().get(j).setHeight(minHeight);
-            }
-        }
-        else if (changeHeight == AVERAGE) {
-            for (int j = lastChange; j < i; j++) {
-                target.getComponents().get(j).setHeight(sumHeight / itemsInRow);
-            }
+        switch (changeHeight) {
+            case MAXIMALIZE:
+                for (int j = lastChange; j < i; j++) {
+                    target.getComponents().get(j).setHeight(maxHeight);
+                }
+                break;
+            case MINIMALIZE:
+                for (int j = lastChange; j < i; j++) {
+                    target.getComponents().get(j).setHeight(minHeight);
+                }
+                break;
+            case AVERAGE:
+                for (int j = lastChange; j < i; j++) {
+                    target.getComponents().get(j).setHeight(sumHeight / itemsInRow);
+                }
+                break;
         }
     }
 

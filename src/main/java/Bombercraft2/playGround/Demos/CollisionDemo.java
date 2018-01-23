@@ -64,9 +64,9 @@ public class CollisionDemo extends GameState {
         }
     }
 
-    private List<SimpleParticle> barrels = new ArrayList<>();
-    private CorePlayGround parent;
-    private SimplePlayer mySimplePlayer = new SimplePlayer();
+    private final List<SimpleParticle> barrels = new ArrayList<>();
+    private final CorePlayGround parent;
+    private final SimplePlayer mySimplePlayer = new SimplePlayer();
 
 
     public CollisionDemo(CorePlayGround parent) {

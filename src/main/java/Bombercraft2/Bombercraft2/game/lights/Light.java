@@ -13,8 +13,8 @@ import java.awt.image.BufferedImage;
 public class Light extends Entity {
     private static final float[]       borders   = new float[]{0, 1};
     private static final Color[]       colors    = new Color[]{Color.BLACK, new Color(0, 0, 0, 0)};
-    private              GVector2f     size;
-    private              Entity        target;
+    private final GVector2f size;
+    private final Entity    target;
     private              BufferedImage image     = null;
     private              int           radius;
     private              int           luminance = 255;

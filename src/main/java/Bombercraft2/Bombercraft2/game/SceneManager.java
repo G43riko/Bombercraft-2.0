@@ -49,7 +49,7 @@ public class SceneManager implements InteractAble, JSONAble {
     private       ArrayList<Entity>       explosions     = new ArrayList<>();
     private       ArrayList<Bullet>       bullets        = new ArrayList<>();
     private       ArrayList<Enemy>        enemies        = new ArrayList<>();
-    private       GameAble                parent;
+    private final GameAble parent;
     private       Bomb                    lastBomb       = null;
     private final HashMap<Keys, Integer>  stats          = new HashMap<>();
 //	private long						renderedParticles	= 0;

@@ -5,10 +5,10 @@ import Bombercraft2.engine.Input;
 import java.awt.*;
 
 public class SimplePlayer extends SimpleParticle {
-    public float   angle        = 0;
-    public int     speed        = 1;
-    public float   length       = 60;
-    public boolean lookForMouse = true;
+    public       float   angle        = 0;
+    public final int     speed        = 1;
+    public final float   length       = 60;
+    public final boolean lookForMouse = true;
 
     public void render(Graphics2D g2) {
         fillArc(g2, Color.white);

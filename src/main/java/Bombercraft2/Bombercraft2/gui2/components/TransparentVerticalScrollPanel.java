@@ -7,12 +7,12 @@ import Bombercraft2.Bombercraft2.gui2.core.translation.TranslateColor;
 import java.awt.*;
 
 public class TransparentVerticalScrollPanel extends VerticalScrollPanel{
-    private TranslateColorBox scrollBarMovable = new TranslateColorBox(new TranslateColor(new Color(0, 0, 0, 100),
-                                                                                          new Color(0, 0, 0, 150),
-                                                                                          200));
-    private TranslateColorBox scrollBarBackground = new TranslateColorBox(new TranslateColor(new Color(0, 0, 0, 0),
-                                                                                             new Color(0, 0, 0, 50),
-                                                                                             200));
+    private final TranslateColorBox scrollBarMovable    = new TranslateColorBox(new TranslateColor(new Color(0, 0, 0, 100),
+                                                                                                   new Color(0, 0, 0, 150),
+                                                                                                   200));
+    private final TranslateColorBox scrollBarBackground = new TranslateColorBox(new TranslateColor(new Color(0, 0, 0, 0),
+                                                                                                   new Color(0, 0, 0, 50),
+                                                                                                   200));
 
 
 

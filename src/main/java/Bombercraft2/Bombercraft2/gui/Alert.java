@@ -7,9 +7,9 @@ import java.awt.*;
 public class Alert implements InteractAble {
     private final long         createdAt      = System.currentTimeMillis();
     private       boolean      alive          = true;
-    private       String       text;
-    private       AlertManager parent;
-    private       long         duration;
+    private final String       text;
+    private final AlertManager parent;
+    private final long         duration;
     private       int          verticalOffset;
 
 

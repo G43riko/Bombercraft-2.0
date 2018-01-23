@@ -1,7 +1,6 @@
 package Bombercraft2.Bombercraft2.gui2;
 
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
-import Bombercraft2.Bombercraft2.gui2.components.VerticalScrollPanel;
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.UpdateData;
@@ -11,10 +10,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GuiManager {
-    private List<Drawable> components = new LinkedList<>();
-    private List<Drawable> postRender = new LinkedList<>();
-    private int defaultCursor = Cursor.DEFAULT_CURSOR;
-    private int cursor = defaultCursor;
+    private final List<Drawable> components    = new LinkedList<>();
+    private final List<Drawable> postRender    = new LinkedList<>();
+    private final int            defaultCursor = Cursor.DEFAULT_CURSOR;
+    private       int            cursor        = defaultCursor;
     private Panel mainPanel;
     private Canvas canvas;
 

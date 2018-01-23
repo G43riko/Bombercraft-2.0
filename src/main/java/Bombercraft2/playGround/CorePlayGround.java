@@ -6,15 +6,16 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Demos.*;
+import Bombercraft2.playGround.Demos.chunkedMapDemo.ChunkedMapDemo;
 import Bombercraft2.playGround.Demos.mapDemo.MapDemo;
 
 import java.awt.*;
 
 public class CorePlayGround extends CoreEngine {
-    private GameStatesManager states        = new GameStatesManager();
-    private GuiManager        guiManager    = new GuiManager();
-    private MainMenu          mainMenu      = new MainMenu();
-    private boolean           runningGame   = false;
+    private final GameStatesManager states      = new GameStatesManager();
+    private final GuiManager        guiManager  = new GuiManager();
+    private final MainMenu          mainMenu    = new MainMenu();
+    private       boolean           runningGame = false;
 
     CorePlayGround(int fps, int ups, boolean renderTime) {
         super(fps, ups, renderTime);
@@ -28,13 +29,15 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Shooting", () -> setScene(new ShootingDemo(this)));
         mainMenu.addButton("Perlin", () -> setScene(new PerlinDemo(this)));
         mainMenu.addButton("Map", () -> setScene(new MapDemo(this)));
-        mainMenu.addButton("Exit", () -> exitGame());
+        mainMenu.addButton("Chunked map", () -> setScene(new ChunkedMapDemo(this)));
+        mainMenu.addButton("Exit", this::exitGame);
     }
 
-    public void stopDemo(){
+    public void stopDemo() {
         states.pop();
         runningGame = false;
     }
+
     private void setScene(GameState scene) {
         runningGame = true;
         guiManager.setDefaultCursor();
@@ -48,6 +51,7 @@ public class CorePlayGround extends CoreEngine {
         }
         states.render(g2);
     }
+
     @Override
     protected void input() {
         if (!runningGame && Input.getKeyDown(Input.KEY_ESCAPE)) {
@@ -56,7 +60,7 @@ public class CorePlayGround extends CoreEngine {
         states.input();
     }
 
-    public void exitGame() {
+    private void exitGame() {
         cleanUp();
         onExit();
         System.exit(1);
@@ -77,7 +81,7 @@ public class CorePlayGround extends CoreEngine {
             guiManager.onResize();
         }
         if (states != null) {
-        	states.onResize();
+            states.onResize();
         }
     }
 

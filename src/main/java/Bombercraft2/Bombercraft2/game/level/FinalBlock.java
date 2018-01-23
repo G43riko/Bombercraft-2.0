@@ -3,112 +3,58 @@ package Bombercraft2.Bombercraft2.game.level;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.Iconable;
-import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.playGround.Misc.SimpleBlock;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.ImageUtils;
-import utils.SpriteViewer;
 import utils.math.GVector2f;
 import utils.math.LineLineIntersect;
-import utils.resouces.ResourceLoader;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Block extends Entity {
-    public enum Type implements Iconable {
-        NOTHING("block_floor", 0, true),
-        WOOD("block_wood", 1, false),
-        IRON("block_iron", 10, false),
-        GRASS("block_grass", 0, true),
-        WATER("block_water", 0, true),
-        PATH	("block_path",   0, true),
-        STONE	("block_stone",  7, false),
-        FUTURE("block_future", 0, true);
-
-        private final Image   image;
-        private final Color   miniMapColor;
-        private final int     health;
-        private final boolean walkable;
-
-        Type(String imageName, int health, boolean walkable) {
-            this.health = health;
-            this.walkable = walkable;
-            image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
-            final BufferedImage bufferedImage = new BufferedImage(image.getWidth(null),
-                                                                  image.getHeight(null),
-                                                                  BufferedImage.TYPE_INT_ARGB);
-
-            final Graphics2D bGr = bufferedImage.createGraphics();
-            bGr.drawImage(image, 0, 0, null);
-            bGr.dispose();
-
-            miniMapColor = ImageUtils.getAverageColor(bufferedImage,
-                                                      0,
-                                                      0,
-                                                      image.getWidth(null),
-                                                      image.getHeight(null));
-        }
-
-        boolean isWalkable() {return walkable;}
-
-        int getHealth() {return health;}
-
-        public Image getImage() {return image;}
-
-        Color getMiniMapColor() {return miniMapColor;}
-    }
-
+public final class FinalBlock extends SimpleBlock {
     public final static GVector2f SIZE = Config.BLOCK_SIZE;
 
-    //	private static HashMap<String, Type> blocks = new HashMap<String, Type>();
-    private Type type;
-    private int  health;
+    private int health;
 
     //CONSTRUCTORS
 
-    public Block(@NotNull JSONObject object, @NotNull GameAble parent) {
-        super(new GVector2f(), parent);
+    public FinalBlock(@NotNull JSONObject object, @NotNull GameAble parent) {
+        super(new GVector2f(), 0, parent);
 
         try {
             position = new GVector2f(object.getString(Texts.POSITION));
             health = object.getInt(Texts.HEALTH);
-            type = Type.valueOf(object.getString(Texts.TYPE));
+            type = Block.Type.valueOf(object.getString(Texts.TYPE));
         }
         catch (JSONException e) {
             GLogger.error(GLogger.GError.CANNOT_PARSE_BLOCK, e);
         }
     }
 
-    public Block(@NotNull GVector2f position, int type, @NotNull GameAble parent) {
-        this(position, getTypeFromInt(type), parent);
-    }
-
-    private Block(@NotNull GVector2f position, Type type, @NotNull GameAble parent) {
-        super(position, parent);
-        this.health = type.getHealth();
-        this.type = type;
+    public FinalBlock(@NotNull GVector2f position, int type, @NotNull GameAble parent) {
+        super(position, type, parent);
+        this.health = this.type.getHealth();
     }
 
     //OVERRIDES
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
 //		if(type == NOTHING)
 //			return;
-        GVector2f size = SIZE.mul(getParent().getZoom());
-        GVector2f pos = position.mul(size).sub(getParent().getOffset());
+        GVector2f size = SIZE.mul(parent.getZoom());
+        GVector2f pos = position.mul(size).sub(parent.getOffset());
 
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
-    @Override
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
 
@@ -135,32 +81,29 @@ public class Block extends Entity {
         return res;
     }
 
-    public void remove() {remove(true);}
+    public void remove() {
+        remove(true);
+    }
 
     private void remove(boolean addExplosion) {
-        if (addExplosion) {
-            getParent().addExplosion(getPosition().add(Block.SIZE.div(2)),
-                                     Block.SIZE,
-                                     type.getMiniMapColor(),
-                                     5, false, false);
-        }
-        type = Type.NOTHING;
+        type = Block.Type.NOTHING;
         health = 0;
     }
 
+    /*
     public void drawSprites(Graphics2D g2) {
-        Block t = getParent().getLevel().getMap().getBlock(position.getXi(), position.getYi() - 1);
-        Block b = getParent().getLevel().getMap().getBlock(position.getXi(), position.getYi() + 1);
-        Block r = getParent().getLevel().getMap().getBlock(position.getXi() + 1, position.getYi());
-        Block l = getParent().getLevel().getMap().getBlock(position.getXi() - 1, position.getYi());
+        FinalBlock t = getParent().getLevel().getMap().getBlock(position.getXi(), position.getYi() - 1);
+        FinalBlock b = getParent().getLevel().getMap().getBlock(position.getXi(), position.getYi() + 1);
+        FinalBlock r = getParent().getLevel().getMap().getBlock(position.getXi() + 1, position.getYi());
+        FinalBlock l = getParent().getLevel().getMap().getBlock(position.getXi() - 1, position.getYi());
 
-        GVector2f size = SIZE.mul(getParent().getZoom());
-        GVector2f pos = position.mul(size).sub(getParent().getOffset());
+        GVector2f size = SIZE.mul(parent.getZoom());
+        GVector2f pos = position.mul(size).sub(parent.getOffset());
 
         if (t != null && t.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 8, 4),
                          pos.getXi(),
-                         pos.getYi() - Block.SIZE.getYi(),
+                         pos.getYi() - FinalBlock.SIZE.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
@@ -169,7 +112,7 @@ public class Block extends Entity {
         if (b != null && b.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 2, 4),
                          pos.getXi(),
-                         pos.getYi() + Block.SIZE.getYi(),
+                         pos.getYi() + FinalBlock.SIZE.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
@@ -177,7 +120,7 @@ public class Block extends Entity {
 
         if (r != null && r.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 1, 4),
-                         pos.getXi() + Block.SIZE.getXi(),
+                         pos.getXi() + FinalBlock.SIZE.getXi(),
                          pos.getYi(),
                          size.getXi(),
                          size.getYi(),
@@ -186,53 +129,57 @@ public class Block extends Entity {
 
         if (l != null && l.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 4, 4),
-                         pos.getXi() - Block.SIZE.getXi(),
+                         pos.getXi() - FinalBlock.SIZE.getXi(),
                          pos.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
         }
     }
+    */
 
-    public void drawShadow(Graphics2D g2, Color color, int length, int angle) {
-        if (type == Type.NOTHING) { return; }
+    public void drawShadow(@NotNull Graphics2D g2, @NotNull Color color, int length, int angle) {
+        if (type == Block.Type.NOTHING) {
+            return;
+        }
 
         double finalAngle = Math.toRadians(angle + 90);
         GVector2f offset = new GVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).mul(length);
-        GVector2f pos = position.mul(Block.SIZE).sub(getParent().getOffset());
+        GVector2f pos = position.mul(FinalBlock.SIZE).sub(parent.getOffset());
         g2.setColor(color);
 
-		/*   2---3
+        /*   2---3
          *  /    |
-		 * 1     4
-		 *      /
-		 *     5
-		 * 		
-		 */
+         * 1     4
+         *      /
+         *     5
+         *
+         */
         int[] xPos = new int[]{
                 (int) (pos.getX()),
                 (int) (pos.add(offset).getX()),
-                (int) (pos.add(offset).getX() + Block.SIZE.getX()),
-                (int) (pos.add(offset).getX() + Block.SIZE.getX()),
-                (int) (pos.getXi() + Block.SIZE.getX())
+                (int) (pos.add(offset).getX() + FinalBlock.SIZE.getX()),
+                (int) (pos.add(offset).getX() + FinalBlock.SIZE.getX()),
+                (int) (pos.getXi() + FinalBlock.SIZE.getX())
         };
 
         int[] yPos = new int[]{
                 (int) (pos.getY()),
                 (int) (pos.sub(offset).getY()),
                 (int) (pos.sub(offset).getY()),
-                (int) (pos.getY() + Block.SIZE.getY() - offset.getY()),
-                (int) (pos.getY() + Block.SIZE.getY())
+                (int) (pos.getY() + FinalBlock.SIZE.getY() - offset.getY()),
+                (int) (pos.getY() + FinalBlock.SIZE.getY())
         };
 
         g2.fillPolygon(xPos, yPos, 5);
     }
 
-    public void build(Type type) {
+    public void build(@NotNull Block.Type type) {
         this.type = type;
         this.health = type.getHealth();
     }
 
+    /*
     public void renderWalls(Graphics2D g2) {
         Map map = getParent().getLevel().getMap();
         boolean t = map.isWalkable(position.getXi(), position.getYi() - 1);
@@ -240,20 +187,20 @@ public class Block extends Entity {
         boolean l = map.isWalkable(position.getXi() - 1, position.getYi());
         boolean r = map.isWalkable(position.getXi() + 1, position.getYi());
 
-        GVector2f size = SIZE.mul(getParent().getZoom());
-        GVector2f pos = position.mul(size).sub(getParent().getOffset());
+        GVector2f size = SIZE.mul(parent.getZoom());
+        GVector2f pos = position.mul(size).sub(parent.getOffset());
 
-        int offset = (int) (Config.WALL_OFFSET * getParent().getZoom());
+        int offset = (int) (Config.WALL_OFFSET * parent.getZoom());
 
         GVector2f p0 = pos.sub(offset);
         GVector2f p1 = pos.add(size).sub(new GVector2f(-offset, offset + size.getY()));
         GVector2f p2 = pos.add(size).add(offset);
         GVector2f p3 = pos.add(size).sub(new GVector2f(offset + size.getX(), -offset));
 
-        Block block0 = map.getBlock(position.getXi() - 1, position.getYi() - 1);
-        Block block1 = map.getBlock(position.getXi() + 1, position.getYi() - 1);
-        Block block2 = map.getBlock(position.getXi() + 1, position.getYi() + 1);
-        Block block3 = map.getBlock(position.getXi() - 1, position.getYi() + 1);
+        FinalBlock block0 = map.getBlock(position.getXi() - 1, position.getYi() - 1);
+        FinalBlock block1 = map.getBlock(position.getXi() + 1, position.getYi() - 1);
+        FinalBlock block2 = map.getBlock(position.getXi() + 1, position.getYi() + 1);
+        FinalBlock block3 = map.getBlock(position.getXi() - 1, position.getYi() + 1);
         boolean val0 = block0 != null && !block0.isWalkable();
         boolean val1 = block1 != null && !block1.isWalkable();
         boolean val2 = block2 != null && !block2.isWalkable();
@@ -330,38 +277,44 @@ public class Block extends Entity {
             }
         }
     }
-
+    */
 
     //GETTERS
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getSur() {return position/*.div(SIZE).toInt()*/;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getPosition() {return position.mul(SIZE);}
 
-    public Type getType() {return type;}
+    @Contract(pure = true)
+    @NotNull
+    public Block.Type getType() {return type;}
 
+    @Contract(pure = true)
     public int getHealth() {return health;}
 
+    @Contract(pure = true)
     public boolean isWalkable() {return type.isWalkable();}
 
-    public static Type getTypeFromInt(int num) {
-        return num > 0 && num < Type.values().length ? Type.values()[num] : Type.NOTHING;
-    }
-
-    public GVector2f getInterSect(GVector2f ss, GVector2f se) {
+    @Contract(pure = true)
+    @Nullable
+    public GVector2f getInterSect(@NotNull GVector2f ss, @NotNull GVector2f se) {
         ArrayList<GVector2f> res = new ArrayList<>();
 
-        GVector2f p = position.mul(Block.SIZE);
-        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(Block.SIZE.getX(), 0)), p));
-        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(0, Block.SIZE.getY())), p));
+        GVector2f p = position.mul(FinalBlock.SIZE);
+        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(FinalBlock.SIZE.getX(), 0)), p));
+        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(0, FinalBlock.SIZE.getY())), p));
         res.add(LineLineIntersect.linesIntersect(ss,
                                                  se,
-                                                 p.add(new GVector2f(Block.SIZE.getX(), 0)),
-                                                 p.add(Block.SIZE)));
+                                                 p.add(new GVector2f(FinalBlock.SIZE.getX(), 0)),
+                                                 p.add(FinalBlock.SIZE)));
         res.add(LineLineIntersect.linesIntersect(ss,
                                                  se,
-                                                 p.add(new GVector2f(0, Block.SIZE.getY())),
-                                                 p.add(Block.SIZE)));
+                                                 p.add(new GVector2f(0, FinalBlock.SIZE.getY())),
+                                                 p.add(FinalBlock.SIZE)));
 
         res = res.stream().filter(Objects::nonNull).collect(Collectors.toCollection(ArrayList::new));
         if (res.size() == 0) {
@@ -371,5 +324,3 @@ public class Block extends Entity {
         return res.stream().reduce((a, b) -> a.dist(ss) < b.dist(ss) ? a : b).get();
     }
 }
-
-	

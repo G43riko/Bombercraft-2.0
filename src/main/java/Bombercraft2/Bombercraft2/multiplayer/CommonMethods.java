@@ -18,8 +18,8 @@ import utils.GLogger;
 import utils.math.GVector2f;
 
 class CommonMethods {
-    private GameAble game;
-    private Writable parent;
+    private final GameAble game;
+    private final Writable parent;
 
     public CommonMethods(GameAble game, Writable parent) {
         this.game = game;

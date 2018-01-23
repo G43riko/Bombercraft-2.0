@@ -1,39 +1,38 @@
 package Bombercraft2.engine;
 
-import Bombercraft2.Bombercraft2.core.BasicListener;
 import Bombercraft2.Bombercraft2.gui.ClickAble;
+import org.jetbrains.annotations.Contract;
 import utils.math.GVector2f;
 
 import java.awt.event.*;
 import java.util.HashMap;
-import java.util.function.Function;
 
 public class Input implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener {
-    private final HashMap<Integer, Boolean> buttons = new HashMap<>();
-    private final HashMap<Integer, Boolean> keys    = new HashMap<>();
-    private int scroll = 0;
-    private int lastScroll = scroll;
-    public final static int KEY_W           = 87;
-    public final static int KEY_A           = 65;
-    public final static int KEY_S           = 83;
-    public final static int KEY_D           = 68;
-    public final static int KEY_Q           = 81;
-    public final static int KEY_E           = 69;
-    public final static int KEY_F           = 70;
-    public final static int KEY_UP          = 38;
-    public final static int KEY_LEFT        = 37;
-    public final static int KEY_DOWN        = 40;
-    public final static int KEY_RIGHT       = 39;
-    public final static int KEY_LCONTROL    = 17;
-    public final static int KEY_ENTER       = 10;
-    public final static int KEY_ESCAPE      = 27;
-    public final static int KEY_LALT        = 18;
-    public final static int KEY_LSHIFT      = 16;
-    public final static int KEY_SPACE       = 32;
-    public final static int KEY_ARROW_UP    = 38;
-    public final static int KEY_ARROW_DOWN  = 40;
-    public final static int KEY_ARROW_RIGHT = 39;
-    public final static int KEY_ARROW_LEFT  = 37;
+    private final       HashMap<Integer, Boolean> buttons         = new HashMap<>();
+    private final       HashMap<Integer, Boolean> keys            = new HashMap<>();
+    private             int                       scroll          = 0;
+    private             int                       lastScroll      = scroll;
+    public final static int                       KEY_W           = 87;
+    public final static int                       KEY_A           = 65;
+    public final static int                       KEY_S           = 83;
+    public final static int                       KEY_D           = 68;
+    public final static int                       KEY_Q           = 81;
+    public final static int                       KEY_E           = 69;
+    public final static int                       KEY_F           = 70;
+    public final static int                       KEY_UP          = 38;
+    public final static int                       KEY_LEFT        = 37;
+    public final static int                       KEY_DOWN        = 40;
+    public final static int                       KEY_RIGHT       = 39;
+    public final static int                       KEY_LCONTROL    = 17;
+    public final static int                       KEY_ENTER       = 10;
+    public final static int                       KEY_ESCAPE      = 27;
+    public final static int                       KEY_LALT        = 18;
+    public final static int                       KEY_LSHIFT      = 16;
+    public final static int                       KEY_SPACE       = 32;
+    public final static int                       KEY_ARROW_UP    = 38;
+    public final static int                       KEY_ARROW_DOWN  = 40;
+    public final static int                       KEY_ARROW_RIGHT = 39;
+    public final static int                       KEY_ARROW_LEFT  = 37;
 
     public final static int BUTTON_LEFT  = 1;
     public final static int BUTTON_RIGHT = 3;
@@ -49,6 +48,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
     private static final boolean[] lastKeys  = new boolean[NUM_KEY_CODES];
     private static final boolean[] lastMouse = new boolean[NUM_MOUSE_BUTTONS];
 
+    @Contract(pure = true)
     public static int getScroll() {
         return input.lastScroll - input.scroll;
     }
@@ -85,6 +85,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
 
     private static GVector2f mousePosition = new GVector2f();
 
+    @Contract(pure = true)
     public static GVector2f getMousePosition() {
         return mousePosition;
     }
@@ -146,6 +147,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
     public static void removeTarget() {
         actMenu = null;
     }
+
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
         input.scroll += e.getWheelRotation();

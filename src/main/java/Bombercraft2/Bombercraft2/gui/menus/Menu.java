@@ -14,8 +14,8 @@ import java.util.HashMap;
 //public abstract class Menu extends GuiComponent implements ClickAble{
 public abstract class Menu extends GameState implements ClickAble, Visible {
     final HashMap<String, GuiComponent> components = new HashMap<>();
-    GVector2f                     position;
-    GVector2f                     size;
+    final GVector2f position;
+    final GVector2f size;
     MenuAble                      parent;
 
     Menu(MenuAble parent, GameState.Type type) {

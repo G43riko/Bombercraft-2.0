@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 public class CanvasUtils {
@@ -79,7 +80,7 @@ public class CanvasUtils {
         drawRectCentered(g2, pos, size, color, DEFAULT_BORDER_WIDTH);
     }
 
-    private static void drawRectCentered(Graphics2D g2, GVector2f pos, GVector2f size, Color color, float width) {
+    private static void drawRectCentered(@NotNull Graphics2D g2, GVector2f pos, GVector2f size, Color color, float width) {
         GVector2f realPos = calcPosition(pos, size, Position.CENTERED);
 
         if (width != DEFAULT_BORDER_WIDTH) {

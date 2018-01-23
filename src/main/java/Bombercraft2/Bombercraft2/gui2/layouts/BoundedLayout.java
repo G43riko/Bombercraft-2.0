@@ -6,10 +6,10 @@ import Bombercraft2.Bombercraft2.gui2.core.Drawable;
  * Tento layout roztiahne objekt do stredu panel a X pixelov od okraju obrazovky
  */
 public class BoundedLayout extends Layout {
-    private int southOffset;
-    private int northOffset;
-    private int eastOffset;
-    private int westOffset;
+    private final int southOffset;
+    private final int northOffset;
+    private final int eastOffset;
+    private final int westOffset;
 
     public BoundedLayout(int offset) {
         southOffset = northOffset = eastOffset = westOffset = offset;

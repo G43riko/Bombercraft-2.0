@@ -11,12 +11,12 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class GameGui implements InteractAble, ClickAble {
-    private GameLogs    gameLogs;
-    private NavBar      navBar;
-    private SideBar     sideBar;
-    private Submenu     subMenu;
-    private PlayerPanel playerPanel;
-    private GameAble    parent;
+    private final GameLogs    gameLogs;
+    private final NavBar      navBar;
+    private final SideBar     sideBar;
+    private final Submenu     subMenu;
+    private final PlayerPanel playerPanel;
+    private final GameAble    parent;
 
     public GameGui(GameAble parent) {
         this.parent = parent;

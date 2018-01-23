@@ -11,16 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ParticlesDemo extends GameState {
-    private static Color PARTICLE_COLOR = Color.RED;
-    private CorePlayGround parent;
+    private static final Color PARTICLE_COLOR = Color.RED;
+    private final CorePlayGround parent;
 
-    private              List<SimpleParticle> particles = new ArrayList<>();
+    private final        List<SimpleParticle> particles = new ArrayList<>();
     private final static int                  PARTICLES = 100000;
 
     public ParticlesDemo(CorePlayGround parent) {
         super(Type.ParticlesDemo);
         this.parent = parent;
-
 
         int particleSpeed = 1;
         int particleSize = 1;

@@ -22,7 +22,7 @@ import utils.math.GVector2f;
 import java.util.List;
 
 public class GameClient extends Client implements Connector {
-    private MenuAble      parent;
+    private final MenuAble parent;
     private CommonMethods methods = null;
 
     //CONSTRUCTORS

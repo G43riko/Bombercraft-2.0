@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.game;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.math.GVector2f;
@@ -7,13 +8,13 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class Timer {
-    private final static GVector2f TIMER_SIZE         = Block.SIZE.mul(1.5f);
+    private final static GVector2f TIMER_SIZE         = Config.BLOCK_SIZE.mul(1.5f);
     private final static Color     TIMER_FILL_COLOR   = new Color(255, 0, 0, 100);
     private final static Color     TIMER_BORDER_COLOR = new Color(0, 0, 0, 255);
     private final static int       TIMER_BORDER_WIDTH = 3;
 
-    private long startTime;
-    private long duration;
+    private final long startTime;
+    private final long duration;
     private long angle     = 0;
     private final Entity parent;
 

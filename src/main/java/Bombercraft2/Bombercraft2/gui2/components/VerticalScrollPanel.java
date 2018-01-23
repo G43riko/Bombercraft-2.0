@@ -4,22 +4,21 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
-import Bombercraft2.Bombercraft2.gui2.core.translation.TranslateColor;
 import Bombercraft2.Bombercraft2.gui2.layouts.VerticalLayout;
 
 import java.awt.*;
 
 public class VerticalScrollPanel extends Panel {
-    protected int      scrollBarWidth         = 20;
-    private   ColorBox scrollBarBackground    = new ColorBox(Color.YELLOW, Color.BLACK, 1);
-    private   ColorBox scrollBarMovable       = new ColorBox(Color.GREEN, Color.BLACK, 1);
-    private   int      componentsHeight       = 0;
-    protected int      scrollBarHeight        = 0;
-    private   int      initMousePosition      = 0;
-    protected int      offset                 = 0;
-    private   int      maxOffset              = 0;
-    private   int      relativeVerticalOffset = super.getVerticalOffset();
-    private   boolean  renderScrollBar        = false;
+    protected final int      scrollBarWidth         = 20;
+    private final   ColorBox scrollBarBackground    = new ColorBox(Color.YELLOW, Color.BLACK, 1);
+    private final   ColorBox scrollBarMovable       = new ColorBox(Color.GREEN, Color.BLACK, 1);
+    private         int      componentsHeight       = 0;
+    protected       int      scrollBarHeight        = 0;
+    private         int      initMousePosition      = 0;
+    protected       int      offset                 = 0;
+    private         int      maxOffset              = 0;
+    private         int      relativeVerticalOffset = super.getVerticalOffset();
+    private         boolean  renderScrollBar        = false;
     // private TranslateColor scrollBarBackgroundColor = new TranslateColor(Color.WHITE, Color.BLACK, 1000);
 
     public VerticalScrollPanel() {
