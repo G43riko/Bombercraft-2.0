@@ -8,7 +8,7 @@ import Bombercraft2.Bombercraft2.Config;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 
-public class SimpleMap extends AbstractMap<SimpleBlock> {
+public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     private final static boolean       PRERENDER = false;
     private              BufferedImage image     = null;
 
@@ -26,9 +26,9 @@ public class SimpleMap extends AbstractMap<SimpleBlock> {
 
         for (int i = 0; i < numberOfItems.getXi(); i++) {
             for (int j = 0; j < numberOfItems.getYi(); j++) {
-                addItem(i, j, new SimpleBlock(new GVector2f(i, j),
-                                              (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
-                                              parent));
+                addItem(i, j, new SimpleTypedBlock(new GVector2f(i, j),
+                                                   (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
+                                                   parent));
             }
         }
     }
@@ -87,7 +87,7 @@ public class SimpleMap {
     private final SimpleGameAble parent;
     private BufferedImage                image          = null;
     private GVector2f                    numberOfBlocks = null;
-    private HashMap<String, SimpleBlock> blocks         = null;
+    private HashMap<String, SimpleTypedBlock> blocks         = null;
 
     public SimpleMap(SimpleGameAble parent, GVector2f numberOfBlocks) {
         this.numberOfBlocks = numberOfBlocks;
@@ -105,14 +105,14 @@ public class SimpleMap {
 
         for (int i = 0; i < numberOfBlocks.getXi(); i++) {
             for (int j = 0; j < numberOfBlocks.getYi(); j++) {
-                addBlock(i, j, new SimpleBlock(new GVector2f(i, j),
+                addBlock(i, j, new SimpleTypedBlock(new GVector2f(i, j),
                                                (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
                                                parent));
             }
         }
     }
 
-    private void addBlock(int i, int j, SimpleBlock block) {
+    private void addBlock(int i, int j, SimpleTypedBlock block) {
         blocks.put(i + "_" + j, block);
     }
 

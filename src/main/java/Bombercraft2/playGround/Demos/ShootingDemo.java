@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShootingDemo extends GameState {
-    private final SimpleMap_old map = new SimpleMap_old();
-    private final CorePlayGround parent;
+    private final SimpleMap_old        map       = new SimpleMap_old();
     private final int                  blockSize = 40;
     private final SimplePlayer         myPlayer  = new SimplePlayer();
     private final List<SimpleParticle> particles = new ArrayList<>();
+    private final CorePlayGround parent;
 
     public ShootingDemo(CorePlayGround parent) {
         super(Type.ShootingDemo);

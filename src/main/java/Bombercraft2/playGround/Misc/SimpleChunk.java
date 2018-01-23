@@ -14,8 +14,8 @@ public class SimpleChunk implements Visible {
     public final static GVector2f SIZE = Config.BLOCK_SIZE.mul(Config.CHUNK_SIZE);
     private final SimpleChunkedMap parent;
     private final GVector2f        position;
-    private BufferedImage                image  = null;
-    private HashMap<String, SimpleBlock> blocks = null;
+    private BufferedImage                     image  = null;
+    private HashMap<String, SimpleTypedBlock> blocks = null;
 
     public SimpleChunk(SimpleChunkedMap parent, GVector2f position) {
         this.position = position;
@@ -33,15 +33,15 @@ public class SimpleChunk implements Visible {
 
         for (int i = 0; i < Config.CHUNK_SIZE.getXi(); i++) {
             for (int j = 0; j < Config.CHUNK_SIZE.getYi(); j++) {
-                addBlock(i, j, new SimpleBlock(new GVector2f(i, j),
-                                               (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
-                                               parent.getParent(),
-                                               getPosition()));
+                addBlock(i, j, new SimpleTypedBlock(new GVector2f(i, j),
+                                                    (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
+                                                    parent.getParent(),
+                                                    getPosition()));
             }
         }
     }
 
-    private void addBlock(int i, int j, SimpleBlock block) {
+    private void addBlock(int i, int j, SimpleTypedBlock block) {
         blocks.put(i + "_" + j, block);
     }
 

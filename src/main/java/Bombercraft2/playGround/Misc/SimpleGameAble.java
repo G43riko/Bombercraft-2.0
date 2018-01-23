@@ -1,7 +1,5 @@
 package Bombercraft2.playGround.Misc;
 
-import java.awt.Canvas;
-
 import Bombercraft2.Bombercraft2.core.Visible;
 import utils.math.GVector2f;
 

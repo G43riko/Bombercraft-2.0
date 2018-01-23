@@ -87,9 +87,6 @@ public class CollisionDemo extends GameState {
         barrels.add(barrel);
     }
 
-
-
-
     @Override
     public void update(float delta) {
         barrels.forEach(barrel -> {
