@@ -1,6 +1,8 @@
 package Bombercraft2.Bombercraft2.game.entity.flora;
 
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -19,7 +21,7 @@ public class Bush extends Flora {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         GVector2f pos = position.sub(getParent().getOffset());
         g2.drawImage(type.getImage(),
                      pos.getXi(),
@@ -31,6 +33,8 @@ public class Bush extends Flora {
     }
 
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {
         return type.getSize().mul(scale);

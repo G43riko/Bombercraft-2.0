@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.game.bots.BotManager.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -25,7 +26,7 @@ public class EnemyA extends Enemy {
 
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         int tempRound = (int) (Config.ENEMY_DEFAULT_ROUND * getParent().getZoom());
 
         GVector2f pos = position.add(Config.ENEMY_DEFAULT_OFFSET)

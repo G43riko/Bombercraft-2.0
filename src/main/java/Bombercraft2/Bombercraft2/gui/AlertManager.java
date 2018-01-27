@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.gui;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.engine.CoreEngine;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class AlertManager implements InteractAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         alerts.forEach(a -> a.render(g2));
     }
 

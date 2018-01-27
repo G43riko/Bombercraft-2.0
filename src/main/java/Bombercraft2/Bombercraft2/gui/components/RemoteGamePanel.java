@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.ClickAble;
 import Bombercraft2.Bombercraft2.gui.menus.JoinMenu;
 import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -54,7 +55,7 @@ public class RemoteGamePanel extends GuiComponent implements ClickAble {
 		data.reping();
 	}
 	@Override
-	public void render(Graphics2D g2) {
+	public void render(@NotNull Graphics2D g2) {
 //		if(disable){
 //			g2.setColor(disabledColor);
 //		}

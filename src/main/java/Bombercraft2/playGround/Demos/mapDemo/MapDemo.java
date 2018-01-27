@@ -10,6 +10,8 @@ import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.map.SimpleMap;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 public class MapDemo extends GameState implements SimpleGameAble {
@@ -37,13 +39,13 @@ public class MapDemo extends GameState implements SimpleGameAble {
 
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         map.render(g2);
     }
 
     @Override
-    public boolean isVisible(Visible b) {
+    public boolean isVisible(@NotNull Visible b) {
         return !(b.getPosition().getX() * getZoom() + b.getSize().getX() * getZoom() < getOffset().getX() ||
                 b.getPosition().getY() * getZoom() + b.getSize().getY() * getZoom() < getOffset().getY() ||
                 getOffset().getX() + parent.getCanvas().getWidth() < b.getPosition().getX() * getZoom() ||
@@ -64,16 +66,21 @@ public class MapDemo extends GameState implements SimpleGameAble {
         viewManager.setCanvasSize(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }
 
+    @Contract(pure = true)
     @Override
     public float getZoom() {
         return viewManager.getZoom();
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getCanvasSize() {
         return viewManager.getCanvasSize();
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getOffset() {
         return viewManager.getOffset();

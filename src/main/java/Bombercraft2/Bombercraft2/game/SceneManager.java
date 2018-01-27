@@ -13,6 +13,7 @@ import Bombercraft2.Bombercraft2.game.entity.explosion.Explosion;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.entity.particles.ParticleEmitter;
 import Bombercraft2.Bombercraft2.game.player.Player;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -78,7 +79,7 @@ public class SceneManager implements InteractAble, JSONAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         stats.put(Keys.BULLETS_RENDERED, (int) bullets.stream()
                                                       .filter(parent::isVisible)
                                                       .peek(a -> a.render(g2))

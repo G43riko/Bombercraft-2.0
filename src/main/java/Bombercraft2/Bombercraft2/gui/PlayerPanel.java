@@ -4,6 +4,7 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -24,7 +25,7 @@ public class PlayerPanel implements InteractAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.setColor(PLAYER_PANEL_FILL_COLOR);
 
         int posX = parent.getCanvas().getWidth() - PLAYER_PANEL_WIDTH - PLAYER_PANEL_OFFSET;

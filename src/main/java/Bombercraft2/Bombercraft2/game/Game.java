@@ -25,6 +25,8 @@ import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.gui.GameGui;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import Bombercraft2.engine.Input;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -118,7 +120,7 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (!render) {
             return;
         }
@@ -199,7 +201,7 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public boolean isVisible(Visible b) {
+    public boolean isVisible(@NotNull Visible b) {
         return !(b.getPosition().getX() * getZoom() + b.getSize().getX() * getZoom() < getOffset().getX() ||
                 b.getPosition().getY() * getZoom() + b.getSize().getY() * getZoom() < getOffset().getY() ||
                 getOffset().getX() + getCanvas().getWidth() < b.getPosition().getX() * getZoom() ||
@@ -364,17 +366,24 @@ public class Game extends GameState implements GameAble {
 //		return players;
 //	}
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {return new GVector2f();}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getSize() {return new GVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
 
     public Level getLevel() {return level;}
 
     public Profile getProfile() {return parent.getProfile();}
 
+    @Contract(pure = true)
     public float getZoom() {return 1;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getOffset() {return myPlayer.getOffset();}
 
     public Canvas getCanvas() {return parent.getCanvas();}

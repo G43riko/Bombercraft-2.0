@@ -23,7 +23,6 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     private int health;
 
-    //CONSTRUCTORS
 
     public FinalTypedBlock(@NotNull JSONObject object, @NotNull GameAble parent) {
         super(new GVector2f(), 0, parent);
@@ -43,7 +42,6 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         this.health = this.type.getHealth();
     }
 
-    //OVERRIDES
 
     @Override
     public void render(@NotNull Graphics2D g2) {
@@ -279,7 +277,6 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     }
     */
 
-    //GETTERS
 
     @Contract(pure = true)
     @NotNull

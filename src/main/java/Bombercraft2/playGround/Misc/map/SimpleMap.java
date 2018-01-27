@@ -7,6 +7,7 @@ import java.util.HashMap;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.SimpleTypedBlock;
+import org.jetbrains.annotations.NotNull;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 
@@ -47,7 +48,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
                              .count();
     }
     */
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (!PRERENDER) {
             renderToImage(g2);
             return;

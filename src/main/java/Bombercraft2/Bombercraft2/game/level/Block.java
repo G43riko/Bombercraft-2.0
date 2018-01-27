@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -71,7 +72,6 @@ public class Block extends Entity {
     private Type type;
     private int  health;
 
-    //CONSTRUCTORS
 
     public Block(@NotNull JSONObject object, @NotNull GameAble parent) {
         super(new GVector2f(), parent);
@@ -96,10 +96,9 @@ public class Block extends Entity {
         this.type = type;
     }
 
-    //OVERRIDES
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
 //		if(type == NOTHING)
 //			return;
         GVector2f size = SIZE.mul(getParent().getZoom());
@@ -332,10 +331,11 @@ public class Block extends Entity {
     }
 
 
-    //GETTERS
 
     public GVector2f getSur() {return position/*.div(SIZE).toInt()*/;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getPosition() {return position.mul(SIZE);}
 
     public Type getType() {return type;}

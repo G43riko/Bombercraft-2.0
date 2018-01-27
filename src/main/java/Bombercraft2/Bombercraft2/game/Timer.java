@@ -2,7 +2,6 @@ package Bombercraft2.Bombercraft2.game;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.math.GVector2f;
 
 import java.awt.*;

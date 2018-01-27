@@ -10,6 +10,7 @@ import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.map.SimpleChunkedMap;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
@@ -32,7 +33,7 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         map.render(g2);
     }
@@ -42,11 +43,14 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
 
     }
 
+    @Contract(pure = true)
     @Override
     public float getZoom() {
         return viewManager.getZoom();
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getOffset() {
         return viewManager.getOffset();
@@ -70,7 +74,9 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
                 getOffset().getY() + parent.getCanvas().getHeight() < b.getPosition().getY() * getZoom());
     }
 
-	@Override
+	@Contract(pure = true)
+    @NotNull
+    @Override
 	public GVector2f getCanvasSize() {
 		return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
 	}

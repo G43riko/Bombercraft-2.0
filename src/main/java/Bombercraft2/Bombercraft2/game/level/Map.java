@@ -32,7 +32,6 @@ public class Map implements InteractAble {
     private              GVector2f              size           = null;
     private final GameAble parent;
 
-    //CONSTRUCTORS
 
     public Map(@NotNull JSONObject object, @NotNull GameAble parent) {
         this.parent = parent;
@@ -56,10 +55,9 @@ public class Map implements InteractAble {
         size = numberOfBlocks.mul(Block.SIZE);
     }
 
-    //OVERRIDES
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (!render) {
             return;
         }
@@ -208,7 +206,6 @@ public class Map implements InteractAble {
         blocks.put(i + "_" + j, block);
     }
 
-    //GETTERS
 
     public long getRenderedBlocks() {return renderedBlocks;}
 

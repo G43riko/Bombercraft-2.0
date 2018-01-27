@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.gui.submenu.SubMenuCreator;
 import Bombercraft2.Bombercraft2.gui.submenu.Submenu;
 import Bombercraft2.engine.Input;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -39,7 +40,7 @@ public class GameGui implements InteractAble, ClickAble {
 
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (navBar.isVisible()) {
             navBar.render(g2);
         }

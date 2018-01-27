@@ -3,6 +3,8 @@ package Bombercraft2.Bombercraft2.game.entity.particles;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Utils;
@@ -46,8 +48,7 @@ public abstract class Emitter extends Entity {
     static {
         initDefault();
     }
-//	
-    //CONSTRUCTORS
+//
 
     Emitter(Emitter.Types type, GVector2f position, GameAble parent) {
         super(position, parent);
@@ -61,10 +62,9 @@ public abstract class Emitter extends Entity {
         createParticles(particlesOnStart);
     }
 
-    //OVERRIDES
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         renderedParticles = new ArrayList<>(particles).stream()
                                                       .filter(a -> getParent().isVisible(a))
                                                       .peek(a -> a.render(g2))
@@ -118,6 +118,8 @@ public abstract class Emitter extends Entity {
 
     public long getRenderedParticles() {return renderedParticles;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getSize() {return size;}
 
     public boolean isAlive() {return alive || !particles.isEmpty();}

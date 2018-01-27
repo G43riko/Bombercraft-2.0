@@ -1,68 +1,77 @@
 package Bombercraft2.playGround.Misc.particles;
 
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 
-import org.json.JSONObject;
+public class SimpleParticle {
+    public       float velX   = 0;
+    public       float velY   = 0;
+    public final float mass   = 1;
+    public       int   radius = 20;
+    public float posX;
+    public float posY;
+    public Color color;
 
-import Bombercraft2.Bombercraft2.core.InteractAble;
-import Bombercraft2.Bombercraft2.core.Visible;
-import Bombercraft2.playGround.Misc.SimpleGameAble;
-import utils.math.GVector2f;
-
-public class SimpleParticle implements Visible, InteractAble{
-	private final SimpleGameAble parent;
-	private final GVector2f direction;
-	private GVector2f position;
-    private final GVector2f size;
-    private boolean alive;
-    private final Color     color;
-    private       int       health;
-
-    //CONSTRUCTORS
-
-    public SimpleParticle(GVector2f position, 
-    					  SimpleGameAble parent, 
-    					  Color color, 
-    					  GVector2f direction, 
-    					  GVector2f size, 
-    					  int health) {
-        this.position = position;
-        this.parent = parent;
-        this.direction = direction;
-        this.color = color;
-        this.health = health;
-        this.size = size;
+    public void fillRect(Graphics2D g2, Color color) {
+        g2.setColor(color == null ? this.color : color);
+        fillRect(g2);
     }
 
-    //OVERRIDES
+    public void fillRect(Graphics2D g2) {
+        g2.fillRect((int) (posX - radius),
+                    (int) (posY - radius),
+                    radius << 1,
+                    radius << 1);
+    }
 
-    @Override
-    public void update(float delta) {
-        position = position.add(direction.mul(parent.getZoom()));
-        if (--health <= 0) { 
-        	alive = false;
+    public void fillArc(Graphics2D g2, Color color) {
+        g2.setColor(color == null ? this.color : color);
+        fillArc(g2);
+    }
+
+    public void fillArc(Graphics2D g2) {
+        g2.fillArc((int) (posX - radius),
+                   (int) (posY - radius),
+                   radius << 1,
+                   radius << 1,
+                   0,
+                   360);
+    }
+
+    public void drawArc(Graphics2D g2, Color color) {
+        g2.setColor(color == null ? this.color : color);
+        drawArc(g2);
+    }
+
+    public void drawArc(Graphics2D g2) {
+        g2.drawArc((int) (posX - radius),
+                   (int) (posY - radius),
+                   radius << 1,
+                   radius << 1,
+                   0,
+                   360);
+    }
+
+    public void checkBorders(Canvas canvas) {
+        if (posX < radius) {
+            velX *= -1;
+            posX = radius;
+        }
+        if (posY < radius) {
+            velY *= -1;
+            posY = radius;
+        }
+        if (posX + radius > canvas.getWidth()) {
+            velX *= -1;
+            posX = canvas.getWidth() - radius;
+        }
+        if (posY + radius > canvas.getHeight()) {
+            velY *= -1;
+            posY = canvas.getHeight() - radius;
         }
     }
-    
-    public boolean isALive() {
-    	return alive;
+
+    public void move(float delta) {
+        posX += velX * delta;
+        posY += velY * delta;
     }
-    
-    public void render(Graphics2D g2) {
-        GVector2f pos = position.sub(size.div(2)).mul(parent.getZoom()).sub(parent.getOffset());
-        GVector2f totalSize = size.mul(parent.getZoom());
-        g2.setColor(color);
-        g2.fillArc(pos.getXi(), pos.getYi(), totalSize.getXi(), totalSize.getYi(), 0, 360);
-    }
-    
-    //GETTERS
-
-    public GVector2f getSize() {return size;}
-
-	@Override
-	public GVector2f getPosition() {
-		return position;
-	}
-
 }

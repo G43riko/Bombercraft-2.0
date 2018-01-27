@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.game.lights;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -25,7 +26,7 @@ public class LightsManager implements InteractAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (!parent.getVisibleOption(Render.LIGHTS)) {
             return;
         }

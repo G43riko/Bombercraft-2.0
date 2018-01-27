@@ -16,7 +16,6 @@ public abstract class Entity implements Visible, InteractAble {
     private final GameAble parent;
     protected GVector2f position = null;
     protected boolean   alive    = true;
-    //CONSTRUCTORS
 
     public Entity(@NotNull JSONObject json, @NotNull GameAble parent) {
         this.parent = parent;
@@ -43,9 +42,10 @@ public abstract class Entity implements Visible, InteractAble {
 
     public GVector2f getSur() {return position.div(Block.SIZE).toInt();}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getSize() {return Block.SIZE; }
 
-    //GETTERS
 
     @Contract(pure = true)
     public final int getID() {return id;}
@@ -53,6 +53,8 @@ public abstract class Entity implements Visible, InteractAble {
     @Contract(pure = true)
     public final GameAble getParent() {return parent;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getPosition() {return position;}
 
     @NotNull

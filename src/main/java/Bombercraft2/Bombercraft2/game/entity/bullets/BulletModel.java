@@ -24,7 +24,6 @@ public class BulletModel {
     private int       damage;
     private Color     color;
     private Types     type;
-    //CONSTRUCTORS
 
     public BulletModel(JSONObject data) {
         fromJSON(data);
@@ -66,7 +65,6 @@ public class BulletModel {
 
     public void setType(Types type) {this.type = type;}
 
-    //OVERRIDES
 
 
 }

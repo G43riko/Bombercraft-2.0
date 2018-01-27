@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.HealthAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.Utils;
@@ -79,7 +80,7 @@ public class Player extends Entity implements HealthAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (getParent() == null || position == null) { return; }
 
 

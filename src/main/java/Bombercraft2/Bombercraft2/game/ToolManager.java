@@ -38,7 +38,6 @@ public class ToolManager {
         actualPlacer.render(g2);
     }
 
-    //GETTERS
 
     public ToolAble getTool(Iconable icon) {return tools.get(icon);}
 

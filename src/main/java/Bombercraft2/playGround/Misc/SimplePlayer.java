@@ -1,11 +1,11 @@
 package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.engine.Input;
-import Bombercraft2.playGround.Misc.particles.SimpleDrawableObject;
+import Bombercraft2.playGround.Misc.particles.SimpleParticle;
 
 import java.awt.*;
 
-public class SimplePlayer extends SimpleDrawableObject {
+public class SimplePlayer extends SimpleParticle {
     public       float   angle        = 0;
     public final int     speed        = 1;
     public final float   length       = 60;

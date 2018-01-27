@@ -33,12 +33,14 @@ public class AbstractBlock implements Visible {
     }
 
 
+    @NotNull
     @Override
     @Contract(pure = true)
     public GVector2f getPosition() {
         return offset == null ? position.mul(Block.SIZE) : position.mul(Block.SIZE).add(offset);
     }
 
+    @NotNull
     @Override
     @Contract(pure = true)
     public GVector2f getSize() {

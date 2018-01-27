@@ -6,6 +6,8 @@ import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GColision;
 import utils.math.GVector2f;
 
@@ -72,7 +74,7 @@ public class NavBar extends Bar {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.setColor(getBackgroundColor());
         g2.fillRect(totalPos.getXi(), totalPos.getYi(), totalSize.getXi(), totalSize.getYi());
 
@@ -103,11 +105,15 @@ public class NavBar extends Bar {
         }
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {
         return totalPos;
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {
         return size;

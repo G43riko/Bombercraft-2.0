@@ -6,6 +6,8 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
 import Bombercraft2.Bombercraft2.gui.components.MiniButton;
 import Bombercraft2.Bombercraft2.gui.components.MiniSwitch;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -63,7 +65,7 @@ public class SideBar extends Bar {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
 
         g2.setColor(getBackgroundColor());
         g2.fillRoundRect(totalPos.getXi(),
@@ -86,11 +88,15 @@ public class SideBar extends Bar {
         buttons.forEach((key, value) -> value.render(g2));
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {
         return totalPos;
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {
         return totalSize;

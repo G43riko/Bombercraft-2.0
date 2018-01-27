@@ -7,6 +7,7 @@ import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -124,7 +125,7 @@ public class MyPlayer extends Player {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         super.render(g2);
         pointer.render(g2);
         healthBar.render(g2, getOffset());

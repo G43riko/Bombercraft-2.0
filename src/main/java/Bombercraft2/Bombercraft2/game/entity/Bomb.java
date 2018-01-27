@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Timer;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -28,7 +29,7 @@ public class Bomb extends Helper {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (!alive) {
             return;
         }

@@ -23,7 +23,6 @@ public class Level implements InteractAble {
     private       JSONObject      floraData    = null;
     private       JSONObject      playerInfo   = null;
     private       FloraManager    floraManager = null;
-    //CONSTRUCTORS
 
     public Level(@NotNull JSONObject object) {
         try {
@@ -54,10 +53,9 @@ public class Level implements InteractAble {
 
     }
 
-    //OVERRIDES
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         map.render(g2);
         floraManager.renderLowerLevel(g2);
     }
@@ -83,7 +81,6 @@ public class Level implements InteractAble {
         return result;
     }
 
-    //GETTERS
 
     public Map getMap() {return map;}
 

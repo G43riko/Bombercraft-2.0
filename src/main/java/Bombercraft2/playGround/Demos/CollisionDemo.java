@@ -4,7 +4,8 @@ import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimplePlayer;
-import Bombercraft2.playGround.Misc.particles.SimpleDrawableObject;
+import Bombercraft2.playGround.Misc.particles.SimpleParticle;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -23,7 +24,7 @@ public class CollisionDemo extends GameState {
         return (float) Math.sqrt(dx * dx + dy * dy);
     }
 
-    private static void resolveCollision(SimpleDrawableObject particle, SimpleDrawableObject otherParticle) {
+    private static void resolveCollision(SimpleParticle particle, SimpleParticle otherParticle) {
         final float xVelocityDiff = particle.velX - otherParticle.velX;
         final float yVelocityDiff = particle.velY - otherParticle.velY;
 
@@ -64,7 +65,7 @@ public class CollisionDemo extends GameState {
         }
     }
 
-    private final List<SimpleDrawableObject> barrels = new ArrayList<>();
+    private final List<SimpleParticle> barrels = new ArrayList<>();
     private final CorePlayGround parent;
     private final SimplePlayer mySimplePlayer = new SimplePlayer();
 
@@ -78,7 +79,7 @@ public class CollisionDemo extends GameState {
         mySimplePlayer.radius = 20;
 
 
-        SimpleDrawableObject barrel = new SimpleDrawableObject();
+        SimpleParticle barrel = new SimpleParticle();
         barrel.radius = 50;
         barrel.color = Color.GREEN;
         barrel.posX = 400;
@@ -109,7 +110,7 @@ public class CollisionDemo extends GameState {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
 
         barrels.forEach(barrel -> barrel.fillArc(g2, null));
@@ -124,7 +125,7 @@ public class CollisionDemo extends GameState {
         mySimplePlayer.input();
 
         if (Input.getKeyDown(Input.KEY_LCONTROL) || Input.isKeyDown(Input.KEY_LSHIFT)) {
-            SimpleDrawableObject barrel = new SimpleDrawableObject();
+            SimpleParticle barrel = new SimpleParticle();
             barrel.posX = (float) (mySimplePlayer.posX + Math.cos(mySimplePlayer.angle) * mySimplePlayer.length);
             barrel.posY = (float) (mySimplePlayer.posY + Math.sin(mySimplePlayer.angle) * mySimplePlayer.length);
 

@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.game.entity.explosion;
 
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -16,7 +17,6 @@ public class ShockWave implements InteractAble {
     private boolean   alive     = true;
     private       Color     color;
     private final GVector2f position;
-    //CONSTRUCTORS
 
     public ShockWave(GameAble parent,
                      GVector2f position,
@@ -39,10 +39,9 @@ public class ShockWave implements InteractAble {
         }
     }
 
-    //OVERRIDES
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         GVector2f pos = position.sub(radius).mul(parent.getZoom()).sub(parent.getOffset());
         g2.setColor(color);
         int size = (int) (radius * 2 * parent.getZoom());
@@ -60,7 +59,6 @@ public class ShockWave implements InteractAble {
         }
     }
 
-    //GETTERS
 
     public boolean isAlive() {
         return alive;

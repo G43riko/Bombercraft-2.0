@@ -2,6 +2,8 @@ package Bombercraft2.Bombercraft2.game.entity.particles;
 
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -13,7 +15,6 @@ public class Particle extends Entity {
     private final Color     color;
     private       int       health;
 
-    //CONSTRUCTORS
 
     public Particle(GVector2f position, GameAble parent, Color color, GVector2f direction, GVector2f size, int health) {
         super(position, parent);
@@ -23,7 +24,6 @@ public class Particle extends Entity {
         this.size = size;
     }
 
-    //OVERRIDES
 
     @Override
     public void update(float delta) {
@@ -35,7 +35,7 @@ public class Particle extends Entity {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         GVector2f pos = position.sub(size.div(2)).mul(getParent().getZoom()).sub(getParent().getOffset());
         GVector2f totalSize = size.mul(getParent().getZoom());
         g2.setColor(color);
@@ -47,13 +47,16 @@ public class Particle extends Entity {
         return null;
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {
         return super.getPosition().div(getParent().getZoom());
     }
 
-    //GETTERS
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getSize() {return size;}
 
 }

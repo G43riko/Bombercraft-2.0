@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.gui;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class GameLogs implements InteractAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         ArrayList<String> data = parent.getLogInfo();
 
         g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.LOG_TEXT_SIZE));

@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.gui.components;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Visible;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -58,7 +59,7 @@ public class MiniSwitch extends GuiComponent {
 //	}
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (hover) { g2.setColor(hoverColor); }
         else { g2.setColor(backgroundColor); }
 

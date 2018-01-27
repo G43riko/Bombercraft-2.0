@@ -5,7 +5,8 @@ import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimplePlayer;
 import Bombercraft2.playGround.Misc.map.SimpleMap_old;
-import Bombercraft2.playGround.Misc.particles.SimpleDrawableObject;
+import Bombercraft2.playGround.Misc.particles.SimpleParticle;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -16,7 +17,7 @@ public class ShootingDemo extends GameState {
     private final SimpleMap_old        map       = new SimpleMap_old();
     private final int                  blockSize = 40;
     private final SimplePlayer         myPlayer  = new SimplePlayer();
-    private final List<SimpleDrawableObject> particles = new ArrayList<>();
+    private final List<SimpleParticle> particles = new ArrayList<>();
     private final CorePlayGround parent;
 
     public ShootingDemo(CorePlayGround parent) {
@@ -51,7 +52,7 @@ public class ShootingDemo extends GameState {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
 
         /***********************************************/

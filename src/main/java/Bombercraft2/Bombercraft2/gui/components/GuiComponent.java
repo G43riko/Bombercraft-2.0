@@ -4,6 +4,8 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GColision;
 import utils.math.GVector2f;
 
@@ -83,7 +85,7 @@ public abstract class GuiComponent implements InteractAble, Visible {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         if (disable) {
             g2.setColor(disabledColor);
         }
@@ -129,7 +131,11 @@ public abstract class GuiComponent implements InteractAble, Visible {
 
     Visible getParent() {return parent;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getPosition() {return position;}
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getSize() {return size;}
 }

@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.gui;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -25,7 +26,7 @@ public class StatsPanel implements InteractAble {
 	}
 	
 	@Override
-	public void render(Graphics2D g2) {
+	public void render(@NotNull Graphics2D g2) {
 		g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC , fontSize));
 		int pos = position.getYi() + 22;
 		for(Entry<String, String> pair : stats.entrySet()){

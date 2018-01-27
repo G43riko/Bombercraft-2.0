@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.gui;
 
 import Bombercraft2.Bombercraft2.core.InteractAble;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -21,7 +22,7 @@ public class Alert implements InteractAble {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.setColor(parent.getColor());
         g2.setFont(parent.getFont());
 

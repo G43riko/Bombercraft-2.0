@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.game.entity.bullets;
 
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -13,7 +14,7 @@ public class BulletLaser extends Bullet {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
         GVector2f pos2 = pos.sub(getDirection().mul(getSpeed()));
 

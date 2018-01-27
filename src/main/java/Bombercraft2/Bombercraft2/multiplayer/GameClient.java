@@ -25,7 +25,6 @@ public class GameClient extends Client implements Connector {
     private final MenuAble parent;
     private CommonMethods methods = null;
 
-    //CONSTRUCTORS
 
     public GameClient(MenuAble coreGame, String ip) {
         super(ip);
@@ -35,7 +34,6 @@ public class GameClient extends Client implements Connector {
     //PUTTERS
 
 
-    //GETTERS
 
     @Override
     public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> damageAreas) {

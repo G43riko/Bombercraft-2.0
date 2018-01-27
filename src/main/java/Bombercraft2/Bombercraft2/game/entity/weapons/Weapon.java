@@ -29,7 +29,6 @@ public abstract class Weapon implements ShootAble, ToolAble {
     private       long        lastShot;
     private final GameAble    parent;
 
-    //CONSTRUCTORS
     Weapon(GameAble parent, Types type, JSONObject data) {
         this.parent = parent;
         this.type = type;
@@ -61,7 +60,6 @@ public abstract class Weapon implements ShootAble, ToolAble {
         return System.currentTimeMillis() - lastShot > cadence - bonus;
     }
 
-    //GETTERS
 
     public Types getType() {return type;}
 

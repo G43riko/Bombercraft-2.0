@@ -2,6 +2,8 @@ package Bombercraft2.Bombercraft2.game.lights;
 
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -22,7 +24,6 @@ public class Light extends Entity {
     private              double        angle     = 10;
     private              int           flash     = 0;
 
-    //CONSTRUCTORS
 
 //	public Light(GameAble parent, GVector2f position, GVector2f size, int radius) {
 //		this(parent, position, size, null);
@@ -83,13 +84,15 @@ public class Light extends Entity {
         g2.fillOval(0, 0, size.getXi() * 2, size.getYi() * 2);
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {
         return target == null ? super.getPosition() : target.getPosition();
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         GVector2f finalPos;
         if (target == null) {
             finalPos = position.sub(getParent().getOffset());
@@ -158,6 +161,8 @@ public class Light extends Entity {
         return null;
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {
         return size;

@@ -5,6 +5,8 @@ import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -69,10 +71,11 @@ public abstract class Bullet extends Entity {
         }
     }
 
-    //GETTERS
 
     public int getMaxHealth() {return model.getMaxHealth();}
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {return model.getSize();}
 

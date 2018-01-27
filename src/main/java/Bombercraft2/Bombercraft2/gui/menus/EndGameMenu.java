@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.gui.menus;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.gui.StatsPanel;
 import Bombercraft2.Bombercraft2.gui.components.Button;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -38,7 +39,7 @@ public class EndGameMenu extends Menu {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, size.getXi(), size.getYi());
         panel.render(g2);
 

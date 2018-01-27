@@ -3,6 +3,8 @@ package Bombercraft2.playGround.Misc.map;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.playGround.Misc.SimpleTypedBlock;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 
@@ -62,11 +64,15 @@ public class SimpleChunk implements Visible {
         }
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {
         return position.mul(SIZE);
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {
         return SIZE;

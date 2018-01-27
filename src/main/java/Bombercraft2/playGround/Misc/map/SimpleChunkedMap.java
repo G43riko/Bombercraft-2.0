@@ -1,5 +1,6 @@
 package Bombercraft2.playGround.Misc.map;
 
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -13,7 +14,7 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
         createRandomMap();
     }
 
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         items.entrySet().stream().map(Map.Entry::getValue).filter(parent::isVisible).forEach(a -> a.render(g2));
     }
 

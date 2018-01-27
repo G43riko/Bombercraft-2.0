@@ -7,6 +7,7 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
 import Bombercraft2.Bombercraft2.gui.components.RemoteGamePanel;
 import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.GLogger;
 import utils.Utils;
@@ -103,7 +104,7 @@ public class JoinMenu extends Menu {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, size.getXi(), size.getYi());
         super.render(g2);
     }

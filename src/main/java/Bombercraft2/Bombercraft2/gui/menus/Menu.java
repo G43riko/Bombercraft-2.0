@@ -6,6 +6,8 @@ import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.gui.ClickAble;
 import Bombercraft2.Bombercraft2.gui.components.Button;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -43,7 +45,7 @@ public abstract class Menu extends GameState implements ClickAble, Visible {
         addComponent(key, new Button(this, parent.getGuiManager().getLabelOf(key)));
     }
 
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         components.forEach((key, value) -> value.render(g2));
     }
 
@@ -58,11 +60,15 @@ public abstract class Menu extends GameState implements ClickAble, Visible {
         components.put(name, component);
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getPosition() {return position;}
 
     public MenuAble getParent() {return parent;}
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {return size;}
 }

@@ -152,7 +152,6 @@ public abstract class CoreEngine {
 
     protected void render(Graphics2D g2) { }
 
-    //GETTERS
 
     protected Window getWindow() {
         return window;

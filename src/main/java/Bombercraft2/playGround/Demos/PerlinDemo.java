@@ -3,6 +3,7 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
+import org.jetbrains.annotations.NotNull;
 import utils.SimplexNoise;
 import utils.Utils;
 import utils.math.GVector2f;
@@ -73,7 +74,7 @@ public class PerlinDemo extends GameState {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         for (int i = 0; i < map.length; i++) {
             for (int j = 0; j < map[i].length; j++) {

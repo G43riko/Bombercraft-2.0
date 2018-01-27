@@ -3,6 +3,8 @@ package Bombercraft2.Bombercraft2.game.entity.explosion;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.particles.Particle;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.SpriteAnimation;
 import utils.math.GVector2f;
@@ -55,7 +57,7 @@ public class Explosion extends Entity {
     }
 
     @Override
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         waves.forEach(a -> a.render(g2));
         particles.forEach(a -> a.render(g2));
         animations = new ArrayList<>(animations).stream()
@@ -91,6 +93,8 @@ public class Explosion extends Entity {
         return null;
     }
 
+    @Contract(pure = true)
+    @NotNull
     @Override
     public GVector2f getSize() {
         return size;

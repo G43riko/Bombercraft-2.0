@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.components.Button;
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
@@ -15,12 +14,14 @@ import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.particles.SimpleEmitter;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 public class ParticlesPreviewDemo extends GameState implements SimpleGameAble{
-    private GuiManager guiManager = new GuiManager();
-    private static VerticalScrollPanel panel = new VerticalScrollPanel();
-    private SimpleEmitter emitter = new SimpleEmitter(new GVector2f(400, 400), this);
+    private        GuiManager          guiManager = new GuiManager();
+    private static VerticalScrollPanel panel      = new VerticalScrollPanel();
+    private        SimpleEmitter       emitter    = new SimpleEmitter(new GVector2f(400, 400), this);
     private final CorePlayGround parent;
     public ParticlesPreviewDemo(CorePlayGround parent) {
         super(Type.ParticlesPreviewDemo);
@@ -60,7 +61,7 @@ public class ParticlesPreviewDemo extends GameState implements SimpleGameAble{
 	}
 	
 	@Override
-	public void render(Graphics2D g2) {
+	public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         emitter.render(g2);
 		guiManager.render(g2);
@@ -82,13 +83,10 @@ public class ParticlesPreviewDemo extends GameState implements SimpleGameAble{
         	emitter.setPosition(Input.getMousePosition());
         }
 	}
-	
-    
-    private void emitParticles(GVector2f position) {
-    	System.out.println("paráda");
-    }
 
-	@Override
+	@Contract(pure = true)
+    @NotNull
+    @Override
 	public GVector2f getCanvasSize() {
 		return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
 	}
