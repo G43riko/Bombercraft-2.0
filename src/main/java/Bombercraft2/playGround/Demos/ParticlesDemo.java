@@ -3,7 +3,7 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleParticle;
+import Bombercraft2.playGround.Misc.particles.SimpleDrawableObject;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -14,7 +14,7 @@ public class ParticlesDemo extends GameState {
     private static final Color PARTICLE_COLOR = Color.RED;
     private final CorePlayGround parent;
 
-    private final        List<SimpleParticle> particles = new ArrayList<>();
+    private final        List<SimpleDrawableObject> particles = new ArrayList<>();
     private final static int                  PARTICLES = 100000;
 
     public ParticlesDemo(CorePlayGround parent) {
@@ -24,7 +24,7 @@ public class ParticlesDemo extends GameState {
         int particleSpeed = 1;
         int particleSize = 1;
         for (int i = 0; i < PARTICLES; i++) {
-            SimpleParticle particle = new SimpleParticle();
+            SimpleDrawableObject particle = new SimpleDrawableObject();
             particle.posX = (float) (Math.random() * (parent.getCanvas().getWidth() - particleSize * 2) + particleSize);
             particle.posY = (float) (Math.random() * (parent.getCanvas()
                                                             .getHeight() - particleSize * 2) + particleSize);

@@ -3,6 +3,8 @@ package Bombercraft2.playGround.Misc;
 import java.awt.Graphics2D;
 
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.playGround.Misc.map.AbstractBlock;
+
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

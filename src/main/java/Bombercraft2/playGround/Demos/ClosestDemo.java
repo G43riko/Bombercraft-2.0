@@ -3,8 +3,8 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleParticle;
 import Bombercraft2.playGround.Misc.SimplePlayer;
+import Bombercraft2.playGround.Misc.particles.SimpleDrawableObject;
 import utils.math.GClosest;
 import utils.math.GVector2f;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClosestDemo extends GameState {
-    private final List<SimpleParticle> barrels = new ArrayList<>();
+    private final List<SimpleDrawableObject> barrels = new ArrayList<>();
     private final CorePlayGround parent;
     private final SimplePlayer mySimplePlayer = new SimplePlayer();
 
@@ -27,7 +27,7 @@ public class ClosestDemo extends GameState {
         mySimplePlayer.radius = 20;
 
 
-        SimpleParticle barrel = new SimpleParticle();
+        SimpleDrawableObject barrel = new SimpleDrawableObject();
         barrel.radius = 50;
         barrel.color = Color.GREEN;
         barrel.posX = 400;
@@ -36,7 +36,7 @@ public class ClosestDemo extends GameState {
         barrels.add(barrel);
     }
 
-    private void renderBarrel(SimpleParticle barrel, Graphics2D g2) {
+    private void renderBarrel(SimpleDrawableObject barrel, Graphics2D g2) {
         g2.setColor(barrel.color);
         g2.fillArc((int)(barrel.posX - barrel.radius),
                    (int)(barrel.posY - barrel.radius),
@@ -58,7 +58,7 @@ public class ClosestDemo extends GameState {
 
     }
 
-    private void drawClosestPoint(Graphics2D g2, SimpleParticle barrel) {
+    private void drawClosestPoint(Graphics2D g2, SimpleDrawableObject barrel) {
         GVector2f closest = GClosest.getClosestPointOnLine(mySimplePlayer.posX,
                                                            mySimplePlayer.posY,
                                                            mySimplePlayer.posX + (int) (Math.cos(mySimplePlayer.angle) * mySimplePlayer.length * 100),

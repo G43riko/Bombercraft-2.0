@@ -14,6 +14,7 @@ public class GuiManager {
     private final List<Drawable> postRender    = new LinkedList<>();
     private final int            defaultCursor = Cursor.DEFAULT_CURSOR;
     private       int            cursor        = defaultCursor;
+    private UpdateData updateData;
     private Panel mainPanel;
     private Canvas canvas;
 
@@ -67,13 +68,17 @@ public class GuiManager {
     public Cursor getCursor() {
         return new Cursor(cursor);
     }
+    
+    public boolean isMouseOn() {
+    	return GuiConnector.isMouseOn(mainPanel);
+    }
 
     public void update() {
         cursor = defaultCursor;
-        UpdateData data = new UpdateData(GuiConnector.getMouseX(),
+        updateData = new UpdateData(GuiConnector.getMouseX(),
                                          GuiConnector.getMouseY(),
                                          GuiConnector.isButtonDown());
-        components.forEach((component) -> component.update(data));
+        components.forEach((component) -> component.update(updateData));
     }
 
     public void addToPostRender(Drawable item) {

@@ -30,6 +30,7 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Perlin", () -> setScene(new PerlinDemo(this)));
         mainMenu.addButton("Map", () -> setScene(new MapDemo(this)));
         mainMenu.addButton("Chunked map", () -> setScene(new ChunkedMapDemo(this)));
+        mainMenu.addButton("Particles preview", () -> setScene(new ParticlesPreviewDemo(this)));
         mainMenu.addButton("Exit", this::exitGame);
     }
 

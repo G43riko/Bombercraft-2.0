@@ -1,9 +1,11 @@
-package Bombercraft2.playGround.Misc;
+package Bombercraft2.playGround.Misc.map;
 
 import utils.math.GVector2f;
 
 import java.awt.*;
 import java.util.Map;
+
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 
 public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     public SimpleChunkedMap(SimpleGameAble parent, GVector2f numberOfChunks) {

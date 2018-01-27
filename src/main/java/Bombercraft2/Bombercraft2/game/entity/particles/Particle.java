@@ -28,7 +28,9 @@ public class Particle extends Entity {
     @Override
     public void update(float delta) {
         position = position.add(direction.mul(getParent().getZoom()));
-        if (--health <= 0) { alive = false; }
+        if (--health <= 0) { 
+        	alive = false;
+        }
 
     }
 

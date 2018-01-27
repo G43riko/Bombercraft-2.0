@@ -1,8 +1,8 @@
-package Bombercraft2.playGround.Misc;
+package Bombercraft2.playGround.Misc.particles;
 
 import java.awt.*;
 
-public class SimpleParticle {
+public class SimpleDrawableObject {
     public float posX;
     public float posY;
     public       float velX   = 0;

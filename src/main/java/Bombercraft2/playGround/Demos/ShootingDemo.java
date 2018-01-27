@@ -3,9 +3,9 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleMap_old;
-import Bombercraft2.playGround.Misc.SimpleParticle;
 import Bombercraft2.playGround.Misc.SimplePlayer;
+import Bombercraft2.playGround.Misc.map.SimpleMap_old;
+import Bombercraft2.playGround.Misc.particles.SimpleDrawableObject;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -16,7 +16,7 @@ public class ShootingDemo extends GameState {
     private final SimpleMap_old        map       = new SimpleMap_old();
     private final int                  blockSize = 40;
     private final SimplePlayer         myPlayer  = new SimplePlayer();
-    private final List<SimpleParticle> particles = new ArrayList<>();
+    private final List<SimpleDrawableObject> particles = new ArrayList<>();
     private final CorePlayGround parent;
 
     public ShootingDemo(CorePlayGround parent) {

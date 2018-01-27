@@ -1,7 +1,8 @@
-package Bombercraft2.playGround.Misc;
+package Bombercraft2.playGround.Misc.map;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.playGround.Misc.SimpleTypedBlock;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 

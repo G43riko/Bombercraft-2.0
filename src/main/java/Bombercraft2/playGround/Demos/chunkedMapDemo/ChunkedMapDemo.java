@@ -6,9 +6,10 @@ import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleChunkedMap;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
+import Bombercraft2.playGround.Misc.map.SimpleChunkedMap;
+
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
@@ -68,4 +69,9 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
                 getOffset().getX() + parent.getCanvas().getWidth() < b.getPosition().getX() * getZoom() ||
                 getOffset().getY() + parent.getCanvas().getHeight() < b.getPosition().getY() * getZoom());
     }
+
+	@Override
+	public GVector2f getCanvasSize() {
+		return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+	}
 }

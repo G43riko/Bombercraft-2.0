@@ -17,13 +17,14 @@ public class PerlinDemo extends GameState {
     private final CorePlayGround parent;
     private final int itemSize = 2;
     private Item[][] map;
-
     public PerlinDemo(CorePlayGround parent) {
         super(Type.PerlinDemo);
         this.parent = parent;
         generateMap();
     }
 
+    
+    
     private void generateMap() {
         /*
         float[][] dataR = PerlinNoise.GeneratePerlinNoise(PerlinNoise.generateWhiteNoise(parent.getCanvas().getWidth() / itemSize,
@@ -84,6 +85,6 @@ public class PerlinDemo extends GameState {
 
     @Override
     public void doAct(GVector2f click) {
-
+    	System.out.println("dooujem act");
     }
 }

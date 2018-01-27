@@ -7,9 +7,9 @@ import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleMap;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
+import Bombercraft2.playGround.Misc.map.SimpleMap;
 import utils.math.GVector2f;
 
 public class MapDemo extends GameState implements SimpleGameAble {

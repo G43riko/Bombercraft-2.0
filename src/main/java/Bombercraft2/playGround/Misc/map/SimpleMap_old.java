@@ -1,4 +1,4 @@
-package Bombercraft2.playGround.Misc;
+package Bombercraft2.playGround.Misc.map;
 
 
 import java.util.function.Consumer;

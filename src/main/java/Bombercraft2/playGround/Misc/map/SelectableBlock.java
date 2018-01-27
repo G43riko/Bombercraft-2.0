@@ -1,6 +1,8 @@
-package Bombercraft2.playGround.Misc;
+package Bombercraft2.playGround.Misc.map;
 
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
+
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
