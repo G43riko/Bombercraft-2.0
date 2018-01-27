@@ -1,9 +1,11 @@
 package Bombercraft2.Bombercraft2.game.entity;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -11,13 +13,13 @@ import org.json.JSONObject;
 import utils.IDGenerator;
 import utils.math.GVector2f;
 
-public abstract class Entity implements Visible, InteractAble {
-    private   int       id       = IDGenerator.getId();
-    private final GameAble parent;
+public abstract class Entity<T extends SimpleGameAble> implements Visible, InteractAble {
+    private int id = IDGenerator.getId();
+    protected final T parent;
     protected GVector2f position = null;
     protected boolean   alive    = true;
 
-    public Entity(@NotNull JSONObject json, @NotNull GameAble parent) {
+    public Entity(@NotNull JSONObject json, @NotNull T parent) {
         this.parent = parent;
         try {
             id = json.getInt("id");
@@ -25,13 +27,12 @@ public abstract class Entity implements Visible, InteractAble {
             position = new GVector2f(json.getString("position"));
         }
         catch (JSONException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
     }
 
-    protected Entity(@NotNull GVector2f position, @NotNull GameAble parent) {
+    protected Entity(@NotNull GVector2f position, @NotNull T parent) {
         this.position = position;
         this.parent = parent;
     }
@@ -40,18 +41,18 @@ public abstract class Entity implements Visible, InteractAble {
 
     public abstract JSONObject toJSON();
 
-    public GVector2f getSur() {return position.div(Block.SIZE).toInt();}
+    public GVector2f getSur() {return position.div(Config.BLOCK_SIZE).toInt();}
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getSize() {return Block.SIZE; }
+    public GVector2f getSize() {return Config.BLOCK_SIZE; }
 
 
     @Contract(pure = true)
     public final int getID() {return id;}
 
     @Contract(pure = true)
-    public final GameAble getParent() {return parent;}
+    public final T getParent() {return parent;}
 
     @Contract(pure = true)
     @NotNull

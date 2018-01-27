@@ -18,6 +18,7 @@ import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -53,7 +54,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     @Override
-    protected void render(Graphics2D g2) {
+    protected void render(@NotNull Graphics2D g2) {
         if (!ignoreBlur && !getWindow().isFocused()) {
             return;
         }
@@ -153,7 +154,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     @Override
-    public void connectToGame(String ip) {
+    public void connectToGame(@NotNull String ip) {
         //pop join menu
         states.pop();
         Input.setTarget(null);
@@ -221,7 +222,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
         }
     }
 
-    public void createGame(JSONObject gameData) {
+    public void createGame(@Nullable JSONObject gameData) {
         if (gameLaunched) { stopGame(); }
 
         if (gameData == null) {
@@ -248,7 +249,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
     }
 
-    public void setProfile(String profileName) {
+    public void setProfile(@NotNull String profileName) {
         if (profile != null) {
             Profile.saveProfile(profile);
         }
@@ -294,6 +295,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
         return new GVector2f(getWindow().getWidth(), getWindow().getHeight());
     }
 
+    @NotNull
     public GuiManager getGuiManager() {
         return guiManager;
     }
@@ -306,10 +308,12 @@ public class CoreGame extends CoreEngine implements MenuAble {
         return profile;
     }
 
+    @NotNull
     public GameAble getGame() {
         return game;
     }
 
+    @NotNull
     public Connector getConnector() {
         return connector;
     }
@@ -319,6 +323,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     //	public int getGameIs() {return 0;}
+    @NotNull
     @Override
     public JSONObject getPlayerInfo() {
         try {
@@ -333,7 +338,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
         return null;
     }
 
-    public void showMessage(String key, String... args) {
+    public void showMessage(@NotNull String key, String... args) {
         alertManager.addAlert(guiManager.getLabelOf(key, args));
 
     }

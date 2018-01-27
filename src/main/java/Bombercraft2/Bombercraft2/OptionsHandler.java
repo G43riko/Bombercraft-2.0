@@ -1,5 +1,8 @@
 package Bombercraft2.Bombercraft2;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -8,24 +11,26 @@ import java.util.Map;
 public class OptionsHandler {
     private final Map<Options, Object> options = new HashMap<>();
 
-    public int getInt(Options option) {
+    public int getInt(@NotNull Options option) {
         return Integer.valueOf((String) options.get(option));
     }
 
-    public float getFloat(Options option) {
+    public float getFloat(@NotNull Options option) {
         return Float.valueOf((String) options.get(option));
     }
 
-    public String getString(Options option) {
+    @Nullable
+    public String getString(@NotNull Options option) {
         return String.valueOf(options.get(option));
     }
 
+    @Nullable
     @SuppressWarnings("unchecked")
-    public <T> T get(Options option) {
+    public <T> T get(@NotNull Options option) {
         return (T) options.get(option);
     }
 
-    public void loadFile(BufferedReader reader) {
+    public void loadFile(@NotNull BufferedReader reader) {
         String line = null;
         try {
             while ((line = reader.readLine()) != null) {
@@ -46,6 +51,7 @@ public class OptionsHandler {
         }
     }
 
+    @NotNull
     public String getOptions() {
         final StringBuilder builder = new StringBuilder();
         this.options.forEach((key, value) -> builder.append(key)

@@ -17,9 +17,9 @@ class MouseSelector {
     }
 
     public void render(Graphics2D g2) {
-        GVector2f pos = Input.getMousePosition().div(Block.SIZE).toInt().mul(Block.SIZE);
-        pos = pos.mul(parent.getZoom()).sub(parent.getOffset().mod(Block.SIZE));
-        GVector2f size = Block.SIZE.mul(parent.getZoom());
+        GVector2f pos = Input.getMousePosition().div(Config.BLOCK_SIZE).toInt().mul(Config.BLOCK_SIZE);
+        pos = pos.mul(parent.getZoom()).sub(parent.getOffset().mod(Config.BLOCK_SIZE));
+        GVector2f size = Config.BLOCK_SIZE.mul(parent.getZoom());
         g2.setStroke(new BasicStroke(selectorWidth));
         g2.setColor(selectorColor);
         g2.drawRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());

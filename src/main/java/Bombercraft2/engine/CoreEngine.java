@@ -3,6 +3,7 @@ package Bombercraft2.engine;
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.gui2.GuiTester;
+import org.jetbrains.annotations.NotNull;
 import utils.Utils;
 import utils.math.GVector2f;
 
@@ -150,21 +151,25 @@ public abstract class CoreEngine {
 
     protected void update(float delta) { }
 
-    protected void render(Graphics2D g2) { }
+    protected void render(@NotNull Graphics2D g2) { }
 
 
+    @NotNull
     protected Window getWindow() {
         return window;
     }
 
+    @NotNull
     public Canvas getCanvas() {
         return canvas;
     }
 
+    @NotNull
     protected Graphics2D getG2() {
         return g2;
     }
 
+    @NotNull
     public Input getInput() {
         return input;
     }

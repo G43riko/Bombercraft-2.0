@@ -17,7 +17,7 @@ public class EnemyA extends Enemy {
     private final Color borderColor = Color.WHITE;
 
     public EnemyA(GVector2f position, GameAble parent) {
-        this(position, parent, getRandPossibleDir(parent.getLevel().getMap(), position.div(Block.SIZE).toInt()));
+        this(position, parent, getRandPossibleDir(parent.getLevel().getMap(), position.div(Config.BLOCK_SIZE).toInt()));
     }
 
     private EnemyA(GVector2f position, GameAble parent, Direction direction) {
@@ -54,8 +54,8 @@ public class EnemyA extends Enemy {
         if (direction == null) {
             return;
         }
-        if (position.mod(Block.SIZE).isNull()) {
-            GVector2f nextPos = position.add(direction.getDirection().mul(Block.SIZE));
+        if (position.mod(Config.BLOCK_SIZE).isNull()) {
+            GVector2f nextPos = position.add(direction.getDirection().mul(Config.BLOCK_SIZE));
             Block block = getParent().getLevel().getMap().getBlockOnPosition(nextPos);
             if (block == null || !block.isWalkable()) {
                 direction = getRandPossibleDir(getParent().getLevel().getMap(), getSur());

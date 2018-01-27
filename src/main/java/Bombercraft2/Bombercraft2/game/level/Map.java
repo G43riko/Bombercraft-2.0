@@ -38,7 +38,7 @@ public class Map implements InteractAble {
         try {
             this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
             loadMap(object);
-            size = numberOfBlocks.mul(Block.SIZE);
+            size = numberOfBlocks.mul(Config.BLOCK_SIZE);
             GLogger.log(GLogger.GLog.MAP_CREATED);
         }
         catch (JSONException e) {
@@ -52,7 +52,7 @@ public class Map implements InteractAble {
 
         createRandomMap();
         defaultMap = toJSON().toString();
-        size = numberOfBlocks.mul(Block.SIZE);
+        size = numberOfBlocks.mul(Config.BLOCK_SIZE);
     }
 
 
@@ -181,7 +181,7 @@ public class Map implements InteractAble {
      * @param zones - zoznam zón
      */
     private void clearRespawnZones(@NotNull List<GVector2f> zones) {
-        zones.forEach(a -> remove(a.div(Block.SIZE).toInt()));
+        zones.forEach(a -> remove(a.div(Config.BLOCK_SIZE).toInt()));
     }
 
     public void remove(GVector2f sur) {
@@ -274,16 +274,16 @@ public class Map implements InteractAble {
 
     @NotNull
     public static GVector2f globalPosToLocalPos(GVector2f pos) {
-        return pos.sub(pos.mod(Block.SIZE)).div(Block.SIZE);
+        return pos.sub(pos.mod(Config.BLOCK_SIZE)).div(Config.BLOCK_SIZE);
     }
 
     @NotNull
     public static GVector2f localPosToGlobalPos(GVector2f pos) {
-        return pos.mul(Block.SIZE);
+        return pos.mul(Config.BLOCK_SIZE);
     }
 
     public Block getBlockOnPosition(GVector2f sur) {
-        GVector2f blockSize = Block.SIZE;
+        GVector2f blockSize = Config.BLOCK_SIZE;
         GVector2f pos = sur.sub(sur.mod(blockSize)).div(blockSize);
 
         return getBlock(pos.getXi(), pos.getYi());

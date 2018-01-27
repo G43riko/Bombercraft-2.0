@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bomb extends Helper {
-
     private final long addedAt;
     private final int             detonationTime = 2000;
     private final Timer timer;
@@ -55,10 +54,10 @@ public class Bomb extends Helper {
             value++;
             counter++;
         }
-        g2.fillRect(actPos.getXi() + Block.SIZE.getXi(),
+        g2.fillRect(actPos.getXi() + Config.BLOCK_SIZE.getXi(),
                     actPos.getYi(),
-                    Block.SIZE.getXi() * counter,
-                    Block.SIZE.getYi());
+                    Config.BLOCK_SIZE.getXi() * counter,
+                    Config.BLOCK_SIZE.getYi());
 
         //LEFT
         value = localPos.getXi() - 1;
@@ -68,10 +67,10 @@ public class Bomb extends Helper {
             counter++;
         }
 
-        g2.fillRect(actPos.getXi() - Block.SIZE.getXi() * counter,
+        g2.fillRect(actPos.getXi() - Config.BLOCK_SIZE.getXi() * counter,
                     actPos.getYi(),
-                    Block.SIZE.getXi() * counter,
-                    Block.SIZE.getYi());
+                    Config.BLOCK_SIZE.getXi() * counter,
+                    Config.BLOCK_SIZE.getYi());
 
 
         //DOWN
@@ -83,9 +82,9 @@ public class Bomb extends Helper {
         }
 
         g2.fillRect(actPos.getXi(),
-                    actPos.getYi() + Block.SIZE.getYi(),
-                    Block.SIZE.getXi(),
-                    Block.SIZE.getYi() * counter);
+                    actPos.getYi() + Config.BLOCK_SIZE.getYi(),
+                    Config.BLOCK_SIZE.getXi(),
+                    Config.BLOCK_SIZE.getYi() * counter);
 
         //UP
         value = localPos.getYi() - 1;
@@ -96,9 +95,9 @@ public class Bomb extends Helper {
         }
 
         g2.fillRect(actPos.getXi(),
-                    actPos.getYi() - Block.SIZE.getYi() * counter,
-                    Block.SIZE.getXi(),
-                    Block.SIZE.getYi() * counter);
+                    actPos.getYi() - Config.BLOCK_SIZE.getYi() * counter,
+                    Config.BLOCK_SIZE.getXi(),
+                    Config.BLOCK_SIZE.getYi() * counter);
     }
 
     private void calcTargetBlocks() {
@@ -122,8 +121,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi() + Block.SIZE.getXi(), position.getYi()));
-        damageAreas.add(new GVector2f(Block.SIZE.getXi() * counter, Block.SIZE.getYi()));
+        damageAreas.add(new GVector2f(position.getXi() + Config.BLOCK_SIZE.getXi(), position.getYi()));
+        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi() * counter, Config.BLOCK_SIZE.getYi()));
 
 
         //LEFT
@@ -140,8 +139,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi() - Block.SIZE.getXi() * counter, position.getYi()));
-        damageAreas.add(new GVector2f(Block.SIZE.getXi() * counter, Block.SIZE.getYi()));
+        damageAreas.add(new GVector2f(position.getXi() - Config.BLOCK_SIZE.getXi() * counter, position.getYi()));
+        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi() * counter, Config.BLOCK_SIZE.getYi()));
 
 
         //DOWN
@@ -158,8 +157,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi(), position.getYi() + Block.SIZE.getYi()));
-        damageAreas.add(new GVector2f(Block.SIZE.getXi(), Block.SIZE.getYi() * counter));
+        damageAreas.add(new GVector2f(position.getXi(), position.getYi() + Config.BLOCK_SIZE.getYi()));
+        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi(), Config.BLOCK_SIZE.getYi() * counter));
 
         //UP
         value = localPos.getYi() - 1;
@@ -175,8 +174,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi(), position.getYi() - Block.SIZE.getYi() * counter));
-        damageAreas.add(new GVector2f(Block.SIZE.getXi(), Block.SIZE.getYi() * counter));
+        damageAreas.add(new GVector2f(position.getXi(), position.getYi() - Config.BLOCK_SIZE.getYi() * counter));
+        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi(), Config.BLOCK_SIZE.getYi() * counter));
 
     }
 
@@ -192,7 +191,7 @@ public class Bomb extends Helper {
         alive = false;
         calcTargetBlocks();
         getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks, damageAreas);
-        getParent().addExplosion(position.add(Block.SIZE.div(2)), Block.SIZE, Color.black, 15, true, true);
+        getParent().addExplosion(position.add(Config.BLOCK_SIZE.div(2)), Config.BLOCK_SIZE, Color.black, 15, true, true);
     }
 
     @Override

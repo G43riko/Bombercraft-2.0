@@ -64,7 +64,7 @@ public class ParticleEmitterData {
 
         result.particlePerFrame = 20f;
         result.size = new GVector2f(5, 5);
-        result.speed = new GVector2f(20, 20);
+        result.speed = new GVector2f(10, 20);
         result.positionRandomness = new GVector2f(1, 1);
         result.direction = new GVector2f(0, 360);
         result.sizeRandomness = 1;

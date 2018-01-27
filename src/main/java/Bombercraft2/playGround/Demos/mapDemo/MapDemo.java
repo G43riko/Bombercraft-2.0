@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Demos.mapDemo;
 
 import java.awt.Graphics2D;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -22,7 +23,7 @@ public class MapDemo extends GameState implements SimpleGameAble {
 
     public MapDemo(CorePlayGround parent) {
         super(Type.MapDemo);
-        viewManager = new ViewManager(NUMBERS_OF_BLOCKS.mul(Block.SIZE),
+        viewManager = new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
                                       parent.getCanvas().getWidth(),
                                       parent.getCanvas().getHeight(),
                                       3);

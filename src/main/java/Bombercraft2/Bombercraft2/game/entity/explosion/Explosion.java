@@ -13,7 +13,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Explosion extends Entity {
+public class Explosion extends Entity<GameAble> {
     private ArrayList<ShockWave>       waves      = new ArrayList<>();
     private ArrayList<Particle>        particles  = new ArrayList<>();
     private ArrayList<SpriteAnimation> animations = new ArrayList<>();

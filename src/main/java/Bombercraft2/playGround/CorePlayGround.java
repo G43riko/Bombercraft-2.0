@@ -3,11 +3,13 @@ package Bombercraft2.playGround;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.GameStatesManager;
 import Bombercraft2.Bombercraft2.gui2.GuiManager;
+import Bombercraft2.Bombercraft2.gui2.components.VerticalScrollPanel;
 import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Demos.*;
 import Bombercraft2.playGround.Demos.chunkedMapDemo.ChunkedMapDemo;
 import Bombercraft2.playGround.Demos.mapDemo.MapDemo;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 
@@ -20,7 +22,6 @@ public class CorePlayGround extends CoreEngine {
     CorePlayGround(int fps, int ups, boolean renderTime) {
         super(fps, ups, renderTime);
         guiManager.createMainPanel(getCanvas());
-
         guiManager.getMainPanel().addComponent(mainMenu);
         mainMenu.addButton("Ray casting", () -> setScene(new BasicDemo(this)));
         mainMenu.addButton("Closest point", () -> setScene(new ClosestDemo(this)));
@@ -31,6 +32,8 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Map", () -> setScene(new MapDemo(this)));
         mainMenu.addButton("Chunked map", () -> setScene(new ChunkedMapDemo(this)));
         mainMenu.addButton("Particles preview", () -> setScene(new ParticlesPreviewDemo(this)));
+        mainMenu.addButton("Bomb", () -> setScene(new BombDemo(this)));
+
         mainMenu.addButton("Exit", this::exitGame);
     }
 
@@ -46,7 +49,7 @@ public class CorePlayGround extends CoreEngine {
     }
 
     @Override
-    protected void render(Graphics2D g2) {
+    protected void render(@NotNull Graphics2D g2) {
         if (!runningGame) {
             guiManager.render(g2);
         }

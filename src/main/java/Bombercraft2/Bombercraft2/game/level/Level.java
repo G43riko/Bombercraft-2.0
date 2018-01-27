@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.game.level;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
@@ -42,7 +43,7 @@ public class Level implements InteractAble {
     }
 
     public Level() {
-        respawnZones.add(Block.SIZE);
+        respawnZones.add(Config.BLOCK_SIZE);
         setDefaultPlayerInfo();
         GLogger.log(GLogger.GLog.LEVEL_CREATED);
     }

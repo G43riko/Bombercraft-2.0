@@ -7,7 +7,7 @@ import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
-public abstract class Bot extends Entity {
+public abstract class Bot extends Entity<GameAble> {
     Direction direction;
     private       int      health;
     private final BotModel model;

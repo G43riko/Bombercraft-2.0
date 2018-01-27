@@ -11,6 +11,7 @@ import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.multiplayer.Connector;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -22,41 +23,55 @@ public interface GameAble extends InteractAble, Visible, SimpleGameAble {
 
     Canvas getCanvas();
 
-    JSONObject getWeapon(String weaponLaser);
+    @NotNull
+    JSONObject getWeapon(@NotNull String weaponLaser);
 
-    boolean getVisibleOption(String key);
+    boolean getVisibleOption(@NotNull String key);
 
-    Player getPlayerByName(String name);
+    @NotNull
+    Player getPlayerByName(@NotNull String name);
 
-    String getLabelOf(String key);
+    @NotNull
+    String getLabelOf(@NotNull String key);
 
+    @NotNull
     GVector2f getPlayerDirection();
 
+    @NotNull
     SceneManager getSceneManager();
 
+    @NotNull
     ToolManager getToolsManager();
 
+    @NotNull
     GVector2f getPlayerTarget();
 
+    @NotNull
     Connector getConnector();
 
+    @NotNull
     String getBasicInfo();
 
+    @NotNull
     ArrayList<String> getLogInfo();
 
+    @NotNull
     MyPlayer getMyPlayer();
 
+    @NotNull
     String getGameInfo();
 
+    @NotNull
     Profile getProfile();
 
+    @NotNull
     Level getLevel();
 
-    void addBullet(BulletManager.Types bulletType, GVector2f angle, GVector2f position);
+    void addBullet(@NotNull BulletManager.Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position);
 
-    void addExplosion(GVector2f position,
-                      GVector2f size,
-                      Color color,
+    void addExplosion(@NotNull GVector2f position,
+                      @NotNull GVector2f size,
+                      @NotNull Color color,
                       int number,
                       boolean explosion,
                       boolean shockWave
@@ -67,21 +82,21 @@ public interface GameAble extends InteractAble, Visible, SimpleGameAble {
      * @param type        - type of explosion
      * @param createdTime - time when bomb was created by client - prevent network delay
      */
-    void addHelper(GVector2f pos, Type type, long createdTime);
+    void addHelper(@NotNull GVector2f pos, @NotNull Type type, long createdTime);
 
-    void addEmitter(GVector2f position, Emitter.Types type);
+    void addEmitter(@NotNull GVector2f position, @NotNull Emitter.Types type);
 
-    void addEnemy(GVector2f position, String type);
+    void addEnemy(@NotNull GVector2f position, @NotNull String type);
 
-    void addPlayer(String name, String image);
+    void addPlayer(@NotNull String name, @NotNull String image);
 
-    void explodeBombAt(GVector2f globalPosToLocalPos);
+    void explodeBombAt(@NotNull GVector2f globalPosToLocalPos);
 
-    void switchVisibleOption(String key);
+    void switchVisibleOption(@NotNull String key);
 
     boolean hasWall(float i, float j);
 
-    void removePlayer(String name);
+    void removePlayer(@NotNull String name);
 
     void changeZoom(float f);
 
@@ -91,10 +106,12 @@ public interface GameAble extends InteractAble, Visible, SimpleGameAble {
 
     void newGame();
 
+    @NotNull
     JSONObject toJSON();
 
     void endGame();
 
+    @NotNull
     HashMap<String, String> getStats();
 
 

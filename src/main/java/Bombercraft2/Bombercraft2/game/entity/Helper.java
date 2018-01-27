@@ -3,13 +3,14 @@ package Bombercraft2.Bombercraft2.game.entity;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
+import org.jetbrains.annotations.NotNull;
 import utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
 
-public abstract class Helper extends Entity {
+public abstract class Helper extends Entity<GameAble> {
     private final Helper.Type type;
 
     public enum Type implements Iconable {
@@ -34,6 +35,7 @@ public abstract class Helper extends Entity {
 
         public String getName() {return name;}
 
+        @NotNull
         public Image getImage() {return image;}
     }
 

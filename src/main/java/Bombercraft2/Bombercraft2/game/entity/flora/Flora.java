@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
@@ -95,6 +96,7 @@ public abstract class Flora extends Entity {
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
+        @NotNull
         public Image getImage() {return image;}
 
         public GVector2f getSize() {return size;}
@@ -121,6 +123,7 @@ public abstract class Flora extends Entity {
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
+        @NotNull
         public Image getImage() {return image;}
 
         public GVector2f getSize() {return size;}
@@ -145,6 +148,7 @@ public abstract class Flora extends Entity {
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
+        @NotNull
         public Image getImage() {return image;}
 
         public GVector2f getSize() {return size;}

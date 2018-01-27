@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity.flora;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -53,27 +54,27 @@ public class FloraManager implements JSONAble {
 
     private void creteBushByType(Flora.Bushes type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Block.SIZE.div(2))).getType() == Block.Type.GRASS) {
+        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE.div(2))).getType() == Block.Type.GRASS) {
             addFlora(new Bush(type, sur, parent));
         }
     }
 
     private void creteTreeByType(Flora.Trees type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Block.SIZE.div(2))).getType() == Block.Type.GRASS) {
+        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE.div(2))).getType() == Block.Type.GRASS) {
             addFlora(new Tree(type, sur, parent));
         }
     }
 
     private void cretePlantByType(Flora.Plants type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Block.SIZE.div(2))).getType() == Block.Type.GRASS) {
+        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE.div(2))).getType() == Block.Type.GRASS) {
             addFlora(new Plant(type, sur, parent));
         }
     }
 
     private void createFlora() {
-        GVector2f numbers = map.getSize().sub(Block.SIZE);
+        GVector2f numbers = map.getSize().sub(Config.BLOCK_SIZE);
         for (int i = 0; i < 33; i++) {
             for (int j = 0; j < Flora.Bushes.values().length; j++) {
                 creteBushByType(Flora.Bushes.values()[j], numbers);

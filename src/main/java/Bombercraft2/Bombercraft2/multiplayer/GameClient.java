@@ -13,6 +13,8 @@ import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.multiplayer.core.Client;
 import Bombercraft2.Bombercraft2.multiplayer.core.Server;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,11 +24,13 @@ import utils.math.GVector2f;
 import java.util.List;
 
 public class GameClient extends Client implements Connector {
+    @NotNull
     private final MenuAble parent;
+    @Nullable
     private CommonMethods methods = null;
 
 
-    public GameClient(MenuAble coreGame, String ip) {
+    public GameClient(@NotNull MenuAble coreGame, @NotNull String ip) {
         super(ip);
         this.parent = coreGame;
     }
@@ -36,12 +40,12 @@ public class GameClient extends Client implements Connector {
 
 
     @Override
-    public void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> damageAreas) {
+    public void setBombExplode(@NotNull GVector2f position, @NotNull List<Block> blocks, @NotNull List<GVector2f> damageAreas) {
         parent.getGame().explodeBombAt(position);
     }
 
     @Override
-    public void onBombExplode(JSONObject data) {
+    public void onBombExplode(@NotNull JSONObject data) {
         try {
             int damage = data.getInt(Texts.DAMAGE);
             JSONArray blocks = data.getJSONArray(Texts.HIT_BLOCKS);
@@ -89,7 +93,7 @@ public class GameClient extends Client implements Connector {
         sendPlayerInfo();
     }
 
-    public void onPutHelper(JSONObject data) {
+    public void onPutHelper(@NotNull JSONObject data) {
         methods.onPutHelper(data);
     }
 
@@ -146,27 +150,27 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void setRemoveBlock(GVector2f position) {
+    public void setRemoveBlock(@NotNull GVector2f position) {
         methods.setRemoveBlock(position);
     }
 
     @Override
-    public void setBuildBlock(GVector2f position, Type type) {
+    public void setBuildBlock(@NotNull GVector2f position, @NotNull Type type) {
         methods.setBuildBlock(position, type);
     }
 
     @Override
-    public void setBuildBlockArea(GVector2f minPos, GVector2f maxPos, Type blockType) {
+    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull Type blockType) {
         methods.setBuildBlockArea(minPos, maxPos, blockType);
     }
 
     @Override
-    public void setPutHelper(GVector2f position, Helper.Type type) {
+    public void setPutHelper(@NotNull GVector2f position, @NotNull Helper.Type type) {
         methods.setPutHelper(position, type);
     }
 
     @Override
-    public void setPlayerChange(Player player) {
+    public void setPlayerChange(@NotNull Player player) {
         methods.setPlayerChange(player);
     }
 
@@ -187,45 +191,45 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void onRemoveBlock(JSONObject data) {
+    public void onRemoveBlock(@NotNull JSONObject data) {
         methods.onRemoveBlock(data);
     }
 
     @Override
-    public void onBuildBlock(JSONObject data) {
+    public void onBuildBlock(@NotNull JSONObject data) {
         methods.onBuildBlock(data);
     }
 
     @Override
-    public void onPlayerChange(JSONObject data) {
+    public void onPlayerChange(@NotNull JSONObject data) {
         methods.onPlayerChange(data);
     }
 
     @Override
-    public void setPutEmitter(Types emitterOnHit, GVector2f position) {
+    public void setPutEmitter(@NotNull Types emitterOnHit, @NotNull GVector2f position) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public boolean bulletHitEnemy(Bullet bulletInstance) {
+    public boolean bulletHitEnemy(@NotNull Bullet bulletInstance) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public void hitBlock(GVector2f position, int damage) {
+    public void hitBlock(@NotNull GVector2f position, int damage) {
         // TODO Auto-generated method stub
 
     }
 
     @Override
-    public void setPutBullet(MyPlayer myPlayer, ShootAble shooter) {
+    public void setPutBullet(@NotNull MyPlayer myPlayer, @NotNull ShootAble shooter) {
         methods.setPutBullet(myPlayer, shooter);
     }
 
     @Override
-    public void onPutBullet(JSONObject data) {
+    public void onPutBullet(@NotNull JSONObject data) {
         methods.onPutBullet(data);
     }
 

@@ -14,7 +14,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class Player extends Entity implements HealthAble {
+public class Player extends Entity<GameAble> implements HealthAble {
     public enum Direction {
         UP(2, new GVector2f(0, -1)),
         DOWN(3, new GVector2f(0, 1)),
@@ -92,7 +92,7 @@ public class Player extends Entity implements HealthAble {
 
         GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
 
-        GVector2f size = Block.SIZE.mul(getParent().getZoom());
+        GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
 
         PlayerSprite.drawPlayer(pos, size, g2, getDirection(), getImage(), isMoving());
 
@@ -127,8 +127,8 @@ public class Player extends Entity implements HealthAble {
     }
 
     public GVector2f getSelectorPos() {
-        GVector2f pos = getPosition().add(Block.SIZE.div(2)).div(Block.SIZE).toInt();
-        pos = pos.add(Utils.getNormalMoveFromDir(getDirection())).mul(Block.SIZE);
+        GVector2f pos = getPosition().add(Config.BLOCK_SIZE.div(2)).div(Config.BLOCK_SIZE).toInt();
+        pos = pos.add(Utils.getNormalMoveFromDir(getDirection())).mul(Config.BLOCK_SIZE);
         return pos;
     }
 

@@ -24,7 +24,7 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
 
     public ChunkedMapDemo(@NotNull CorePlayGround parent) {
         super(Type.ChunkedMapDemo);
-        viewManager = new ViewManager(NUMBER_OF_CHUNKS.mul(Block.SIZE).mul(Config.CHUNK_SIZE),
+        viewManager = new ViewManager(NUMBER_OF_CHUNKS.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE),
                                       parent.getCanvas().getWidth(),
                                       parent.getCanvas().getHeight(),
                                       3);

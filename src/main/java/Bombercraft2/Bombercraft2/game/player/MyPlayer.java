@@ -181,17 +181,17 @@ public class MyPlayer extends Player {
         final float rightOffset = 21;
         final float leftOffset = 19;
 
-        GVector2f t = position.add(new GVector2f(Block.SIZE.getX(), Block.SIZE.getY() - topOffset).div(2))
-                              .div(Block.SIZE)
+        GVector2f t = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() - topOffset).div(2))
+                              .div(Config.BLOCK_SIZE)
                               .toInt();
-        GVector2f b = position.add(new GVector2f(Block.SIZE.getX(), Block.SIZE.getY() + bottomOffset).div(2))
-                              .div(Block.SIZE)
+        GVector2f b = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() + bottomOffset).div(2))
+                              .div(Config.BLOCK_SIZE)
                               .toInt();
-        GVector2f r = position.add(new GVector2f(Block.SIZE.getX() - rightOffset, Block.SIZE.getY()).div(2))
-                              .div(Block.SIZE)
+        GVector2f r = position.add(new GVector2f(Config.BLOCK_SIZE.getX() - rightOffset, Config.BLOCK_SIZE.getY()).div(2))
+                              .div(Config.BLOCK_SIZE)
                               .toInt();
-        GVector2f l = position.add(new GVector2f(Block.SIZE.getX() + leftOffset, Block.SIZE.getY()).div(2))
-                              .div(Block.SIZE)
+        GVector2f l = position.add(new GVector2f(Config.BLOCK_SIZE.getX() + leftOffset, Config.BLOCK_SIZE.getY()).div(2))
+                              .div(Config.BLOCK_SIZE)
                               .toInt();
 
         boolean checkBomb = !getParent().getSceneManager().isBombOn(t.getXi(), t.getYi(), lastPutBomb) &&
@@ -199,7 +199,7 @@ public class MyPlayer extends Player {
                 !getParent().getSceneManager().isBombOn(r.getXi(), r.getYi(), lastPutBomb) &&
                 !getParent().getSceneManager().isBombOn(l.getXi(), l.getYi(), lastPutBomb);
 
-        if (lastPutBomb != null && lastPutBomb.getPosition().dist(getPosition()) > Block.SIZE.getLength()) {
+        if (lastPutBomb != null && lastPutBomb.getPosition().dist(getPosition()) > Config.BLOCK_SIZE.getLength()) {
             lastPutBomb = null;
         }
 
@@ -218,7 +218,7 @@ public class MyPlayer extends Player {
 
     private void checkOffset() {
 
-        GVector2f pos = getPosition().mul(getParent().getZoom()).add(Block.SIZE.mul(getParent().getZoom() / 2));
+        GVector2f pos = getPosition().mul(getParent().getZoom()).add(Config.BLOCK_SIZE.mul(getParent().getZoom() / 2));
 
         offset.setX(pos.getX() - getParent().getCanvas().getWidth() / 2);
         offset.setY(pos.getY() - getParent().getCanvas().getHeight() / 2);

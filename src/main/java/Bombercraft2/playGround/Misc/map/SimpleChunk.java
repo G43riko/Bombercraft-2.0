@@ -2,9 +2,12 @@ package Bombercraft2.playGround.Misc.map;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.SimpleTypedBlock;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONObject;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 
@@ -13,16 +16,13 @@ import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SimpleChunk implements Visible {
+public class SimpleChunk extends Entity<SimpleGameAble> {
     public final static GVector2f SIZE = Config.BLOCK_SIZE.mul(Config.CHUNK_SIZE);
-    private final SimpleChunkedMap parent;
-    private final GVector2f        position;
     private BufferedImage                     image  = null;
     private HashMap<String, SimpleTypedBlock> blocks = null;
 
     public SimpleChunk(SimpleChunkedMap parent, GVector2f position) {
-        this.position = position;
-        this.parent = parent;
+        super(position, parent.getParent());
         createRandomMap();
     }
 
@@ -38,7 +38,7 @@ public class SimpleChunk implements Visible {
             for (int j = 0; j < Config.CHUNK_SIZE.getYi(); j++) {
                 addBlock(i, j, new SimpleTypedBlock(new GVector2f(i, j),
                                                     (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
-                                                    parent.getParent(),
+                                                    parent,
                                                     getPosition()));
             }
         }
@@ -48,17 +48,17 @@ public class SimpleChunk implements Visible {
         blocks.put(i + "_" + j, block);
     }
 
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         blocks.entrySet()
               .stream()
               .map(Map.Entry::getValue)
-              .filter(parent.getParent()::isVisible)
+              .filter(parent::isVisible)
               .forEach(a -> a.render(g2));
 
         if (Config.SHOW_CHUNK_BORDERS) {
             g2.setColor(Color.black);
-            final GVector2f realPosition = getPosition().mul(parent.getParent().getZoom()).sub(parent.getParent().getOffset());
-            final GVector2f realSize = SIZE.mul(parent.getParent().getZoom());
+            final GVector2f realPosition = getPosition().mul(parent.getZoom()).sub(parent.getOffset());
+            final GVector2f realSize = SIZE.mul(parent.getZoom());
             g2.setStroke(new BasicStroke(3));
             g2.drawRect(realPosition.getXi(), realPosition.getYi(), realSize.getXi(), realSize.getYi());
         }
@@ -69,6 +69,11 @@ public class SimpleChunk implements Visible {
     @Override
     public GVector2f getPosition() {
         return position.mul(SIZE);
+    }
+
+    @Override
+    public JSONObject toJSON() {
+        return null;
     }
 
     @Contract(pure = true)

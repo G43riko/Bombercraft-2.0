@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.gui.submenu;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.Iconable;
+import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -120,7 +121,8 @@ public class SubmenuItem implements Iconable{
 	}
 
 
-	@Override
+	@NotNull
+    @Override
 	public Image 				getImage() 	{return image;}
 	public boolean 				getValue()	{return value;}
 	public List<SubmenuItem> 	getItems()	{return items;}

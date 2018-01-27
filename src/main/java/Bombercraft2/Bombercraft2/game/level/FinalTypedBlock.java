@@ -19,10 +19,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public final class FinalTypedBlock extends SimpleTypedBlock {
-    public final static GVector2f SIZE = Config.BLOCK_SIZE;
-
     private int health;
-
 
     public FinalTypedBlock(@NotNull JSONObject object, @NotNull GameAble parent) {
         super(new GVector2f(), 0, parent);
@@ -47,7 +44,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     public void render(@NotNull Graphics2D g2) {
 //		if(type == NOTHING)
 //			return;
-        GVector2f size = SIZE.mul(parent.getZoom());
+        GVector2f size = Config.BLOCK_SIZE.mul(parent.getZoom());
         GVector2f pos = position.mul(size).sub(parent.getOffset());
 
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
@@ -101,7 +98,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         if (t != null && t.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 8, 4),
                          pos.getXi(),
-                         pos.getYi() - FinalTypedBlock.SIZE.getYi(),
+                         pos.getYi() - Config.BLOCK_SIZE.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
@@ -110,7 +107,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         if (b != null && b.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 2, 4),
                          pos.getXi(),
-                         pos.getYi() + FinalTypedBlock.SIZE.getYi(),
+                         pos.getYi() + Config.BLOCK_SIZE.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
@@ -118,7 +115,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
         if (r != null && r.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 1, 4),
-                         pos.getXi() + FinalTypedBlock.SIZE.getXi(),
+                         pos.getXi() + Config.BLOCK_SIZE.getXi(),
                          pos.getYi(),
                          size.getXi(),
                          size.getYi(),
@@ -127,7 +124,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
         if (l != null && l.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 4, 4),
-                         pos.getXi() - FinalTypedBlock.SIZE.getXi(),
+                         pos.getXi() - Config.BLOCK_SIZE.getXi(),
                          pos.getYi(),
                          size.getXi(),
                          size.getYi(),
@@ -143,7 +140,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
         double finalAngle = Math.toRadians(angle + 90);
         GVector2f offset = new GVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).mul(length);
-        GVector2f pos = position.mul(FinalTypedBlock.SIZE).sub(parent.getOffset());
+        GVector2f pos = position.mul(Config.BLOCK_SIZE).sub(parent.getOffset());
         g2.setColor(color);
 
         /*   2---3
@@ -156,17 +153,17 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         int[] xPos = new int[]{
                 (int) (pos.getX()),
                 (int) (pos.add(offset).getX()),
-                (int) (pos.add(offset).getX() + FinalTypedBlock.SIZE.getX()),
-                (int) (pos.add(offset).getX() + FinalTypedBlock.SIZE.getX()),
-                (int) (pos.getXi() + FinalTypedBlock.SIZE.getX())
+                (int) (pos.add(offset).getX() + Config.BLOCK_SIZE.getX()),
+                (int) (pos.add(offset).getX() + Config.BLOCK_SIZE.getX()),
+                (int) (pos.getXi() + Config.BLOCK_SIZE.getX())
         };
 
         int[] yPos = new int[]{
                 (int) (pos.getY()),
                 (int) (pos.sub(offset).getY()),
                 (int) (pos.sub(offset).getY()),
-                (int) (pos.getY() + FinalTypedBlock.SIZE.getY() - offset.getY()),
-                (int) (pos.getY() + FinalTypedBlock.SIZE.getY())
+                (int) (pos.getY() + Config.BLOCK_SIZE.getY() - offset.getY()),
+                (int) (pos.getY() + Config.BLOCK_SIZE.getY())
         };
 
         g2.fillPolygon(xPos, yPos, 5);
@@ -284,7 +281,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getPosition() {return position.mul(SIZE);}
+    public GVector2f getPosition() {return position.mul(Config.BLOCK_SIZE);}
 
     @Contract(pure = true)
     @NotNull
@@ -301,17 +298,17 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     public GVector2f getInterSect(@NotNull GVector2f ss, @NotNull GVector2f se) {
         ArrayList<GVector2f> res = new ArrayList<>();
 
-        GVector2f p = position.mul(FinalTypedBlock.SIZE);
-        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(FinalTypedBlock.SIZE.getX(), 0)), p));
-        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(0, FinalTypedBlock.SIZE.getY())), p));
+        GVector2f p = position.mul(Config.BLOCK_SIZE);
+        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(Config.BLOCK_SIZE.getX(), 0)), p));
+        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(0, Config.BLOCK_SIZE.getY())), p));
         res.add(LineLineIntersect.linesIntersect(ss,
                                                  se,
-                                                 p.add(new GVector2f(FinalTypedBlock.SIZE.getX(), 0)),
-                                                 p.add(FinalTypedBlock.SIZE)));
+                                                 p.add(new GVector2f(Config.BLOCK_SIZE.getX(), 0)),
+                                                 p.add(Config.BLOCK_SIZE)));
         res.add(LineLineIntersect.linesIntersect(ss,
                                                  se,
-                                                 p.add(new GVector2f(0, FinalTypedBlock.SIZE.getY())),
-                                                 p.add(FinalTypedBlock.SIZE)));
+                                                 p.add(new GVector2f(0, Config.BLOCK_SIZE.getY())),
+                                                 p.add(Config.BLOCK_SIZE)));
 
         res = res.stream().filter(Objects::nonNull).collect(Collectors.toCollection(ArrayList::new));
         if (res.size() == 0) {

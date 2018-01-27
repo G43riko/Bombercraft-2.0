@@ -6,8 +6,8 @@ import utils.Utils;
 public class App {
 
     public static void main(String[] args) {
-    	// Bombercraft game = new Bombercraft();
-     PlayGround game = new PlayGround();
+    	Bombercraft game = new Bombercraft();
+     //PlayGround game = new PlayGround();
         game.run();
     }
 

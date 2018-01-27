@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.game.player.placers;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import utils.math.GVector2f;
@@ -38,20 +39,20 @@ public class AreaPlacer extends Placer {
             return;
         }
 
-        GVector2f globalPosStart = starPos.mul(Block.SIZE).sub(parent.getOffset());
-        GVector2f globalPosEnd = parent.getPlayerTarget().sub(parent.getOffset()).add(Block.SIZE);
-        GVector2f size = globalPosEnd.sub(globalPosStart).div(Block.SIZE).toInt().mul(Block.SIZE);
+        GVector2f globalPosStart = starPos.mul(Config.BLOCK_SIZE).sub(parent.getOffset());
+        GVector2f globalPosEnd = parent.getPlayerTarget().sub(parent.getOffset()).add(Config.BLOCK_SIZE);
+        GVector2f size = globalPosEnd.sub(globalPosStart).div(Config.BLOCK_SIZE).toInt().mul(Config.BLOCK_SIZE);
 
 
 //		System.out.println("size: " + size + ", globalPosStart: " + globalPosStart + ", globalPosEnd: " + globalPosEnd);
 //		
         if (size.getX() <= 0) {
-            globalPosStart.addToX(size.getX() - Block.SIZE.getX());
-            size.addToX(-Block.SIZE.getX() * 2);
+            globalPosStart.addToX(size.getX() - Config.BLOCK_SIZE.getX());
+            size.addToX(-Config.BLOCK_SIZE.getX() * 2);
         }
         if (size.getY() <= 0) {
-            globalPosStart.addToY(size.getY() - Block.SIZE.getY());
-            size.addToY(-Block.SIZE.getY() * 2);
+            globalPosStart.addToY(size.getY() - Config.BLOCK_SIZE.getY());
+            size.addToY(-Config.BLOCK_SIZE.getY() * 2);
         }
 
 

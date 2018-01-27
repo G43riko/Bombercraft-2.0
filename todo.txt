@@ -1,6 +1,6 @@
--hraci podla ID a nie podla mena
--server v GAME_INFO posle aj id noveho hraca
--možnosť toggle fullscreen
+- server v GAME_INFO posle aj id noveho hraca
+-
+
 
 LeftUpPanel
 	Options

@@ -18,7 +18,7 @@ class PlayerSelector {
 
     public void render(Graphics2D g2) {
         GVector2f pos = getSelectorPos().mul(parent.getParent().getZoom()).sub(parent.getParent().getOffset());
-        GVector2f size = Block.SIZE.mul(parent.getParent().getZoom());
+        GVector2f size = Config.BLOCK_SIZE.mul(parent.getParent().getZoom());
         g2.setStroke(new BasicStroke(selectorWidth));
         g2.setColor(selectorColor);
         g2.drawRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());
@@ -27,8 +27,8 @@ class PlayerSelector {
     }
 
     private GVector2f getSelectorPos() {
-        GVector2f pos = parent.getPosition().add(Block.SIZE.div(2)).div(Block.SIZE).toInt();
-        pos = pos.add(Utils.getNormalMoveFromDir(parent.getDirection())).mul(Block.SIZE);
+        GVector2f pos = parent.getPosition().add(Config.BLOCK_SIZE.div(2)).div(Config.BLOCK_SIZE).toInt();
+        pos = pos.add(Utils.getNormalMoveFromDir(parent.getDirection())).mul(Config.BLOCK_SIZE);
         return pos;
     }
 }

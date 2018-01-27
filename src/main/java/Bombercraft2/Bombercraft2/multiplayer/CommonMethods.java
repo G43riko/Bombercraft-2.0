@@ -12,21 +12,24 @@ import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import Bombercraft2.Bombercraft2.multiplayer.core.Server;
 import Bombercraft2.Bombercraft2.multiplayer.core.Writable;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
 import utils.math.GVector2f;
 
 class CommonMethods {
+    @NotNull
     private final GameAble game;
+    @NotNull
     private final Writable parent;
 
-    public CommonMethods(GameAble game, Writable parent) {
+    public CommonMethods(@NotNull GameAble game, @NotNull Writable parent) {
         this.game = game;
         this.parent = parent;
     }
 
-    public void onRemoveBlock(JSONObject data) {
+    public void onRemoveBlock(@NotNull JSONObject data) {
         try {
             game.getLevel().getMap().remove(new GVector2f(data.getString(Texts.POSITION)));
         }
@@ -35,7 +38,7 @@ class CommonMethods {
         }
     }
 
-    public void onBuildBlock(JSONObject data) {
+    public void onBuildBlock(@NotNull JSONObject data) {
         try {
             GVector2f position = new GVector2f(data.getString(Texts.POSITION));
             Block block = game.getLevel().getMap().getBlock(position.getXi(), position.getYi());
@@ -50,7 +53,7 @@ class CommonMethods {
         }
     }
 
-    public void onPlayerChange(JSONObject data) {
+    public void onPlayerChange(@NotNull JSONObject data) {
         try {
             Player p = game.getPlayerByName(data.getString(Texts.PLAYER));
             p.setDirection(Direction.valueOf(data.getString(Texts.DIRECTION)));
@@ -62,7 +65,7 @@ class CommonMethods {
         }
     }
 
-    public void setPutHelper(GVector2f position, Helper.Type type) {
+    public void setPutHelper(@NotNull GVector2f position, @NotNull Helper.Type type) {
         long createdAt = System.currentTimeMillis();
         game.addHelper(position, type, createdAt);
 
@@ -78,7 +81,7 @@ class CommonMethods {
         }
     }
 
-    public void onPutHelper(JSONObject data) {
+    public void onPutHelper(@NotNull JSONObject data) {
         try {
             game.addHelper(new GVector2f(data.getString(Texts.POSITION)),
                            Helper.Type.valueOf(data.getString(Texts.TYPE)),
@@ -89,7 +92,7 @@ class CommonMethods {
         }
     }
 
-    public void setRemoveBlock(GVector2f position) {
+    public void setRemoveBlock(@NotNull GVector2f position) {
         game.getLevel().getMap().remove(position);
         try {
             JSONObject result = new JSONObject();
@@ -101,7 +104,7 @@ class CommonMethods {
         }
     }
 
-    public void setBuildBlock(GVector2f position, Type type) {
+    public void setBuildBlock(@NotNull GVector2f position, @NotNull Type type) {
         game.getLevel().getMap().getBlock(position.getXi(), position.getYi()).build(type);
         try {
             JSONObject result = new JSONObject();
@@ -114,7 +117,7 @@ class CommonMethods {
         }
     }
 
-    public void setBuildBlockArea(GVector2f minPos, GVector2f maxPos, Type blockType) {
+    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull Type blockType) {
         for (int i = minPos.getXi(); i <= maxPos.getX(); i++) {
             for (int j = minPos.getYi(); j <= maxPos.getY(); j++) {
                 game.getLevel().getMap().getBlock(i, j).build(blockType);
@@ -122,7 +125,7 @@ class CommonMethods {
         }
     }
 
-    public void setPutBullet(MyPlayer myPlayer, ShootAble shooter) {
+    public void setPutBullet(@NotNull MyPlayer myPlayer, @NotNull ShootAble shooter) {
         GVector2f angle = myPlayer.getTagetDirection();
         angle.normalize();
         //TODO tu treba spracovať už aj bonusy od hraca
@@ -155,7 +158,7 @@ class CommonMethods {
 //		game.addBullet(bulletType, angle, myPlayer.getTargetLocation());
 //		
 //	}
-    public void onPutBullet(JSONObject data) {
+    public void onPutBullet(@NotNull JSONObject data) {
         try {
             game.addBullet(Types.valueOf(data.getString(Texts.TYPE)),
                            new GVector2f(data.getString(Texts.DIRECTION)),

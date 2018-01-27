@@ -8,36 +8,40 @@ import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
 import java.util.List;
 
 public interface Connector {
-    void onPlayerChange(JSONObject data);
+    void onPlayerChange(@NotNull JSONObject data);
 
-    void setPlayerChange(Player player);
+    void setPlayerChange(@NotNull Player player);
 
-    void onRemoveBlock(JSONObject data);
+    void onRemoveBlock(@NotNull JSONObject data);
 
-    void setRemoveBlock(GVector2f position);
+    void setRemoveBlock(@NotNull GVector2f position);
 
-    void onBuildBlock(JSONObject data);
+    void onBuildBlock(@NotNull JSONObject data);
 
-    void setBuildBlock(GVector2f position, Type type);
+    void setBuildBlock(@NotNull GVector2f position, @NotNull Type type);
 
-    void setBuildBlockArea(GVector2f minPosition, GVector2f maxPosition, Type type);
+    void setBuildBlockArea(@NotNull GVector2f minPosition, @NotNull GVector2f maxPosition, @NotNull Type type);
 
-    default void onBombExplode(JSONObject data) {}
+    default void onBombExplode(@NotNull JSONObject data) {}
 
-    default void setBombExplode(GVector2f position, List<Block> blocks, List<GVector2f> damageAreas) {}
+    default void setBombExplode(@NotNull GVector2f position,
+                                @NotNull List<Block> blocks,
+                                @NotNull List<GVector2f> damageAreas
+                               ) {}
 
-    void onPutHelper(JSONObject data);
+    void onPutHelper(@NotNull JSONObject data);
 
-    void setPutHelper(GVector2f pos, Helper.Type type);
+    void setPutHelper(@NotNull GVector2f pos, @NotNull Helper.Type type);
 
     //	void hitBlock(GVector2f position, int damage);
-    default void onHitPlayer(String name, int damage) {}
+    default void onHitPlayer(@NotNull String name, int damage) {}
 
     /**
      * Tato funkcia sa vola pri presusenie hry aby sa dalo ostatnym hracom vediet ze bola hra prerusena
@@ -46,15 +50,13 @@ public interface Connector {
 
     void cleanUp();
 
-    void setPutEmitter(Types emitterOnHit, GVector2f position);
+    void setPutEmitter(@NotNull Types emitterOnHit, @NotNull GVector2f position);
 
-    boolean bulletHitEnemy(Bullet bulletInstance);
+    boolean bulletHitEnemy(@NotNull Bullet bulletInstance);
 
-    void hitBlock(GVector2f position, int damage);
+    void hitBlock(@NotNull GVector2f position, int damage);
 
-    void onPutBullet(JSONObject data);
+    void onPutBullet(@NotNull JSONObject data);
 
-    void setPutBullet(MyPlayer myPlayer, ShootAble shooter);
-
-
+    void setPutBullet(@NotNull MyPlayer myPlayer, @NotNull ShootAble shooter);
 }

@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.game;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -15,16 +16,17 @@ public class Timer {
     private final long startTime;
     private final long duration;
     private long angle     = 0;
+    @NotNull
     private final Entity parent;
 
-    public Timer(Entity parent, long startTime, long duration) {
+    public Timer(@NotNull Entity parent, long startTime, long duration) {
         this.parent = parent;
         this.startTime = startTime;
         this.duration = duration;
         // TODO Auto-generated constructor stub
     }
 
-    public void render(Graphics2D g2) {
+    public void render(@NotNull Graphics2D g2) {
         GVector2f parentPos = parent.getPosition().sub(parent.getParent().getOffset()).add(parent.getSize().div(2));
         GVector2f realPos = parentPos.sub(TIMER_SIZE.div(2));
 

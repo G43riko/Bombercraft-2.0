@@ -47,7 +47,7 @@ public class SimpleEmitter implements InteractAble {
                                               .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void setPosition(GVector2f position) {
+    public void setPosition(@NotNull GVector2f position) {
         this.position.set(position);
     }
 

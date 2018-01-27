@@ -175,6 +175,7 @@ public class Game extends GameState implements GameAble {
         gui.input();
     }
 
+    @NotNull
     @Override
     public ArrayList<String> getLogInfo() {
         ArrayList<String> result = new ArrayList<>();
@@ -208,6 +209,7 @@ public class Game extends GameState implements GameAble {
                 getOffset().getY() + getCanvas().getHeight() < b.getPosition().getY() * getZoom());
     }
 
+    @NotNull
     public String getLabelOf(String key) {
         return parent.getGuiManager().getLabelOf(key);
     }
@@ -218,16 +220,16 @@ public class Game extends GameState implements GameAble {
         return false;
     }
 
-    public boolean getVisibleOption(String key) {
+    public boolean getVisibleOption(@NotNull String key) {
         return parent.getVisibleOption(key);
     }
 
-    public void switchVisibleOption(String key) {
+    public void switchVisibleOption(@NotNull String key) {
         parent.switchVisibleOption(key);
     }
 
     @Override
-    public void addPlayer(String name, String image) {
+    public void addPlayer(@NotNull String name, @NotNull String image) {
         try {
             sceneManager.addPlayer(new Player(this,
                                               level.getRandomRespawnZone(),
@@ -243,9 +245,9 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void addExplosion(GVector2f position,
-                             GVector2f size,
-                             Color color,
+    public void addExplosion(@NotNull GVector2f position,
+                             @NotNull GVector2f size,
+                             @NotNull Color color,
                              int number,
                              boolean explosion,
                              boolean shockWave
@@ -254,12 +256,12 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void addEmitter(GVector2f position, Emitter.Types type) {
+    public void addEmitter(@NotNull GVector2f position, @NotNull Emitter.Types type) {
         sceneManager.addEmitter(position, type);
     }
 
     @Override
-    public void addEnemy(GVector2f position, String type) {
+    public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
         GLogger.notImplemented();
     }
 
@@ -297,6 +299,7 @@ public class Game extends GameState implements GameAble {
         calcPosition();
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return sceneManager.toJSON();
@@ -308,7 +311,7 @@ public class Game extends GameState implements GameAble {
 
         zoom += value;
 
-        if (level.getMap().getNumberOfBlocks().getX() * Block.SIZE.getX() * zoom < parent.getCanvas().getWidth()) {
+        if (level.getMap().getNumberOfBlocks().getX() * Config.BLOCK_SIZE.getX() * zoom < parent.getCanvas().getWidth()) {
             zoom -= value;
             return;
         }
@@ -325,12 +328,12 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void addHelper(GVector2f pos,
-                          Helper.Type type,
+    public void addHelper(@NotNull GVector2f pos,
+                          @NotNull Helper.Type type,
                           long createTime
                          ) {//TODO playerov bonus k poskodeniu tu ma byt
         GVector2f localPos = Map.globalPosToLocalPos(pos);
-        pos = pos.div(Block.SIZE).toInt().mul(Block.SIZE);
+        pos = pos.div(Config.BLOCK_SIZE).toInt().mul(Config.BLOCK_SIZE);
 
         String key = localPos.getXi() + "_" + localPos.getYi();
         if (sceneManager.existHelperOn(key)) {
@@ -352,7 +355,7 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void explodeBombAt(GVector2f pos) {
+    public void explodeBombAt(@NotNull GVector2f pos) {
         String key = pos.getXi() + "_" + pos.getYi();
         if (!sceneManager.existHelperOn(key)) {
             GLogger.printLine("Explodovala neexistujuca bomba na: " + pos);
@@ -375,8 +378,10 @@ public class Game extends GameState implements GameAble {
     @NotNull
     public GVector2f getSize() {return new GVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
 
+    @NotNull
     public Level getLevel() {return level;}
 
+    @NotNull
     public Profile getProfile() {return parent.getProfile();}
 
     @Contract(pure = true)
@@ -388,12 +393,16 @@ public class Game extends GameState implements GameAble {
 
     public Canvas getCanvas() {return parent.getCanvas();}
 
+    @NotNull
     public ToolManager getToolsManager() {return toolManager;}
 
+    @NotNull
     public Connector getConnector() {return parent.getConnector();}
 
+    @NotNull
     public MyPlayer getMyPlayer() {return myPlayer;}
 
+    @NotNull
     public String getGameInfo() {
         try {
             JSONObject o = new JSONObject();
@@ -407,6 +416,7 @@ public class Game extends GameState implements GameAble {
         return null;
     }
 
+    @NotNull
     @Override
     public String getBasicInfo() {
         try {
@@ -424,38 +434,43 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void removePlayer(String name) {
+    public void removePlayer(@NotNull String name) {
         sceneManager.removePlayer(name);
     }
 
+    @NotNull
     @Override
     public Player getPlayerByName(String name) {
         return sceneManager.getPlayerByName(name);
     }
 
+    @NotNull
     @Override
     public SceneManager getSceneManager() {
         return sceneManager;
     }
 
+    @NotNull
     @Override
     public JSONObject getWeapon(String type) {
         return parent.getWeapon(type);
     }
 
 
+    @NotNull
     @Override
     public GVector2f getPlayerDirection() {
         return myPlayer.getTagetDirection();
     }
 
+    @NotNull
     @Override
     public GVector2f getPlayerTarget() {
         return myPlayer.getTargetLocation();
     }
 
     @Override
-    public void addBullet(Types bulletType, GVector2f angle, GVector2f position) {
+    public void addBullet(@NotNull Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position) {
         Bullet bullet = null;
         switch (bulletType) {
             case LASER:
@@ -473,6 +488,7 @@ public class Game extends GameState implements GameAble {
         parent.endGame();
     }
 
+    @NotNull
     @Override
     public HashMap<String, String> getStats() {
         HashMap<String, String> stats = new HashMap<>(sceneManager.getStats());

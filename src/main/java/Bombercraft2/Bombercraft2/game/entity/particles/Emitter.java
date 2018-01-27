@@ -15,7 +15,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public abstract class Emitter extends Entity {
+public abstract class Emitter extends Entity<GameAble> {
     private static final HashMap<Types, JSONObject> predefinedParticles = new HashMap<>();
 
     public enum Types {

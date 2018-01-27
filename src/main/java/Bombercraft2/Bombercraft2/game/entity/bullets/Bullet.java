@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity.bullets;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
@@ -12,7 +13,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public abstract class Bullet extends Entity {
+public abstract class Bullet extends Entity<GameAble> {
     private       Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
     private final GVector2f     direction;
     private final BulletModel   model;
@@ -27,7 +28,7 @@ public abstract class Bullet extends Entity {
 
     @Override
     public void update(float delta) {
-        Block block = getParent().getLevel().getMap().getBlockOnPosition(getPosition().add(Block.SIZE.div(2)));
+        Block block = getParent().getLevel().getMap().getBlockOnPosition(getPosition().add(Config.BLOCK_SIZE.div(2)));
 
         if (block != null && !block.isWalkable()) {
             hit();
@@ -62,7 +63,7 @@ public abstract class Bullet extends Entity {
 
     private void checkBorders() {
         GVector2f a = position.add(model.getSize());
-        GVector2f b = getParent().getLevel().getMap().getNumberOfBlocks().mul(Block.SIZE).div(getParent().getZoom());
+        GVector2f b = getParent().getLevel().getMap().getNumberOfBlocks().mul(Config.BLOCK_SIZE).div(getParent().getZoom());
         if (a.getX() < 0 ||
                 a.getY() < 0 ||
                 position.getX() > b.getX() ||
