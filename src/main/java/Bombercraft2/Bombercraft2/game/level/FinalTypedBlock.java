@@ -3,7 +3,7 @@ package Bombercraft2.Bombercraft2.game.level;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.playGround.Misc.SimpleTypedBlock;
+import Bombercraft2.playGround.Misc.map.SimpleTypedBlock;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -50,6 +50,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
+    @NotNull
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
 

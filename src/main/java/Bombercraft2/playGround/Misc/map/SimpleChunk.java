@@ -1,10 +1,8 @@
 package Bombercraft2.playGround.Misc.map;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
-import Bombercraft2.playGround.Misc.SimpleTypedBlock;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -71,6 +69,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
         return position.mul(SIZE);
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

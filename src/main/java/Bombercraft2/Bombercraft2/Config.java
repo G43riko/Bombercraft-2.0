@@ -115,6 +115,8 @@ public class Config {
     public static final GVector2f CHUNK_SIZE           = new GVector2f(32, 32);
     public final static GVector2f BLOCK_SIZE         = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
                                                                      Config.DEFAULT_BLOCK_HEIGHT);
+    public final static GVector2f BLOCK_SIZE_HALF    = BLOCK_SIZE.div(2);
     public static final boolean   SHOW_CHUNK_BORDERS = false;
     public static final float     MIN_ZOOM           = 0.2f;
+
 }

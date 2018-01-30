@@ -5,6 +5,13 @@ import org.jetbrains.annotations.NotNull;
 import Bombercraft2.Bombercraft2.core.Visible;
 import utils.math.GVector2f;
 
+/**
+ * Components
+ *  - ViewManager
+ *      - getOffset
+ *      - getZoom
+ *  - ParticleManager
+ */
 public interface SimpleGameAble {
     @Contract(pure = true)
     default float getZoom() {

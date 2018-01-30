@@ -51,6 +51,7 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
         }
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

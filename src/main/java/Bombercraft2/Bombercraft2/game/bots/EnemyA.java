@@ -2,7 +2,7 @@ package Bombercraft2.Bombercraft2.game.bots;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.bots.BotManager.Types;
+import Bombercraft2.Bombercraft2.game.bots.BotFactory.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;

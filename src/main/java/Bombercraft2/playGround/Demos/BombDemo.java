@@ -53,7 +53,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
             parent.stopDemo();
         }
         if (Input.getMouseUp(Input.BUTTON_LEFT)) {
-            ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().sub(Config.BLOCK_SIZE.div(2)), this);
+            ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().sub(Config.BLOCK_SIZE_HALF), this);
             bomb.callback = (b) -> {
                 postFxManager.addImage(((ImagedBomb)b).getCrater(), b.getPosition(), b.getSize());
             };

@@ -54,21 +54,21 @@ public class FloraManager implements JSONAble {
 
     private void creteBushByType(Flora.Bushes type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE.div(2))).getType() == Block.Type.GRASS) {
+        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE_HALF)).getType() == Block.Type.GRASS) {
             addFlora(new Bush(type, sur, parent));
         }
     }
 
     private void creteTreeByType(Flora.Trees type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE.div(2))).getType() == Block.Type.GRASS) {
+        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE_HALF)).getType() == Block.Type.GRASS) {
             addFlora(new Tree(type, sur, parent));
         }
     }
 
     private void cretePlantByType(Flora.Plants type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE.div(2))).getType() == Block.Type.GRASS) {
+        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE_HALF)).getType() == Block.Type.GRASS) {
             addFlora(new Plant(type, sur, parent));
         }
     }

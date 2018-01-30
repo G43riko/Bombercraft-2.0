@@ -42,6 +42,7 @@ public class Particle extends Entity {
         g2.fillArc(pos.getXi(), pos.getYi(), totalSize.getXi(), totalSize.getYi(), 0, 360);
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

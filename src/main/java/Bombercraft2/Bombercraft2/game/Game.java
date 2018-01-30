@@ -4,7 +4,7 @@ import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.Profile;
 import Bombercraft2.Bombercraft2.core.*;
-import Bombercraft2.Bombercraft2.game.bots.BotManager;
+import Bombercraft2.Bombercraft2.game.bots.BotFactory;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
@@ -64,7 +64,7 @@ public class Game extends GameState implements GameAble {
                 GLogger.makeError(GLogger.GError.CANNOT_READ_JSON);
             }
             gameConfig = jsonResult.getJSONObject("data");
-            BotManager.init(gameConfig.getJSONObject("enemies"));
+            BotFactory.init(gameConfig.getJSONObject("enemies"));
             BulletManager.init(gameConfig.getJSONObject("bullets"));
             JSONObject helpers = gameConfig.getJSONObject("helpers");
             TowerCreator.init(helpers.getJSONObject("towers"));
@@ -169,7 +169,7 @@ public class Game extends GameState implements GameAble {
             return;
         }
         if (Input.isKeyDown(Input.KEY_ENTER)) {
-            sceneManager.addEnemy(myPlayer.getSelectorPos(), BotManager.Types.A);
+            sceneManager.addEnemy(myPlayer.getSelectorPos(), BotFactory.Types.A);
         }
         myPlayer.input();
         gui.input();

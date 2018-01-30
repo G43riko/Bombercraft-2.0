@@ -87,6 +87,7 @@ public class Explosion extends Entity<GameAble> {
         }
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         // TODO Auto-generated method stub

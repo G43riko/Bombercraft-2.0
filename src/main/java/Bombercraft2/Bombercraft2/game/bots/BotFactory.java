@@ -5,9 +5,10 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 
-public class BotManager {
+public class BotFactory {
     public enum Types {
-        A("a");
+        A("a"),
+        WORKER("worker");
         private final String name;
 
         Types(String name) {this.name = name;}

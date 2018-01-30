@@ -68,7 +68,7 @@ public class ParticleEmitterData {
         result.positionRandomness = new GVector2f(1, 1);
         result.direction = new GVector2f(0, 360);
         result.sizeRandomness = 1;
-        result.health = new GVector2f(100, 20);
+        result.health = new GVector2f(20, 20);
         result.color = Color.GREEN;
 
         return result;

@@ -1,4 +1,4 @@
-package Bombercraft2.playGround.Demos.chunkedMapDemo;
+package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.GameState;

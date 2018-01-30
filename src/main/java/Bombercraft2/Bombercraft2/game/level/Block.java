@@ -106,6 +106,7 @@ public class Block extends Entity<GameAble> {
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
@@ -137,7 +138,7 @@ public class Block extends Entity<GameAble> {
 
     private void remove(boolean addExplosion) {
         if (addExplosion) {
-            getParent().addExplosion(getPosition().add(Config.BLOCK_SIZE.div(2)),
+            getParent().addExplosion(getPosition().add(Config.BLOCK_SIZE_HALF),
                                      Config.BLOCK_SIZE,
                                      type.getMiniMapColor(),
                                      5, false, false);

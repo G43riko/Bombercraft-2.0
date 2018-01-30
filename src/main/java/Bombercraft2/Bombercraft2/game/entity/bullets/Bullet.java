@@ -28,7 +28,7 @@ public abstract class Bullet extends Entity<GameAble> {
 
     @Override
     public void update(float delta) {
-        Block block = getParent().getLevel().getMap().getBlockOnPosition(getPosition().add(Config.BLOCK_SIZE.div(2)));
+        Block block = getParent().getLevel().getMap().getBlockOnPosition(getPosition().add(Config.BLOCK_SIZE_HALF));
 
         if (block != null && !block.isWalkable()) {
             hit();
@@ -90,6 +90,7 @@ public abstract class Bullet extends Entity<GameAble> {
 
     public int getHealth() {return health;}
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         // TODO Auto-generated method stub

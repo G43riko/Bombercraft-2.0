@@ -63,6 +63,7 @@ public abstract class Flora extends Entity {
         return type;
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();

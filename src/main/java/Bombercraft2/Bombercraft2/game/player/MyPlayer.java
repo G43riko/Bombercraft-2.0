@@ -2,7 +2,7 @@ package Bombercraft2.Bombercraft2.game.player;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.HealthBar;
+import Bombercraft2.Bombercraft2.components.healthBar.HealthBar;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -20,7 +20,7 @@ public class MyPlayer extends Player {
     private final boolean        showSelector = true;
     private final PlayerSelector selector     = new PlayerSelector(this);
     private final PlayerPointer  pointer      = new PlayerPointer(this);
-    private final HealthBar      healthBar    = new HealthBar(this);
+    private final HealthBar      healthBar;
     private final int            cadenceBonus = 0;
     private final int            speedBonus   = 0;
     private       int            damageBonus  = 0;
@@ -37,6 +37,7 @@ public class MyPlayer extends Player {
                     int range
                    ) {
         super(parent, position, name, speed, health, image, range);
+        healthBar    = new HealthBar(this, parent);
         resetOffset();
         checkOffset();
         keys.put(Input.KEY_W, false);
@@ -128,7 +129,7 @@ public class MyPlayer extends Player {
     public void render(@NotNull Graphics2D g2) {
         super.render(g2);
         pointer.render(g2);
-        healthBar.render(g2, getOffset());
+        healthBar.render(g2);
     }
 
     private void onDead() {

@@ -1,4 +1,4 @@
-package Bombercraft2.playGround.Demos.mapDemo;
+package Bombercraft2.playGround.Demos;
 
 import java.awt.Graphics2D;
 

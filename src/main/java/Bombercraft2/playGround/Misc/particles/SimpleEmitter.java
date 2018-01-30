@@ -11,16 +11,21 @@ import Bombercraft2.playGround.Misc.SimpleGameAble;
 import utils.math.GVector2f;
 
 public class SimpleEmitter implements InteractAble {
-    @NotNull
-    protected final SimpleGameAble parent;
     private ArrayList<AbstractParticle> particles = new ArrayList<>();
-    private ParticleEmitterData data = ParticleEmitterData.getData(ParticleEmitterData.Type.GREEN);
+    @NotNull
+    protected final SimpleGameAble      parent;
+    @NotNull
+    private         ParticleEmitterData data;
 
     private final GVector2f position;
 
-    public SimpleEmitter(@NotNull GVector2f position, @NotNull SimpleGameAble parent) {
+    public SimpleEmitter(@NotNull GVector2f position,
+                         @NotNull SimpleGameAble parent,
+                         @NotNull ParticleEmitterData.Type type
+                        ) {
         this.parent = parent;
         this.position = position;
+        data = ParticleEmitterData.getData(ParticleEmitterData.Type.GREEN);
         createParticles(data.getParticlesOnStart());
     }
 
@@ -42,7 +47,7 @@ public class SimpleEmitter implements InteractAble {
         createParticles(data.getNewParticlesCount());
 
         particles = new ArrayList<>(particles).stream()
-                                              //.filter(a -> a.isALive())
+                                              .filter(AbstractParticle::isAlive)
                                               .peek(a -> a.update(delta))
                                               .collect(Collectors.toCollection(ArrayList::new));
     }

@@ -27,7 +27,7 @@ class PlayerSelector {
     }
 
     private GVector2f getSelectorPos() {
-        GVector2f pos = parent.getPosition().add(Config.BLOCK_SIZE.div(2)).div(Config.BLOCK_SIZE).toInt();
+        GVector2f pos = parent.getPosition().add(Config.BLOCK_SIZE_HALF).div(Config.BLOCK_SIZE).toInt();
         pos = pos.add(Utils.getNormalMoveFromDir(parent.getDirection())).mul(Config.BLOCK_SIZE);
         return pos;
     }

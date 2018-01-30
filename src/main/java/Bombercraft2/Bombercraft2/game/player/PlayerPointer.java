@@ -27,7 +27,7 @@ class PlayerPointer {
     }
 
     public void render(Graphics2D g2) {
-        GVector2f positionStart = parent.getPosition().add(Config.BLOCK_SIZE.div(2).sub(parent.getOffset()));
+        GVector2f positionStart = parent.getPosition().add(Config.BLOCK_SIZE_HALF.sub(parent.getOffset()));
         GVector2f positionEnd = getEndPos(positionStart);
 
         g2.setStroke(new BasicStroke(width));

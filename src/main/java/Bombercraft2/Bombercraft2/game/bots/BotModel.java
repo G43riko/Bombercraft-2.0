@@ -8,14 +8,14 @@ public class BotModel {
     private int              speed;
     private int              maxHealth;
     private int              damage;
-    private BotManager.Types type;
+    private BotFactory.Types type;
 
     public BotModel(JSONObject data) {
         try {
             this.speed = data.getInt(Texts.SPEED);
             this.damage = data.getInt(Texts.DAMAGE);
             this.maxHealth = data.getInt(Texts.HEALTH);
-            this.type = BotManager.Types.valueOf(data.getString(Texts.TYPE));
+            this.type = BotFactory.Types.valueOf(data.getString(Texts.TYPE));
 
         }
         catch (JSONException e) {
@@ -29,7 +29,7 @@ public class BotModel {
 
     public int getDamage() {return damage;}
 
-    public BotManager.Types getType() {return type;}
+    public BotFactory.Types getType() {return type;}
 
 
 }

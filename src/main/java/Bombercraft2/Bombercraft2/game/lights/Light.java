@@ -155,6 +155,7 @@ public class Light extends Entity {
 
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         // TODO Auto-generated method stub

@@ -13,22 +13,27 @@ import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
+import Bombercraft2.playGround.Misc.particles.ParticleEmitterData;
 import Bombercraft2.playGround.Misc.particles.SimpleEmitter;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
-public class ParticlesPreviewDemo extends GameState implements SimpleGameAble{
+public class ParticlesPreviewDemo extends GameState implements SimpleGameAble {
     private        GuiManager          guiManager = new GuiManager();
     private static VerticalScrollPanel panel      = new VerticalScrollPanel();
-    private        SimpleEmitter       emitter    = new SimpleEmitter(new GVector2f(400, 400), this);
+    private        SimpleEmitter       emitter    = new SimpleEmitter(new GVector2f(400, 400),
+                                                                      this,
+                                                                      ParticleEmitterData.Type.GREEN);
     private final CorePlayGround parent;
+
     public ParticlesPreviewDemo(CorePlayGround parent) {
         super(Type.ParticlesPreviewDemo);
         this.parent = parent;
         guiManager.add(testScrollPanel());
     }
-	private Panel testScrollPanel() {
+
+    private Panel testScrollPanel() {
         ColorBox colorBox = new ColorBox();
         colorBox.setBorderWidth(1);
 
@@ -36,7 +41,7 @@ public class ParticlesPreviewDemo extends GameState implements SimpleGameAble{
         panel.setX(5);
         panel.setY(5);
         panel.setWidth(290);
-		panel.setHeight(parent.getCanvas().getHeight() - 10);
+        panel.setHeight(parent.getCanvas().getHeight() - 10);
 
         Button button = new Button("Tlacitko " + 0);
         button.setHeight(40);
@@ -52,42 +57,43 @@ public class ParticlesPreviewDemo extends GameState implements SimpleGameAble{
         //manager.add(panel);
         return panel;
     }
-	@Override
-	public void doAct(GVector2f click) { }
-	
-	@Override
-	public void onResize() {
-		panel.setHeight(parent.getCanvas().getHeight() - 10);
-	}
-	
-	@Override
-	public void render(@NotNull Graphics2D g2) {
+
+    @Override
+    public void doAct(GVector2f click) { }
+
+    @Override
+    public void onResize() {
+        panel.setHeight(parent.getCanvas().getHeight() - 10);
+    }
+
+    @Override
+    public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         emitter.render(g2);
-		guiManager.render(g2);
-		
-	}
-	
-	@Override
-	public void update(float delta) {
-		guiManager.update();
-		emitter.update(delta);
-	}
+        guiManager.render(g2);
 
-	@Override
-	public void input() {
+    }
+
+    @Override
+    public void update(float delta) {
+        guiManager.update();
+        emitter.update(delta);
+    }
+
+    @Override
+    public void input() {
         if (Input.getKeyDown(Input.KEY_ESCAPE)) {
             parent.stopDemo();
         }
         if (Input.getMouseDown(Input.BUTTON_LEFT) && !GuiConnector.isMouseOn(panel)) {
-        	emitter.setPosition(Input.getMousePosition());
+            emitter.setPosition(Input.getMousePosition());
         }
-	}
+    }
 
-	@Contract(pure = true)
+    @Contract(pure = true)
     @NotNull
     @Override
-	public GVector2f getCanvasSize() {
-		return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
-	}
+    public GVector2f getCanvasSize() {
+        return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+    }
 }

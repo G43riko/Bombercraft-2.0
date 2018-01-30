@@ -3,9 +3,8 @@ package Bombercraft2.Bombercraft2.game.player;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.HealthAble;
+import Bombercraft2.Bombercraft2.components.healthBar.HealthAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -99,6 +98,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
 
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
@@ -127,7 +127,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
     }
 
     public GVector2f getSelectorPos() {
-        GVector2f pos = getPosition().add(Config.BLOCK_SIZE.div(2)).div(Config.BLOCK_SIZE).toInt();
+        GVector2f pos = getPosition().add(Config.BLOCK_SIZE_HALF).div(Config.BLOCK_SIZE).toInt();
         pos = pos.add(Utils.getNormalMoveFromDir(getDirection())).mul(Config.BLOCK_SIZE);
         return pos;
     }

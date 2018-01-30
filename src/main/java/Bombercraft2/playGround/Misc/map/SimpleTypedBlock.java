@@ -1,9 +1,10 @@
-package Bombercraft2.playGround.Misc;
+package Bombercraft2.playGround.Misc.map;
 
 import java.awt.Graphics2D;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.map.AbstractBlock;
 
 import org.jetbrains.annotations.Contract;
@@ -41,5 +42,15 @@ public class SimpleTypedBlock extends AbstractBlock {
     @NotNull
     public Block.Type getType() {
         return type;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + position + ") " +type;
+    }
+
+
+    public void remove() {
+        type = Block.Type.GRASS;
     }
 }

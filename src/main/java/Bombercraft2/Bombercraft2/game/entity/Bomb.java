@@ -191,9 +191,10 @@ public class Bomb extends Helper {
         alive = false;
         calcTargetBlocks();
         getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks, damageAreas);
-        getParent().addExplosion(position.add(Config.BLOCK_SIZE.div(2)), Config.BLOCK_SIZE, Color.black, 15, true, true);
+        getParent().addExplosion(position.add(Config.BLOCK_SIZE_HALF), Config.BLOCK_SIZE, Color.black, 15, true, true);
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         // TODO Auto-generated method stub

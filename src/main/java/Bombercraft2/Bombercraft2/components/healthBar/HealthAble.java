@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.components.healthBar;
 
 import Bombercraft2.Bombercraft2.core.Visible;
 

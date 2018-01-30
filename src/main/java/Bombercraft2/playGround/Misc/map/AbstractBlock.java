@@ -20,6 +20,7 @@ public class AbstractBlock extends Entity<SimpleGameAble> {
         this(position, parent, null);
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

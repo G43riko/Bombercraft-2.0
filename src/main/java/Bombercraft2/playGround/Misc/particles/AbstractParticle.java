@@ -11,11 +11,14 @@ import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
-public class AbstractParticle extends Entity<SimpleGameAble>{
-    private final GVector2f      direction;
-    private       GVector2f      size;
-    private       Color          color;
-    private       int            health;
+public class AbstractParticle extends Entity<SimpleGameAble> {
+    @NotNull
+    private final GVector2f direction;
+    @NotNull
+    private       GVector2f size;
+    @NotNull
+    private       Color     color;
+    private       int       health;
 
     public AbstractParticle(@NotNull SimpleGameAble parent,
                             @NotNull ParticleInstanceData data
@@ -47,6 +50,7 @@ public class AbstractParticle extends Entity<SimpleGameAble>{
     }
 
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

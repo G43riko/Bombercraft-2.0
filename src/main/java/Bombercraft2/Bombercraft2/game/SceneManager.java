@@ -2,7 +2,7 @@ package Bombercraft2.Bombercraft2.game;
 
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
-import Bombercraft2.Bombercraft2.game.bots.BotManager.Types;
+import Bombercraft2.Bombercraft2.game.bots.BotFactory.Types;
 import Bombercraft2.Bombercraft2.game.bots.Enemy;
 import Bombercraft2.Bombercraft2.game.bots.EnemyA;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;

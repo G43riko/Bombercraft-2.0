@@ -6,8 +6,8 @@ import java.util.HashMap;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
-import Bombercraft2.playGround.Misc.SimpleTypedBlock;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
 
@@ -34,6 +34,12 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
                                                    parent));
             }
         }
+    }
+
+    @Nullable
+    @Override
+    public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
+        return getItem(click.add(parent.getOffset()).div(Config.BLOCK_SIZE).div(parent.getZoom()));
     }
 
 

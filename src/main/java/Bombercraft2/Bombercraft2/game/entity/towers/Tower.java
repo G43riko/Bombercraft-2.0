@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
@@ -33,6 +34,7 @@ public abstract class Tower extends Helper implements ShootAble {
         super(position, parent, type);
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

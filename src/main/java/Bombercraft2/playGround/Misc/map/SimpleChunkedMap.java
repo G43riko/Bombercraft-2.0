@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Misc.map;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -24,6 +25,12 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
                 addItem(i, j, new SimpleChunk(this, new GVector2f(i, j)));
             }
         }
+    }
+
+    @Nullable
+    @Override
+    public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
+        return null;
     }
 }
 
