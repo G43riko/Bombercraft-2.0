@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.game.entity.particles;
 
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
@@ -49,6 +50,7 @@ public class ParticleEmitter extends Emitter {
         particles.clear();
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

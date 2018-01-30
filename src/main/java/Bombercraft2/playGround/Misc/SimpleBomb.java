@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
@@ -31,7 +32,7 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
         if (!alive) {
             return;
         }
-        GVector2f actPos = position.sub(getParent().getOffset());
+        final GVector2f actPos = position.sub(getParent().getOffset());
 
         g2.setColor(Color.BLACK);
         g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);
@@ -51,10 +52,11 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
         }
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {
-        return null;
+        return new JSONObject();
     }
 
 

@@ -22,7 +22,7 @@ public class BotFactory {
         try {
             Types[] types = Types.values();
             for (Types type : types) {
-                bots.put(Types.A, new BotModel(data.getJSONObject(type.name)));
+                bots.put(type, new BotModel(data.getJSONObject(type.name)));
             }
         }
         catch (JSONException e) {

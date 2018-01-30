@@ -42,7 +42,7 @@ public class CorePlayGround extends CoreEngine {
         runningGame = false;
     }
 
-    private void setScene(GameState scene) {
+    private void setScene(@NotNull GameState scene) {
         runningGame = true;
         guiManager.setDefaultCursor();
         states.push(scene);

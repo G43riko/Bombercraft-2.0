@@ -1,8 +1,13 @@
 package Bombercraft2.playGround.Demos;
 
-import java.awt.Graphics2D;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.components.path.Path;
+import Bombercraft2.Bombercraft2.components.path.PathFinder;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -10,6 +15,7 @@ import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
+import Bombercraft2.playGround.Misc.drawableLine.BasicDrawablePath;
 import Bombercraft2.playGround.Misc.map.SimpleMap;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -20,6 +26,9 @@ public class MapDemo extends GameState implements SimpleGameAble {
     private final CorePlayGround parent;
     private final ViewManager    viewManager;
     private final SimpleMap      map;
+
+    private GVector2f         firstClick;
+    private BasicDrawablePath path;
 
     public MapDemo(CorePlayGround parent) {
         super(Type.MapDemo);
@@ -43,6 +52,10 @@ public class MapDemo extends GameState implements SimpleGameAble {
     public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         map.render(g2);
+
+        if (path != null) {
+            path.render(g2);
+        }
     }
 
     @Override
@@ -59,12 +72,39 @@ public class MapDemo extends GameState implements SimpleGameAble {
         if (Input.getKeyDown(Input.KEY_ESCAPE)) {
             parent.stopDemo();
         }
+
+        if (Input.getMouseDown(Input.BUTTON_LEFT)) {
+            if (firstClick == null) {
+                firstClick = Input.getMousePosition();
+            }
+            else {
+                final GVector2f start = firstClick.add(getOffset()).div(Config.BLOCK_SIZE).div(getZoom()).toInt();
+                final GVector2f end = Input.getMousePosition().add(getOffset()).div(Config.BLOCK_SIZE).div(getZoom()).toInt();
+
+                final List<GVector2f> result = new ArrayList<>();
+                result.add(end);
+                result.addAll(PathFinder.findPath(map.getMap(),
+                                                  start.toString(),
+                                                  end.toString(), true));
+                result.add(start);
+                path = new BasicDrawablePath(this, result);
+                firstClick = null;
+            }
+        }
         viewManager.input();
     }
 
     @Override
     public void onResize() {
         viewManager.setCanvasSize(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+    }
+
+    @Override
+    public void update(float delta) {
+
+        if (path != null) {
+            path.update(delta);
+        }
     }
 
     @Contract(pure = true)

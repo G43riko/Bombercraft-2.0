@@ -2,15 +2,20 @@ package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.engine.Input;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import utils.Utils;
 import utils.math.GVector2f;
 
 public class ViewManager {
     private       float     zoom       = Config.DEFAULT_ZOOM;
+    @NotNull
     private final GVector2f offset     = new GVector2f();
+    @NotNull
     private final GVector2f canvasSize = new GVector2f();
+    @NotNull
     private final GVector2f maxOffset  = new GVector2f();
+    @NotNull
     private final GVector2f mapSize;
     private       float     minZoom;
     private       float     speed;
@@ -57,6 +62,8 @@ public class ViewManager {
         checkOffset();
     }
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getCanvasSize() {
         return canvasSize;
     }
@@ -65,14 +72,18 @@ public class ViewManager {
         this.speed = speed;
     }
 
+    @Contract(pure = true)
     public float getSpeed() {
         return speed;
     }
 
+    @Contract(pure = true)
     public float getZoom() {
         return zoom;
     }
 
+    @Contract(pure = true)
+    @NotNull
     public GVector2f getOffset() {
         return offset;
     }

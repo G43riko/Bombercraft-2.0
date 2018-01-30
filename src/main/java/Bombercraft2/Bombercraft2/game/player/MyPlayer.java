@@ -20,11 +20,11 @@ public class MyPlayer extends Player {
     private final boolean        showSelector = true;
     private final PlayerSelector selector     = new PlayerSelector(this);
     private final PlayerPointer  pointer      = new PlayerPointer(this);
-    private final HealthBar      healthBar;
-    private final int            cadenceBonus = 0;
-    private final int            speedBonus   = 0;
-    private       int            damageBonus  = 0;
-    private       Bomb           lastPutBomb  = null;
+    private final HealthBar healthBar;
+    private final int  cadenceBonus = 0;
+    private final int  speedBonus   = 0;
+    private       int  damageBonus  = 0;
+    private       Bomb lastPutBomb  = null;
 
     private final HashMap<Integer, Boolean> keys = new HashMap<>();
 
@@ -37,7 +37,7 @@ public class MyPlayer extends Player {
                     int range
                    ) {
         super(parent, position, name, speed, health, image, range);
-        healthBar    = new HealthBar(this, parent);
+        healthBar = new HealthBar(this, parent);
         resetOffset();
         checkOffset();
         keys.put(Input.KEY_W, false);
@@ -185,13 +185,16 @@ public class MyPlayer extends Player {
         GVector2f t = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() - topOffset).div(2))
                               .div(Config.BLOCK_SIZE)
                               .toInt();
-        GVector2f b = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() + bottomOffset).div(2))
+        GVector2f b = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() + bottomOffset).div(
+                2))
                               .div(Config.BLOCK_SIZE)
                               .toInt();
-        GVector2f r = position.add(new GVector2f(Config.BLOCK_SIZE.getX() - rightOffset, Config.BLOCK_SIZE.getY()).div(2))
+        GVector2f r = position.add(new GVector2f(Config.BLOCK_SIZE.getX() - rightOffset,
+                                                 Config.BLOCK_SIZE.getY()).div(2))
                               .div(Config.BLOCK_SIZE)
                               .toInt();
-        GVector2f l = position.add(new GVector2f(Config.BLOCK_SIZE.getX() + leftOffset, Config.BLOCK_SIZE.getY()).div(2))
+        GVector2f l = position.add(new GVector2f(Config.BLOCK_SIZE.getX() + leftOffset,
+                                                 Config.BLOCK_SIZE.getY()).div(2))
                               .div(Config.BLOCK_SIZE)
                               .toInt();
 
@@ -232,9 +235,9 @@ public class MyPlayer extends Player {
         }
 
         if (offset.getX() > (numbers.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                            .getWidth()) {
+                                                                                                               .getWidth()) {
             offset.setX((numbers.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                        .getWidth());
+                                                                                                           .getWidth());
         }
 
         if (offset.getY() < 0) {
@@ -242,9 +245,9 @@ public class MyPlayer extends Player {
         }
 
         if (offset.getY() > (numbers.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                             .getHeight()) {
+                                                                                                                .getHeight()) {
             offset.setY((numbers.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                         .getHeight());
+                                                                                                            .getHeight());
         }
     }
 
@@ -293,16 +296,24 @@ public class MyPlayer extends Player {
         return showSelector;
     }
 
-    public GVector2f getOffset() {return offset;}
+    public GVector2f getOffset() {
+        return offset;
+    }
 
-    public int getCadenceBonus() {return cadenceBonus;}
+    public int getCadenceBonus() {
+        return cadenceBonus;
+    }
 
-    public int getSpeedBonus() {return speedBonus;}
+    public int getSpeedBonus() {
+        return speedBonus;
+    }
 
     public GVector2f getTargetLocation() {
         return getParent().getToolsManager().getSelectedTool() instanceof BombCreator ? getCenter() : pointer.getEndPos(
                 getCenter());
     }
 
-    public GVector2f getTagetDirection() {return getTargetLocation().sub(getCenter());}
+    public GVector2f getTargetDirection() {
+        return getTargetLocation().sub(getCenter());
+    }
 }

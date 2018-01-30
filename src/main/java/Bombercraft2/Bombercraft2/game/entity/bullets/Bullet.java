@@ -90,6 +90,7 @@ public abstract class Bullet extends Entity<GameAble> {
 
     public int getHealth() {return health;}
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

@@ -39,12 +39,13 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
 
     //ABSTRACT
     @NotNull
+    @Contract(pure = true)
     public abstract JSONObject toJSON();
 
     public GVector2f getSur() {return position.div(Config.BLOCK_SIZE).toInt();}
 
-    @Contract(pure = true)
     @NotNull
+    @Contract(pure = true)
     public GVector2f getSize() {return Config.BLOCK_SIZE; }
 
 

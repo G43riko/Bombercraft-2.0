@@ -50,6 +50,7 @@ public class AbstractParticle extends Entity<SimpleGameAble> {
     }
 
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

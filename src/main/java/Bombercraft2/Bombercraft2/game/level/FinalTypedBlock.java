@@ -50,6 +50,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
+    @Contract(pure = true)
     @NotNull
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();

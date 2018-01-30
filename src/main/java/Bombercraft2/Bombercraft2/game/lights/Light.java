@@ -155,6 +155,7 @@ public class Light extends Entity {
 
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

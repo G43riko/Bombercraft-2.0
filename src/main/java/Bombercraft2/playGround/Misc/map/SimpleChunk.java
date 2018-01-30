@@ -46,6 +46,14 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
         blocks.put(i + "_" + j, block);
     }
 
+    public SimpleTypedBlock getBlock(GVector2f pos) {
+        return getBlock(pos.getXi(), pos.getYi());
+    }
+
+    public SimpleTypedBlock getBlock(int i, int j) {
+        return blocks.get(i + "_" + j);
+    }
+
     public void render(@NotNull Graphics2D g2) {
         blocks.entrySet()
               .stream()
@@ -69,6 +77,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
         return position.mul(SIZE);
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

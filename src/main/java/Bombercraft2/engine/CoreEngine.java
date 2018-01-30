@@ -9,6 +9,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 public abstract class CoreEngine {
     private static boolean    renderTime = false;
@@ -19,11 +20,17 @@ public abstract class CoreEngine {
     private        float      actUPS     = ups;
     private        float      actLoops   = 0;
     private        Window     window     = null;
+    @NotNull
     private final  Input      input      = new Input();
+    @NotNull
     private final  Canvas     canvas     = new Canvas();
     private        Graphics2D g2         = null;
 
-
+    /**
+     * @param fps        - Požadovaný počet vykreslení za sekundu
+     * @param ups        - Požadovaný počet updatov za sekundu
+     * @param renderTime - či sa majú do konzoly vypysovať počty vykreslení a updatov
+     */
     protected CoreEngine(int fps, int ups, boolean renderTime) {
         defaultInit();
         CoreEngine.renderTime = renderTime;
@@ -131,13 +138,32 @@ public abstract class CoreEngine {
         }
         g2 = (Graphics2D) buffer.getDrawGraphics();
         render(g2);
+
+
         // GuiTester.manager.render(g2);
         // GuiTester.manager.update();
         // canvas.setCursor(GuiTester.manager.getCursor());
+        /*
+        final int maxEarthQuake = 6;
+        int earthQuakeX = (int) (Math.random() * maxEarthQuake);
+        int earthQuakeY = (int) (Math.random() * maxEarthQuake);
 
-//		BufferedImage image = new BufferedImage(canvas.getWidth(), canvas.getHeight(),BufferedImage.TYPE_INT_RGB);
-//		render((Graphics2D)image.getGraphics());
-//		g2.drawImage(image, 0, 0, canvas.getWidth(), canvas.getHeight(), null);
+        BufferedImage image = new BufferedImage(canvas.getWidth() + maxEarthQuake * 2,
+                                                canvas.getHeight() + maxEarthQuake * 2,
+                                                BufferedImage.TYPE_INT_RGB);
+        Graphics2D tmpG2 = (Graphics2D) image.getGraphics();
+        render(tmpG2);
+        g2.drawImage(image,
+                     0,
+                     0,
+                     canvas.getWidth(),
+                     canvas.getHeight(),
+                     earthQuakeX,
+                     earthQuakeY,
+                     canvas.getWidth(),
+                     canvas.getHeight(),
+                     null);
+        */
 
         g2.dispose();
         buffer.show();

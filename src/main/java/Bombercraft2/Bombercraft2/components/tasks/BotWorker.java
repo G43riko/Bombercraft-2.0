@@ -65,7 +65,7 @@ public class BotWorker extends Bot {
         final GVector2f pos = position.mul(parent.getZoom()).sub(parent.getOffset());
 
         if (actTask != null && !isTooCloseToTask()) {
-            line.render(g2, parent.getZoom());
+            line.render(g2);
         }
 
         g2.setColor(Color.BLUE);

@@ -4,6 +4,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.bots.BotFactory.Types;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.player.Player.Direction;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
@@ -26,6 +27,7 @@ public abstract class Bot extends Entity<GameAble> {
         return true;
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

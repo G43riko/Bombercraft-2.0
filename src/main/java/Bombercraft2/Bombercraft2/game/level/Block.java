@@ -57,7 +57,7 @@ public class Block extends Entity<GameAble> {
                                                       image.getHeight(null));
         }
 
-        boolean isWalkable() {return walkable;}
+        public boolean isWalkable() {return walkable;}
 
         int getHealth() {return health;}
 
@@ -106,6 +106,7 @@ public class Block extends Entity<GameAble> {
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

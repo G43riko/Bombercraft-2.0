@@ -45,10 +45,10 @@ public class SimpleTypedBlock extends AbstractBlock {
     }
 
     @Override
+    @Contract(pure = true)
     public String toString() {
         return "(" + position + ") " +type;
     }
-
 
     public void remove() {
         type = Block.Type.GRASS;

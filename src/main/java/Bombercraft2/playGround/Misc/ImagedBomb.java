@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.Timer;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
@@ -56,6 +57,8 @@ public class ImagedBomb extends SimpleBomb {
         }
     }
 
+    @Contract(pure = true)
+    @NotNull
     public Image getCrater() {
         return craterImage;
     }

@@ -460,7 +460,7 @@ public class Game extends GameState implements GameAble {
     @NotNull
     @Override
     public GVector2f getPlayerDirection() {
-        return myPlayer.getTagetDirection();
+        return myPlayer.getTargetDirection();
     }
 
     @NotNull

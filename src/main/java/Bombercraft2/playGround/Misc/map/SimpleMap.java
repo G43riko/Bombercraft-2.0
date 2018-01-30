@@ -88,6 +88,13 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
                             .forEach(a -> a.render(g2));
 
     }
+
+    public HashMap<String, Integer> getMap() {
+        HashMap<String, Integer> h = new HashMap<String, Integer>();
+        items.forEach((key, value) -> h.put(value.getPosition().div(Config.BLOCK_SIZE).toString(),
+                                            value.getType().isWalkable() ? 0 : 1));
+        return h;
+    }
 }
 
 /*

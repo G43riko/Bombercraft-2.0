@@ -1,5 +1,6 @@
 package Bombercraft2.playGround.Misc.map;
 
+import Bombercraft2.Bombercraft2.Config;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
@@ -30,42 +31,8 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     @Nullable
     @Override
     public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
-        return null;
+        final GVector2f pos = click.add(parent.getOffset());
+        final SimpleChunk chunk = getItem(pos.div(SimpleChunk.SIZE).div(parent.getZoom()));
+        return chunk == null ? null : chunk.getBlock(pos.div(parent.getZoom()).mod(SimpleChunk.SIZE).div(Config.BLOCK_SIZE));
     }
 }
-
-/*
-public class SimpleChunkedMap {
-    private HashMap<String, SimpleChunk> chunks = null;
-    private final GVector2f      numberOfChunks;
-    private final SimpleGameAble parent;
-
-    public SimpleChunkedMap(SimpleGameAble parent, GVector2f numberOfChunks) {
-        this.numberOfChunks = numberOfChunks;
-        this.parent = parent;
-        createMap();
-        // createRandomMap();
-    }
-
-    public SimpleGameAble getParent() {
-        return parent;
-    }
-
-    public void render(Graphics2D g2) {
-        chunks.entrySet().stream().map(Map.Entry::getValue).filter(parent::isVisible).forEach(a -> a.render(g2));
-    }
-
-    private void createMap() {
-        chunks = new HashMap<>();
-        for (int i = 0; i < numberOfChunks.getXi(); i++) {
-            for (int j = 0; j < numberOfChunks.getYi(); j++) {
-                addChunks(i, j, new SimpleChunk(this, new GVector2f(i, j)));
-            }
-        }
-    }
-
-    private void addChunks(int i, int j, SimpleChunk chunks) {
-        this.chunks.put(i + "_" + j, chunks);
-    }
-}
-*/

@@ -3,7 +3,6 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.Visible;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
@@ -63,6 +62,9 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
             parent.stopDemo();
         }
 
+        if (Input.getMouseDown(Input.BUTTON_LEFT)) {
+            System.out.println(map.getBlockOnAbsolutePos(Input.getMousePosition()));
+        }
         viewManager.input();
     }
 

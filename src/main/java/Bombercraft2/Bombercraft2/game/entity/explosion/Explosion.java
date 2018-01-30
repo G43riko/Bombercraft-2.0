@@ -87,6 +87,7 @@ public class Explosion extends Entity<GameAble> {
         }
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

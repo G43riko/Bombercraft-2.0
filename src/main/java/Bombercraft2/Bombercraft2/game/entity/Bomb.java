@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Timer;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
@@ -194,6 +195,7 @@ public class Bomb extends Helper {
         getParent().addExplosion(position.add(Config.BLOCK_SIZE_HALF), Config.BLOCK_SIZE, Color.black, 15, true, true);
     }
 
+    @Contract(pure = true)
     @NotNull
     @Override
     public JSONObject toJSON() {

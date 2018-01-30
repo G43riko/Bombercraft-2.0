@@ -126,7 +126,7 @@ class CommonMethods {
     }
 
     public void setPutBullet(@NotNull MyPlayer myPlayer, @NotNull ShootAble shooter) {
-        GVector2f angle = myPlayer.getTagetDirection();
+        GVector2f angle = myPlayer.getTargetDirection();
         angle.normalize();
         //TODO tu treba spracovať už aj bonusy od hraca
         try {
@@ -143,7 +143,7 @@ class CommonMethods {
     }
 
     //	public void setPutBullet(MyPlayer myPlayer, BulletManager.Types bulletType) {
-//		GVector2f angle = myPlayer.getTagetDirection();
+//		GVector2f angle = myPlayer.getTargetDirection();
 //		angle.normalize();
 //		//TODO tu treba spracovať už aj bonusy od hraca
 //		try {
