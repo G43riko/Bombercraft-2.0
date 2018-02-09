@@ -29,21 +29,21 @@ public final class GColision {
      * Circle - Circle collision
      */
 
-    public static boolean circleCircleCollision(float ax, float ay, float aradius, float bx, float by, float beadius) {
-        return circleCircleCollision(new GVector2f(ax, ay), aradius, new GVector2f(bx, by), beadius);
+    public static boolean circleCircleCollision(float ax, float ay, float aRadius, float bx, float by, float bRadius) {
+        return circleCircleCollision(new GVector2f(ax, ay), aRadius, new GVector2f(bx, by), bRadius);
     }
 
-    private static boolean circleCircleCollision(@NotNull GVector2f a, float aradius, GVector2f b, float bradius) {
+    private static boolean circleCircleCollision(@NotNull GVector2f a, float aRadius, GVector2f b, float bRadius) {
         double dist = a.dist(b);
-        return dist <= aradius + bradius;
+        return dist <= aRadius + bRadius;
     }
 
     /**
      * Point - Rectangle collision
      */
 
-    public static boolean pointRectCollision(float ax, float ay, float awidth, float aheight, float bx, float by) {
-        return pointRectCollision(new GVector2f(ax, ay), new GVector2f(awidth, aheight), new GVector2f(bx, by));
+    public static boolean pointRectCollision(float ax, float ay, float aWidth, float aHeight, float bx, float by) {
+        return pointRectCollision(new GVector2f(ax, ay), new GVector2f(aWidth, aHeight), new GVector2f(bx, by));
     }
 
     public static boolean pointRectCollision(@NotNull GVector2f aPos, GVector2f aSize, @NotNull GVector2f bPos) {
@@ -57,12 +57,37 @@ public final class GColision {
      * Point - Circle collision
      */
 
-    public static boolean pointCircleCollision(float ax, float ay, float bx, float by, float bradius) {
-        return pointCircleCollision(new GVector2f(ax, ay), new GVector2f(bx, by), bradius);
+    public static boolean pointCircleCollision(float ax, float ay, float bx, float by, float bRadius) {
+        return pointCircleCollision(new GVector2f(ax, ay), new GVector2f(bx, by), bRadius);
     }
 
-    private static boolean pointCircleCollision(@NotNull GVector2f a, GVector2f b, float bradius) {
-        return a.dist(b) < bradius;
+    private static boolean pointCircleCollision(@NotNull GVector2f a, GVector2f b, float bRadius) {
+        return a.dist(b) < bRadius;
+    }
+
+    private static boolean CircleRectCollision(GVector2f cPos, float cRadius, GVector2f rPos, GVector2f rSize) {
+        GVector2f circleDistance = new GVector2f(Math.abs(cPos.getX() - rPos.getX()),
+                                                 Math.abs(cPos.getY() - rPos.getY()));
+
+        if (circleDistance.getX() > (rSize.getX() / 2 + cRadius)) {
+            return false;
+        }
+        if (circleDistance.getY() > (rSize.getY() / 2 + cRadius)) {
+            return false;
+        }
+
+        if (circleDistance.getX() <= (rSize.getX() / 2)) {
+            return true;
+        }
+        if (circleDistance.getY() <= (rSize.getY() / 2)) {
+            return true;
+        }
+
+
+        double cornerDistance_sq = Math.pow((circleDistance.getX() - rPos.getX() / 2), 2) +
+                                   Math.pow((circleDistance.getY() - rPos.getY() / 2), 2);
+
+        return (cornerDistance_sq <= Math.pow(cRadius, 2));
     }
 
 	/*

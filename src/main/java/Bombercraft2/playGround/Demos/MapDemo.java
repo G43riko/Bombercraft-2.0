@@ -85,7 +85,7 @@ public class MapDemo extends GameState implements SimpleGameAble {
                 result.add(end);
                 result.addAll(PathFinder.findPath(map.getMap(),
                                                   start.toString(),
-                                                  end.toString(), true));
+                                                  end.toString(), false));
                 result.add(start);
                 path = new BasicDrawablePath(this, result);
                 firstClick = null;

@@ -13,8 +13,11 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 
 public class CorePlayGround extends CoreEngine {
+    @NotNull
     private final GameStatesManager states      = new GameStatesManager();
+    @NotNull
     private final GuiManager        guiManager  = new GuiManager();
+    @NotNull
     private final MainMenu          mainMenu    = new MainMenu();
     private       boolean           runningGame = false;
 

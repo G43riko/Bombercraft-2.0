@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.resouces.JSONAble;
@@ -12,7 +13,7 @@ import java.util.Map.Entry;
 public class OptionsManager implements JSONAble {
     private final HashMap<String, Boolean> viewOptions = new HashMap<>();
 
-    public void fromJSON(JSONObject data) {
+    public void fromJSON(@NotNull JSONObject data) {
         try {
             Iterator<?> keys = data.keys();
             while (keys.hasNext()) {
@@ -25,6 +26,7 @@ public class OptionsManager implements JSONAble {
         }
     }
 
+    @NotNull
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
 

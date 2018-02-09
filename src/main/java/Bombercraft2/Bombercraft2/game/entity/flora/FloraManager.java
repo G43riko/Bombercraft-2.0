@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Map;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,7 +90,7 @@ public class FloraManager implements JSONAble {
     }
 
     @Override
-    public void fromJSON(JSONObject data) {
+    public void fromJSON(@NotNull JSONObject data) {
         bushes.clear();
         plants.clear();
         trees.clear();
@@ -114,6 +115,7 @@ public class FloraManager implements JSONAble {
         }
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();

@@ -3,6 +3,7 @@ package utils;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
+import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
@@ -15,7 +16,7 @@ public class SpriteAnimation {
     private final Image     image;
     private       int       frame;
 
-    public SpriteAnimation(String name, int numX, int numY, int delay) {
+    public SpriteAnimation(@NotNull String name, int numX, int numY, int delay) {
         this.delay = delay;
         actDelay = 0;
         image = ResourceLoader.loadTexture(name);
@@ -25,18 +26,22 @@ public class SpriteAnimation {
         numberOfImages = numX * numY;
     }
 
-    public boolean renderAndCheckLastFrame(Graphics2D g2, GVector2f pos) {
+    public boolean renderAndCheckLastFrame(@NotNull Graphics2D g2, @NotNull GVector2f pos) {
         return renderAndCheckLastFrame(g2, pos, imageSize);
     }
 
-    public boolean renderAndCheckLastFrame(Graphics2D g2, GVector2f pos, GVector2f size) {
+    public boolean renderAndCheckLastFrame(@NotNull Graphics2D g2, @NotNull GVector2f pos, @NotNull GVector2f size) {
         GVector2f point = new GVector2f(frame % images.getXi(),
                                         frame / images.getXi());
         g2.drawImage(image,
-                     pos.getXi(), pos.getYi(),
-                     size.getXi() + pos.getXi(), size.getYi() + pos.getYi(),
-                     point.getXi() * imageSize.getXi(), point.getYi() * imageSize.getYi(),
-                     (point.getXi() + 1) * imageSize.getXi(), (point.getYi() + 1) * imageSize.getYi(),
+                     pos.getXi(),
+                     pos.getYi(),
+                     size.getXi() + pos.getXi(),
+                     size.getYi() + pos.getYi(),
+                     point.getXi() * imageSize.getXi(),
+                     point.getYi() * imageSize.getYi(),
+                     (point.getXi() + 1) * imageSize.getXi(),
+                     (point.getYi() + 1) * imageSize.getYi(),
                      null);
 
         return checkTiming();

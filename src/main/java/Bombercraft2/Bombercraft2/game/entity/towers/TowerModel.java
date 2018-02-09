@@ -4,6 +4,7 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletModel;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.resouces.JSONAble;
@@ -22,7 +23,7 @@ public class TowerModel implements JSONAble {
     }
 
     @Override
-    public void fromJSON(JSONObject data) {
+    public void fromJSON(@NotNull JSONObject data) {
         try {
             this.damage = data.getInt(Texts.DAMAGE);
             this.canonSpeed = data.getInt("canonSpeed");
@@ -45,6 +46,7 @@ public class TowerModel implements JSONAble {
 
     public Helper.Type getType() {return type;}
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         return null;

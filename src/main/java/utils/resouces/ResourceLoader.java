@@ -27,7 +27,7 @@ public final class ResourceLoader {
     private static final HashMap<String, Image> loadedTextures = new HashMap<>();
     private static final SoundManager           soundManager   = new SoundManager();
 
-    public static InputStream load(String fileName) {
+    public static InputStream load(@NotNull String fileName) {
         InputStream input = ResourceLoader.class.getResourceAsStream(fileName);
         if (input == null) {
             input = ResourceLoader.class.getResourceAsStream("/" + fileName);
@@ -48,7 +48,7 @@ public final class ResourceLoader {
     }
 
     @Nullable
-    private static FileWriter getFileWriter(String fileName) {
+    private static FileWriter getFileWriter(@NotNull String fileName) {
         try {
             return new FileWriter(new File(ProfileMenu.class.getResource(fileName).toURI()));
         }
@@ -58,12 +58,18 @@ public final class ResourceLoader {
         return null;
     }
 
-    @NotNull
-    public static BufferedWriter getBufferedWriter(String fileName) {
-        return new BufferedWriter(getFileWriter(fileName));
-    }
+    @Nullable
+    public static BufferedWriter getBufferedWriter(@NotNull String fileName) {
+        final FileWriter writer = getFileWriter(fileName);
 
-    public static Image loadTexture(String fileName) {
+        if (writer == null) {
+            return null;
+        }
+
+        return new BufferedWriter(writer);
+    }
+    @Nullable
+    public static Image loadTexture(@NotNull String fileName) {
         if (loadedTextures.containsKey(fileName)) { return loadedTextures.get(fileName); }
         else {
             try {
@@ -78,7 +84,7 @@ public final class ResourceLoader {
     }
 
     @NotNull
-    private static String getFileContent(String name) {
+    private static String getFileContent(@NotNull String name) {
         BufferedReader buf = new BufferedReader(new InputStreamReader(load(name)));
         StringBuilder sb = new StringBuilder();
         String line;
@@ -97,20 +103,23 @@ public final class ResourceLoader {
         return sb.toString();
     }
 
-    public static AudioPlayer getSound(String name) {
+    @Nullable
+    public static AudioPlayer getSound(@NotNull String name) {
         return soundManager.getAudio(name);
     }
 
-    public static AudioPlayer loadSound(String name) {
+    @Nullable
+    public static AudioPlayer loadSound(@NotNull String name) {
         return soundManager.loadAudio(name);
     }
 
-    public static AudioPlayer checkAndGetSound(String name) {
+    @Nullable
+    public static AudioPlayer checkAndGetSound(@NotNull String name) {
         return soundManager.checkAndGetAudio(name);
     }
 
     @NotNull
-    public static JSONObject getJSONThrowing(String name) throws JSONException {
+    public static JSONObject getJSONThrowing(@NotNull String name) throws JSONException {
         return new JSONObject(getFileContent(name));
     }
 
@@ -125,7 +134,8 @@ public final class ResourceLoader {
         return null;
     }
 
-    public static URL getURL(String path) {
+    @NotNull
+    public static URL getURL(@NotNull String path) {
         return ProfileMenu.class.getResource(path);
     }
 }

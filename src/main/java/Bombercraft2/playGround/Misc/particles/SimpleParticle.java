@@ -1,8 +1,12 @@
 package Bombercraft2.playGround.Misc.particles;
 
+import Bombercraft2.Bombercraft2.core.Visible;
+import org.jetbrains.annotations.NotNull;
+import utils.math.GVector2f;
+
 import java.awt.*;
 
-public class SimpleParticle {
+public class SimpleParticle implements Visible{
     public       float velX   = 0;
     public       float velY   = 0;
     public final float mass   = 1;
@@ -73,5 +77,15 @@ public class SimpleParticle {
     public void move(float delta) {
         posX += velX * delta;
         posY += velY * delta;
+    }
+
+    @Override
+    public @NotNull GVector2f getPosition() {
+        return new GVector2f(posX, posY);
+    }
+
+    @Override
+    public @NotNull GVector2f getSize() {
+        return new GVector2f(radius, radius);
     }
 }

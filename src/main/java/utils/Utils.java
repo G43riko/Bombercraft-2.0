@@ -19,6 +19,8 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import Bombercraft2.Bombercraft2.game.player.Player;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
 
 public final class Utils {
@@ -36,9 +38,9 @@ public final class Utils {
 //				return new GVector2f();
 //		}
 //	}
-    public static long ping(String ip) {return ping(ip, 1000);}
+    public static long ping(@NotNull String ip) {return ping(ip, 1000);}
 
-    private static long ping(String ip, int timeout) {
+    private static long ping(@NotNull String ip, int timeout) {
         try {
             long currentTime = System.currentTimeMillis();
             InetAddress.getByName(ip).isReachable(timeout);
@@ -50,6 +52,7 @@ public final class Utils {
         return -1;
     }
 
+    @NotNull
     public static String getMyIP() {
         try {
             return InetAddress.getLocalHost().getHostAddress();
@@ -60,6 +63,7 @@ public final class Utils {
         return "GError";
     }
 
+    @NotNull
     static public String getLocalIP() {
         String result = "";
         try {
@@ -86,6 +90,7 @@ public final class Utils {
         return result;
     }
 
+    @NotNull
     public static String getHostName() {
         try {
             InetAddress address = InetAddress.getLocalHost();
@@ -106,19 +111,21 @@ public final class Utils {
         return list.get((int) (Math.random() * list.size()));
     }
 
-    public static URL File2URL(File file) throws MalformedURLException {
+    @NotNull
+    public static URL File2URL(@NotNull File file) throws MalformedURLException {
         return file.toURI().toURL();
     }
 
+    @Nullable
     private static BufferedImage getFullscreenScreenshotImage() throws AWTException {
         Robot robot = new Robot();
         Rectangle screenRect = new Rectangle(Toolkit.getDefaultToolkit().getScreenSize());
         return robot.createScreenCapture(screenRect);
     }
 
-    public static void takeFullscreenScreenshot(String fileName) {takeFullscreenScreenshot(fileName, "jpg");}
+    public static void takeFullscreenScreenshot(@NotNull String fileName) {takeFullscreenScreenshot(fileName, "jpg");}
 
-    private static void takeFullscreenScreenshot(String fileName, String format) {
+    private static void takeFullscreenScreenshot(@NotNull String fileName, @NotNull String format) {
         try {
             BufferedImage screenFullImage = getFullscreenScreenshotImage();
             ImageIO.write(screenFullImage, format, new File(fileName));
@@ -130,7 +137,8 @@ public final class Utils {
         }
     }
 
-    public static GVector2f getNormalMoveFromDir(Player.Direction dir) {
+    @NotNull
+    public static GVector2f getNormalMoveFromDir(@NotNull Player.Direction dir) {
         switch (dir) {
             case LEFT:
                 return new GVector2f(-1, 0);
@@ -188,7 +196,8 @@ public final class Utils {
         return false;
     }
 
-    public static BufferedImage deepCopy(BufferedImage bi) {
+    @NotNull
+    public static BufferedImage deepCopy(@NotNull BufferedImage bi) {
         ColorModel cm = bi.getColorModel();
         boolean isAlphaPremultiplied = cm.isAlphaPremultiplied();
         WritableRaster raster = bi.copyData(null);
@@ -198,11 +207,13 @@ public final class Utils {
     public static int clamp(int min, int max, int value) {
         return value < min ? min : value > max ? max : value;
     }
+
     public static float clamp(float min, float max, float value) {
         return value < min ? min : value > max ? max : value;
     }
 
-    public static Color lerpColor(Color a, Color b, float ratio) {
+    @NotNull
+    public static Color lerpColor(@NotNull Color a, @NotNull Color b, float ratio) {
         final int red = (int) ((ratio * a.getRed()) + ((1 - ratio) * b.getRed()));
         final int green = (int) ((ratio * a.getGreen()) + ((1 - ratio) * b.getGreen()));
         final int blue = (int) ((ratio * a.getBlue()) + ((1 - ratio) * b.getBlue()));
@@ -213,7 +224,8 @@ public final class Utils {
                          clamp(0, 255, alpha));
     }
 
-    public static BufferedImage deepCopy2(final BufferedImage src) {
+    @NotNull
+    public static BufferedImage deepCopy2(@NotNull final BufferedImage src) {
         BufferedImage dst = new BufferedImage(src.getWidth(), src.getHeight(), src.getType());
         int[] srcBuffer = ((DataBufferInt) src.getRaster().getDataBuffer()).getData();
         int[] dstBuffer = ((DataBufferInt) dst.getRaster().getDataBuffer()).getData();

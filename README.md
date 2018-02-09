@@ -44,7 +44,13 @@
  _TODO_
 #### Slider
  _TODO_
+#### Autocomplete multi select box
+ _TODO_
+#### Autocomplete select box
+ _TODO_
 #### Panel
+#### Text input
+ _TODO_
 #### Vertical scroll panel
 #### Horizontal scroll panel
  _TODO_
@@ -62,4 +68,7 @@
 ## TODO
  - Identify players by ID not by login
  - Allow toggle fullscreen
- 
+### Demos
+ - Missile demo - shot that follows the mouse
+ - Map with enemies
+ - Map with enemies + grid border collisionq

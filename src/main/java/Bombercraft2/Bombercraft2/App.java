@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2;
 
+import Bombercraft2.Bombercraft2.components.pathfinging.Grid2d;
 import Bombercraft2.Bombercraft2.components.tasks.BotManager;
 import Bombercraft2.Bombercraft2.components.tasks.BotWorker;
 import Bombercraft2.Bombercraft2.components.tasks.Task;
@@ -30,7 +31,15 @@ public class App {
         // Bombercraft game = new Bombercraft();
         PlayGround game = new PlayGround();
         game.run();
+
+        // testPathFinging();
         // testTaskManager();
+    }
+
+    private static void testPathFinging() {
+        double[][] map = { { 0, -1, 0 }, { 0, 3, 0 }, { 0, 0, 0 } };
+        Grid2d map2d = new Grid2d(map, false);
+        System.out.println(map2d.findPath(0, 0, 2, 0));
     }
 
     private static void testTaskManager() {

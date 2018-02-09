@@ -3,13 +3,67 @@ package Bombercraft2.Bombercraft2.components.path;
 import utils.math.GVector2f;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class PathFinder {
+    private static class Node {
+        String  key;
+        int     value;
+        int     distance = -1;
+        boolean checked;
+
+        @Override
+        public boolean equals(Object obj) {
+            return obj instanceof Node && ((Node) obj).key.equals(key);
+        }
+        private Node(String key, int value) {
+            this(key, value, -1);
+        }
+        private Node(String key, int value, int distance) {
+            this.key = key;
+            this.value = value;
+            this.distance = distance;
+        }
+    }
+
     private final static int START   = 3;
     private final static int CIEL    = 2;
     private final static int WALL    = 1;
     private final static int NOTHING = 0;
     private final static int PATH    = 4;
+
+    public static ArrayList<GVector2f> findPath2(HashMap<String, Integer> map,
+                                                String start,
+                                                String ciel,
+                                                boolean diagonal
+                                               ) {
+        Map<String, Node> res = map.entrySet()
+                                   .stream()
+                                   .collect(Collectors.toMap(Map.Entry::getKey,
+                                                             (a) -> new Node(a.getKey(), a.getValue())));
+
+        PriorityQueue<Node> queue = new PriorityQueue<>(11, Comparator.comparingInt(a -> a.distance));
+
+        final Node startNode = res.get(start);
+        startNode.distance = 0;
+        queue.add(startNode);
+
+
+        while (!queue.isEmpty()) {
+            for (int i = -1; i <= 1; i++) {
+                for (int j = -1; j <= 1; j++) {
+                    if (i == 0 && j == 0) {
+                        continue;
+                    }
+                    if (i != 0 && j != 0) {
+                        continue;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
 
     public static ArrayList<GVector2f> findPath(HashMap<String, Integer> map,
                                                 String start,

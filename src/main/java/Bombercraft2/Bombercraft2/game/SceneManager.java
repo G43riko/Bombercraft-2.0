@@ -157,7 +157,7 @@ public class SceneManager implements InteractAble, JSONAble {
     }
 
     @Override
-    public void fromJSON(JSONObject data) {
+    public void fromJSON(@NotNull JSONObject data) {
 
     }
 
@@ -186,6 +186,7 @@ public class SceneManager implements InteractAble, JSONAble {
         explosions.add(new Explosion(position, parent, size, color, number, explosion, shockWave));
     }
 
+    @NotNull
     @Override
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();

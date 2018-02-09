@@ -1,8 +1,11 @@
 package utils.resouces;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 
 public interface JSONAble {
-	void fromJSON(JSONObject data);
-	JSONObject toJSON();
+    void fromJSON(@NotNull JSONObject data);
+
+    @NotNull
+    JSONObject toJSON();
 }

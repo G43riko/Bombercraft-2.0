@@ -3,18 +3,15 @@ package Bombercraft2.Bombercraft2.game.entity;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
-import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.IDGenerator;
 import utils.math.GVector2f;
 
 public abstract class Entity<T extends SimpleGameAble> implements Visible, InteractAble {
-    private int id = IDGenerator.getId();
+    private int id = 1;
     protected final T parent;
     protected GVector2f position = null;
     protected boolean   alive    = true;

@@ -5,15 +5,19 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 public final class SpriteViewer {
     private static final HashMap<String, SpriteViewer> loadedImages = new HashMap<>();
-
-    private GVector2f images;
-    private GVector2f imageSize;
-    private Image     image;
+    @NotNull
+    private final GVector2f images;
+    @NotNull
+    private final GVector2f imageSize;
+    @NotNull
+    private final Image     image;
 
     static {
         setImage("tileset.png", 29, 3);
@@ -26,13 +30,13 @@ public final class SpriteViewer {
     }
 
 
-    private SpriteViewer(String name, int x, int y) {
+    private SpriteViewer(@NotNull String name, int x, int y) {
         image = ResourceLoader.loadTexture(name);
         images = new GVector2f(x, y);
         imageSize = new GVector2f(image.getWidth(null), image.getHeight(null)).div(images);
     }
 
-    private static void setImage(String name, int x, int y) {
+    private static void setImage(@NotNull String name, int x, int y) {
         if (loadedImages.containsKey(name)) {
             return;
         }
@@ -40,8 +44,18 @@ public final class SpriteViewer {
         loadedImages.put(name, new SpriteViewer(name, x, y));
     }
 
-    public static Image getImage(String name, int x, int y) {
+    public static Image getImage(@NotNull String name, int x, int y) {
+        @Nullable
         SpriteViewer viewer = loadedImages.get(name);
+        if (viewer == null) {
+            throw new Error("Unknown sprina name: " + name);
+        }
+
+
+        if (x < 0 || y < 0 || x > viewer.images.getX() || y > viewer.images.getY()) {
+            throw new Error("Wrong sprita coordinates [" + x + ", " + y + "]. Max coordinates: " + viewer.images);
+        }
+
         BufferedImage img = new BufferedImage(viewer.imageSize.getXi(),
                                               viewer.imageSize.getYi(),
                                               BufferedImage.TYPE_INT_ARGB);

@@ -76,7 +76,7 @@ public class Profile implements JSONAble {
         name = Utils.getHostName();
     }
 
-    public void fromJSON(JSONObject profileData) {
+    public void fromJSON(@NotNull JSONObject profileData) {
         options = new OptionsManager();
         try {options.fromJSON(profileData.getJSONObject("gameOptions"));}
         catch (Exception e) {options.initDefault();}
@@ -96,6 +96,7 @@ public class Profile implements JSONAble {
         profileLoaded++;
     }
 
+    @NotNull
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
         try {

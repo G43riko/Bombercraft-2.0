@@ -9,13 +9,14 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
+import org.jetbrains.annotations.NotNull;
 import utils.resouces.ResourceLoader;
 
 
 public final class AudioPlayer {
     private Clip clip;
 
-    public AudioPlayer(String name) {
+    public AudioPlayer(@NotNull String name) {
         try {
             AudioInputStream ais = AudioSystem.getAudioInputStream(ResourceLoader.load(name));
             AudioFormat baseFormat = ais.getFormat();
