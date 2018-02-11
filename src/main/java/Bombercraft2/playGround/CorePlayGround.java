@@ -32,6 +32,7 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Shooting", () -> setScene(new ShootingDemo(this)));
         mainMenu.addButton("Perlin", () -> setScene(new PerlinDemo(this)));
         mainMenu.addButton("Map", () -> setScene(new MapDemo(this)));
+        mainMenu.addButton("Missile", () -> setScene(new MissileDemo(this)));
         mainMenu.addButton("Worker", () -> setScene(new WorkerDemo(this)));
         mainMenu.addButton("Chunked map", () -> setScene(new ChunkedMapDemo(this)));
         mainMenu.addButton("Particles preview", () -> setScene(new ParticlesPreviewDemo(this)));

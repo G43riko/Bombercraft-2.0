@@ -122,10 +122,6 @@ public class CoreGame extends CoreEngine implements MenuAble {
         System.exit(1);
     }
 
-    private JSONObject toJSON() {
-        return new JSONObject();
-    }
-
     public void showLoading() {
         states.push(new LoadingScreen(getCanvas(), guiManager.getLabelOf(Texts.LOADING)));
         Input.removeTarget();

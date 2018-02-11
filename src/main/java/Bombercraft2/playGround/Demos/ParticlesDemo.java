@@ -52,7 +52,7 @@ public class ParticlesDemo extends GameState implements SimpleGameAble {
     }
     @Override
     public void update(float delta) {
-        particles.parallelStream().forEach(particle -> {
+        particles.stream().forEach(particle -> {
             particle.move(delta);
             particle.checkBorders(parent.getCanvas());
         });

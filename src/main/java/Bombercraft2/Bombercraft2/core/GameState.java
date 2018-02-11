@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.core;
 
 import Bombercraft2.Bombercraft2.gui.ClickAble;
+import org.jetbrains.annotations.NotNull;
 
 public abstract class GameState implements InteractAble, ClickAble {
     public enum Type {
@@ -19,9 +20,11 @@ public abstract class GameState implements InteractAble, ClickAble {
         ParticlesDemo("ParticlesDemo"),
         ShootingDemo("ShootingDemo"),
         PerlinDemo("PerlinDemo"),
-        ChunkedMapDemo("ChunkedMapDemo"), 
+        ChunkedMapDemo("ChunkedMapDemo"),
         ParticlesPreviewDemo("articlesPreviewDemo"),
-        BombDemo("BombDemo"), WorkerDemo("WorkerDemo");
+        BombDemo("BombDemo"),
+        WorkerDemo("WorkerDemo"),
+        MissileDemo("MissileDemo");
 
         private final String name;
 
@@ -29,7 +32,9 @@ public abstract class GameState implements InteractAble, ClickAble {
             this.name = name;
         }
 
-        public String getName() { return name; }
+        public String getName() {
+            return name;
+        }
     }
 
     private final Type type;
@@ -38,7 +43,10 @@ public abstract class GameState implements InteractAble, ClickAble {
         this.type = type;
     }
 
-    public Type getType() {return type;}
+    @NotNull
+    public Type getType() {
+        return type;
+    }
 
     public void onResize() {}
 }
