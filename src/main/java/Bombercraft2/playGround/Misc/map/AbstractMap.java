@@ -47,10 +47,13 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
         return items.get(i + "_" + j);
     }
 
+    public abstract GVector2f getMapSize();
+
     @Nullable
     protected T getItem(GVector2f pos) {
         return items.get(pos.getXi() + "_" + pos.getYi());
     }
 
     public abstract AbstractBlock getBlockOnAbsolutePos(GVector2f click);
+    public abstract AbstractBlock getBlockOnPos(GVector2f click);
 }

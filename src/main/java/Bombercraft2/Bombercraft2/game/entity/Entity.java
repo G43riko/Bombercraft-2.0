@@ -2,15 +2,16 @@ package Bombercraft2.Bombercraft2.game.entity;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONException;
 import org.json.JSONObject;
 import utils.math.GVector2f;
+import utils.resouces.JSONAble;
 
-public abstract class Entity<T extends SimpleGameAble> implements Visible, InteractAble {
+public abstract class Entity<T extends SimpleGameAble> implements Visible, InteractAble, JSONAble {
     private int id = 1;
     protected final T parent;
     protected GVector2f position = null;
@@ -18,15 +19,7 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
 
     public Entity(@NotNull JSONObject json, @NotNull T parent) {
         this.parent = parent;
-        try {
-            id = json.getInt("id");
-            alive = json.getBoolean("alive");
-            position = new GVector2f(json.getString("position"));
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        fromJSON(json);
     }
 
     protected Entity(@NotNull GVector2f position, @NotNull T parent) {
@@ -34,10 +27,27 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
         this.parent = parent;
     }
 
-    //ABSTRACT
+
+    @Override
+    public void fromJSON(@NotNull JSONObject json) {
+        JSONWrapper(() -> {
+            id = json.getInt(Texts.ID);
+            alive = json.getBoolean(Texts.ALIVE);
+            position = new GVector2f(json.getString(Texts.POSITION));
+        });
+    }
+
     @NotNull
     @Contract(pure = true)
-    public abstract JSONObject toJSON();
+    public JSONObject toJSON() {
+        final JSONObject result = new JSONObject();
+        JSONWrapper(() -> {
+            result.put(Texts.ID, id);
+            result.put(Texts.POSITION, position);
+            result.put(Texts.ALIVE, alive);
+        });
+        return result;
+    }
 
     public GVector2f getSur() {return position.div(Config.BLOCK_SIZE).toInt();}
 

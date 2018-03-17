@@ -1,10 +1,10 @@
 package Bombercraft2.Bombercraft2.components.tasks;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.game.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.bots.Bot;
 import Bombercraft2.Bombercraft2.game.bots.BotFactory;
-import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.playGround.Misc.drawableLine.BasicDrawableLine;
 import Bombercraft2.playGround.Misc.drawableLine.EntityStartDrawableLine;
 import org.jetbrains.annotations.NotNull;
@@ -21,11 +21,11 @@ public class BotWorker extends Bot {
     private Task actTask;
 
     public BotWorker(@NotNull GVector2f position, @NotNull GameAble parent) {
-        super(position, parent, BotFactory.Types.WORKER, Player.Direction.getRandomDirection());
+        super(position, parent, BotFactory.Types.WORKER, Direction.getRandomDirection());
     }
 
     public void finish() {
-        direction = Player.Direction.getRandomDirection();
+        direction = Direction.getRandomDirection();
         actTask = null;
     }
 

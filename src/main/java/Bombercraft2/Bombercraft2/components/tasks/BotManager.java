@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.components.tasks;
 
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.game.bots.Bot;
+import Bombercraft2.playGround.Misc.AbstractManager;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
@@ -12,7 +13,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BotManager implements InteractAble {
+public class BotManager extends AbstractManager implements InteractAble {
     private final List<Bot> bots = new ArrayList<>();
 
     public List<Bot> getFreeBots(int count) {

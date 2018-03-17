@@ -3,7 +3,7 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimplePlayer;
+import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
 import Bombercraft2.playGround.Misc.particles.SimpleParticle;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
@@ -67,16 +67,16 @@ public class CollisionDemo extends GameState {
 
     private final List<SimpleParticle> barrels = new ArrayList<>();
     private final CorePlayGround parent;
-    private final SimplePlayer mySimplePlayer = new SimplePlayer();
+    private final SimpleParticlePlayer mySimpleParticlePlayer = new SimpleParticlePlayer();
 
 
     public CollisionDemo(CorePlayGround parent) {
         super(Type.CollisionDemo);
         this.parent = parent;
 
-        mySimplePlayer.posX = 40;
-        mySimplePlayer.posY = 40;
-        mySimplePlayer.radius = 20;
+        mySimpleParticlePlayer.posX = 40;
+        mySimpleParticlePlayer.posY = 40;
+        mySimpleParticlePlayer.radius = 20;
 
 
         SimpleParticle barrel = new SimpleParticle();
@@ -114,7 +114,7 @@ public class CollisionDemo extends GameState {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
 
         barrels.forEach(barrel -> barrel.fillArc(g2, null));
-        mySimplePlayer.render(g2);
+        mySimpleParticlePlayer.render(g2);
     }
 
     @Override
@@ -122,16 +122,16 @@ public class CollisionDemo extends GameState {
         if (Input.getKeyDown(Input.KEY_ESCAPE)) {
             parent.stopDemo();
         }
-        mySimplePlayer.input();
+        mySimpleParticlePlayer.input();
 
         if (Input.getKeyDown(Input.KEY_LCONTROL) || Input.isKeyDown(Input.KEY_LSHIFT)) {
             SimpleParticle barrel = new SimpleParticle();
-            barrel.posX = (float) (mySimplePlayer.posX + Math.cos(mySimplePlayer.angle) * mySimplePlayer.length);
-            barrel.posY = (float) (mySimplePlayer.posY + Math.sin(mySimplePlayer.angle) * mySimplePlayer.length);
+            barrel.posX = (float) (mySimpleParticlePlayer.posX + Math.cos(mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length);
+            barrel.posY = (float) (mySimpleParticlePlayer.posY + Math.sin(mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length);
 
             final float BULLET_SPEED = 10f;
-            barrel.velX = (float) (Math.cos(mySimplePlayer.angle) * BULLET_SPEED);
-            barrel.velY = (float) (Math.sin(mySimplePlayer.angle) * BULLET_SPEED);
+            barrel.velX = (float) (Math.cos(mySimpleParticlePlayer.angle) * BULLET_SPEED);
+            barrel.velY = (float) (Math.sin(mySimpleParticlePlayer.angle) * BULLET_SPEED);
             barrel.color = Color.BLACK;
             barrel.radius = 5;
             barrels.add(barrel);

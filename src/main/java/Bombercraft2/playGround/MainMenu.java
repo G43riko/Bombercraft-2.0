@@ -4,7 +4,7 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.BasicListener;
 import Bombercraft2.Bombercraft2.gui2.components.Button;
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
-import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
+import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.layouts.VerticalLayout;
 import Bombercraft2.Bombercraft2.gui2.styles.ButtonStyles;
 

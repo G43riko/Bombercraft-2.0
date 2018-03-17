@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.MainManager;
 import Bombercraft2.Bombercraft2.Profile;
 import Bombercraft2.Bombercraft2.components.tasks.*;
 import Bombercraft2.Bombercraft2.core.GameState;
@@ -20,6 +21,7 @@ import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.map.SimpleTypedBlock;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.map.SimpleMap;
+import Bombercraft2.playGround.SimpleAbstractGame;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -29,21 +31,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class WorkerDemo extends GameState implements GameAble {
+public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements GameAble {
     private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(40, 40);
-    private final CorePlayGround parent;
-    private final ViewManager    viewManager;
-    private final BotManager botManager = new BotManager();
-    private final TaskManager taskManager = new TaskManager(botManager, this);
-    private final SimpleMap      map;
+    private final SimpleMap   map;
 
     public WorkerDemo(CorePlayGround parent) {
-        super(Type.WorkerDemo);
-        viewManager = new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
-                                      parent.getCanvas().getWidth(),
-                                      parent.getCanvas().getHeight(),
-                                      3);
-        this.parent = parent;
+        super(parent, Type.WorkerDemo);
+        manager.setManagers(new BotManager());
+        manager.setManagers(new TaskManager(manager.getBotManager(), this));
+        setViewManager(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+                                       parent.getCanvas().getWidth(),
+                                       parent.getCanvas().getHeight(),
+                                       3));
         map = new SimpleMap(this, NUMBERS_OF_BLOCKS);
     }
 
@@ -51,22 +50,20 @@ public class WorkerDemo extends GameState implements GameAble {
     public void doAct(GVector2f click) {
         SimpleTypedBlock block = map.getBlockOnAbsolutePos(click);
         if (block != null) {
-            taskManager.addTask(new Task(this, 1, 100, new TaskDestroyBlock(block)));
+            manager.getTaskManager().addTask(new Task(this, 1, 100, new TaskDestroyBlock(block)));
         }
     }
 
     @Override
     public void update(float delta) {
-        botManager.update(delta);
-        taskManager.update(delta);
+        manager.update(delta);
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         map.render(g2);
-        botManager.render(g2);
-        taskManager.render(g2);
+        manager.render(g2);
     }
 
     @Override
@@ -87,43 +84,13 @@ public class WorkerDemo extends GameState implements GameAble {
             doAct(Input.getMousePosition());
         }
         if (Input.getMouseDown(Input.BUTTON_RIGHT)) {
-            botManager.addBot(new BotWorker(Input.getMousePosition()
-                                                 .add(getOffset())
-                                                 .div(getZoom())
-                                                 .sub(Config.BLOCK_SIZE_HALF), this));
+            manager.getBotManager().addBot(new BotWorker(Input.getMousePosition()
+                                                              .add(getOffset())
+                                                              .div(getZoom())
+                                                              .sub(Config.BLOCK_SIZE_HALF), this));
         }
-        viewManager.input();
     }
 
-    @Override
-    public void onResize() {
-        viewManager.setCanvasSize(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
-    }
-
-    @Contract(pure = true)
-    @Override
-    public float getZoom() {
-        return viewManager.getZoom();
-    }
-
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public GVector2f getCanvasSize() {
-        return viewManager.getCanvasSize();
-    }
-
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public GVector2f getOffset() {
-        return viewManager.getOffset();
-    }
-
-    @Override
-    public Canvas getCanvas() {
-        return null;
-    }
 
     @Override
     public @NotNull JSONObject getWeapon(@NotNull String weaponLaser) {

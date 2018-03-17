@@ -1,6 +1,7 @@
 package utils.resouces;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public interface JSONAble {
@@ -8,4 +9,13 @@ public interface JSONAble {
 
     @NotNull
     JSONObject toJSON();
+
+    default void JSONWrapper(JSONEvent event) {
+        try {
+            event.event();
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 }

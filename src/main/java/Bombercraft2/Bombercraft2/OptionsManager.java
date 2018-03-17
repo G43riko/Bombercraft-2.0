@@ -43,7 +43,10 @@ public class OptionsManager implements JSONAble {
     }
 
     public void initDefault() {
-        fromJSON(ResourceLoader.getJSON(Config.FILE_VISIBLE_OPTIONS));
+        final JSONObject result = ResourceLoader.getJSON(Config.FILE_VISIBLE_OPTIONS);
+        if (result != null) {
+            fromJSON(result);
+        }
     }
 
     public boolean getVisibleOption(String key) {

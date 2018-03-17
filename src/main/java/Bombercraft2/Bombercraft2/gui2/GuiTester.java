@@ -2,7 +2,7 @@ package Bombercraft2.Bombercraft2.gui2;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.gui2.components.*;
-import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
+import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnectAble;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.PositionableComponent;

@@ -4,8 +4,8 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
+import Bombercraft2.Bombercraft2.game.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
@@ -13,6 +13,7 @@ import org.json.JSONObject;
 import utils.GLogger;
 import utils.PerlinNoise;
 import utils.math.GVector2f;
+import utils.resouces.JSONAble;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,7 +22,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Map implements InteractAble {
+public class Map implements InteractAble, JSONAble {
     private              HashMap<String, Block> blocks         = null;
     private              GVector2f              numberOfBlocks = null;
     private              boolean                render         = true;
@@ -37,7 +38,7 @@ public class Map implements InteractAble {
         this.parent = parent;
         try {
             this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
-            loadMap(object);
+            fromJSON(object);
             size = numberOfBlocks.mul(Config.BLOCK_SIZE);
             GLogger.log(GLogger.GLog.MAP_CREATED);
         }
@@ -118,6 +119,7 @@ public class Map implements InteractAble {
         clearRespawnZones(parent.getLevel().getRespawnZones());
     }
 
+    @NotNull
     public JSONObject toJSON() {
         JSONObject result = new JSONObject();
         try {
@@ -158,7 +160,7 @@ public class Map implements InteractAble {
         render = true;
     }
 
-    private void loadMap(JSONObject object) {
+    public void fromJSON(@NotNull JSONObject object) {
         render = false;
         blocks = new HashMap<>();
         try {
@@ -193,7 +195,7 @@ public class Map implements InteractAble {
 
     public void resetMap() {
         try {
-            loadMap(new JSONObject(defaultMap));
+            fromJSON(new JSONObject(defaultMap));
         }
         catch (JSONException e) {
             GLogger.error(GLogger.GError.CANNOT_RESET_MAP, e);

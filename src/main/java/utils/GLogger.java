@@ -26,9 +26,11 @@ public class GLogger extends PrintStream {
         CANNOT_READ_JSON,
         CREATE_LEVEL_FAILED,
         CANNOT_SCAN_LOCALHOST,
+        UNKNOWN_LOCALHOST,
         CREATE_MAP_FAILED,
         CANNON_READ_FILE,
         CANNON_PARSE_PROFILE,
+        CANNON_SAVE_PROFILE,
         CREATE_CORE_GAME_FAILED,
         CANNON_READ_TEXTURE,
         CANNON_WRITE_FILE,
@@ -38,7 +40,9 @@ public class GLogger extends PrintStream {
         CANNOT_CREATE_SERVER,
         SERVER_CANNOT_ACCEPT_CONNECTION,
         CLOSE_SERVER_FAILED,
-        CANNOT_CONNECT_TO_SERVER,
+        CLIENT_CANNOT_CONNECT_TO_SERVER,
+        NOT_IMPLEMENTED,
+        NOT_SET,
         CANNOT_CLEAN_CLIENT,
         CANNOT_SEND_MESSAGE,
         CANNOT_PARSE_MESSAGE,
@@ -131,8 +135,9 @@ public class GLogger extends PrintStream {
     public void println(Object o) {super.println(o + prepareString());}
 
     public static void notImplemented() {
-        instanceErr.println("not implemented");
+        instanceErr.println(GError.NOT_IMPLEMENTED);
     }
+    public static void notSet(String item) { instanceErr.println(GError.NOT_SET + ": " + item); }
 
     public static void printLine(Object content) {
         instanceLog.println(content);

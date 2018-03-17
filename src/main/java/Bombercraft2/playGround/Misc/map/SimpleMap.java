@@ -14,9 +14,11 @@ import utils.math.GVector2f;
 public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     private final static boolean       PRERENDER = false;
     private              BufferedImage image     = null;
+    private final GVector2f mapSize;
 
     public SimpleMap(SimpleGameAble parent, GVector2f numberOfBlocks) {
         super(parent, numberOfBlocks);
+        mapSize = numberOfBlocks.mul(Config.BLOCK_SIZE);
         createRandomMap();
     }
 
@@ -36,24 +38,33 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
         }
     }
 
+    @Override
+    public GVector2f getMapSize() {
+        return mapSize;
+    }
+
     @Nullable
     @Override
     public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
         return getItem(click.add(parent.getOffset()).div(Config.BLOCK_SIZE).div(parent.getZoom()));
     }
 
+    @Override
+    public AbstractBlock getBlockOnPos(GVector2f click) {
+        return getItem(click);
+    }
 
     /*
-    public void render(Graphics2D g2) {
-        new HashMap<>(blocks).entrySet()
-                             .stream()
-                             .map(java.util.Map.Entry::getValue)
-                             .filter(parent::isVisible)//dame prec nevyditelne
-                             .peek(a -> a.render(g2))
-                             .filter(a -> a.getType() != Block.Type.NOTHING)
-                             .count();
-    }
-    */
+        public void render(Graphics2D g2) {
+            new HashMap<>(blocks).entrySet()
+                                 .stream()
+                                 .map(java.util.Map.Entry::getValue)
+                                 .filter(parent::isVisible)//dame prec nevyditelne
+                                 .peek(a -> a.render(g2))
+                                 .filter(a -> a.getType() != Block.Type.NOTHING)
+                                 .count();
+        }
+        */
     public void render(@NotNull Graphics2D g2) {
         if (!PRERENDER) {
             renderToImage(g2);

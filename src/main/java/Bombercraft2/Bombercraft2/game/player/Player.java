@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.game.player;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
+import Bombercraft2.Bombercraft2.game.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
@@ -15,27 +16,6 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class Player extends Entity<GameAble> implements HealthAble {
-    public enum Direction {
-        UP(2, new GVector2f(0, -1)),
-        DOWN(3, new GVector2f(0, 1)),
-        LEFT(0, new GVector2f(-1, 0)),
-        RIGHT(1, new GVector2f(1, 0));
-
-        private final int       id;
-        private final GVector2f direction;
-
-        Direction(int id, GVector2f direction) {
-            this.id = id;
-            this.direction = direction;
-        }
-
-        public int getID() {return id;}
-
-        public GVector2f getDirection() {return direction;}
-
-        public static Direction getRandomDirection() {return Direction.values()[(int) (Math.random() * 4)];}
-    }
-
     private int speed;
     private int health;
     private int range;
@@ -94,7 +74,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
 
         GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
 
-        PlayerSprite.drawPlayer(pos, size, g2, getDirection(), getImage(), isMoving());
+        PlayerSprite.drawPlayer(pos, size, g2, getDirection(), getImage() + getName(), isMoving());
 
 
     }
@@ -103,7 +83,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
     @NotNull
     @Override
     public JSONObject toJSON() {
-        JSONObject result = new JSONObject();
+        JSONObject result = super.toJSON();
         try {
             result.put(Texts.POSITION, position);
             result.put(Texts.SPEED, speed);
@@ -156,7 +136,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
 
     private void setImage(String image) {
         this.image = image;
-        PlayerSprite.setSprite(image, 5, 5, 4, 6);
+        PlayerSprite.setSprite(image + getName(), image, 5, 5, 4, 6);
     }
 
     @Override

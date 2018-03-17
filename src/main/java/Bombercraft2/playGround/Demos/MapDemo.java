@@ -17,35 +17,28 @@ import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.drawableLine.BasicDrawablePath;
 import Bombercraft2.playGround.Misc.map.SimpleMap;
+import Bombercraft2.playGround.SimpleAbstractGame;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
-public class MapDemo extends GameState implements SimpleGameAble {
+public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
     private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(100, 100);
-    private final CorePlayGround parent;
-    private final ViewManager    viewManager;
     private final SimpleMap      map;
 
     private GVector2f         firstClick;
     private BasicDrawablePath path;
 
     public MapDemo(CorePlayGround parent) {
-        super(Type.MapDemo);
-        viewManager = new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+        super(parent, Type.MapDemo);
+        setViewManager(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
                                       parent.getCanvas().getWidth(),
                                       parent.getCanvas().getHeight(),
-                                      3);
-        this.parent = parent;
+                                      3));
         map = new SimpleMap(this, NUMBERS_OF_BLOCKS);
 
     }
 
-    @Override
-    public void doAct(GVector2f click) {
-        // TODO Auto-generated method stub
-
-    }
 
 
     @Override
@@ -57,15 +50,6 @@ public class MapDemo extends GameState implements SimpleGameAble {
             path.render(g2);
         }
     }
-
-    @Override
-    public boolean isVisible(@NotNull Visible b) {
-        return !(b.getPosition().getX() * getZoom() + b.getSize().getX() * getZoom() < getOffset().getX() ||
-                b.getPosition().getY() * getZoom() + b.getSize().getY() * getZoom() < getOffset().getY() ||
-                getOffset().getX() + parent.getCanvas().getWidth() < b.getPosition().getX() * getZoom() ||
-                getOffset().getY() + parent.getCanvas().getHeight() < b.getPosition().getY() * getZoom());
-    }
-
 
     @Override
     public void input() {
@@ -91,12 +75,7 @@ public class MapDemo extends GameState implements SimpleGameAble {
                 firstClick = null;
             }
         }
-        viewManager.input();
-    }
-
-    @Override
-    public void onResize() {
-        viewManager.setCanvasSize(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+        doInput();
     }
 
     @Override
@@ -105,25 +84,5 @@ public class MapDemo extends GameState implements SimpleGameAble {
         if (path != null) {
             path.update(delta);
         }
-    }
-
-    @Contract(pure = true)
-    @Override
-    public float getZoom() {
-        return viewManager.getZoom();
-    }
-
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public GVector2f getCanvasSize() {
-        return viewManager.getCanvasSize();
-    }
-
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public GVector2f getOffset() {
-        return viewManager.getOffset();
     }
 }

@@ -1,33 +1,26 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.map.SimpleChunkedMap;
-
-import org.jetbrains.annotations.Contract;
+import Bombercraft2.playGround.SimpleAbstractGame;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class ChunkedMapDemo extends GameState implements SimpleGameAble {
+public class ChunkedMapDemo extends SimpleAbstractGame<CorePlayGround> {
     private static GVector2f NUMBER_OF_CHUNKS = new GVector2f(32, 32);
-    private final ViewManager      viewManager;
     private final SimpleChunkedMap map;
-    private final CorePlayGround   parent;
 
     public ChunkedMapDemo(@NotNull CorePlayGround parent) {
-        super(Type.ChunkedMapDemo);
-        viewManager = new ViewManager(NUMBER_OF_CHUNKS.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE),
-                                      parent.getCanvas().getWidth(),
-                                      parent.getCanvas().getHeight(),
-                                      3);
-        this.parent = parent;
+        super(parent, Type.ChunkedMapDemo);
+        setViewManager(new ViewManager(NUMBER_OF_CHUNKS.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE),
+                                       parent.getCanvas().getWidth(),
+                                       parent.getCanvas().getHeight(),
+                                       3));
         map = new SimpleChunkedMap(this, NUMBER_OF_CHUNKS);
     }
 
@@ -38,25 +31,6 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
     }
 
     @Override
-    public void doAct(GVector2f click) {
-
-    }
-
-    @Contract(pure = true)
-    @Override
-    public float getZoom() {
-        return viewManager.getZoom();
-    }
-
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public GVector2f getOffset() {
-        return viewManager.getOffset();
-    }
-
-
-    @Override
     public void input() {
         if (Input.getKeyDown(Input.KEY_ESCAPE)) {
             parent.stopDemo();
@@ -65,21 +39,6 @@ public class ChunkedMapDemo extends GameState implements SimpleGameAble {
         if (Input.getMouseDown(Input.BUTTON_LEFT)) {
             System.out.println(map.getBlockOnAbsolutePos(Input.getMousePosition()));
         }
-        viewManager.input();
+        doInput();
     }
-
-    @Override
-    public boolean isVisible(@NotNull Visible b) {
-        return !(b.getPosition().getX() * getZoom() + b.getSize().getX() * getZoom() < getOffset().getX() ||
-                b.getPosition().getY() * getZoom() + b.getSize().getY() * getZoom() < getOffset().getY() ||
-                getOffset().getX() + parent.getCanvas().getWidth() < b.getPosition().getX() * getZoom() ||
-                getOffset().getY() + parent.getCanvas().getHeight() < b.getPosition().getY() * getZoom());
-    }
-
-	@Contract(pure = true)
-    @NotNull
-    @Override
-	public GVector2f getCanvasSize() {
-		return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
-	}
 }

@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
 import Bombercraft2.Bombercraft2.core.Texts;
+import Bombercraft2.Bombercraft2.game.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.ShootAble;
@@ -9,7 +10,6 @@ import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.Block.Type;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
-import Bombercraft2.Bombercraft2.game.player.Player.Direction;
 import Bombercraft2.Bombercraft2.multiplayer.core.Server;
 import Bombercraft2.Bombercraft2.multiplayer.core.Writable;
 import org.jetbrains.annotations.NotNull;

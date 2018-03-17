@@ -29,6 +29,8 @@ public class Texts {
     public static final String PLAYER_INFO         = "playerInfo";
     public static final String RESPAWN_ZONE        = "respawnZone";
     public static final String POSITION            = "position";
+    public static final String ALIVE               = "alive";
+    public static final String ID                  = "ID";
     public static final String TYPE                = "type";
     public static final String SCALE               = "scale";
     public static final String BROKEN_CONNECTION   = "brokenConnection";

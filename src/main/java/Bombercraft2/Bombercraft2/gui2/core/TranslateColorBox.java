@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.gui2.core;
 
 import Bombercraft2.Bombercraft2.gui2.core.translation.TranslateColor;
+import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
 
 public class TranslateColorBox extends ColorBox {
     private TranslateColor backgroundTranslation;

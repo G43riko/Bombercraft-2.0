@@ -29,8 +29,8 @@ public class Block extends Entity<GameAble> {
         IRON("block_iron", 10, false),
         GRASS("block_grass", 0, true),
         WATER("block_water", 0, true),
-        PATH	("block_path",   0, true),
-        STONE	("block_stone",  7, false),
+        PATH("block_path", 0, true),
+        STONE("block_stone", 7, false),
         FUTURE("block_future", 0, true);
 
         private final Image   image;
@@ -202,13 +202,13 @@ public class Block extends Entity<GameAble> {
         GVector2f pos = position.mul(Config.BLOCK_SIZE).sub(getParent().getOffset());
         g2.setColor(color);
 
-		/*   2---3
+        /*   2---3
          *  /    |
-		 * 1     4
-		 *      /
-		 *     5
-		 *
-		 */
+         * 1     4
+         *      /
+         *     5
+         *
+         */
         int[] xPos = new int[]{
                 (int) (pos.getX()),
                 (int) (pos.add(offset).getX()),
@@ -330,7 +330,6 @@ public class Block extends Entity<GameAble> {
             }
         }
     }
-
 
 
     public GVector2f getSur() {return position/*.div(SIZE).toInt()*/;}

@@ -5,7 +5,10 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+import utils.GLogger;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -56,7 +59,14 @@ public class Path extends Entity<GameAble> {
     @NotNull
     @Override
     public JSONObject toJSON() {
-        return null;
+        JSONObject result = new JSONObject();
+        try {
+            result.put("points", new JSONArray(points));
+        }
+        catch (JSONException e) {
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_MAP, e);
+        }
+        return result;
     }
 
     @Override

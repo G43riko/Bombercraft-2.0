@@ -20,13 +20,6 @@ public class AbstractBlock extends Entity<SimpleGameAble> {
         this(position, parent, null);
     }
 
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public JSONObject toJSON() {
-        return null;
-    }
-
     public AbstractBlock(@NotNull GVector2f position,
                          @NotNull SimpleGameAble parent,
                          @Nullable GVector2f offset

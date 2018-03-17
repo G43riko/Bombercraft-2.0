@@ -3,7 +3,7 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimplePlayer;
+import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
 import Bombercraft2.playGround.Misc.map.SimpleMap_old;
 import Bombercraft2.playGround.Misc.particles.SimpleParticle;
 import org.jetbrains.annotations.NotNull;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ShootingDemo extends GameState {
     private final SimpleMap_old        map       = new SimpleMap_old();
     private final int                  blockSize = 40;
-    private final SimplePlayer         myPlayer  = new SimplePlayer();
+    private final SimpleParticlePlayer myPlayer  = new SimpleParticlePlayer();
     private final List<SimpleParticle> particles = new ArrayList<>();
     private final CorePlayGround parent;
 
@@ -126,7 +126,7 @@ public class ShootingDemo extends GameState {
             parent.stopDemo();
         }
         if (Input.getMouseDown(Input.BUTTON_LEFT)) {
-            SimplePlayer bullet = new SimplePlayer();
+            SimpleParticlePlayer bullet = new SimpleParticlePlayer();
 
             bullet.posX = (float) (myPlayer.posX + Math.cos(myPlayer.angle) * myPlayer.length);
             bullet.posY = (float) (myPlayer.posY + Math.sin(myPlayer.angle) * myPlayer.length);

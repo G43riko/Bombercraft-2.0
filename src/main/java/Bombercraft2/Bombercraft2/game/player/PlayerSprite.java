@@ -1,13 +1,13 @@
 package Bombercraft2.Bombercraft2.game.player;
 
-import Bombercraft2.Bombercraft2.game.player.Player.Direction;
+import Bombercraft2.Bombercraft2.game.Direction;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
 import java.util.HashMap;
 
-class PlayerSprite {
+public class PlayerSprite {
     private static final HashMap<String, PlayerSprite> animations = new HashMap<>();
 
     private final Image image;
@@ -27,8 +27,23 @@ class PlayerSprite {
         imageSize = new GVector2f(image.getWidth(null) / numX, image.getHeight(null) / numY);
     }
 
+    /**
+     * @deprecated use {@link #setSprite(String, String, int, int, int, int)}
+     */
     public static void setSprite(String name, int numX, int numY, int positions, int delay) {
         animations.put(name, new PlayerSprite(name, numX, numY, positions, delay));
+    }
+
+    /**
+     * @param key - unique key for sprite
+     * @param name - image used for sprite
+     * @param numX - number of horizontal images
+     * @param numY - number of vertical images
+     * @param positions - number of position types
+     * @param delay - number of render cycles needed to on step
+     */
+    public static void setSprite(String key, String name, int numX, int numY, int positions, int delay) {
+        animations.put(key, new PlayerSprite(name, numX, numY, positions, delay));
     }
 
 

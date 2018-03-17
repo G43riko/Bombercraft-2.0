@@ -7,9 +7,7 @@ import Bombercraft2.playGround.Misc.map.SimpleTypedBlock;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
 import utils.math.GVector2f;
 import utils.math.LineLineIntersect;
 
@@ -24,14 +22,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     public FinalTypedBlock(@NotNull JSONObject object, @NotNull GameAble parent) {
         super(new GVector2f(), 0, parent);
 
-        try {
-            position = new GVector2f(object.getString(Texts.POSITION));
-            health = object.getInt(Texts.HEALTH);
-            type = Block.Type.valueOf(object.getString(Texts.TYPE));
-        }
-        catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_PARSE_BLOCK, e);
-        }
+       fromJSON(object);
     }
 
     public FinalTypedBlock(@NotNull GVector2f position, int type, @NotNull GameAble parent) {
@@ -50,19 +41,18 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
+    @Override
+    public void fromJSON(@NotNull JSONObject json) {
+        super.fromJSON(json);
+        JSONWrapper(() -> health = json.getInt(Texts.HEALTH));
+    }
+
     @Contract(pure = true)
     @NotNull
     public JSONObject toJSON() {
-        JSONObject result = new JSONObject();
+        JSONObject result = super.toJSON();
 
-        try {
-            result.put(Texts.HEALTH, health);
-            result.put(Texts.TYPE, type);
-            result.put(Texts.POSITION, position);
-        }
-        catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BLOCK, e);
-        }
+        JSONWrapper(() -> result.put(Texts.HEALTH, health));
 
         return result;
     }

@@ -3,33 +3,29 @@ package Bombercraft2.playGround.Demos;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.components.Button;
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
 import Bombercraft2.Bombercraft2.gui2.components.VerticalScrollPanel;
-import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
+import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.particles.ParticleEmitterData;
 import Bombercraft2.playGround.Misc.particles.SimpleEmitter;
-import org.jetbrains.annotations.Contract;
+import Bombercraft2.playGround.SimpleAbstractGame;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
-public class ParticlesPreviewDemo extends GameState implements SimpleGameAble {
+public class ParticlesPreviewDemo extends SimpleAbstractGame<CorePlayGround> {
     private        GuiManager          guiManager = new GuiManager();
     private static VerticalScrollPanel panel      = new VerticalScrollPanel();
     private        SimpleEmitter       emitter    = new SimpleEmitter(new GVector2f(400, 400),
                                                                       this,
                                                                       ParticleEmitterData.Type.GREEN);
-    private final CorePlayGround parent;
 
     public ParticlesPreviewDemo(CorePlayGround parent) {
-        super(Type.ParticlesPreviewDemo);
-        this.parent = parent;
+        super(parent, Type.ParticlesPreviewDemo);
         guiManager.add(testScrollPanel());
     }
 
@@ -59,10 +55,8 @@ public class ParticlesPreviewDemo extends GameState implements SimpleGameAble {
     }
 
     @Override
-    public void doAct(GVector2f click) { }
-
-    @Override
     public void onResize() {
+        parent.onResize();
         panel.setHeight(parent.getCanvas().getHeight() - 10);
     }
 
@@ -88,12 +82,5 @@ public class ParticlesPreviewDemo extends GameState implements SimpleGameAble {
         if (Input.getMouseDown(Input.BUTTON_LEFT) && !GuiConnector.isMouseOn(panel)) {
             emitter.setPosition(Input.getMousePosition());
         }
-    }
-
-    @Contract(pure = true)
-    @NotNull
-    @Override
-    public GVector2f getCanvasSize() {
-        return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }
 }

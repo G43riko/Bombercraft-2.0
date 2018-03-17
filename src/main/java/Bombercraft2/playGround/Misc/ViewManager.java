@@ -1,13 +1,18 @@
 package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import utils.Utils;
 import utils.math.GVector2f;
 
-public class ViewManager {
+public class ViewManager extends AbstractManager {
+    @Nullable
+    private Visible target;
+
     private       float     zoom       = Config.DEFAULT_ZOOM;
     @NotNull
     private final GVector2f offset     = new GVector2f();
@@ -38,6 +43,10 @@ public class ViewManager {
                            canvasSize.getY() / mapSize.getY());
         minZoom = Math.max(minZoom, Config.MIN_ZOOM);
         checkOffset();
+    }
+
+    public void setTarget(Visible target) {
+        this.target = target;
     }
 
     public void moveX(float value) {
@@ -78,6 +87,11 @@ public class ViewManager {
     }
 
     @Contract(pure = true)
+    public GVector2f getMapSize() {
+        return mapSize;
+    }
+
+    @Contract(pure = true)
     public float getZoom() {
         return zoom;
     }
@@ -88,14 +102,45 @@ public class ViewManager {
         return offset;
     }
 
+    public void update(float delta) {
+        if (target == null) {
+            return;
+        }
+        GVector2f pos = target.getPosition().mul(zoom).add(Config.BLOCK_SIZE.mul(zoom / 2));
+
+        offset.setX(pos.getX() - canvasSize.getX() / 2);
+        offset.setY(pos.getY() - canvasSize.getY() / 2);
+
+
+        if (offset.getX() < 0) {
+            offset.setX(0);
+        }
+
+        if (offset.getX() > (mapSize.getX() * zoom) - canvasSize.getX()) {
+            offset.setX((mapSize.getX() * zoom) - canvasSize.getX());
+        }
+
+        if (offset.getY() < 0) {
+            offset.setY(0);
+        }
+
+        if (offset.getY() > (mapSize.getY() * zoom) - canvasSize.getY()) {
+            offset.setY((mapSize.getY() * zoom) - canvasSize.getY());
+        }
+    }
+
     public void input() {
+        if (Input.isKeyDown(Input.KEY_Q)) { zoom(speed / 100); }
+        if (Input.isKeyDown(Input.KEY_E)) { zoom(-speed / 100); }
+
+        if (target != null) {
+            return;
+        }
+
         if (Input.isKeyDown(Input.KEY_A)) { offset.addToX(-speed * zoom); }
         if (Input.isKeyDown(Input.KEY_D)) { offset.addToX(speed * zoom); }
         if (Input.isKeyDown(Input.KEY_S)) { offset.addToY(speed * zoom); }
         if (Input.isKeyDown(Input.KEY_W)) { offset.addToY(-speed * zoom); }
-
-        if (Input.isKeyDown(Input.KEY_Q)) { zoom(speed / 100); }
-        if (Input.isKeyDown(Input.KEY_E)) { zoom(-speed / 100); }
 
 
         offset.setY(Utils.clamp(0f, maxOffset.getY(), offset.getY()));

@@ -4,12 +4,13 @@ import Bombercraft2.Bombercraft2.gui2.components.Panel;
 import Bombercraft2.Bombercraft2.gui2.core.Drawable;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnector;
 import Bombercraft2.Bombercraft2.gui2.core.UpdateData;
+import Bombercraft2.playGround.Misc.AbstractManager;
 
 import java.awt.*;
 import java.util.LinkedList;
 import java.util.List;
 
-public class GuiManager {
+public class GuiManager extends AbstractManager {
     private final List<Drawable> components    = new LinkedList<>();
     private final List<Drawable> postRender    = new LinkedList<>();
     private final int            defaultCursor = Cursor.DEFAULT_CURSOR;

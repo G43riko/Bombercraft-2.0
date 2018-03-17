@@ -5,7 +5,7 @@ import Bombercraft2.playGround.Misc.particles.SimpleParticle;
 
 import java.awt.*;
 
-public class SimplePlayer extends SimpleParticle {
+public class SimpleParticlePlayer extends SimpleParticle {
     public       float   angle        = 0;
     public final int     speed        = 1;
     public final float   length       = 60;

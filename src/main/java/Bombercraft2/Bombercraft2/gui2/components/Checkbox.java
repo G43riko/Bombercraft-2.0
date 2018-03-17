@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui2.components;
 
-import Bombercraft2.Bombercraft2.gui2.core.ColorBox;
+import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.TextAlignment;
 import Bombercraft2.Bombercraft2.gui2.core.UpdateData;
 

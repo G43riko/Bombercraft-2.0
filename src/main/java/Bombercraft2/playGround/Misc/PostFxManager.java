@@ -6,7 +6,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class PostFxManager {
+public class PostFxManager extends AbstractManager{
     @NotNull
     private final BufferedImage image;
     @NotNull

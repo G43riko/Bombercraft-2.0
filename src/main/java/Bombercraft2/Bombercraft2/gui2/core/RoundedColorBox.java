@@ -1,6 +1,8 @@
 package Bombercraft2.Bombercraft2.gui2.core;
 
 
+import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
+
 import java.awt.*;
 
 public final class RoundedColorBox extends ColorBox {

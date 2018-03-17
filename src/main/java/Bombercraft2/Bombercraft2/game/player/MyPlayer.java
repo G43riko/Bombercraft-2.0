@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.game.player;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.game.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthBar;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;

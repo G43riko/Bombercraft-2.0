@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.components.tasks;
 
 import Bombercraft2.Bombercraft2.core.InteractAble;
+import Bombercraft2.playGround.Misc.AbstractManager;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.NotNull;
 
@@ -8,7 +9,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TaskManager implements InteractAble {
+public class TaskManager extends AbstractManager implements InteractAble {
     private final List<Task> tasks = new ArrayList<>();
     @NotNull
     private SimpleGameAble parent;

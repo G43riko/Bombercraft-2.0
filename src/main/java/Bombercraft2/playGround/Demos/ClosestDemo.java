@@ -3,7 +3,7 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimplePlayer;
+import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
 import Bombercraft2.playGround.Misc.particles.SimpleParticle;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GClosest;
@@ -16,16 +16,16 @@ import java.util.List;
 public class ClosestDemo extends GameState {
     private final List<SimpleParticle> barrels = new ArrayList<>();
     private final CorePlayGround parent;
-    private final SimplePlayer mySimplePlayer = new SimplePlayer();
+    private final SimpleParticlePlayer mySimpleParticlePlayer = new SimpleParticlePlayer();
 
 
     public ClosestDemo(CorePlayGround parent) {
         super(Type.BasicDemo);
         this.parent = parent;
 
-        mySimplePlayer.posX = 40;
-        mySimplePlayer.posY = 40;
-        mySimplePlayer.radius = 20;
+        mySimpleParticlePlayer.posX = 40;
+        mySimpleParticlePlayer.posY = 40;
+        mySimpleParticlePlayer.radius = 20;
 
 
         SimpleParticle barrel = new SimpleParticle();
@@ -53,17 +53,19 @@ public class ClosestDemo extends GameState {
 
         barrels.forEach(barrel -> renderBarrel(barrel, g2));
 
-        mySimplePlayer.render(g2);
+        mySimpleParticlePlayer.render(g2);
 
         drawClosestPoint(g2, barrels.get(0));
 
     }
 
     private void drawClosestPoint(Graphics2D g2, SimpleParticle barrel) {
-        GVector2f closest = GClosest.getClosestPointOnLine(mySimplePlayer.posX,
-                                                           mySimplePlayer.posY,
-                                                           mySimplePlayer.posX + (int) (Math.cos(mySimplePlayer.angle) * mySimplePlayer.length * 100),
-                                                           mySimplePlayer.posY + (int) (Math.sin(mySimplePlayer.angle) * mySimplePlayer.length * 100),
+        GVector2f closest = GClosest.getClosestPointOnLine(mySimpleParticlePlayer.posX,
+                                                           mySimpleParticlePlayer.posY,
+                                                           mySimpleParticlePlayer.posX + (int) (Math.cos(
+                                                                   mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
+                                                           mySimpleParticlePlayer.posY + (int) (Math.sin(
+                                                                   mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
                                                            barrel.posX,
                                                            barrel.posY);
 
@@ -80,10 +82,10 @@ public class ClosestDemo extends GameState {
         g2.setColor(Color.RED);
         g2.drawLine((int)barrel.posX, (int)barrel.posY, closest.getXi(), closest.getYi());
         int maxSize = parent.getCanvas().getWidth() + parent.getCanvas().getHeight();
-        g2.drawLine((int)mySimplePlayer.posX,
-                    (int)mySimplePlayer.posY,
-                    (int)(mySimplePlayer.posX + Math.cos(mySimplePlayer.angle) * maxSize),
-                    (int)(mySimplePlayer.posY + Math.sin(mySimplePlayer.angle) * maxSize));
+        g2.drawLine((int) mySimpleParticlePlayer.posX,
+                    (int) mySimpleParticlePlayer.posY,
+                    (int)(mySimpleParticlePlayer.posX + Math.cos(mySimpleParticlePlayer.angle) * maxSize),
+                    (int)(mySimpleParticlePlayer.posY + Math.sin(mySimpleParticlePlayer.angle) * maxSize));
     }
 
     @Override
@@ -92,7 +94,7 @@ public class ClosestDemo extends GameState {
             parent.stopDemo();
         }
 
-        mySimplePlayer.input();
+        mySimpleParticlePlayer.input();
     }
 
     @Override

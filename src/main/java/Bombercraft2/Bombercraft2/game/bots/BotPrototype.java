@@ -4,13 +4,13 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class BotModel {
+public class BotPrototype {
     private int              speed;
     private int              maxHealth;
     private int              damage;
     private BotFactory.Types type;
 
-    public BotModel(JSONObject data) {
+    public BotPrototype(JSONObject data) {
         try {
             this.speed = data.getInt(Texts.SPEED);
             this.damage = data.getInt(Texts.DAMAGE);

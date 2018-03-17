@@ -1,5 +1,6 @@
 package Bombercraft2.playGround.Misc;
 
+import Bombercraft2.Bombercraft2.MainManager;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import Bombercraft2.Bombercraft2.core.Visible;
@@ -36,4 +37,7 @@ public interface SimpleGameAble {
     default GVector2f getCanvasSize() {
         return new GVector2f();
     }
+
+    //TODO: toto treba prerobiť na @NotNull
+    default MainManager getManager() { return null; }
 }

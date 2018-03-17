@@ -16,13 +16,13 @@ public class BotFactory {
         public String getName() {return name;}
     }
 
-    private static final HashMap<Types, BotModel> bots = new HashMap<>();
+    private static final HashMap<Types, BotPrototype> bots = new HashMap<>();
 
     public static void init(JSONObject data) {
         try {
             Types[] types = Types.values();
             for (Types type : types) {
-                bots.put(type, new BotModel(data.getJSONObject(type.name)));
+                bots.put(type, new BotPrototype(data.getJSONObject(type.name)));
             }
         }
         catch (JSONException e) {
@@ -30,11 +30,11 @@ public class BotFactory {
         }
     }
 
-    public static BotModel getBotModel(Types type) {
+    public static BotPrototype getBotPrototype(Types type) {
         return bots.get(type);
     }
 
-    public static BotModel getBotModel(String type) {
+    public static BotPrototype getBotPrototype(String type) {
         return bots.get(Types.valueOf(type));
     }
 }

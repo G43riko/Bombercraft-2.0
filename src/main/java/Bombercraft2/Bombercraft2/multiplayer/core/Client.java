@@ -30,7 +30,7 @@ public abstract class Client implements Writable {
             GLogger.log(GLogger.GLog.SUCCESSFULLY_CONNECTED_TO_THE_SERVER);
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_CONNECT_TO_SERVER, e);
+            GLogger.error(GLogger.GError.CLIENT_CANNOT_CONNECT_TO_SERVER, e);
         }
 
         listen();

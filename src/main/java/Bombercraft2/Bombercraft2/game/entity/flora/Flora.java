@@ -40,7 +40,7 @@ public abstract class Flora extends Entity {
         }
     }
 
-    void fromJSON(JSONObject data) {
+    public void fromJSON(@NotNull JSONObject data) {
         try {
             setPosition(new GVector2f(data.getString(Texts.POSITION)));
             setType(FlorAble.valueOf(data.getString(Texts.TYPE)));

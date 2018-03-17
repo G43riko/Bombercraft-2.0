@@ -3,6 +3,7 @@ package Bombercraft2.playGround.Misc.map;
 import java.awt.Graphics2D;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.map.AbstractBlock;
@@ -10,10 +11,12 @@ import Bombercraft2.playGround.Misc.map.AbstractBlock;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
+import utils.GLogger;
 import utils.math.GVector2f;
 
 public class SimpleTypedBlock extends AbstractBlock {
-
     @NotNull
     protected Block.Type type;
 
@@ -36,6 +39,26 @@ public class SimpleTypedBlock extends AbstractBlock {
         GVector2f pos = (offset == null ? realPos : realPos.add(offset.mul(parent.getZoom()))).sub(parent.getOffset());
 
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi() + 1, size.getYi() + 1, null);
+    }
+
+
+    @Override
+    public void fromJSON(@NotNull JSONObject json) {
+        super.fromJSON(json);
+    }
+
+    @Override
+    public @NotNull JSONObject toJSON() {
+        JSONObject result = super.toJSON();
+
+        try {
+            result.put(Texts.TYPE, type);
+        }
+        catch (JSONException e) {
+            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BLOCK, e);
+        }
+
+        return result;
     }
 
     @Contract(pure = true)

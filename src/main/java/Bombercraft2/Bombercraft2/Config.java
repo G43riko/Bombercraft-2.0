@@ -42,11 +42,18 @@ public class Config {
     public final static float WATER_TILE_SPEED_COEFFICIENT = 0.7f;
 
     public final static int   HEALTH_BAR_VERTICAL_OFFSET   = 0;
-    public final static int   HEALTH_BAR_HORIZONTAL_OFFSET = 0;
+    public final static int   HEALTH_BAR_HORIZONTAL_OFFSET = 1;
     public final static int   HEALTH_BAR_HORIZONTAL_HEIGHT = 3;
     public final static int   HEALTH_BAR_BORDER_WIDTH      = 1;
     public static final Color HEALTH_BAR_BORDER_COLOR      = Color.WHITE;
     public static final Color HEALTH_BAR_FILL_COLOR        = Color.GREEN;
+
+    public static final Color PATH_BORDER_COLOR = Color.WHITE;
+    public static final Color PATH_FILL_COLOR   = Color.WHITE;
+    public static final float PATH_NORMAL_WIDTH = 1.0f;
+    public static final float PATH_BOLD_WIDTH   = 6.0f;
+    public static final float PATH_DASH_GAP   = 90.0f;
+    public final static float PATH_SPEED        = 3.0f;
 
 
     public final static Color BAR_BACKGROUND_COLOR = Color.WHITE;
@@ -113,10 +120,10 @@ public class Config {
     public static final String    DEFAULT_FONT         = "Garamond";
     public static final int       DEFAULT_FONT_SIZE    = 20;
     public static final GVector2f CHUNK_SIZE           = new GVector2f(32, 32);
-    public final static GVector2f BLOCK_SIZE         = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
-                                                                     Config.DEFAULT_BLOCK_HEIGHT);
-    public final static GVector2f BLOCK_SIZE_HALF    = BLOCK_SIZE.div(2);
-    public static final boolean   SHOW_CHUNK_BORDERS = false;
-    public static final float     MIN_ZOOM           = 0.2f;
+    public final static GVector2f BLOCK_SIZE           = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
+                                                                       Config.DEFAULT_BLOCK_HEIGHT);
+    public final static GVector2f BLOCK_SIZE_HALF      = BLOCK_SIZE.div(2);
+    public static final boolean   SHOW_CHUNK_BORDERS   = false;
+    public static final float     MIN_ZOOM             = 0.2f;
 
 }

@@ -28,6 +28,7 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Ray casting", () -> setScene(new BasicDemo(this)));
         mainMenu.addButton("Closest point", () -> setScene(new ClosestDemo(this)));
         mainMenu.addButton("Collisions", () -> setScene(new CollisionDemo(this)));
+        mainMenu.addButton("Player", () -> setScene(new PlayerDemo(this)));
         mainMenu.addButton("Particles", () -> setScene(new ParticlesDemo(this)));
         mainMenu.addButton("Shooting", () -> setScene(new ShootingDemo(this)));
         mainMenu.addButton("Perlin", () -> setScene(new PerlinDemo(this)));

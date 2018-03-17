@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import Bombercraft2.Bombercraft2.game.Direction;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -138,7 +139,7 @@ public final class Utils {
     }
 
     @NotNull
-    public static GVector2f getNormalMoveFromDir(@NotNull Player.Direction dir) {
+    public static GVector2f getNormalMoveFromDir(@NotNull Direction dir) {
         switch (dir) {
             case LEFT:
                 return new GVector2f(-1, 0);
