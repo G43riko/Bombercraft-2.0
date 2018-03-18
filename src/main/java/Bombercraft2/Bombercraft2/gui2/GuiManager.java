@@ -39,7 +39,7 @@ public class GuiManager extends AbstractManager {
 
     public void render(Graphics2D g2) {
         //TODO toto sa bude volať až pri zmene rozlýšenia
-        onResize();
+        // onResize();
         cursor = defaultCursor;
         components.forEach((component) -> component.render(g2));
         postRender.forEach((item) -> item.render(g2));

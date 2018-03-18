@@ -34,6 +34,26 @@
  - Health bar
  - Explosions
  
+## Implementation
+### Managers
+#### MainManager
+ - Manage all managers
+#### SceneManager
+ - Manage bullets, bombs, particle emitters
+#### ViewManager
+ - Allow interaction with Game
+ - Use offset and zoom
+#### PostFxManager
+ - Create and render all damages on maps
+ - Render crates, death bodies, blood...
+#### TaskManager
+#### MapManager
+ - Create, render and update map
+#### BotManager
+#### GuiManager
+#### PlayerManager
+ - Contains all player in game
+ - all
 ## Gui
 ### Components
 #### Button
@@ -68,6 +88,8 @@
 ## TODO
  - Identify players by ID not by login
  - Allow toggle fullscreen
+ - Fix line-block collision
+ - Make chunks seamless 
 ### Demos
  - Missile demo - shot that follows the mouse
  - Map with enemies
