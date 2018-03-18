@@ -4,6 +4,8 @@ import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MapManager extends AbstractManager{
     private final AbstractMap map;
@@ -20,6 +22,11 @@ public class MapManager extends AbstractManager{
         return (SimpleTypedBlock)map.getBlockOnAbsolutePos(click);
     }
 
+    @Override
+    @NotNull
+    public List<String> getLogInfo() {
+        return map.getLogInfo();
+    }
 
     public GVector2f getFreePosition() {
         final GVector2f mapSize = map.getMapSize();
@@ -30,6 +37,11 @@ public class MapManager extends AbstractManager{
                 return result;
             }
         }
+    }
+
+    @NotNull
+    public GVector2f getMapSize() {
+        return map.getMapSize();
     }
 
     public void render(@NotNull Graphics2D g2) {

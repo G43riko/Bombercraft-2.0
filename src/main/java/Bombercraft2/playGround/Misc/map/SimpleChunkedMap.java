@@ -6,22 +6,36 @@ import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Map;
 
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 
 public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
-    private final GVector2f mapSize;
+    private int renderedChunks = 0;
     public SimpleChunkedMap(SimpleGameAble parent, GVector2f numberOfChunks) {
-        super(parent, numberOfChunks);
+        super(parent, numberOfChunks, numberOfChunks.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE));
         createRandomMap();
-        this.mapSize = numberOfChunks.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE);
     }
 
     public void render(@NotNull Graphics2D g2) {
-        items.entrySet().stream().map(Map.Entry::getValue).filter(parent::isVisible).forEach(a -> a.render(g2));
+        renderedBlocks = 0;
+        renderedChunks = 0;
+        items.entrySet().stream().map(Map.Entry::getValue).filter(parent::isVisible).forEach(a -> {
+            a.render(g2);
+            renderedChunks++;
+            renderedBlocks += a.getRenderedBlocks();
+        });
     }
 
+
+    @NotNull
+    @Override
+    public List<String> getLogInfo() {
+        List<String> result = super.getLogInfo();
+        result.add("Rendered chunks: " + renderedChunks);
+        return result;
+    }
 
     protected void createRandomMap() {
         for (int i = 0; i < numberOfItems.getXi(); i++) {
@@ -31,10 +45,6 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
         }
     }
 
-    @Override
-    public GVector2f getMapSize() {
-        return mapSize;
-    }
 
     @Nullable
     @Override

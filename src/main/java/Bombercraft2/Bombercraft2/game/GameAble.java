@@ -53,9 +53,6 @@ public interface GameAble extends InteractAble, Visible, SimpleGameAble {
     String getBasicInfo();
 
     @NotNull
-    ArrayList<String> getLogInfo();
-
-    @NotNull
     MyPlayer getMyPlayer();
 
     @NotNull

@@ -4,7 +4,7 @@ import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
-import Bombercraft2.Bombercraft2.game.Direction;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

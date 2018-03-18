@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
 import Bombercraft2.Bombercraft2.core.Texts;
-import Bombercraft2.Bombercraft2.game.Direction;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.ShootAble;

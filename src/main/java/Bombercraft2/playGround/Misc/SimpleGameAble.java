@@ -6,6 +6,9 @@ import org.jetbrains.annotations.NotNull;
 import Bombercraft2.Bombercraft2.core.Visible;
 import utils.math.GVector2f;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Components
  *  - ViewManager
@@ -36,6 +39,12 @@ public interface SimpleGameAble {
     @Contract(pure = true)
     default GVector2f getCanvasSize() {
         return new GVector2f();
+    }
+
+
+    @NotNull
+    default List<String> getLogInfo() {
+        return getManager().getLogInfo();
     }
 
     //TODO: toto treba prerobiť na @NotNull

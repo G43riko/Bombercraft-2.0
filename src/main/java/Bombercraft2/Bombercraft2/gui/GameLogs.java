@@ -2,24 +2,25 @@ package Bombercraft2.Bombercraft2.gui;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
-import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class GameLogs implements InteractAble {
-    private final GameAble parent;
+    private final SimpleGameAble parent;
     private final int offset = 10;
 
-    public GameLogs(GameAble parent) {
+    public GameLogs(SimpleGameAble parent) {
         this.parent = parent;
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        ArrayList<String> data = parent.getLogInfo();
+        List<String> data = parent.getLogInfo();
 
         g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.LOG_TEXT_SIZE));
 
@@ -30,7 +31,7 @@ public class GameLogs implements InteractAble {
 
         int height = Config.LOG_TEXT_SIZE * data.size() + 5;
         int width = maxWidth + offset;
-        int positionX = parent.getCanvas().getWidth() - width;
+        int positionX = parent.getCanvasSize().getXi() - width;
 
         g2.setColor(Config.LOG_BG_COLOR);
         g2.fillRoundRect(positionX,

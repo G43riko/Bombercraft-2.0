@@ -6,9 +6,11 @@ import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import org.jetbrains.annotations.NotNull;
+import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;
+import java.util.List;
 
 public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState implements SimpleGameAble {
     @NotNull
@@ -23,6 +25,17 @@ public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState
 
     protected void setViewManager(@NotNull ViewManager viewManager) {
         manager.setManagers(viewManager);
+    }
+
+    @Override
+    @NotNull
+    public List<String> getLogInfo() {
+        List<String> result = SimpleGameAble.super.getLogInfo();
+        result.add("FPS: " + parent.getFPS());
+        result.add("UPS: " + parent.getUPS());
+        result.add("Loops: " + parent.getLoops());
+        result.addAll(Utils.getMemoryInfo());
+        return result;
     }
 
     @Override

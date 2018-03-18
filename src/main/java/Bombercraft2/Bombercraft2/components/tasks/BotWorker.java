@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.components.tasks;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.game.Direction;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.bots.Bot;
 import Bombercraft2.Bombercraft2.game.bots.BotFactory;

@@ -1,14 +1,16 @@
 package Bombercraft2.playGround.Misc.bots;
 
 
-import Bombercraft2.Bombercraft2.game.Direction;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SimpleMyPlayer extends SimplePlayer {
     private       GVector2f offset       = null;
@@ -95,8 +97,13 @@ public class SimpleMyPlayer extends SimplePlayer {
         else if (move.getX() == 0 && move.getY() > 0) {
             setDirection(Direction.DOWN);
         }
+    }
 
-
+    @NotNull
+    public List<String> getLogInfo() {
+        List<String> result = new ArrayList<>();
+        result.add("MyPlayer pos: " + position.toDecimal(1));
+        return result;
     }
 
     @Override

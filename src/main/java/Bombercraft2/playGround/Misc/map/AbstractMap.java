@@ -9,7 +9,9 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Components
@@ -19,16 +21,25 @@ import java.util.HashMap;
  */
 public abstract class AbstractMap<T extends Visible> implements InteractAble {
     @NotNull
+    protected final HashMap<String, T> items = new HashMap<>();
+
+    @NotNull
     protected final SimpleGameAble parent;
 
     @NotNull
     protected final GVector2f numberOfItems;
 
-    protected final HashMap<String, T> items = new HashMap<>();
+    @NotNull
+    protected final GVector2f mapSize;
 
-    public AbstractMap(@NotNull SimpleGameAble parent, @NotNull GVector2f numberOfItems) {
+
+    protected int renderedBlocks = 0;
+
+
+    public AbstractMap(@NotNull SimpleGameAble parent, @NotNull GVector2f numberOfItems, @NotNull GVector2f mapSize) {
         this.numberOfItems = numberOfItems;
         this.parent = parent;
+        this.mapSize = mapSize;
     }
 
     @NotNull
@@ -47,11 +58,23 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
         return items.get(i + "_" + j);
     }
 
-    public abstract GVector2f getMapSize();
-
+    public GVector2f getMapSize() {
+        return mapSize;
+    }
+    public int getRenderedBlocks() {
+        return renderedBlocks;
+    }
     @Nullable
     protected T getItem(GVector2f pos) {
         return items.get(pos.getXi() + "_" + pos.getYi());
+    }
+
+    @NotNull
+    public List<String> getLogInfo() {
+        List<String> result = new ArrayList<>();
+        result.add("map size: " + getMapSize().toDecimal(3));
+        result.add("rendered blocks: " + getRenderedBlocks());
+        return result;
     }
 
     public abstract AbstractBlock getBlockOnAbsolutePos(GVector2f click);

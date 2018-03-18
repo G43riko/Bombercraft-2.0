@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.player;
 
-import Bombercraft2.Bombercraft2.game.Direction;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 

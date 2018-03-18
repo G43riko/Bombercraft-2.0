@@ -30,6 +30,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements GameAble {
     private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(40, 40);
@@ -143,8 +144,9 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull ArrayList<String> getLogInfo() {
-        return null;
+    @NotNull
+    public List<String> getLogInfo() {
+        return manager.getLogInfo();
     }
 
     @Override

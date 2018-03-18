@@ -15,9 +15,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SimpleChunk extends Entity<SimpleGameAble> {
-    public final static GVector2f SIZE = Config.BLOCK_SIZE.mul(Config.CHUNK_SIZE);
-    private BufferedImage                     image  = null;
-    private HashMap<String, SimpleTypedBlock> blocks = null;
+    public final static GVector2f                         SIZE           = Config.BLOCK_SIZE.mul(Config.CHUNK_SIZE);
+    private             BufferedImage                     image          = null;
+    private             int                               renderedBlocks = 0;
+    private             HashMap<String, SimpleTypedBlock> blocks         = null;
 
     public SimpleChunk(SimpleChunkedMap parent, GVector2f position) {
         super(position, parent.getParent());
@@ -55,11 +56,15 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
     }
 
     public void render(@NotNull Graphics2D g2) {
+        renderedBlocks = 0;
         blocks.entrySet()
               .stream()
               .map(Map.Entry::getValue)
               .filter(parent::isVisible)
-              .forEach(a -> a.render(g2));
+              .forEach(a -> {
+                  a.render(g2);
+                  renderedBlocks++;
+              });
 
         if (Config.SHOW_CHUNK_BORDERS) {
             g2.setColor(Color.black);
@@ -68,6 +73,10 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
             g2.setStroke(new BasicStroke(3));
             g2.drawRect(realPosition.getXi(), realPosition.getYi(), realSize.getXi(), realSize.getYi());
         }
+    }
+
+    public int getRenderedBlocks() {
+        return renderedBlocks;
     }
 
     @Contract(pure = true)

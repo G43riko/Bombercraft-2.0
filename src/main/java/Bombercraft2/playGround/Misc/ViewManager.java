@@ -9,6 +9,9 @@ import org.jetbrains.annotations.Nullable;
 import utils.Utils;
 import utils.math.GVector2f;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ViewManager extends AbstractManager {
     @Nullable
     private Visible target;
@@ -25,10 +28,19 @@ public class ViewManager extends AbstractManager {
     private       float     minZoom;
     private       float     speed;
 
-
     public ViewManager(@NotNull GVector2f mapSize, int canvasWidth, int canvasHeight, float speed) {
+        this(null, mapSize, canvasWidth, canvasHeight, speed);
+    }
+
+    public ViewManager(@Nullable Visible target,
+                       @NotNull GVector2f mapSize,
+                       int canvasWidth,
+                       int canvasHeight,
+                       float speed
+                      ) {
         this.mapSize = mapSize;
         this.speed = speed;
+        this.target = target;
         setCanvasSize(canvasWidth, canvasHeight);
     }
 
@@ -77,6 +89,16 @@ public class ViewManager extends AbstractManager {
         return canvasSize;
     }
 
+    @NotNull
+    @Override
+    public List<String> getLogInfo() {
+        List<String> result = new ArrayList<>();
+        result.add("zoom: " + zoom);
+        result.add("offset: " + offset.toDecimal(3));
+        result.add("canvas size: " + canvasSize.toDecimal(3));
+        return result;
+    }
+
     public void setSpeed(float speed) {
         this.speed = speed;
     }
@@ -84,11 +106,6 @@ public class ViewManager extends AbstractManager {
     @Contract(pure = true)
     public float getSpeed() {
         return speed;
-    }
-
-    @Contract(pure = true)
-    public GVector2f getMapSize() {
-        return mapSize;
     }
 
     @Contract(pure = true)

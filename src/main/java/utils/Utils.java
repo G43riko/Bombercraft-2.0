@@ -13,13 +13,14 @@ import java.net.MalformedURLException;
 import java.net.NetworkInterface;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import Bombercraft2.Bombercraft2.game.Direction;
-import Bombercraft2.Bombercraft2.game.player.Player;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
@@ -136,6 +137,20 @@ public final class Utils {
         catch (AWTException | IOException ex) {
             System.err.println(ex);
         }
+    }
+
+    public static List<String> getMemoryInfo() {
+        Runtime runtime = Runtime.getRuntime();
+
+        long maxMemory = runtime.maxMemory();
+        long allocatedMemory = runtime.totalMemory();
+        long freeMemory = runtime.freeMemory();
+        List<String> result = new ArrayList<>();
+        final int ration = 1048576; // 1024 * 1024
+        result.add("free memory: " + String.format("%03d ", freeMemory / ration) + " MB");
+        result.add("allocated memory: " + String.format("%03d ", allocatedMemory / ration) + " MB");
+        result.add("max memory: " + String.format("%03d ", maxMemory / ration) + " MB");
+        return result;
     }
 
     @NotNull

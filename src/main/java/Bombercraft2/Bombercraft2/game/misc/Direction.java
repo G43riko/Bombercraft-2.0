@@ -1,4 +1,4 @@
-package Bombercraft2.Bombercraft2.game;
+package Bombercraft2.Bombercraft2.game.misc;
 
 import utils.math.GVector2f;
 

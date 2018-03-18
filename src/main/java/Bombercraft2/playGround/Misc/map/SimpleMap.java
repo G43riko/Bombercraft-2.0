@@ -14,11 +14,9 @@ import utils.math.GVector2f;
 public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     private final static boolean       PRERENDER = false;
     private              BufferedImage image     = null;
-    private final GVector2f mapSize;
 
     public SimpleMap(SimpleGameAble parent, GVector2f numberOfBlocks) {
-        super(parent, numberOfBlocks);
-        mapSize = numberOfBlocks.mul(Config.BLOCK_SIZE);
+        super(parent, numberOfBlocks, numberOfBlocks.mul(Config.BLOCK_SIZE));
         createRandomMap();
     }
 
@@ -36,11 +34,6 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
                                                    parent));
             }
         }
-    }
-
-    @Override
-    public GVector2f getMapSize() {
-        return mapSize;
     }
 
     @Nullable

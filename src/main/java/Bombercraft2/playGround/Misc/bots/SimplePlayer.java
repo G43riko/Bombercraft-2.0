@@ -4,7 +4,7 @@ package Bombercraft2.playGround.Misc.bots;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthAble;
 import Bombercraft2.Bombercraft2.core.Texts;
-import Bombercraft2.Bombercraft2.game.Direction;
+import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.player.PlayerSprite;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
@@ -87,7 +87,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
                               .toInt();
 
         try {
-            return  parent.getManager().getMapManager().getTypedBlock(t.getXi(), t.getYi()).getType().isWalkable() &&
+            return parent.getManager().getMapManager().getTypedBlock(t.getXi(), t.getYi()).getType().isWalkable() &&
                     parent.getManager().getMapManager().getTypedBlock(b.getXi(), b.getYi()).getType().isWalkable() &&
                     parent.getManager().getMapManager().getTypedBlock(r.getXi(), r.getYi()).getType().isWalkable() &&
                     parent.getManager().getMapManager().getTypedBlock(l.getXi(), l.getYi()).getType().isWalkable();
@@ -162,7 +162,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
     private void setImage(String image) {
         this.image = image;
-        PlayerSprite.setSprite(image + getName(),image, 5, 5, 4, 6);
+        PlayerSprite.setSprite(image + getName(), image, 5, 5, 4, 6);
     }
 
     @Override
@@ -187,30 +187,26 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
     protected boolean checkBorders() {
         boolean touchBorders = false;
-        if (position.getX() * parent.getZoom() < 0) {
+        GVector2f zoomedPosition = position.mul(parent.getManager().getViewManager().getZoom());
+        GVector2f zoomedMapSize = parent.getManager().getMapManager().getMapSize().mul(parent.getZoom());
+
+        if (zoomedPosition.getX() < 0) {
             position.setX(0);
             touchBorders = true;
         }
 
-        if (position.getY() * parent.getZoom() < 0) {
+        if (zoomedPosition.getY() < 0) {
             position.setY(0);
             touchBorders = true;
         }
 
-
-        GVector2f mapSize = parent.getManager().getViewManager().getMapSize();
-
-        if (position.getX() * parent.getZoom() + Config.DEFAULT_BLOCK_WIDTH * parent.getZoom() > mapSize.getX() * parent
-                .getZoom()) {
-            position.setX((mapSize.getX() * parent.getZoom() - Config.DEFAULT_BLOCK_WIDTH * parent.getZoom()) / parent
-                    .getZoom());
+        if (zoomedPosition.getX() + Config.DEFAULT_BLOCK_WIDTH * parent.getZoom() > zoomedMapSize.getX()) {
+            position.setX((zoomedMapSize.getX() - Config.DEFAULT_BLOCK_WIDTH * parent.getZoom()) / parent.getZoom());
             touchBorders = true;
         }
 
-        if (position.getY() * parent.getZoom() + Config.DEFAULT_BLOCK_HEIGHT * parent.getZoom() > mapSize.getY() * parent
-                .getZoom()) {
-            position.setY((mapSize.getY() * parent.getZoom() - Config.DEFAULT_BLOCK_HEIGHT * parent.getZoom()) / parent
-                    .getZoom());
+        if (zoomedPosition.getY() + Config.DEFAULT_BLOCK_HEIGHT * parent.getZoom() > zoomedMapSize.getY()) {
+            position.setY((zoomedMapSize.getY() - Config.DEFAULT_BLOCK_HEIGHT * parent.getZoom()) / parent.getZoom());
             touchBorders = true;
         }
         return touchBorders;
