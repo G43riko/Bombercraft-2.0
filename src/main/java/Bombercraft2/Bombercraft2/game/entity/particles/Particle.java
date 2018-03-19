@@ -2,6 +2,7 @@ package Bombercraft2.Bombercraft2.game.entity.particles;
 
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
@@ -9,14 +10,14 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class Particle extends Entity {
+public class Particle extends Entity<SimpleGameAble> {
     private final GVector2f direction;
     private final GVector2f size;
     private final Color     color;
     private       int       health;
 
 
-    public Particle(GVector2f position, GameAble parent, Color color, GVector2f direction, GVector2f size, int health) {
+    public Particle(GVector2f position, SimpleGameAble parent, Color color, GVector2f direction, GVector2f size, int health) {
         super(position, parent);
         this.direction = direction;
         this.color = color;

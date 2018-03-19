@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Demos.*;
+import Bombercraft2.playGround.Demos.BomberDemo.BomberDemo;
 import Bombercraft2.playGround.Demos.ChunkedMapDemo;
 import Bombercraft2.playGround.Demos.MapDemo;
 import org.jetbrains.annotations.NotNull;
@@ -28,6 +29,7 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Ray casting", () -> setScene(new BasicDemo(this)));
         mainMenu.addButton("Closest point", () -> setScene(new ClosestDemo(this)));
         mainMenu.addButton("Collisions", () -> setScene(new CollisionDemo(this)));
+        mainMenu.addButton("Bomber", () -> setScene(new BomberDemo(this)));
         mainMenu.addButton("Player", () -> setScene(new PlayerDemo(this)));
         mainMenu.addButton("Particles", () -> setScene(new ParticlesDemo(this)));
         mainMenu.addButton("Shooting", () -> setScene(new ShootingDemo(this)));

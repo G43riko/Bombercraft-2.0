@@ -17,9 +17,11 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.function.Consumer;
 
 import javax.imageio.ImageIO;
 
+import Bombercraft2.Bombercraft2.core.BasicListener;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -41,6 +43,12 @@ public final class Utils {
 //		}
 //	}
     public static long ping(@NotNull String ip) {return ping(ip, 1000);}
+
+    public static void measureNano(String label, BasicListener event) {
+        long start = System.nanoTime();
+        event.doAct();
+        // System.out.println(label + ": " +(System.nanoTime() - start) + " ns");
+    }
 
     private static long ping(@NotNull String ip, int timeout) {
         try {

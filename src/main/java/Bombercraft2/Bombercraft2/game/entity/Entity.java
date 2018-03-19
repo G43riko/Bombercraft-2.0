@@ -76,7 +76,7 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
     public final GVector2f getCenter() {return getPosition().add(getSize().div(2)); }
 
     public boolean isAlive() {return alive;}
-
+    public boolean isDeath() {return !alive;}
     //SETTERS
     public void setPosition(GVector2f position) {this.position = position;}
 }

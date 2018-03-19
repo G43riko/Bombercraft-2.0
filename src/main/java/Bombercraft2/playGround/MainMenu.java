@@ -37,7 +37,6 @@ public class MainMenu extends Panel {
 
     @Override
     public void onResize() {
-        System.out.println("resizujem");
         panel.scrollToTop();
         panel.setHeight(this.getHeight());
         super.onResize();

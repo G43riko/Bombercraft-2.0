@@ -25,7 +25,8 @@ public abstract class GameState implements InteractAble, ClickAble {
         ParticlesPreviewDemo("articlesPreviewDemo"),
         BombDemo("BombDemo"),
         WorkerDemo("WorkerDemo"),
-        MissileDemo("MissileDemo");
+        MissileDemo("MissileDemo"),
+        BomberDemo("BomberDemo");
 
         private final String name;
 

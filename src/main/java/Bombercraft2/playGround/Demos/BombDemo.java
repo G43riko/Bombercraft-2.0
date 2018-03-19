@@ -29,7 +29,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
     public BombDemo(@NotNull CorePlayGround parent) {
         super(Type.BombDemo);
         this.parent = parent;
-        postFxManager = new PostFxManager(new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
+        postFxManager = new PostFxManager(this, new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
         map = new SimpleChunkedMap(this, NUMBER_OF_CHUNKS);
     }
 
@@ -54,9 +54,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
         }
         if (Input.getMouseUp(Input.BUTTON_LEFT)) {
             ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().sub(Config.BLOCK_SIZE_HALF), this);
-            bomb.callback = (b) -> {
-                postFxManager.addImage(((ImagedBomb)b).getCrater(), b.getPosition(), b.getSize());
-            };
+            bomb.callback = (b) -> postFxManager.addImage(((ImagedBomb)b).getCrater(), b.getPosition(), b.getSize());
             bombs.add(bomb);
         }
     }

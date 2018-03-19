@@ -29,8 +29,8 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     }
 
 
-    @NotNull
     @Override
+    @NotNull
     public List<String> getLogInfo() {
         List<String> result = super.getLogInfo();
         result.add("Rendered chunks: " + renderedChunks);

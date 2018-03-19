@@ -88,7 +88,9 @@
 ## TODO
  - Identify players by ID not by login
  - Allow toggle fullscreen
+ - PostFX image divide into chunks
  - Fix line-block collision
+ - Update item only if their distance is less than X chunks
  - Make chunks seamless 
 ### Demos
  - Missile demo - shot that follows the mouse

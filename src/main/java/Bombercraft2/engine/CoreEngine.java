@@ -11,6 +11,7 @@ import utils.math.GVector2f;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.HashMap;
 
 public abstract class CoreEngine {
     private static boolean    renderTime = false;
@@ -138,6 +139,17 @@ public abstract class CoreEngine {
             return;
         }
         g2 = (Graphics2D) buffer.getDrawGraphics();
+        RenderingHints rh = new RenderingHints(new HashMap<>());
+        boolean good = false;
+        rh.put(RenderingHints.KEY_ANTIALIASING, good ? RenderingHints.VALUE_ANTIALIAS_ON : RenderingHints.VALUE_ANTIALIAS_OFF);
+        rh.put(RenderingHints.KEY_COLOR_RENDERING, good ? RenderingHints.VALUE_COLOR_RENDER_QUALITY : RenderingHints.VALUE_COLOR_RENDER_SPEED);
+        rh.put(RenderingHints.KEY_INTERPOLATION, good ? RenderingHints.VALUE_INTERPOLATION_BICUBIC : RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR);
+        rh.put(RenderingHints.KEY_TEXT_ANTIALIASING, good ? RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB : RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
+        rh.put(RenderingHints.KEY_ALPHA_INTERPOLATION, good ? RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY : RenderingHints.VALUE_ALPHA_INTERPOLATION_SPEED);
+        rh.put(RenderingHints.KEY_FRACTIONALMETRICS, good ? RenderingHints.VALUE_FRACTIONALMETRICS_ON : RenderingHints.VALUE_FRACTIONALMETRICS_OFF);
+        rh.put(RenderingHints.KEY_DITHERING, good ? RenderingHints.VALUE_DITHER_ENABLE : RenderingHints.VALUE_DITHER_DISABLE);
+        rh.put(RenderingHints.KEY_RENDERING, good ? RenderingHints.VALUE_RENDER_QUALITY : RenderingHints.VALUE_RENDER_SPEED);
+        g2.setRenderingHints(rh);
         render(g2);
 
 

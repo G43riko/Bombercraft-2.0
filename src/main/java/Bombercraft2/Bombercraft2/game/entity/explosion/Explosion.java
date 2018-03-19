@@ -1,26 +1,28 @@
 package Bombercraft2.Bombercraft2.game.entity.explosion;
 
-import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.particles.Particle;
+import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.SpriteAnimation;
 import utils.math.GVector2f;
+import utils.resouces.ResourceLoader;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
-public class Explosion extends Entity<GameAble> {
+public class Explosion extends Entity<SimpleGameAble> {
+    private static Image explosionImage = ResourceLoader.loadTexture("explosion1.png");
     private ArrayList<ShockWave>       waves      = new ArrayList<>();
     private ArrayList<Particle>        particles  = new ArrayList<>();
     private ArrayList<SpriteAnimation> animations = new ArrayList<>();
     private final GVector2f size;
 
     public Explosion(GVector2f position,
-                     GameAble parent,
+                     SimpleGameAble parent,
                      GVector2f size,
                      Color color,
                      int number,
@@ -33,10 +35,13 @@ public class Explosion extends Entity<GameAble> {
 
         createParticles(color, number);
         if (shockWave) {
-            waves.add(new ShockWave(getParent(), position, 120, 5, 5, Color.yellow, true));
+            final int maxRadius = 100 + (int)(Math.random() * 50);
+            final int stroke = 4 + (int)(Math.random() * 7);
+            final int speed = 3 + (int)(Math.random() * 6);
+            waves.add(new ShockWave(getParent(), position, maxRadius, stroke, speed, Color.yellow, true));
         }
         if (explosion) {
-            animations.add(new SpriteAnimation("explosion1.png", 5, 5, 2));
+            animations.add(new SpriteAnimation(explosionImage, 5, 5, 2));
         }
     }
 

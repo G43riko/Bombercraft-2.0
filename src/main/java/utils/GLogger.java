@@ -64,7 +64,7 @@ public class GLogger extends PrintStream {
         CANNOT_RESET_MAP,
         CANNOT_LOAD_MAP,
         CANNOT_SERIALIZE_SCENE_MANAGER,
-        CREATE_GAME_FAILED
+        CANNOT_LOAD_IMAGE, CREATE_GAME_FAILED
     }
     private static class Wrapper {
         Exception exception;

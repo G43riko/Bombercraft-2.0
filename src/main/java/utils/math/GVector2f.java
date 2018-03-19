@@ -2,6 +2,7 @@ package utils.math;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
 
@@ -257,8 +258,8 @@ public final class GVector2f implements Serializable {
     }
 
     @Contract(pure = true)
-    public boolean equals(@NotNull GVector2f v) {
-        return x == v.x && y == v.y;
+    public boolean equals(@Nullable GVector2f v) {
+        return v != null && x == v.x && y == v.y;
     }
 
     @NotNull

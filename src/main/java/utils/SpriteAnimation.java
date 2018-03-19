@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
@@ -17,9 +18,15 @@ public class SpriteAnimation {
     private       int       frame;
 
     public SpriteAnimation(@NotNull String name, int numX, int numY, int delay) {
+        this(ResourceLoader.loadTexture(name), numX, numY, delay);
+    }
+    public SpriteAnimation(@Nullable Image image, int numX, int numY, int delay) {
         this.delay = delay;
+        if (image == null) {
+            GLogger.makeError(GLogger.GError.CANNOT_LOAD_IMAGE);
+        }
+        this.image = image;
         actDelay = 0;
-        image = ResourceLoader.loadTexture(name);
         images = new GVector2f(numX, numY);
         imageSize = new GVector2f(image.getWidth(null), image.getHeight(null)).div(images);
         frame = 0;

@@ -4,12 +4,10 @@ import Bombercraft2.Bombercraft2.components.tasks.BotManager;
 import Bombercraft2.Bombercraft2.components.tasks.TaskManager;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.gui2.GuiManager;
-import Bombercraft2.playGround.Misc.AbstractManager;
-import Bombercraft2.playGround.Misc.PlayerManager;
-import Bombercraft2.playGround.Misc.PostFxManager;
-import Bombercraft2.playGround.Misc.ViewManager;
+import Bombercraft2.playGround.Misc.*;
 import Bombercraft2.playGround.Misc.map.MapManager;
 import org.jetbrains.annotations.NotNull;
+import utils.Utils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -23,6 +21,7 @@ public class MainManager implements InteractAble {
     private BotManager    botManager;
     private GuiManager    guiManager;
     private PlayerManager playerManager;
+    private SceneManager_ sceneManager;
     private List<AbstractManager> managers = new ArrayList<>();
 
     public MainManager(AbstractManager... managers) {
@@ -41,6 +40,9 @@ public class MainManager implements InteractAble {
         }
         else if (manager instanceof ViewManager) {
             this.viewManager = (ViewManager) manager;
+        }
+        else if (manager instanceof SceneManager_) {
+            this.sceneManager = (SceneManager_) manager;
         }
         else if (manager instanceof PlayerManager) {
             this.playerManager = (PlayerManager) manager;
@@ -73,6 +75,10 @@ public class MainManager implements InteractAble {
         return playerManager;
     }
 
+    public SceneManager_ getSceneManager() {
+        return sceneManager;
+    }
+
     public BotManager getBotManager() {
         return botManager;
     }
@@ -90,7 +96,11 @@ public class MainManager implements InteractAble {
     @Override
     public void render(@NotNull Graphics2D g2) {
         if (mapManager != null) {
-            mapManager.render(g2);
+
+            Utils.measureNano("---------Render - manager ---- map", () -> mapManager.render(g2));
+        }
+        if (postFxManager != null) {
+            Utils.measureNano("---------Render - manager - postFx", () -> postFxManager.render(g2));
         }
         if (taskManager != null) {
             taskManager.render(g2);
@@ -101,8 +111,11 @@ public class MainManager implements InteractAble {
         if (guiManager != null) {
             guiManager.render(g2);
         }
+        if (sceneManager != null) {
+            Utils.measureNano("---------Render - manager -- scene", () -> sceneManager.render(g2));
+        }
         if (playerManager != null) {
-            playerManager.render(g2);
+            Utils.measureNano("---------Render - manager - player", () -> playerManager.render(g2));
         }
     }
     public void onResize(int width, int height) {
@@ -123,6 +136,9 @@ public class MainManager implements InteractAble {
         }
         if (viewManager != null) {
             viewManager.update(delta);
+        }
+        if (sceneManager != null) {
+            sceneManager.update(delta);
         }
         if (playerManager != null) {
             playerManager.update(delta);

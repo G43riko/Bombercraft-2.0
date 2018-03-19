@@ -1,11 +1,12 @@
 package Bombercraft2.playGround.Misc.map;
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.playGround.Misc.AbstractManager;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class MapManager extends AbstractManager{
     private final AbstractMap map;
@@ -29,11 +30,17 @@ public class MapManager extends AbstractManager{
     }
 
     public GVector2f getFreePosition() {
+        Function<SimpleTypedBlock, Boolean> testBlock = (block) -> block != null && block.getType().isWalkable();
         final GVector2f mapSize = map.getMapSize();
+        float offset = Config.BLOCK_SIZE.average();
+        
         while(true) {
             GVector2f result = new GVector2f(Math.random() * mapSize.getX(), Math.random() * mapSize.getY());
-            SimpleTypedBlock block = getBlockOnAbsolutePos(result);
-            if (block != null && block.getType().isWalkable()) {
+            if (testBlock.apply(getBlockOnAbsolutePos(result)) &&
+                testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(offset, offset)))) &&
+                testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(offset, -offset)))) &&
+                testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(-offset, offset)))) &&
+                testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(-offset, -offset))))) {
                 return result;
             }
         }
