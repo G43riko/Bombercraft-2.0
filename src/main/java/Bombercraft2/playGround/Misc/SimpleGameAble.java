@@ -41,6 +41,9 @@ public interface SimpleGameAble {
         return new GVector2f();
     }
 
+    default List<BasicChunk> getActChunk(BasicEntity entity) {
+        return new ArrayList<>();
+    }
 
     @NotNull
     default List<String> getLogInfo() {

@@ -30,6 +30,7 @@ public class CorePlayGround extends CoreEngine {
         mainMenu.addButton("Closest point", () -> setScene(new ClosestDemo(this)));
         mainMenu.addButton("Collisions", () -> setScene(new CollisionDemo(this)));
         mainMenu.addButton("Bomber", () -> setScene(new BomberDemo(this)));
+        mainMenu.addButton("Chunk", () -> setScene(new ChunkDemo(this)));
         mainMenu.addButton("Player", () -> setScene(new PlayerDemo(this)));
         mainMenu.addButton("Particles", () -> setScene(new ParticlesDemo(this)));
         mainMenu.addButton("Shooting", () -> setScene(new ShootingDemo(this)));
