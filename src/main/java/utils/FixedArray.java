@@ -1,6 +1,6 @@
 package utils;
 
-public class FixedArray<T> {
+public class FixedArray<T> implements Iterable<T>{
     private final Object[] array;
     private int counter = 0;
     private final int size;
@@ -26,8 +26,8 @@ public class FixedArray<T> {
     }
 
     public void add(int index, T item) {
-        if (index < 0 || index >= size) {
-            throw new Error("Wrong index: " + index);
+        if (index < 0 || index > counter) {
+            throw new Error("Wrong index: " + index + ", size: " + counter);
         }
         array[index] = item;
     }
@@ -37,7 +37,7 @@ public class FixedArray<T> {
     }
 
     public void remove(T item) {
-        for (int i=0 ; i<size ; i++) {
+        for (int i=0 ; i<counter ; i++) {
             if (array[i] != null && array[i].equals(item)){
                 array[i] = null;
             }
@@ -45,7 +45,7 @@ public class FixedArray<T> {
     }
 
     public boolean contains(T item) {
-        for (int i=0 ; i<size ; i++) {
+        for (int i=0 ; i<counter ; i++) {
             if (array[i] != null && array[i].equals(item)){
                 return true;
             }
@@ -53,18 +53,54 @@ public class FixedArray<T> {
         return false;
     }
 
-    public T get(int index) {
-        if (index < 0 || index >= size) {
+    @SuppressWarnings("unchecked")
+	public T get(int index) {
+        if (index < 0 || index >= counter) {
             throw new Error("Wrong index: " + index);
         }
         return (T)array[index];
     }
 
     public void clear() {
-        for (int i=0 ; i<size ; i++) {
+        for (int i=0 ; i<counter ; i++) {
             array[i] = null;
         }
 
         counter = 0;
     }
+    
+    @Override
+    public String toString() {
+    	return Arrays.toString(array);
+    }
+
+	@Override
+	public Iterator<T> iterator() {
+		return new Iterator<T>() {
+			private int _counter = 0;
+			private int _size = counter;
+			@Override
+			public boolean hasNext() {
+				return _counter <= _size;
+			}
+
+			@SuppressWarnings("unchecked")
+			@Override
+			public T next() {
+				return (T)array[_counter++];
+			}
+		};
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public void forEach(Consumer<? super T> action) {
+        for (int i=0 ; i<counter ; i++) {
+        	action.accept((T)array[i]);;
+        }
+	}
+	
+	Object[] toArray() {
+		return Arrays.copyOfRange(array, 0, counter + 1);
+	}
 }
