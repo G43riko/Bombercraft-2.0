@@ -92,10 +92,7 @@ public class Grid2d {
             if (x != other.x) {
                 return false;
             }
-            if (y != other.y) {
-                return false;
-            }
-            return true;
+            return y == other.y;
         }
 
         private Grid2d getOuterType() {

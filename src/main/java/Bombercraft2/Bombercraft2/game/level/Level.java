@@ -35,17 +35,17 @@ public class Level implements InteractAble {
                 i++;
             }
             floraData = object.getJSONObject(Texts.FLORA);
-            GLogger.log(GLogger.GLog.LEVEL_CREATED);
+            GLogger.log(GLogger.GLog.LEVEL_SUCCESSFULLY_CREATED);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CREATE_LEVEL_FAILED, e);
+            GLogger.error(GLogger.GError.LEVEL_CREATION_FAILED, e);
         }
     }
 
     public Level() {
         respawnZones.add(Config.BLOCK_SIZE);
         setDefaultPlayerInfo();
-        GLogger.log(GLogger.GLog.LEVEL_CREATED);
+        GLogger.log(GLogger.GLog.LEVEL_SUCCESSFULLY_CREATED);
     }
 
     //OTHERS
@@ -115,7 +115,7 @@ public class Level implements InteractAble {
                 map = new Map(new JSONObject(mapData), parent);
             }
             catch (JSONException e) {
-                GLogger.error(GLogger.GError.CANNOT_CREATE_MAP, e);
+                GLogger.error(GLogger.GError.MAP_PARSING_FAILED, e);
             }
         }
         else {

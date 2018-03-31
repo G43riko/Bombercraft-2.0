@@ -45,10 +45,10 @@ public class Profile implements JSONAble {
         }
         try {
             fromJSON(ResourceLoader.getJSONThrowing(Config.FOLDER_PROFILE + profileName + Config.EXTENSION_PROFILE));
-            GLogger.log(GLogger.GLog.PROFILE_LOADED);
+            GLogger.log(GLogger.GLog.PROFILE_SUCCESSFULLY_LOADED);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNON_PARSE_PROFILE, profileName);
+            GLogger.error(GLogger.GError.PROFILE_PARSING_FAILED, profileName);
             try {
                 JSONObject data = new JSONObject();
                 data.put("userInfo", new JSONObject());
@@ -155,10 +155,11 @@ public class Profile implements JSONAble {
             if (out != null) {
                 out.write(result.toString());
                 out.close();
+                GLogger.log(GLogger.GLog.PROFILE_SUCCESSFULLY_SAVED);
             }
         }
         catch (IOException e) {
-            e.printStackTrace();
+            GLogger.error(GLogger.GError.PROFILE_SAVING_FAILED, profile.profileName);
         }
     }
 }

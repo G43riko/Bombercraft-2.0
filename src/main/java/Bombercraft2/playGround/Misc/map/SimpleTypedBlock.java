@@ -45,18 +45,23 @@ public class SimpleTypedBlock extends AbstractBlock {
     @Override
     public void fromJSON(@NotNull JSONObject json) {
         super.fromJSON(json);
+        JSONWrapper(() -> {
+            String type = json.getString(Texts.TYPE);
+            try {
+                this.type = Block.Type.valueOf(type);
+            } catch (IllegalArgumentException e) {
+                GLogger.error(GLogger.GError.UNKNOWN_BLOCK_TYPE, e, type);
+            }
+        });
     }
 
     @Override
     public @NotNull JSONObject toJSON() {
         JSONObject result = super.toJSON();
 
-        try {
+        JSONWrapper(() -> {
             result.put(Texts.TYPE, type);
-        }
-        catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BLOCK, e);
-        }
+        });
 
         return result;
     }

@@ -43,6 +43,14 @@ public class ViewManager extends AbstractManager {
         this.target = target;
         setCanvasSize(canvasWidth, canvasHeight);
     }
+    @NotNull
+    public GVector2f transform(@NotNull GVector2f position) {
+        return position.mul(zoom).sub(offset);
+    }
+    @NotNull
+    public GVector2f transformInvert(@NotNull GVector2f position) {
+        return position.add(offset).div(zoom);
+    }
 
     public void setCanvasSize(int width, int height) {
         canvasSize.set(width, height);

@@ -1,5 +1,6 @@
 package Bombercraft2.playGround.Misc.map;
 
+import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
@@ -41,6 +42,9 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
         this.parent = parent;
         this.mapSize = mapSize;
     }
+    public GVector2f getBlockSize() {
+        return Config.BLOCK_SIZE;
+    }
 
     @NotNull
     @Contract(pure = true)
@@ -77,6 +81,6 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
         return result;
     }
 
-    public abstract AbstractBlock getBlockOnAbsolutePos(GVector2f click);
-    public abstract AbstractBlock getBlockOnPos(GVector2f click);
+    public abstract <S extends AbstractBlock> S getBlockOnAbsolutePos(GVector2f click);
+    public abstract <S extends AbstractBlock> S getBlockOnPos(GVector2f click);
 }

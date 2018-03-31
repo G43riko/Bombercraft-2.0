@@ -8,9 +8,10 @@ import java.util.stream.Collectors;
 
 public class GLogger extends PrintStream {
     public enum GLog {
-        LEVEL_CREATED,
-        MAP_CREATED,
-        PROFILE_LOADED,
+        LEVEL_SUCCESSFULLY_CREATED,
+        MAP_SUCCESSFULLY_CREATED,
+        PROFILE_SUCCESSFULLY_LOADED,
+        PROFILE_SUCCESSFULLY_SAVED,
         FILE_READ,
         CORE_GAME_CREATED,
         TEXTURE_LOAD,
@@ -23,14 +24,18 @@ public class GLogger extends PrintStream {
         GAME_CREATED
     }
     public enum GError {
+        LEVEL_CREATION_FAILED,
+        MAP_CREATION_FAILED,
+        MAP_PARSING_FAILED,
+        MAP_SERIALIZATION_FAILED,
+        MAP_RESET_FAILED,
+        UNKNOWN_BLOCK_TYPE,
+        PROFILE_PARSING_FAILED,
+        PROFILE_SAVING_FAILED,
         CANNOT_READ_JSON,
-        CREATE_LEVEL_FAILED,
         CANNOT_SCAN_LOCALHOST,
         UNKNOWN_LOCALHOST,
-        CREATE_MAP_FAILED,
         CANNON_READ_FILE,
-        CANNON_PARSE_PROFILE,
-        CANNON_SAVE_PROFILE,
         CREATE_CORE_GAME_FAILED,
         CANNON_READ_TEXTURE,
         CANNON_WRITE_FILE,
@@ -59,9 +64,7 @@ public class GLogger extends PrintStream {
         CANNOT_SERIALIZE_BLOCK,
         CANNOT_SERIALIZE_LEVEL,
         CANNOT_SET_DEFAULT_PLAYER_INFO,
-        CANNOT_CREATE_MAP,
-        CANNOT_SERIALIZE_MAP,
-        CANNOT_RESET_MAP,
+        // CANNOT_CREATE_MAP,
         CANNOT_LOAD_MAP,
         CANNOT_SERIALIZE_SCENE_MANAGER,
         CANNOT_LOAD_IMAGE, CREATE_GAME_FAILED

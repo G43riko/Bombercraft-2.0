@@ -55,4 +55,7 @@ public class MapManager extends AbstractManager{
         map.render(g2);
     }
 
+    public AbstractMap getMap() {
+        return map;
+    }
 }

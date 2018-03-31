@@ -64,7 +64,7 @@ public class Path extends Entity<GameAble> {
             result.put("points", new JSONArray(points));
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_MAP, e);
+            GLogger.error(GLogger.GError.MAP_SERIALIZATION_FAILED, e);
         }
         return result;
     }

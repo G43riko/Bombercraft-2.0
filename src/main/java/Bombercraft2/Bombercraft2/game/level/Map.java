@@ -36,15 +36,9 @@ public class Map implements InteractAble, JSONAble {
 
     public Map(@NotNull JSONObject object, @NotNull GameAble parent) {
         this.parent = parent;
-        try {
-            this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
-            fromJSON(object);
-            size = numberOfBlocks.mul(Config.BLOCK_SIZE);
-            GLogger.log(GLogger.GLog.MAP_CREATED);
-        }
-        catch (JSONException e) {
-            GLogger.error(GLogger.GError.CREATE_MAP_FAILED, e);
-        }
+        fromJSON(object);
+        size = numberOfBlocks.mul(Config.BLOCK_SIZE);
+        GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
     }
 
     public Map(@NotNull GameAble parent, @NotNull GVector2f numberOfBlocks) {
@@ -54,8 +48,8 @@ public class Map implements InteractAble, JSONAble {
         createRandomMap();
         defaultMap = toJSON().toString();
         size = numberOfBlocks.mul(Config.BLOCK_SIZE);
+        GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
     }
-
 
     @Override
     public void render(@NotNull Graphics2D g2) {
@@ -132,7 +126,7 @@ public class Map implements InteractAble, JSONAble {
 
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_MAP, e);
+            GLogger.error(GLogger.GError.MAP_SERIALIZATION_FAILED, e);
         }
         return result;
     }
@@ -164,15 +158,15 @@ public class Map implements InteractAble, JSONAble {
         render = false;
         blocks = new HashMap<>();
         try {
+            this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
             for (int i = 0; i < numberOfBlocks.getXi(); i++) {
                 for (int j = 0; j < numberOfBlocks.getYi(); j++) {
                     addBlock(i, j, new Block(new JSONObject(object.getString("b" + i + "_" + j)), parent));
                 }
             }
-
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_LOAD_MAP, e);
+            GLogger.error(GLogger.GError.MAP_CREATION_FAILED, e);
         }
         render = true;
     }
@@ -198,7 +192,7 @@ public class Map implements InteractAble, JSONAble {
             fromJSON(new JSONObject(defaultMap));
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_RESET_MAP, e);
+            GLogger.error(GLogger.GError.MAP_RESET_FAILED, e);
         }
     }
 
