@@ -23,23 +23,21 @@ public class BasicDrawablePath extends AbstractDrawable {
         final int[] surX = new int[path.size()];
         final int[] surY = new int[path.size()];
         for (int i = 0; i < path.size(); i++) {
-            final GVector2f actPoint = path.get(i)
-                                           .mul(parent.getZoom())
-                                           .sub(parent.getOffset());
+            final GVector2f actPoint = parent.getManager().getViewManager().transform(path.get(i));
             surX[i] = actPoint.getXi();
             surY[i] = actPoint.getYi();
         }
 
         g2.setColor(Color.white);
-        g2.setStroke(new BasicStroke(parent.getZoom()));
+        g2.setStroke(new BasicStroke(parent.getManager().getViewManager().getZoom()));
         g2.drawPolyline(surX, surY, path.size());
 
         g2.setColor(color);
-        g2.setStroke(new BasicStroke(6 * parent.getZoom(),
+        g2.setStroke(new BasicStroke(6 * parent.getManager().getViewManager().getZoom(),
                                      BasicStroke.CAP_ROUND,
                                      BasicStroke.JOIN_BEVEL,
                                      0,
-                                     new float[]{90 * parent.getZoom()},
+                                     new float[]{90 * parent.getManager().getViewManager().getZoom()},
                                      phase));
         g2.drawPolyline(surX, surY, path.size());
     }

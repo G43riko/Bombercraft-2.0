@@ -8,10 +8,11 @@ import java.awt.*;
 import java.util.List;
 import java.util.function.Function;
 
-public class MapManager extends AbstractManager{
+public class MapManager extends AbstractManager {
+    @NotNull
     private final AbstractMap map;
 
-    public MapManager(AbstractMap map) {
+    public MapManager(@NotNull AbstractMap map) {
         this.map = map;
     }
 
@@ -47,6 +48,11 @@ public class MapManager extends AbstractManager{
     }
 
     @NotNull
+    public GVector2f getAABBOnPosition(@NotNull GVector2f position) {
+        return position.div(Config.BLOCK_SIZE).toInt().mul(Config.BLOCK_SIZE);
+    }
+
+    @NotNull
     public GVector2f getMapSize() {
         return map.getMapSize();
     }
@@ -55,6 +61,7 @@ public class MapManager extends AbstractManager{
         map.render(g2);
     }
 
+    @NotNull
     public AbstractMap getMap() {
         return map;
     }

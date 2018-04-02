@@ -19,16 +19,16 @@ public class PlayerManager extends AbstractManager{
     private SimpleMyPlayer myPlayer;
 
     private int renderedPlayers = 0;
-    public PlayerManager(SimpleGameAble parent) {
+    public PlayerManager(@NotNull SimpleGameAble parent) {
         this(parent, null);
     }
 
-    public PlayerManager(@NotNull SimpleGameAble parent, SimpleMyPlayer myPlayer) {
+    public PlayerManager(@NotNull SimpleGameAble parent, @Nullable SimpleMyPlayer myPlayer) {
         setMyPlayer(myPlayer);
         this.parent = parent;
     }
 
-    public void setMyPlayer(@NotNull SimpleMyPlayer myPlayer) {
+    public void setMyPlayer(@Nullable SimpleMyPlayer myPlayer) {
         this.myPlayer = myPlayer;
     }
 

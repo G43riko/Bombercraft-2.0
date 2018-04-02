@@ -144,9 +144,4 @@ public class ShootingDemo extends GameState {
         }
         myPlayer.input();
     }
-
-    @Override
-    public void doAct(GVector2f click) {
-
-    }
 }

@@ -34,9 +34,13 @@ public class SimpleTypedBlock extends AbstractBlock {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        final GVector2f size = Config.BLOCK_SIZE.mul(parent.getZoom());
+        final GVector2f size = getTransformedSize();
         final GVector2f realPos = position.mul(size);
-        GVector2f pos = (offset == null ? realPos : realPos.add(offset.mul(parent.getZoom()))).sub(parent.getOffset());
+        GVector2f pos = (offset == null ? realPos : realPos.add(offset.mul(parent.getManager()
+                                                                                 .getViewManager()
+                                                                                 .getZoom()))).sub(parent.getManager()
+                                                                                                         .getViewManager()
+                                                                                                         .getOffset());
 
         g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi() + 1, size.getYi() + 1, null);
     }
@@ -49,7 +53,8 @@ public class SimpleTypedBlock extends AbstractBlock {
             String type = json.getString(Texts.TYPE);
             try {
                 this.type = Block.Type.valueOf(type);
-            } catch (IllegalArgumentException e) {
+            }
+            catch (IllegalArgumentException e) {
                 GLogger.error(GLogger.GError.UNKNOWN_BLOCK_TYPE, e, type);
             }
         });
@@ -75,7 +80,7 @@ public class SimpleTypedBlock extends AbstractBlock {
     @Override
     @Contract(pure = true)
     public String toString() {
-        return "(" + position + ") " +type;
+        return "(" + position + ") " + type;
     }
 
     public void remove() {

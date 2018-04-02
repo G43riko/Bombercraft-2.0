@@ -18,7 +18,6 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class BombDemo extends GameState implements SimpleGameAble {
-    private static GVector2f             NUMBER_OF_CHUNKS = new GVector2f(4, 4);
     private        ArrayList<SimpleBomb> bombs            = new ArrayList<>();
     private PostFxManager postFxManager;
     private final SimpleChunkedMap map;
@@ -30,7 +29,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
         super(Type.BombDemo);
         this.parent = parent;
         postFxManager = new PostFxManager(this, new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
-        map = new SimpleChunkedMap(this, NUMBER_OF_CHUNKS);
+        map = new SimpleChunkedMap(this, new GVector2f(4, 4));
     }
 
     @Override

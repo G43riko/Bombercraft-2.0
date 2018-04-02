@@ -20,7 +20,7 @@ public abstract class AbstractDrawable {
     }
 
     public void update(float delta) {
-        phase += speed * delta * parent.getZoom();
+        phase += speed * delta * parent.getManager().getViewManager().getZoom();
     }
 
     @Contract(pure = true)

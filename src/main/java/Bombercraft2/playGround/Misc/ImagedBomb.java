@@ -39,7 +39,7 @@ public class ImagedBomb extends SimpleBomb {
         if (!alive) {
             return;
         }
-        GVector2f actPos = position.sub(getParent().getOffset());
+        GVector2f actPos = position.sub(getParent().getManager().getViewManager().getOffset());
 
         if (timer != null) {
             timer.render(g2);

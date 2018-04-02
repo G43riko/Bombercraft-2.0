@@ -3,6 +3,7 @@ package Bombercraft2.playGround;
 import Bombercraft2.Bombercraft2.MainManager;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.CoreEngine;
+import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import org.jetbrains.annotations.NotNull;
@@ -23,10 +24,6 @@ public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState
         this.parent = parent;
     }
 
-    protected void setViewManager(@NotNull ViewManager viewManager) {
-        manager.setManagers(viewManager);
-    }
-
     @Override
     @NotNull
     public List<String> getLogInfo() {
@@ -36,6 +33,17 @@ public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState
         result.add("Loops: " + parent.getLoops());
         result.addAll(Utils.getMemoryInfo());
         return result;
+    }
+
+    @Override
+    public void update(float delta) {
+        manager.update(delta);
+    }
+
+    @Override
+    public void render(@NotNull Graphics2D g2) {
+        g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+        manager.render(g2);
     }
 
     @Override

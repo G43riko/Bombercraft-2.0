@@ -34,16 +34,16 @@ import java.util.List;
 
 public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements GameAble {
     private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(40, 40);
-    private final SimpleMap   map;
+    private final        SimpleMap map;
 
     public WorkerDemo(CorePlayGround parent) {
         super(parent, Type.WorkerDemo);
         manager.setManagers(new BotManager());
         manager.setManagers(new TaskManager(manager.getBotManager(), this));
-        setViewManager(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
-                                       parent.getCanvas().getWidth(),
-                                       parent.getCanvas().getHeight(),
-                                       3));
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+                                                 parent.getCanvas().getWidth(),
+                                                 parent.getCanvas().getHeight(),
+                                                 3));
         map = new SimpleMap(this, NUMBERS_OF_BLOCKS);
     }
 
@@ -68,15 +68,6 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public boolean isVisible(@NotNull Visible b) {
-        return !(b.getPosition().getX() * getZoom() + b.getSize().getX() * getZoom() < getOffset().getX() ||
-                b.getPosition().getY() * getZoom() + b.getSize().getY() * getZoom() < getOffset().getY() ||
-                getOffset().getX() + parent.getCanvas().getWidth() < b.getPosition().getX() * getZoom() ||
-                getOffset().getY() + parent.getCanvas().getHeight() < b.getPosition().getY() * getZoom());
-    }
-
-
-    @Override
     public void input() {
         if (Input.getKeyDown(Input.KEY_ESCAPE)) {
             parent.stopDemo();
@@ -85,10 +76,9 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
             doAct(Input.getMousePosition());
         }
         if (Input.getMouseDown(Input.BUTTON_RIGHT)) {
-            manager.getBotManager().addBot(new BotWorker(Input.getMousePosition()
-                                                              .add(getOffset())
-                                                              .div(getZoom())
-                                                              .sub(Config.BLOCK_SIZE_HALF), this));
+            manager.getBotManager()
+                   .addBot(new BotWorker(getManager().getViewManager().transformInvert(Input.getMousePosition())
+                                                     .sub(Config.BLOCK_SIZE_HALF), this));
         }
     }
 

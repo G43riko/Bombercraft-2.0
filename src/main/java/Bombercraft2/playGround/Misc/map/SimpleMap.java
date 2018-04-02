@@ -39,7 +39,9 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     @Nullable
     @Override
     public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
-        return getItem(click.add(parent.getOffset()).div(Config.BLOCK_SIZE).div(parent.getZoom()));
+        return getItem(click.add(parent.getManager().getViewManager().getOffset())
+                            .div(Config.BLOCK_SIZE)
+                            .div(parent.getManager().getViewManager().getZoom()));
     }
 
     @Override
@@ -64,10 +66,10 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
                      0,
                      parent.getCanvasSize().getXi(),
                      parent.getCanvasSize().getYi(),
-                     parent.getOffset().getXi(),
-                     parent.getOffset().getYi(),
-                     parent.getOffset().getXi() + parent.getCanvasSize().getXi(),
-                     parent.getOffset().getYi() + parent.getCanvasSize().getYi(),
+                     parent.getManager().getViewManager().getOffset().getXi(),
+                     parent.getManager().getViewManager().getOffset().getYi(),
+                     parent.getManager().getViewManager().getOffset().getXi() + parent.getCanvasSize().getXi(),
+                     parent.getManager().getViewManager().getOffset().getYi() + parent.getCanvasSize().getYi(),
                      null);
 
 
@@ -82,7 +84,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
 
     }
 
-    public HashMap<String, Integer> getMap() {
+    public HashMap<String, Integer> getHashMap() {
         HashMap<String, Integer> h = new HashMap<>();
         items.forEach((key, value) -> h.put(value.getPosition().div(Config.BLOCK_SIZE).toString(),
                                             value.getType().isWalkable() ? 0 : 1));

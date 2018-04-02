@@ -43,10 +43,10 @@ public class AbstractParticle extends Entity<SimpleGameAble> {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        GVector2f pos = position.sub(size.div(2)).mul(parent.getZoom()).sub(parent.getOffset());
-        GVector2f totalSize = size.mul(parent.getZoom());
+        GVector2f pos = parent.getManager().getViewManager().transform(position.sub(size.div(2)));
+        GVector2f transformedSize = getTransformedSize();
         g2.setColor(color);
-        g2.fillArc(pos.getXi(), pos.getYi(), totalSize.getXi(), totalSize.getYi(), 0, 360);
+        g2.fillArc(pos.getXi(), pos.getYi(), transformedSize.getXi(), transformedSize.getYi(), 0, 360);
     }
 
 

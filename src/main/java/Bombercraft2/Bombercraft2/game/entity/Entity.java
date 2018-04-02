@@ -67,10 +67,10 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
     public GVector2f getPosition() {return position;}
 
     @NotNull
-    protected final GVector2f getTotalPosition() {return position.mul(parent.getZoom()).sub(getParent().getOffset());}
+    protected final GVector2f getTransformedPosition() {return parent.getManager().getViewManager().transform(position);}
 
     @NotNull
-    protected final GVector2f getTotalSize() {return getSize().mul(parent.getZoom()); }
+    protected final GVector2f getTransformedSize() {return getSize().mul(parent.getZoom()); }
 
     @NotNull
     public final GVector2f getCenter() {return getPosition().add(getSize().div(2)); }

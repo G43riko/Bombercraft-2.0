@@ -31,7 +31,11 @@ public class PlayerDemo extends SimpleAbstractGame<CorePlayGround> {
                                             parent.getCanvas().getWidth(),
                                             parent.getCanvas().getHeight(),
                                             3));
-        for (int i = 1; i <= 100; i++) {
+        generatePlayers(100);
+    }
+
+    private void generatePlayers(int count) {
+        for (int i = 1; i <= count; i++) {
             int number = (int) Math.ceil(Math.random() * 3) + 1;
             manager.getPlayerManager().addPlayer(new SimpleNPC(this,
                                                                manager.getMapManager().getFreePosition(),
@@ -48,12 +52,6 @@ public class PlayerDemo extends SimpleAbstractGame<CorePlayGround> {
         g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
         manager.render(g2);
         gameLogs.render(g2);
-    }
-
-
-    @Override
-    public void update(float delta) {
-        manager.update(delta);
     }
 
     @Override

@@ -2,28 +2,51 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java" line="135" mnemonic="1" />
-    <bookmark url="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" line="25" mnemonic="3" />
+    <bookmark url="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" line="18" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1861fc88-fa97-4faa-bf45-771e27f31455" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleMapRaycast.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/AdvancedAbstractGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SelectAble.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SelectorManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SimpleLineSelector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_15_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bombercraft2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Bombercraft2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/path/Path.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/path/Path.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/pathfinging/Grid2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/pathfinging/Grid2d.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Map.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Map.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/ShockWave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/ShockWave.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/FinalTypedBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/FinalTypedBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/GameClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkedMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkedMapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MissileDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MissileDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ShootingDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ShootingDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ImagedBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ImagedBomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PlayerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleBomb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimplePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimplePlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/AbstractDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/AbstractDrawable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawableLine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawablePath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawablePath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/MapManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SelectableBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SelectableBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleTypedBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleTypedBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/GLogger.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/GLogger.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/AbstractParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/AbstractParticle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/FixedArray.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/FixedArray.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,101 +74,96 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Block.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Block.java">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="ClosestDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="36" column="43" lean-forward="true" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
+            <state relative-caret-position="939">
+              <caret line="98" selection-start-line="98" selection-end-line="98" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CorePlayGround.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/CorePlayGround.java">
+      <file leaf-file-name="CollisionDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="251">
-              <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+            <state relative-caret-position="690">
+              <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasicDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java">
+      <file leaf-file-name="MapDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="146" column="5" lean-forward="true" selection-start-line="104" selection-start-column="4" selection-end-line="146" selection-end-column="5" />
-              <folding>
-                <element signature="method#drawLinePixelByPixel#0;class#BasicDemo#0" />
-              </folding>
+            <state relative-caret-position="896">
+              <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BomberDemo.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java">
+      <file leaf-file-name="MissileDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MissileDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="93" column="58" lean-forward="true" selection-start-line="93" selection-start-column="58" selection-end-line="94" selection-end-column="108" />
+            <state relative-caret-position="68">
+              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java">
+      <file leaf-file-name="ParticlesDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="199">
-              <caret line="50" column="36" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="36" />
-              <folding>
-                <element signature="e#1515#1516#0" expanded="true" />
-                <element signature="e#1568#1569#0" expanded="true" />
-                <element signature="e#1643#1644#0" expanded="true" />
-                <element signature="e#1696#1697#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="367">
+              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="131">
-              <caret line="84" column="18" lean-forward="true" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
-              <folding>
-                <element signature="e#2617#2618#0" expanded="true" />
-                <element signature="e#2651#2652#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleChunkedMap.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SimpleChunkedMap.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="170">
+              <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MapManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/MapManager.java">
+      <file leaf-file-name="ParticlesPreviewDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesPreviewDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="494">
-              <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+            <state relative-caret-position="-187">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PerlinDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="996">
+              <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PlayerDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleMap.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
               <folding>
-                <element signature="e#1968#1969#0" expanded="true" />
-                <element signature="e#1995#1996#0" expanded="true" />
+                <element signature="method#renderToImage#0;class#SimpleMap#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractMap.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -155,22 +173,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getSitt</find>
-      <find>getParent()</find>
-      <find>checkBorders</find>
-      <find>moving</find>
-      <find>setMov</find>
-      <find>movingLimit</find>
-      <find>myPlayer</find>
-      <find>PlayerSprite</find>
       <find>getParent().getLevel().getMap().getBlock</find>
       <find>isOnWalkableBlock</find>
       <find>getLog</find>
@@ -188,11 +198,19 @@
       <find>PROFILE_SUCCESSFULLY_SAVED</find>
       <find>GLogger</find>
       <find>save</find>
-      <find>getMap</find>
       <find>HashMap</find>
       <find>renderToImage</find>
       <find>MAP</find>
       <find>Config.</find>
+      <find>mod</find>
+      <find>getViewManager().getZoom</find>
+      <find>parent.getZoom</find>
+      <find>\.mul.*\.sub</find>
+      <find>size.mul(parent.getZoom()</find>
+      <find>position.mul(parent</find>
+      <find>getZoom</find>
+      <find>transform</find>
+      <find>getMap</find>
     </findStrings>
     <replaceStrings>
       <replace>CONSTRUCTORS</replace>
@@ -217,57 +235,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/Direction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/SimpleInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/GameAble.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/GameLogs.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/PlayGround.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimpleNPC.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimplePlayer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimpleMyPlayer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/AbstractManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PlayerManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui2/GuiManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/particles/Particle.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/ShockWave.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/MainMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/SpriteAnimation.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/Explosion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SceneManager_.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/CoreEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/math/GVector2f.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/Utils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PostFxManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameState.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/CorePlayGround.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleGameAble.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/BasicChunk.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/BasicEntity.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/FixedArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/pathfinging/Grid2d.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Profile.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Level.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Map.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Block.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleTypedBlock.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/GLogger.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/MapManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleMapRaycast.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ControllManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PlayerManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SelectorManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SelectAble.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SimpleLineSelector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/FixedArray.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/MapManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/MouseSelector.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/ShockWave.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/AbstractParticle.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimplePlayer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/AbstractDrawable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawableLine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ImagedBomb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleBomb.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawablePath.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SelectableBlock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleTypedBlock.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SelectorManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ShootingDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/AdvancedAbstractGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MissileDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkedMapDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java" />
       </list>
     </option>
   </component>
@@ -287,7 +305,7 @@
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-10" />
     <option name="y" value="-10" />
-    <option name="width" value="977" />
+    <option name="width" value="978" />
     <option name="height" value="1050" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -315,6 +333,35 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
+              <item name="playGround" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
+              <item name="playGround" type="1f31426a:PackageElementNode" />
+              <item name="Misc" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -364,6 +411,37 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="game" type="462c0819:PsiDirectoryNode" />
+              <item name="player" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
               <item name="playGround" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -396,6 +474,17 @@
               <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
               <item name="playGround" type="462c0819:PsiDirectoryNode" />
               <item name="Misc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Bombercraft2" type="462c0819:PsiDirectoryNode" />
+              <item name="playGround" type="462c0819:PsiDirectoryNode" />
+              <item name="Misc" type="462c0819:PsiDirectoryNode" />
+              <item name="selectors" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
@@ -456,35 +545,6 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
-              <item name="playGround" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
-              <item name="playGround" type="1f31426a:PackageElementNode" />
-              <item name="Misc" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -644,7 +704,8 @@
       <workItem from="1521344205381" duration="18829000" />
       <workItem from="1521498772834" duration="3350000" />
       <workItem from="1521620551143" duration="15000" />
-      <workItem from="1522475821879" duration="12556000" />
+      <workItem from="1522475821879" duration="13444000" />
+      <workItem from="1522687446114" duration="8176000" />
     </task>
     <task id="LOCAL-00001" summary="Pridaný playground a vytvorené základné ukážky">
       <created>1514386546151</created>
@@ -730,11 +791,18 @@
       <option name="project" value="LOCAL" />
       <updated>1521364947041</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Opravený raycasting">
+      <created>1522492022107</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1522492022107</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261827000" />
+    <option name="totallyTimeSpent" value="270891000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -757,14 +825,13 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3295711" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286517" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.377809" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3295838" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.22013423" />
-      <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.50842696" />
+      <window_info content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.22348994" />
       <window_info anchor="right" id="Database" order="9" weight="0.32975295" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3483146" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.24973147" />
@@ -773,44 +840,14 @@
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.27765238" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32975295" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973147" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32975295" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973147" />
+      <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.50842696" />
     </layout>
-    <layout-to-restore>
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.34875846" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973147" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info id="Capture Tool" order="1" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info id="Image Layers" order="5" />
-      <window_info id="Structure" order="0" weight="0.24973147" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295711" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3295711" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.17494357" />
-      <window_info anchor="bottom" id="Inspection Results" order="9" visible="true" weight="0.28442436" />
-      <window_info id="Designer" order="2" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.27853882" />
-      <window_info anchor="right" id="Database" order="9" weight="0.32975295" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32975295" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3295838" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3295711" />
-      <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.59444445" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -842,7 +879,8 @@
     <MESSAGE value="Pridaný PlayerDemo" />
     <MESSAGE value="Pridané zobrazovanie základných údajov o hre" />
     <MESSAGE value="Pridané skorovanie hlavnému menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pridané skorovanie hlavnému menu" />
+    <MESSAGE value="Opravený raycasting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Opravený raycasting" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -854,351 +892,193 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="26" />
+      <option name="time" value="28" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://D:/Utils/Java/src.zip!/java/awt/RenderingHints.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/placers/SimplePlacer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="81" column="13" selection-start-line="81" selection-start-column="13" selection-end-line="81" selection-end-column="13" />
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/engine/CoreEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FixedArray.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="155" column="23" selection-start-line="155" selection-start-column="23" selection-end-line="155" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Bombercraft/utils/Utils.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/BasicListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Utils/Java/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="140" column="21" lean-forward="true" selection-start-line="140" selection-start-column="21" selection-end-line="140" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleGameAble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="43" column="59" selection-start-line="43" selection-start-column="59" selection-end-line="43" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PostFxManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1386">
-          <caret line="66" selection-start-line="66" selection-end-line="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Utils/Java/src.zip!/java/util/List.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="492" column="9" selection-start-line="492" selection-start-column="9" selection-end-line="492" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/BasicChunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7">
-          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="68" column="18" selection-start-line="68" selection-start-column="18" selection-end-line="68" selection-end-column="18" />
+        <state relative-caret-position="171">
+          <caret line="81" column="11" selection-start-line="81" selection-start-column="11" selection-end-line="81" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/BasicEntity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/MyPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        <state relative-caret-position="17">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/FixedArray.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/PlayerSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#429#430#0" expanded="true" />
-            <element signature="e#459#460#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#746#747#0" expanded="true" />
-            <element signature="e#778#779#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Bombercraft2.iml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SelectAble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="14" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.classpath">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SimpleLineSelector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="38" lean-forward="true" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkedMapDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="35">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/CanvasUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="20" column="60" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/resouces/ResourceSaver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="56" lean-forward="true" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/flora/Flora.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/pathfinging/Grid2d.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="94" column="12" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="56" column="4" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/path/PathFinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="51" column="8" selection-start-line="51" selection-start-column="8" selection-end-line="51" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="31" column="23" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/tasks/BotManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="307">
-          <caret line="40" column="5" lean-forward="true" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <caret line="10" column="40" selection-start-line="10" selection-start-column="40" selection-end-line="10" selection-end-column="40" />
           <folding>
-            <element signature="e#1480#1481#0" expanded="true" />
-            <element signature="e#1509#1510#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#203#204#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#342#343#0" expanded="true" />
+            <element signature="e#382#383#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Config.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/PlayerPointer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+        <state relative-caret-position="-170">
+          <caret line="10" column="19" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/Texts.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/MouseSelector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Profile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="142" column="45" lean-forward="true" selection-start-line="142" selection-start-column="45" selection-end-line="142" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="49" lean-forward="true" selection-start-line="49" selection-end-line="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Level.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="117" column="63" selection-start-line="117" selection-start-column="63" selection-end-line="117" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractBlock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/GLogger.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1916">
-          <caret line="24" column="17" selection-start-line="24" selection-start-column="17" selection-end-line="24" selection-end-column="17" />
-          <folding>
-            <element signature="method#render#0;class#Map#0" />
-            <element signature="method#postEdit#0;class#Map#0" />
-            <element signature="method#toJSON#0;class#Map#0" />
-            <element signature="method#createRandomMap#0;class#Map#0" />
-            <element signature="docComment;method#clearRespawnZones#0;class#Map#0" />
-            <element signature="method#clearRespawnZones#0;class#Map#0" />
-            <element signature="method#remove#0;class#Map#0" />
-            <element signature="method#resetMap#0;class#Map#0" />
-            <element signature="e#7381#7382#0" expanded="true" />
-            <element signature="e#7427#7428#0" expanded="true" />
-            <element signature="method#getRenderedBlocks#0;class#Map#0" />
-            <element signature="method#getNumberOfBlocks#0;class#Map#0" />
-            <element signature="method#getBlock#0;class#Map#0" />
-            <element signature="method#getBlock#1;class#Map#0" />
-            <element signature="method#getParent#0;class#Map#0" />
-            <element signature="method#isWalkable#0;class#Map#0" />
-            <element signature="method#getPossibleWays#0;class#Map#0" />
-            <element signature="docComment;method#getRandomEmptyBlock#0;class#Map#0" />
-            <element signature="e#8971#8972#0" expanded="true" />
-            <element signature="e#9034#9035#0" expanded="true" />
-            <element signature="method#getRandomBlockByType#0;class#Map#0" />
-            <element signature="method#globalPosToLocalPos#0;class#Map#0" />
-            <element signature="e#9712#9713#0" expanded="true" />
-            <element signature="e#9761#9762#0" expanded="true" />
-            <element signature="docComment;method#getBlocks#0;class#Map#0" />
-            <element signature="method#getBlocks#0;class#Map#0" />
-            <element signature="e#10327#10328#0" expanded="true" />
-            <element signature="e#10354#10355#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="45" column="25" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="25" />
-          <folding>
-            <element signature="e#1843#1844#0" expanded="true" />
-            <element signature="e#1880#1881#0" expanded="true" />
-            <element signature="method#render#0;class#SimpleMap#0" />
-            <element signature="method#renderToImage#0;class#SimpleMap#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="36" column="43" lean-forward="true" selection-start-line="36" selection-start-column="43" selection-end-line="36" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Utils/Java/src.zip!/java/util/function/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="40" column="17" selection-start-line="40" selection-start-column="17" selection-end-line="40" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="84" column="47" selection-start-line="84" selection-start-column="47" selection-end-line="84" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="89">
+          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/MapManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
+        <state relative-caret-position="148">
+          <caret line="23" column="52" selection-start-line="23" selection-start-column="52" selection-end-line="23" selection-end-column="52" />
           <folding>
             <element signature="e#1968#1969#0" expanded="true" />
-            <element signature="e#1995#1996#0" expanded="true" />
+            <element signature="e#1994#1995#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Utils/Java/src.zip!/java/util/function/BiFunction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="43" column="17" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+        <state relative-caret-position="384">
+          <caret line="83" column="48" selection-start-line="83" selection-start-column="48" selection-end-line="83" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PostFxManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="105">
+          <caret line="65" column="9" lean-forward="true" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/AbstractParticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="46" column="56" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/ShockWave.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/components/healthBar/HealthBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="23" column="55" lean-forward="true" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimplePlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1803">
+          <caret line="222" column="87" selection-start-line="222" selection-start-column="87" selection-end-line="222" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/AbstractDrawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="22" column="70" selection-start-line="22" selection-start-column="70" selection-end-line="22" selection-end-column="70" />
+          <folding>
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#699#700#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawableLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="47" column="109" selection-start-line="47" selection-start-column="109" selection-end-line="47" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ImagedBomb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="41" column="82" selection-start-line="41" selection-start-column="82" selection-end-line="41" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleBomb.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="34" column="88" selection-start-line="34" selection-start-column="88" selection-end-line="34" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawablePath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="25" column="99" selection-start-line="25" selection-start-column="99" selection-end-line="25" selection-end-column="99" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SelectableBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="23" column="90" selection-start-line="23" selection-start-column="90" selection-end-line="23" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="72" column="85" selection-start-line="72" selection-start-column="85" selection-end-line="72" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="22" column="47" lean-forward="true" selection-start-line="22" selection-start-column="47" selection-end-line="22" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleTypedBlock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="80" column="16" selection-start-line="80" selection-start-column="16" selection-end-line="80" selection-end-column="16" />
+        <state relative-caret-position="104">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="e#2429#2430#0" expanded="true" />
             <element signature="e#2468#2469#0" expanded="true" />
@@ -1206,83 +1086,222 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GVector2f.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="165" column="21" selection-start-line="165" selection-start-column="21" selection-end-line="165" selection-end-column="21" />
-          <folding>
-            <element signature="e#3988#3989#0" expanded="true" />
-            <element signature="e#4042#4043#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="146">
+          <caret line="72" column="30" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleMapRaycast.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SelectorManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
+        <state relative-caret-position="89">
+          <caret line="60" column="52" lean-forward="true" selection-start-line="60" selection-start-column="52" selection-end-line="60" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#336#337#0" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#1563#1564#0" expanded="true" />
-            <element signature="e#1585#1586#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleGameAble.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="146" column="5" lean-forward="true" selection-start-line="104" selection-start-column="4" selection-end-line="146" selection-end-column="5" />
+        <state relative-caret-position="129">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
           <folding>
-            <element signature="method#drawLinePixelByPixel#0;class#BasicDemo#0" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#512#513#0" expanded="true" />
+            <element signature="e#1183#1184#0" expanded="true" />
+            <element signature="e#1221#1222#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameState.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-421">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/ClickAble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/CorePlayGround.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="28" column="65" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+        <state relative-caret-position="289">
+          <caret line="47" column="16" selection-start-line="47" selection-start-column="16" selection-end-line="47" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ShootingDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2146">
+          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="84" column="18" lean-forward="true" selection-start-line="84" selection-start-column="18" selection-end-line="84" selection-end-column="18" />
+        <state relative-caret-position="221">
+          <caret line="90" column="13" selection-start-line="90" selection-start-column="13" selection-end-line="90" selection-end-column="13" />
           <folding>
-            <element signature="e#2617#2618#0" expanded="true" />
-            <element signature="e#2651#2652#0" expanded="true" />
+            <element signature="e#2923#2924#0" expanded="true" />
+            <element signature="e#2957#2958#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="50" column="36" selection-start-line="50" selection-start-column="21" selection-end-line="50" selection-end-column="36" />
+        <state relative-caret-position="88">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="53" />
           <folding>
             <element signature="e#1515#1516#0" expanded="true" />
             <element signature="e#1568#1569#0" expanded="true" />
-            <element signature="e#1643#1644#0" expanded="true" />
-            <element signature="e#1696#1697#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/AdvancedAbstractGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
+        <state relative-caret-position="85">
+          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#396#397#0" expanded="true" />
+            <element signature="e#449#450#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="93" column="58" lean-forward="true" selection-start-line="93" selection-start-column="58" selection-end-line="94" selection-end-column="108" />
+        <state relative-caret-position="68">
+          <caret line="34" column="41" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/InteractAble.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BasicDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="113" column="20" selection-start-line="113" selection-start-column="20" selection-end-line="113" selection-end-column="20" />
+          <folding>
+            <element signature="method#drawLinePixelByPixel#0;class#BasicDemo#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="18" column="24" lean-forward="true" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkedMapDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="17" column="81" lean-forward="true" selection-start-line="17" selection-start-column="81" selection-end-line="17" selection-end-column="81" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="939">
+          <caret line="98" selection-start-line="98" selection-end-line="98" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="138" column="5" selection-start-line="138" selection-start-column="5" selection-end-line="138" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
+          <folding>
+            <element signature="method#renderToImage#0;class#SimpleMap#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="896">
+          <caret line="67" column="30" lean-forward="true" selection-start-line="67" selection-start-column="30" selection-end-line="67" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MissileDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesPreviewDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-187">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="996">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="37" column="27" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="52" column="43" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
         </state>
       </provider>
     </entry>

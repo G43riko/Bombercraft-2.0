@@ -10,6 +10,8 @@ import Bombercraft2.playGround.Misc.*;
 import Bombercraft2.playGround.Misc.bots.SimpleMyPlayer;
 import Bombercraft2.playGround.Misc.bots.SimpleNPC;
 import Bombercraft2.playGround.Misc.map.*;
+import Bombercraft2.playGround.Misc.selectors.SelectorManager;
+import Bombercraft2.playGround.Misc.selectors.SimpleLineSelector;
 import Bombercraft2.playGround.SimpleAbstractGame;
 import org.jetbrains.annotations.NotNull;
 import utils.Utils;
@@ -37,6 +39,7 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
                                             parent.getCanvas().getHeight(),
                                             3));
         manager.setManagers(new PostFxManager(this, manager.getMapManager().getMapSize()));
+        manager.setManagers(new SelectorManager(this, new SimpleLineSelector()));
         manager.setManagers(new SceneManager_(this));
         manager.getPlayerManager().getMyPlayer().setPosition(Config.BLOCK_SIZE.mul(2));
         raycast = new SimpleMapRaycast(map);

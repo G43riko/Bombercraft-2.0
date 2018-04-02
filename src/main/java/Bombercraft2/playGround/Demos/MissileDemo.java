@@ -22,10 +22,10 @@ public class MissileDemo extends SimpleAbstractGame<CorePlayGround> {
 
     public MissileDemo(CorePlayGround parent) {
         super(parent, Type.MissileDemo);
-        setViewManager(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
-                                      parent.getCanvas().getWidth(),
-                                      parent.getCanvas().getHeight(),
-                                      3));
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+                                                 parent.getCanvas().getWidth(),
+                                                 parent.getCanvas().getHeight(),
+                                                 3));
     }
 
     @Override

@@ -32,7 +32,7 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
         if (!alive) {
             return;
         }
-        final GVector2f actPos = position.sub(getParent().getOffset());
+        final GVector2f actPos = position.sub(getParent().getManager().getViewManager().getOffset());
 
         g2.setColor(Color.BLACK);
         g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);

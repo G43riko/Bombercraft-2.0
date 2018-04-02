@@ -68,10 +68,11 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
 
         if (Config.SHOW_CHUNK_BORDERS) {
             g2.setColor(Color.black);
-            final GVector2f realPosition = getPosition().mul(parent.getZoom()).sub(parent.getOffset());
-            final GVector2f realSize = SIZE.mul(parent.getZoom());
+
+            final GVector2f transformedPosition = parent.getManager().getViewManager().transform(getPosition());
+            final GVector2f realSize = SIZE.mul(parent.getManager().getViewManager().getZoom());
             g2.setStroke(new BasicStroke(3));
-            g2.drawRect(realPosition.getXi(), realPosition.getYi(), realSize.getXi(), realSize.getYi());
+            g2.drawRect(transformedPosition.getXi(), transformedPosition.getYi(), realSize.getXi(), realSize.getYi());
         }
     }
 

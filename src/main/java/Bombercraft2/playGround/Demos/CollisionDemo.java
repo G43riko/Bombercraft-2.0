@@ -137,9 +137,4 @@ public class CollisionDemo extends GameState {
             barrels.add(barrel);
         }
     }
-
-    @Override
-    public void doAct(GVector2f click) {
-
-    }
 }

@@ -134,7 +134,7 @@ public class GameClient extends Client implements Connector {
                     break;
                 case Server.HIT_BLOCK:
                     //				GVector2f pos = new GVector2f(msg.getString("position"));
-                    //				actLevel.getParent().getLevel().getMap().getBlockOnPosition(pos).hit(msg.getInt("damage"));
+                    //				actLevel.getParent().getLevel().getHashMap().getBlockOnPosition(pos).hit(msg.getInt("damage"));
                     break;
             }
         }

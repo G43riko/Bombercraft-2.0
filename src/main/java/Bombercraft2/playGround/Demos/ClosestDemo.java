@@ -96,9 +96,4 @@ public class ClosestDemo extends GameState {
 
         mySimpleParticlePlayer.input();
     }
-
-    @Override
-    public void doAct(GVector2f click) {
-
-    }
 }

@@ -1,5 +1,9 @@
 package utils;
 
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.function.Consumer;
+
 public class FixedArray<T> implements Iterable<T>{
     private final Object[] array;
     private int counter = 0;

@@ -189,19 +189,4 @@ public class BasicDemo extends GameState {
         if (Input.isKeyDown(Input.KEY_S)) { player.y += playerSpeed; }
         if (Input.isKeyDown(Input.KEY_W)) { player.y -= playerSpeed; }
     }
-
-    @Override
-    public void update(float delta) {
-
-    }
-
-    @Override
-    public void cleanUp() {
-
-    }
-
-    @Override
-    public void doAct(GVector2f click) {
-
-    }
 }

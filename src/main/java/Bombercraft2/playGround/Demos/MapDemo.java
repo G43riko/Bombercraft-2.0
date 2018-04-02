@@ -2,43 +2,35 @@ package Bombercraft2.playGround.Demos;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.components.path.Path;
 import Bombercraft2.Bombercraft2.components.path.PathFinder;
-import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.core.Visible;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.drawableLine.BasicDrawablePath;
 import Bombercraft2.playGround.Misc.map.SimpleMap;
 import Bombercraft2.playGround.SimpleAbstractGame;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
     private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(100, 100);
-    private final SimpleMap      map;
+    private final        SimpleMap map;
 
     private GVector2f         firstClick;
     private BasicDrawablePath path;
 
     public MapDemo(CorePlayGround parent) {
         super(parent, Type.MapDemo);
-        setViewManager(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
-                                      parent.getCanvas().getWidth(),
-                                      parent.getCanvas().getHeight(),
-                                      3));
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+                                                 parent.getCanvas().getWidth(),
+                                                 parent.getCanvas().getHeight(),
+                                                 3));
         map = new SimpleMap(this, NUMBERS_OF_BLOCKS);
 
     }
-
 
 
     @Override
@@ -62,12 +54,15 @@ public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
                 firstClick = Input.getMousePosition();
             }
             else {
-                final GVector2f start = firstClick.add(getOffset()).div(Config.BLOCK_SIZE).div(getZoom()).toInt();
-                final GVector2f end = Input.getMousePosition().add(getOffset()).div(Config.BLOCK_SIZE).div(getZoom()).toInt();
-
+                final GVector2f start = getManager().getViewManager().transformInvert(firstClick)
+                                                    .div(Config.BLOCK_SIZE)
+                                                    .toInt();
+                final GVector2f end = getManager().getViewManager().transformInvert(Input.getMousePosition())
+                                                  .div(Config.BLOCK_SIZE)
+                                                  .toInt();
                 final List<GVector2f> result = new ArrayList<>();
                 result.add(end);
-                result.addAll(PathFinder.findPath(map.getMap(),
+                result.addAll(PathFinder.findPath(map.getHashMap(),
                                                   start.toString(),
                                                   end.toString(), false));
                 result.add(start);
@@ -80,7 +75,6 @@ public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
 
     @Override
     public void update(float delta) {
-
         if (path != null) {
             path.update(delta);
         }

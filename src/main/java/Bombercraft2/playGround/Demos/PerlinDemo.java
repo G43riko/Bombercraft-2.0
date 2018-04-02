@@ -83,9 +83,4 @@ public class PerlinDemo extends GameState {
             }
         }
     }
-
-    @Override
-    public void doAct(GVector2f click) {
-    	System.out.println("dooujem act");
-    }
 }

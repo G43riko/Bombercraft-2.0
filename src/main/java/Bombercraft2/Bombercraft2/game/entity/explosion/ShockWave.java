@@ -42,11 +42,11 @@ public class ShockWave implements InteractAble {
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        GVector2f pos = position.sub(radius).mul(parent.getZoom()).sub(parent.getOffset());
+        GVector2f transformedPosition = parent.getManager().getViewManager().transform(position.sub(radius));
         g2.setColor(color);
         int size = (int) (radius * 2 * parent.getZoom());
         g2.setStroke(new BasicStroke(stroke * parent.getZoom()));
-        g2.drawOval(pos.getXi(), pos.getYi(), size, size);
+        g2.drawOval(transformedPosition.getXi(), transformedPosition.getYi(), size, size);
 
         color = new Color(color.getRed(), color.getGreen(), color.getBlue(), Math.max(0, color.getAlpha() - alphaDiff));
     }

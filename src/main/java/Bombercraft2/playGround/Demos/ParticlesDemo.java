@@ -73,11 +73,6 @@ public class ParticlesDemo extends GameState implements SimpleGameAble {
     }
 
     @Override
-    public void doAct(GVector2f click) {
-
-    }
-
-    @Override
     public @NotNull GVector2f getCanvasSize() {
         return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }

@@ -13,6 +13,7 @@ import Bombercraft2.playGround.Misc.SimpleGameAble;
 
 public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     private int renderedChunks = 0;
+
     public SimpleChunkedMap(SimpleGameAble parent, GVector2f numberOfChunks) {
         super(parent, numberOfChunks, numberOfChunks.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE));
         createRandomMap();
@@ -49,9 +50,9 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     @Nullable
     @Override
     public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
-        final GVector2f pos = click.add(parent.getOffset());
-        final SimpleChunk chunk = getItem(pos.div(SimpleChunk.SIZE).div(parent.getZoom()));
-        return chunk == null ? null : chunk.getBlock(pos.div(parent.getZoom()).mod(SimpleChunk.SIZE).div(Config.BLOCK_SIZE));
+        final GVector2f transformedPosition = parent.getManager().getViewManager().transformInvert(click);
+        final SimpleChunk chunk = getItem(transformedPosition.div(SimpleChunk.SIZE));
+        return chunk == null ? null : chunk.getBlock(transformedPosition.mod(SimpleChunk.SIZE).div(Config.BLOCK_SIZE));
     }
 
     @Override

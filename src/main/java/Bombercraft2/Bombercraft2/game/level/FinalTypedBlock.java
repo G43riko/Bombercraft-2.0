@@ -79,10 +79,10 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     /*
     public void drawSprites(Graphics2D g2) {
-        FinalTypedBlock t = getParent().getLevel().getMap().getBlock(position.getXi(), position.getYi() - 1);
-        FinalTypedBlock b = getParent().getLevel().getMap().getBlock(position.getXi(), position.getYi() + 1);
-        FinalTypedBlock r = getParent().getLevel().getMap().getBlock(position.getXi() + 1, position.getYi());
-        FinalTypedBlock l = getParent().getLevel().getMap().getBlock(position.getXi() - 1, position.getYi());
+        FinalTypedBlock t = getParent().getLevel().getHashMap().getBlock(position.getXi(), position.getYi() - 1);
+        FinalTypedBlock b = getParent().getLevel().getHashMap().getBlock(position.getXi(), position.getYi() + 1);
+        FinalTypedBlock r = getParent().getLevel().getHashMap().getBlock(position.getXi() + 1, position.getYi());
+        FinalTypedBlock l = getParent().getLevel().getHashMap().getBlock(position.getXi() - 1, position.getYi());
 
         GVector2f size = SIZE.mul(parent.getZoom());
         GVector2f pos = position.mul(size).sub(parent.getOffset());
@@ -168,7 +168,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     /*
     public void renderWalls(Graphics2D g2) {
-        Map map = getParent().getLevel().getMap();
+        Map map = getParent().getLevel().getHashMap();
         boolean t = map.isWalkable(position.getXi(), position.getYi() - 1);
         boolean b = map.isWalkable(position.getXi(), position.getYi() + 1);
         boolean l = map.isWalkable(position.getXi() - 1, position.getYi());

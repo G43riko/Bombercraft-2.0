@@ -16,17 +16,17 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
-    private int speed;
-    private int health;
-    private int range;
-    private Direction direction = Direction.DOWN;
-    private int     damage;
-    private String  name;
-    private String  image;
-    private boolean moving;
-    private       boolean wasMoving     = false;
-    private final int     movingLimit   = 1;
-    private       int     movingCounter = 0;
+    private       int       speed;
+    private       int       health;
+    private       int       range;
+    private       Direction direction     = Direction.DOWN;
+    private       int       damage;
+    private       String    name;
+    private       String    image;
+    private       boolean   moving;
+    private       boolean   wasMoving     = false;
+    private final int       movingLimit   = 1;
+    private       int       movingCounter = 0;
 
 
     public SimplePlayer(SimpleGameAble parent, JSONObject object) {
@@ -113,11 +113,12 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
             }
         }
 
-        GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
-
-        GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
-
-        PlayerSprite.drawPlayer(pos, size, g2, getDirection(), getImage() + getName(), isMoving());
+        PlayerSprite.drawPlayer(getTransformedPosition(),
+                                getTransformedSize(),
+                                g2,
+                                getDirection(),
+                                getImage() + getName(),
+                                isMoving());
     }
 
     @Contract(pure = true)
@@ -188,7 +189,10 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
     protected boolean checkBorders() {
         boolean touchBorders = false;
         GVector2f zoomedPosition = position.mul(parent.getManager().getViewManager().getZoom());
-        GVector2f zoomedMapSize = parent.getManager().getMapManager().getMapSize().mul(parent.getZoom());
+        GVector2f zoomedMapSize = parent.getManager()
+                                        .getMapManager()
+                                        .getMapSize()
+                                        .mul(parent.getManager().getViewManager().getZoom());
 
         if (zoomedPosition.getX() < 0) {
             position.setX(0);
@@ -200,13 +204,25 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
             touchBorders = true;
         }
 
-        if (zoomedPosition.getX() + Config.DEFAULT_BLOCK_WIDTH * parent.getZoom() > zoomedMapSize.getX()) {
-            position.setX((zoomedMapSize.getX() - Config.DEFAULT_BLOCK_WIDTH * parent.getZoom()) / parent.getZoom());
+        if (zoomedPosition.getX() + Config.DEFAULT_BLOCK_WIDTH * parent.getManager()
+                                                                       .getViewManager()
+                                                                       .getZoom() > zoomedMapSize.getX()) {
+            position.setX((zoomedMapSize.getX() - Config.DEFAULT_BLOCK_WIDTH * parent.getManager()
+                                                                                     .getViewManager()
+                                                                                     .getZoom()) / parent.getManager()
+                                                                                                         .getViewManager()
+                                                                                                         .getZoom());
             touchBorders = true;
         }
 
-        if (zoomedPosition.getY() + Config.DEFAULT_BLOCK_HEIGHT * parent.getZoom() > zoomedMapSize.getY()) {
-            position.setY((zoomedMapSize.getY() - Config.DEFAULT_BLOCK_HEIGHT * parent.getZoom()) / parent.getZoom());
+        if (zoomedPosition.getY() + Config.DEFAULT_BLOCK_HEIGHT * parent.getManager()
+                                                                        .getViewManager()
+                                                                        .getZoom() > zoomedMapSize.getY()) {
+            position.setY((zoomedMapSize.getY() - Config.DEFAULT_BLOCK_HEIGHT * parent.getManager()
+                                                                                      .getViewManager()
+                                                                                      .getZoom()) / parent.getManager()
+                                                                                                          .getViewManager()
+                                                                                                          .getZoom());
             touchBorders = true;
         }
         return touchBorders;

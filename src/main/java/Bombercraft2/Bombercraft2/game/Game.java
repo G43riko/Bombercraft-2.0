@@ -289,7 +289,7 @@ public class Game extends GameState implements GameAble {
 ////		others.clear();
 ////		helpers.clear();
 ////		emitters.clear();
-//		level.getMap().resetMap();
+//		level.getHashMap().resetMap();
 //		render = update = input = true;
 //		parent.removeLoading();
     }

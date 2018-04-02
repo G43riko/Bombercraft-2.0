@@ -34,18 +34,18 @@ public class BasicDrawableLine extends AbstractDrawable {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        final GVector2f a = getStartPos().mul(parent.getZoom()).sub(parent.getOffset());
-        final GVector2f b = getEndPos().mul(parent.getZoom()).sub(parent.getOffset());
+        final GVector2f a = parent.getManager().getViewManager().transform(getStartPos());
+        final GVector2f b = parent.getManager().getViewManager().transform(getEndPos());
         g2.setColor(Config.PATH_BORDER_COLOR);
-        g2.setStroke(new BasicStroke(Config.PATH_NORMAL_WIDTH * parent.getZoom()));
+        g2.setStroke(new BasicStroke(Config.PATH_NORMAL_WIDTH * parent.getManager().getViewManager().getZoom()));
         g2.drawLine(a.getXi(), a.getYi(), b.getXi(), b.getYi());
 
         g2.setColor(color);
-        g2.setStroke(new BasicStroke(Config.PATH_BOLD_WIDTH * parent.getZoom(),
+        g2.setStroke(new BasicStroke(Config.PATH_BOLD_WIDTH * parent.getManager().getViewManager().getZoom(),
                                      BasicStroke.CAP_ROUND,
                                      BasicStroke.JOIN_BEVEL,
                                      0,
-                                     new float[]{Config.PATH_DASH_GAP * parent.getZoom()},
+                                     new float[]{Config.PATH_DASH_GAP * parent.getManager().getViewManager().getZoom()},
                                      phase));
         g2.drawLine(b.getXi(), b.getYi(), a.getXi(), a.getYi());
     }
