@@ -93,7 +93,7 @@ public class Map implements InteractAble, JSONAble {
                                               .map(java.util.Map.Entry::getValue)
                                               .filter(getParent()::isVisible)//dame prec nevyditelne
                                               .peek(a -> a.render(g2))
-                                              .filter(a -> a.getType() != Block.Type.NOTHING)
+                                              .filter(a -> a.getType() != BlockType.NOTHING)
                                               .count();
         if (parent.getVisibleOption(Render.MAP_WALLS)) {
             new HashMap<>(blocks).entrySet()
@@ -182,7 +182,7 @@ public class Map implements InteractAble, JSONAble {
 
     public void remove(GVector2f sur) {
         Block b = getBlock(sur.getXi(), sur.getYi());
-        if (b != null && b.getType() != Block.Type.NOTHING) {
+        if (b != null && b.getType() != BlockType.NOTHING) {
             b.remove();
         }
     }
@@ -256,10 +256,10 @@ public class Map implements InteractAble, JSONAble {
      * @deprecated since 15.6.2017 - use Map.getRandomBlockByType(Block.Type.NOTHING)
      */
     public Block getRandomEmptyBlock() {
-        return getRandomBlockByType(Block.Type.NOTHING);
+        return getRandomBlockByType(BlockType.NOTHING);
     }
 
-    private Block getRandomBlockByType(Block.Type type) {
+    private Block getRandomBlockByType(BlockType type) {
         ArrayList<Block> b = blocks.entrySet()
                                    .stream()
                                    .map(java.util.Map.Entry::getValue)

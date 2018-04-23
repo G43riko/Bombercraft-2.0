@@ -3,7 +3,7 @@ package Bombercraft2.playGround.Demos;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.BasicChunk;
+import Bombercraft2.playGround.Misc.map.BasicChunk;
 import Bombercraft2.playGround.Misc.BasicEntity;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.NotNull;

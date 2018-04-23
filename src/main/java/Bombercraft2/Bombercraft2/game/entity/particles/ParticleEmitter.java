@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 public class ParticleEmitter extends Emitter {
     private final Entity target;
 
-    public ParticleEmitter(Emitter.Types type, GVector2f position, GameAble parent) {
+    public ParticleEmitter(EmitterTypes type, GVector2f position, GameAble parent) {
         this(type, position, parent, null);
     }
 
-    private ParticleEmitter(Emitter.Types type, GVector2f position, GameAble parent, Entity target) {
+    private ParticleEmitter(EmitterTypes type, GVector2f position, GameAble parent, Entity target) {
         super(type, position, parent);
         this.target = target;
     }

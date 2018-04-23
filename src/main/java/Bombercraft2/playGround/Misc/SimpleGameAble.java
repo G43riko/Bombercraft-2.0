@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.MainManager;
+import Bombercraft2.playGround.Misc.map.BasicChunk;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import Bombercraft2.Bombercraft2.core.Visible;

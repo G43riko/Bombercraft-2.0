@@ -4,6 +4,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
@@ -90,7 +91,8 @@ public class CanvasUtils {
         if (color != DEFAULT_COLOR) {
             g2.setColor(color);
         }
-        g2.fillRect(realPos.getXi(), realPos.getYi(), size.getXi(), size.getYi());
+        GCanvas.fillRect(g2, pos, size);
+        // g2.fillRect(realPos.getXi(), realPos.getYi(), size.getXi(), size.getYi());
     }
 
     public static void drawRectCentered(@NotNull Graphics2D g2, @NotNull GVector2f pos, @NotNull GVector2f size) {

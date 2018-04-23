@@ -4,12 +4,12 @@ import Bombercraft2.Bombercraft2.game.entity.BombCreator;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.entity.weapons.WeaponLaser;
-import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.player.Shovel;
 import Bombercraft2.Bombercraft2.game.player.ToolAble;
 import Bombercraft2.Bombercraft2.game.player.placers.AreaPlacer;
 import Bombercraft2.Bombercraft2.game.player.placers.Placer;
-import Bombercraft2.Bombercraft2.game.player.placers.Placer.Types;
+import Bombercraft2.Bombercraft2.game.player.placers.PlacerType;
 import Bombercraft2.Bombercraft2.game.player.placers.SimplePlacer;
 
 import java.awt.*;
@@ -27,7 +27,7 @@ public class ToolManager {
     }
 
     private void init() {
-        setActualPlacer(Types.SIMPLE);
+        setActualPlacer(PlacerType.SIMPLE);
         tools.put(Helper.Type.SHOVEL, new Shovel(parent));
         tools.put(Helper.Type.WEAPON_LASER, new WeaponLaser(parent, parent.getWeapon("laser")));
         tools.put(Helper.Type.BOMB_NORMAL, new BombCreator(parent, Helper.Type.BOMB_NORMAL));
@@ -44,8 +44,8 @@ public class ToolManager {
     public ToolAble getSelectedTool() {return selectedTool;}
 
     private ToolAble getItemByIconable(Iconable selectedIcon) {
-        if (selectedIcon.getClass().isAssignableFrom(Block.Type.class)) {
-            actualPlacer.setBlockType((Block.Type) selectedIcon);
+        if (selectedIcon.getClass().isAssignableFrom(BlockType.class)) {
+            actualPlacer.setBlockType((BlockType) selectedIcon);
             return actualPlacer;
         }
         return tools.get(selectedIcon);
@@ -55,7 +55,7 @@ public class ToolManager {
 
     public void setSelectedTool(Iconable icon) {selectedTool = getItemByIconable(icon);}
 
-    public void setActualPlacer(Placer.Types type) {
+    public void setActualPlacer(PlacerType type) {
         Placer newPlacer = null;
         switch (type) {
             case SIMPLE:

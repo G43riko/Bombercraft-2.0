@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc.map;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 
 import org.jetbrains.annotations.NotNull;
@@ -29,11 +30,14 @@ public class SelectableBlock extends AbstractBlock {
                                                                                                          .getViewManager()
                                                                                                          .getOffset());
 
-        g2.setColor(selected ? selectedColor : defaultColor);
-        g2.fillRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());
+        GCanvas.fillRect(g2, pos, size, selected ? selectedColor : defaultColor);
+        // g2.setColor(selected ? selectedColor : defaultColor);
+        // g2.fillRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());
 
-        g2.setColor(Color.black);
-        g2.setStroke(new BasicStroke(3));
-        g2.drawRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());
+
+        GCanvas.drawRect(g2, pos, size, Color.BLACK, 3);
+        // g2.setColor(Color.black);
+        // g2.setStroke(new BasicStroke(3));
+        // g2.drawRect(pos.getXi(), pos.getYi(), size.getXi(), size.getYi());
     }
 }

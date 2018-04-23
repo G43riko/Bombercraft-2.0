@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -14,10 +15,10 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 public abstract class Bullet extends Entity<GameAble> {
-    private       Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
-    private final GVector2f     direction;
-    private final BulletModel   model;
-    private       int           health;
+    private       EmitterTypes emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
+    private final GVector2f    direction;
+    private final BulletModel  model;
+    private       int          health;
 
     Bullet(GVector2f position, GameAble parent, Types type, GVector2f direction) {
         super(position, parent);

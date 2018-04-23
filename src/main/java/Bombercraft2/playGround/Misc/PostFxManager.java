@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
@@ -39,7 +40,8 @@ public class PostFxManager extends AbstractManager {
                 return size;
             }
         });
-        g2.drawImage(image, position.getXi(), position.getYi(), size.getXi(), size.getYi(), null);
+        GCanvas.drawImage(g2, image, position, size);
+        // g2.drawImage(image, position.getXi(), position.getYi(), size.getXi(), size.getYi(), null);
     }
 
     public void addArc(@NotNull Color color, @NotNull GVector2f position, @NotNull GVector2f size) {
@@ -48,8 +50,9 @@ public class PostFxManager extends AbstractManager {
     }
 
     public void addRect(@NotNull Color color, @NotNull GVector2f position, @NotNull GVector2f size) {
-        g2.setColor(color);
-        g2.fillRect(position.getXi(), position.getYi(), size.getXi(), size.getYi());
+        GCanvas.fillRect(g2, position, size, color);
+        // g2.setColor(color);
+        // g2.fillRect(position.getXi(), position.getYi(), size.getXi(), size.getYi());
     }
 
     @NotNull

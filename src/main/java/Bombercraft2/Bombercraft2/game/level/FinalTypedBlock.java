@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.game.level;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Misc.map.SimpleTypedBlock;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +39,8 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         GVector2f size = Config.BLOCK_SIZE.mul(parent.getZoom());
         GVector2f pos = position.mul(size).sub(parent.getOffset());
 
-        g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
+        GCanvas.drawImage(g2, type.getImage(), pos, size);
+        // g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
     @Override
@@ -73,7 +75,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     }
 
     private void remove(boolean addExplosion) {
-        type = Block.Type.NOTHING;
+        type = BlockType.NOTHING;
         health = 0;
     }
 
@@ -126,7 +128,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     */
 
     public void drawShadow(@NotNull Graphics2D g2, @NotNull Color color, int length, int angle) {
-        if (type == Block.Type.NOTHING) {
+        if (type == BlockType.NOTHING) {
             return;
         }
 
@@ -161,7 +163,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         g2.fillPolygon(xPos, yPos, 5);
     }
 
-    public void build(@NotNull Block.Type type) {
+    public void build(@NotNull BlockType type) {
         this.type = type;
         this.health = type.getHealth();
     }
@@ -277,7 +279,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     @Contract(pure = true)
     @NotNull
-    public Block.Type getType() {return type;}
+    public BlockType getType() {return type;}
 
     @Contract(pure = true)
     public int getHealth() {return health;}
@@ -287,7 +289,7 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     @Contract(pure = true)
     @Nullable
-    public GVector2f getInterSect(@NotNull GVector2f ss, @NotNull GVector2f se) {
+    public static GVector2f getInterSect(@NotNull GVector2f position, @NotNull GVector2f ss, @NotNull GVector2f se) {
         ArrayList<GVector2f> res = new ArrayList<>();
 
         GVector2f p = position.mul(Config.BLOCK_SIZE);

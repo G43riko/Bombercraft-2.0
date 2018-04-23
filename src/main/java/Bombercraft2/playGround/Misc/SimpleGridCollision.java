@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Demos.ParticlesDemo;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GColision;
@@ -80,7 +81,8 @@ public class SimpleGridCollision implements InteractAble {
         if (!visible) {
             return;
         }
-        g2.drawRect(position.getXi(), position.getYi(), size.getXi(), size.getYi());
+        GCanvas.drawRect(g2, position, size);
+        // g2.drawRect(position.getXi(), position.getYi(), size.getXi(), size.getYi());
 
         for (int i = 0; i < 4; i++) {
             if (children[i] != null) {

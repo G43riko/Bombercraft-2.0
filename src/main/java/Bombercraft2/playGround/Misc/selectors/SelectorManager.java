@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Misc.selectors;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Misc.AbstractManager;
 import Bombercraft2.playGround.Misc.PlayerManager;
@@ -56,8 +57,6 @@ public class SelectorManager extends AbstractManager {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        g2.setColor(selectorColor);
-        g2.setStroke(new BasicStroke(selectorWidth));
         SimpleTypedBlock block = parent.getManager()
                                        .getMapManager()
                                        .getBlockOnAbsolutePos(getTargetPosition().sub(parent.getManager()
@@ -65,7 +64,11 @@ public class SelectorManager extends AbstractManager {
                                                                                             .getOffset()));
         GVector2f pos = block.getPosition()
                              .sub(parent.getManager().getViewManager().getOffset().mod(Config.BLOCK_SIZE));
-        g2.drawRect(pos.getXi(), pos.getYi(), 60, 60);
+
+        GCanvas.drawRect(g2, pos, new GVector2f(60, 60), selectorColor, selectorWidth);
+        // g2.setColor(selectorColor);
+        // g2.setStroke(new BasicStroke(selectorWidth));
+        // g2.drawRect(pos.getXi(), pos.getYi(), 60, 60);
     }
 
 

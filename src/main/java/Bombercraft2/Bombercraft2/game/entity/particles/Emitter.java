@@ -16,21 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Emitter extends Entity<GameAble> {
-    private static final HashMap<Types, JSONObject> predefinedParticles = new HashMap<>();
-
-    public enum Types {
-        PARTICLE_EMITTER_TEST("emitterTest"),
-        PARTICLE_EXPLOSION_TEST("explosionTest"),
-        PARTICLE_EXPLOSION_BOW_HIT("explosionBowHit"),
-        PARTICLE_EXPLOSION_DEFAULT_HIT("explosionDefaultHit"),
-        PARTICLE_EMITTER_GREEN_MAGIC("particleEmitterGreenMagic"),
-        PARTICLE_EXPLOSION_BLUE_SPARK("particleExplosionBlueSpark");
-        private final String name;
-
-        Types(String name) {this.name = name;}
-
-        String getName() {return name;}
-    }
+    private static final HashMap<EmitterTypes, JSONObject> predefinedParticles = new HashMap<>();
 
     ArrayList<Particle> particles = new ArrayList<>();
     private Color color;
@@ -50,12 +36,12 @@ public abstract class Emitter extends Entity<GameAble> {
     }
 //
 
-    Emitter(Emitter.Types type, GVector2f position, GameAble parent) {
+    Emitter(EmitterTypes type, GVector2f position, GameAble parent) {
         super(position, parent);
 
         loadDataFromJSON(predefinedParticles.get(type));
 
-        if (type == Types.PARTICLE_EXPLOSION_BLUE_SPARK) {
+        if (type == EmitterTypes.PARTICLE_EXPLOSION_BLUE_SPARK) {
             color = Utils.choose(Color.WHITE, Color.RED, Color.ORANGE, Color.YELLOW, Color.LIGHT_GRAY, Color.BLUE);
         }
 
@@ -104,9 +90,9 @@ public abstract class Emitter extends Entity<GameAble> {
 
     private static void initDefault() {
         try {
-            Types[] types = Types.values();
+            EmitterTypes[] types = EmitterTypes.values();
             JSONObject object = ResourceLoader.getJSON(Config.FILE_PARTICLES);
-            for (Types type : types) {
+            for (EmitterTypes type : types) {
                 predefinedParticles.put(type, object.getJSONObject(type.getName()));
             }
         }

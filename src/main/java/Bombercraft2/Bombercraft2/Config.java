@@ -14,6 +14,7 @@ public class Config {
 
     public final static int   BOMB_WIDTH      = 64;
     public final static int   BOMB_HEIGHT     = 64;
+    public final static GVector2f BOMB_SIZE = new GVector2f(Config.BOMB_WIDTH, Config.BOMB_HEIGHT);
     public final static Color BOMB_AREA_COLOR = new Color(255, 255, 0, 100);
     public final static int   BOMB_AREA_ROUND = 10;
 

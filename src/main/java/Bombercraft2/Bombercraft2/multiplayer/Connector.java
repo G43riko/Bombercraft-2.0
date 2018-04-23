@@ -3,9 +3,9 @@ package Bombercraft2.Bombercraft2.multiplayer;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
-import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Block;
-import Bombercraft2.Bombercraft2.game.level.Block.Type;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import org.jetbrains.annotations.NotNull;
@@ -25,9 +25,9 @@ public interface Connector {
 
     void onBuildBlock(@NotNull JSONObject data);
 
-    void setBuildBlock(@NotNull GVector2f position, @NotNull Type type);
+    void setBuildBlock(@NotNull GVector2f position, @NotNull BlockType type);
 
-    void setBuildBlockArea(@NotNull GVector2f minPosition, @NotNull GVector2f maxPosition, @NotNull Type type);
+    void setBuildBlockArea(@NotNull GVector2f minPosition, @NotNull GVector2f maxPosition, @NotNull BlockType type);
 
     default void onBombExplode(@NotNull JSONObject data) {}
 
@@ -50,7 +50,7 @@ public interface Connector {
 
     void cleanUp();
 
-    void setPutEmitter(@NotNull Types emitterOnHit, @NotNull GVector2f position);
+    void setPutEmitter(@NotNull EmitterTypes emitterOnHit, @NotNull GVector2f position);
 
     boolean bulletHitEnemy(@NotNull Bullet bulletInstance);
 

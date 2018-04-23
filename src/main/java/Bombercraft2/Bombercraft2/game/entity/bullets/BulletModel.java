@@ -3,6 +3,7 @@ package Bombercraft2.Bombercraft2.game.entity.bullets;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.math.GVector2f;
@@ -16,7 +17,7 @@ public class BulletModel {
 //	public final static String BULLET_MAGIC 	= "bulletMagic";
 //	public final static String BULLET_BOOMERANG = "bulletBoomerang";
 
-    private Emitter.Types emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
+    private EmitterTypes emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
 
     private GVector2f size;
     private int       speed;
@@ -32,7 +33,7 @@ public class BulletModel {
     private void fromJSON(JSONObject data) {
         try {
             if (data.has(Texts.EMITTER_ON_HIT) && !data.isNull(Texts.EMITTER_ON_HIT)) {
-                this.emitterOnHit = Emitter.Types.valueOf(data.getString(Texts.EMITTER_ON_HIT));
+                this.emitterOnHit = EmitterTypes.valueOf(data.getString(Texts.EMITTER_ON_HIT));
             }
             this.damage = data.getInt(Texts.DAMAGE);
             this.speed = data.getInt(Texts.SPEED);
@@ -46,7 +47,7 @@ public class BulletModel {
         }
     }
 
-    public Emitter.Types getEmitterOnHit() {return emitterOnHit;}
+    public EmitterTypes getEmitterOnHit() {return emitterOnHit;}
 
     public int getMaxHealth() {return maxHealth;}
 
@@ -61,7 +62,7 @@ public class BulletModel {
     public int getSpeed() {return speed;}
 
 
-    public void setEmitterOnHit(Emitter.Types emitterOnHit) {this.emitterOnHit = emitterOnHit;}
+    public void setEmitterOnHit(EmitterTypes emitterOnHit) {this.emitterOnHit = emitterOnHit;}
 
     public void setType(Types type) {this.type = type;}
 

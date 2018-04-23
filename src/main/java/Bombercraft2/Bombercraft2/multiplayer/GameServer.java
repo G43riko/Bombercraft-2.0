@@ -5,9 +5,9 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
-import Bombercraft2.Bombercraft2.game.entity.particles.Emitter.Types;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Block;
-import Bombercraft2.Bombercraft2.game.level.Block.Type;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.multiplayer.core.ClientPlayer;
@@ -40,12 +40,12 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setBuildBlock(@NotNull GVector2f position, @NotNull Type type) {
+    public void setBuildBlock(@NotNull GVector2f position, @NotNull BlockType type) {
         methods.setBuildBlock(position, type);
     }
 
     @Override
-    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull Type type) {
+    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull BlockType type) {
         methods.setBuildBlockArea(minPos, maxPos, type);
     }
 
@@ -183,7 +183,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setPutEmitter(@NotNull Types emitterOnHit, @NotNull GVector2f position) {
+    public void setPutEmitter(@NotNull EmitterTypes emitterOnHit, @NotNull GVector2f position) {
         // TODO Auto-generated method stub
 
     }

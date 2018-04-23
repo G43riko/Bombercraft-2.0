@@ -13,9 +13,11 @@ import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerMachineGun;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.level.Map;
 import Bombercraft2.Bombercraft2.game.lights.Light;
@@ -256,7 +258,7 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void addEmitter(@NotNull GVector2f position, @NotNull Emitter.Types type) {
+    public void addEmitter(@NotNull GVector2f position, @NotNull EmitterTypes type) {
         sceneManager.addEmitter(position, type);
     }
 
@@ -340,7 +342,7 @@ public class Game extends GameState implements GameAble {
             GLogger.printLine("Vytvara sa helper na helpere");
             return;
         }
-        if (level.getMap().getBlock(key).getType() == Block.Type.WATER) {
+        if (level.getMap().getBlock(key).getType() == BlockType.WATER) {
             GLogger.printLine("Vytvara sa helper na vode");
             return;
         }

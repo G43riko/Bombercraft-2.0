@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.map.AbstractBlock;
 
@@ -18,7 +20,7 @@ import utils.math.GVector2f;
 
 public class SimpleTypedBlock extends AbstractBlock {
     @NotNull
-    protected Block.Type type;
+    protected BlockType type;
 
     public SimpleTypedBlock(@NotNull GVector2f position, int type, @NotNull SimpleGameAble parent) {
         this(position, type, parent, null);
@@ -42,7 +44,8 @@ public class SimpleTypedBlock extends AbstractBlock {
                                                                                                          .getViewManager()
                                                                                                          .getOffset());
 
-        g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi() + 1, size.getYi() + 1, null);
+        GCanvas.drawImage(g2, type.getImage(), pos, size.add(1));
+        // g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi() + 1, size.getYi() + 1, null);
     }
 
 
@@ -52,7 +55,7 @@ public class SimpleTypedBlock extends AbstractBlock {
         JSONWrapper(() -> {
             String type = json.getString(Texts.TYPE);
             try {
-                this.type = Block.Type.valueOf(type);
+                this.type = BlockType.valueOf(type);
             }
             catch (IllegalArgumentException e) {
                 GLogger.error(GLogger.GError.UNKNOWN_BLOCK_TYPE, e, type);
@@ -73,7 +76,7 @@ public class SimpleTypedBlock extends AbstractBlock {
 
     @Contract(pure = true)
     @NotNull
-    public Block.Type getType() {
+    public BlockType getType() {
         return type;
     }
 
@@ -84,6 +87,6 @@ public class SimpleTypedBlock extends AbstractBlock {
     }
 
     public void remove() {
-        type = Block.Type.GRASS;
+        type = BlockType.GRASS;
     }
 }

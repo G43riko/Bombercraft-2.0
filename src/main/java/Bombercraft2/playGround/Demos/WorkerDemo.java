@@ -12,6 +12,7 @@ import Bombercraft2.Bombercraft2.game.ToolManager;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
@@ -183,7 +184,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void addEmitter(@NotNull GVector2f position, Emitter.@NotNull Types type
+    public void addEmitter(@NotNull GVector2f position, EmitterTypes type
                           ) {
 
     }

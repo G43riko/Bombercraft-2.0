@@ -1,5 +1,7 @@
 package Bombercraft2.playGround.Misc;
 
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
+import Bombercraft2.playGround.Misc.map.BasicChunk;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
@@ -9,10 +11,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BasicEntity {
-    private final boolean isMoving = true;
-    public GVector2f position;
-    public final GVector2f size;
-    public final SimpleGameAble parent;
+    private final boolean         isMoving  = true;
+    public GVector2f              position;
+    public final GVector2f        size;
+    public final SimpleGameAble   parent;
     public final List<BasicChunk> actChunks = new ArrayList<>(4);
 
     public BasicEntity(SimpleGameAble parent, GVector2f position, GVector2f size) {
@@ -35,9 +37,10 @@ public class BasicEntity {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        g2.setColor(Color.red);
-        g2.setStroke(new BasicStroke(1));
-        g2.drawRect(position.getXi(), position.getYi(), size.getXi(), size.getYi());
+        GCanvas.drawRect(g2, position, size, Color.RED, 1);
+        // g2.setColor(Color.red);
+        // g2.setStroke(new BasicStroke(1));
+        // g2.drawRect(position.getXi(), position.getYi(), size.getXi(), size.getYi());
     }
 
     private boolean isNearByBorders() {

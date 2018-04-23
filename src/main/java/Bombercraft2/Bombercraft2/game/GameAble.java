@@ -6,6 +6,7 @@ import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.entity.Helper.Type;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
@@ -81,7 +82,7 @@ public interface GameAble extends InteractAble, Visible, SimpleGameAble {
      */
     void addHelper(@NotNull GVector2f pos, @NotNull Type type, long createdTime);
 
-    void addEmitter(@NotNull GVector2f position, @NotNull Emitter.Types type);
+    void addEmitter(@NotNull GVector2f position, @NotNull EmitterTypes type);
 
     void addEnemy(@NotNull GVector2f position, @NotNull String type);
 

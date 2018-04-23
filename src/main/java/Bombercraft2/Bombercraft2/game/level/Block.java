@@ -5,10 +5,12 @@ import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sun.misc.GC;
 import utils.GLogger;
 import utils.ImageUtils;
 import utils.SpriteViewer;
@@ -23,6 +25,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Block extends Entity<GameAble> {
+    /*
     public enum Type implements Iconable {
         NOTHING("block_floor", 0, true),
         WOOD("block_wood", 1, false),
@@ -66,9 +69,10 @@ public class Block extends Entity<GameAble> {
 
         Color getMiniMapColor() {return miniMapColor;}
     }
+    */
 
     //	private static HashMap<String, Type> blocks = new HashMap<String, Type>();
-    private Type type;
+    private BlockType type;
     private int  health;
 
 
@@ -78,7 +82,7 @@ public class Block extends Entity<GameAble> {
         try {
             position = new GVector2f(object.getString(Texts.POSITION));
             health = object.getInt(Texts.HEALTH);
-            type = Type.valueOf(object.getString(Texts.TYPE));
+            type = BlockType.valueOf(object.getString(Texts.TYPE));
         }
         catch (JSONException e) {
             GLogger.error(GLogger.GError.CANNOT_PARSE_BLOCK, e);
@@ -89,7 +93,7 @@ public class Block extends Entity<GameAble> {
         this(position, getTypeFromInt(type), parent);
     }
 
-    private Block(@NotNull GVector2f position, Type type, @NotNull GameAble parent) {
+    private Block(@NotNull GVector2f position, BlockType type, @NotNull GameAble parent) {
         super(position, parent);
         this.health = type.getHealth();
         this.type = type;
@@ -103,7 +107,8 @@ public class Block extends Entity<GameAble> {
         GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
         GVector2f pos = position.mul(size).sub(getParent().getOffset());
 
-        g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
+        GCanvas.drawImage(g2, type.getImage(), pos, size);
+        // g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
     }
 
     @Contract(pure = true)
@@ -144,7 +149,7 @@ public class Block extends Entity<GameAble> {
                                      type.getMiniMapColor(),
                                      5, false, false);
         }
-        type = Type.NOTHING;
+        type = BlockType.NOTHING;
         health = 0;
     }
 
@@ -195,7 +200,7 @@ public class Block extends Entity<GameAble> {
     }
 
     public void drawShadow(Graphics2D g2, Color color, int length, int angle) {
-        if (type == Type.NOTHING) { return; }
+        if (type == BlockType.NOTHING) { return; }
 
         double finalAngle = Math.toRadians(angle + 90);
         GVector2f offset = new GVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).mul(length);
@@ -228,7 +233,7 @@ public class Block extends Entity<GameAble> {
         g2.fillPolygon(xPos, yPos, 5);
     }
 
-    public void build(Type type) {
+    public void build(BlockType type) {
         this.type = type;
         this.health = type.getHealth();
     }
@@ -338,37 +343,14 @@ public class Block extends Entity<GameAble> {
     @NotNull
     public GVector2f getPosition() {return position.mul(Config.BLOCK_SIZE);}
 
-    public Type getType() {return type;}
+    public BlockType getType() {return type;}
 
     public int getHealth() {return health;}
 
     public boolean isWalkable() {return type.isWalkable();}
 
-    public static Type getTypeFromInt(int num) {
-        return num > 0 && num < Type.values().length ? Type.values()[num] : Type.NOTHING;
-    }
-
-    public GVector2f getInterSect(GVector2f ss, GVector2f se) {
-        ArrayList<GVector2f> res = new ArrayList<>();
-
-        GVector2f p = position.mul(Config.BLOCK_SIZE);
-        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(Config.BLOCK_SIZE.getX(), 0)), p));
-        res.add(LineLineIntersect.linesIntersect(ss, se, p.add(new GVector2f(0, Config.BLOCK_SIZE.getY())), p));
-        res.add(LineLineIntersect.linesIntersect(ss,
-                                                 se,
-                                                 p.add(new GVector2f(Config.BLOCK_SIZE.getX(), 0)),
-                                                 p.add(Config.BLOCK_SIZE)));
-        res.add(LineLineIntersect.linesIntersect(ss,
-                                                 se,
-                                                 p.add(new GVector2f(0, Config.BLOCK_SIZE.getY())),
-                                                 p.add(Config.BLOCK_SIZE)));
-
-        res = res.stream().filter(Objects::nonNull).collect(Collectors.toCollection(ArrayList::new));
-        if (res.size() == 0) {
-            return null;
-        }
-
-        return res.stream().reduce((a, b) -> a.dist(ss) < b.dist(ss) ? a : b).get();
+    public static BlockType getTypeFromInt(int num) {
+        return num > 0 && num < BlockType.values().length ? BlockType.values()[num] : BlockType.NOTHING;
     }
 }
 

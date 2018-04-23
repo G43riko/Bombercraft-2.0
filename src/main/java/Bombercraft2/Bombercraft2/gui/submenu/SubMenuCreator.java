@@ -4,8 +4,8 @@ import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.flora.Flora;
-import Bombercraft2.Bombercraft2.game.level.Block;
-import Bombercraft2.Bombercraft2.game.player.placers.Placer.Types;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
+import Bombercraft2.Bombercraft2.game.player.placers.PlacerType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +59,12 @@ public class SubMenuCreator {
 
         //SubmenuRadioGroup group = new SubmenuRadioGroup((e) -> System.out.println("selected: " + e + " " + e.getLabel()));
         SubmenuRadioGroup group = new SubmenuRadioGroup();
-        placers.add(new SubmenuItem(Types.SIMPLE.getLabel(), group, () -> {
-            game.getToolsManager().setActualPlacer(Types.SIMPLE);
+        placers.add(new SubmenuItem(PlacerType.SIMPLE.getLabel(), group, () -> {
+            game.getToolsManager().setActualPlacer(PlacerType.SIMPLE);
             return false;
         }));
-        placers.add(new SubmenuItem(Types.AREA.getLabel(), group, () -> {
-            game.getToolsManager().setActualPlacer(Types.AREA);
+        placers.add(new SubmenuItem(PlacerType.AREA.getLabel(), group, () -> {
+            game.getToolsManager().setActualPlacer(PlacerType.AREA);
             return false;
         }));
         return placers;
@@ -88,8 +88,8 @@ public class SubMenuCreator {
 
     private static List<SubmenuItem> getBlocks() {
         ArrayList<SubmenuItem> blocks = new ArrayList<>();
-        Block.Type[] types = Block.Type.values();
-        for (Block.Type type : types) {
+        BlockType[] types = BlockType.values();
+        for (BlockType type : types) {
             blocks.add(new SubmenuItem(type.toString(), type.getImage()));
         }
         return blocks;

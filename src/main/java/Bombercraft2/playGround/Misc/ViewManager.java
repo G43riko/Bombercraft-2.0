@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewManager extends AbstractManager {
+
     @Nullable
     private Visible target;
 
@@ -70,13 +71,11 @@ public class ViewManager extends AbstractManager {
     }
 
     public void moveX(float value) {
-        offset.addToX(value);
-        offset.setX(Utils.clamp(0f, maxOffset.getX(), offset.getX()));
+        offset.setX(Utils.clamp(0f, maxOffset.getX(), offset.getX() + value));
     }
 
     public void moveY(float value) {
-        offset.addToY(value);
-        offset.setY(Utils.clamp(0f, maxOffset.getY(), offset.getY()));
+        offset.setY(Utils.clamp(0f, maxOffset.getY(), offset.getY() + value));
     }
 
     private void checkOffset() {

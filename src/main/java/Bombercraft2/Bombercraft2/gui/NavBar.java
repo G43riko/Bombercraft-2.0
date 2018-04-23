@@ -5,6 +5,7 @@ import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.engine.Input;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -31,10 +32,10 @@ public class NavBar extends Bar {
         items.put(7, Helper.Type.WEAPON_STICK);
         items.put(8, Helper.Type.WEAPON_BOOMERANG);
 
-        items.put(9, Block.Type.IRON);
-        items.put(10, Block.Type.WOOD);
-        items.put(11, Block.Type.WATER);
-        items.put(12, Block.Type.GRASS);
+        items.put(9, BlockType.IRON);
+        items.put(10, BlockType.WOOD);
+        items.put(11, BlockType.WATER);
+        items.put(12, BlockType.GRASS);
 
         items.put(13, Helper.Type.OTHER_RESPAWNER);
         items.put(14, Helper.Type.OTHER_ADDUCTOR);

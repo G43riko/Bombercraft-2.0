@@ -11,6 +11,7 @@ import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.Bullet;
 import Bombercraft2.Bombercraft2.game.entity.explosion.Explosion;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.entity.particles.ParticleEmitter;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import org.jetbrains.annotations.NotNull;
@@ -171,7 +172,7 @@ public class SceneManager implements InteractAble, JSONAble {
 
     }
 
-    public void addEmitter(GVector2f position, Emitter.Types type) {
+    public void addEmitter(GVector2f position, EmitterTypes type) {
         emitters.add(new ParticleEmitter(type, position, parent));
     }
 

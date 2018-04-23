@@ -1,13 +1,13 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
 import Bombercraft2.Bombercraft2.core.Texts;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.ShootAble;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
 import Bombercraft2.Bombercraft2.game.level.Block;
-import Bombercraft2.Bombercraft2.game.level.Block.Type;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
 import Bombercraft2.Bombercraft2.multiplayer.core.Server;
@@ -46,7 +46,7 @@ class CommonMethods {
                 GLogger.printLine("ide sa postavit blok na neexistujucej pozicii: " + position);
                 return;
             }
-            block.build(Type.valueOf(data.getString(Texts.TYPE)));
+            block.build(BlockType.valueOf(data.getString(Texts.TYPE)));
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -104,7 +104,7 @@ class CommonMethods {
         }
     }
 
-    public void setBuildBlock(@NotNull GVector2f position, @NotNull Type type) {
+    public void setBuildBlock(@NotNull GVector2f position, @NotNull BlockType type) {
         game.getLevel().getMap().getBlock(position.getXi(), position.getYi()).build(type);
         try {
             JSONObject result = new JSONObject();
@@ -117,7 +117,7 @@ class CommonMethods {
         }
     }
 
-    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull Type blockType) {
+    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull BlockType blockType) {
         for (int i = minPos.getXi(); i <= maxPos.getX(); i++) {
             for (int j = minPos.getYi(); j <= maxPos.getY(); j++) {
                 game.getLevel().getMap().getBlock(i, j).build(blockType);

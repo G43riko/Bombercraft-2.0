@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.Timer;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -44,9 +45,10 @@ public class ImagedBomb extends SimpleBomb {
         if (timer != null) {
             timer.render(g2);
         }
-        g2.setColor(Color.BLACK);
+        // g2.setColor(Color.BLACK);
         // g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);
-        g2.drawImage(bombImage, actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, null);
+        GCanvas.drawImage(g2, bombImage, actPos, Config.BOMB_SIZE);
+        // g2.drawImage(bombImage, actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, null);
     }
 
     @Override
