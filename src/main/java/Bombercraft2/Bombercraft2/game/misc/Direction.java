@@ -21,4 +21,20 @@ public enum Direction {
     public GVector2f getDirection() {return direction;}
 
     public static Direction getRandomDirection() {return Direction.values()[(int) (Math.random() * 4)];}
+
+    public static Direction getFromMove(GVector2f move, Direction defaultDirection) {
+        if (move.getX() < 0 && move.getY() == 0) {
+            return Direction.LEFT;
+        }
+        else if (move.getX() > 0 && move.getY() == 0) {
+            return Direction.RIGHT;
+        }
+        else if (move.getX() == 0 && move.getY() < 0) {
+            return Direction.UP;
+        }
+        else if (move.getX() == 0 && move.getY() > 0) {
+            return Direction.DOWN;
+        }
+        return defaultDirection;
+    }
 }

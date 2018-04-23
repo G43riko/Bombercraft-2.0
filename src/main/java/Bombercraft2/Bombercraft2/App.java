@@ -11,6 +11,7 @@ import Bombercraft2.Bombercraft2.game.ToolManager;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
+import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
 import Bombercraft2.Bombercraft2.game.player.Player;
@@ -30,8 +31,8 @@ import java.util.HashMap;
 public class App {
 
     public static void main(String[] args) {
-        // Bombercraft game = new Bombercraft();
-        PlayGround game = new PlayGround();
+        Bombercraft game = new Bombercraft();
+        // PlayGround game = new PlayGround();
         game.run();
 
         // testPathFinging();
@@ -164,7 +165,7 @@ public class App {
             }
 
             @Override
-            public void addEmitter(@NotNull GVector2f position, Emitter.@NotNull Types type
+            public void addEmitter(@NotNull GVector2f position, EmitterTypes type
                                   ) {
 
             }

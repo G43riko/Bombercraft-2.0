@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.game.player;
 
 import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthBar;
@@ -101,18 +102,8 @@ public class MyPlayer extends Player {
         }
 
 
-        if (move.getX() < 0 && move.getY() == 0) {
-            setDirection(Direction.LEFT);
-        }
-        else if (move.getX() > 0 && move.getY() == 0) {
-            setDirection(Direction.RIGHT);
-        }
-        else if (move.getX() == 0 && move.getY() < 0) {
-            setDirection(Direction.UP);
-        }
-        else if (move.getX() == 0 && move.getY() > 0) {
-            setDirection(Direction.DOWN);
-        }
+
+        setDirection(Direction.getFromMove(move, getDirection()));
 
         pointer.input();
 
@@ -146,7 +137,7 @@ public class MyPlayer extends Player {
             onDead();
         }
 
-        if (getParent().getLevel().getMap().getBlockOnPosition(getCenter()).getType() == Block.Type.WATER) {
+        if (getParent().getLevel().getMap().getBlockOnPosition(getCenter()).getType() == BlockType.WATER) {
             move = move.mul(Config.WATER_TILE_SPEED_COEFFICIENT);
         }
         totalMove = totalMove.add(move);

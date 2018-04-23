@@ -2,6 +2,7 @@ package Bombercraft2.playGround.Misc.map;
 
 import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -13,6 +14,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Consumer;
 
 public class SimpleChunk extends Entity<SimpleGameAble> {
     public final static GVector2f                         SIZE           = Config.BLOCK_SIZE.mul(Config.CHUNK_SIZE);
@@ -43,6 +45,13 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
         }
     }
 
+    private void forEach(Consumer<SimpleTypedBlock> action) {
+        blocks.entrySet()
+              .stream()
+              .map(Map.Entry::getValue)
+              .forEach(action);
+    }
+
     private void addBlock(int i, int j, SimpleTypedBlock block) {
         blocks.put(i + "_" + j, block);
     }
@@ -67,12 +76,14 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
               });
 
         if (Config.SHOW_CHUNK_BORDERS) {
-            g2.setColor(Color.black);
 
             final GVector2f transformedPosition = parent.getManager().getViewManager().transform(getPosition());
             final GVector2f realSize = SIZE.mul(parent.getManager().getViewManager().getZoom());
-            g2.setStroke(new BasicStroke(3));
-            g2.drawRect(transformedPosition.getXi(), transformedPosition.getYi(), realSize.getXi(), realSize.getYi());
+
+            GCanvas.drawRect(g2, transformedPosition, realSize, Color.BLACK, 3);
+            // g2.setColor(Color.black);
+            // g2.setStroke(new BasicStroke(3));
+            // g2.drawRect(transformedPosition.getXi(), transformedPosition.getYi(), realSize.getXi(), realSize.getYi());
         }
     }
 

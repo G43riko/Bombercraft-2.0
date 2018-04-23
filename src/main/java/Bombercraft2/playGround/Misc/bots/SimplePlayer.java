@@ -186,8 +186,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
     }
 
 
-    protected boolean checkBorders() {
-        boolean touchBorders = false;
+    protected boolean isOnEdge() {
         GVector2f zoomedPosition = position.mul(parent.getManager().getViewManager().getZoom());
         GVector2f zoomedMapSize = parent.getManager()
                                         .getMapManager()
@@ -196,12 +195,12 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
         if (zoomedPosition.getX() < 0) {
             position.setX(0);
-            touchBorders = true;
+            return true;
         }
 
         if (zoomedPosition.getY() < 0) {
             position.setY(0);
-            touchBorders = true;
+            return true;
         }
 
         if (zoomedPosition.getX() + Config.DEFAULT_BLOCK_WIDTH * parent.getManager()
@@ -212,7 +211,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
                                                                                      .getZoom()) / parent.getManager()
                                                                                                          .getViewManager()
                                                                                                          .getZoom());
-            touchBorders = true;
+            return true;
         }
 
         if (zoomedPosition.getY() + Config.DEFAULT_BLOCK_HEIGHT * parent.getManager()
@@ -223,8 +222,8 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
                                                                                       .getZoom()) / parent.getManager()
                                                                                                           .getViewManager()
                                                                                                           .getZoom());
-            touchBorders = true;
+            return true;
         }
-        return touchBorders;
+        return false;
     }
 }

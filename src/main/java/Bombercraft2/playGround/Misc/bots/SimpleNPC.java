@@ -35,7 +35,7 @@ public class SimpleNPC extends SimplePlayer{
         }
 
 
-        if (checkBorders()) {
+        if (isOnEdge()) {
             setDirection(Direction.getRandomDirection());
         }
     }

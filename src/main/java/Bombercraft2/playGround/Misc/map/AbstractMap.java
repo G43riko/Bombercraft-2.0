@@ -57,6 +57,7 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
     protected void addItem(int i, int j, @NotNull T block) {
         items.put(i + "_" + j, block);
     }
+
     @Nullable
     protected T getItem(int i, int j) {
         return items.get(i + "_" + j);
@@ -65,9 +66,11 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
     public GVector2f getMapSize() {
         return mapSize;
     }
+
     public int getRenderedBlocks() {
         return renderedBlocks;
     }
+
     @Nullable
     protected T getItem(GVector2f pos) {
         return items.get(pos.getXi() + "_" + pos.getYi());
