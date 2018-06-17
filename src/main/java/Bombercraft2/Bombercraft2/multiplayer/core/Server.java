@@ -2,8 +2,8 @@ package Bombercraft2.Bombercraft2.multiplayer.core;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
 import Bombercraft2.Bombercraft2.StaticConfig;
+import org.utils.Utils;
 import utils.GLogger;
-import utils.Utils;
 
 import java.io.IOException;
 import java.net.ServerSocket;

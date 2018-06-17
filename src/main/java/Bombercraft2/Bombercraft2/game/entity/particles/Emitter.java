@@ -3,11 +3,12 @@ package Bombercraft2.Bombercraft2.game.entity.particles;
 import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
+import org.glib2.math.GMath;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.Utils;
+import org.utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
@@ -42,7 +43,7 @@ public abstract class Emitter extends Entity<GameAble> {
         loadDataFromJSON(predefinedParticles.get(type));
 
         if (type == EmitterTypes.PARTICLE_EXPLOSION_BLUE_SPARK) {
-            color = Utils.choose(Color.WHITE, Color.RED, Color.ORANGE, Color.YELLOW, Color.LIGHT_GRAY, Color.BLUE);
+            color = GMath.choose(Color.WHITE, Color.RED, Color.ORANGE, Color.YELLOW, Color.LIGHT_GRAY, Color.BLUE);
         }
 
         createParticles(particlesOnStart);

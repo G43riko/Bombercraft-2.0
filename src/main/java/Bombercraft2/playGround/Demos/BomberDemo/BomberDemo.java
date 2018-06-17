@@ -14,7 +14,7 @@ import Bombercraft2.playGround.Misc.selectors.SelectorManager;
 import Bombercraft2.playGround.Misc.selectors.SimpleLineSelector;
 import Bombercraft2.playGround.SimpleAbstractGame;
 import org.jetbrains.annotations.NotNull;
-import utils.Utils;
+import org.utils.MeasureUtils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -56,14 +56,14 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        Utils.measureNano("---------Render total", () -> {
-            Utils.measureNano("-----------Render - clear", () -> {
+        MeasureUtils.measureNano("---------Render total", () -> {
+            MeasureUtils.measureNano("-----------Render - clear", () -> {
                 g2.clearRect(0, 0, parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
             });
-            Utils.measureNano("---------Render - manager", () -> {
+            MeasureUtils.measureNano("---------Render - manager", () -> {
                 manager.render(g2);
             });
-            Utils.measureNano("------------Render - logs", () -> {
+            MeasureUtils.measureNano("------------Render - logs", () -> {
                 gameLogs.render(g2);
             });
 
@@ -100,12 +100,12 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
 
     @Override
     public void update(float delta) {
-        Utils.measureNano("---------Uptate total", () -> manager.update(delta));
+        MeasureUtils.measureNano("---------Uptate total", () -> manager.update(delta));
     }
 
     @Override
     public void input() {
-        Utils.measureNano("----------Input total", () -> {
+        MeasureUtils.measureNano("----------Input total", () -> {
             if (Input.getKeyDown(Input.KEY_ESCAPE)) {
                 parent.stopDemo();
             }

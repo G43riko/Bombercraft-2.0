@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.multiplayer;
 
+import org.glib2.network.InternetUtils;
 import org.jetbrains.annotations.NotNull;
-import utils.Utils;
 
 public class RemoteGameData {
     @NotNull
@@ -29,7 +29,7 @@ public class RemoteGameData {
     }
 
     public void reping() {
-        ping = Utils.ping(ip);
+        ping = InternetUtils.ping(ip);
     }
 
     public int getMaxPlayers() {

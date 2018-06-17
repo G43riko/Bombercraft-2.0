@@ -4,11 +4,10 @@ import Bombercraft2.Bombercraft2.MainManager;
 import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.CoreEngine;
-import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.ViewManager;
+import org.glib2.system_analytics.SystemInfoGrabber;
 import org.jetbrains.annotations.NotNull;
-import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -32,7 +31,7 @@ public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState
         result.add("FPS: " + parent.getFPS());
         result.add("UPS: " + parent.getUPS());
         result.add("Loops: " + parent.getLoops());
-        result.addAll(Utils.getMemoryInfo());
+        result.addAll(SystemInfoGrabber.getMemoryInfo());
         return result;
     }
 

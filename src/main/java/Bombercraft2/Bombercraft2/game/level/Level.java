@@ -5,11 +5,12 @@ import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.flora.FloraManager;
+import org.glib2.math.GMath;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.utils.Utils;
 import utils.GLogger;
-import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -91,7 +92,7 @@ public class Level implements InteractAble {
 
     public List<GVector2f> getRespawnZones() {return new ArrayList<>(respawnZones);}
 
-    public GVector2f getRandomRespawnZone() {return new GVector2f(Utils.choose(respawnZones));}
+    public GVector2f getRandomRespawnZone() {return new GVector2f(GMath.choose(respawnZones));}
 
     //SETTERS
 

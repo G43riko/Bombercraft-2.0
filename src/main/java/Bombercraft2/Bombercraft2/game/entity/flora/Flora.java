@@ -9,8 +9,8 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.utils.Utils;
 import utils.GLogger;
-import utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 

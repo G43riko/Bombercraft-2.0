@@ -2,12 +2,11 @@ package Bombercraft2.Bombercraft2.game.misc;
 
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.playGround.Misc.BasicEntity;
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import sun.misc.GC;
 import utils.math.GVector2f;
-import utils.resouces.JSONAble;
 
 import java.awt.*;
 
@@ -46,7 +45,7 @@ public class PosAndSize implements JSONAble {
 
     @Override
     public void fromJSON(@NotNull JSONObject json) {
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             position.set(new GVector2f(json.getString(Texts.POSITION)));
             size.set(new GVector2f(json.getString(Texts.SIZE)));
         });
@@ -56,7 +55,7 @@ public class PosAndSize implements JSONAble {
     @Contract(pure = true)
     public JSONObject toJSON() {
         final JSONObject result = new JSONObject();
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             result.put(Texts.POSITION, position);
             result.put(Texts.SIZE, size);
         });

@@ -4,7 +4,7 @@ import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import org.jetbrains.annotations.NotNull;
-import utils.Utils;
+import org.utils.Utils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 

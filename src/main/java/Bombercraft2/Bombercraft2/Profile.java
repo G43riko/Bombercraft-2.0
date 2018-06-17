@@ -2,11 +2,11 @@ package Bombercraft2.Bombercraft2;
 
 
 import org.glib2.interfaces.JSONAble;
+import org.glib2.network.InternetUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.Utils;
 import utils.resouces.ResourceLoader;
 
 import java.io.BufferedWriter;
@@ -19,8 +19,8 @@ import java.io.IOException;
  * kedy bol naposledy ulozeny
  */
 public class Profile implements JSONAble {
-    private final static String NAME           = "name";
-    private final static String AVATAR         = "avatar";
+    private final static String DEFAULT_NAME   = "name";
+    private final static String DEFAULT_AVATAR = "avatar";
     private final static String NEW_GAMES      = "newGames";
     private final static String LAST_LOGIN     = "lastLogin";
     private final static String PLAYING_TIME   = "playingTime";
@@ -73,7 +73,7 @@ public class Profile implements JSONAble {
         options = new OptionsManager();
         options.initDefault();
         initDefault();
-        name = Utils.getHostName();
+        name = InternetUtils.getHostName();
     }
 
     public void fromJSON(@NotNull JSONObject profileData) {
@@ -83,8 +83,8 @@ public class Profile implements JSONAble {
 
         try {
             JSONObject data = profileData.getJSONObject("userInfo");
-            name = data.getString(NAME);
-            avatar = data.getString(AVATAR);
+            name = data.getString(DEFAULT_NAME);
+            avatar = data.getString(DEFAULT_AVATAR);
             newGames = data.getInt(NEW_GAMES);
             profileLoaded = data.getInt(PROFILE_LOADED);
             msOfPlaying = data.getInt(PLAYING_TIME);
@@ -101,8 +101,8 @@ public class Profile implements JSONAble {
         JSONObject result = new JSONObject();
         try {
             msOfPlaying += (System.currentTimeMillis() - lastLogin);
-            result.put(NAME, name);
-            result.put(AVATAR, avatar);
+            result.put(DEFAULT_NAME, name);
+            result.put(DEFAULT_AVATAR, avatar);
             result.put(NEW_GAMES, newGames);
             result.put(LAST_LOGIN, lastLogin);
             result.put(PLAYING_TIME, msOfPlaying);

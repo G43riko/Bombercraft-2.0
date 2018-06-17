@@ -3,7 +3,6 @@ package Bombercraft2.Bombercraft2.game.player;
 import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import utils.BombercraftUtils;
-import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;

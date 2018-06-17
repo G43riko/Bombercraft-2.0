@@ -20,8 +20,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.utils.Utils;
 import utils.GLogger;
-import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;

@@ -6,7 +6,7 @@ import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.SpriteAnimation;
+import org.utils.SpriteAnimation;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Explosion extends Entity<SimpleGameAble> {
-    private static Image explosionImage = ResourceLoader.loadTexture("explosion1.png");
-    private ArrayList<ShockWave>       waves      = new ArrayList<>();
-    private ArrayList<Particle>        particles  = new ArrayList<>();
-    private ArrayList<SpriteAnimation> animations = new ArrayList<>();
-    private final GVector2f size;
+    private static Image                      explosionImage = ResourceLoader.loadTexture("explosion1.png");
+    private        ArrayList<ShockWave>       waves          = new ArrayList<>();
+    private        ArrayList<Particle>        particles      = new ArrayList<>();
+    private        ArrayList<SpriteAnimation> animations     = new ArrayList<>();
+    private final  GVector2f                  size;
 
     public Explosion(GVector2f position,
                      SimpleGameAble parent,
@@ -35,9 +35,9 @@ public class Explosion extends Entity<SimpleGameAble> {
 
         createParticles(color, number);
         if (shockWave) {
-            final int maxRadius = 100 + (int)(Math.random() * 50);
-            final int stroke = 4 + (int)(Math.random() * 7);
-            final int speed = 3 + (int)(Math.random() * 6);
+            final int maxRadius = 100 + (int) (Math.random() * 50);
+            final int stroke = 4 + (int) (Math.random() * 7);
+            final int speed = 3 + (int) (Math.random() * 6);
             waves.add(new ShockWave(getParent(), position, maxRadius, stroke, speed, Color.yellow, true));
         }
         if (explosion) {
@@ -72,7 +72,11 @@ public class Explosion extends Entity<SimpleGameAble> {
 
     private boolean drawExplosion(Graphics2D g2, SpriteAnimation sprite) {
         GVector2f pos = position.sub(getSize()).mul(getParent().getZoom()).sub(getParent().getOffset());
-        return sprite.renderAndCheckLastFrame(g2, pos, getSize().mul(2).mul(getParent().getZoom()));
+        GVector2f size = getSize().mul(2).mul(getParent().getZoom());
+
+        return sprite.renderAndCheckLastFrame(g2,
+                                              new org.glib2.math.vectors.GVector2f(pos.getX(), pos.getY()),
+                                              new org.glib2.math.vectors.GVector2f(size.getX(), size.getY()));
     }
 
     @Override

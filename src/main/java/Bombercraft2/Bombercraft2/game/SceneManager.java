@@ -14,12 +14,12 @@ import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.entity.particles.ParticleEmitter;
 import Bombercraft2.Bombercraft2.game.player.Player;
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
 import utils.math.GVector2f;
-import utils.resouces.JSONAble;
 
 import java.awt.*;
 import java.util.*;

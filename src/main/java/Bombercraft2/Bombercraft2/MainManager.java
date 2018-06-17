@@ -8,8 +8,8 @@ import Bombercraft2.playGround.Misc.*;
 import Bombercraft2.playGround.Misc.map.MapManager;
 import Bombercraft2.playGround.Misc.selectors.SelectorManager;
 import org.jetbrains.annotations.NotNull;
+import org.utils.MeasureUtils;
 import utils.GLogger;
-import utils.Utils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -108,10 +108,10 @@ public class MainManager implements InteractAble {
     public void render(@NotNull Graphics2D g2) {
         if (mapManager != null) {
 
-            Utils.measureNano("---------Render - manager ---- map", () -> mapManager.render(g2));
+            MeasureUtils.measureNano("---------Render - manager ---- map", () -> mapManager.render(g2));
         }
         if (postFxManager != null) {
-            Utils.measureNano("---------Render - manager - postFx", () -> postFxManager.render(g2));
+            MeasureUtils.measureNano("---------Render - manager - postFx", () -> postFxManager.render(g2));
         }
         if (taskManager != null) {
             taskManager.render(g2);
@@ -126,10 +126,10 @@ public class MainManager implements InteractAble {
             selectorManager.render(g2);
         }
         if (sceneManager != null) {
-            Utils.measureNano("---------Render - manager -- scene", () -> sceneManager.render(g2));
+            MeasureUtils.measureNano("---------Render - manager -- scene", () -> sceneManager.render(g2));
         }
         if (playerManager != null) {
-            Utils.measureNano("---------Render - manager - player", () -> playerManager.render(g2));
+            MeasureUtils.measureNano("---------Render - manager - player", () -> playerManager.render(g2));
         }
     }
 

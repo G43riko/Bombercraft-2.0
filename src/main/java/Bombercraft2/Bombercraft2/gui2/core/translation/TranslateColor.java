@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.gui2.core.translation;
 
-import utils.Utils;
+import org.glib2.math.GMath;
+import org.utils.Utils;
 
 import java.awt.*;
 
@@ -11,7 +12,7 @@ public class TranslateColor extends AbstractTranslate<Color> {
 
     @Override
     protected Color linerInterpolation(Color startValue, Color endValue, float ratio) {
-        return Utils.lerpColor(startValue, endValue, ratio);
+        return GMath.lerpColor(startValue, endValue, ratio);
     }
 
     public Color getActualColor() {

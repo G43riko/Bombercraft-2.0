@@ -1,17 +1,16 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
 import Bombercraft2.Bombercraft2.StaticConfig;
-import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
 import Bombercraft2.Bombercraft2.gui.components.RemoteGamePanel;
 import Bombercraft2.Bombercraft2.multiplayer.RemoteGameData;
+import org.glib2.network.InternetUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -31,7 +30,7 @@ public class JoinMenu extends Menu {
     private final Thread t = new Thread(() -> {
         scanned = 0;
         try {
-            System.out.println(Utils.getLocalIP());
+            System.out.println(InternetUtils.getLocalIP());
             // InetAddress localhost = InetAddress.getByName(Utils.getLocalIP());
             InetAddress localhost = InetAddress.getByName("localhost");
             byte[] ip = localhost.getAddress();

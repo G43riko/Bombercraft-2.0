@@ -5,7 +5,7 @@ import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.gui2.GuiTester;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.Utils;
+import org.utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;

@@ -4,9 +4,9 @@ import Bombercraft2.Bombercraft2.core.GameState;
 import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
+import com.sun.javafx.util.Utils;
 import org.jetbrains.annotations.NotNull;
 import org.utils.noises.SimplexNoise;
-import utils.Utils;
 
 import java.awt.*;
 
