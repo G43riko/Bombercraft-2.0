@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.components.tasks;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.bots.Bot;
@@ -36,11 +36,11 @@ public class BotWorker extends Bot {
 
     public void setTask(Task task) {
         actTask = task;
-        line = new EntityStartDrawableLine(parent, this, task.getPosition().add(Config.BLOCK_SIZE_HALF));
+        line = new EntityStartDrawableLine(parent, this, task.getPosition().add(StaticConfig.BLOCK_SIZE_HALF));
     }
 
     private boolean isTooCloseToTask() {
-        return actTask == null || actTask.getPosition().dist(getPosition()) < Config.BLOCK_SIZE.average() / 10;
+        return actTask == null || actTask.getPosition().dist(getPosition()) < StaticConfig.BLOCK_SIZE.average() / 10;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class BotWorker extends Bot {
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        final GVector2f size = Config.BLOCK_SIZE.mul(parent.getZoom());
+        final GVector2f size = StaticConfig.BLOCK_SIZE.mul(parent.getZoom());
         final GVector2f pos = position.mul(parent.getZoom()).sub(parent.getOffset());
 
         if (actTask != null && !isTooCloseToTask()) {

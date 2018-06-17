@@ -4,7 +4,7 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 
-public class Config {
+public class StaticConfig {
     public final static String  WINDOW_DEFAULT_TITLE       = "Bombercraft 2.0";
     public final static int     WINDOW_DEFAULT_WIDTH       = 800;
     public final static int     WINDOW_DEFAULT_HEIGHT      = 600;
@@ -14,7 +14,7 @@ public class Config {
 
     public final static int   BOMB_WIDTH      = 64;
     public final static int   BOMB_HEIGHT     = 64;
-    public final static GVector2f BOMB_SIZE = new GVector2f(Config.BOMB_WIDTH, Config.BOMB_HEIGHT);
+    public final static GVector2f BOMB_SIZE = new GVector2f(StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT);
     public final static Color BOMB_AREA_COLOR = new Color(255, 255, 0, 100);
     public final static int   BOMB_AREA_ROUND = 10;
 
@@ -121,8 +121,8 @@ public class Config {
     public static final String    DEFAULT_FONT         = "Garamond";
     public static final int       DEFAULT_FONT_SIZE    = 20;
     public static final GVector2f CHUNK_SIZE           = new GVector2f(32, 32);
-    public final static GVector2f BLOCK_SIZE           = new GVector2f(Config.DEFAULT_BLOCK_WIDTH,
-                                                                       Config.DEFAULT_BLOCK_HEIGHT);
+    public final static GVector2f BLOCK_SIZE           = new GVector2f(StaticConfig.DEFAULT_BLOCK_WIDTH,
+                                                                       StaticConfig.DEFAULT_BLOCK_HEIGHT);
     public final static GVector2f BLOCK_SIZE_HALF      = BLOCK_SIZE.div(2);
     public static final boolean   SHOW_CHUNK_BORDERS   = false;
     public static final float     MIN_ZOOM             = 0.2f;

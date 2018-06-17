@@ -1,8 +1,9 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.Profile;
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.components.Button;
@@ -22,7 +23,7 @@ public class ProfileMenu extends Menu{
 	private final MenuAble parent;
 	
 	public ProfileMenu(MenuAble parent) {
-		super(parent, GameState.Type.ProfileMenu);
+		super(parent, GameStateType.ProfileMenu);
 		this.parent = parent;
 		position.setY(100);
 		init();
@@ -90,14 +91,14 @@ public class ProfileMenu extends Menu{
 	
 	private ArrayList<String> loadProfiles(){
 		ArrayList<String> result = new ArrayList<>();
-		URL url = ResourceLoader.getURL(Config.FOLDER_PROFILE);
+		URL url = ResourceLoader.getURL(StaticConfig.FOLDER_PROFILE);
 		
 		if (url != null){
 			try {
 				File dir = new File(url.toURI());
 				
 			    for (File nextFile : dir.listFiles()){
-			    	result.add(nextFile.getName().replace(Config.EXTENSION_PROFILE, ""));
+			    	result.add(nextFile.getName().replace(StaticConfig.EXTENSION_PROFILE, ""));
 			    }
 			} catch (URISyntaxException e) {
 				e.printStackTrace();

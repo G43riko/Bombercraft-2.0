@@ -1,17 +1,16 @@
 package Bombercraft2.Bombercraft2.game.entity.flora;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.level.Map;
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.math.GVector2f;
-import utils.resouces.JSONAble;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -56,27 +55,27 @@ public class FloraManager implements JSONAble {
 
     private void creteBushByType(Flora.Bushes type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
+        if (map.getBlockOnPosition(sur.add(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
             addFlora(new Bush(type, sur, parent));
         }
     }
 
     private void creteTreeByType(Flora.Trees type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
+        if (map.getBlockOnPosition(sur.add(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
             addFlora(new Tree(type, sur, parent));
         }
     }
 
     private void cretePlantByType(Flora.Plants type, GVector2f maxSize) {
         GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(Config.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
+        if (map.getBlockOnPosition(sur.add(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
             addFlora(new Plant(type, sur, parent));
         }
     }
 
     private void createFlora() {
-        GVector2f numbers = map.getSize().sub(Config.BLOCK_SIZE);
+        GVector2f numbers = map.getSize().sub(StaticConfig.BLOCK_SIZE);
         for (int i = 0; i < 33; i++) {
             for (int j = 0; j < Flora.Bushes.values().length; j++) {
                 creteBushByType(Flora.Bushes.values()[j], numbers);

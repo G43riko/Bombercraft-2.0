@@ -2,18 +2,15 @@ package Bombercraft2.playGround.Misc.map;
 
 import java.awt.Graphics2D;
 
-import Bombercraft2.Bombercraft2.Config;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
-import Bombercraft2.playGround.Misc.map.AbstractBlock;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
 import utils.math.GVector2f;
@@ -52,7 +49,7 @@ public class SimpleTypedBlock extends AbstractBlock {
     @Override
     public void fromJSON(@NotNull JSONObject json) {
         super.fromJSON(json);
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             String type = json.getString(Texts.TYPE);
             try {
                 this.type = BlockType.valueOf(type);
@@ -67,7 +64,7 @@ public class SimpleTypedBlock extends AbstractBlock {
     public @NotNull JSONObject toJSON() {
         JSONObject result = super.toJSON();
 
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             result.put(Texts.TYPE, type);
         });
 

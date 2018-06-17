@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.components.path;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.Contract;
@@ -25,7 +25,7 @@ public class Path extends Entity<GameAble> {
         getParent().getLevel()
                    .getMap()
                    .getBlocks()
-                   .forEach(a -> h.put(a.getPosition().div(Config.BLOCK_SIZE).toString(), a.isWalkable() ? 0 : 1));
+                   .forEach(a -> h.put(a.getPosition().div(StaticConfig.BLOCK_SIZE).toString(), a.isWalkable() ? 0 : 1));
         new Thread(() -> {
             points = PathFinder.findPath(h, start.toString(), end.toString(), true);
             if (!points.isEmpty()) {
@@ -42,13 +42,13 @@ public class Path extends Entity<GameAble> {
 
         for (int i = 1; i < points.size(); i++) {
             GVector2f a = points.get(i)
-                                .mul(Config.BLOCK_SIZE)
-                                .add(Config.BLOCK_SIZE_HALF)
+                                .mul(StaticConfig.BLOCK_SIZE)
+                                .add(StaticConfig.BLOCK_SIZE_HALF)
                                 .mul(getParent().getZoom())
                                 .sub(getParent().getOffset());
             GVector2f b = points.get(i - 1)
-                                .mul(Config.BLOCK_SIZE)
-                                .add(Config.BLOCK_SIZE_HALF)
+                                .mul(StaticConfig.BLOCK_SIZE)
+                                .add(StaticConfig.BLOCK_SIZE_HALF)
                                 .mul(getParent().getZoom())
                                 .sub(getParent().getOffset());
             g2.drawLine(a.getXi(), a.getYi(), b.getXi(), b.getYi());
@@ -78,6 +78,6 @@ public class Path extends Entity<GameAble> {
     @NotNull
     @Override
     public GVector2f getSize() {
-        return Config.BLOCK_SIZE.mul(getParent().getLevel().getMap().getNumberOfBlocks()).mul(getParent().getZoom());
+        return StaticConfig.BLOCK_SIZE.mul(getParent().getLevel().getMap().getNumberOfBlocks()).mul(getParent().getZoom());
     }
 }

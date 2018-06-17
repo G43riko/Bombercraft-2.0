@@ -1,17 +1,14 @@
 package Bombercraft2.playGround.Demos;
 
-import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.MainManager;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.Profile;
 import Bombercraft2.Bombercraft2.components.tasks.*;
-import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.core.Visible;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.SceneManager;
 import Bombercraft2.Bombercraft2.game.ToolManager;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
-import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.player.MyPlayer;
@@ -23,13 +20,11 @@ import Bombercraft2.playGround.Misc.map.SimpleTypedBlock;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.Misc.map.SimpleMap;
 import Bombercraft2.playGround.SimpleAbstractGame;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -38,10 +33,10 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     private final        SimpleMap map;
 
     public WorkerDemo(CorePlayGround parent) {
-        super(parent, Type.WorkerDemo);
+        super(parent, GameStateType.WorkerDemo);
         manager.setManagers(new BotManager());
         manager.setManagers(new TaskManager(manager.getBotManager(), this));
-        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(StaticConfig.BLOCK_SIZE),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),
                                                  3));
@@ -79,7 +74,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
         if (Input.getMouseDown(Input.BUTTON_RIGHT)) {
             manager.getBotManager()
                    .addBot(new BotWorker(getManager().getViewManager().transformInvert(Input.getMousePosition())
-                                                     .sub(Config.BLOCK_SIZE_HALF), this));
+                                                     .sub(StaticConfig.BLOCK_SIZE_HALF), this));
         }
     }
 

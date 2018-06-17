@@ -8,6 +8,7 @@ import Bombercraft2.playGround.Misc.*;
 import Bombercraft2.playGround.Misc.map.MapManager;
 import Bombercraft2.playGround.Misc.selectors.SelectorManager;
 import org.jetbrains.annotations.NotNull;
+import utils.GLogger;
 import utils.Utils;
 
 import java.awt.*;
@@ -63,6 +64,9 @@ public class MainManager implements InteractAble {
         }
         else if (manager instanceof GuiManager) {
             this.guiManager = (GuiManager) manager;
+        }
+        else {
+            GLogger.error(GLogger.GError.UNKNOWN_MANAGER, ": " + manager.getClass().getName());
         }
         managers.add(manager);
     }

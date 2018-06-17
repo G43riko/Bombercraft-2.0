@@ -1,28 +1,19 @@
 package Bombercraft2.Bombercraft2.game.level;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
-import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import sun.misc.GC;
+import org.utils.SpriteViewer;
 import utils.GLogger;
-import utils.ImageUtils;
-import utils.SpriteViewer;
 import utils.math.GVector2f;
-import utils.math.LineLineIntersect;
-import utils.resouces.ResourceLoader;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class Block extends Entity<GameAble> {
     /*
@@ -44,7 +35,7 @@ public class Block extends Entity<GameAble> {
         Type(String imageName, int health, boolean walkable) {
             this.health = health;
             this.walkable = walkable;
-            image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
+            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
             final BufferedImage bufferedImage = new BufferedImage(image.getWidth(null),
                                                                   image.getHeight(null),
                                                                   BufferedImage.TYPE_INT_ARGB);
@@ -104,7 +95,7 @@ public class Block extends Entity<GameAble> {
     public void render(@NotNull Graphics2D g2) {
 //		if(type == NOTHING)
 //			return;
-        GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
+        GVector2f size = StaticConfig.BLOCK_SIZE.mul(getParent().getZoom());
         GVector2f pos = position.mul(size).sub(getParent().getOffset());
 
         GCanvas.drawImage(g2, type.getImage(), pos, size);
@@ -144,8 +135,8 @@ public class Block extends Entity<GameAble> {
 
     private void remove(boolean addExplosion) {
         if (addExplosion) {
-            getParent().addExplosion(getPosition().add(Config.BLOCK_SIZE_HALF),
-                                     Config.BLOCK_SIZE,
+            getParent().addExplosion(getPosition().add(StaticConfig.BLOCK_SIZE_HALF),
+                                     StaticConfig.BLOCK_SIZE,
                                      type.getMiniMapColor(),
                                      5, false, false);
         }
@@ -159,13 +150,13 @@ public class Block extends Entity<GameAble> {
         Block r = getParent().getLevel().getMap().getBlock(position.getXi() + 1, position.getYi());
         Block l = getParent().getLevel().getMap().getBlock(position.getXi() - 1, position.getYi());
 
-        GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
+        GVector2f size = StaticConfig.BLOCK_SIZE.mul(getParent().getZoom());
         GVector2f pos = position.mul(size).sub(getParent().getOffset());
 
         if (t != null && t.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 8, 4),
                          pos.getXi(),
-                         pos.getYi() - Config.BLOCK_SIZE.getYi(),
+                         pos.getYi() - StaticConfig.BLOCK_SIZE.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
@@ -174,7 +165,7 @@ public class Block extends Entity<GameAble> {
         if (b != null && b.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 2, 4),
                          pos.getXi(),
-                         pos.getYi() + Config.BLOCK_SIZE.getYi(),
+                         pos.getYi() + StaticConfig.BLOCK_SIZE.getYi(),
                          size.getXi(),
                          size.getYi(),
                          null);
@@ -182,7 +173,7 @@ public class Block extends Entity<GameAble> {
 
         if (r != null && r.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 1, 4),
-                         pos.getXi() + Config.BLOCK_SIZE.getXi(),
+                         pos.getXi() + StaticConfig.BLOCK_SIZE.getXi(),
                          pos.getYi(),
                          size.getXi(),
                          size.getYi(),
@@ -191,7 +182,7 @@ public class Block extends Entity<GameAble> {
 
         if (l != null && l.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 4, 4),
-                         pos.getXi() - Config.BLOCK_SIZE.getXi(),
+                         pos.getXi() - StaticConfig.BLOCK_SIZE.getXi(),
                          pos.getYi(),
                          size.getXi(),
                          size.getYi(),
@@ -204,7 +195,7 @@ public class Block extends Entity<GameAble> {
 
         double finalAngle = Math.toRadians(angle + 90);
         GVector2f offset = new GVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).mul(length);
-        GVector2f pos = position.mul(Config.BLOCK_SIZE).sub(getParent().getOffset());
+        GVector2f pos = position.mul(StaticConfig.BLOCK_SIZE).sub(getParent().getOffset());
         g2.setColor(color);
 
         /*   2---3
@@ -217,17 +208,17 @@ public class Block extends Entity<GameAble> {
         int[] xPos = new int[]{
                 (int) (pos.getX()),
                 (int) (pos.add(offset).getX()),
-                (int) (pos.add(offset).getX() + Config.BLOCK_SIZE.getX()),
-                (int) (pos.add(offset).getX() + Config.BLOCK_SIZE.getX()),
-                (int) (pos.getXi() + Config.BLOCK_SIZE.getX())
+                (int) (pos.add(offset).getX() + StaticConfig.BLOCK_SIZE.getX()),
+                (int) (pos.add(offset).getX() + StaticConfig.BLOCK_SIZE.getX()),
+                (int) (pos.getXi() + StaticConfig.BLOCK_SIZE.getX())
         };
 
         int[] yPos = new int[]{
                 (int) (pos.getY()),
                 (int) (pos.sub(offset).getY()),
                 (int) (pos.sub(offset).getY()),
-                (int) (pos.getY() + Config.BLOCK_SIZE.getY() - offset.getY()),
-                (int) (pos.getY() + Config.BLOCK_SIZE.getY())
+                (int) (pos.getY() + StaticConfig.BLOCK_SIZE.getY() - offset.getY()),
+                (int) (pos.getY() + StaticConfig.BLOCK_SIZE.getY())
         };
 
         g2.fillPolygon(xPos, yPos, 5);
@@ -245,10 +236,10 @@ public class Block extends Entity<GameAble> {
         boolean l = map.isWalkable(position.getXi() - 1, position.getYi());
         boolean r = map.isWalkable(position.getXi() + 1, position.getYi());
 
-        GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
+        GVector2f size = StaticConfig.BLOCK_SIZE.mul(getParent().getZoom());
         GVector2f pos = position.mul(size).sub(getParent().getOffset());
 
-        int offset = (int) (Config.WALL_OFFSET * getParent().getZoom());
+        int offset = (int) (StaticConfig.WALL_OFFSET * getParent().getZoom());
 
         GVector2f p0 = pos.sub(offset);
         GVector2f p1 = pos.add(size).sub(new GVector2f(-offset, offset + size.getY()));
@@ -267,7 +258,7 @@ public class Block extends Entity<GameAble> {
 
         boolean walls3D = true;
         if (walls3D) {
-            g2.setColor(Config.WALL_DARKER_COLOR);
+            g2.setColor(StaticConfig.WALL_DARKER_COLOR);
             if (t) {
                 g2.fillPolygon(new int[]{pos.getXi(),
                                          pos.getXi() + size.getXi(),
@@ -276,7 +267,7 @@ public class Block extends Entity<GameAble> {
                                new int[]{pos.getYi(), pos.getYi(), p1.getYi(), p0.getYi()},
                                4);
             }
-            g2.setColor(Config.WALL_LIGHTER_COLOR);
+            g2.setColor(StaticConfig.WALL_LIGHTER_COLOR);
             if (r) {
                 g2.fillPolygon(new int[]{pos.getXi() + size.getXi(),
                                          pos.getXi() + size.getXi(),
@@ -292,7 +283,7 @@ public class Block extends Entity<GameAble> {
         }
         else {
             int i = offset * 2;
-            g2.setColor(Config.WALL_LIGHTER_COLOR);
+            g2.setColor(StaticConfig.WALL_LIGHTER_COLOR);
             if (t) {
                 g2.fillPolygon(new int[]{pos.getXi(),
                                          pos.getXi() + size.getXi(),
@@ -313,7 +304,7 @@ public class Block extends Entity<GameAble> {
                                4);
             }
 
-            g2.setColor(Config.WALL_DARKER_COLOR);
+            g2.setColor(StaticConfig.WALL_DARKER_COLOR);
             if (b) {
                 g2.fillPolygon(new int[]{pos.getXi(),
                                          p3.getXi() + (val3 ? +i : 0),
@@ -341,7 +332,7 @@ public class Block extends Entity<GameAble> {
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getPosition() {return position.mul(Config.BLOCK_SIZE);}
+    public GVector2f getPosition() {return position.mul(StaticConfig.BLOCK_SIZE);}
 
     public BlockType getType() {return type;}
 

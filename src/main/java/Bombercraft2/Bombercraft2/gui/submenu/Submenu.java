@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui.submenu;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.gui.submenu.SubmenuItem.Types;
 import Bombercraft2.engine.Input;
@@ -28,7 +28,7 @@ public class Submenu {
         this.items = items;
         this.game = game;
 
-        position = parent == null ? Config.SUBMENU_DEFAULT_POSITION : parent.getChildrenPosition();
+        position = parent == null ? StaticConfig.SUBMENU_DEFAULT_POSITION : parent.getChildrenPosition();
     }
 
     public boolean isVisible() {
@@ -89,85 +89,85 @@ public class Submenu {
     }
 
     public void render(Graphics2D g2) {
-        int submenuHeight = Config.SUBMENU_LINE_HEIGHT * items.size();
-        g2.setColor(Config.SUBMENU_FILL_COLOR);
+        int submenuHeight = StaticConfig.SUBMENU_LINE_HEIGHT * items.size();
+        g2.setColor(StaticConfig.SUBMENU_FILL_COLOR);
         g2.fillRoundRect(position.getXi(),
                          position.getYi(),
-                         Config.SUBMENU_WIDTH,
+                         StaticConfig.SUBMENU_WIDTH,
                          submenuHeight,
-                         Config.SUBMENU_ROUND,
-                         Config.SUBMENU_ROUND);
+                         StaticConfig.SUBMENU_ROUND,
+                         StaticConfig.SUBMENU_ROUND);
 
 
-        g2.setColor(Config.SUBMENU_FONT_COLOR);
-        g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.DEFAULT_FONT_SIZE));
+        g2.setColor(StaticConfig.SUBMENU_FONT_COLOR);
+        g2.setFont(new Font(StaticConfig.DEFAULT_FONT, Font.BOLD | Font.ITALIC, StaticConfig.DEFAULT_FONT_SIZE));
         for (int i = 0; i < items.size(); i++) {
 
             if (selectedIndex == i) {
-                g2.setColor(Config.SUBMENU_ACTIVE_ITEM_FILL_COLOR);
+                g2.setColor(StaticConfig.SUBMENU_ACTIVE_ITEM_FILL_COLOR);
                 g2.fillRoundRect(position.getXi(),
-                                 position.getYi() + i * Config.SUBMENU_LINE_HEIGHT,
-                                 Config.SUBMENU_WIDTH,
-                                 Config.SUBMENU_LINE_HEIGHT,
-                                 Config.SUBMENU_LINE_ROUND,
-                                 Config.SUBMENU_LINE_ROUND);
+                                 position.getYi() + i * StaticConfig.SUBMENU_LINE_HEIGHT,
+                                 StaticConfig.SUBMENU_WIDTH,
+                                 StaticConfig.SUBMENU_LINE_HEIGHT,
+                                 StaticConfig.SUBMENU_LINE_ROUND,
+                                 StaticConfig.SUBMENU_LINE_ROUND);
             }
 
             SubmenuItem a = items.get(i);
             if (a.isFinal()) {
                 int beginTextX = position.getXi();
-                int beginTextY = position.getYi() + i * Config.SUBMENU_LINE_HEIGHT;
+                int beginTextY = position.getYi() + i * StaticConfig.SUBMENU_LINE_HEIGHT;
                 int imageOffset = 0;
 
                 if (a.getType() == Types.ICONABLE) {
-                    beginTextX += Config.SUBMENU_ICON_OFFSET;
+                    beginTextX += StaticConfig.SUBMENU_ICON_OFFSET;
 
                     a.renderIcon(g2, beginTextX, beginTextY);
 //					
-                    imageOffset += Config.SUBMENU_LINE_HEIGHT;
-                    beginTextX += Config.SUBMENU_ICON_OFFSET;
+                    imageOffset += StaticConfig.SUBMENU_LINE_HEIGHT;
+                    beginTextX += StaticConfig.SUBMENU_ICON_OFFSET;
                 }
                 else if (a.getType() == Types.CHECKBOX) {
-                    beginTextX += Config.SUBMENU_ICON_OFFSET;
+                    beginTextX += StaticConfig.SUBMENU_ICON_OFFSET;
 
                     a.renderCheckbox(g2, beginTextX, beginTextY);
-                    imageOffset += Config.SUBMENU_LINE_HEIGHT;
-                    beginTextX += Config.SUBMENU_ICON_OFFSET;
+                    imageOffset += StaticConfig.SUBMENU_LINE_HEIGHT;
+                    beginTextX += StaticConfig.SUBMENU_ICON_OFFSET;
                 }
                 else if (a.getType() == Types.RADIO && a.isSelected()) {
-                    beginTextX += Config.SUBMENU_ICON_OFFSET;
+                    beginTextX += StaticConfig.SUBMENU_ICON_OFFSET;
 
                     a.renderRadio(g2, beginTextX, beginTextY);
-                    imageOffset += Config.SUBMENU_LINE_HEIGHT;
-                    beginTextX += Config.SUBMENU_ICON_OFFSET;
+                    imageOffset += StaticConfig.SUBMENU_LINE_HEIGHT;
+                    beginTextX += StaticConfig.SUBMENU_ICON_OFFSET;
                 }
 
-                g2.setColor(Config.SUBMENU_FONT_COLOR);
-                g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.DEFAULT_FONT_SIZE));
+                g2.setColor(StaticConfig.SUBMENU_FONT_COLOR);
+                g2.setFont(new Font(StaticConfig.DEFAULT_FONT, Font.BOLD | Font.ITALIC, StaticConfig.DEFAULT_FONT_SIZE));
                 g2.drawString(a.getLabel(),
-                              beginTextX + Config.SUBMENU_FONT_HORIZONTAL_OFFSET + imageOffset,
-                              beginTextY + Config.SUBMENU_FONT_VERTICAL_OFFSET + Config.SUBMENU_FONT_SIZE);
+                              beginTextX + StaticConfig.SUBMENU_FONT_HORIZONTAL_OFFSET + imageOffset,
+                              beginTextY + StaticConfig.SUBMENU_FONT_VERTICAL_OFFSET + StaticConfig.SUBMENU_FONT_SIZE);
 
 
             }
             else {
-                int yOffset = i * Config.SUBMENU_LINE_HEIGHT + Config.SUBMENU_FONT_VERTICAL_OFFSET + Config.SUBMENU_FONT_SIZE;
-                g2.setColor(Config.SUBMENU_FONT_COLOR);
-                g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, Config.SUBMENU_FONT_SIZE));
+                int yOffset = i * StaticConfig.SUBMENU_LINE_HEIGHT + StaticConfig.SUBMENU_FONT_VERTICAL_OFFSET + StaticConfig.SUBMENU_FONT_SIZE;
+                g2.setColor(StaticConfig.SUBMENU_FONT_COLOR);
+                g2.setFont(new Font(StaticConfig.DEFAULT_FONT, Font.BOLD | Font.ITALIC, StaticConfig.SUBMENU_FONT_SIZE));
                 g2.drawString(a.getLabel(),
-                              position.getXi() + Config.SUBMENU_FONT_HORIZONTAL_OFFSET,
+                              position.getXi() + StaticConfig.SUBMENU_FONT_HORIZONTAL_OFFSET,
                               position.getYi() + yOffset);
             }
         }
 
-        g2.setStroke(new BasicStroke(Config.SUBMENU_BORDER_WIDTH));
-        g2.setColor(Config.SUBMENU_BORDER_COLOR);
+        g2.setStroke(new BasicStroke(StaticConfig.SUBMENU_BORDER_WIDTH));
+        g2.setColor(StaticConfig.SUBMENU_BORDER_COLOR);
         g2.drawRoundRect(position.getXi(),
                          position.getYi(),
-                         Config.SUBMENU_WIDTH,
+                         StaticConfig.SUBMENU_WIDTH,
                          submenuHeight,
-                         Config.SUBMENU_ROUND,
-                         Config.SUBMENU_ROUND);
+                         StaticConfig.SUBMENU_ROUND,
+                         StaticConfig.SUBMENU_ROUND);
 
 
         if (children != null) {
@@ -176,8 +176,8 @@ public class Submenu {
     }
 
     private GVector2f getChildrenPosition() {
-        return new GVector2f(position.getX() + Config.SUBMENU_WIDTH,
-                             position.getY() + Config.SUBMENU_LINE_HEIGHT * selectedIndex);
+        return new GVector2f(position.getX() + StaticConfig.SUBMENU_WIDTH,
+                             position.getY() + StaticConfig.SUBMENU_LINE_HEIGHT * selectedIndex);
     }
 
     private void openChildren(SubmenuItem item) {

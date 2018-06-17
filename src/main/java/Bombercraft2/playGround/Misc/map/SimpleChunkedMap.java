@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc.map;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import utils.math.GVector2f;
@@ -15,7 +15,7 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     private int renderedChunks = 0;
 
     public SimpleChunkedMap(SimpleGameAble parent, GVector2f numberOfChunks) {
-        super(parent, numberOfChunks, numberOfChunks.mul(Config.BLOCK_SIZE).mul(Config.CHUNK_SIZE));
+        super(parent, numberOfChunks, numberOfChunks.mul(StaticConfig.BLOCK_SIZE).mul(StaticConfig.CHUNK_SIZE));
         createRandomMap();
     }
 
@@ -52,12 +52,12 @@ public class SimpleChunkedMap extends AbstractMap<SimpleChunk> {
     public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
         final GVector2f transformedPosition = parent.getManager().getViewManager().transformInvert(click);
         final SimpleChunk chunk = getItem(transformedPosition.div(SimpleChunk.SIZE));
-        return chunk == null ? null : chunk.getBlock(transformedPosition.mod(SimpleChunk.SIZE).div(Config.BLOCK_SIZE));
+        return chunk == null ? null : chunk.getBlock(transformedPosition.mod(SimpleChunk.SIZE).div(StaticConfig.BLOCK_SIZE));
     }
 
     @Override
     public AbstractBlock getBlockOnPos(GVector2f click) {
-        final SimpleChunk chunk = getItem(click.div(Config.CHUNK_SIZE));
-        return chunk == null ? null : chunk.getBlock(click.mod(Config.CHUNK_SIZE));
+        final SimpleChunk chunk = getItem(click.div(StaticConfig.CHUNK_SIZE));
+        return chunk == null ? null : chunk.getBlock(click.mod(StaticConfig.CHUNK_SIZE));
     }
 }

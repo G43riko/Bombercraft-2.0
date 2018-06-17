@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.map.SimpleMap_old;
@@ -18,7 +19,7 @@ public class BasicDemo extends GameState {
     private final SimpleMap_old.Field player = new SimpleMap_old.Field(50, 50);
 
     public BasicDemo(CorePlayGround parent) {
-        super(Type.BasicDemo);
+        super(GameStateType.BasicDemo);
         this.parent = parent;
 
         final int numX = (int) Math.ceil((float) parent.getCanvas().getWidth() / blockSize);

@@ -1,5 +1,5 @@
 package Bombercraft2.playGround.Misc.map;
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.playGround.Misc.AbstractManager;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
@@ -33,7 +33,7 @@ public class MapManager extends AbstractManager {
     public GVector2f getFreePosition() {
         Function<SimpleTypedBlock, Boolean> testBlock = (block) -> block != null && block.getType().isWalkable();
         final GVector2f mapSize = map.getMapSize();
-        float offset = Config.BLOCK_SIZE.average();
+        float offset = StaticConfig.BLOCK_SIZE.average();
         
         while(true) {
             GVector2f result = new GVector2f(Math.random() * mapSize.getX(), Math.random() * mapSize.getY());
@@ -49,7 +49,7 @@ public class MapManager extends AbstractManager {
 
     @NotNull
     public GVector2f getAABBOnPosition(@NotNull GVector2f position) {
-        return position.div(Config.BLOCK_SIZE).toInt().mul(Config.BLOCK_SIZE);
+        return position.div(StaticConfig.BLOCK_SIZE).toInt().mul(StaticConfig.BLOCK_SIZE);
     }
 
     @NotNull

@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
@@ -35,7 +35,7 @@ public abstract class GuiComponent implements InteractAble, Visible {
     Color                     textColor           = Color.black;
     Color                     hoverColor          = Color.lightGray;
     Color                     disabledColor       = Color.DARK_GRAY;
-    String                    font                = Config.DEFAULT_FONT;
+    String                    font                = StaticConfig.DEFAULT_FONT;
 
     GuiComponent(Visible parent) {
         this.parent = parent;

@@ -4,11 +4,11 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import utils.PerlinNoise;
+import org.utils.noises.PerlinNoise;
 import utils.math.GVector2f;
 
 public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
@@ -16,7 +16,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     private              BufferedImage image     = null;
 
     public SimpleMap(SimpleGameAble parent, GVector2f numberOfBlocks) {
-        super(parent, numberOfBlocks, numberOfBlocks.mul(Config.BLOCK_SIZE));
+        super(parent, numberOfBlocks, numberOfBlocks.mul(StaticConfig.BLOCK_SIZE));
         createRandomMap();
     }
 
@@ -40,7 +40,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     @Override
     public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
         return getItem(click.add(parent.getManager().getViewManager().getOffset())
-                            .div(Config.BLOCK_SIZE)
+                            .div(StaticConfig.BLOCK_SIZE)
                             .div(parent.getManager().getViewManager().getZoom()));
     }
 
@@ -55,8 +55,8 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
             return;
         }
         if (image == null) {
-            image = new BufferedImage(numberOfItems.getXi() * Config.DEFAULT_BLOCK_WIDTH,
-                                      numberOfItems.getYi() * Config.DEFAULT_BLOCK_HEIGHT,
+            image = new BufferedImage(numberOfItems.getXi() * StaticConfig.DEFAULT_BLOCK_WIDTH,
+                                      numberOfItems.getYi() * StaticConfig.DEFAULT_BLOCK_HEIGHT,
                                       BufferedImage.TYPE_INT_ARGB);
 
             renderToImage((Graphics2D) image.getGraphics());
@@ -86,7 +86,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
 
     public HashMap<String, Integer> getHashMap() {
         HashMap<String, Integer> h = new HashMap<>();
-        items.forEach((key, value) -> h.put(value.getPosition().div(Config.BLOCK_SIZE).toString(),
+        items.forEach((key, value) -> h.put(value.getPosition().div(StaticConfig.BLOCK_SIZE).toString(),
                                             value.getType().isWalkable() ? 0 : 1));
         return h;
     }

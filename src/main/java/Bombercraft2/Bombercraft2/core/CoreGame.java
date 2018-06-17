@@ -1,8 +1,7 @@
 package Bombercraft2.Bombercraft2.core;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.Profile;
-import Bombercraft2.Bombercraft2.core.GameState.Type;
 import Bombercraft2.Bombercraft2.game.Game;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.level.Level;
@@ -40,9 +39,9 @@ public class CoreGame extends CoreEngine implements MenuAble {
     private final Stack<GameState> states       = new Stack<>();
 
     protected CoreGame() {
-        super(Config.WINDOW_DEFAULT_FPS,
-              Config.WINDOW_DEFAULT_UPS,
-              Config.WINDOW_DEFAULT_RENDER_TEXT);
+        super(StaticConfig.WINDOW_DEFAULT_FPS,
+              StaticConfig.WINDOW_DEFAULT_UPS,
+              StaticConfig.WINDOW_DEFAULT_RENDER_TEXT);
 
         Utils.sleep(100);
         states.push(new ProfileMenu(this));
@@ -86,10 +85,10 @@ public class CoreGame extends CoreEngine implements MenuAble {
         }
 
         if (Input.getKeyDown(Input.KEY_ESCAPE)) {
-            if (states.peek().getType() == GameState.Type.Game) {
+            if (states.peek().getType() == GameStateType.Game) {
                 pausedGame();
             }
-            else if (states.peek().getType() == GameState.Type.MainMenu && game != null) {
+            else if (states.peek().getType() == GameStateType.MainMenu && game != null) {
                 continueGame();
             }
         }
@@ -129,7 +128,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
     public void removeLoading() {
         // pop loading state
-        if (states.peek().getType() == GameState.Type.LoadingScreen) {
+        if (states.peek().getType() == GameStateType.LoadingScreen) {
             states.pop();
             Input.setTarget(states.peek());
         }
@@ -177,7 +176,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
     }
 
     public void pausedGame() {
-        if (states.peek().getType() == Type.EndGameMenu) {
+        if (states.peek().getType() == GameStateType.EndGameMenu) {
             states.pop();
         }
 
@@ -205,12 +204,12 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
         game = null;
 
-        if (!Utils.isIn(states.peek().getType(), GameState.Type.MainMenu, GameState.Type.ProfileMenu)) {
+        if (!Utils.isIn(states.peek().getType(), GameStateType.MainMenu, GameStateType.ProfileMenu)) {
             states.pop();
             Input.setTarget(states.peek());
         }
 
-        if (states.peek().getType() == GameState.Type.MainMenu) {
+        if (states.peek().getType() == GameStateType.MainMenu) {
             Menu menu = (Menu) states.peek();
             menu.setDisabled(Texts.CONTINUE_GAME, game == null);
             menu.setDisabled(Texts.STOP_GAME, menu != null);

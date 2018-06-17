@@ -1,16 +1,16 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.resouces.ResourceLoader;
 
 public class GuiManager {
-    private final String lang = Config.DEFAULT_LANGUAGE;
+    private final String lang = StaticConfig.DEFAULT_LANGUAGE;
     private final JSONObject data;
 
     public GuiManager() {
-        data = ResourceLoader.getJSON(Config.FILE_GUI_TEXTS);
+        data = ResourceLoader.getJSON(StaticConfig.FILE_GUI_TEXTS);
     }
 
     public String getLabelOf(String key, String... args) {
@@ -20,7 +20,7 @@ public class GuiManager {
             }
             String text = data.getJSONObject(key).getString(lang);
             for (String arg : args) {
-                text = text.replaceFirst(Config.TEXT_ARG_PLACEHOLDER, arg);
+                text = text.replaceFirst(StaticConfig.TEXT_ARG_PLACEHOLDER, arg);
             }
             return text;
         }

@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import org.jetbrains.annotations.NotNull;
@@ -11,7 +12,7 @@ import java.awt.*;
 public class OptionsMenu extends Menu {
 
     public OptionsMenu(MenuAble parent) {
-        super(parent, GameState.Type.OptionsMenu);
+        super(parent, GameStateType.OptionsMenu);
         this.parent = parent;
         position.setY(100);
         init();

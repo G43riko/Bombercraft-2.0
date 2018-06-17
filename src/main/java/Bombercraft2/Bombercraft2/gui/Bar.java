@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.game.GameAble;
@@ -9,9 +9,9 @@ import utils.math.GVector2f;
 import java.awt.*;
 
 abstract class Bar implements InteractAble, ClickAble, Visible{
-	private Color backgroundColor 	= Config.BAR_BACKGROUND_COLOR;
-	private Color borderColor 		= Config.BAR_BORDER_COLOR;
-	private int borderWidth 		= Config.BAR_BORDER_WIDTH;
+	private Color backgroundColor 	= StaticConfig.BAR_BACKGROUND_COLOR;
+	private Color borderColor 		= StaticConfig.BAR_BORDER_COLOR;
+	private int borderWidth 		= StaticConfig.BAR_BORDER_WIDTH;
 
 	private boolean visible 		= true;
 	final GVector2f size;

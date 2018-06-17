@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.engine.Input;
 import org.jetbrains.annotations.Contract;
@@ -17,7 +17,7 @@ public class ViewManager extends AbstractManager {
     @Nullable
     private Visible target;
 
-    private       float     zoom       = Config.DEFAULT_ZOOM;
+    private       float     zoom       = StaticConfig.DEFAULT_ZOOM;
     @NotNull
     private final GVector2f offset     = new GVector2f();
     @NotNull
@@ -62,7 +62,7 @@ public class ViewManager extends AbstractManager {
     private void calcMinZoom() {
         minZoom = Math.max(canvasSize.getX() / mapSize.getX(),
                            canvasSize.getY() / mapSize.getY());
-        minZoom = Math.max(minZoom, Config.MIN_ZOOM);
+        minZoom = Math.max(minZoom, StaticConfig.MIN_ZOOM);
         checkOffset();
     }
 
@@ -130,7 +130,7 @@ public class ViewManager extends AbstractManager {
         if (target == null) {
             return;
         }
-        GVector2f pos = target.getPosition().mul(zoom).add(Config.BLOCK_SIZE.mul(zoom / 2));
+        GVector2f pos = target.getPosition().mul(zoom).add(StaticConfig.BLOCK_SIZE.mul(zoom / 2));
 
         offset.setX(pos.getX() - canvasSize.getX() / 2);
         offset.setY(pos.getY() - canvasSize.getY() / 2);

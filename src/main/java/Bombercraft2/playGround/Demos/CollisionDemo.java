@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
@@ -71,7 +72,7 @@ public class CollisionDemo extends GameState {
 
 
     public CollisionDemo(CorePlayGround parent) {
-        super(Type.CollisionDemo);
+        super(GameStateType.CollisionDemo);
         this.parent = parent;
 
         mySimpleParticlePlayer.posX = 40;

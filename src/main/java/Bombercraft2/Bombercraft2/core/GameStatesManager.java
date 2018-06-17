@@ -1,6 +1,5 @@
 package Bombercraft2.Bombercraft2.core;
 
-import Bombercraft2.Bombercraft2.game.Game;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -37,7 +36,7 @@ public class GameStatesManager {
     }
 
     @Nullable
-    public GameState popIfIs(GameState.Type ...state) {
+    public GameState popIfIs(GameStateType ...state) {
         if (is(state)) {
             GameState oldState = pop();
             oldState.cleanUp();
@@ -49,11 +48,11 @@ public class GameStatesManager {
         states.forEach(GameState::onResize);
     }
 
-    public boolean is(@NotNull GameState.Type ...types) {
+    public boolean is(@NotNull GameStateType ...types) {
         if (states.isEmpty()) {
             return false;
         }
-        for (GameState.Type type : types) {
+        for (GameStateType type : types) {
             if (type == states.peek().getType()) {
                 return true;
             }

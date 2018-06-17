@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.multiplayer.core;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Texts;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,7 +23,7 @@ public abstract class Client implements Writable {
     protected Client(String ip) {
 
         try {
-            socket = new Socket(ip, Config.SERVER_PORT);
+            socket = new Socket(ip, StaticConfig.SERVER_PORT);
             objectWriter = new ObjectOutputStream(socket.getOutputStream());
             objectWriter.flush();
             objectReader = new ObjectInputStream(socket.getInputStream());

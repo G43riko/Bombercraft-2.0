@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc.drawableLine;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -9,9 +9,9 @@ import java.awt.*;
 
 public abstract class AbstractDrawable {
     protected       float phase = 0;
-    protected final float speed = Config.PATH_SPEED;
+    protected final float speed = StaticConfig.PATH_SPEED;
     @NotNull
-    protected       Color color = Config.PATH_FILL_COLOR;
+    protected       Color color = StaticConfig.PATH_FILL_COLOR;
     @NotNull
     protected SimpleGameAble parent;
 

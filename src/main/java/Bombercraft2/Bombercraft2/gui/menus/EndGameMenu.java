@@ -1,5 +1,6 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.gui.StatsPanel;
 import Bombercraft2.Bombercraft2.gui.components.Button;
@@ -15,7 +16,7 @@ public class EndGameMenu extends Menu {
     private final Button newGameButton  = new Button(this, "Nová hra");
 
     public EndGameMenu(MenuAble parent) {
-        super(parent, Type.EndGameMenu);
+        super(parent, GameStateType.EndGameMenu);
         panel = new StatsPanel(parent.getGame(), new GVector2f(30, 200), parent.getGame().getStats());
 
         mainMenuButton.getSize().setX(300);

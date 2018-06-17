@@ -1,14 +1,12 @@
 package Bombercraft2.playGround.Misc.map;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONObject;
 import utils.math.GVector2f;
 
 public class AbstractBlock extends Entity<SimpleGameAble> {
@@ -33,13 +31,13 @@ public class AbstractBlock extends Entity<SimpleGameAble> {
     @Override
     @Contract(pure = true)
     public GVector2f getPosition() {
-        return offset == null ? position.mul(Config.BLOCK_SIZE) : position.mul(Config.BLOCK_SIZE).add(offset);
+        return offset == null ? position.mul(StaticConfig.BLOCK_SIZE) : position.mul(StaticConfig.BLOCK_SIZE).add(offset);
     }
 
     @NotNull
     @Override
     @Contract(pure = true)
     public GVector2f getSize() {
-        return Config.BLOCK_SIZE;
+        return StaticConfig.BLOCK_SIZE;
     }
 }

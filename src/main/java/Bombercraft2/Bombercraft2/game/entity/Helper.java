@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import org.jetbrains.annotations.NotNull;
@@ -30,7 +30,7 @@ public abstract class Helper extends Entity<GameAble> {
 
         Type(String imageName, String name) {
             this.name = name;
-            image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
+            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
         }
 
         public String getName() {return name;}

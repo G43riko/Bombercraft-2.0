@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc.drawableLine;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
@@ -15,8 +15,8 @@ public class BasicDrawablePath extends AbstractDrawable {
 
     public BasicDrawablePath(@NotNull SimpleGameAble parent, @NotNull List<GVector2f> points) {
         super(parent);
-        path = points.stream().map(a -> a.mul(Config.BLOCK_SIZE)
-                                         .add(Config.BLOCK_SIZE_HALF)).collect(Collectors.toList());
+        path = points.stream().map(a -> a.mul(StaticConfig.BLOCK_SIZE)
+                                         .add(StaticConfig.BLOCK_SIZE_HALF)).collect(Collectors.toList());
     }
 
     public void render(@NotNull Graphics2D g2) {

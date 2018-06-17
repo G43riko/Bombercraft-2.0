@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.multiplayer.core;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import utils.GLogger;
 import utils.Utils;
 
@@ -40,7 +40,7 @@ public abstract class Server implements Writable {
 
     protected Server() {
         try {
-            serverSocket = new ServerSocket(Config.SERVER_PORT);
+            serverSocket = new ServerSocket(StaticConfig.SERVER_PORT);
             GLogger.log(GLogger.GLog.SERVER_CREATED);
 //			GLog.write(GLog.SITE, "S: Server sa vytvoril");
         }

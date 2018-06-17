@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Bombercraft2" />
+        <module name="GLib2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Bombercraft2" target="1.8" />
+      <module name="GLib2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

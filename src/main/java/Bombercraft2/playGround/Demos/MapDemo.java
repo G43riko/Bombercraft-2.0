@@ -4,8 +4,9 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.components.path.PathFinder;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.ViewManager;
@@ -23,8 +24,8 @@ public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
     private BasicDrawablePath path;
 
     public MapDemo(CorePlayGround parent) {
-        super(parent, Type.MapDemo);
-        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+        super(parent, GameStateType.MapDemo);
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(StaticConfig.BLOCK_SIZE),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),
                                                  3));
@@ -55,10 +56,10 @@ public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
             }
             else {
                 final GVector2f start = getManager().getViewManager().transformInvert(firstClick)
-                                                    .div(Config.BLOCK_SIZE)
+                                                    .div(StaticConfig.BLOCK_SIZE)
                                                     .toInt();
                 final GVector2f end = getManager().getViewManager().transformInvert(Input.getMousePosition())
-                                                  .div(Config.BLOCK_SIZE)
+                                                  .div(StaticConfig.BLOCK_SIZE)
                                                   .toInt();
                 final List<GVector2f> result = new ArrayList<>();
                 result.add(end);

@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.bots;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.bots.BotFactory.Types;
@@ -17,7 +17,7 @@ public class EnemyA extends Enemy {
     private final Color borderColor = Color.WHITE;
 
     public EnemyA(GVector2f position, GameAble parent) {
-        this(position, parent, getRandPossibleDir(parent.getLevel().getMap(), position.div(Config.BLOCK_SIZE).toInt()));
+        this(position, parent, getRandPossibleDir(parent.getLevel().getMap(), position.div(StaticConfig.BLOCK_SIZE).toInt()));
     }
 
     private EnemyA(GVector2f position, GameAble parent, Direction direction) {
@@ -27,9 +27,9 @@ public class EnemyA extends Enemy {
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        int tempRound = (int) (Config.ENEMY_DEFAULT_ROUND * getParent().getZoom());
+        int tempRound = (int) (StaticConfig.ENEMY_DEFAULT_ROUND * getParent().getZoom());
 
-        GVector2f pos = position.add(Config.ENEMY_DEFAULT_OFFSET)
+        GVector2f pos = position.add(StaticConfig.ENEMY_DEFAULT_OFFSET)
                                 .mul(getParent().getZoom())
                                 .sub(getParent().getOffset());
 
@@ -54,8 +54,8 @@ public class EnemyA extends Enemy {
         if (direction == null) {
             return;
         }
-        if (position.mod(Config.BLOCK_SIZE).isNull()) {
-            GVector2f nextPos = position.add(direction.getDirection().mul(Config.BLOCK_SIZE));
+        if (position.mod(StaticConfig.BLOCK_SIZE).isNull()) {
+            GVector2f nextPos = position.add(direction.getDirection().mul(StaticConfig.BLOCK_SIZE));
             Block block = getParent().getLevel().getMap().getBlockOnPosition(nextPos);
             if (block == null || !block.isWalkable()) {
                 direction = getRandPossibleDir(getParent().getLevel().getMap(), getSur());

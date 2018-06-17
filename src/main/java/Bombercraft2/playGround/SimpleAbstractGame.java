@@ -2,6 +2,7 @@ package Bombercraft2.playGround;
 
 import Bombercraft2.Bombercraft2.MainManager;
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.CoreEngine;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
@@ -19,7 +20,7 @@ public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState
     @NotNull
     protected final MainManager manager = new MainManager();
 
-    protected SimpleAbstractGame(@NotNull T parent, @NotNull Type type) {
+    protected SimpleAbstractGame(@NotNull T parent, @NotNull GameStateType type) {
         super(type);
         this.parent = parent;
     }

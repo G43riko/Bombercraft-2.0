@@ -1,7 +1,7 @@
 package Bombercraft2.Bombercraft2.game;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.Profile;
 import Bombercraft2.Bombercraft2.core.*;
 import Bombercraft2.Bombercraft2.game.bots.BotFactory;
@@ -12,11 +12,9 @@ import Bombercraft2.Bombercraft2.game.entity.bullets.BulletBasic;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletLaser;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager;
 import Bombercraft2.Bombercraft2.game.entity.bullets.BulletManager.Types;
-import Bombercraft2.Bombercraft2.game.entity.particles.Emitter;
 import Bombercraft2.Bombercraft2.game.entity.particles.EmitterTypes;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerCreator;
 import Bombercraft2.Bombercraft2.game.entity.towers.TowerMachineGun;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.level.Level;
 import Bombercraft2.Bombercraft2.game.level.Map;
@@ -42,7 +40,7 @@ import java.util.HashMap;
 public class Game extends GameState implements GameAble {
     private MouseSelector mouseSelector;//	= new MouseSelector(this);
     private       MyPlayer     myPlayer     = null;
-    private       float        zoom         = Config.DEFAULT_ZOOM;
+    private       float        zoom         = StaticConfig.DEFAULT_ZOOM;
     private final SceneManager sceneManager = new SceneManager(this);
     private       long         startTime    = System.currentTimeMillis();
 
@@ -61,9 +59,9 @@ public class Game extends GameState implements GameAble {
 
     static {
         try {
-            JSONObject jsonResult = ResourceLoader.getJSON(Config.FILE_GAME_CONFIG);
+            JSONObject jsonResult = ResourceLoader.getJSON(StaticConfig.FILE_GAME_CONFIG);
             if (jsonResult == null) {
-                GLogger.makeError(GLogger.GError.CANNOT_READ_JSON);
+                GLogger.throwError(GLogger.GError.CANNOT_READ_JSON);
             }
             gameConfig = jsonResult.getJSONObject("data");
             BotFactory.init(gameConfig.getJSONObject("enemies"));
@@ -81,7 +79,7 @@ public class Game extends GameState implements GameAble {
     }
 
     public Game(Level level, CoreGame parent, JSONObject gameData) {
-        super(GameState.Type.Game);
+        super(GameStateType.Game);
         try {
             this.level = level;
             this.parent = parent;
@@ -309,16 +307,16 @@ public class Game extends GameState implements GameAble {
 
     @Override
     public void changeZoom(float value) {
-        if (!Config.ZOOM_ALLOWED || !level.isReady()) { return; }
+        if (!StaticConfig.ZOOM_ALLOWED || !level.isReady()) { return; }
 
         zoom += value;
 
-        if (level.getMap().getNumberOfBlocks().getX() * Config.BLOCK_SIZE.getX() * zoom < parent.getCanvas().getWidth()) {
+        if (level.getMap().getNumberOfBlocks().getX() * StaticConfig.BLOCK_SIZE.getX() * zoom < parent.getCanvas().getWidth()) {
             zoom -= value;
             return;
         }
 
-        if (zoom > Config.ZOOM_MAXIMUM) {
+        if (zoom > StaticConfig.ZOOM_MAXIMUM) {
             zoom -= value;
         }
 
@@ -335,7 +333,7 @@ public class Game extends GameState implements GameAble {
                           long createTime
                          ) {//TODO playerov bonus k poskodeniu tu ma byt
         GVector2f localPos = Map.globalPosToLocalPos(pos);
-        pos = pos.div(Config.BLOCK_SIZE).toInt().mul(Config.BLOCK_SIZE);
+        pos = pos.div(StaticConfig.BLOCK_SIZE).toInt().mul(StaticConfig.BLOCK_SIZE);
 
         String key = localPos.getXi() + "_" + localPos.getYi();
         if (sceneManager.existHelperOn(key)) {

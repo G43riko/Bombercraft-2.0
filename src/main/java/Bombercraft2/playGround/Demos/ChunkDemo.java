@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.map.BasicChunk;
@@ -24,7 +25,7 @@ public class ChunkDemo extends GameState implements SimpleGameAble {
     private final CorePlayGround parent;
 
     public ChunkDemo(@NotNull CorePlayGround parent) {
-        super(Type.ChunkDemo);
+        super(GameStateType.ChunkDemo);
         this.parent = parent;
 
         final int colorSkip = 255 / (items * items);

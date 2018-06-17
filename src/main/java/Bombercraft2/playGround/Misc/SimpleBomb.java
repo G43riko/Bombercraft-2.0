@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.Contract;
@@ -35,9 +35,9 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
         }
         final GVector2f actPos = position.sub(getParent().getManager().getViewManager().getOffset());
 
-        GCanvas.fillRect(g2, actPos, Config.BOMB_SIZE, Color.BLACK);
+        GCanvas.fillRect(g2, actPos, StaticConfig.BOMB_SIZE, Color.BLACK);
         // g2.setColor(Color.BLACK);
-        // g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);
+        // g2.fillArc(actPos.getXi(), actPos.getYi(), StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT, 0, 360);
     }
 
     @Override

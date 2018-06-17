@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc.map;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
@@ -43,7 +43,7 @@ public abstract class AbstractMap<T extends Visible> implements InteractAble {
         this.mapSize = mapSize;
     }
     public GVector2f getBlockSize() {
-        return Config.BLOCK_SIZE;
+        return StaticConfig.BLOCK_SIZE;
     }
 
     @NotNull

@@ -1,11 +1,12 @@
 package Bombercraft2.playGround;
 
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.CoreEngine;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
 public abstract class AdvancedAbstractGame<T extends CoreEngine> extends SimpleAbstractGame<T>{
-    protected AdvancedAbstractGame(@NotNull T parent, @NotNull Type type) {
+    protected AdvancedAbstractGame(@NotNull T parent, @NotNull GameStateType type) {
         super(parent, type);
     }
     @NotNull

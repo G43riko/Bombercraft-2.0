@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.player;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.Utils;
+import utils.BombercraftUtils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -72,7 +72,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
 
         GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
 
-        GVector2f size = Config.BLOCK_SIZE.mul(getParent().getZoom());
+        GVector2f size = StaticConfig.BLOCK_SIZE.mul(getParent().getZoom());
 
         PlayerSprite.drawPlayer(pos, size, g2, getDirection(), getImage() + getName(), isMoving());
 
@@ -109,8 +109,8 @@ public class Player extends Entity<GameAble> implements HealthAble {
     }
 
     public GVector2f getSelectorPos() {
-        GVector2f pos = getPosition().add(Config.BLOCK_SIZE_HALF).div(Config.BLOCK_SIZE).toInt();
-        pos = pos.add(Utils.getNormalMoveFromDir(getDirection())).mul(Config.BLOCK_SIZE);
+        GVector2f pos = getPosition().add(StaticConfig.BLOCK_SIZE_HALF).div(StaticConfig.BLOCK_SIZE).toInt();
+        pos = pos.add(BombercraftUtils.getNormalMoveFromDir(getDirection())).mul(StaticConfig.BLOCK_SIZE);
         return pos;
     }
 
@@ -141,7 +141,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
 
     @Override
     public int getMaxHealth() {
-        return Config.PLAYER_MAX_HEALTH;
+        return StaticConfig.PLAYER_MAX_HEALTH;
     }
 
     @Override

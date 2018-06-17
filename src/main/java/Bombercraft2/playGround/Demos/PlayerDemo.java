@@ -1,5 +1,6 @@
 package Bombercraft2.playGround.Demos;
 
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.gui.GameLogs;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
@@ -19,7 +20,7 @@ public class PlayerDemo extends SimpleAbstractGame<CorePlayGround> {
     private GameLogs gameLogs = new GameLogs(this);
 
     public PlayerDemo(CorePlayGround parent) {
-        super(parent, Type.PlayerDemo);
+        super(parent, GameStateType.PlayerDemo);
         manager.setManagers(new MapManager(new SimpleChunkedMap(this, new GVector2f(2, 2))));
         manager.setManagers(new PlayerManager(this, new SimpleMyPlayer(this,
                                                                        manager.getMapManager().getFreePosition(),

@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.misc;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
@@ -11,7 +11,7 @@ public class GameTransform {
     private       float     minZoom;
     private final GVector2f maxOffset  = new GVector2f();
 
-    private       float     zoom   = Config.DEFAULT_ZOOM;
+    private       float     zoom   = StaticConfig.DEFAULT_ZOOM;
     @NotNull
     private final GVector2f offset = new GVector2f();
 

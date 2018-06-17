@@ -1,6 +1,6 @@
 package Bombercraft2.playGround.Misc;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.Timer;
 import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.Contract;
@@ -13,8 +13,8 @@ import java.awt.*;
 
 public class ImagedBomb extends SimpleBomb {
     //TODO: Obrázky prerenderovať do defaultného rozlíšenia
-    private final static Image bombImage   = ResourceLoader.loadTexture("bomb" + Config.EXTENSION_IMAGE);
-    private final static Image craterImage = ResourceLoader.loadTexture("crater" + Config.EXTENSION_IMAGE);
+    private final static Image bombImage   = ResourceLoader.loadTexture("bomb" + StaticConfig.EXTENSION_IMAGE);
+    private final static Image craterImage = ResourceLoader.loadTexture("crater" + StaticConfig.EXTENSION_IMAGE);
 
     @Nullable
     private final Timer timer;
@@ -46,9 +46,9 @@ public class ImagedBomb extends SimpleBomb {
             timer.render(g2);
         }
         // g2.setColor(Color.BLACK);
-        // g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);
-        GCanvas.drawImage(g2, bombImage, actPos, Config.BOMB_SIZE);
-        // g2.drawImage(bombImage, actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, null);
+        // g2.fillArc(actPos.getXi(), actPos.getYi(), StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT, 0, 360);
+        GCanvas.drawImage(g2, bombImage, actPos, StaticConfig.BOMB_SIZE);
+        // g2.drawImage(bombImage, actPos.getXi(), actPos.getYi(), StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT, null);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
@@ -21,7 +22,7 @@ public class ShootingDemo extends GameState {
     private final CorePlayGround parent;
 
     public ShootingDemo(CorePlayGround parent) {
-        super(Type.ShootingDemo);
+        super(GameStateType.ShootingDemo);
         this.parent = parent;
 
         myPlayer.posX = 160;

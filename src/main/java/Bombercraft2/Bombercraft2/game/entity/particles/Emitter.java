@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity.particles;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.Contract;
@@ -91,7 +91,7 @@ public abstract class Emitter extends Entity<GameAble> {
     private static void initDefault() {
         try {
             EmitterTypes[] types = EmitterTypes.values();
-            JSONObject object = ResourceLoader.getJSON(Config.FILE_PARTICLES);
+            JSONObject object = ResourceLoader.getJSON(StaticConfig.FILE_PARTICLES);
             for (EmitterTypes type : types) {
                 predefinedParticles.put(type, object.getJSONObject(type.getName()));
             }

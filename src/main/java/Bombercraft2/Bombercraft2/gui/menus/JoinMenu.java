@@ -1,7 +1,8 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
@@ -34,16 +35,16 @@ public class JoinMenu extends Menu {
             // InetAddress localhost = InetAddress.getByName(Utils.getLocalIP());
             InetAddress localhost = InetAddress.getByName("localhost");
             byte[] ip = localhost.getAddress();
-            for (int i = 0; i < Config.SCANNING_RANGE; i++) {
+            for (int i = 0; i < StaticConfig.SCANNING_RANGE; i++) {
                 ip[3] = (byte) i;
                 InetAddress address = InetAddress.getByAddress(ip);
 
-                if (address.isReachable(Config.SCANNING_TIMEOUT)) {
+                if (address.isReachable(StaticConfig.SCANNING_TIMEOUT)) {
                     Socket socket = null;
                     ObjectInputStream objectReader = null;
                     ObjectOutputStream objectWriter = null;
                     try {
-                        socket = new Socket(address, Config.SERVER_PORT);
+                        socket = new Socket(address, StaticConfig.SERVER_PORT);
 
                         objectReader = new ObjectInputStream(socket.getInputStream());
                         objectWriter = new ObjectOutputStream(socket.getOutputStream());
@@ -90,7 +91,7 @@ public class JoinMenu extends Menu {
     }
 
     public JoinMenu(MenuAble parent) {
-        super(parent, GameState.Type.JoinMenu);
+        super(parent, GameStateType.JoinMenu);
         this.parent = parent;
         position.setY(100);
         init();
@@ -118,7 +119,7 @@ public class JoinMenu extends Menu {
         gamesNew.clear();
 
         super.update(delta);
-        if (lastPing + Config.PING_REFRESH_TIME < System.currentTimeMillis()) {
+        if (lastPing + StaticConfig.PING_REFRESH_TIME < System.currentTimeMillis()) {
             lastPing = System.currentTimeMillis();
             games.forEach(RemoteGameData::reping);
         }

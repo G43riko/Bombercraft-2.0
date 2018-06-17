@@ -1,13 +1,12 @@
 package Bombercraft2.Bombercraft2.game.player;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthBar;
 import Bombercraft2.Bombercraft2.game.entity.Bomb;
 import Bombercraft2.Bombercraft2.game.entity.BombCreator;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.engine.Input;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
@@ -138,7 +137,7 @@ public class MyPlayer extends Player {
         }
 
         if (getParent().getLevel().getMap().getBlockOnPosition(getCenter()).getType() == BlockType.WATER) {
-            move = move.mul(Config.WATER_TILE_SPEED_COEFFICIENT);
+            move = move.mul(StaticConfig.WATER_TILE_SPEED_COEFFICIENT);
         }
         totalMove = totalMove.add(move);
 
@@ -174,20 +173,20 @@ public class MyPlayer extends Player {
         final float rightOffset = 21;
         final float leftOffset = 19;
 
-        GVector2f t = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() - topOffset).div(2))
-                              .div(Config.BLOCK_SIZE)
+        GVector2f t = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX(), StaticConfig.BLOCK_SIZE.getY() - topOffset).div(2))
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f b = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() + bottomOffset).div(
+        GVector2f b = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX(), StaticConfig.BLOCK_SIZE.getY() + bottomOffset).div(
                 2))
-                              .div(Config.BLOCK_SIZE)
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f r = position.add(new GVector2f(Config.BLOCK_SIZE.getX() - rightOffset,
-                                                 Config.BLOCK_SIZE.getY()).div(2))
-                              .div(Config.BLOCK_SIZE)
+        GVector2f r = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
+                                                 StaticConfig.BLOCK_SIZE.getY()).div(2))
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f l = position.add(new GVector2f(Config.BLOCK_SIZE.getX() + leftOffset,
-                                                 Config.BLOCK_SIZE.getY()).div(2))
-                              .div(Config.BLOCK_SIZE)
+        GVector2f l = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
+                                                 StaticConfig.BLOCK_SIZE.getY()).div(2))
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
 
         boolean checkBomb = !getParent().getSceneManager().isBombOn(t.getXi(), t.getYi(), lastPutBomb) &&
@@ -195,7 +194,7 @@ public class MyPlayer extends Player {
                 !getParent().getSceneManager().isBombOn(r.getXi(), r.getYi(), lastPutBomb) &&
                 !getParent().getSceneManager().isBombOn(l.getXi(), l.getYi(), lastPutBomb);
 
-        if (lastPutBomb != null && lastPutBomb.getPosition().dist(getPosition()) > Config.BLOCK_SIZE.getLength()) {
+        if (lastPutBomb != null && lastPutBomb.getPosition().dist(getPosition()) > StaticConfig.BLOCK_SIZE.getLength()) {
             lastPutBomb = null;
         }
 
@@ -214,7 +213,7 @@ public class MyPlayer extends Player {
 
     private void checkOffset() {
 
-        GVector2f pos = getPosition().mul(getParent().getZoom()).add(Config.BLOCK_SIZE.mul(getParent().getZoom() / 2));
+        GVector2f pos = getPosition().mul(getParent().getZoom()).add(StaticConfig.BLOCK_SIZE.mul(getParent().getZoom() / 2));
 
         offset.setX(pos.getX() - getParent().getCanvas().getWidth() / 2);
         offset.setY(pos.getY() - getParent().getCanvas().getHeight() / 2);
@@ -226,20 +225,20 @@ public class MyPlayer extends Player {
             offset.setX(0);
         }
 
-        if (offset.getX() > (numbers.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                               .getWidth()) {
-            offset.setX((numbers.getX() * Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                           .getWidth());
+        if (offset.getX() > (numbers.getX() * StaticConfig.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
+                                                                                                                     .getWidth()) {
+            offset.setX((numbers.getX() * StaticConfig.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) - getParent().getCanvas()
+                                                                                                                 .getWidth());
         }
 
         if (offset.getY() < 0) {
             offset.setY(0);
         }
 
-        if (offset.getY() > (numbers.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                                .getHeight()) {
-            offset.setY((numbers.getY() * Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
-                                                                                                            .getHeight());
+        if (offset.getY() > (numbers.getY() * StaticConfig.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
+                                                                                                                      .getHeight()) {
+            offset.setY((numbers.getY() * StaticConfig.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) - getParent().getCanvas()
+                                                                                                                  .getHeight());
         }
     }
 
@@ -263,15 +262,15 @@ public class MyPlayer extends Player {
 
         GVector2f nums = getParent().getLevel().getMap().getSize();
 
-        if (position.getX() * getParent().getZoom() + Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom() > nums.getX() * getParent()
+        if (position.getX() * getParent().getZoom() + StaticConfig.DEFAULT_BLOCK_WIDTH * getParent().getZoom() > nums.getX() * getParent()
                 .getZoom()) {
-            position.setX((nums.getX() * getParent().getZoom() - Config.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) / getParent()
+            position.setX((nums.getX() * getParent().getZoom() - StaticConfig.DEFAULT_BLOCK_WIDTH * getParent().getZoom()) / getParent()
                     .getZoom());
         }
 
-        if (position.getY() * getParent().getZoom() + Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom() > nums.getY() * getParent()
+        if (position.getY() * getParent().getZoom() + StaticConfig.DEFAULT_BLOCK_HEIGHT * getParent().getZoom() > nums.getY() * getParent()
                 .getZoom()) {
-            position.setY((nums.getY() * getParent().getZoom() - Config.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) / getParent()
+            position.setY((nums.getY() * getParent().getZoom() - StaticConfig.DEFAULT_BLOCK_HEIGHT * getParent().getZoom()) / getParent()
                     .getZoom());
         }
     }

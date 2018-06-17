@@ -1,15 +1,15 @@
 package Bombercraft2.Bombercraft2.game.entity;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.math.GVector2f;
-import utils.resouces.JSONAble;
 
 public abstract class Entity<T extends SimpleGameAble> implements Visible, InteractAble, JSONAble {
     private int id = 1;
@@ -30,7 +30,7 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
 
     @Override
     public void fromJSON(@NotNull JSONObject json) {
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             id = json.getInt(Texts.ID);
             alive = json.getBoolean(Texts.ALIVE);
             position = new GVector2f(json.getString(Texts.POSITION));
@@ -41,7 +41,7 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
     @Contract(pure = true)
     public JSONObject toJSON() {
         final JSONObject result = new JSONObject();
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             result.put(Texts.ID, id);
             result.put(Texts.POSITION, position);
             result.put(Texts.ALIVE, alive);
@@ -49,11 +49,11 @@ public abstract class Entity<T extends SimpleGameAble> implements Visible, Inter
         return result;
     }
 
-    public GVector2f getSur() {return position.div(Config.BLOCK_SIZE).toInt();}
+    public GVector2f getSur() {return position.div(StaticConfig.BLOCK_SIZE).toInt();}
 
     @NotNull
     @Contract(pure = true)
-    public GVector2f getSize() {return Config.BLOCK_SIZE; }
+    public GVector2f getSize() {return StaticConfig.BLOCK_SIZE; }
 
 
     @Contract(pure = true)

@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
@@ -22,7 +23,7 @@ public class ParticlesDemo extends GameState implements SimpleGameAble {
     private final SimpleGridCollision gridCollision;
 
     public ParticlesDemo(CorePlayGround parent) {
-        super(Type.ParticlesDemo);
+        super(GameStateType.ParticlesDemo);
         this.parent = parent;
 
         gridCollision = new SimpleGridCollision(this);

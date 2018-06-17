@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.components.tasks;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthAble;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthBar;
 import Bombercraft2.Bombercraft2.core.InteractAble;
@@ -91,7 +91,7 @@ public class Task implements InteractAble, HealthAble {
 
     @Override
     public @NotNull GVector2f getSize() {
-        return Config.BLOCK_SIZE;
+        return StaticConfig.BLOCK_SIZE;
     }
 
     public boolean isFinished() {

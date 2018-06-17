@@ -1,12 +1,12 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import org.jetbrains.annotations.NotNull;
-import utils.SimplexNoise;
+import org.utils.noises.SimplexNoise;
 import utils.Utils;
-import utils.math.GVector2f;
 
 import java.awt.*;
 
@@ -19,7 +19,7 @@ public class PerlinDemo extends GameState {
     private final int itemSize = 2;
     private Item[][] map;
     public PerlinDemo(CorePlayGround parent) {
-        super(Type.PerlinDemo);
+        super(GameStateType.PerlinDemo);
         this.parent = parent;
         generateMap();
     }

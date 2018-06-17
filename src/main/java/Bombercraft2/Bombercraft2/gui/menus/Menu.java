@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Visible;
 import Bombercraft2.Bombercraft2.gui.ClickAble;
@@ -20,7 +21,7 @@ public abstract class Menu extends GameState implements ClickAble, Visible {
     final GVector2f size;
     MenuAble                      parent;
 
-    Menu(MenuAble parent, GameState.Type type) {
+    Menu(MenuAble parent, GameStateType type) {
         super(type);
         this.parent = parent;
         position = parent.getPosition();

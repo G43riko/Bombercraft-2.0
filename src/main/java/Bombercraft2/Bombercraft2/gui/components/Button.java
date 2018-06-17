@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Visible;
 import utils.math.GVector2f;
 
@@ -33,7 +33,7 @@ public class Button extends GuiComponent {
         textOffset = new GVector2f();
         offset = new GVector2f(40, 5);
         textSize = 36;
-        round = Config.DEFAULT_ROUND;
+        round = StaticConfig.DEFAULT_ROUND;
         font = "Monospaced";
         size = new GVector2f(600, 50);
     }

@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.engine.CoreEngine;
 import org.jetbrains.annotations.NotNull;
@@ -14,7 +14,7 @@ public class AlertManager implements InteractAble {
     private final List<Alert> alerts   = new ArrayList<>();
     private final Color       color    = Color.BLACK;
     private final int         fontSize = 33;
-    private final Font        font     = new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, fontSize);
+    private final Font        font     = new Font(StaticConfig.DEFAULT_FONT, Font.BOLD | Font.ITALIC, fontSize);
     private final CoreEngine parent;
 
     public AlertManager(CoreEngine parent) {
@@ -22,7 +22,7 @@ public class AlertManager implements InteractAble {
     }
 
     public void addAlert(String text) {
-        alerts.add(new Alert(text, this, 3000, fontSize * alerts.size() + fontSize + Config.ALERT_VERTICAL_OFFSET));
+        alerts.add(new Alert(text, this, 3000, fontSize * alerts.size() + fontSize + StaticConfig.ALERT_VERTICAL_OFFSET));
     }
 
     @Override

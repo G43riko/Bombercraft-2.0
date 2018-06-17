@@ -1,6 +1,7 @@
 package Bombercraft2.playGround.Demos;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
@@ -20,7 +21,7 @@ public class ClosestDemo extends GameState {
 
 
     public ClosestDemo(CorePlayGround parent) {
-        super(Type.BasicDemo);
+        super(GameStateType.BasicDemo);
         this.parent = parent;
 
         mySimpleParticlePlayer.posX = 40;

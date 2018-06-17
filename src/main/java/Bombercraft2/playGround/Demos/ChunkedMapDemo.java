@@ -1,5 +1,6 @@
 package Bombercraft2.playGround.Demos;
 
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.ViewManager;
@@ -14,7 +15,7 @@ import java.awt.*;
 public class ChunkedMapDemo extends SimpleAbstractGame<CorePlayGround> {
 
     public ChunkedMapDemo(@NotNull CorePlayGround parent) {
-        super(parent, Type.ChunkedMapDemo);
+        super(parent, GameStateType.ChunkedMapDemo);
         getManager().setManagers(new MapManager(new SimpleChunkedMap(this, new GVector2f(32, 32))));
         getManager().setManagers(new ViewManager(getManager().getMapManager().getMapSize(),
                                                  parent.getCanvas().getWidth(),

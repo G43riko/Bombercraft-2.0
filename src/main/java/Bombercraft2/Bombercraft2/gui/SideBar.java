@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
@@ -14,7 +14,7 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class SideBar extends Bar {
-    private final int                           offset  = Config.SIDEBAR_OFFSET;
+    private final int                           offset  = StaticConfig.SIDEBAR_OFFSET;
     private final HashMap<String, GuiComponent> buttons = new HashMap<>();
 
     public SideBar(GameAble parent) {
@@ -34,10 +34,10 @@ public class SideBar extends Bar {
     }
 
     private void init() {
-        setBackgroundColor(Config.SIDEBAR_BACKGROUND_COLOR);
-        setBorderColor(Config.SIDEBAR_BORDER_COLOR);
+        setBackgroundColor(StaticConfig.SIDEBAR_BACKGROUND_COLOR);
+        setBorderColor(StaticConfig.SIDEBAR_BORDER_COLOR);
         setVisible(false);
-        setBorderWidth(Config.SIDEBAR_BORDER_WIDTH);
+        setBorderWidth(StaticConfig.SIDEBAR_BORDER_WIDTH);
     }
 
     @Override
@@ -72,8 +72,8 @@ public class SideBar extends Bar {
                          totalPos.getYi(),
                          totalSize.getXi(),
                          totalSize.getYi(),
-                         Config.DEFAULT_ROUND,
-                         Config.DEFAULT_ROUND);
+                         StaticConfig.DEFAULT_ROUND,
+                         StaticConfig.DEFAULT_ROUND);
 
         g2.setStroke(new BasicStroke(getBorderWidth()));
         g2.setColor(getBorderColor());
@@ -81,8 +81,8 @@ public class SideBar extends Bar {
                          totalPos.getYi(),
                          totalSize.getXi(),
                          totalSize.getYi(),
-                         Config.DEFAULT_ROUND,
-                         Config.DEFAULT_ROUND);
+                         StaticConfig.DEFAULT_ROUND,
+                         StaticConfig.DEFAULT_ROUND);
 
 
         buttons.forEach((key, value) -> value.render(g2));

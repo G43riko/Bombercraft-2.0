@@ -49,7 +49,13 @@
             <artifactId>annotations</artifactId>
             <version>RELEASE</version>
         </dependency>
-        <!-- JAVAFX -->
+		<dependency>
+			<groupId>GLib2</groupId>
+			<artifactId>GLib2</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- JAVAFX -->
 
 	</dependencies>
 </project>

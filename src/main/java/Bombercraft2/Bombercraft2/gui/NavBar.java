@@ -1,10 +1,9 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import Bombercraft2.Bombercraft2.game.entity.Helper;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.game.level.BlockType;
 import Bombercraft2.engine.Input;
 import org.jetbrains.annotations.Contract;
@@ -20,7 +19,7 @@ public class NavBar extends Bar {
     private       int                        selectedItem = 0;
 
     public NavBar(GameAble parent) {
-        super(parent, Config.NAV_BAR_SIZE);
+        super(parent, StaticConfig.NAV_BAR_SIZE);
 
         items.put(0, Helper.Type.SHOVEL);
         items.put(1, Helper.Type.TOWER_LASER);
@@ -45,9 +44,9 @@ public class NavBar extends Bar {
     }
 
     private void init() {
-        setBackgroundColor(Config.NAV_BAR_BACKGROUND_COLOR);
-        setBorderColor(Config.NAV_BAR_BORDER_COLOR);
-        setBorderWidth(Config.NAV_BAR_BORDER_WIDTH);
+        setBackgroundColor(StaticConfig.NAV_BAR_BACKGROUND_COLOR);
+        setBorderColor(StaticConfig.NAV_BAR_BORDER_COLOR);
+        setBorderWidth(StaticConfig.NAV_BAR_BORDER_WIDTH);
 
         getParent().getToolsManager().setSelectedTool(getSelectedIcon());
     }
@@ -69,9 +68,9 @@ public class NavBar extends Bar {
     }
 
     public void calcPosition() {
-        totalSize = size.mul(new GVector2f(Config.NAV_BAR_NUMBER_OF_BLOCKS, 1));
+        totalSize = size.mul(new GVector2f(StaticConfig.NAV_BAR_NUMBER_OF_BLOCKS, 1));
         totalPos = new GVector2f((getParent().getCanvas().getWidth() - totalSize.getX()) / 2,
-                                 getParent().getCanvas().getHeight() - Config.NAV_BAR_BOTTOM_OFFSET - totalSize.getY());
+                                 getParent().getCanvas().getHeight() - StaticConfig.NAV_BAR_BOTTOM_OFFSET - totalSize.getY());
     }
 
     @Override
@@ -82,7 +81,7 @@ public class NavBar extends Bar {
         g2.setStroke(new BasicStroke(getBorderWidth()));
         g2.setColor(getBorderColor());
 
-        for (int i = 0; i < Config.NAV_BAR_NUMBER_OF_BLOCKS; i++) {
+        for (int i = 0; i < StaticConfig.NAV_BAR_NUMBER_OF_BLOCKS; i++) {
             if (items.containsKey(i)) {
                 g2.drawImage(items.get(i).getImage(),
                              totalPos.getXi() + size.getXi() * i,
@@ -94,7 +93,7 @@ public class NavBar extends Bar {
             g2.drawRect(totalPos.getXi() + size.getXi() * i, totalPos.getYi(), size.getXi(), size.getYi());
         }
 
-        g2.setColor(Config.NAV_BAR_SELECT_BORDER_COLOR);
+        g2.setColor(StaticConfig.NAV_BAR_SELECT_BORDER_COLOR);
         g2.drawRect(totalPos.getXi() + size.getXi() * selectedItem, totalPos.getYi(), size.getXi(), size.getYi());
     }
 

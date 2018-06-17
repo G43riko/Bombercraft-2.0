@@ -1,6 +1,6 @@
 package Bombercraft2.playGround;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.BasicListener;
 import Bombercraft2.Bombercraft2.gui2.components.Button;
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
@@ -29,7 +29,7 @@ public class MainMenu extends Panel {
         style.borderWidth = 5;
         style.fontColor = Color.BLACK;
         style.fontSize = 36;
-        style.round = Config.DEFAULT_ROUND;
+        style.round = StaticConfig.DEFAULT_ROUND;
         style.fontName = "Monospaced";
 
         addButton("Test output", () -> System.out.println("Výpis funguje"));

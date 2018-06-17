@@ -1,19 +1,19 @@
 package Bombercraft2.Bombercraft2.game.level;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Render;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
 import Bombercraft2.Bombercraft2.game.GameAble;
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.utils.noises.PerlinNoise;
 import utils.GLogger;
-import utils.PerlinNoise;
 import utils.math.GVector2f;
-import utils.resouces.JSONAble;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -37,7 +37,7 @@ public class Map implements InteractAble, JSONAble {
     public Map(@NotNull JSONObject object, @NotNull GameAble parent) {
         this.parent = parent;
         fromJSON(object);
-        size = numberOfBlocks.mul(Config.BLOCK_SIZE);
+        size = numberOfBlocks.mul(StaticConfig.BLOCK_SIZE);
         GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
     }
 
@@ -47,7 +47,7 @@ public class Map implements InteractAble, JSONAble {
 
         createRandomMap();
         defaultMap = toJSON().toString();
-        size = numberOfBlocks.mul(Config.BLOCK_SIZE);
+        size = numberOfBlocks.mul(StaticConfig.BLOCK_SIZE);
         GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
     }
 
@@ -61,8 +61,8 @@ public class Map implements InteractAble, JSONAble {
             return;
         }
         if (image == null) {
-            image = new BufferedImage(numberOfBlocks.getXi() * Config.DEFAULT_BLOCK_WIDTH,
-                                      numberOfBlocks.getYi() * Config.DEFAULT_BLOCK_HEIGHT,
+            image = new BufferedImage(numberOfBlocks.getXi() * StaticConfig.DEFAULT_BLOCK_WIDTH,
+                                      numberOfBlocks.getYi() * StaticConfig.DEFAULT_BLOCK_HEIGHT,
                                       BufferedImage.TYPE_INT_ARGB);
 
             renderToImage((Graphics2D) image.getGraphics());
@@ -177,7 +177,7 @@ public class Map implements InteractAble, JSONAble {
      * @param zones - zoznam zón
      */
     private void clearRespawnZones(@NotNull List<GVector2f> zones) {
-        zones.forEach(a -> remove(a.div(Config.BLOCK_SIZE).toInt()));
+        zones.forEach(a -> remove(a.div(StaticConfig.BLOCK_SIZE).toInt()));
     }
 
     public void remove(GVector2f sur) {
@@ -270,16 +270,16 @@ public class Map implements InteractAble, JSONAble {
 
     @NotNull
     public static GVector2f globalPosToLocalPos(GVector2f pos) {
-        return pos.sub(pos.mod(Config.BLOCK_SIZE)).div(Config.BLOCK_SIZE);
+        return pos.sub(pos.mod(StaticConfig.BLOCK_SIZE)).div(StaticConfig.BLOCK_SIZE);
     }
 
     @NotNull
     public static GVector2f localPosToGlobalPos(GVector2f pos) {
-        return pos.mul(Config.BLOCK_SIZE);
+        return pos.mul(StaticConfig.BLOCK_SIZE);
     }
 
     public Block getBlockOnPosition(GVector2f sur) {
-        GVector2f blockSize = Config.BLOCK_SIZE;
+        GVector2f blockSize = StaticConfig.BLOCK_SIZE;
         GVector2f pos = sur.sub(sur.mod(blockSize)).div(blockSize);
 
         return getBlock(pos.getXi(), pos.getYi());

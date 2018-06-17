@@ -62,4 +62,13 @@ CONSTRAINS
 +
 +
 +
-	
+
+
+EngineBuilder - pozbiera a inicializuje komponenty
+GameBuilder - nastavujú sa mu komponenty (Level, Gui)
+
+config
+    - existuje vždy jeden globalny ktory sa načíta len raz
+        - po prvom načítaní sa vypýta meno a to sa použije pri vytvorení kópie
+    - zvyšok programu sa pracje z používateľským configom
+

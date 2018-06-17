@@ -1,14 +1,12 @@
 package Bombercraft2.playGround.Demos;
 
-import Bombercraft2.Bombercraft2.Config;
-import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.StaticConfig;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
-import Bombercraft2.playGround.Misc.SimpleGameAble;
 import Bombercraft2.playGround.Misc.SimpleMissile;
 import Bombercraft2.playGround.Misc.ViewManager;
 import Bombercraft2.playGround.SimpleAbstractGame;
-import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 
@@ -21,8 +19,8 @@ public class MissileDemo extends SimpleAbstractGame<CorePlayGround> {
     private final List<SimpleMissile> missiles = new ArrayList<>();
 
     public MissileDemo(CorePlayGround parent) {
-        super(parent, Type.MissileDemo);
-        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(Config.BLOCK_SIZE),
+        super(parent, GameStateType.MissileDemo);
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(StaticConfig.BLOCK_SIZE),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),
                                                  3));

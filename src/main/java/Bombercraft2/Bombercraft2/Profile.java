@@ -1,12 +1,12 @@
 package Bombercraft2.Bombercraft2;
 
 
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
 import utils.Utils;
-import utils.resouces.JSONAble;
 import utils.resouces.ResourceLoader;
 
 import java.io.BufferedWriter;
@@ -44,7 +44,7 @@ public class Profile implements JSONAble {
             return;
         }
         try {
-            fromJSON(ResourceLoader.getJSONThrowing(Config.FOLDER_PROFILE + profileName + Config.EXTENSION_PROFILE));
+            fromJSON(ResourceLoader.getJSONThrowing(StaticConfig.FOLDER_PROFILE + profileName + StaticConfig.EXTENSION_PROFILE));
             GLogger.log(GLogger.GLog.PROFILE_SUCCESSFULLY_LOADED);
         }
         catch (JSONException e) {
@@ -62,8 +62,8 @@ public class Profile implements JSONAble {
     }
 
     private void initDefault() {
-        name = Config.PROFILE_DEFAULT_NAME;
-        avatar = Config.PROFILE_DEFAULT_AVATAR;
+        name = StaticConfig.PROFILE_DEFAULT_NAME;
+        avatar = StaticConfig.PROFILE_DEFAULT_AVATAR;
         newGames = 0;
         msOfPlaying = 0;
         profileLoaded = 0;
@@ -150,7 +150,7 @@ public class Profile implements JSONAble {
         }
 
         try {
-            String fileName = Config.FOLDER_PROFILE + profile.profileName + Config.EXTENSION_PROFILE;
+            String fileName = StaticConfig.FOLDER_PROFILE + profile.profileName + StaticConfig.EXTENSION_PROFILE;
             BufferedWriter out = ResourceLoader.getBufferedWriter(fileName);
             if (out != null) {
                 out.write(result.toString());

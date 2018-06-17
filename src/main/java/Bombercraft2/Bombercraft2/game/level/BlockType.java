@@ -1,9 +1,9 @@
 package Bombercraft2.Bombercraft2.game.level;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.Iconable;
 import org.jetbrains.annotations.NotNull;
-import utils.ImageUtils;
+import org.utils.ImageUtils;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -27,7 +27,7 @@ public enum BlockType implements Iconable {
     BlockType(String imageName, int health, boolean walkable) {
         this.health = health;
         this.walkable = walkable;
-        image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
+        image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
         final BufferedImage bufferedImage = new BufferedImage(image.getWidth(null),
                                                               image.getHeight(null),
                                                               BufferedImage.TYPE_INT_ARGB);

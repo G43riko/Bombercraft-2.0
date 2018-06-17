@@ -1,13 +1,13 @@
 package Bombercraft2.playGround.Misc.map;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.entity.Entity;
 import Bombercraft2.Bombercraft2.game.misc.GCanvas;
 import Bombercraft2.playGround.Misc.SimpleGameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.PerlinNoise;
+import org.utils.noises.PerlinNoise;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class SimpleChunk extends Entity<SimpleGameAble> {
-    public final static GVector2f                         SIZE           = Config.BLOCK_SIZE.mul(Config.CHUNK_SIZE);
+    public final static GVector2f                         SIZE           = StaticConfig.BLOCK_SIZE.mul(StaticConfig.CHUNK_SIZE);
     private             BufferedImage                     image          = null;
     private             int                               renderedBlocks = 0;
     private             HashMap<String, SimpleTypedBlock> blocks         = null;
@@ -29,14 +29,14 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
 
     private void createRandomMap() {
         blocks = new HashMap<>();
-        float[][] data = PerlinNoise.GeneratePerlinNoise(PerlinNoise.generateWhiteNoise(Config.CHUNK_SIZE.getXi(),
-                                                                                        Config.CHUNK_SIZE.getXi()),
+        float[][] data = PerlinNoise.GeneratePerlinNoise(PerlinNoise.generateWhiteNoise(StaticConfig.CHUNK_SIZE.getXi(),
+                                                                                        StaticConfig.CHUNK_SIZE.getXi()),
                                                          6,
                                                          0.7f,
                                                          true);
 
-        for (int i = 0; i < Config.CHUNK_SIZE.getXi(); i++) {
-            for (int j = 0; j < Config.CHUNK_SIZE.getYi(); j++) {
+        for (int i = 0; i < StaticConfig.CHUNK_SIZE.getXi(); i++) {
+            for (int j = 0; j < StaticConfig.CHUNK_SIZE.getYi(); j++) {
                 addBlock(i, j, new SimpleTypedBlock(new GVector2f(i, j),
                                                     (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
                                                     parent,
@@ -75,7 +75,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
                   renderedBlocks++;
               });
 
-        if (Config.SHOW_CHUNK_BORDERS) {
+        if (StaticConfig.SHOW_CHUNK_BORDERS) {
 
             final GVector2f transformedPosition = parent.getManager().getViewManager().transform(getPosition());
             final GVector2f realSize = SIZE.mul(parent.getManager().getViewManager().getZoom());

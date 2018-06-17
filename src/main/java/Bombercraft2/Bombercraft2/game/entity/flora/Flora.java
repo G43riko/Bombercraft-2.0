@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity.flora;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Iconable;
@@ -95,7 +95,7 @@ public abstract class Flora extends Entity {
 
         Bushes(String imageName) {
             this.type = FloraType.BUSH;
-            image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
+            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
@@ -122,7 +122,7 @@ public abstract class Flora extends Entity {
 
         Trees(String imageName) {
             this.type = FloraType.TREE;
-            image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
+            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
@@ -147,7 +147,7 @@ public abstract class Flora extends Entity {
 
         Plants(String imageName) {
             this.type = FloraType.PLANT;
-            image = ResourceLoader.loadTexture(imageName + Config.EXTENSION_IMAGE);
+            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 

@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Bombercraft2.iml" filepath="$PROJECT_DIR$/Bombercraft2.iml" />
+      <module fileurl="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/GLib2.iml" filepath="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/GLib2.iml" />
     </modules>
   </component>
 </project>

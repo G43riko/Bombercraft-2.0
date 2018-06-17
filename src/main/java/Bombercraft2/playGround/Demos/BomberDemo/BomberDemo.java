@@ -1,8 +1,8 @@
 package Bombercraft2.playGround.Demos.BomberDemo;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.game.entity.explosion.Explosion;
-import Bombercraft2.Bombercraft2.game.level.Block;
 import Bombercraft2.Bombercraft2.gui.GameLogs;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
@@ -18,14 +18,13 @@ import utils.Utils;
 import utils.math.GVector2f;
 
 import java.awt.*;
-import java.util.ArrayList;
 
 public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
     private GameLogs                      gameLogs = new GameLogs(this);
     private SimpleMapRaycast<SimpleChunk> raycast;
 
     public BomberDemo(CorePlayGround parent) {
-        super(parent, Type.BomberDemo);
+        super(parent, GameStateType.BomberDemo);
         final SimpleChunkedMap map = new SimpleChunkedMap(this, new GVector2f(2, 2));
         manager.setManagers(new MapManager(map));
         manager.setManagers(new PlayerManager(this, new SimpleMyPlayer(this,
@@ -41,7 +40,7 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
         manager.setManagers(new PostFxManager(this, manager.getMapManager().getMapSize()));
         manager.setManagers(new SelectorManager(this, new SimpleLineSelector()));
         manager.setManagers(new SceneManager_(this));
-        manager.getPlayerManager().getMyPlayer().setPosition(Config.BLOCK_SIZE.mul(2));
+        manager.getPlayerManager().getMyPlayer().setPosition(StaticConfig.BLOCK_SIZE.mul(2));
         raycast = new SimpleMapRaycast(map);
         for (int i = 1; i <= 100; i++) {
             int number = (int) Math.ceil(Math.random() * 3) + 1;
@@ -121,9 +120,9 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
                     ImagedBomb bomb = new ImagedBomb(new GVector2f(player.getPosition()), this);
                     bomb.callback = (b) -> {
                         manager.getSceneManager()
-                               .addExplosion(new Explosion(b.getPosition().add(Config.BLOCK_SIZE_HALF),
+                               .addExplosion(new Explosion(b.getPosition().add(StaticConfig.BLOCK_SIZE_HALF),
                                                            this,
-                                                           Config.BLOCK_SIZE,
+                                                           StaticConfig.BLOCK_SIZE,
                                                            Color.black,
                                                            10 + ((int) (Math.random() * 20)),
                                                            true,

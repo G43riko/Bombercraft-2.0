@@ -25,6 +25,7 @@ public class GLogger extends PrintStream {
     }
     public enum GError {
         LEVEL_CREATION_FAILED,
+        UNKNOWN_MANAGER,
         MAP_CREATION_FAILED,
         MAP_PARSING_FAILED,
         MAP_SERIALIZATION_FAILED,
@@ -79,7 +80,7 @@ public class GLogger extends PrintStream {
     private static final GLogger instanceLog = new GLogger(System.out);
     private static final GLogger instanceErr = new GLogger(System.err);
 
-    public static void makeError(GError GError) {
+    public static void throwError(GError GError) {
         throw getError(GError);
     }
 

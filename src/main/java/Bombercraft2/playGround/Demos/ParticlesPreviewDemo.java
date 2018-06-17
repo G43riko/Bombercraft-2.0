@@ -3,6 +3,7 @@ package Bombercraft2.playGround.Demos;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.gui2.GuiManager;
 import Bombercraft2.Bombercraft2.gui2.components.Button;
 import Bombercraft2.Bombercraft2.gui2.components.Panel;
@@ -25,7 +26,7 @@ public class ParticlesPreviewDemo extends SimpleAbstractGame<CorePlayGround> {
                                                                       ParticleEmitterData.Type.GREEN);
 
     public ParticlesPreviewDemo(CorePlayGround parent) {
-        super(parent, Type.ParticlesPreviewDemo);
+        super(parent, GameStateType.ParticlesPreviewDemo);
         guiManager.add(testScrollPanel());
     }
 

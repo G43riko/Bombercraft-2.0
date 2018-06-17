@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui2;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.gui2.components.*;
 import Bombercraft2.Bombercraft2.gui2.utils.ColorBox;
 import Bombercraft2.Bombercraft2.gui2.core.GuiConnectAble;
@@ -54,7 +54,7 @@ public class GuiTester {
         style.borderWidth = 5;
         style.fontColor = Color.BLACK;
         style.fontSize = 36;
-        style.round = Config.DEFAULT_ROUND;
+        style.round = StaticConfig.DEFAULT_ROUND;
         style.fontName = "Monospaced";
 
 

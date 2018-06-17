@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.game.entity;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.game.GameAble;
 import Bombercraft2.Bombercraft2.game.Timer;
 import Bombercraft2.Bombercraft2.game.level.Block;
@@ -39,13 +39,13 @@ public class Bomb extends Helper {
 
         timer.render(g2);
         g2.setColor(Color.BLACK);
-        g2.fillArc(actPos.getXi(), actPos.getYi(), Config.BOMB_WIDTH, Config.BOMB_HEIGHT, 0, 360);
+        g2.fillArc(actPos.getXi(), actPos.getYi(), StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT, 0, 360);
     }
 
     private void renderSimpleArea(Graphics2D g2, GVector2f actPos) {
         GVector2f localPos = Map.globalPosToLocalPos(position);
         int value, counter;
-        g2.setColor(Config.BOMB_AREA_COLOR);
+        g2.setColor(StaticConfig.BOMB_AREA_COLOR);
 
 
         //RIGHT
@@ -55,10 +55,10 @@ public class Bomb extends Helper {
             value++;
             counter++;
         }
-        g2.fillRect(actPos.getXi() + Config.BLOCK_SIZE.getXi(),
+        g2.fillRect(actPos.getXi() + StaticConfig.BLOCK_SIZE.getXi(),
                     actPos.getYi(),
-                    Config.BLOCK_SIZE.getXi() * counter,
-                    Config.BLOCK_SIZE.getYi());
+                    StaticConfig.BLOCK_SIZE.getXi() * counter,
+                    StaticConfig.BLOCK_SIZE.getYi());
 
         //LEFT
         value = localPos.getXi() - 1;
@@ -68,10 +68,10 @@ public class Bomb extends Helper {
             counter++;
         }
 
-        g2.fillRect(actPos.getXi() - Config.BLOCK_SIZE.getXi() * counter,
+        g2.fillRect(actPos.getXi() - StaticConfig.BLOCK_SIZE.getXi() * counter,
                     actPos.getYi(),
-                    Config.BLOCK_SIZE.getXi() * counter,
-                    Config.BLOCK_SIZE.getYi());
+                    StaticConfig.BLOCK_SIZE.getXi() * counter,
+                    StaticConfig.BLOCK_SIZE.getYi());
 
 
         //DOWN
@@ -83,9 +83,9 @@ public class Bomb extends Helper {
         }
 
         g2.fillRect(actPos.getXi(),
-                    actPos.getYi() + Config.BLOCK_SIZE.getYi(),
-                    Config.BLOCK_SIZE.getXi(),
-                    Config.BLOCK_SIZE.getYi() * counter);
+                    actPos.getYi() + StaticConfig.BLOCK_SIZE.getYi(),
+                    StaticConfig.BLOCK_SIZE.getXi(),
+                    StaticConfig.BLOCK_SIZE.getYi() * counter);
 
         //UP
         value = localPos.getYi() - 1;
@@ -96,9 +96,9 @@ public class Bomb extends Helper {
         }
 
         g2.fillRect(actPos.getXi(),
-                    actPos.getYi() - Config.BLOCK_SIZE.getYi() * counter,
-                    Config.BLOCK_SIZE.getXi(),
-                    Config.BLOCK_SIZE.getYi() * counter);
+                    actPos.getYi() - StaticConfig.BLOCK_SIZE.getYi() * counter,
+                    StaticConfig.BLOCK_SIZE.getXi(),
+                    StaticConfig.BLOCK_SIZE.getYi() * counter);
     }
 
     private void calcTargetBlocks() {
@@ -122,8 +122,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi() + Config.BLOCK_SIZE.getXi(), position.getYi()));
-        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi() * counter, Config.BLOCK_SIZE.getYi()));
+        damageAreas.add(new GVector2f(position.getXi() + StaticConfig.BLOCK_SIZE.getXi(), position.getYi()));
+        damageAreas.add(new GVector2f(StaticConfig.BLOCK_SIZE.getXi() * counter, StaticConfig.BLOCK_SIZE.getYi()));
 
 
         //LEFT
@@ -140,8 +140,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi() - Config.BLOCK_SIZE.getXi() * counter, position.getYi()));
-        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi() * counter, Config.BLOCK_SIZE.getYi()));
+        damageAreas.add(new GVector2f(position.getXi() - StaticConfig.BLOCK_SIZE.getXi() * counter, position.getYi()));
+        damageAreas.add(new GVector2f(StaticConfig.BLOCK_SIZE.getXi() * counter, StaticConfig.BLOCK_SIZE.getYi()));
 
 
         //DOWN
@@ -158,8 +158,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi(), position.getYi() + Config.BLOCK_SIZE.getYi()));
-        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi(), Config.BLOCK_SIZE.getYi() * counter));
+        damageAreas.add(new GVector2f(position.getXi(), position.getYi() + StaticConfig.BLOCK_SIZE.getYi()));
+        damageAreas.add(new GVector2f(StaticConfig.BLOCK_SIZE.getXi(), StaticConfig.BLOCK_SIZE.getYi() * counter));
 
         //UP
         value = localPos.getYi() - 1;
@@ -175,8 +175,8 @@ public class Bomb extends Helper {
             blocks.add(b);
         }
         counter++;
-        damageAreas.add(new GVector2f(position.getXi(), position.getYi() - Config.BLOCK_SIZE.getYi() * counter));
-        damageAreas.add(new GVector2f(Config.BLOCK_SIZE.getXi(), Config.BLOCK_SIZE.getYi() * counter));
+        damageAreas.add(new GVector2f(position.getXi(), position.getYi() - StaticConfig.BLOCK_SIZE.getYi() * counter));
+        damageAreas.add(new GVector2f(StaticConfig.BLOCK_SIZE.getXi(), StaticConfig.BLOCK_SIZE.getYi() * counter));
 
     }
 
@@ -192,7 +192,7 @@ public class Bomb extends Helper {
         alive = false;
         calcTargetBlocks();
         getParent().getConnector().setBombExplode(Map.globalPosToLocalPos(position), blocks, damageAreas);
-        getParent().addExplosion(position.add(Config.BLOCK_SIZE_HALF), Config.BLOCK_SIZE, Color.black, 15, true, true);
+        getParent().addExplosion(position.add(StaticConfig.BLOCK_SIZE_HALF), StaticConfig.BLOCK_SIZE, Color.black, 15, true, true);
     }
 
     @Contract(pure = true)

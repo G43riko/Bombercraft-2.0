@@ -20,7 +20,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import Bombercraft2.Bombercraft2.gui.menus.ProfileMenu;
-import utils.AudioPlayer;
+import org.utils.AudioPlayer;
+import org.utils.SoundManager;
 import utils.GLogger;
 
 public final class ResourceLoader {

@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.InteractAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.GameAble;
@@ -39,7 +39,7 @@ public class PlayerPanel implements InteractAble {
                          PLAYER_PANEL_RADIUS);
 
         g2.setColor(PLAYER_PANEL_FONT_COLOR);
-        g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD, PLAYER_PANEL_FONT_SIZE));
+        g2.setFont(new Font(StaticConfig.DEFAULT_FONT, Font.BOLD, PLAYER_PANEL_FONT_SIZE));
 
         int verticalOffset = PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
         g2.drawString(parent.getLabelOf(Texts.NAME) + ": " + parent.getMyPlayer().getName(),

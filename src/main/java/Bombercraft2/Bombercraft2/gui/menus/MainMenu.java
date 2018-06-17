@@ -1,6 +1,7 @@
 package Bombercraft2.Bombercraft2.gui.menus;
 
 import Bombercraft2.Bombercraft2.core.GameState;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.Bombercraft2.core.MenuAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.gui.components.GuiComponent;
@@ -13,7 +14,7 @@ public class MainMenu extends Menu {
     private final MenuAble parent;
 
     public MainMenu(MenuAble parent) {
-        super(parent, GameState.Type.MainMenu);
+        super(parent, GameStateType.MainMenu);
         this.parent = parent;
         position.setY(100);
         init();

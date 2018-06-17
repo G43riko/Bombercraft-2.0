@@ -1,8 +1,8 @@
 package Bombercraft2.playGround.Demos;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.GameState;
-import Bombercraft2.Bombercraft2.game.level.Block;
+import Bombercraft2.Bombercraft2.core.GameStateType;
 import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.ImagedBomb;
@@ -26,7 +26,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
     CorePlayGround parent;
 
     public BombDemo(@NotNull CorePlayGround parent) {
-        super(Type.BombDemo);
+        super(GameStateType.BombDemo);
         this.parent = parent;
         postFxManager = new PostFxManager(this, new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
         map = new SimpleChunkedMap(this, new GVector2f(4, 4));
@@ -52,7 +52,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
             parent.stopDemo();
         }
         if (Input.getMouseUp(Input.BUTTON_LEFT)) {
-            ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().sub(Config.BLOCK_SIZE_HALF), this);
+            ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().sub(StaticConfig.BLOCK_SIZE_HALF), this);
             bomb.callback = (b) -> postFxManager.addImage(((ImagedBomb)b).getCrater(), b.getPosition(), b.getSize());
             bombs.add(bomb);
         }

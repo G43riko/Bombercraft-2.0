@@ -1,7 +1,7 @@
 package Bombercraft2.playGround.Misc.bots;
 
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.components.healthBar.HealthAble;
 import Bombercraft2.Bombercraft2.core.Texts;
 import Bombercraft2.Bombercraft2.game.misc.Direction;
@@ -70,20 +70,20 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
         final float rightOffset = 21;
         final float leftOffset = 19;
 
-        GVector2f t = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() - topOffset).div(2))
-                              .div(Config.BLOCK_SIZE)
+        GVector2f t = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX(), StaticConfig.BLOCK_SIZE.getY() - topOffset).div(2))
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f b = position.add(new GVector2f(Config.BLOCK_SIZE.getX(), Config.BLOCK_SIZE.getY() + bottomOffset).div(
+        GVector2f b = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX(), StaticConfig.BLOCK_SIZE.getY() + bottomOffset).div(
                 2))
-                              .div(Config.BLOCK_SIZE)
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f r = position.add(new GVector2f(Config.BLOCK_SIZE.getX() - rightOffset,
-                                                 Config.BLOCK_SIZE.getY()).div(2))
-                              .div(Config.BLOCK_SIZE)
+        GVector2f r = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
+                                                 StaticConfig.BLOCK_SIZE.getY()).div(2))
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f l = position.add(new GVector2f(Config.BLOCK_SIZE.getX() + leftOffset,
-                                                 Config.BLOCK_SIZE.getY()).div(2))
-                              .div(Config.BLOCK_SIZE)
+        GVector2f l = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
+                                                 StaticConfig.BLOCK_SIZE.getY()).div(2))
+                              .div(StaticConfig.BLOCK_SIZE)
                               .toInt();
 
         try {
@@ -126,7 +126,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
     @Override
     public JSONObject toJSON() {
         JSONObject result = super.toJSON();
-        JSONWrapper(() -> {
+        jsonWrapper(() -> {
             result.put(Texts.SPEED, speed);
             result.put(Texts.HEALTH, health);
             result.put(Texts.IMAGE, image);
@@ -168,7 +168,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
     @Override
     public int getMaxHealth() {
-        return Config.PLAYER_MAX_HEALTH;
+        return StaticConfig.PLAYER_MAX_HEALTH;
     }
 
     @Override
@@ -203,23 +203,23 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
             return true;
         }
 
-        if (zoomedPosition.getX() + Config.DEFAULT_BLOCK_WIDTH * parent.getManager()
-                                                                       .getViewManager()
-                                                                       .getZoom() > zoomedMapSize.getX()) {
-            position.setX((zoomedMapSize.getX() - Config.DEFAULT_BLOCK_WIDTH * parent.getManager()
-                                                                                     .getViewManager()
-                                                                                     .getZoom()) / parent.getManager()
+        if (zoomedPosition.getX() + StaticConfig.DEFAULT_BLOCK_WIDTH * parent.getManager()
+                                                                             .getViewManager()
+                                                                             .getZoom() > zoomedMapSize.getX()) {
+            position.setX((zoomedMapSize.getX() - StaticConfig.DEFAULT_BLOCK_WIDTH * parent.getManager()
+                                                                                           .getViewManager()
+                                                                                           .getZoom()) / parent.getManager()
                                                                                                          .getViewManager()
                                                                                                          .getZoom());
             return true;
         }
 
-        if (zoomedPosition.getY() + Config.DEFAULT_BLOCK_HEIGHT * parent.getManager()
-                                                                        .getViewManager()
-                                                                        .getZoom() > zoomedMapSize.getY()) {
-            position.setY((zoomedMapSize.getY() - Config.DEFAULT_BLOCK_HEIGHT * parent.getManager()
-                                                                                      .getViewManager()
-                                                                                      .getZoom()) / parent.getManager()
+        if (zoomedPosition.getY() + StaticConfig.DEFAULT_BLOCK_HEIGHT * parent.getManager()
+                                                                              .getViewManager()
+                                                                              .getZoom() > zoomedMapSize.getY()) {
+            position.setY((zoomedMapSize.getY() - StaticConfig.DEFAULT_BLOCK_HEIGHT * parent.getManager()
+                                                                                            .getViewManager()
+                                                                                            .getZoom()) / parent.getManager()
                                                                                                           .getViewManager()
                                                                                                           .getZoom());
             return true;

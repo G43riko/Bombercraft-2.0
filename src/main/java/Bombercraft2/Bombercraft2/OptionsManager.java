@@ -1,9 +1,9 @@
 package Bombercraft2.Bombercraft2;
 
+import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.resouces.JSONAble;
 import utils.resouces.ResourceLoader;
 
 import java.util.HashMap;
@@ -43,7 +43,7 @@ public class OptionsManager implements JSONAble {
     }
 
     public void initDefault() {
-        final JSONObject result = ResourceLoader.getJSON(Config.FILE_VISIBLE_OPTIONS);
+        final JSONObject result = ResourceLoader.getJSON(StaticConfig.FILE_VISIBLE_OPTIONS);
         if (result != null) {
             fromJSON(result);
         }

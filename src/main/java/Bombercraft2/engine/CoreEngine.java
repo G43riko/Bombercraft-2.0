@@ -1,7 +1,7 @@
 package Bombercraft2.engine;
 
 import Bombercraft2.Bombercraft2.Bombercraft;
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.gui2.GuiTester;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -10,7 +10,6 @@ import utils.math.GVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.util.HashMap;
 
 public abstract class CoreEngine {
@@ -109,9 +108,9 @@ public abstract class CoreEngine {
 
     private void defaultInit() {
         window = new Window(this,
-                            Config.WINDOW_DEFAULT_TITLE,
-                            Config.WINDOW_DEFAULT_WIDTH,
-                            Config.WINDOW_DEFAULT_HEIGHT);
+                            StaticConfig.WINDOW_DEFAULT_TITLE,
+                            StaticConfig.WINDOW_DEFAULT_WIDTH,
+                            StaticConfig.WINDOW_DEFAULT_HEIGHT);
         window.add(canvas);
 
         canvas.addMouseListener(input);

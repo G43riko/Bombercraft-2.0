@@ -1,6 +1,6 @@
 package Bombercraft2.Bombercraft2.gui.components;
 
-import Bombercraft2.Bombercraft2.Config;
+import Bombercraft2.Bombercraft2.StaticConfig;
 import Bombercraft2.Bombercraft2.core.Visible;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
@@ -83,7 +83,7 @@ public class MiniSwitch extends GuiComponent {
         g2.drawRoundRect(position.getXi(), position.getYi(), size.getXi(), size.getYi(), round, round);
 
         g2.setColor(textColor);
-        g2.setFont(new Font(Config.DEFAULT_FONT, Font.BOLD | Font.ITALIC, textSize));
+        g2.setFont(new Font(StaticConfig.DEFAULT_FONT, Font.BOLD | Font.ITALIC, textSize));
         g2.drawString(text, position.getX() + textOffset.getX(), position.getY() + textSize + textOffset.getY());
     }
 
