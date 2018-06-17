@@ -6,17 +6,16 @@ import Bombercraft2.engine.Input;
 import Bombercraft2.playGround.CorePlayGround;
 import Bombercraft2.playGround.Misc.SimpleParticlePlayer;
 import Bombercraft2.playGround.Misc.particles.SimpleParticle;
+import org.glib2.math.physics.GClosest;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GClosest;
-import utils.math.GVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ClosestDemo extends GameState {
-    private final List<SimpleParticle> barrels = new ArrayList<>();
-    private final CorePlayGround parent;
+    private final List<SimpleParticle> barrels                = new ArrayList<>();
+    private final CorePlayGround       parent;
     private final SimpleParticlePlayer mySimpleParticlePlayer = new SimpleParticlePlayer();
 
 
@@ -40,8 +39,8 @@ public class ClosestDemo extends GameState {
 
     private void renderBarrel(SimpleParticle barrel, Graphics2D g2) {
         g2.setColor(barrel.color);
-        g2.fillArc((int)(barrel.posX - barrel.radius),
-                   (int)(barrel.posY - barrel.radius),
+        g2.fillArc((int) (barrel.posX - barrel.radius),
+                   (int) (barrel.posY - barrel.radius),
                    barrel.radius << 1,
                    barrel.radius << 1,
                    0,
@@ -61,14 +60,16 @@ public class ClosestDemo extends GameState {
     }
 
     private void drawClosestPoint(Graphics2D g2, SimpleParticle barrel) {
-        GVector2f closest = GClosest.getClosestPointOnLine(mySimpleParticlePlayer.posX,
-                                                           mySimpleParticlePlayer.posY,
-                                                           mySimpleParticlePlayer.posX + (int) (Math.cos(
-                                                                   mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
-                                                           mySimpleParticlePlayer.posY + (int) (Math.sin(
-                                                                   mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
-                                                           barrel.posX,
-                                                           barrel.posY);
+        org.glib2.math.vectors.GVector2f closest = GClosest.getClosestPointOnLine(mySimpleParticlePlayer.posX,
+                                                                                  mySimpleParticlePlayer.posY,
+                                                                                  mySimpleParticlePlayer.posX + (int) (Math
+                                                                                          .cos(
+                                                                                                  mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
+                                                                                  mySimpleParticlePlayer.posY + (int) (Math
+                                                                                          .sin(
+                                                                                                  mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
+                                                                                  barrel.posX,
+                                                                                  barrel.posY);
 
 
         final int targetSize = 20;
@@ -81,12 +82,12 @@ public class ClosestDemo extends GameState {
                    360);
 
         g2.setColor(Color.RED);
-        g2.drawLine((int)barrel.posX, (int)barrel.posY, closest.getXi(), closest.getYi());
+        g2.drawLine((int) barrel.posX, (int) barrel.posY, closest.getXi(), closest.getYi());
         int maxSize = parent.getCanvas().getWidth() + parent.getCanvas().getHeight();
         g2.drawLine((int) mySimpleParticlePlayer.posX,
                     (int) mySimpleParticlePlayer.posY,
-                    (int)(mySimpleParticlePlayer.posX + Math.cos(mySimpleParticlePlayer.angle) * maxSize),
-                    (int)(mySimpleParticlePlayer.posY + Math.sin(mySimpleParticlePlayer.angle) * maxSize));
+                    (int) (mySimpleParticlePlayer.posX + Math.cos(mySimpleParticlePlayer.angle) * maxSize),
+                    (int) (mySimpleParticlePlayer.posY + Math.sin(mySimpleParticlePlayer.angle) * maxSize));
     }
 
     @Override
