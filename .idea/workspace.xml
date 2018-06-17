@@ -5,36 +5,10 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" line="19" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1861fc88-fa97-4faa-bf45-771e27f31455" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/utils/BombercraftUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/Profile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/CoreGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/CoreGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/SceneManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/SceneManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Helper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Helper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/explosion/Explosion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/flora/Flora.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/flora/Flora.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/particles/Emitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/particles/Emitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/towers/TowerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/towers/TowerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Level.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Level.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/PosAndSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/PosAndSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/PlayerSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/PlayerSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/JoinMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/JoinMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui2/core/translation/TranslateColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui2/core/translation/TranslateColor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/RemoteGameData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/RemoteGameData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/core/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/core/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/CoreEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/CoreEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SpriteViewer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Utils.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/resouces/JSONAble.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/resouces/JSONEvent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/resouces/ResourceSaver.java" beforeDir="false" />
+    <list default="true" id="1861fc88-fa97-4faa-bf45-771e27f31455" name="Default" comment="Commit po odstránení duplicitneho Util objektu">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/math/GClosest.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/target/" />
@@ -64,102 +38,195 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="CoreEngine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/engine/CoreEngine.java">
+      <file leaf-file-name="Vector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
+            <state relative-caret-position="34">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BomberDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BomberDemo/BomberDemo.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="107" column="20" selection-start-line="107" selection-start-column="20" selection-end-line="107" selection-end-column="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/App.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="256" column="17" selection-start-line="256" selection-start-column="17" selection-end-line="256" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SimpleAbstractGame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="143">
-              <caret line="33" column="39" selection-start-line="33" selection-start-column="39" selection-end-line="33" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JoinMenu.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/JoinMenu.java">
+      <file leaf-file-name="SimpleVector2f.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector2f.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RemoteGameData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/RemoteGameData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+              <caret line="176" selection-start-line="176" selection-end-line="176" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#819#820#0" expanded="true" />
-                <element signature="e#856#857#0" expanded="true" />
+                <element signature="e#620#621#0" expanded="true" />
+                <element signature="e#672#673#0" expanded="true" />
+                <element signature="e#2070#2071#0" expanded="true" />
+                <element signature="e#2128#2129#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TranslateColor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui2/core/translation/TranslateColor.java">
+      <file leaf-file-name="Vector3f.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector3f.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="14" column="20" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+            <state relative-caret-position="170">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#561#562#0" expanded="true" />
+                <element signature="e#613#614#0" expanded="true" />
+                <element signature="e#657#658#0" expanded="true" />
+                <element signature="e#710#711#0" expanded="true" />
+                <element signature="e#754#755#0" expanded="true" />
+                <element signature="e#5072#5073#0" expanded="true" />
+                <element signature="e#5116#5117#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/multiplayer/core/Server.java">
+      <file leaf-file-name="AbstractVector2f.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector2f.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="64" column="21" selection-start-line="64" selection-start-column="21" selection-end-line="64" selection-end-column="21" />
+            <state relative-caret-position="204">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#188#189#0" expanded="true" />
+                <element signature="e#215#216#0" expanded="true" />
+                <element signature="e#257#258#0" expanded="true" />
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#666#667#0" expanded="true" />
+                <element signature="e#714#715#0" expanded="true" />
+                <element signature="e#776#777#0" expanded="true" />
+                <element signature="e#817#818#0" expanded="true" />
+                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#956#986#0" expanded="true" />
+                <element signature="e#1129#1159#0" expanded="true" />
+                <element signature="e#1294#1324#0" expanded="true" />
+                <element signature="e#1476#1506#0" expanded="true" />
+                <element signature="e#1683#1713#0" expanded="true" />
+                <element signature="e#1882#1912#0" expanded="true" />
+                <element signature="e#1813#1814#0" expanded="true" />
+                <element signature="e#1893#1894#0" expanded="true" />
+                <element signature="e#1941#1942#0" expanded="true" />
+                <element signature="e#2021#2022#0" expanded="true" />
+                <element signature="e#812#813#0" expanded="true" />
+                <element signature="e#844#845#0" expanded="true" />
+                <element signature="e#894#895#0" expanded="true" />
+                <element signature="e#926#927#0" expanded="true" />
+                <element signature="e#972#973#0" expanded="true" />
+                <element signature="e#1010#1011#0" expanded="true" />
+                <element signature="e#1056#1057#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
+                <element signature="e#1152#1153#0" expanded="true" />
+                <element signature="e#1202#1203#0" expanded="true" />
+                <element signature="e#1285#1286#0" expanded="true" />
+                <element signature="e#1334#1335#0" expanded="true" />
+                <element signature="e#1389#1390#0" expanded="true" />
+                <element signature="e#1438#1439#0" expanded="true" />
+                <element signature="e#1516#1517#0" expanded="true" />
+                <element signature="e#1546#1547#0" expanded="true" />
+                <element signature="e#1594#1595#0" expanded="true" />
+                <element signature="e#1627#1628#0" expanded="true" />
+                <element signature="e#3718#3748#0" expanded="true" />
+                <element signature="e#3843#3873#0" expanded="true" />
+                <element signature="e#4321#4351#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PerlinDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PerlinDemo.java">
+      <file leaf-file-name="GVector2f.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/GVector2f.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="60" column="49" selection-start-line="60" selection-start-column="49" selection-end-line="60" selection-end-column="49" />
+            <state relative-caret-position="85">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CoreGame.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/CoreGame.java">
+      <file leaf-file-name="Vector2f.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector2f.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="151">
-              <caret line="45" column="13" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+            <state relative-caret-position="340">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#346#347#0" expanded="true" />
+                <element signature="e#373#374#0" expanded="true" />
+                <element signature="e#407#408#0" expanded="true" />
+                <element signature="e#431#432#0" expanded="true" />
+                <element signature="e#475#476#0" expanded="true" />
+                <element signature="e#516#517#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#583#584#0" expanded="true" />
+                <element signature="e#2431#2432#0" expanded="true" />
+                <element signature="e#2494#2495#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SimpleVector3f.java" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector3f.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
+              <folding>
+                <element signature="e#208#209#0" expanded="true" />
+                <element signature="e#237#238#0" expanded="true" />
+                <element signature="e#676#677#0" expanded="true" />
+                <element signature="e#720#721#0" expanded="true" />
+                <element signature="e#5233#5234#0" expanded="true" />
+                <element signature="e#5283#5284#0" expanded="true" />
+                <element signature="e#5506#5507#0" expanded="true" />
+                <element signature="e#5538#5539#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractVector3f.java" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector3f.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+              <folding>
+                <element signature="e#218#219#0" expanded="true" />
+                <element signature="e#247#248#0" expanded="true" />
+                <element signature="e#306#307#0" expanded="true" />
+                <element signature="e#336#337#0" expanded="true" />
+                <element signature="e#709#710#0" expanded="true" />
+                <element signature="e#785#786#0" expanded="true" />
+                <element signature="e#833#834#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+                <element signature="e#959#960#0" expanded="true" />
+                <element signature="e#1029#1030#0" expanded="true" />
+                <element signature="e#1050#1080#0" expanded="true" />
+                <element signature="e#1248#1278#0" expanded="true" />
+                <element signature="e#1617#1647#0" expanded="true" />
+                <element signature="e#1887#1917#0" expanded="true" />
+                <element signature="e#2128#2158#0" expanded="true" />
+                <element signature="e#1074#1075#0" expanded="true" />
+                <element signature="e#1106#1107#0" expanded="true" />
+                <element signature="e#1136#1137#0" expanded="true" />
+                <element signature="e#1168#1169#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
+                <element signature="e#1236#1237#0" expanded="true" />
+                <element signature="e#1262#1263#0" expanded="true" />
+                <element signature="e#1312#1313#0" expanded="true" />
+                <element signature="e#1338#1339#0" expanded="true" />
+                <element signature="e#1388#1389#0" expanded="true" />
+                <element signature="e#1451#1452#0" expanded="true" />
+                <element signature="e#1500#1501#0" expanded="true" />
+                <element signature="e#1535#1536#0" expanded="true" />
+                <element signature="e#1584#1585#0" expanded="true" />
+                <element signature="e#1698#1699#0" expanded="true" />
+                <element signature="e#1728#1729#0" expanded="true" />
+                <element signature="e#1745#1746#0" expanded="true" />
+                <element signature="e#1775#1776#0" expanded="true" />
+                <element signature="e#4182#4212#0" expanded="true" />
+                <element signature="e#4307#4337#0" expanded="true" />
+                <element signature="e#4432#4462#0" expanded="true" />
+                <element signature="e#5051#5081#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -178,36 +245,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>addEmi</find>
-      <find>g2.drawRect</find>
-      <find>g2.fillRect</find>
-      <find>g2.drawImage</find>
-      <find>g2.drawArc</find>
-      <find>content</find>
-      <find>GameState.Type</find>
-      <find>renderAndCheckLastFrame</find>
-      <find>public static long ping(</find>
-      <find>public static void measureNano</find>
-      <find>String label, BasicListener event</find>
-      <find>private static long ping(</find>
-      <find>ping</find>
-      <find>getMyIP</find>
-      <find>getLocalIP</find>
-      <find>getHostName</find>
-      <find>choose</find>
-      <find>File2URL</find>
-      <find>getFullscreenScreenshotImage</find>
-      <find>takeFullscreenScreenshot</find>
-      <find>getMemoryInfo</find>
-      <find>nvl</find>
-      <find>isIn</find>
-      <find>isInByString</find>
-      <find>deepCopy</find>
-      <find>clamp</find>
-      <find>deepCopy2</find>
-      <find>getNormalMoveFromDir</find>
-      <find>JSONWrapper</find>
-      <find>lerpColor</find>
+      <find>for</find>
+      <find>Int</find>
+      <find>normali</find>
+      <find>toInt</find>
+      <find>GVector3f</find>
+      <find>abs</find>
+      <find>length</find>
+      <find>GVector2f</find>
+      <find>GV</find>
+      <find>new T</find>
+      <find>int</find>
+      <find>dist</find>
+      <find>norma</find>
+      <find>lengh</find>
+      <find>getInt</find>
+      <find>toIn</find>
+      <find>inve</find>
+      <find>invert</find>
+      <find>negate</find>
+      <find>nega</find>
+      <find>this.</find>
+      <find>, float z)</find>
+      <find>Vector3f</find>
+      <find>getAbs</find>
+      <find>dot</find>
+      <find>getDot</find>
+      <find>return this</find>
+      <find>sum(</find>
+      <find>Vector2f</find>
+      <find>getPow</find>
     </findStrings>
     <replaceStrings>
       <replace>CONSTRUCTORS</replace>
@@ -227,7 +294,16 @@
       <replace>BlockType</replace>
       <replace>GameStateType</replace>
       <replace>jsonWrapper</replace>
+      <replace>getInstance</replace>
+      <replace>Vector3f</replace>
+      <replace>)</replace>
+      <replace>return (T) this</replace>
+      <replace>T</replace>
+      <replace>Vector2f</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>C:\Users\gcsol\IdeaProjects\JavaUtils\GLib2\src\main\java\org\glib2\math\vectors</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -235,20 +311,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameStateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/GenericGame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/GameBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/utils/GLogger.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/AdvancedAbstractGame.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/Menu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/MainMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/OptionsMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/ProfileMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/EndGameMenu.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/LoadingScreen.java" />
         <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/SoundManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/utils/resouces/ResourceLoader.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/BlockType.java" />
@@ -286,6 +348,20 @@
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/SimpleAbstractGame.java" />
         <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/JoinMenu.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/GLogger.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/logger/GError.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/GVector3f.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector2f_backup.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AdvancedVector.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector3f.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector2f.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector2f.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector2f.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector3f.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector3f.java" />
       </list>
     </option>
   </component>
@@ -498,6 +574,38 @@
               <item name="math" type="462c0819:PsiDirectoryNode" />
               <item name="physics" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="glib2" type="462c0819:PsiDirectoryNode" />
+              <item name="math" type="462c0819:PsiDirectoryNode" />
+              <item name="vectors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="glib2" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -552,7 +660,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="true" />
+    <property name="SONARLINT_PRECOMMIT_ANALYSIS" value="false" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Projects/Bombercraft-2.0/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -565,11 +673,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.glib2.math.vectors" />
       <recent name="Bombercraft2.playGround.Misc" />
       <recent name="Bombercraft2.playGround.Misc.particles" />
       <recent name="Bombercraft2.Bombercraft2.game.level" />
       <recent name="Bombercraft2.playGround.Demos" />
-      <recent name="Bombercraft2.playGround" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Bombercraft2.playGround.Demos" />
@@ -812,11 +920,18 @@
       <option name="project" value="LOCAL" />
       <updated>1524510899454</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Commit po odstránení duplicitneho Util objektu">
+      <created>1529246050965</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1529246050965</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292093000" />
+    <option name="totallyTimeSpent" value="301266000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -832,48 +947,48 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295711" />
-      <window_info active="true" anchor="bottom" id="Messages" order="11" visible="true" weight="0.3286517" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.3295711" />
+      <window_info anchor="bottom" id="Messages" order="14" weight="0.3286517" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info id="Image Layers" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" weight="0.3286517" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50067115" side_tool="true" weight="0.3286517" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286517" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.20365168" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49932885" weight="0.3286517" />
+      <window_info anchor="bottom" id="Database Changes" order="15" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286517" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49932885" weight="0.20365168" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49932885" weight="0.3286517" />
       <window_info id="Capture Tool" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.29060403" />
-      <window_info anchor="bottom" id="SonarLint" />
+      <window_info active="true" content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.29060403" />
+      <window_info anchor="bottom" id="SonarLint" order="0" weight="0.3286517" />
       <window_info anchor="right" id="Database" order="9" weight="0.32975295" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.34129214" />
+      <window_info anchor="bottom" id="Find" order="2" visible="true" weight="0.34129214" />
       <window_info id="Structure" order="0" side_tool="true" weight="0.24973147" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.2766854" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50067115" side_tool="true" weight="0.3286517" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.2766854" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50067115" side_tool="true" weight="0.3286517" />
       <window_info active="true" content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.29060403" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32975295" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49932885" weight="0.3286517" />
+      <window_info anchor="bottom" id="Terminal" order="18" sideWeight="0.49932885" weight="0.3286517" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="20" show_stripe_button="false" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973147" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Capture Tool" order="1" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3286517" />
+      <window_info anchor="bottom" id="Version Control" order="16" weight="0.3286517" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3295711" />
-      <window_info anchor="bottom" id="Inspection Results" order="9" weight="0.50842696" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49932885" weight="0.20365168" />
-      <window_info anchor="bottom" id="Messages" order="11" visible="true" weight="0.3286517" />
+      <window_info anchor="bottom" id="TODO" order="10" weight="0.3295711" />
+      <window_info anchor="bottom" id="Inspection Results" order="17" weight="0.50842696" />
+      <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="6" weight="0.25" />
+      <window_info anchor="bottom" id="Run" order="5" sideWeight="0.49932885" weight="0.20365168" />
+      <window_info anchor="bottom" id="Messages" order="19" visible="true" weight="0.3286517" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info id="Designer" order="2" />
@@ -912,7 +1027,8 @@
     <MESSAGE value="Opravený raycasting" />
     <MESSAGE value="Väčšie úpravy kódu" />
     <MESSAGE value="Veľký refaktoring kódu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Veľký refaktoring kódu" />
+    <MESSAGE value="Commit po odstránení duplicitneho Util objektu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit po odstránení duplicitneho Util objektu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -928,174 +1044,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/CanvasUtils.java" />
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/GCanvasUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/AudioPlayer.java" />
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/SoundManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/resouces/ResourceLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="73">
-          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/BlockType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="38" column="33" selection-start-line="38" selection-start-column="33" selection-end-line="38" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/data/FixedArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/interfaces/JSONAble.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/Entity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="43" column="19" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/entity/flora/FloraManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="19" column="45" selection-start-line="19" selection-start-column="45" selection-end-line="19" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/OptionsManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/GConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/SpriteAnimation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Block.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="156" column="37" selection-start-line="156" selection-start-column="37" selection-end-line="156" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/MeasureUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="30" column="23" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/network/InternetUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="122" column="27" selection-start-line="122" selection-start-column="23" selection-end-line="122" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/system_analytics/SystemInfoGrabber.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="151" column="5" selection-start-line="151" selection-start-column="5" selection-end-line="151" selection-end-column="5" />
-          <folding>
-            <element signature="method#printNetworkData#0;class#SystemInfoGrabber#0" />
-            <element signature="method#printRuntimeData#0;class#SystemInfoGrabber#0" />
-            <element signature="method#printSystemData#0;class#SystemInfoGrabber#0" />
-            <element signature="method#getSystemUptime#0;class#SystemInfoGrabber#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleGridCollision.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="111" column="39" selection-start-line="111" selection-start-column="39" selection-end-line="111" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/components/GuiComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="70" column="85" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/BombercraftUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/Utils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="175" column="5" lean-forward="true" selection-start-line="175" selection-start-column="5" selection-end-line="175" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -1176,20 +1124,6 @@
             <element signature="e#2433#2434#0" expanded="true" />
             <element signature="e#2497#2498#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/LineLineIntersect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="131" column="24" selection-start-line="131" selection-start-column="24" selection-end-line="131" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1311,8 +1245,322 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/JoinMenu.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="26" column="62" lean-forward="true" selection-start-line="26" selection-start-column="62" selection-end-line="26" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/resouces/ResourceLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="107" column="29" selection-start-line="107" selection-start-column="29" selection-end-line="107" selection-end-column="29" />
+          <folding>
+            <element signature="e#4392#4393#0" expanded="true" />
+            <element signature="e#4450#4451#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GClosest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GClosest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GVector2f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1819">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="19" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GColision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-196">
+          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/LineLineIntersect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-420">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/logger/GError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="72" column="23" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/GLogger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/MainManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="68" column="12" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5950">
+          <caret line="72" column="26" lean-forward="true" selection-start-line="72" selection-start-column="26" selection-end-line="72" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/test/java/org/glib2/GVector2fTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Utils/Java/src.zip!/java/lang/SuppressWarnings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="53" column="18" selection-start-line="53" selection-start-column="18" selection-end-line="53" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Utils/Java/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/GVector3f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="83" selection-start-line="2" selection-start-column="63" selection-end-line="2" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector2f_backup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-174">
+          <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/GVector2f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector3f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="143" column="8" selection-start-line="143" selection-start-column="8" selection-end-line="143" selection-end-column="8" />
+          <folding>
+            <element signature="e#208#209#0" expanded="true" />
+            <element signature="e#237#238#0" expanded="true" />
+            <element signature="e#676#677#0" expanded="true" />
+            <element signature="e#720#721#0" expanded="true" />
+            <element signature="e#5233#5234#0" expanded="true" />
+            <element signature="e#5283#5284#0" expanded="true" />
+            <element signature="e#5506#5507#0" expanded="true" />
+            <element signature="e#5538#5539#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector2f.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
-          <caret line="32" column="44" selection-start-line="32" selection-start-column="44" selection-end-line="32" selection-end-column="44" />
+          <caret line="176" selection-start-line="176" selection-end-line="176" />
+          <folding>
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#2070#2071#0" expanded="true" />
+            <element signature="e#2128#2129#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AdvancedVector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector2f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#666#667#0" expanded="true" />
+            <element signature="e#714#715#0" expanded="true" />
+            <element signature="e#776#777#0" expanded="true" />
+            <element signature="e#817#818#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#956#986#0" expanded="true" />
+            <element signature="e#1129#1159#0" expanded="true" />
+            <element signature="e#1294#1324#0" expanded="true" />
+            <element signature="e#1476#1506#0" expanded="true" />
+            <element signature="e#1683#1713#0" expanded="true" />
+            <element signature="e#1882#1912#0" expanded="true" />
+            <element signature="e#1813#1814#0" expanded="true" />
+            <element signature="e#1893#1894#0" expanded="true" />
+            <element signature="e#1941#1942#0" expanded="true" />
+            <element signature="e#2021#2022#0" expanded="true" />
+            <element signature="e#812#813#0" expanded="true" />
+            <element signature="e#844#845#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#926#927#0" expanded="true" />
+            <element signature="e#972#973#0" expanded="true" />
+            <element signature="e#1010#1011#0" expanded="true" />
+            <element signature="e#1056#1057#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+            <element signature="e#1202#1203#0" expanded="true" />
+            <element signature="e#1285#1286#0" expanded="true" />
+            <element signature="e#1334#1335#0" expanded="true" />
+            <element signature="e#1389#1390#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1516#1517#0" expanded="true" />
+            <element signature="e#1546#1547#0" expanded="true" />
+            <element signature="e#1594#1595#0" expanded="true" />
+            <element signature="e#1627#1628#0" expanded="true" />
+            <element signature="e#3718#3748#0" expanded="true" />
+            <element signature="e#3843#3873#0" expanded="true" />
+            <element signature="e#4321#4351#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector2f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#346#347#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#407#408#0" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#475#476#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#583#584#0" expanded="true" />
+            <element signature="e#2431#2432#0" expanded="true" />
+            <element signature="e#2494#2495#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/Vector3f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#561#562#0" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#710#711#0" expanded="true" />
+            <element signature="e#754#755#0" expanded="true" />
+            <element signature="e#5072#5073#0" expanded="true" />
+            <element signature="e#5116#5117#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/AbstractVector3f.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="102" column="17" selection-start-line="102" selection-start-column="17" selection-end-line="102" selection-end-column="17" />
+          <folding>
+            <element signature="e#218#219#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#306#307#0" expanded="true" />
+            <element signature="e#336#337#0" expanded="true" />
+            <element signature="e#709#710#0" expanded="true" />
+            <element signature="e#785#786#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
+            <element signature="e#959#960#0" expanded="true" />
+            <element signature="e#1029#1030#0" expanded="true" />
+            <element signature="e#1050#1080#0" expanded="true" />
+            <element signature="e#1248#1278#0" expanded="true" />
+            <element signature="e#1617#1647#0" expanded="true" />
+            <element signature="e#1887#1917#0" expanded="true" />
+            <element signature="e#2128#2158#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1106#1107#0" expanded="true" />
+            <element signature="e#1136#1137#0" expanded="true" />
+            <element signature="e#1168#1169#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
+            <element signature="e#1236#1237#0" expanded="true" />
+            <element signature="e#1262#1263#0" expanded="true" />
+            <element signature="e#1312#1313#0" expanded="true" />
+            <element signature="e#1338#1339#0" expanded="true" />
+            <element signature="e#1388#1389#0" expanded="true" />
+            <element signature="e#1451#1452#0" expanded="true" />
+            <element signature="e#1500#1501#0" expanded="true" />
+            <element signature="e#1535#1536#0" expanded="true" />
+            <element signature="e#1584#1585#0" expanded="true" />
+            <element signature="e#1698#1699#0" expanded="true" />
+            <element signature="e#1728#1729#0" expanded="true" />
+            <element signature="e#1745#1746#0" expanded="true" />
+            <element signature="e#1775#1776#0" expanded="true" />
+            <element signature="e#4182#4212#0" expanded="true" />
+            <element signature="e#4307#4337#0" expanded="true" />
+            <element signature="e#4432#4462#0" expanded="true" />
+            <element signature="e#5051#5081#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
