@@ -1,6 +1,6 @@
 package utils;
 
-import Bombercraft2.Bombercraft2.game.misc.Direction;
+import org.bombercraft2.game.misc.Direction;
 import org.jetbrains.annotations.NotNull;
 import utils.math.GVector2f;
 

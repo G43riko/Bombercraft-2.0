@@ -1,28 +1,20 @@
 package utils.resouces;
 
-import java.awt.Image;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.util.HashMap;
-
-import javax.imageio.ImageIO;
-
+import org.bombercraft2.gui.menus.ProfileMenu;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import Bombercraft2.Bombercraft2.gui.menus.ProfileMenu;
 import org.utils.AudioPlayer;
 import org.utils.SoundManager;
 import utils.GLogger;
+
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.io.*;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.HashMap;
 
 public final class ResourceLoader {
     private static final HashMap<String, Image> loadedTextures = new HashMap<>();

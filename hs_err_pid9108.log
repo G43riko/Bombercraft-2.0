@@ -105,7 +105,7 @@ Event: 32,523 Thread 0x00007fab000c1000 nmethod 2434 0x00007faaefef6650 code [0x
 Event: 32,589 Thread 0x00007fab000c1000 2436       4       org.json.JSONObject::getJSONObject (53 bytes)
 Event: 32,617 Thread 0x00007fab000c1000 nmethod 2436 0x00007faaefee49d0 code [0x00007faaefee4b60, 0x00007faaefee5278]
 Event: 32,635 Thread 0x00007fab000c4000 nmethod 2435 0x00007faaf04a4b10 code [0x00007faaf04a4fc0, 0x00007faaf04a8e68]
-Event: 32,637 Thread 0x00007fab000c1000 2437   !   4       Bombercraft2.Bombercraft2.gui.GuiManager::getLabelOf (74 bytes)
+Event: 32,637 Thread 0x00007fab000c1000 2437   !   4       org.org.gui.GuiManager::getLabelOf (74 bytes)
 Event: 32,681 Thread 0x00007fab000c1000 nmethod 2437 0x00007faaeff3e990 code [0x00007faaeff3eba0, 0x00007faaeff3fd78]
 Event: 32,922 Thread 0x00007fab000c4000 2438       4       java.util.HashMap$ValueSpliterator::characteristics (28 bytes)
 Event: 32,922 Thread 0x00007fab000c4000 nmethod 2438 0x00007faaefee4790 code [0x00007faaefee48e0, 0x00007faaefee4958]
@@ -692,8 +692,8 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 
 VM Arguments:
 jvm_args: -agentlib:jdwp=transport=dt_socket,suspend=y,address=localhost:36203 -Dfile.encoding=UTF-8 
-java_command: Bombercraft2.Bombercraft2.App
-java_class_path (initial): /home/gabriel/workspace/Bombercraft2/target/classes:/home/gabriel/.m2/repository/org/json/json/20090211/json-20090211.jar
+java_command: org.org.App
+java_class_path (initial): /home/gabriel/workspace/org/target/classes:/home/gabriel/.m2/repository/org/json/json/20090211/json-20090211.jar
 Launcher Type: SUN_STANDARD
 
 Environment Variables:
