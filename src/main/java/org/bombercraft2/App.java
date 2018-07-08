@@ -17,7 +17,7 @@ import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.utils.Utils;
+import org.utils.MiscUtils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -253,7 +253,7 @@ public class App {
         while (!task.isFinished()) {
             botManager.update(1);
             task.update(1);
-            Utils.sleep(1000);
+            MiscUtils.sleep(1000);
         }
     }
 
@@ -271,7 +271,7 @@ public class App {
             client.run();
         });
         t1.start();
-        Utils.sleep(1000);
+        MiscUtils.sleep(1000);
         t2.start();
     }
 }

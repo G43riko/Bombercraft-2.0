@@ -4,7 +4,7 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.Iconable;
 import org.jetbrains.annotations.NotNull;
-import org.utils.Utils;
+import org.utils.MiscUtils;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
 
@@ -33,7 +33,7 @@ public abstract class Helper extends Entity<GameAble> {
     }
 
     public static boolean isBomb(Type type) {
-        return Utils.isIn(type, Helper.Type.BOMB_NORMAL);
+        return MiscUtils.isIn(type, Helper.Type.BOMB_NORMAL);
     }
 
     public final Type getType() {

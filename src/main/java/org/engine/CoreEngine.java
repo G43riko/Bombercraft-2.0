@@ -5,7 +5,7 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.gui2.GuiTester;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import org.utils.Utils;
+import org.utils.MiscUtils;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -75,13 +75,13 @@ public abstract class CoreEngine {
                 defaultUpdate((float) Math.min(deltaU, 2));
                 ticks++;
                 deltaU--;
-                Utils.sleep(1);
+                MiscUtils.sleep(1);
             }
             if (deltaF >= 1) {
                 defaultRender();
                 frames++;
                 deltaF--;
-                Utils.sleep(1);
+                MiscUtils.sleep(1);
             }
 
             if (System.currentTimeMillis() - timer > 1000) {

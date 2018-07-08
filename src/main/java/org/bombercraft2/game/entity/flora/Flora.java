@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.utils.Utils;
+import org.utils.MiscUtils;
 import utils.GLogger;
 import utils.math.GVector2f;
 import utils.resouces.ResourceLoader;
@@ -141,13 +141,13 @@ public abstract class Flora extends Entity {
 
     protected interface FlorAble extends Iconable {
         static FlorAble valueOf(String value) {
-            if (Utils.isInByString(value, Plants.values())) {
+            if (MiscUtils.isInByString(value, Plants.values())) {
                 return Plants.valueOf(value);
             }
-            if (Utils.isInByString(value, Bushes.values())) {
+            if (MiscUtils.isInByString(value, Bushes.values())) {
                 return Bushes.valueOf(value);
             }
-            if (Utils.isInByString(value, Trees.values())) {
+            if (MiscUtils.isInByString(value, Trees.values())) {
                 return Trees.valueOf(value);
             }
             GLogger.printLine("nerozpoznalo to floru typu: " + value);

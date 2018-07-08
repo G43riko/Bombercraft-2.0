@@ -2,7 +2,7 @@ package org.bombercraft2.multiplayer.core;
 
 import org.bombercraft2.Bombercraft;
 import org.bombercraft2.StaticConfig;
-import org.utils.Utils;
+import org.utils.MiscUtils;
 import utils.GLogger;
 
 import java.io.IOException;
@@ -61,7 +61,7 @@ public abstract class Server implements Writable {
                                       .map(Map.Entry::getValue)
                                       .forEach(this::read);
 
-                Utils.sleep(1);
+                MiscUtils.sleep(1);
             }
         });
         listenThread.start();

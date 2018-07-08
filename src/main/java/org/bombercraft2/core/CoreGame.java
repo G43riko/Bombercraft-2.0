@@ -20,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.utils.Utils;
+import org.utils.MiscUtils;
 import org.utils.enums.Keys;
 import utils.GLogger;
 import utils.math.GVector2f;
@@ -44,7 +44,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
               StaticConfig.WINDOW_DEFAULT_UPS,
               StaticConfig.WINDOW_DEFAULT_RENDER_TEXT);
 
-        Utils.sleep(100);
+        MiscUtils.sleep(100);
         states.push(new ProfileMenu(this));
         Input.setTarget(states.peek());
     }
@@ -205,7 +205,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
 
         game = null;
 
-        if (!Utils.isIn(states.peek().getType(), GameStateType.MainMenu, GameStateType.ProfileMenu)) {
+        if (!MiscUtils.isIn(states.peek().getType(), GameStateType.MainMenu, GameStateType.ProfileMenu)) {
             states.pop();
             Input.setTarget(states.peek());
         }
