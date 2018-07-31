@@ -7,8 +7,8 @@ import org.bombercraft2.game.bots.BotFactory;
 import org.bombercraft2.game.misc.Direction;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.playGround.Misc.drawableLine.BasicDrawableLine;
-import org.playGround.Misc.drawableLine.EntityStartDrawableLine;
+import org.play_ground.misc.drawable_line.BasicDrawableLine;
+import org.play_ground.misc.drawable_line.EntityStartDrawableLine;
 import utils.math.GVector2f;
 
 import java.awt.*;

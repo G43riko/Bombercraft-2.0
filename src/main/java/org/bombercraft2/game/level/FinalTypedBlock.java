@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import org.playGround.Misc.map.SimpleTypedBlock;
+import org.play_ground.misc.map.SimpleTypedBlock;
 import utils.math.GVector2f;
 import utils.math.LineLineIntersect;
 
@@ -100,13 +100,13 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
 
     /*
     public void drawSprites(Graphics2D g2) {
-        FinalTypedBlock t = getParent().getLevel().getHashMap().getBlock(position.getXi(), position.getYi() - 1);
-        FinalTypedBlock b = getParent().getLevel().getHashMap().getBlock(position.getXi(), position.getYi() + 1);
-        FinalTypedBlock r = getParent().getLevel().getHashMap().getBlock(position.getXi() + 1, position.getYi());
-        FinalTypedBlock l = getParent().getLevel().getHashMap().getBlock(position.getXi() - 1, position.getYi());
+        FinalTypedBlock t = getParent().getLevel().getHashMap().getBlock(scale.getXi(), scale.getYi() - 1);
+        FinalTypedBlock b = getParent().getLevel().getHashMap().getBlock(scale.getXi(), scale.getYi() + 1);
+        FinalTypedBlock r = getParent().getLevel().getHashMap().getBlock(scale.getXi() + 1, scale.getYi());
+        FinalTypedBlock l = getParent().getLevel().getHashMap().getBlock(scale.getXi() - 1, scale.getYi());
 
         GVector2f size = SIZE.mul(parent.getZoom());
-        GVector2f pos = position.mul(size).sub(parent.getOffset());
+        GVector2f pos = scale.mul(size).sub(parent.getOffset());
 
         if (t != null && t.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 8, 4),
@@ -190,13 +190,13 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
     /*
     public void renderWalls(Graphics2D g2) {
         Map map = getParent().getLevel().getHashMap();
-        boolean t = map.isWalkable(position.getXi(), position.getYi() - 1);
-        boolean b = map.isWalkable(position.getXi(), position.getYi() + 1);
-        boolean l = map.isWalkable(position.getXi() - 1, position.getYi());
-        boolean r = map.isWalkable(position.getXi() + 1, position.getYi());
+        boolean t = map.isWalkable(scale.getXi(), scale.getYi() - 1);
+        boolean b = map.isWalkable(scale.getXi(), scale.getYi() + 1);
+        boolean l = map.isWalkable(scale.getXi() - 1, scale.getYi());
+        boolean r = map.isWalkable(scale.getXi() + 1, scale.getYi());
 
         GVector2f size = SIZE.mul(parent.getZoom());
-        GVector2f pos = position.mul(size).sub(parent.getOffset());
+        GVector2f pos = scale.mul(size).sub(parent.getOffset());
 
         int offset = (int) (StaticConfig.WALL_OFFSET * parent.getZoom());
 
@@ -205,10 +205,10 @@ public final class FinalTypedBlock extends SimpleTypedBlock {
         GVector2f p2 = pos.add(size).add(offset);
         GVector2f p3 = pos.add(size).sub(new GVector2f(offset + size.getX(), -offset));
 
-        FinalTypedBlock block0 = map.getBlock(position.getXi() - 1, position.getYi() - 1);
-        FinalTypedBlock block1 = map.getBlock(position.getXi() + 1, position.getYi() - 1);
-        FinalTypedBlock block2 = map.getBlock(position.getXi() + 1, position.getYi() + 1);
-        FinalTypedBlock block3 = map.getBlock(position.getXi() - 1, position.getYi() + 1);
+        FinalTypedBlock block0 = map.getBlock(scale.getXi() - 1, scale.getYi() - 1);
+        FinalTypedBlock block1 = map.getBlock(scale.getXi() + 1, scale.getYi() - 1);
+        FinalTypedBlock block2 = map.getBlock(scale.getXi() + 1, scale.getYi() + 1);
+        FinalTypedBlock block3 = map.getBlock(scale.getXi() - 1, scale.getYi() + 1);
         boolean val0 = block0 != null && !block0.isWalkable();
         boolean val1 = block1 != null && !block1.isWalkable();
         boolean val2 = block2 != null && !block2.isWalkable();

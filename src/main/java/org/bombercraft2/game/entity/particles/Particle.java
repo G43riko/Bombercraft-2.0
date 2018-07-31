@@ -4,7 +4,7 @@ import org.bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.SimpleGameAble;
 import utils.math.GVector2f;
 
 import java.awt.*;

@@ -160,7 +160,7 @@ public abstract class CoreEngine {
         render(g2);
 
 
-        // GuiTester.manager.render(g2);
+        // GuiTester.manager.draw(g2);
         // GuiTester.manager.update();
         // canvas.setCursor(GuiTester.manager.getCursor());
         /*
@@ -172,7 +172,7 @@ public abstract class CoreEngine {
                                                 canvas.getHeight() + maxEarthQuake * 2,
                                                 BufferedImage.TYPE_INT_RGB);
         Graphics2D tmpG2 = (Graphics2D) image.getGraphics();
-        render(tmpG2);
+        draw(tmpG2);
         g2.drawImage(image,
                      0,
                      0,

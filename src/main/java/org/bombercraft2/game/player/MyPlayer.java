@@ -1,7 +1,7 @@
 package org.bombercraft2.game.player;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.components.healthBar.HealthBar;
+import org.bombercraft2.components.health_bar.HealthBar;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.entity.Bomb;
 import org.bombercraft2.game.entity.BombCreator;

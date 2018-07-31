@@ -2,8 +2,8 @@ package org.bombercraft2.components.tasks;
 
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
-import org.playGround.Misc.AbstractManager;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.AbstractManager;
+import org.play_ground.misc.SimpleGameAble;
 
 import java.awt.*;
 import java.util.ArrayList;

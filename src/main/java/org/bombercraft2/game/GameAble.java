@@ -12,7 +12,7 @@ import org.bombercraft2.multiplayer.Connector;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.SimpleGameAble;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -74,7 +74,7 @@ public interface GameAble extends InteractAbleG2, Visible, SimpleGameAble {
                      );
 
     /**
-     * @param pos         - position of explosion
+     * @param pos         - scale of explosion
      * @param type        - type of explosion
      * @param createdTime - time when bomb was created by client - prevent network delay
      */

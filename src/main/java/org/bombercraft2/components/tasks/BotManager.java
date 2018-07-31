@@ -4,7 +4,7 @@ import org.bombercraft2.game.bots.Bot;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.playGround.Misc.AbstractManager;
+import org.play_ground.misc.AbstractManager;
 import utils.math.GVector2f;
 
 import java.awt.*;

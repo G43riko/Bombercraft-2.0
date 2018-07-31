@@ -2,12 +2,12 @@ package org.bombercraft2;
 
 import org.bombercraft2.components.tasks.BotManager;
 import org.bombercraft2.components.tasks.TaskManager;
-import org.bombercraft2.gui2.GuiManager;
+import org.bombercraft2.gui2.GuiManagerImpl;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
-import org.playGround.Misc.*;
-import org.playGround.Misc.map.MapManager;
-import org.playGround.Misc.selectors.SelectorManager;
+import org.play_ground.misc.*;
+import org.play_ground.misc.map.MapManager;
+import org.play_ground.misc.selectors.SelectorManager;
 import org.utils.MeasureUtils;
 import utils.GLogger;
 
@@ -21,7 +21,7 @@ public class MainManager implements InteractAbleG2 {
     private TaskManager           taskManager;
     private MapManager            mapManager;
     private BotManager            botManager;
-    private GuiManager            guiManager;
+    private GuiManagerImpl        guiManager;
     private SelectorManager       selectorManager;
     private PlayerManager         playerManager;
     private SceneManager_         sceneManager;
@@ -62,8 +62,8 @@ public class MainManager implements InteractAbleG2 {
         else if (manager instanceof BotManager) {
             this.botManager = (BotManager) manager;
         }
-        else if (manager instanceof GuiManager) {
-            this.guiManager = (GuiManager) manager;
+        else if (manager instanceof GuiManagerImpl) {
+            this.guiManager = (GuiManagerImpl) manager;
         }
         else {
             GLogger.error(GLogger.GError.UNKNOWN_MANAGER, ": " + manager.getClass().getName());
@@ -71,7 +71,7 @@ public class MainManager implements InteractAbleG2 {
         managers.add(manager);
     }
 
-    public GuiManager getGuiManager() {
+    public GuiManagerImpl getGuiManager() {
         return guiManager;
     }
 

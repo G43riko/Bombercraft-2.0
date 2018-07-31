@@ -57,7 +57,7 @@ public class GameGui implements InteractAbleG2, ClickAble {
             playerPanel.render(g2);
         }
 //		if(Bombercraft.getViewOption("renderMiniMap"))
-//			miniMap.render(g2);
+//			miniMap.draw(g2);
 
         if (parent.getVisibleOption(Render.LOGS)) {
             gameLogs.render(g2);

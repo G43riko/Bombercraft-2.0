@@ -4,7 +4,7 @@ package org.bombercraft2.core;
 import org.jetbrains.annotations.Contract;
 
 public enum GameStateType {
-    CreateGameMenu("CreateGameMenu"),
+    CREATE_GAME_MENU("CreateGameMenu"),
     LoadingScreen("LoadingScreen"),
     JoinMenu("JoinMenu"),
     ProfileMenu("ProfileMenu"),
@@ -25,9 +25,10 @@ public enum GameStateType {
     BombDemo("BombDemo"),
     WorkerDemo("WorkerDemo"),
     MissileDemo("MissileDemo"),
-    BomberDemo("BomberDemo"),
+    BomberDemo("bomber_demo"),
     GenericGame("GenericGame"),
-    ChunkDemo("ChunkDemo");
+    ChunkDemo("ChunkDemo"),
+    EcsDemo("EcsDemo");
 
     private final String name;
 

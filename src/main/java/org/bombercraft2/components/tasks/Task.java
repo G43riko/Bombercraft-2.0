@@ -1,11 +1,11 @@
 package org.bombercraft2.components.tasks;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.components.healthBar.HealthAble;
-import org.bombercraft2.components.healthBar.HealthBar;
+import org.bombercraft2.components.health_bar.HealthAble;
+import org.bombercraft2.components.health_bar.HealthBar;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.SimpleGameAble;
 import utils.math.GVector2f;
 
 import java.awt.*;

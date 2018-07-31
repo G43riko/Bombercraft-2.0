@@ -8,7 +8,7 @@ import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.SimpleGameAble;
 import utils.math.GVector2f;
 
 public abstract class Entity<T extends SimpleGameAble> implements Visible, InteractAbleG2, JSONAble {

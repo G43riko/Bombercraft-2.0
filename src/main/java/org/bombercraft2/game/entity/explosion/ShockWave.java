@@ -2,7 +2,7 @@ package org.bombercraft2.game.entity.explosion;
 
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.SimpleGameAble;
 import utils.math.GVector2f;
 
 import java.awt.*;

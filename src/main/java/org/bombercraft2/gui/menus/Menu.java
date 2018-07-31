@@ -26,7 +26,7 @@ public abstract class Menu extends GameState implements ClickAble, Visible {
         this.parent = parent;
         position = parent.getPosition();
         size = parent.getSize();
-        //position = new GVector2f(0, 100);
+        //scale = new GVector2f(0, 100);
 
         calcPosition();
     }

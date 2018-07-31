@@ -40,7 +40,7 @@ public interface Connector {
 
     void setPutHelper(@NotNull GVector2f pos, @NotNull Helper.Type type);
 
-    //	void hitBlock(GVector2f position, int damage);
+    //	void hitBlock(GVector2f scale, int damage);
     default void onHitPlayer(@NotNull String name, int damage) {}
 
     /**

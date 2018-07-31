@@ -17,6 +17,7 @@ import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
+import org.play_ground.PlayGround;
 import org.utils.MiscUtils;
 import utils.math.GVector2f;
 
@@ -28,8 +29,8 @@ import java.util.HashMap;
 public class App {
 
     public static void main(String[] args) {
-        Bombercraft game = new Bombercraft();
-        // PlayGround game = new PlayGround();
+        // Bombercraft game = new Bombercraft();
+        PlayGround game = new PlayGround();
         game.run();
 
         // testPathFinging();

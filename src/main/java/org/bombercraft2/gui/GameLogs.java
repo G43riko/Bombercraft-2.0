@@ -3,7 +3,7 @@ package org.bombercraft2.gui;
 import org.bombercraft2.StaticConfig;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
-import org.playGround.Misc.SimpleGameAble;
+import org.play_ground.misc.SimpleGameAble;
 
 import java.awt.*;
 import java.util.List;

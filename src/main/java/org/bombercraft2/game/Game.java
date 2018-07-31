@@ -283,13 +283,13 @@ public class Game extends GameState implements GameAble {
     @Override
     public void resetGame() {
 //		parent.showLoading();
-//		render = update = input = false;
+//		draw = update = input = false;
 ////		enemies.clear();
 ////		others.clear();
 ////		helpers.clear();
 ////		emitters.clear();
 //		level.getHashMap().resetMap();
-//		render = update = input = true;
+//		draw = update = input = true;
 //		parent.removeLoading();
     }
 

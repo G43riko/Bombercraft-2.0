@@ -1,26 +1,26 @@
 package org.bombercraft2.gui2;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.gui2.components.Button;
-import org.bombercraft2.gui2.components.Checkbox;
-import org.bombercraft2.gui2.components.Panel;
-import org.bombercraft2.gui2.components.*;
-import org.bombercraft2.gui2.core.GuiConnectAble;
-import org.bombercraft2.gui2.core.GuiConnector;
-import org.bombercraft2.gui2.core.PositionableComponent;
-import org.bombercraft2.gui2.layouts.BorderLayout;
-import org.bombercraft2.gui2.layouts.*;
 import org.bombercraft2.gui2.styles.ButtonStyles;
-import org.bombercraft2.gui2.utils.ColorBox;
 import org.engine.Input;
+import org.gui.components.Button;
+import org.gui.components.Checkbox;
+import org.gui.components.Panel;
+import org.gui.components.*;
+import org.gui.core.GuiConnectAble;
+import org.gui.core.GuiConnector;
+import org.gui.core.components.PositionableComponent;
+import org.gui.layouts.BorderLayout;
+import org.gui.layouts.*;
+import org.gui.utils.ColorBox;
 
 import java.awt.*;
 
 
 public class GuiTester {
-    public static final  GuiManager manager  = new GuiManager();
-    private static final GuiTester  tester   = new GuiTester();
-    private final        Checkbox   checkbox = new Checkbox("Checkbox");
+    public static final  GuiManagerImpl manager  = new GuiManagerImpl();
+    private static final GuiTester      tester   = new GuiTester();
+    private final        Checkbox       checkbox = new Checkbox("Checkbox");
 
     private GuiTester() {
         GuiConnector.setConnector(new GuiConnectAble() {
@@ -70,8 +70,8 @@ public class GuiTester {
 
 
         Button button = new Button("Nová hra");
-        button.getColorBox().setBackgroundColor(Color.cyan);
-        button.setActiveColorBox(new ColorBox(Color.RED, Color.blue, 5));
+        button.getStateHolder().getDefault().setBackgroundColor(Color.cyan);
+        button.getStateHolder().setActive(new ColorBox(Color.RED, Color.blue, 5));
         button.setHeight(40);
         button.setWidth(100);
         style.setTo(button);
@@ -126,7 +126,7 @@ public class GuiTester {
         button.setY(10);
         button.setHeight(40);
         button.setWidth(100);
-        button.getColorBox().setBackgroundColor(Color.cyan);
+        button.getStateHolder().getDefault().setBackgroundColor(Color.cyan);
 
         button.render(g2);
     }
@@ -148,10 +148,10 @@ public class GuiTester {
         Button button = new Button("Tlacitko " + 0);
         button.setHeight(40);
         button.setWidth(100);
-        button.getColorBox().setBackgroundColor(new Color(0, 255, 255));
-        button.setHoverColorBox(new ColorBox(new Color(255,
-                                                       255,
-                                                       255), Color.blue, 5));
+        button.getStateHolder().getDefault().setBackgroundColor(new Color(0, 255, 255));
+        button.getStateHolder().setHover(new ColorBox(new Color(255,
+                                                                255,
+                                                                255), Color.blue, 5));
         panel.addComponent(button);
 
 
@@ -165,8 +165,8 @@ public class GuiTester {
             button = new Checkbox("Tlacitko " + i);
             button.setHeight(40);
             button.setWidth(100);
-            button.getColorBox().setBackgroundColor(new Color(255 / items * i, 255, 255));
-            button.setHoverColorBox(new ColorBox(new Color(255,
+            button.getStateHolder().getDefault().setBackgroundColor(new Color(255 / items * i, 255, 255));
+            button.getStateHolder().setHover(new ColorBox(new Color(255,
                                                            255 - 255 / items * i,
                                                            255), Color.blue, 5));
             panel.addComponent(button);
@@ -203,8 +203,8 @@ public class GuiTester {
 
     private Panel testPanel() {
         Button button = new Button("Tlacitko");
-        button.getColorBox().setBackgroundColor(Color.cyan);
-        button.setActiveColorBox(new ColorBox(Color.RED, Color.blue, 5));
+        button.getStateHolder().getDefault().setBackgroundColor(Color.cyan);
+        button.getStateHolder().setHover(new ColorBox(Color.RED, Color.blue, 5));
         /*
         button.setX(10);
         button.setY(10);
@@ -213,8 +213,8 @@ public class GuiTester {
         button.setWidth(100);
 
         Button button2 = new Button("Tlacitko2");
-        button2.getColorBox().setBackgroundColor(Color.green);
-        button2.setHoverColorBox(new ColorBox(Color.MAGENTA, Color.blue, 2));
+        button2.getStateHolder().getDefault().setBackgroundColor(Color.green);
+        button2.getStateHolder().setHover(new ColorBox(Color.MAGENTA, Color.blue, 2));
         /*
         button2.setX(10);
         button2.setY(60);
@@ -225,8 +225,8 @@ public class GuiTester {
         checkbox.setWidth(100);
         checkbox.setHeight(40);
 
-        checkbox.setActiveColorBox(new ColorBox(Color.GRAY, Color.blue, 5));
-        checkbox.getColorBox().setBackgroundColor(Color.YELLOW);
+        button2.getStateHolder().getDefault().setBackgroundColor(Color.YELLOW);
+        checkbox.getStateHolder().setActive(new ColorBox(Color.GRAY, Color.blue, 5));
 
         ColorBox colorBox = new ColorBox();
         colorBox.setBorderWidth(2);

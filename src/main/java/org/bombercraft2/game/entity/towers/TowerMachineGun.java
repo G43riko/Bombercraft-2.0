@@ -80,13 +80,13 @@ public class TowerMachineGun extends Tower {
     }
 
     private void setRandTarget() {
-//		ArrayList<Enemy> enemies = getParent().getEnemiesAround(position, range);
+//		ArrayList<Enemy> enemies = getParent().getEnemiesAround(scale, range);
 //		
 //		if(enemies.size() > 0){
 //			//target = enemies.get((int)(Math.random() * enemies.size())); -- vyberalo n�hodn�ho nie najbli��ie
 //			target = enemies.stream()
-//							.reduce((a, b) -> a.getPosition().dist(position) > b.getPosition().dist(position) ? a : b).get();
-//			GVector2f dir = position.sub(target.getPosition()).Normalized();
+//							.reduce((a, b) -> a.getPosition().dist(scale) > b.getPosition().dist(scale) ? a : b).get();
+//			GVector2f dir = scale.sub(target.getPosition()).Normalized();
 //			angle = Math.atan2(dir.getX(), dir.getY());
 //		}
     }

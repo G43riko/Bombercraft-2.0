@@ -25,8 +25,8 @@ public class Light extends Entity {
     private              int           flash     = 0;
 
 
-//	public Light(GameAble parent, GVector2f position, GVector2f size, int radius) {
-//		this(parent, position, size, null);
+//	public Light(GameAble parent, GVector2f scale, GVector2f size, int radius) {
+//		this(parent, scale, size, null);
 //		calcImage();
 //	}
 

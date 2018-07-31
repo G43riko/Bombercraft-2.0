@@ -5,7 +5,7 @@ import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.playGround.Misc.BasicEntity;
+import org.play_ground.misc.BasicEntity;
 import utils.math.GVector2f;
 
 import java.awt.*;

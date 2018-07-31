@@ -39,8 +39,8 @@ public class PlayerSprite {
      * @param name      - image used for sprite
      * @param numX      - number of horizontal images
      * @param numY      - number of vertical images
-     * @param positions - number of position types
-     * @param delay     - number of render cycles needed to on step
+     * @param positions - number of scale types
+     * @param delay     - number of draw cycles needed to on step
      */
     public static void setSprite(String key, String name, int numX, int numY, int positions, int delay) {
         animations.put(key, new PlayerSprite(name, numX, numY, positions, delay));

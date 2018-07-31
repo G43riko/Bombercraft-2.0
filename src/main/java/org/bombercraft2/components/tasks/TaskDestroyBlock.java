@@ -1,7 +1,7 @@
 package org.bombercraft2.components.tasks;
 
 import org.jetbrains.annotations.NotNull;
-import org.playGround.Misc.map.SimpleTypedBlock;
+import org.play_ground.misc.map.SimpleTypedBlock;
 import utils.math.GVector2f;
 
 public class TaskDestroyBlock extends TaskType {

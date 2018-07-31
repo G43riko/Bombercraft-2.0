@@ -1,9 +1,8 @@
 package org.bombercraft2.gui2.styles;
 
-import org.bombercraft2.gui2.components.Button;
-import org.bombercraft2.gui2.core.TextAlignment;
-import org.bombercraft2.gui2.core.TextField;
-import org.bombercraft2.gui2.utils.ColorBox;
+import org.gui.components.Button;
+import org.gui.core.text.TextAlignment;
+import org.gui.core.text.TextField;
 
 import java.awt.*;
 
@@ -31,14 +30,9 @@ public class ButtonStyles {
             button.getTextField().setSize(fontSize);
         }
 
-        if (button.getColorBox() == null) {
-            button.setColorBox(new ColorBox(backgroundColor, borderColor, borderWidth));
-        }
-        else {
-            button.getColorBox().setBackgroundColor(backgroundColor);
-            button.getColorBox().setBorderColor(borderColor);
-            button.getColorBox().setBorderWidth(borderWidth);
-        }
+        button.getStateHolder().getDefault().setBackgroundColor(backgroundColor);
+        button.getStateHolder().getDefault().setBorderColor(borderColor);
+        button.getStateHolder().getDefault().setBorderWidth(borderWidth);
 
         if (button.getTextAlignment() == null) {
             button.setTextAlignment(new TextAlignment(verticalTextAlign,
@@ -61,11 +55,9 @@ public class ButtonStyles {
             fontSize = button.getTextField().getSize();
         }
 
-        if (button.getColorBox() != null) {
-            backgroundColor = button.getColorBox().getBackgroundColor();
-            borderColor = button.getColorBox().getBorderColor();
-            borderWidth = button.getColorBox().getBorderWidth();
-        }
+        backgroundColor = button.getStateHolder().getDefault().getBackgroundColor();
+        borderColor = button.getStateHolder().getDefault().getBorderColor();
+        borderWidth = button.getStateHolder().getDefault().getBorderWidth();
 
         if (button.getTextAlignment() != null) {
             horizontalTextAlign = button.getTextAlignment().getHorizontalAlign();

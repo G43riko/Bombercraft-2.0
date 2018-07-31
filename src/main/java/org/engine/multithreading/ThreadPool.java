@@ -61,7 +61,7 @@ public class ThreadPool extends ThreadGroup {
 
     @Nullable
     protected synchronized Runnable getTask() throws InterruptedException {
-        while (taskQueue.size() == 0) {
+        while (taskQueue.isEmpty()) {
             if (!alive) {
                 return null;
             }
