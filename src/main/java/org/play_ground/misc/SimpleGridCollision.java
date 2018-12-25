@@ -3,9 +3,9 @@ package org.play_ground.misc;
 import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.misc.GCanvas;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.math.physics.Collisions;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.demos.ParticlesDemo;
-import utils.math.GColision;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -111,14 +111,14 @@ public class SimpleGridCollision implements InteractAbleG2 {
     }
 
     private void checkObject(Visible object) {
-        if (GColision.rectRectCollision(object.getPosition().getXi(),
-                                        object.getPosition().getYi(),
-                                        object.getSize().getXi(),
-                                        object.getSize().getYi(),
-                                        position.getXi(),
-                                        position.getYi(),
-                                        size.getXi(),
-                                        size.getYi())) {
+        if (Collisions._2D.rectRect(object.getPosition().getXi(),
+                                    object.getPosition().getYi(),
+                                    object.getSize().getXi(),
+                                    object.getSize().getYi(),
+                                    position.getXi(),
+                                    position.getYi(),
+                                    size.getXi(),
+                                    size.getYi())) {
             visible = true;
 
             for (int i = 0; i < 4; i++) {

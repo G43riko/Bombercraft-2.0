@@ -5,235 +5,35 @@
     <bookmark url="file://$PROJECT_DIR$/src/main/java/org/play_ground/demos/MapDemo.java" line="20" mnemonic="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1861fc88-fa97-4faa-bf45-771e27f31455" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/ControlComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/ControlSystem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/EcsDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/gcsol.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/gcsol.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1861fc88-fa97-4faa-bf45-771e27f31455" name="Default" comment="Start using ECS">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_11_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_11_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_11_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_11_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_11_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_11_0_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Input2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/engine/Window_old.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_16_0_2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Bombercraft2.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Bombercraft2.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hs_err_pid9108.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/CoreGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameState.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameStateType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/GameStatesManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/MenuAble.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/Render.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/StateAble.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/Texts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/core/Visible.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/bots/Bot.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/bots/BotFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/bots/Enemy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/bots/EnemyA.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Block.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/level/Map.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/Direction.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/GCanvas.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/GameTransform.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/PosAndSize.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/game/misc/SimpleInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/Alert.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/AlertManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/Bar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/ClickAble.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/GameGui.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/GameLogs.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/GuiManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/LoadingScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/NavBar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/PlayerPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/SideBar.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/StatsPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/components/GuiComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/components/MiniButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/components/MiniSwitch.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/EndGameMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/JoinMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/MainMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/menus/OptionsMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/submenu/SubMenuCreator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/submenu/Submenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/submenu/SubmenuItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/Bombercraft2/gui/submenu/SubmenuRadioGroup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/CoreEngine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/Input.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/InputCanvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/StatsHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/Window.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/multithreading/IDAssigner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/multithreading/PooledThread.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/multithreading/ThreadPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/engine/registry/Context.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/AdvancedAbstractGame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/CorePlayGround.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/BombDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ChunkedMapDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ClosestDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/CollisionDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/MissileDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/ParticlesPreviewDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/PlayerDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Demos/WorkerDemo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/MainMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/AbstractManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/BasicEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ImagedBomb.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/PlayerManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SceneManager_.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleBomb.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleGridCollision.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleMapRaycast.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/SimpleParticlePlayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/ViewManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimpleMyPlayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/bots/SimplePlayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/AbstractDrawable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/drawable_line/AbstractDrawable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/BasicDrawableLine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/EntityDrawableLine.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/drawableLine/EntityEndDrawableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/drawable_line/EntityEndDrawableLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/AbstractMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/BasicChunk.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SelectableBlock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunk.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleChunkedMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleMap.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/map/SimpleTypedBlock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/AbstractParticle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/ParticleInstanceData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/particles/ParticleManager.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Bombercraft2/playGround/Misc/selectors/SelectorManager.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/MainManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/MainManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/healthBar/HealthAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/health_bar/HealthAble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/healthBar/HealthBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/health_bar/HealthBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/BotManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/BotManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/BotWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/BotWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/Task.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/TaskDestroyBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/TaskDestroyBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/TaskManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/tasks/TaskManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/GameStateType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/GameStateType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/Texts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/Texts.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/GameAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/GameAble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/Entity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/explosion/Explosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/explosion/Explosion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/explosion/ShockWave.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/explosion/ShockWave.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/particles/Particle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/particles/Particle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/towers/TowerMachineGun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/entity/towers/TowerMachineGun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/level/FinalTypedBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/level/FinalTypedBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/lights/Light.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/lights/Light.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/misc/PosAndSize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/misc/PosAndSize.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/MyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/MyPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/PlayerSprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/PlayerSprite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/GameGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/GameGui.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/GameLogs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/GameLogs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/menus/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/menus/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/GuiManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/GuiManagerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/GuiTester.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/GuiTester.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/components/Button.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/components/Checkbox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/components/Panel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/components/SelectBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/components/TransparentVerticalScrollPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/components/VerticalScrollPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/Component.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/Drawable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/DrawableComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/GuiConnectAble.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/GuiConnector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/MouseInteractive.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/PositionableComponent.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/RoundedColorBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/TextAlignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/TextField.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/TranslateColorBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/UpdateData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/translation/AbstractTranslate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/translation/TranslateColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/translation/TranslateGVector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/core/translation/TranslateInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/layouts/BorderLayout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/layouts/BoundedLayout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/layouts/DividedVerticalLayout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/layouts/Layout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/layouts/VerticalFlowLayout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/layouts/VerticalLayout.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/styles/ButtonStyles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/styles/ButtonStyles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui2/utils/ColorBox.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/multiplayer/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/multiplayer/Connector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/multiplayer/GameClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/multiplayer/GameClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/Visible.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/Visible.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/ClickAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/ClickAble.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/NavBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/NavBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/components/GuiComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/components/GuiComponent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/CoreEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/CoreEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/StatsHolder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/config/Config.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/config/RootConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/multithreading/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/multithreading/ThreadPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/AdvancedAbstractGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/AdvancedAbstractGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/CorePlayGround.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/CorePlayGround.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/BasicDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/BasicDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/BombDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/BombDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/BomberDemo/BomberDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/bomber_demo/BomberDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/ChunkDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ChunkDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/ChunkedMapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ChunkedMapDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/ClosestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ClosestDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/CollisionDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/CollisionDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/MapDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/MapDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/MissileDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/MissileDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/ParticlesDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ParticlesDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/ParticlesPreviewDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ParticlesPreviewDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/PerlinDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/PerlinDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/PlayerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/PlayerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/ShootingDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ShootingDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Demos/WorkerDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/WorkerDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/AbstractManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/AbstractManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/BasicEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/BasicEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/GameBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/GameBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/GenericGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/GenericGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/ImagedBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/ImagedBomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/PlayerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/PlayerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/PostFxManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/PostFxManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SceneManager_.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SceneManager_.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SimpleBomb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleBomb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SimpleGameAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleGameAble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SimpleGridCollision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleGridCollision.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SimpleMapRaycast.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleMapRaycast.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SimpleMissile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleMissile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/SimpleParticlePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleParticlePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/ViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/ViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/bots/SimpleMyPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/bots/SimpleMyPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/bots/SimpleNPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/bots/SimpleNPC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/bots/SimplePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/bots/SimplePlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/drawableLine/BasicDrawableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/drawable_line/BasicDrawableLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/drawableLine/BasicDrawablePath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/drawable_line/BasicDrawablePath.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/drawableLine/EntityDrawableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/drawable_line/EntityDrawableLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/drawableLine/EntityStartDrawableLine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/drawable_line/EntityStartDrawableLine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/AbstractBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/AbstractBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/AbstractMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/AbstractMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/BasicChunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/BasicChunk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/MapManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/MapManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/SelectableBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/SelectableBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/SimpleChunk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/SimpleChunk.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/SimpleChunkedMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/SimpleChunkedMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/SimpleMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/SimpleMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/SimpleMap_old.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/SimpleMap_old.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/map/SimpleTypedBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/map/SimpleTypedBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/particles/AbstractParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/particles/AbstractParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/particles/ParticleEmitterData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/particles/ParticleEmitterData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/particles/ParticleInstanceData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/particles/ParticleInstanceData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/particles/ParticleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/particles/ParticleManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/particles/SimpleEmitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/particles/SimpleEmitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/particles/SimpleParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/particles/SimpleParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/selectors/SelectAble.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/selectors/SelectAble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/selectors/SelectorManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/selectors/SelectorManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/selectors/SimpleLineSelector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/selectors/SimpleLineSelector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/PlayGround.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/PlayGround.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/SimpleAbstractGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/SimpleAbstractGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/play_ground/Misc/drawableLine/AbstractDrawable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/play_ground/Misc/drawableLine/EntityEndDrawableLine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/InputCanvas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/engine/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/multithreading/IDAssigner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/multithreading/PooledThread.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/engine/multithreading/ThreadPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/drawableLine/AbstractDrawable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/playGround/Misc/drawableLine/EntityEndDrawableLine.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ClosestDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ClosestDemo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleGridCollision.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleGridCollision.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/math/GColision.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/math/GVector2f.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/math/GVector2f.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/target/" />
@@ -260,86 +60,115 @@
     <expand />
     <select />
   </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="271901009">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.closed" value="6" />
-          <entry key="project.open.time.1" value="2" />
-          <entry key="project.open.time.18" value="1" />
-          <entry key="project.open.time.2" value="1" />
-          <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.59" value="1" />
-          <entry key="project.open.time.67" value="1" />
-          <entry key="project.opened" value="7" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="class" value="1" />
-          <entry key="java" value="22" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key="CLASS" value="1" />
-          <entry key="JAVA" value="22" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="java" value="220" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="JAVA" value="220" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/multithreading/IDAssigner.java">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/GOptions.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/multithreading/PooledThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/MeasureUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
+            <state relative-caret-position="68">
+              <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1712#1713#0" expanded="true" />
-                <element signature="e#1763#1764#0" expanded="true" />
+                <element signature="e#562#563#0" expanded="true" />
+                <element signature="e#604#605#0" expanded="true" />
+                <element signature="e#669#670#0" expanded="true" />
+                <element signature="e#703#704#0" expanded="true" />
+                <element signature="e#1002#1003#0" expanded="true" />
+                <element signature="e#1045#1046#0" expanded="true" />
+                <element signature="e#1096#1097#0" expanded="true" />
+                <element signature="e#1141#1142#0" expanded="true" />
+                <element signature="e#2178#2179#0" expanded="true" />
+                <element signature="e#2224#2225#0" expanded="true" />
+                <element signature="e#2258#2259#0" expanded="true" />
+                <element signature="e#2285#2286#0" expanded="true" />
+                <element signature="e#2340#2341#0" expanded="true" />
+                <element signature="e#2367#2368#0" expanded="true" />
+                <element signature="e#2422#2423#0" expanded="true" />
+                <element signature="e#2456#2457#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3D.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="19" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3DGenerated.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/Box.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/utils/ShapeCreator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/utils/ShapeData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/demos/EcsDemo.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/demos/ClosestDemo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-668">
-              <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
+            <state relative-caret-position="34">
+              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoxStatic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoundingBox.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoxGenerated.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -357,47 +186,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>getInt</find>
-      <find>toIn</find>
-      <find>inve</find>
-      <find>invert</find>
-      <find>negate</find>
-      <find>nega</find>
-      <find>this.</find>
-      <find>, float z)</find>
-      <find>Vector3f</find>
-      <find>getAbs</find>
-      <find>dot</find>
-      <find>getDot</find>
-      <find>return this</find>
-      <find>sum(</find>
-      <find>Vector2f</find>
-      <find>getPow</find>
-      <find>min</find>
-      <find>Input.KEY_</find>
       <find>Utils.sleep</find>
       <find>ColorBox</find>
-      <find>GVector2f</find>
       <find>addedToEngine</find>
       <find>addedToEngineInternal</find>
       <find>X</find>
       <find>transform.getScale()</find>
-      <find>SimpleVector3f</find>
       <find>mousePosition</find>
       <find>getLoc</find>
       <find>locket</find>
       <find>locked</find>
+      <find>extends Thread</find>
+      <find>public JSONObject toJSON</find>
+      <find>Window3</find>
+      <find>NotIm</find>
+      <find>start</find>
+      <find>link</find>
+      <find>.getX()</find>
+      <find>GVector2f</find>
+      <find>GVector3f</find>
+      <find>static</find>
+      <find>.getZ()</find>
+      <find>pointCylinder</find>
+      <find>Pos</find>
+      <find>, min.getZ()</find>
+      <find>, max.getZ()</find>
+      <find>SimpleVector3f</find>
+      <find>pos.getZ()</find>
+      <find>asize.getX()</find>
+      <find>a</find>
+      <find>aPosx</find>
     </findStrings>
     <replaceStrings>
-      <replace>CONSTRUCTORS</replace>
-      <replace>setHover</replace>
-      <replace>y2</replace>
-      <replace />
-      <replace>TODO</replace>
-      <replace>Config</replace>
-      <replace>Config.BLOCK_SIZE.</replace>
-      <replace>Config.BLOCK_SIZE</replace>
-      <replace>Config.BLOCK_SIZE_HALF</replace>
       <replace>parent</replace>
       <replace>parent.getManager().getMapManager().getTypedBlock</replace>
       <replace>public List&lt;String&gt; getLogInfo</replace>
@@ -413,15 +233,25 @@
       <replace>Vector2f</replace>
       <replace>T</replace>
       <replace>Keys.</replace>
-      <replace>SimpleVector2f</replace>
-      <replace>Y</replace>
-      <replace>Z</replace>
       <replace>position</replace>
       <replace>size</replace>
       <replace>GVector3f</replace>
+      <replace>SimpleVector3f</replace>
+      <replace>X</replace>
+      <replace>Y</replace>
+      <replace>Z</replace>
+      <replace>sphereCylinder</replace>
+      <replace>Size</replace>
+      <replace>SimpleVector2f</replace>
+      <replace>x</replace>
+      <replace>y</replace>
+      <replace>z</replace>
+      <replace>aw</replace>
+      <replace>b</replace>
     </replaceStrings>
     <dirStrings>
       <dir>C:\Users\gcsol\IdeaProjects\JavaUtils\GLib2\src\main\java\org\glib2\math\vectors</dir>
+      <dir>D:\Projects\Bombercraft-2.0\src\main\java</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
@@ -430,65 +260,59 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/core/GameStateType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/playGround/CorePlayGround.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/playGround/Demos/EcsDemo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/playGround/demos/EcsDemo.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/RenderableSystem.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/SimpleRenderableComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/RenderAbleComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/ScalableComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/ColorRectDrawableComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/PositionComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/ColorComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/DrawableComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/ControlledMovementSystem.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/CanvasDrawableComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/ControllComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/MovableComponent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/CotrollSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/ControllSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/ControllComponent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/ControlComponent.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/components/ControlSystem.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/CanvasRectDrawableComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/CanvasRenderableSystem.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/BorderColider.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/BorderCollider.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealBarComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealhbarCanvasComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealthbarCanvasComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealthComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/Mappers.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/HealthSystem.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealthBarCanvasComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/TransformComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/VelocityComponent.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/MovementSystem.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/AABBComponent.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/Box.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/cylinder/Cylinder.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/Line3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/ILine.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/ILine.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/ILine2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/ILine3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/Line2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Line2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/three_dimensional/Line3d.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/three_dimensional/Box.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/three_dimensional/Sphere.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Expandable.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Expandable3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Movable.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Movable3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Movable2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Expandable2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Rectangle.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/interfaces/Projectable.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/interfaces/Colizable.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Collidable2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Circle.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/circle/ICircle.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/circle/Circle.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/rectangle/IRectangle.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/rectangle/Rectangle.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision2D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GDistances.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GIntersects.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision3Dimpl.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collisions.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GColision.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/rectangle/BoundingRect.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/ellipsoid/BoundingEllipsoid.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/cylinder/BoundingCylinder.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoundingBox.java" />
+        <option value="$PROJECT_DIR$/src/main/java/utils/math/GColision.java" />
         <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/BorderColliderSystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/engine/Input.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/input/IInput.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/engine/InputCanvas.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/play_ground/misc/GenericGame.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/enums/Directions.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/GameConfig.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/AbstractEngine.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/engine/StatsHolder.java" />
-        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/StatsHolder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/engine/multithreading/ThreadPool.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/engine/multithreading/PooledThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/org/play_ground/demos/EcsDemo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/NavBar.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/components/GuiComponent.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleGridCollision.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/GOptions.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/curve/Line3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3D.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3DStatic.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3DGenerated.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/utils/ShapeCreator.java" />
+        <option value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/utils/ShapeData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/play_ground/demos/ClosestDemo.java" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -498,10 +322,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="420" />
-    <option name="height" value="275" />
+    <option name="width" value="1944" />
+    <option name="height" value="1104" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -512,141 +334,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
-              <item name="playGround" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
-              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
-              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
-              <item name="playGround" type="1f31426a:PackageElementNode" />
-              <item name="Misc" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="multithreading" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="engine" type="462c0819:PsiDirectoryNode" />
-              <item name="registry" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="org" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="AndroidView" />
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -693,6 +380,220 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="bombercraft2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Bombercraft-2.0" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="glib2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="glib2" type="462c0819:PsiDirectoryNode" />
+              <item name="interfaces" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="glib2" type="462c0819:PsiDirectoryNode" />
+              <item name="math" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="glib2" type="462c0819:PsiDirectoryNode" />
+              <item name="math" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="shapes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="shapes" type="462c0819:PsiDirectoryNode" />
+              <item name="types" type="462c0819:PsiDirectoryNode" />
+              <item name="line" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="physics" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GLib2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="org" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
+              <item name="playGround" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="Bombercraft-2.0" type="58d84e3e:PackageViewProjectNode" />
+              <item name="Bombercraft2" type="616d4139:PackageViewModuleNode" />
+              <item name="Bombercraft2" type="1f31426a:PackageElementNode" />
+              <item name="playGround" type="1f31426a:PackageElementNode" />
+              <item name="Misc" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -703,8 +604,9 @@
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/Projects/Bombercraft-2.0/src/main/java/Bombercraft2/playGround/Demos/MapDemo.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1532858309231" />
-    <property name="last_opened_file_path" value="$USER_HOME$/IdeaProjects/JavaUtils/GLib2" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545717339934" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36305147" />
@@ -718,17 +620,21 @@
       <recent name="org.bombercraft2.gui2" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="org.prototypes" />
       <recent name="org.utils" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="org.engine" />
-      <recent name="org.ecs.components" />
-      <recent name="org.gui.core" />
-      <recent name="org.utils" />
-      <recent name="org.gui.utils" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="Bombercraft2.playGround.Demos" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.physics.shapes.types.twoDimensional.circle" />
+      <recent name="org.physics.shapes" />
+      <recent name="org.physics.shapes.types.twoDimensional.rectangle" />
+      <recent name="org.physics.shapes.types.twoDimensional" />
+      <recent name="org.engine" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\gcsol\IdeaProjects\JavaUtils\GLib2\src\main\java\org\utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -744,7 +650,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="Applet" factoryName="Applet">
+    <configuration default="true" type="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -776,7 +682,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
+    <configuration default="true" type="TestNG">
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
       <properties />
       <listeners />
@@ -868,7 +774,17 @@
       <workItem from="1532852292690" duration="227000" />
       <workItem from="1532857880000" duration="1022000" />
       <workItem from="1533042295164" duration="836000" />
-      <workItem from="1533043619929" duration="500000" />
+      <workItem from="1533043619929" duration="852000" />
+      <workItem from="1533373994974" duration="2800000" />
+      <workItem from="1533392212051" duration="441000" />
+      <workItem from="1540139702227" duration="179000" />
+      <workItem from="1541329207113" duration="440000" />
+      <workItem from="1541353653629" duration="1755000" />
+      <workItem from="1545481144627" duration="8097000" />
+      <workItem from="1545651867524" duration="1509000" />
+      <workItem from="1545653399184" duration="15719000" />
+      <workItem from="1545710620442" duration="14000" />
+      <workItem from="1545717309548" duration="31000" />
     </task>
     <task id="LOCAL-00001" summary="Pridaný playground a vytvorené základné ukážky">
       <created>1514386546151</created>
@@ -1010,11 +926,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531053531538</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Start using ECS">
+      <created>1533044244208</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1533044244208</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="349187000" />
+    <option name="totallyTimeSpent" value="380524000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1035,12 +958,12 @@
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
-      <window_info content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.3167785" />
+      <window_info content_ui="combo" x="447" y="238" width="471" height="596" id="Project" order="6" visible="true" weight="0.25771812" />
       <window_info anchor="bottom" id="SonarLint" order="0" weight="0.3286517" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" visible="true" weight="0.24195804" />
+      <window_info active="true" anchor="bottom" id="Find" order="2" visible="true" weight="0.2877095" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.2766854" />
-      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49932885" weight="0.20365168" />
+      <window_info anchor="bottom" id="Run" order="4" sideWeight="0.49932885" weight="0.2015504" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3295711" />
       <window_info anchor="bottom" id="Inspection" order="7" weight="0.4" />
@@ -1048,8 +971,9 @@
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32587412" />
       <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.50842696" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49932885" weight="0.3286517" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32587412" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32447398" />
       <window_info anchor="bottom" id="Database Changes" order="13" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973147" />
@@ -1060,6 +984,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32975295" />
       <window_info anchor="right" id="Database" order="9" weight="0.32975295" />
+      <window_info anchor="right" id="Maven" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1074,9 +999,6 @@
         <option value="1" />
       </list>
     </option>
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
@@ -1103,347 +1025,372 @@
     <MESSAGE value="Drobné úpravy 2" />
     <MESSAGE value="Upravené balíky" />
     <MESSAGE value="Fix errors caused by change JavaUtils library" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix errors caused by change JavaUtils library" />
+    <MESSAGE value="Start using ECS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start using ECS" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/GVector3f.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/Transform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/ControlledMovementSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="25" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/CanvasRenderableSystem.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bombercraft2/components/health_bar/HealthBar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-178">
-          <caret line="24" column="53" lean-forward="true" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealthComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="8" column="33" lean-forward="true" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/Mappers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/HealthBarCanvasComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="43">
-          <caret line="9" column="28" lean-forward="true" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/MovementSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/ColorComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="50" lean-forward="true" selection-start-line="6" selection-start-column="50" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/HealthSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/TransformComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/vectors/SimpleVector3f.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="186" column="19" selection-start-line="186" selection-start-column="19" selection-end-line="186" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/AABBComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="38" column="8" selection-start-line="38" selection-start-column="8" selection-end-line="38" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/BorderColliderSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="15" column="44" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/MovableComponent.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Collidable3D.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/components/VelocityComponent.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Movable3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/sphere/Sphere.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Line2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="7" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Collidable2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/interfaces/Colizable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Circle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-68">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/demos/ShootingDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="129" column="40" selection-start-line="129" selection-start-column="40" selection-end-line="129" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bombercraft2/components/health_bar/HealthAble.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/interfaces/Visible.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/AdvancedAbstractGame.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/MinMaxAble2D.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="68">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/misc/GenericGame.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Movable2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="42" lean-forward="true" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/Expandable2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/circle/Circle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="11" column="88" selection-start-line="11" selection-start-column="88" selection-end-line="11" selection-end-column="88" />
+          <folding>
+            <element signature="e#862#863#0" expanded="true" />
+            <element signature="e#898#899#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/rectangle/IRectangle.java" />
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/rectangle/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/ILine3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="65" selection-start-line="6" selection-start-column="65" selection-end-line="6" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/circle/ICircle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="24" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/interfaces/Drawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/interfaces/Projectable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="44" selection-start-line="6" selection-start-column="37" selection-end-line="6" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#304#305#0" expanded="true" />
+            <element signature="e#368#369#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Rectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/drawable/DrawableRectangle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="41" lean-forward="true" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/drawable/DrawableEllipse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="43" selection-start-line="8" selection-start-column="43" selection-end-line="8" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/shapes/two_dimensional/Ellipse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision2D.java" />
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GDistances.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="69" column="70" selection-start-line="69" selection-start-column="70" selection-end-line="69" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GIntersects.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="69" column="36" lean-forward="true" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision3D.java" />
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision3Dimpl.java" />
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collision2Dimpl.java" />
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/Collisions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="26" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/LineLineIntersect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/twoDimensional/rectangle/BoundingRect.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding>
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#580#581#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/ellipsoid/BoundingEllipsoid.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="46" selection-start-line="8" selection-start-column="46" selection-end-line="8" selection-end-column="46" />
+          <folding>
+            <element signature="e#480#481#0" expanded="true" />
+            <element signature="e#550#551#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/cylinder/BoundingCylinder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/ecs/systems/BorderColliderSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/NavBar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GColision.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/bombercraft2/gui/components/GuiComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="71" column="37" lean-forward="true" selection-start-line="71" selection-start-column="37" selection-end-line="71" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/misc/SimpleGridCollision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="109" column="9" lean-forward="true" selection-start-line="109" selection-start-column="9" selection-end-line="109" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/math/physics/GColision.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="11" column="23" selection-start-line="11" selection-start-column="23" selection-end-line="11" selection-end-column="23" />
+          <folding>
+            <element signature="method#CircleRectCollision#0;class#GColision#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3DStatic.java" />
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/glib2/interfaces/Saveable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/GOptions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+          <folding>
+            <element signature="e#562#563#0" expanded="true" />
+            <element signature="e#604#605#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#703#704#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1096#1097#0" expanded="true" />
+            <element signature="e#1141#1142#0" expanded="true" />
+            <element signature="e#2178#2179#0" expanded="true" />
+            <element signature="e#2224#2225#0" expanded="true" />
+            <element signature="e#2258#2259#0" expanded="true" />
+            <element signature="e#2285#2286#0" expanded="true" />
+            <element signature="e#2340#2341#0" expanded="true" />
+            <element signature="e#2367#2368#0" expanded="true" />
+            <element signature="e#2422#2423#0" expanded="true" />
+            <element signature="e#2456#2457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="19" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/line/Line3DGenerated.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="30" column="18" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/Box.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/LineLineIntersect.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/utils/ShapeCreator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="90" column="35" selection-start-line="90" selection-start-column="35" selection-end-line="90" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoxStatic.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+          <caret line="7" column="19" selection-start-line="7" selection-start-column="19" selection-end-line="7" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/enums/Directions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/resouces/ResourceLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="18" column="19" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GColision.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/math/GVector2f.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/GameConfig.java" />
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/IEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="8" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bombercraft2/game/player/MyPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="633">
-          <caret line="60" column="25" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/BombercraftUtils.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoundingBox.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="8" column="61" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/utils/GLogger.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/shapes/types/box/BoxGenerated.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/StateManager.java">
+    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/physics/utils/ShapeData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        <state relative-caret-position="300">
+          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/bombercraft2/game/misc/Direction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/Input.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-544">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/Camera.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/prototypes/input/IInput.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/InputCanvas.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1666">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/StatsHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/Window.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="33" selection-end-line="12" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/CoreEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1543">
-          <caret line="27" column="48" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/registry/Context.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/demos/ClosestDemo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/config/Config.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/config/RootConfig.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/registry/CoreRegistry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/multithreading/ThreadPool.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="19" lean-forward="true" selection-start-line="20" selection-start-column="19" selection-end-line="20" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/multithreading/IDAssigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/engine/multithreading/PooledThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Utils/Java/jre/lib/rt.jar!/sun/reflect/generics/reflectiveObjects/NotImplementedException.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/IdeaProjects/JavaUtils/GLib2/src/main/java/org/utils/MeasureUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="38" column="55" selection-start-line="38" selection-start-column="55" selection-end-line="38" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1712#1713#0" expanded="true" />
-            <element signature="e#1763#1764#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/play_ground/demos/EcsDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-668">
-          <caret line="24" column="74" selection-start-line="24" selection-start-column="74" selection-end-line="24" selection-end-column="74" />
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

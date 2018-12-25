@@ -15,9 +15,9 @@ import org.bombercraft2.game.level.Level;
 import org.bombercraft2.game.player.MyPlayer;
 import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
+import org.glib2.cycle.SimpleLoop;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import org.play_ground.PlayGround;
 import org.utils.MiscUtils;
 import utils.math.GVector2f;
 
@@ -29,12 +29,30 @@ import java.util.HashMap;
 public class App {
 
     public static void main(String[] args) {
-        // Bombercraft game = new Bombercraft();
-        PlayGround game = new PlayGround();
-        game.run();
-
+        Bombercraft game = new Bombercraft();
+        // PlayGround game = new PlayGround();
+        game.start();
+        // testSimpleLoop();
         // testPathFinging();
         // testTaskManager();
+    }
+
+    private static void testSimpleLoop() {
+        SimpleLoop loop = new SimpleLoop() {
+            @Override
+            protected void update(float delta) {
+
+            }
+
+            @Override
+            protected void render() {
+
+            }
+        };
+
+        loop.start();
+        MiscUtils.sleep(10000);
+        loop.stop();
     }
 
     private static void testPathFinging() {
@@ -263,13 +281,13 @@ public class App {
             Bombercraft server = new Bombercraft();
             server.initDefaultProfile();
             server.startNewGame();
-            server.run();
+            server.start();
         });
         Thread t2 = new Thread(() -> {
             Bombercraft client = new Bombercraft();
             client.initDefaultProfile();
             client.showJoinMenu();
-            client.run();
+            client.start();
         });
         t1.start();
         MiscUtils.sleep(1000);

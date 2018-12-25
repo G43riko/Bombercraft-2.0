@@ -5,6 +5,7 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.gui2.GuiTester;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
+import org.prototypes.IEngine;
 import org.utils.MiscUtils;
 import utils.math.GVector2f;
 
@@ -12,14 +13,13 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.util.HashMap;
 
-public abstract class CoreEngine {
+public abstract class CoreEngine implements IEngine {
     private static boolean    renderTime = false;
     private static int        fps        = 60;
     private static int        ups        = 60;
     @NotNull
-    private final  Input      input      = new Input();
+    private        Input      input;
     @NotNull
-    private final  Canvas     canvas     = new Canvas();
     private        boolean    running    = false;
     private        float      actFPS     = fps;
     private        float      actUPS     = ups;
@@ -39,12 +39,14 @@ public abstract class CoreEngine {
         CoreEngine.ups = ups;
     }
 
-    public void run() {
+    @Override
+    public void start() {
         running = true;
-        mainLoop();
+        gameLoop();
     }
 
-    protected void cleanUp() {
+    @Override
+    public void cleanUp() {
         window.dispose();
         window.removeAll();
         Input.cleanUp();
@@ -54,7 +56,8 @@ public abstract class CoreEngine {
         running = false;
     }
 
-    private void mainLoop() {
+    @Override
+    public void gameLoop() {
         long initialTime = System.nanoTime();
         final double timeU = 1000000000 / ups;
         final double timeF = 1000000000 / fps;
@@ -111,12 +114,11 @@ public abstract class CoreEngine {
                             StaticConfig.WINDOW_DEFAULT_TITLE,
                             StaticConfig.WINDOW_DEFAULT_WIDTH,
                             StaticConfig.WINDOW_DEFAULT_HEIGHT);
-        window.add(canvas);
+        input = new Input();
+        // Platform.init(input, window);
+        window.add(window.getCanvas());
 
-        canvas.addMouseListener(input);
-        canvas.addKeyListener(input);
-        canvas.addMouseWheelListener(input);
-        canvas.addMouseMotionListener(input);
+        window.registerInput(input);
         init();
     }
 
@@ -130,11 +132,11 @@ public abstract class CoreEngine {
     }
 
     private void defaultRender() {
-        BufferStrategy buffer = canvas.getBufferStrategy();
+        BufferStrategy buffer = window.getCanvas().getBufferStrategy();
         if (buffer == null) {
-            GuiTester.manager.createMainPanel(canvas);
+            GuiTester.manager.createMainPanel(window.getCanvas());
             GuiTester.init();
-            canvas.createBufferStrategy(3);
+            window.getCanvas().createBufferStrategy(3);
             return;
         }
         g2 = (Graphics2D) buffer.getDrawGraphics();
@@ -191,7 +193,8 @@ public abstract class CoreEngine {
 
     //MAIN METHODS
 
-    private void init() { }
+    @Override
+    public void init() { }
 
     protected void input() { }
 
@@ -209,7 +212,7 @@ public abstract class CoreEngine {
     @NotNull
     @Contract(pure = true)
     public Canvas getCanvas() {
-        return canvas;
+        return window.getCanvas();
     }
 
     @NotNull

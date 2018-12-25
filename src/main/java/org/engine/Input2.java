@@ -2,49 +2,63 @@ package org.engine;
 
 import org.bombercraft2.gui.ClickAble;
 import org.glib2.math.vectors.SimpleVector2f;
-import org.jetbrains.annotations.Contract;
-import org.prototypes.input.IInput;
+import org.prototypes.IDisplay;
+import org.prototypes.IInput;
 import org.utils.enums.Buttons;
 import org.utils.enums.Keys;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import utils.math.GVector2f;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.util.EnumMap;
 import java.util.Map;
 
-public final class InputCanvas implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener, IInput {
-    private static final int NUM_KEY_CODES     = 256;
-    private static final int NUM_MOUSE_BUTTONS = 5;
-
-    public static final InputCanvas instance = new InputCanvas();
+public class Input2 implements KeyListener, MouseListener, MouseMotionListener, MouseWheelListener, IInput {
+    private static final int    NUM_KEY_CODES     = 256;
+    private static final int    NUM_MOUSE_BUTTONS = 5;
+    private final static Cursor blankCursor       = Toolkit.getDefaultToolkit().createCustomCursor(new BufferedImage(16,
+                                                                                                                     16,
+                                                                                                                     BufferedImage.TYPE_INT_ARGB),
+                                                                                                   new Point(0, 0),
+                                                                                                   "blank cursor");
 
     private final boolean[]             lastKeys      = new boolean[NUM_KEY_CODES];
     private final boolean[]             lastMouse     = new boolean[NUM_MOUSE_BUTTONS];
-    private final SimpleVector2f        mousePosition = new SimpleVector2f();
     private final Map<Buttons, Boolean> buttons       = new EnumMap<>(Buttons.class);
     private final Map<Keys, Boolean>    keys          = new EnumMap<>(Keys.class);
+    private final JFrame                parent;
     private       ClickAble             actMenu       = null;
-    private       float                 scroll        = 0;
-    private       float                 lastScroll    = scroll;
+    private       boolean               locked        = false;
+    private       SimpleVector2f        mousePosition = new SimpleVector2f();
+    private       int                   scroll        = 0;
+    private       int                   lastScroll    = scroll;
+    private       Cursor                oldCursor;
 
-    private InputCanvas() {}
+    public Input2(JFrame parent) {this.parent = parent;}
 
-    @Contract(pure = true)
+    // TODO: was getScroll
+    @Override
     public float getZoom() {
         return lastScroll - scroll;
     }
 
+    @Override
     public void update() {
-        for (int i = 0; i < NUM_KEY_CODES; i++) {
-            lastKeys[i] = isKeyDown(Keys.byAscii(i));
+        for (Keys key : Keys.values()) {
+            lastKeys[key.ascii] = isKeyDown(key);
         }
-
-        for (int i = 0; i < NUM_MOUSE_BUTTONS; i++) {
-            lastMouse[i] = isButtonDown(Buttons.byAscii(i));
+        for (Buttons button : Buttons.values()) {
+            lastMouse[button.ascii] = isButtonDown(button);
         }
 
         lastScroll = scroll;
+    }
+
+    @Override
+    public void init(IDisplay display) {
+
     }
 
     @Override
@@ -68,42 +82,40 @@ public final class InputCanvas implements KeyListener, MouseListener, MouseMotio
     }
 
     @Override
+    public void setMousePos(SimpleVector2f position) {
+
+        throw new UnsupportedOperationException("Not implemented");
+    }
+
+    @Override
     public SimpleVector2f getMousePosition() {
         return mousePosition;
     }
 
     @Override
-    public boolean isButtonDown(Buttons key) {
-        if (buttons.containsKey(key)) {
-            return buttons.get(key);
-        }
-        return false;
-    }
-
-    @Override
     public boolean getMouseLocked() {
-        throw new NotImplementedException();
+        return locked;
     }
 
     @Override
     public void setMouseLocked(boolean mouseLocked) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public void setMousePos(SimpleVector2f position) {
-        throw new NotImplementedException();
-    }
-
-    @Override
-    public boolean isButtonUp(Buttons key) {
-        if (buttons.containsKey(key)) {
-            return !buttons.get(key);
+        if (mouseLocked) {
+            oldCursor = parent.getContentPane().getCursor();
+            parent.getContentPane().setCursor(blankCursor);
+        } else {
+            parent.getContentPane().setCursor(oldCursor);
         }
-        return true;
+
+        locked = mouseLocked;
     }
 
-    @Override
+    public boolean isButtonDown(Buttons button) {
+        if (buttons.containsKey(button)) {
+            return buttons.get(button);
+        }
+        return false;
+    }
+
     public boolean isKeyDown(Keys key) {
         if (keys.containsKey(key)) {
             return keys.get(key);
@@ -111,12 +123,17 @@ public final class InputCanvas implements KeyListener, MouseListener, MouseMotio
         return false;
     }
 
-    @Override
     public boolean isKeyUp(Keys key) {
-        if (keys.containsKey(key)) {
-            return !keys.get(key);
-        }
-        return true;
+        return !isKeyDown(key);
+    }
+
+    @Override
+    public boolean isButtonUp(Buttons button) {
+        return isButtonDown(button);
+    }
+
+    public void cleanUp() {
+
     }
 
     public void setTarget(ClickAble menu) {
@@ -127,48 +144,38 @@ public final class InputCanvas implements KeyListener, MouseListener, MouseMotio
         actMenu = null;
     }
 
-    @Override
     public void mouseDragged(MouseEvent e) {
-        mousePosition.set(e.getX(), e.getY());
+        mousePosition = new SimpleVector2f(e.getX(), e.getY());
     }
 
-    @Override
     public void mouseMoved(MouseEvent e) {
-        mousePosition.set(e.getX(), e.getY());
+        mousePosition = new SimpleVector2f(e.getX(), e.getY());
     }
 
-    @Override
     public void mouseClicked(MouseEvent e) {
         if (actMenu != null) {
             actMenu.doAct(new GVector2f(e.getX(), e.getY()));
         }
     }
 
-    @Override
     public void mouseEntered(MouseEvent arg0) { }
 
-    @Override
     public void mouseExited(MouseEvent arg0) { }
 
-    @Override
     public void mousePressed(MouseEvent e) {
         buttons.put(Buttons.byAscii(e.getButton()), true);
     }
 
-    @Override
     public void mouseReleased(MouseEvent e) {
         buttons.put(Buttons.byAscii(e.getButton()), false);
     }
 
-    @Override
     public void keyPressed(KeyEvent e) { keys.put(Keys.byAscii(e.getKeyCode()), true); }
 
-    @Override
     public void keyReleased(KeyEvent e) {
         keys.put(Keys.byAscii(e.getKeyCode()), false);
     }
 
-    @Override
     public void keyTyped(KeyEvent arg0) { }
 
     @Override

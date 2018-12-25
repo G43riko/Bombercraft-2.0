@@ -4,9 +4,9 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.Visible;
 import org.engine.Input;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.math.physics.Collisions;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GColision;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -54,7 +54,12 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
             return false;
         }
 
-        boolean result = GColision.pointRectCollision(position, size, click);
+        boolean result = Collisions._2D.pointRect(position.getX(),
+                                                  position.getY(),
+                                                  size.getX(),
+                                                  size.getY(),
+                                                  click.getX(),
+                                                  click.getY());
 
         if (result) {
             clickIn();
@@ -68,7 +73,13 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
         if (disable) {
             return;
         }
-        hover = GColision.pointRectCollision(position, size, Input.getMousePosition());
+        GVector2f mousePosition = Input.getMousePosition();
+        hover = Collisions._2D.pointRect(position.getX(),
+                                         position.getY(),
+                                         size.getX(),
+                                         size.getY(),
+                                         mousePosition.getX(),
+                                         mousePosition.getY());
     }
 
     public void calcPosition() {

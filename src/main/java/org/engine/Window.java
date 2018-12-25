@@ -1,19 +1,26 @@
 package org.engine;
 
-import org.jetbrains.annotations.NotNull;
+import org.glib2.math.vectors.SimpleVector2f;
+import org.prototypes.IDisplay;
+import org.utils.events.Observable;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.util.function.Consumer;
 
-public class Window extends JFrame implements ComponentListener, WindowListener {
-    @NotNull
-    private final CoreEngine parent;
-    private       boolean    focused = true;
+public final class Window extends JFrame implements IDisplay {
+    private final Canvas canvas = new Canvas();
 
-    public Window(@NotNull CoreEngine parent, @NotNull String title, int width, int height) {
+    private final Observable<SimpleVector2f> resizeHandlers = new Observable<>();
+    private final CoreEngine                 parent;
+    private       boolean                    focused        = true;
+    private       boolean                    fullscreen     = false;
+
+    public Window(CoreEngine parent, String title, int width, int height) {
         this.parent = parent;
         setTitle(title);
         setResizable(true);
@@ -22,11 +29,72 @@ public class Window extends JFrame implements ComponentListener, WindowListener 
 //		setFullscreen(true);
         setVisible(true);
 
-        addComponentListener(this);
-        addWindowListener(this);
+
+        addComponentListener(new ComponentListener() {
+            public void componentResized(ComponentEvent e) {
+                resizeHandlers.emit(new SimpleVector2f(getSize().width, getSize().height));
+            }
+
+            public void componentMoved(ComponentEvent e) { }
+
+            public void componentShown(ComponentEvent e) { }
+
+            public void componentHidden(ComponentEvent e) { }
+        });
+        addWindowListener(new WindowListener() {
+            public void windowOpened(WindowEvent e) { }
+
+            public void windowClosing(WindowEvent e) {
+                parent.onExit();
+            }
+
+            public void windowClosed(WindowEvent e) { }
+
+            public void windowIconified(WindowEvent e) {
+                parent.onBlur();
+                focused = false;
+            }
+
+            public void windowDeiconified(WindowEvent e) {
+                parent.onFocus();
+                focused = true;
+            }
+
+            public void windowActivated(WindowEvent e) {
+                parent.onFocus();
+                focused = true;
+            }
+
+            public void windowDeactivated(WindowEvent e) {
+                parent.onBlur();
+                focused = false;
+            }
+        });
     }
 
-    public void setFullscreen(boolean value) {
+    @Override
+    public boolean isFocused() {
+        return focused;
+    }
+
+    public Canvas getCanvas() {
+        return canvas;
+    }
+
+    public void registerInput(Input realInput) {
+        Input input = realInput;
+        canvas.addMouseListener(input);
+        canvas.addKeyListener(input);
+        canvas.addMouseWheelListener(input);
+        canvas.addMouseMotionListener(input);
+    }
+
+    @Override
+    public boolean isFullscreen() {
+        return fullscreen;
+    }
+
+    private void setFullscreen(boolean value) {
         setVisible(false);
         setExtendedState(value ? MAXIMIZED_BOTH : NORMAL);
 
@@ -34,41 +102,45 @@ public class Window extends JFrame implements ComponentListener, WindowListener 
         setVisible(true);
     }
 
-    public void componentHidden(ComponentEvent e) {}
-
-    public void componentMoved(ComponentEvent e) {}
-
-    public void componentShown(ComponentEvent e) {}
-
-    public void windowDeactivated(WindowEvent e) {
-        parent.onBlur(); focused = false;
+    @Override
+    public void toggleFullscreen() {
+        fullscreen = !fullscreen;
+        setFullscreen(fullscreen);
     }
 
-    public void windowDeiconified(WindowEvent e) {
-        parent.onFocus(); focused = true;
+    @Override
+    public void updateDisplay() {
+
     }
 
-    public void windowActivated(WindowEvent e) {
-        parent.onFocus(); focused = true;
+    @Override
+    public void clear() {
+
     }
 
-    public void windowIconified(WindowEvent e) {
-        parent.onBlur(); focused = false;
+    @Override
+    public void setClearColor(float r, float g, float b, float alpha) {
+
     }
 
-    public void windowClosing(WindowEvent e) {
-        parent.onExit();
+    @Override
+    public boolean shouldExit() {
+        // TODO
+        return false;
     }
 
-    public void windowOpened(WindowEvent e) {}
-
-    public void windowClosed(WindowEvent e) {}
-
-    public void componentResized(ComponentEvent e) {
-        parent.onResize();
+    @Override
+    public boolean isVSyncEnabled() {
+        return false;
     }
 
-    public boolean isFocused() {
-        return this.focused;
+    @Override
+    public void onResize(Consumer<SimpleVector2f> event) {
+        resizeHandlers.subscribe(event);
+    }
+
+    @Override
+    public void stop() {
+        dispose();
     }
 }

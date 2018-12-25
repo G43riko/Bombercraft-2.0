@@ -3,7 +3,7 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
-import org.glib2.math.physics.GClosest;
+import org.glib2.math.physics.Closest;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.SimpleParticlePlayer;
@@ -61,16 +61,16 @@ public class ClosestDemo extends GameState {
     }
 
     private void drawClosestPoint(Graphics2D g2, SimpleParticle barrel) {
-        org.glib2.math.vectors.GVector2f closest = GClosest.getClosestPointOnLine(mySimpleParticlePlayer.posX,
-                                                                                  mySimpleParticlePlayer.posY,
-                                                                                  mySimpleParticlePlayer.posX + (int) (Math
+        org.glib2.math.vectors.GVector2f closest = Closest._2D.getClosestPointOnLine(mySimpleParticlePlayer.posX,
+                                                                                     mySimpleParticlePlayer.posY,
+                                                                                     mySimpleParticlePlayer.posX + (int) (Math
                                                                                           .cos(
                                                                                                   mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
-                                                                                  mySimpleParticlePlayer.posY + (int) (Math
+                                                                                     mySimpleParticlePlayer.posY + (int) (Math
                                                                                           .sin(
                                                                                                   mySimpleParticlePlayer.angle) * mySimpleParticlePlayer.length * 100),
-                                                                                  barrel.posX,
-                                                                                  barrel.posY);
+                                                                                     barrel.posX,
+                                                                                     barrel.posY);
 
 
         final int targetSize = 20;

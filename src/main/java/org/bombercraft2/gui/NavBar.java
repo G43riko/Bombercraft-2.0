@@ -6,9 +6,9 @@ import org.bombercraft2.game.Iconable;
 import org.bombercraft2.game.entity.Helper;
 import org.bombercraft2.game.level.BlockType;
 import org.engine.Input;
+import org.glib2.math.physics.Collisions;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GColision;
 import utils.math.GVector2f;
 
 import java.awt.*;
@@ -71,7 +71,7 @@ public class NavBar extends Bar {
         totalSize = size.mul(new GVector2f(StaticConfig.NAV_BAR_NUMBER_OF_BLOCKS, 1));
         totalPos = new GVector2f((getParent().getCanvas().getWidth() - totalSize.getX()) / 2,
                                  getParent().getCanvas()
-                                            .getHeight() - StaticConfig.NAV_BAR_BOTTOM_OFFSET - totalSize.getY());
+                                         .getHeight() - StaticConfig.NAV_BAR_BOTTOM_OFFSET - totalSize.getY());
     }
 
     @Override
@@ -100,7 +100,13 @@ public class NavBar extends Bar {
 
     @Override
     public void doAct(GVector2f click) {
-        if (GColision.pointRectCollision(totalPos, totalSize, Input.getMousePosition())) {
+        GVector2f mousePosition = Input.getMousePosition();
+        if (Collisions._2D.pointRect(totalPos.getX(),
+                                     totalPos.getY(),
+                                     totalSize.getX(),
+                                     totalSize.getY(),
+                                     mousePosition.getX(),
+                                     mousePosition.getY())) {
             selectedItem = Input.getMousePosition().sub(totalPos).div(size).getXi();
             getParent().getToolsManager().setSelectedTool(getSelectedIcon());
         }

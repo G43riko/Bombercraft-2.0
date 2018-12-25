@@ -6,6 +6,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
 
+/**
+ * @deprecated use {@link org.glib2.math.vectors.GVector2f} instead
+ */
+@Deprecated
 public final class GVector2f implements Serializable {
     private static final long serialVersionUID = 1L;
 
