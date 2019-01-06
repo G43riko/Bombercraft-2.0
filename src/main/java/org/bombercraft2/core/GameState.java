@@ -1,6 +1,6 @@
 package org.bombercraft2.core;
 
-import org.bombercraft2.gui.ClickAble;
+import org.glib2.interfaces.ClickAble;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 

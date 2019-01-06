@@ -4,7 +4,7 @@ import org.glib2.interfaces.JSONAble;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -43,7 +43,7 @@ public class OptionsManager implements JSONAble {
     }
 
     public void initDefault() {
-        final JSONObject result = ResourceLoader.getJSON(StaticConfig.FILE_VISIBLE_OPTIONS);
+        final JSONObject result = ResourceUtils.getJSON(StaticConfig.FILE_VISIBLE_OPTIONS);
         if (result != null) {
             fromJSON(result);
         }

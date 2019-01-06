@@ -7,14 +7,14 @@ import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 
 public class ImagedBomb extends SimpleBomb {
     //TODO: Obrázky prerenderovať do defaultného rozlíšenia
-    private final static Image bombImage   = ResourceLoader.loadTexture("bomb" + StaticConfig.EXTENSION_IMAGE);
-    private final static Image craterImage = ResourceLoader.loadTexture("crater" + StaticConfig.EXTENSION_IMAGE);
+    private final static Image bombImage   = ResourceUtils.getBufferedImage("bomb" + StaticConfig.EXTENSION_IMAGE);
+    private final static Image craterImage = ResourceUtils.getBufferedImage("crater" + StaticConfig.EXTENSION_IMAGE);
 
     @Nullable
     private final Timer timer;

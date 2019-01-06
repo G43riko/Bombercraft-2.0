@@ -1,6 +1,6 @@
 package org.engine;
 
-import org.bombercraft2.gui.ClickAble;
+import org.glib2.interfaces.ClickAble;
 import org.glib2.math.vectors.GVector2f;
 import org.glib2.math.vectors.SimpleVector2f;
 import org.prototypes.IDisplay;

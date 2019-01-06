@@ -1,11 +1,11 @@
 package org.bombercraft2.game.player;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.components.health_bar.HealthAble;
 import org.bombercraft2.core.Texts;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.misc.Direction;
+import org.glib2.interfaces.HealthAble;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
@@ -150,7 +150,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
     }
 
     @Override
-    public int getActHealth() {
+    public int getHealth() {
         return health;
     }
 

@@ -5,6 +5,7 @@ import org.bombercraft2.game.GameAble;
 import org.bombercraft2.gui.submenu.SubMenuCreator;
 import org.bombercraft2.gui.submenu.Submenu;
 import org.engine.Input;
+import org.glib2.interfaces.ClickAble;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;

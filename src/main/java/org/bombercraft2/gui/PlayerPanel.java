@@ -48,7 +48,7 @@ public class PlayerPanel implements InteractAbleG2 {
 
         verticalOffset += PLAYER_PANEL_FONT_OFFSET + PLAYER_PANEL_FONT_SIZE;
         g2.drawString(parent.getLabelOf(Texts.HEALTH) + ": " +
-                              parent.getMyPlayer().getActHealth() + "/" +
+                              parent.getMyPlayer().getHealth() + "/" +
                               parent.getMyPlayer().getMaxHealth(),
                       posX + PLAYER_PANEL_FONT_OFFSET,
                       posY + verticalOffset);

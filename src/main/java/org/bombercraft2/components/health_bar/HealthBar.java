@@ -1,6 +1,7 @@
 package org.bombercraft2.components.health_bar;
 
 import org.bombercraft2.StaticConfig;
+import org.glib2.interfaces.HealthAble;
 import org.glib2.math.vectors.GVector2f;
 import org.gui.utils.ColorBox;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +39,7 @@ public class HealthBar {
         g2.setColor(StaticConfig.HEALTH_BAR_FILL_COLOR);
         g2.fillRect(pos.getXi() + StaticConfig.HEALTH_BAR_HORIZONTAL_OFFSET,
                     pos.getYi() + StaticConfig.HEALTH_BAR_VERTICAL_OFFSET,
-                    target.getActHealth() * maxWidth / target.getMaxHealth(),
+                    target.getHealth() * maxWidth / target.getMaxHealth(),
                     height);
 
         */
@@ -52,7 +53,7 @@ public class HealthBar {
         colorBoxFill.renderBackground(g2,
                                       pos.getXi() + StaticConfig.HEALTH_BAR_HORIZONTAL_OFFSET,
                                       pos.getYi() + StaticConfig.HEALTH_BAR_VERTICAL_OFFSET,
-                                      target.getActHealth() * maxWidth / target.getMaxHealth(),
+                                      target.getHealth() * maxWidth / target.getMaxHealth(),
                                       height);
     }
 

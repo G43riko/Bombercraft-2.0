@@ -9,7 +9,8 @@ import org.play_ground.misc.*;
 import org.play_ground.misc.map.MapManager;
 import org.play_ground.misc.selectors.SelectorManager;
 import org.utils.MeasureUtils;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -66,7 +67,7 @@ public class MainManager implements InteractAbleG2 {
             this.guiManager = (GuiManagerImpl) manager;
         }
         else {
-            GLogger.error(GLogger.GError.UNKNOWN_MANAGER, ": " + manager.getClass().getName());
+            GLogger.error(GError.UNKNOWN_MANAGER, ": " + manager.getClass().getName());
         }
         managers.add(manager);
     }

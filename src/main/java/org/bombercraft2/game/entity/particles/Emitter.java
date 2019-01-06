@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -51,7 +51,7 @@ public abstract class Emitter extends Entity<GameAble> {
     private static void initDefault() {
         try {
             EmitterTypes[] types = EmitterTypes.values();
-            JSONObject object = ResourceLoader.getJSON(StaticConfig.FILE_PARTICLES);
+            JSONObject object = ResourceUtils.getJSON(StaticConfig.FILE_PARTICLES);
             for (EmitterTypes type : types) {
                 predefinedParticles.put(type, object.getJSONObject(type.getName()));
             }

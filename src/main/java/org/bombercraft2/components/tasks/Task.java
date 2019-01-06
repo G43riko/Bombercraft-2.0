@@ -1,8 +1,8 @@
 package org.bombercraft2.components.tasks;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.components.health_bar.HealthAble;
 import org.bombercraft2.components.health_bar.HealthBar;
+import org.glib2.interfaces.HealthAble;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
@@ -79,7 +79,7 @@ public class Task implements InteractAbleG2, HealthAble {
     }
 
     @Override
-    public int getActHealth() {
+    public int getHealth() {
         return (int) (workCount * 100);
     }
 

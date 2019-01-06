@@ -1,9 +1,10 @@
 package org.bombercraft2.gui;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.GameAble;
+import org.glib2.interfaces.ClickAble;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.vectors.GVector2f;
 
 import java.awt.*;

@@ -1,6 +1,6 @@
 package org.play_ground.misc.particles;
 
-import org.bombercraft2.core.Visible;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 

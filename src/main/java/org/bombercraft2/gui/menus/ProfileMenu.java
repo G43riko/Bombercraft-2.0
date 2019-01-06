@@ -9,7 +9,7 @@ import org.bombercraft2.gui.components.Button;
 import org.bombercraft2.gui.components.GuiComponent;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 import java.io.File;
@@ -90,7 +90,7 @@ public class ProfileMenu extends Menu {
 
     private ArrayList<String> loadProfiles() {
         ArrayList<String> result = new ArrayList<>();
-        URL url = ResourceLoader.getURL(StaticConfig.FOLDER_PROFILE);
+        URL url = ResourceUtils.getURL(StaticConfig.FOLDER_PROFILE);
 
         if (url != null) {
             try {

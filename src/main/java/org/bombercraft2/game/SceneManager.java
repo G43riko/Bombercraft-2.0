@@ -20,7 +20,8 @@ import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.util.List;
@@ -184,7 +185,7 @@ public class SceneManager implements InteractAbleG2, JSONAble {
             result.put(Texts.PLAYERS_NUMBER, players.size());
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_SCENE_MANAGER, e);
+            GLogger.error(GError.CANNOT_SERIALIZE_SCENE_MANAGER, e);
         }
 
         return result;

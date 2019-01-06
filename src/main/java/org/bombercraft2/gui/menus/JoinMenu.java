@@ -11,7 +11,8 @@ import org.glib2.math.vectors.GVector2f;
 import org.glib2.network.InternetUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.io.ObjectInputStream;
@@ -61,7 +62,7 @@ public class JoinMenu extends Menu {
                                                          msg.getInt(Texts.PLAYERS_NUMBER)));
                     }
                     catch (Exception ee) {
-                        GLogger.error(GLogger.GError.CANNOT_CREATE_SOCKET, ee);
+                        GLogger.error(GError.CANNOT_CREATE_SOCKET, ee);
                     }
                     if (socket != null) {
                         socket.close();
@@ -81,7 +82,7 @@ public class JoinMenu extends Menu {
             }
         }
         catch (Exception e) {
-            GLogger.error(GLogger.GError.CANNOT_SCAN_LOCALHOST, e);
+            GLogger.error(GError.CANNOT_SCAN_LOCALHOST, e);
         }
     });
 

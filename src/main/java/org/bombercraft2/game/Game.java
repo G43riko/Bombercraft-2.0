@@ -3,7 +3,10 @@ package org.bombercraft2.game;
 import org.bombercraft2.Bombercraft;
 import org.bombercraft2.Profile;
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.core.*;
+import org.bombercraft2.core.CoreGame;
+import org.bombercraft2.core.GameState;
+import org.bombercraft2.core.GameStateType;
+import org.bombercraft2.core.Texts;
 import org.bombercraft2.game.bots.BotFactory;
 import org.bombercraft2.game.entity.Bomb;
 import org.bombercraft2.game.entity.Helper;
@@ -25,14 +28,17 @@ import org.bombercraft2.game.player.Player;
 import org.bombercraft2.gui.GameGui;
 import org.bombercraft2.multiplayer.Connector;
 import org.engine.Input;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.enums.Keys;
-import utils.GLogger;
-import utils.resouces.ResourceLoader;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -43,9 +49,9 @@ public class Game extends GameState implements GameAble {
 
     static {
         try {
-            JSONObject jsonResult = ResourceLoader.getJSON(StaticConfig.FILE_GAME_CONFIG);
+            JSONObject jsonResult = ResourceUtils.getJSON(StaticConfig.FILE_GAME_CONFIG);
             if (jsonResult == null) {
-                GLogger.throwError(GLogger.GError.CANNOT_READ_JSON);
+                GLogger.throwError(GError.CANNOT_READ_JSON);
             }
             gameConfig = jsonResult.getJSONObject("data");
             BotFactory.init(gameConfig.getJSONObject("enemies"));
@@ -53,7 +59,7 @@ public class Game extends GameState implements GameAble {
             JSONObject helpers = gameConfig.getJSONObject("helpers");
             TowerCreator.init(helpers.getJSONObject("towers"));
         } catch (JSONException e) {
-            GLogger.error(GLogger.GError.CREATE_CORE_GAME_FAILED, e);
+            GLogger.error(GError.CREATE_CORE_GAME_FAILED, e);
         }
     }
 
@@ -94,7 +100,7 @@ public class Game extends GameState implements GameAble {
                         sceneManager.addPlayer(new Player(this, new JSONObject(gameData.getString("player_" + i))));
                     }
                 } catch (JSONException e) {
-                    GLogger.error(GLogger.GError.CANNOT_ADD_PLAYERS, e);
+                    GLogger.error(GError.CANNOT_ADD_PLAYERS, e);
                 }
             }
 
@@ -105,9 +111,9 @@ public class Game extends GameState implements GameAble {
             lightsManager.addLight(new Light(this,
                                              new GVector2f(300, 300),
                                              new GVector2f(300, 300), myPlayer));
-            GLogger.log(GLogger.GLog.GAME_CREATED);
+            GLogger.log(GLog.GAME_CREATED);
         } catch (JSONException e) {
-            GLogger.error(GLogger.GError.CREATE_GAME_FAILED, e);
+            GLogger.error(GError.CREATE_GAME_FAILED, e);
         }
     }
 
@@ -185,9 +191,9 @@ public class Game extends GameState implements GameAble {
         result.add("receive messages: " + Bombercraft.totalMessages.getYi());
 
         Runtime runtime = Runtime.getRuntime();
-        final long usedMem = (runtime.totalMemory() - runtime.freeMemory()) / 1000000;
+        final long usedMem = (runtime.totalMemory() - runtime.freeMemory()) / 1_000_000;
         result.add("memory: " + String.format("%03d ", usedMem) + " / " + String.format("%03d ",
-                                                                                        runtime.totalMemory() / 1000000) + "MB");
+                                                                                        runtime.totalMemory() / 1_000_000) + "MB");
 
         result.addAll(sceneManager.getLogInfo());
         result.add("blocks: " + level.getMap().getRenderedBlocks() + "/" + (int) level.getMap()
@@ -235,7 +241,7 @@ public class Game extends GameState implements GameAble {
                                               "player1.png",
                                               level.getDefaultPlayerInfo().getInt("range")));
         } catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_ADD_PLAYER, e);
+            GLogger.error(GError.CANNOT_ADD_PLAYER, e);
         }
     }
 
@@ -335,11 +341,11 @@ public class Game extends GameState implements GameAble {
 
         String key = localPos.getXi() + "_" + localPos.getYi();
         if (sceneManager.existHelperOn(key)) {
-            GLogger.printLine("Vytvara sa helper na helpere");
+            GLogger.print("Vytvara sa helper na helpere");
             return;
         }
         if (level.getMap().getBlock(key).getType() == BlockType.WATER) {
-            GLogger.printLine("Vytvara sa helper na vode");
+            GLogger.print("Vytvara sa helper na vode");
             return;
         }
         switch (type) {
@@ -356,7 +362,7 @@ public class Game extends GameState implements GameAble {
     public void explodeBombAt(@NotNull GVector2f pos) {
         String key = pos.getXi() + "_" + pos.getYi();
         if (!sceneManager.existHelperOn(key)) {
-            GLogger.printLine("Explodovala neexistujuca bomba na: " + pos);
+            GLogger.print("Explodovala neexistujuca bomba na: " + pos);
             return;
         }
         sceneManager.removeHelper(key);
@@ -408,7 +414,7 @@ public class Game extends GameState implements GameAble {
             o.put(Texts.GAME_DATA, toJSON());
             return o.toString();
         } catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_GAME_INFO, e);
+            GLogger.error(GError.CANNOT_SERIALIZE_GAME_INFO, e);
         }
         return null;
     }
@@ -424,7 +430,7 @@ public class Game extends GameState implements GameAble {
             result.put(Texts.PLAYERS_NUMBER, sceneManager.getPlayersCount());
             return result.toString();
         } catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BASIC_INFO, e);
+            GLogger.error(GError.CANNOT_SERIALIZE_BASIC_INFO, e);
         }
         return "{}";
     }
@@ -488,7 +494,7 @@ public class Game extends GameState implements GameAble {
     @Override
     public HashMap<String, String> getStats() {
         HashMap<String, String> stats = new HashMap<>(sceneManager.getStats());
-        int duration = (int) (System.currentTimeMillis() - startTime) / 1000;
+        int duration = (int) (System.currentTimeMillis() - startTime) / 1_000;
         int minutes = duration / 60;
         int seconds = duration - minutes * 60;
         stats.put("Cas hry", minutes + ":" + seconds);

@@ -5,7 +5,9 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.Texts;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,10 +29,10 @@ public abstract class Client implements Writable {
             objectWriter = new ObjectOutputStream(socket.getOutputStream());
             objectWriter.flush();
             objectReader = new ObjectInputStream(socket.getInputStream());
-            GLogger.log(GLogger.GLog.SUCCESSFULLY_CONNECTED_TO_THE_SERVER);
+            GLogger.log(GLog.SUCCESSFULLY_CONNECTED_TO_THE_SERVER);
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CLIENT_CANNOT_CONNECT_TO_SERVER, e);
+            GLogger.error(GError.CLIENT_CANNOT_CONNECT_TO_SERVER, e);
         }
 
         listen();
@@ -79,14 +81,14 @@ public abstract class Client implements Writable {
             object.put(Texts.MESSAGE, o);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_PARSE_MESSAGE, e);
+            GLogger.error(GError.CANNOT_PARSE_MESSAGE, e);
         }
         try {
             objectWriter.writeObject(object.toString());
             Bombercraft.sendMessages++;
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_SEND_MESSAGE, e);
+            GLogger.error(GError.CANNOT_SEND_MESSAGE, e);
             onConnectionBroken();
         }
     }
@@ -104,7 +106,7 @@ public abstract class Client implements Writable {
             objectWriter.close();
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_CLEAN_CLIENT, e);
+            GLogger.error(GError.CANNOT_CLEAN_CLIENT, e);
         }
     }
 }

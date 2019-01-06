@@ -1,5 +1,6 @@
 package org.bombercraft2.game.entity.explosion;
 
+import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.entity.particles.Particle;
 import org.glib2.math.vectors.GVector2f;
@@ -8,14 +9,14 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
 import org.utils.SpriteAnimation;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Explosion extends Entity<SimpleGameAble> {
-    private static Image                      explosionImage = ResourceLoader.loadTexture("explosion1.png");
+    private static Image                      explosionImage = ResourceUtils.getBufferedImage(StaticConfig.IMAGES_PATH + "explosion1.png");
     private final  GVector2f                  size;
     private        ArrayList<ShockWave>       waves          = new ArrayList<>();
     private        ArrayList<Particle>        particles      = new ArrayList<>();

@@ -3,9 +3,9 @@ package org.bombercraft2.gui.components;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.MenuAble;
 import org.bombercraft2.core.Texts;
-import org.bombercraft2.gui.ClickAble;
 import org.bombercraft2.gui.menus.JoinMenu;
 import org.bombercraft2.multiplayer.RemoteGameData;
+import org.glib2.interfaces.ClickAble;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 

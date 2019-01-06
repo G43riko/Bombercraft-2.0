@@ -4,7 +4,9 @@ import org.bombercraft2.Bombercraft;
 import org.bombercraft2.core.Texts;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -26,10 +28,10 @@ public class ClientPlayer {
             objectWriter = new ObjectOutputStream(socket.getOutputStream());
             objectWriter.flush();
             objectReader = new ObjectInputStream(socket.getInputStream());
-            GLogger.log(GLogger.GLog.CLIENT_PLAYER_SUCCESSFULLY_INITIALIZED);
+            GLogger.log(GLog.CLIENT_PLAYER_SUCCESSFULLY_INITIALIZED);
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_INITIAL_CLIENT_PLAYER, e);
+            GLogger.error(GError.CANNOT_INITIAL_CLIENT_PLAYER, e);
         }
     }
 
@@ -61,10 +63,10 @@ public class ClientPlayer {
 
             objectReader.close();
             objectWriter.close();
-            GLogger.log(GLogger.GLog.CLIENT_PLAYER_CLEANED);
+            GLogger.log(GLog.CLIENT_PLAYER_CLEANED);
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_CLEAN_CLIENT_PLAYER, e);
+            GLogger.error(GError.CANNOT_CLEAN_CLIENT_PLAYER, e);
         }
     }
 
@@ -76,14 +78,14 @@ public class ClientPlayer {
             object.put(Texts.MESSAGE, o.toString());
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_PARSE_MESSAGE, e);
+            GLogger.error(GError.CANNOT_PARSE_MESSAGE, e);
         }
         try {
             objectWriter.writeObject(object.toString());
             objectWriter.flush();
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_SEND_MESSAGE, e);
+            GLogger.error(GError.CANNOT_SEND_MESSAGE, e);
         }
     }
 

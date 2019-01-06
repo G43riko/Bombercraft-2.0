@@ -6,7 +6,7 @@ import org.bombercraft2.game.Iconable;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.utils.MiscUtils;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 
@@ -57,7 +57,7 @@ public abstract class Helper extends Entity<GameAble> {
 
         Type(String imageName, String name) {
             this.name = name;
-            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
+            image = ResourceUtils.getBufferedImage(StaticConfig.IMAGES_PATH + imageName + StaticConfig.EXTENSION_IMAGE);
         }
 
         public String getName() {return name;}

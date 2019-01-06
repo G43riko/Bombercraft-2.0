@@ -23,6 +23,7 @@ public class GuiManagerImpl extends AbstractManager implements GuiManager {
     @Override
     public void createMainPanel(Canvas canvas) {
         mainPanel = new Panel();
+        mainPanel.setSize(canvas.getWidth(), canvas.getHeight());
         add(mainPanel);
         this.canvas = canvas;
         onResize();

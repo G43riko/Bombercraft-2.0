@@ -3,7 +3,9 @@ package org.bombercraft2.multiplayer.core;
 import org.bombercraft2.Bombercraft;
 import org.bombercraft2.StaticConfig;
 import org.utils.MiscUtils;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -36,11 +38,11 @@ public abstract class Server implements Writable {
     protected Server() {
         try {
             serverSocket = new ServerSocket(StaticConfig.SERVER_PORT);
-            GLogger.log(GLogger.GLog.SERVER_CREATED);
+            GLogger.log(GLog.SERVER_CREATED);
 //			GLog.write(GLog.SITE, "S: Server sa vytvoril");
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CANNOT_CREATE_SERVER, e);
+            GLogger.error(GError.CANNOT_CREATE_SERVER, e);
         }
 
         listen();
@@ -99,10 +101,10 @@ public abstract class Server implements Writable {
                     clients.put(c.getId() + "", c);
                     c.write(getBasicInfo(), BASIC_INFO);
 
-                    GLogger.log(GLogger.GLog.CLIENT_CONNECTED_TO_SERVER);
+                    GLogger.log(GLog.CLIENT_CONNECTED_TO_SERVER);
                 }
                 catch (IOException e) {
-                    GLogger.error(GLogger.GError.SERVER_CANNOT_ACCEPT_CONNECTION, e);
+                    GLogger.error(GError.SERVER_CANNOT_ACCEPT_CONNECTION, e);
                 }
             }
         });
@@ -142,7 +144,7 @@ public abstract class Server implements Writable {
             }
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.CLOSE_SERVER_FAILED, e);
+            GLogger.error(GError.CLOSE_SERVER_FAILED, e);
         }
         serverSocket = null;
     }

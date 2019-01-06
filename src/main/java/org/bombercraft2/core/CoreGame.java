@@ -23,7 +23,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.MiscUtils;
 import org.utils.enums.Keys;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.util.Stack;
@@ -228,10 +230,10 @@ public class CoreGame extends CoreEngine implements MenuAble {
             try {
                 Level level = new Level(gameData.getJSONObject(Texts.LEVEL_DATA));
                 game = new Game(level, this, gameData.getJSONObject(Texts.GAME_DATA));
-                GLogger.log(GLogger.GLog.LEVEL_SUCCESSFULLY_PARSED);
+                GLogger.log(GLog.LEVEL_SUCCESSFULLY_PARSED);
             }
             catch (JSONException e) {
-                GLogger.error(GLogger.GError.CANNOT_PARSE_LEVEL, e);
+                GLogger.error(GError.CANNOT_PARSE_LEVEL, e);
             }
         }
 
@@ -329,7 +331,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
             return result;
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_PLAYER_INFO, e);
+            GLogger.error(GError.CANNOT_SERIALIZE_PLAYER_INFO, e);
         }
         return null;
     }
@@ -344,7 +346,7 @@ public class CoreGame extends CoreEngine implements MenuAble {
             return Game.getConfig().getJSONObject("helpers").getJSONObject("weapons").getJSONObject("laser");
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_GET_WEAPON_BY_TYPE, e);
+            GLogger.error(GError.CANNOT_GET_WEAPON_BY_TYPE, e);
             return null;
         }
     }

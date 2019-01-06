@@ -3,14 +3,14 @@ package org.bombercraft2.gui;
 import org.bombercraft2.StaticConfig;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 public class GuiManager {
     private final String     lang = StaticConfig.DEFAULT_LANGUAGE;
     private final JSONObject data;
 
     public GuiManager() {
-        data = ResourceLoader.getJSON(StaticConfig.FILE_GUI_TEXTS);
+        data = ResourceUtils.getJSON(StaticConfig.FILE_GUI_TEXTS);
     }
 
     public String getLabelOf(String key, String... args) {

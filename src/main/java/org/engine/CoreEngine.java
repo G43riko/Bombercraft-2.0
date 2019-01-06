@@ -8,6 +8,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.prototypes.IEngine;
 import org.utils.MiscUtils;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -33,6 +34,7 @@ public abstract class CoreEngine implements IEngine {
      * @param renderTime - či sa majú do konzoly vypysovať počty vykreslení a updatov
      */
     protected CoreEngine(int fps, int ups, boolean renderTime) {
+        GLogger.setStreams();
         defaultInit();
         CoreEngine.renderTime = renderTime;
         CoreEngine.fps = fps;
@@ -59,8 +61,8 @@ public abstract class CoreEngine implements IEngine {
     @Override
     public void gameLoop() {
         long initialTime = System.nanoTime();
-        final double timeU = 1000000000 / ups;
-        final double timeF = 1000000000 / fps;
+        final double timeU = 1_000_000_000f / ups;
+        final double timeF = 1_000_000_000f / fps;
         double deltaU = 0, deltaF = 0;
         int frames = 0, ticks = 0, loops = 0;
         long timer = System.currentTimeMillis();
@@ -244,7 +246,7 @@ public abstract class CoreEngine implements IEngine {
 
     public abstract void onResize();
 
-    public abstract void onExit();
+    public void onExit() { }
 
     public void onFocus() { }
 

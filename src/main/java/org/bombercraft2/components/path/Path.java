@@ -9,7 +9,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -65,7 +66,7 @@ public class Path extends Entity<GameAble> {
             result.put("points", new JSONArray(points));
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.MAP_SERIALIZATION_FAILED, e);
+            GLogger.error(GError.MAP_SERIALIZATION_FAILED, e);
         }
         return result;
     }

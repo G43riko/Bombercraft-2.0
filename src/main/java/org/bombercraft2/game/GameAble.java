@@ -1,7 +1,6 @@
 package org.bombercraft2.game;
 
 import org.bombercraft2.Profile;
-import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.entity.Helper.Type;
 import org.bombercraft2.game.entity.bullets.BulletManager;
 import org.bombercraft2.game.entity.particles.EmitterTypes;
@@ -10,6 +9,7 @@ import org.bombercraft2.game.player.MyPlayer;
 import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;

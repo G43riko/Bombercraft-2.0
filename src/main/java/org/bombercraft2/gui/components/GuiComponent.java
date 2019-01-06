@@ -1,9 +1,9 @@
 package org.bombercraft2.gui.components;
 
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.core.Visible;
 import org.engine.Input;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.physics.Collisions;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;

@@ -1,8 +1,8 @@
 package org.play_ground.misc;
 
-import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.misc.GCanvas;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.physics.Collisions;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;

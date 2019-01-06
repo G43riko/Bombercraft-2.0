@@ -11,7 +11,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.SpriteViewer;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 
@@ -35,7 +36,7 @@ public class Block extends Entity<GameAble> {
         Type(String imageName, int health, boolean walkable) {
             this.health = health;
             this.walkable = walkable;
-            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
+            image = ResourceUtils.getBufferedImage(imageName + StaticConfig.EXTENSION_IMAGE);
             final BufferedImage bufferedImage = new BufferedImage(image.getWidth(null),
                                                                   image.getHeight(null),
                                                                   BufferedImage.TYPE_INT_ARGB);
@@ -76,7 +77,7 @@ public class Block extends Entity<GameAble> {
             type = BlockType.valueOf(object.getString(Texts.TYPE));
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_PARSE_BLOCK, e);
+            GLogger.error(GError.CANNOT_PARSE_BLOCK, e);
         }
     }
 
@@ -119,7 +120,7 @@ public class Block extends Entity<GameAble> {
             result.put(Texts.POSITION, position);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BLOCK, e);
+            GLogger.error(GError.CANNOT_SERIALIZE_BLOCK, e);
         }
 
         return result;

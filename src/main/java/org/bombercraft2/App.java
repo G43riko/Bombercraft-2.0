@@ -15,10 +15,12 @@ import org.bombercraft2.game.level.Level;
 import org.bombercraft2.game.player.MyPlayer;
 import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
+import org.engine.CoreEngine;
 import org.glib2.cycle.SimpleLoop;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
+import org.play_ground.GuiDemo;
 import org.utils.MiscUtils;
 
 import java.awt.*;
@@ -29,8 +31,9 @@ import java.util.HashMap;
 public class App {
 
     public static void main(String[] args) {
-        Bombercraft game = new Bombercraft();
-//        PlayGround game = new PlayGround();
+//        CoreEngine game = new Bombercraft();
+//        CoreEngine game = new PlayGround();
+        CoreEngine game = new GuiDemo();
         game.start();
         // testSimpleLoop();
         // testPathFinging();
@@ -51,7 +54,7 @@ public class App {
         };
 
         loop.start();
-        MiscUtils.sleep(10000);
+        MiscUtils.sleep(10_000);
         loop.stop();
     }
 

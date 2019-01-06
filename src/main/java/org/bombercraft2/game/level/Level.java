@@ -10,7 +10,9 @@ import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -35,17 +37,17 @@ public class Level implements InteractAbleG2 {
                 i++;
             }
             floraData = object.getJSONObject(Texts.FLORA);
-            GLogger.log(GLogger.GLog.LEVEL_SUCCESSFULLY_CREATED);
+            GLogger.log(GLog.LEVEL_SUCCESSFULLY_CREATED);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.LEVEL_CREATION_FAILED, e);
+            GLogger.error(GError.LEVEL_CREATION_FAILED, e);
         }
     }
 
     public Level() {
         respawnZones.add(StaticConfig.BLOCK_SIZE);
         setDefaultPlayerInfo();
-        GLogger.log(GLogger.GLog.LEVEL_SUCCESSFULLY_CREATED);
+        GLogger.log(GLog.LEVEL_SUCCESSFULLY_CREATED);
     }
 
     //OTHERS
@@ -77,7 +79,7 @@ public class Level implements InteractAbleG2 {
             result.put(Texts.FLORA, floraManager.toJSON());
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SERIALIZE_LEVEL, e);
+            GLogger.error(GError.CANNOT_SERIALIZE_LEVEL, e);
         }
         return result;
     }
@@ -103,7 +105,7 @@ public class Level implements InteractAbleG2 {
             playerInfo.put(Texts.HEALTH, 10);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.CANNOT_SET_DEFAULT_PLAYER_INFO, e);
+            GLogger.error(GError.CANNOT_SET_DEFAULT_PLAYER_INFO, e);
         }
     }
 
@@ -115,7 +117,7 @@ public class Level implements InteractAbleG2 {
                 map = new Map(new JSONObject(mapData), parent);
             }
             catch (JSONException e) {
-                GLogger.error(GLogger.GError.MAP_PARSING_FAILED, e);
+                GLogger.error(GError.MAP_PARSING_FAILED, e);
             }
         }
         else {

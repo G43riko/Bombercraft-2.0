@@ -16,7 +16,7 @@ import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
+import org.utils.logger.GLogger;
 
 class CommonMethods {
     @NotNull
@@ -43,7 +43,7 @@ class CommonMethods {
             GVector2f position = new GVector2f(data.getString(Texts.POSITION));
             Block block = game.getLevel().getMap().getBlock(position.getXi(), position.getYi());
             if (block == null) {
-                GLogger.printLine("ide sa postavit blok na neexistujucej pozicii: " + position);
+                GLogger.print("ide sa postavit blok na neexistujucej pozicii: " + position);
                 return;
             }
             block.build(BlockType.valueOf(data.getString(Texts.TYPE)));

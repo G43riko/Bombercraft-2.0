@@ -12,8 +12,10 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
 import org.utils.noises.PerlinNoise;
-import utils.GLogger;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -38,7 +40,7 @@ public class Map implements InteractAbleG2, JSONAble {
         this.parent = parent;
         fromJSON(object);
         size = numberOfBlocks.getMul(StaticConfig.BLOCK_SIZE);
-        GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
+        GLogger.log(GLog.MAP_SUCCESSFULLY_CREATED);
     }
 
     public Map(@NotNull GameAble parent, @NotNull GVector2f numberOfBlocks) {
@@ -48,7 +50,7 @@ public class Map implements InteractAbleG2, JSONAble {
         createRandomMap();
         defaultMap = toJSON().toString();
         size = numberOfBlocks.getMul(StaticConfig.BLOCK_SIZE);
-        GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
+        GLogger.log(GLog.MAP_SUCCESSFULLY_CREATED);
     }
 
     @NotNull
@@ -138,7 +140,7 @@ public class Map implements InteractAbleG2, JSONAble {
 
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.MAP_SERIALIZATION_FAILED, e);
+            GLogger.error(GError.MAP_SERIALIZATION_FAILED, e);
         }
         return result;
     }
@@ -176,7 +178,7 @@ public class Map implements InteractAbleG2, JSONAble {
             }
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.MAP_CREATION_FAILED, e);
+            GLogger.error(GError.MAP_CREATION_FAILED, e);
         }
         render = true;
     }
@@ -204,7 +206,7 @@ public class Map implements InteractAbleG2, JSONAble {
             fromJSON(new JSONObject(defaultMap));
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.MAP_RESET_FAILED, e);
+            GLogger.error(GError.MAP_RESET_FAILED, e);
         }
     }
 

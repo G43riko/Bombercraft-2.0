@@ -1,8 +1,9 @@
 package org.bombercraft2.game.player;
 
+import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.misc.Direction;
 import org.glib2.math.vectors.GVector2f;
-import utils.resouces.ResourceLoader;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -20,7 +21,7 @@ public class PlayerSprite {
 
     private PlayerSprite(String name, int numX, int numY, int positions, int delay) {
         this.delay = delay;
-        image = ResourceLoader.loadTexture(name);
+        image = ResourceUtils.getBufferedImage(StaticConfig.IMAGES_PATH + name);
         numberOfImages = numX * numY;
         actDelay = delay;
         numberOfSteps = numberOfImages / positions;

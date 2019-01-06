@@ -2,8 +2,8 @@ package org.play_ground.misc;
 
 import com.sun.javafx.util.Utils;
 import org.bombercraft2.StaticConfig;
-import org.bombercraft2.core.Visible;
 import org.engine.Input;
+import org.glib2.interfaces.Visible;
 import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;

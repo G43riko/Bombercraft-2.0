@@ -10,7 +10,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
-import utils.GLogger;
+import org.utils.logger.GError;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 
@@ -54,7 +55,7 @@ public class SimpleTypedBlock extends AbstractBlock {
                 this.type = BlockType.valueOf(type);
             }
             catch (IllegalArgumentException e) {
-                GLogger.error(GLogger.GError.UNKNOWN_BLOCK_TYPE, e, type);
+                GLogger.error(GError.UNKNOWN_BLOCK_TYPE, e, type);
             }
         });
     }

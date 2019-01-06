@@ -11,8 +11,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.MiscUtils;
-import utils.GLogger;
-import utils.resouces.ResourceLoader;
+import org.utils.logger.GLogger;
+import org.utils.resources.ResourceUtils;
 
 import java.awt.*;
 
@@ -75,7 +75,7 @@ public abstract class Flora extends Entity {
 
         Bushes(String imageName) {
             this.type = FloraType.BUSH;
-            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
+            image = ResourceUtils.getBufferedImage(StaticConfig.IMAGES_PATH + imageName + StaticConfig.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
@@ -102,7 +102,7 @@ public abstract class Flora extends Entity {
 
         Trees(String imageName) {
             this.type = FloraType.TREE;
-            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
+            image = ResourceUtils.getBufferedImage(StaticConfig.IMAGES_PATH + imageName + StaticConfig.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
@@ -127,7 +127,7 @@ public abstract class Flora extends Entity {
 
         Plants(String imageName) {
             this.type = FloraType.PLANT;
-            image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
+            image = ResourceUtils.getBufferedImage(StaticConfig.IMAGES_PATH + imageName + StaticConfig.EXTENSION_IMAGE);
             size = new GVector2f(image.getWidth(null), image.getHeight(null));
         }
 
@@ -150,7 +150,7 @@ public abstract class Flora extends Entity {
             if (MiscUtils.isInByString(value, Trees.values())) {
                 return Trees.valueOf(value);
             }
-            GLogger.printLine("nerozpoznalo to floru typu: " + value);
+            GLogger.print("nerozpoznalo to floru typu: " + value);
             return null;
         }
 

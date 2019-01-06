@@ -6,8 +6,11 @@ import org.glib2.network.InternetUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.GLogger;
-import utils.resouces.ResourceLoader;
+import org.utils.logger.GError;
+import org.utils.logger.GLog;
+import org.utils.logger.GLogger;
+import org.utils.resources.ResourceSaver;
+import org.utils.resources.ResourceUtils;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -43,11 +46,11 @@ public class Profile implements JSONAble {
             return;
         }
         try {
-            fromJSON(ResourceLoader.getJSONThrowing(StaticConfig.FOLDER_PROFILE + profileName + StaticConfig.EXTENSION_PROFILE));
-            GLogger.log(GLogger.GLog.PROFILE_SUCCESSFULLY_LOADED);
+            fromJSON(ResourceUtils.getJSONThrowing(StaticConfig.FOLDER_PROFILE + profileName + StaticConfig.EXTENSION_PROFILE));
+            GLogger.log(GLog.PROFILE_SUCCESSFULLY_LOADED);
         }
         catch (JSONException e) {
-            GLogger.error(GLogger.GError.PROFILE_PARSING_FAILED, profileName);
+            GLogger.error(GError.PROFILE_PARSING_FAILED, profileName);
             try {
                 JSONObject data = new JSONObject();
                 data.put("userInfo", new JSONObject());
@@ -75,15 +78,15 @@ public class Profile implements JSONAble {
 
         try {
             String fileName = StaticConfig.FOLDER_PROFILE + profile.profileName + StaticConfig.EXTENSION_PROFILE;
-            BufferedWriter out = ResourceLoader.getBufferedWriter(fileName);
+            BufferedWriter out = ResourceSaver.getBufferedWriter(fileName);
             if (out != null) {
                 out.write(result.toString());
                 out.close();
-                GLogger.log(GLogger.GLog.PROFILE_SUCCESSFULLY_SAVED);
+                GLogger.log(GLog.PROFILE_SUCCESSFULLY_SAVED);
             }
         }
         catch (IOException e) {
-            GLogger.error(GLogger.GError.PROFILE_SAVING_FAILED, profile.profileName);
+            GLogger.error(GError.PROFILE_SAVING_FAILED, profile.profileName);
         }
     }
 

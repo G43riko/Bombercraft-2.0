@@ -3,6 +3,7 @@ package org.bombercraft2.core;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.gui.GuiManager;
 import org.bombercraft2.multiplayer.Connector;
+import org.glib2.interfaces.Visible;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;

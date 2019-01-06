@@ -109,6 +109,8 @@ public class StaticConfig {
     public final static String FILE_VISIBLE_OPTIONS = "/gameData/visibleOptions.json";
     public static final String FILE_GAME_CONFIG     = "/gameData/GameConfig.json";
 
+    public static final String IMAGES_PATH = "/images/materials/";
+
     public static final int    SERVER_PORT           = 4321;
     public static final int    ALERT_VERTICAL_OFFSET = 10;
     public static final int    PING_REFRESH_TIME     = 1000;
