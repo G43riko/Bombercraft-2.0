@@ -2,10 +2,11 @@ package org.bombercraft2.game.lights;
 
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.entity.Entity;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.MultipleGradientPaint.CycleMethod;
@@ -25,16 +26,16 @@ public class Light extends Entity {
     private              int           flash     = 0;
 
 
-//	public Light(GameAble parent, GVector2f scale, GVector2f size, int radius) {
+//	public Light(GameAble parent, BVector2f scale, BVector2f size, int radius) {
 //		this(parent, scale, size, null);
 //		calcImage();
 //	}
 
     public Light(GameAble parent, GVector2f position, GVector2f size, Entity target) {
-        super(position, parent);
+        super(BVector2f.fromGVector(position), parent);
         this.target = target;
         this.size = size;
-        radius = (int) size.average();
+        radius = (int) size.avg();
 //		
 //		
         calcImage();
@@ -48,7 +49,7 @@ public class Light extends Entity {
                  int luminance,
                  Entity target
                 ) {
-        super(position, parent);
+        super(BVector2f.fromGVector(position), parent);
 
         this.luminance = luminance;
         this.target = target;
@@ -87,18 +88,18 @@ public class Light extends Entity {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getPosition() {
+    public BVector2f getPosition() {
         return target == null ? super.getPosition() : target.getPosition();
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        GVector2f finalPos;
+        BVector2f finalPos;
         if (target == null) {
-            finalPos = position.sub(getParent().getOffset());
+            finalPos = position.getSub(getParent().getOffset());
         }
         else {
-            finalPos = target.getPosition().add(target.getSize().div(2)).sub(getParent().getOffset());
+            finalPos = target.getPosition().getAdd(target.getSize().getDiv(2)).getSub(getParent().getOffset());
         }
 
         if (image != null) {
@@ -147,7 +148,7 @@ public class Light extends Entity {
     @Override
     public void update(float delta) {
         if (target != null) {
-            setPosition(target.getPosition().add(target.getSize().div(2)));
+            setPosition(target.getPosition().getAdd(target.getSize().getDiv(2)));
             if (!target.isAlive()) {
                 alive = false;
             }
@@ -166,8 +167,8 @@ public class Light extends Entity {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {
-        return size;
+    public BVector2f getSize() {
+        return BVector2f.fromGVector(size);
     }
 
     public boolean isStatic() {

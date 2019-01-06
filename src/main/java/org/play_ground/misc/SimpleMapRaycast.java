@@ -3,27 +3,27 @@ package org.play_ground.misc;
 import org.bombercraft2.core.Visible;
 import org.play_ground.misc.map.AbstractMap;
 import org.play_ground.misc.map.SimpleTypedBlock;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.util.function.BiFunction;
 
 public class SimpleMapRaycast<T extends Visible> {
     private final AbstractMap<T>                                   map;
     private       SimpleTypedBlock                                 firstTarget;
-    private       GVector2f                                        lastBlock;
-    private       BiFunction<SimpleTypedBlock, GVector2f, Boolean> onHit;
+    private       BVector2f                                        lastBlock;
+    private       BiFunction<SimpleTypedBlock, BVector2f, Boolean> onHit;
 
     public SimpleMapRaycast(AbstractMap<T> map) {
         this.map = map;
     }
 
 
-    private GVector2f getChangedBlockPosition(int x, int y) {
+    private BVector2f getChangedBlockPosition(int x, int y) {
         final int fx = (int) Math.floor(x / map.getBlockSize().getX());
         final int fy = (int) Math.floor(y / map.getBlockSize().getY());
 
         if (lastBlock == null || lastBlock.getXi() != fx || lastBlock.getYi() != fy) {
-            return new GVector2f(fx, fy);
+            return new BVector2f(fx, fy);
         }
         return null;
     }
@@ -38,25 +38,25 @@ public class SimpleMapRaycast<T extends Visible> {
         if (onHit == null) {
             return false;
         }
-        GVector2f actBlock = getChangedBlockPosition(x, y);
+        BVector2f actBlock = getChangedBlockPosition(x, y);
         // ak je iný blok ako naposledy
         if (actBlock != null) {
             lastBlock = actBlock;
             SimpleTypedBlock block = map.getBlockOnPos(lastBlock);
             if (!block.getType().isWalkable()) {
-                return onHit.apply(block, new GVector2f(x, y));
+                return onHit.apply(block, new BVector2f(x, y));
             }
         }
         return false;
     }
 
-    public void onHit(BiFunction<SimpleTypedBlock, GVector2f, Boolean> callback) {
+    public void onHit(BiFunction<SimpleTypedBlock, BVector2f, Boolean> callback) {
         onHit = callback;
     }
 
-    public SimpleTypedBlock getFirstBlock(GVector2f start, GVector2f end) {
-        BiFunction<SimpleTypedBlock, GVector2f, Boolean> tmpCallBack = onHit;
-        onHit = (SimpleTypedBlock block, GVector2f sur) -> {
+    public SimpleTypedBlock getFirstBlock(BVector2f start, BVector2f end) {
+        BiFunction<SimpleTypedBlock, BVector2f, Boolean> tmpCallBack = onHit;
+        onHit = (SimpleTypedBlock block, BVector2f sur) -> {
             firstTarget = block;
             return true;
         };
@@ -65,7 +65,7 @@ public class SimpleMapRaycast<T extends Visible> {
         return firstTarget;
     }
 
-    public void drawLine(GVector2f start, GVector2f end) {
+    public void drawLine(BVector2f start, BVector2f end) {
         drawLine(start.getXi(), start.getYi(), end.getXi(), end.getYi());
     }
 

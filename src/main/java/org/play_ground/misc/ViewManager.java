@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,25 +16,25 @@ import java.util.List;
 public class ViewManager extends AbstractManager {
 
     @NotNull
-    private final GVector2f offset     = new GVector2f();
+    private final BVector2f offset     = new BVector2f();
     @NotNull
-    private final GVector2f canvasSize = new GVector2f();
+    private final BVector2f canvasSize = new BVector2f();
     @NotNull
-    private final GVector2f maxOffset  = new GVector2f();
+    private final BVector2f maxOffset  = new BVector2f();
     @NotNull
-    private final GVector2f mapSize;
+    private final BVector2f mapSize;
     @Nullable
     private       Visible   target;
     private       float     zoom       = StaticConfig.DEFAULT_ZOOM;
     private       float     minZoom;
     private       float     speed;
 
-    public ViewManager(@NotNull GVector2f mapSize, int canvasWidth, int canvasHeight, float speed) {
+    public ViewManager(@NotNull BVector2f mapSize, int canvasWidth, int canvasHeight, float speed) {
         this(null, mapSize, canvasWidth, canvasHeight, speed);
     }
 
     public ViewManager(@Nullable Visible target,
-                       @NotNull GVector2f mapSize,
+                       @NotNull BVector2f mapSize,
                        int canvasWidth,
                        int canvasHeight,
                        float speed
@@ -46,13 +46,13 @@ public class ViewManager extends AbstractManager {
     }
 
     @NotNull
-    public GVector2f transform(@NotNull GVector2f position) {
-        return position.mul(zoom).sub(offset);
+    public BVector2f transform(@NotNull BVector2f position) {
+        return position.getMul(zoom).getSub(offset);
     }
 
     @NotNull
-    public GVector2f transformInvert(@NotNull GVector2f position) {
-        return position.add(offset).div(zoom);
+    public BVector2f transformInvert(@NotNull BVector2f position) {
+        return position.getAdd(offset).getDiv(zoom);
     }
 
     public void setCanvasSize(int width, int height) {
@@ -88,13 +88,13 @@ public class ViewManager extends AbstractManager {
 
     public void zoom(float value) {
         zoom = Math.max(minZoom, zoom + value);
-        maxOffset.set(mapSize.mul(zoom).sub(canvasSize));
+        maxOffset.set(mapSize.getMul(zoom).getSub(canvasSize));
         checkOffset();
     }
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getCanvasSize() {
+    public BVector2f getCanvasSize() {
         return canvasSize;
     }
 
@@ -124,7 +124,7 @@ public class ViewManager extends AbstractManager {
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getOffset() {
+    public BVector2f getOffset() {
         return offset;
     }
 
@@ -132,7 +132,7 @@ public class ViewManager extends AbstractManager {
         if (target == null) {
             return;
         }
-        GVector2f pos = target.getPosition().mul(zoom).add(StaticConfig.BLOCK_SIZE.mul(zoom / 2));
+        BVector2f pos = target.getPosition().getMul(zoom).getAdd(StaticConfig.BLOCK_SIZE.getMul(zoom / 2));
 
         offset.setX(pos.getX() - canvasSize.getX() / 2);
         offset.setY(pos.getY() - canvasSize.getY() / 2);

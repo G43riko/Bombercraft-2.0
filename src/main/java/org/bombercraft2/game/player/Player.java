@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.BombercraftUtils;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -30,9 +30,9 @@ public class Player extends Entity<GameAble> implements HealthAble {
 
 
     public Player(GameAble parent, JSONObject object) {
-        super(new GVector2f(), parent);
+        super(new BVector2f(), parent);
         try {
-            position = new GVector2f(object.getString(Texts.POSITION));
+            position = new BVector2f(object.getString(Texts.POSITION));
             speed = object.getInt(Texts.SPEED);
             health = object.getInt(Texts.HEALTH);
             range = object.getInt(Texts.RANGE);
@@ -45,7 +45,7 @@ public class Player extends Entity<GameAble> implements HealthAble {
         }
     }
 
-    public Player(GameAble parent, GVector2f position, String name, int speed, int health, String image, int range) {
+    public Player(GameAble parent, BVector2f position, String name, int speed, int health, String image, int range) {
         super(position, parent);
         this.speed = speed;
         this.health = health;
@@ -55,8 +55,8 @@ public class Player extends Entity<GameAble> implements HealthAble {
         setImage(image);
     }
 
-    public void move(GVector2f move) {
-        position = position.add(move.mul(speed));
+    public void move(BVector2f move) {
+        position = position.getAdd(move.getMul(speed));
     }
 
     @Override
@@ -70,9 +70,9 @@ public class Player extends Entity<GameAble> implements HealthAble {
             }
         }
 
-        GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
+        BVector2f pos = position.getMul(getParent().getZoom()).getSub(getParent().getOffset());
 
-        GVector2f size = StaticConfig.BLOCK_SIZE.mul(getParent().getZoom());
+        BVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
 
         PlayerSprite.drawPlayer(pos, size, g2, getDirection(), getImage() + getName(), isMoving());
 
@@ -108,9 +108,9 @@ public class Player extends Entity<GameAble> implements HealthAble {
         position = getParent().getLevel().getRandomRespawnZone();
     }
 
-    public GVector2f getSelectorPos() {
-        GVector2f pos = getPosition().add(StaticConfig.BLOCK_SIZE_HALF).div(StaticConfig.BLOCK_SIZE).toInt();
-        pos = pos.add(BombercraftUtils.getNormalMoveFromDir(getDirection())).mul(StaticConfig.BLOCK_SIZE);
+    public BVector2f getSelectorPos() {
+        BVector2f pos = getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF).getDiv(StaticConfig.BLOCK_SIZE).toInt();
+        pos = pos.getAdd(BombercraftUtils.getNormalMoveFromDir(getDirection())).getMul(StaticConfig.BLOCK_SIZE);
         return pos;
     }
 

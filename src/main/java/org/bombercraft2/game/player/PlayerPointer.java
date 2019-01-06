@@ -3,7 +3,7 @@ package org.bombercraft2.game.player;
 import org.bombercraft2.StaticConfig;
 import org.engine.Input;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -19,16 +19,16 @@ public class PlayerPointer {
         this.parent = parent;
     }
 
-    public GVector2f getEndPos(GVector2f positionStart) {
-        GVector2f positionEnd = new GVector2f(positionStart);
+    public BVector2f getEndPos(BVector2f positionStart) {
+        BVector2f positionEnd = new BVector2f(positionStart);
         positionEnd.addToX((float) Math.cos(angle) * length);
         positionEnd.addToY((float) Math.sin(-angle) * length);
         return positionEnd;
     }
 
     public void render(Graphics2D g2) {
-        GVector2f positionStart = parent.getPosition().add(StaticConfig.BLOCK_SIZE_HALF.sub(parent.getOffset()));
-        GVector2f positionEnd = getEndPos(positionStart);
+        BVector2f positionStart = parent.getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF.getSub(parent.getOffset()));
+        BVector2f positionEnd = getEndPos(positionStart);
 
         g2.setStroke(new BasicStroke(width));
         g2.setColor(color);

@@ -3,7 +3,7 @@ package org.play_ground.misc;
 import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -19,7 +19,7 @@ public class PostFxManager extends AbstractManager {
     private final SimpleGameAble parent;
     private final List<Visible>  items = new ArrayList<>();
 
-    public PostFxManager(@NotNull SimpleGameAble parent, @NotNull GVector2f parentSize) {
+    public PostFxManager(@NotNull SimpleGameAble parent, @NotNull BVector2f parentSize) {
         this.image = new BufferedImage(parentSize.getXi(),
                                        parentSize.getYi(),
                                        BufferedImage.TYPE_INT_ARGB);
@@ -27,15 +27,15 @@ public class PostFxManager extends AbstractManager {
         this.parent = parent;
     }
 
-    public void addImage(@NotNull Image image, @NotNull GVector2f position, @NotNull GVector2f size) {
+    public void addImage(@NotNull Image image, @NotNull BVector2f position, @NotNull BVector2f size) {
         items.add(new Visible() {
             @Override
-            public @NotNull GVector2f getPosition() {
+            public @NotNull BVector2f getPosition() {
                 return position;
             }
 
             @Override
-            public @NotNull GVector2f getSize() {
+            public @NotNull BVector2f getSize() {
                 return size;
             }
         });
@@ -43,12 +43,12 @@ public class PostFxManager extends AbstractManager {
         // g2.drawImage(image, scale.getXi(), scale.getYi(), size.getXi(), size.getYi(), null);
     }
 
-    public void addArc(@NotNull Color color, @NotNull GVector2f position, @NotNull GVector2f size) {
+    public void addArc(@NotNull Color color, @NotNull BVector2f position, @NotNull BVector2f size) {
         g2.setColor(color);
         g2.fillArc(position.getXi(), position.getYi(), size.getXi(), size.getYi(), 0, 360);
     }
 
-    public void addRect(@NotNull Color color, @NotNull GVector2f position, @NotNull GVector2f size) {
+    public void addRect(@NotNull Color color, @NotNull BVector2f position, @NotNull BVector2f size) {
         GCanvas.fillRect(g2, position, size, color);
         // g2.setColor(color);
         // g2.fillRect(scale.getXi(), scale.getYi(), size.getXi(), size.getYi());
@@ -66,9 +66,9 @@ public class PostFxManager extends AbstractManager {
         if (items.stream().noneMatch(parent::isVisible)) {
             return;
         }
-        GVector2f canvasSize = parent.getManager().getViewManager().getCanvasSize();
+        BVector2f canvasSize = parent.getManager().getViewManager().getCanvasSize();
         float zoom = parent.getManager().getViewManager().getZoom();
-        GVector2f offset = parent.getManager().getViewManager().getOffset().div(zoom);
+        BVector2f offset = parent.getManager().getViewManager().getOffset().getDiv(zoom);
         g2.drawImage(image,
                      0,
                      0,

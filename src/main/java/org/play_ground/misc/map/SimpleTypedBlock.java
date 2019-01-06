@@ -10,7 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
 import utils.GLogger;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -18,29 +18,29 @@ public class SimpleTypedBlock extends AbstractBlock {
     @NotNull
     protected BlockType type;
 
-    public SimpleTypedBlock(@NotNull GVector2f position, int type, @NotNull SimpleGameAble parent) {
+    public SimpleTypedBlock(@NotNull BVector2f position, int type, @NotNull SimpleGameAble parent) {
         this(position, type, parent, null);
     }
 
-    public SimpleTypedBlock(@NotNull GVector2f position,
+    public SimpleTypedBlock(@NotNull BVector2f position,
                             int type,
                             @NotNull SimpleGameAble parent,
-                            @Nullable GVector2f offset
+                            @Nullable BVector2f offset
                            ) {
         super(position, parent, offset);
         this.type = Block.getTypeFromInt(type);
     }
 
     public void render(@NotNull Graphics2D g2) {
-        final GVector2f size = getTransformedSize();
-        final GVector2f realPos = position.mul(size);
-        GVector2f pos = (offset == null ? realPos : realPos.add(offset.mul(parent.getManager()
+        final BVector2f size = getTransformedSize();
+        final BVector2f realPos = position.getMul(size);
+        BVector2f pos = (offset == null ? realPos : realPos.getAdd(offset.getMul(parent.getManager()
                                                                                  .getViewManager()
-                                                                                 .getZoom()))).sub(parent.getManager()
+                                                                                         .getZoom()))).getSub(parent.getManager()
                                                                                                          .getViewManager()
                                                                                                          .getOffset());
 
-        GCanvas.drawImage(g2, type.getImage(), pos, size.add(1));
+        GCanvas.drawImage(g2, type.getImage(), pos, size.getAdd(1));
         // g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi() + 1, size.getYi() + 1, null);
     }
 

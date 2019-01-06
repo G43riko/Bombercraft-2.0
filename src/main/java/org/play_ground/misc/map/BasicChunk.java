@@ -2,19 +2,19 @@ package org.play_ground.misc.map;
 
 import org.bombercraft2.game.misc.GCanvas;
 import org.play_ground.misc.BasicEntity;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BasicChunk {
-    public final GVector2f         position;
-    public final GVector2f         size;
+    public final BVector2f         position;
+    public final BVector2f         size;
     public final Color             color;
     private      List<BasicEntity> entities = new ArrayList<>();
 
-    public BasicChunk(GVector2f position, GVector2f size, Color color) {
+    public BasicChunk(BVector2f position, BVector2f size, Color color) {
         this.position = position;
         this.size = size;
         this.color = color;

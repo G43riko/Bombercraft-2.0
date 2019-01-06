@@ -9,7 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.play_ground.misc.drawable_line.BasicDrawableLine;
 import org.play_ground.misc.drawable_line.EntityStartDrawableLine;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -20,7 +20,7 @@ public class BotWorker extends Bot {
     @Nullable
     private      Task              actTask;
 
-    public BotWorker(@NotNull GVector2f position, @NotNull GameAble parent) {
+    public BotWorker(@NotNull BVector2f position, @NotNull GameAble parent) {
         super(position, parent, BotFactory.Types.WORKER, Direction.getRandomDirection());
     }
 
@@ -36,11 +36,11 @@ public class BotWorker extends Bot {
 
     public void setTask(Task task) {
         actTask = task;
-        line = new EntityStartDrawableLine(parent, this, task.getPosition().add(StaticConfig.BLOCK_SIZE_HALF));
+        line = new EntityStartDrawableLine(parent, this, task.getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF));
     }
 
     private boolean isTooCloseToTask() {
-        return actTask == null || actTask.getPosition().dist(getPosition()) < StaticConfig.BLOCK_SIZE.average() / 10;
+        return actTask == null || actTask.getPosition().dist(getPosition()) < StaticConfig.BLOCK_SIZE.avg() / 10;
     }
 
     @Override
@@ -50,19 +50,19 @@ public class BotWorker extends Bot {
                 experiences += actTask.work(delta * usage);
             }
             else {
-                position = position.add(actTask.getPosition().sub(getPosition()).Normalized().mul(getSpeed() * 5));
+                position = position.getAdd(actTask.getPosition().getSub(getPosition()).Normalized().getMul(getSpeed() * 5));
                 line.update(delta);
             }
         }
         else {
-            position = position.add(direction.getDirection().mul(getSpeed()));
+            position = position.getAdd(direction.getDirection().getMul(getSpeed()));
         }
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        final GVector2f size = StaticConfig.BLOCK_SIZE.mul(parent.getZoom());
-        final GVector2f pos = position.mul(parent.getZoom()).sub(parent.getOffset());
+        final BVector2f size = StaticConfig.BLOCK_SIZE.getMul(parent.getZoom());
+        final BVector2f pos = position.getMul(parent.getZoom()).getSub(parent.getOffset());
 
         if (actTask != null && !isTooCloseToTask()) {
             line.render(g2);

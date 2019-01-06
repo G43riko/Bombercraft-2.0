@@ -9,19 +9,19 @@ import org.play_ground.SimpleAbstractGame;
 import org.play_ground.misc.SimpleMissile;
 import org.play_ground.misc.ViewManager;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MissileDemo extends SimpleAbstractGame<CorePlayGround> {
-    private final static GVector2f           NUMBERS_OF_BLOCKS = new GVector2f(100, 100);
+    private final static BVector2f           NUMBERS_OF_BLOCKS = new BVector2f(100, 100);
     private final        List<SimpleMissile> missiles          = new ArrayList<>();
 
     public MissileDemo(CorePlayGround parent) {
         super(parent, GameStateType.MissileDemo);
-        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(StaticConfig.BLOCK_SIZE),
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.getMul(StaticConfig.BLOCK_SIZE),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),
                                                  3));

@@ -4,15 +4,15 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.GameAble;
 import org.glib2.interfaces.InteractAbleG2;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 abstract class Bar implements InteractAbleG2, ClickAble, Visible {
-    final         GVector2f size;
+    final         BVector2f size;
     private final GameAble  parent;
-    GVector2f totalSize;
-    GVector2f totalPos;
+    BVector2f totalSize;
+    BVector2f totalPos;
     private Color   backgroundColor = StaticConfig.BAR_BACKGROUND_COLOR;
     private Color   borderColor     = StaticConfig.BAR_BORDER_COLOR;
     private int     borderWidth     = StaticConfig.BAR_BORDER_WIDTH;
@@ -20,7 +20,7 @@ abstract class Bar implements InteractAbleG2, ClickAble, Visible {
 
     //CONSTRUCTORS
 
-    Bar(GameAble parent, GVector2f size) {
+    Bar(GameAble parent, BVector2f size) {
         this.parent = parent;
         this.size = size;
     }

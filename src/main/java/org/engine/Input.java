@@ -3,7 +3,7 @@ package org.engine;
 import org.bombercraft2.gui.ClickAble;
 import org.jetbrains.annotations.Contract;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.event.*;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
     private static final boolean[]             lastMouse         = new boolean[NUM_MOUSE_BUTTONS];
     private static       Input                 input;
     private static       ClickAble             actMenu           = null;
-    private static       GVector2f             mousePosition     = new GVector2f();
+    private static       BVector2f             mousePosition     = new BVector2f();
     private final        Map<Integer, Boolean> buttons           = new HashMap<>();
     private final        Map<Integer, Boolean> keys              = new HashMap<>();
     private              int                   scroll            = 0;
@@ -62,7 +62,7 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
     }
 
     @Contract(pure = true)
-    public static GVector2f getMousePosition() {
+    public static BVector2f getMousePosition() {
         return mousePosition;
     }
 
@@ -98,16 +98,16 @@ public class Input implements KeyListener, MouseListener, MouseMotionListener, M
     }
 
     public void mouseDragged(MouseEvent e) {
-        mousePosition = new GVector2f(e.getX(), e.getY());
+        mousePosition = new BVector2f(e.getX(), e.getY());
     }
 
     public void mouseMoved(MouseEvent e) {
-        mousePosition = new GVector2f(e.getX(), e.getY());
+        mousePosition = new BVector2f(e.getX(), e.getY());
     }
 
     public void mouseClicked(MouseEvent e) {
         if (actMenu != null) {
-            actMenu.doAct(new GVector2f(e.getX(), e.getY()));
+            actMenu.doAct(new BVector2f(e.getX(), e.getY()));
         }
     }
 

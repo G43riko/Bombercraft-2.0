@@ -9,13 +9,13 @@ import org.play_ground.misc.ViewManager;
 import org.play_ground.misc.map.MapManager;
 import org.play_ground.misc.map.SimpleChunkedMap;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public class ChunkedMapDemo extends SimpleAbstractGame<CorePlayGround> {
 
     public ChunkedMapDemo(@NotNull CorePlayGround parent) {
         super(parent, GameStateType.ChunkedMapDemo);
-        getManager().setManagers(new MapManager(new SimpleChunkedMap(this, new GVector2f(32, 32))));
+        getManager().setManagers(new MapManager(new SimpleChunkedMap(this, new BVector2f(32, 32))));
         getManager().setManagers(new ViewManager(getManager().getMapManager().getMapSize(),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),

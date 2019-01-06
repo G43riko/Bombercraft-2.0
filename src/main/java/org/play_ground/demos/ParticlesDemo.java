@@ -9,7 +9,7 @@ import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.SimpleGridCollision;
 import org.play_ground.misc.particles.SimpleParticle;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class ParticlesDemo extends GameState implements SimpleGameAble {
     }
 
     @Override
-    public @NotNull GVector2f getCanvasSize() {
-        return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+    public @NotNull BVector2f getCanvasSize() {
+        return new BVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }
 }

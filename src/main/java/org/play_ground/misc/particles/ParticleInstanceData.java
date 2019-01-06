@@ -1,7 +1,7 @@
 package org.play_ground.misc.particles;
 
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -9,17 +9,17 @@ public class ParticleInstanceData {
     @NotNull
     public final Color     color;
     @NotNull
-    public final GVector2f direction;
+    public final BVector2f direction;
     @NotNull
-    public final GVector2f size;
+    public final BVector2f size;
     @NotNull
-    public final GVector2f position;
+    public final BVector2f position;
     public final int       health;
 
-    public ParticleInstanceData(@NotNull GVector2f position,
+    public ParticleInstanceData(@NotNull BVector2f position,
                                 @NotNull Color color,
-                                @NotNull GVector2f direction,
-                                @NotNull GVector2f size,
+                                @NotNull BVector2f direction,
+                                @NotNull BVector2f size,
                                 int health
                                ) {
         this.direction = direction;

@@ -1,13 +1,13 @@
 package org.bombercraft2.game.entity;
 
 import org.bombercraft2.game.entity.bullets.BulletManager;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public interface ShootAble {
-    GVector2f getPosition();
+    BVector2f getPosition();
 
-    //	GVector2f 			getTargetLocation();
-    GVector2f getDirection();
+    //	BVector2f 			getTargetLocation();
+    BVector2f getDirection();
 
     int getDamage();
 

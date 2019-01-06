@@ -1,6 +1,6 @@
 package org.bombercraft2;
 
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -14,13 +14,13 @@ public class StaticConfig {
 
     public final static int       BOMB_WIDTH      = 64;
     public final static int       BOMB_HEIGHT     = 64;
-    public final static GVector2f BOMB_SIZE       = new GVector2f(StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT);
+    public final static BVector2f BOMB_SIZE       = new BVector2f(StaticConfig.BOMB_WIDTH, StaticConfig.BOMB_HEIGHT);
     public final static Color     BOMB_AREA_COLOR = new Color(255, 255, 0, 100);
     public final static int       BOMB_AREA_ROUND = 10;
 
     public final static int       SUBMENU_WIDTH                  = 250;
     public final static int       SUBMENU_LINE_HEIGHT            = 30;
-    public final static GVector2f SUBMENU_DEFAULT_POSITION       = new GVector2f(5, 5);
+    public final static BVector2f SUBMENU_DEFAULT_POSITION       = new BVector2f(5, 5);
     public final static Color     SUBMENU_BORDER_COLOR           = Color.WHITE;
     public final static int       SUBMENU_BORDER_WIDTH           = 1;
     public final static Color     SUBMENU_FILL_COLOR             = Color.LIGHT_GRAY;
@@ -61,7 +61,7 @@ public class StaticConfig {
     public final static Color BAR_BORDER_COLOR     = Color.DARK_GRAY;
     public final static int   BAR_BORDER_WIDTH     = 3;
 
-    public final static GVector2f NAV_BAR_SIZE                = new GVector2f(40, 40);
+    public final static BVector2f NAV_BAR_SIZE                = new BVector2f(40, 40);
     public final static int       NAV_BAR_BOTTOM_OFFSET       = 20;
     public final static int       NAV_BAR_NUMBER_OF_BLOCKS    = 19;
     public final static Color     NAV_BAR_BACKGROUND_COLOR    = Color.WHITE;
@@ -120,10 +120,10 @@ public class StaticConfig {
     public static final float     ENEMY_DEFAULT_OFFSET = 5;
     public static final String    DEFAULT_FONT         = "Garamond";
     public static final int       DEFAULT_FONT_SIZE    = 20;
-    public static final GVector2f CHUNK_SIZE           = new GVector2f(32, 32);
-    public final static GVector2f BLOCK_SIZE           = new GVector2f(StaticConfig.DEFAULT_BLOCK_WIDTH,
+    public static final BVector2f CHUNK_SIZE           = new BVector2f(32, 32);
+    public final static BVector2f BLOCK_SIZE           = new BVector2f(StaticConfig.DEFAULT_BLOCK_WIDTH,
                                                                        StaticConfig.DEFAULT_BLOCK_HEIGHT);
-    public final static GVector2f BLOCK_SIZE_HALF      = BLOCK_SIZE.div(2);
+    public final static BVector2f BLOCK_SIZE_HALF      = BLOCK_SIZE.getDiv(2);
     public static final boolean   SHOW_CHUNK_BORDERS   = false;
     public static final float     MIN_ZOOM             = 0.2f;
 

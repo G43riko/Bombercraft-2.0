@@ -1,13 +1,13 @@
 package org.play_ground.misc.selectors;
 
 import org.engine.Input;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public class SimpleLineSelector implements SelectAble {
     private boolean showSelectedBlock = true;
 
     @Override
-    public GVector2f getPosition(GVector2f startPosition) {
+    public BVector2f getPosition(BVector2f startPosition) {
         return Input.getMousePosition();
     }
 

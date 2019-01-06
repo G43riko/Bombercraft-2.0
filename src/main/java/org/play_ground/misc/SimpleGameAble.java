@@ -5,7 +5,7 @@ import org.bombercraft2.core.Visible;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.map.BasicChunk;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,8 +25,8 @@ public interface SimpleGameAble {
 
     @NotNull
     @Contract(pure = true)
-    default GVector2f getOffset() {
-        return new GVector2f();
+    default BVector2f getOffset() {
+        return new BVector2f();
     }
 
     default boolean isVisible(@NotNull Visible b) {
@@ -38,8 +38,8 @@ public interface SimpleGameAble {
 
     @NotNull
     @Contract(pure = true)
-    default GVector2f getCanvasSize() {
-        return new GVector2f();
+    default BVector2f getCanvasSize() {
+        return new BVector2f();
     }
 
     default List<BasicChunk> getActChunk(BasicEntity entity) {

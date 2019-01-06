@@ -11,7 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.MiscUtils;
 import utils.GLogger;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -20,14 +20,14 @@ public abstract class Flora extends Entity {
     FlorAble type;
     float    scale = 1.0f;
 
-    Flora(GVector2f position, GameAble parent, FlorAble type) {
+    Flora(BVector2f position, GameAble parent, FlorAble type) {
         super(position, parent);
         this.type = type;
     }
 
     public void fromJSON(@NotNull JSONObject data) {
         try {
-            setPosition(new GVector2f(data.getString(Texts.POSITION)));
+            setPosition(new BVector2f(data.getString(Texts.POSITION)));
             setType(FlorAble.valueOf(data.getString(Texts.TYPE)));
             scale = (float) data.getDouble(Texts.SCALE);
         }
@@ -71,18 +71,18 @@ public abstract class Flora extends Entity {
 
         private final Image     image;
         private final FloraType type;
-        private final GVector2f size;
+        private final BVector2f size;
 
         Bushes(String imageName) {
             this.type = FloraType.BUSH;
             image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
-            size = new GVector2f(image.getWidth(null), image.getHeight(null));
+            size = new BVector2f(image.getWidth(null), image.getHeight(null));
         }
 
         @NotNull
         public Image getImage() {return image;}
 
-        public GVector2f getSize() {return size;}
+        public BVector2f getSize() {return size;}
 
         public FloraType getType() {return type;}
 
@@ -98,18 +98,18 @@ public abstract class Flora extends Entity {
 
         private final Image     image;
         private final FloraType type;
-        private final GVector2f size;
+        private final BVector2f size;
 
         Trees(String imageName) {
             this.type = FloraType.TREE;
             image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
-            size = new GVector2f(image.getWidth(null), image.getHeight(null));
+            size = new BVector2f(image.getWidth(null), image.getHeight(null));
         }
 
         @NotNull
         public Image getImage() {return image;}
 
-        public GVector2f getSize() {return size;}
+        public BVector2f getSize() {return size;}
 
         public FloraType getType() {return type;}
     }
@@ -123,18 +123,18 @@ public abstract class Flora extends Entity {
 
         private final Image     image;
         private final FloraType type;
-        private final GVector2f size;
+        private final BVector2f size;
 
         Plants(String imageName) {
             this.type = FloraType.PLANT;
             image = ResourceLoader.loadTexture(imageName + StaticConfig.EXTENSION_IMAGE);
-            size = new GVector2f(image.getWidth(null), image.getHeight(null));
+            size = new BVector2f(image.getWidth(null), image.getHeight(null));
         }
 
         @NotNull
         public Image getImage() {return image;}
 
-        public GVector2f getSize() {return size;}
+        public BVector2f getSize() {return size;}
 
         public FloraType getType() {return type;}
     }
@@ -154,7 +154,7 @@ public abstract class Flora extends Entity {
             return null;
         }
 
-        GVector2f getSize();
+        BVector2f getSize();
 
         FloraType getType();
     }

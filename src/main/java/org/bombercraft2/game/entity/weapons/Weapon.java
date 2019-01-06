@@ -8,7 +8,7 @@ import org.bombercraft2.game.entity.bullets.BulletModel;
 import org.bombercraft2.game.player.ToolAble;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public abstract class Weapon implements ShootAble, ToolAble {
     private final Types       type;
@@ -54,9 +54,9 @@ public abstract class Weapon implements ShootAble, ToolAble {
 
     public int getDamage() {return damage;}
 
-    public GVector2f getPosition() {return new GVector2f();}
+    public BVector2f getPosition() {return new BVector2f();}
 
-    public GVector2f getDirection() {return new GVector2f();}
+    public BVector2f getDirection() {return new BVector2f();}
 
     public BulletManager.Types getBulletType() {return bulletType.getType();}
 

@@ -10,10 +10,10 @@ public final class LineLineIntersect {
         return ((a ^ b) >= 0);
     }
 
-    public static GVector2f linesIntersect(@NotNull GVector2f a,
-                                           @NotNull GVector2f b,
-                                           @NotNull GVector2f c,
-                                           @NotNull GVector2f d
+    public static BVector2f linesIntersect(@NotNull BVector2f a,
+                                           @NotNull BVector2f b,
+                                           @NotNull BVector2f c,
+                                           @NotNull BVector2f d
                                           ) {
         return new LineLineIntersect().linesIntersect((long) a.getX(), (long) a.getY(),
                                                       (long) b.getX(), (long) b.getY(),
@@ -22,7 +22,7 @@ public final class LineLineIntersect {
     }
 
     @Nullable
-    private GVector2f linesIntersect(long x1, long y1, long x2, long y2, long x3, long y3, long x4, long y4) {
+    private BVector2f linesIntersect(long x1, long y1, long x2, long y2, long x3, long y3, long x4, long y4) {
         long a1, a2, b1, b2, c1, c2; /* Coefficients of line eqns. */
         long r1, r2, r3, r4;         /* 'Sign' values */
         long denom, offset, num;     /* Intermediate values */
@@ -57,6 +57,6 @@ public final class LineLineIntersect {
         num = a2 * c1 - a1 * c2;
         y = (num < 0 ? num - offset : num + offset) / denom;
 
-        return new GVector2f(x, y);
+        return new BVector2f(x, y);
     }
 }

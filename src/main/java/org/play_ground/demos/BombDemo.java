@@ -13,7 +13,7 @@ import org.play_ground.misc.SimpleBomb;
 import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.map.SimpleChunkedMap;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,8 +29,8 @@ public class BombDemo extends GameState implements SimpleGameAble {
         super(GameStateType.BombDemo);
         this.parent = parent;
         postFxManager = new PostFxManager(this,
-                                          new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
-        map = new SimpleChunkedMap(this, new GVector2f(4, 4));
+                                          new BVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
+        map = new SimpleChunkedMap(this, new BVector2f(4, 4));
     }
 
     @Override
@@ -58,7 +58,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
             parent.stopDemo();
         }
         if (Input.getMouseUp(Input.BUTTON_LEFT)) {
-            ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().sub(StaticConfig.BLOCK_SIZE_HALF), this);
+            ImagedBomb bomb = new ImagedBomb(Input.getMousePosition().getSub(StaticConfig.BLOCK_SIZE_HALF), this);
             bomb.callback = (b) -> postFxManager.addImage(((ImagedBomb) b).getCrater(), b.getPosition(), b.getSize());
             bombs.add(bomb);
         }
@@ -68,7 +68,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getCanvasSize() {
-        return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+    public BVector2f getCanvasSize() {
+        return new BVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }
 }

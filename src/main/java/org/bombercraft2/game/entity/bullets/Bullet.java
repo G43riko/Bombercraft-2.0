@@ -9,17 +9,17 @@ import org.bombercraft2.game.level.Block;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 public abstract class Bullet extends Entity<GameAble> {
-    private final GVector2f    direction;
+    private final BVector2f    direction;
     private final BulletModel  model;
     private       EmitterTypes emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
     private       int          health;
 
-    Bullet(GVector2f position, GameAble parent, Types type, GVector2f direction) {
+    Bullet(BVector2f position, GameAble parent, Types type, BVector2f direction) {
         super(position, parent);
         this.model = BulletManager.getBulletModel(type);
         this.direction = direction;
@@ -30,7 +30,7 @@ public abstract class Bullet extends Entity<GameAble> {
     public void update(float delta) {
         Block block = getParent().getLevel()
                                  .getMap()
-                                 .getBlockOnPosition(getPosition().add(StaticConfig.BLOCK_SIZE_HALF));
+                .getBlockOnPosition(getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF));
 
         if (block != null && !block.isWalkable()) {
             hit();
@@ -48,7 +48,7 @@ public abstract class Bullet extends Entity<GameAble> {
         checkBorders();
 
         if (alive) {
-            position = position.add(direction.mul(model.getSpeed()));
+            position = position.getAdd(direction.getMul(model.getSpeed()));
         }
 
     }
@@ -59,17 +59,17 @@ public abstract class Bullet extends Entity<GameAble> {
         health--;
         if (emitterOnHit != null) {
             getParent().addEmitter(position, emitterOnHit);
-            getParent().getConnector().setPutEmitter(emitterOnHit, position/*.add(size.div(2))*/);
+            getParent().getConnector().setPutEmitter(emitterOnHit, position/*.getAdd(size.getDiv(2))*/);
         }
     }
 
     private void checkBorders() {
-        GVector2f a = position.add(model.getSize());
-        GVector2f b = getParent().getLevel()
+        BVector2f a = position.getAdd(model.getSize());
+        BVector2f b = getParent().getLevel()
                                  .getMap()
                                  .getNumberOfBlocks()
-                                 .mul(StaticConfig.BLOCK_SIZE)
-                                 .div(getParent().getZoom());
+                .getMul(StaticConfig.BLOCK_SIZE)
+                .getDiv(getParent().getZoom());
         if (a.getX() < 0 ||
                 a.getY() < 0 ||
                 position.getX() > b.getX() ||
@@ -84,9 +84,9 @@ public abstract class Bullet extends Entity<GameAble> {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {return model.getSize();}
+    public BVector2f getSize() {return model.getSize();}
 
-    GVector2f getDirection() {return direction;}
+    BVector2f getDirection() {return direction;}
 
     public int getDamage() {return model.getDamage();}
 

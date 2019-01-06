@@ -1,5 +1,6 @@
 package utils.math;
 
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -10,26 +11,21 @@ import java.io.Serializable;
  * @deprecated use {@link org.glib2.math.vectors.GVector2f} instead
  */
 @Deprecated
-public final class GVector2f implements Serializable {
+public final class BVector2f implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private float x, y;
 
-    public GVector2f() {
+    public BVector2f() {
         this(0, 0);
     }
 
-    public GVector2f(float x, float y) {
+    public BVector2f(float x, float y) {
         this.x = x;
         this.y = y;
     }
 
-    @NotNull
-    public GVector2f toInt() {
-        return new GVector2f(Math.floor(x), Math.floor(y));
-    }
-
-    public GVector2f(@NotNull String s) {
+    public BVector2f(@NotNull String s) {
         s = s.replace("[", "").replace("]", "").replace("x", "_");
         String[] strings = s.split("_");
 
@@ -37,33 +33,49 @@ public final class GVector2f implements Serializable {
         this.y = Float.parseFloat(strings[1]);
     }
 
-    public GVector2f(double x, double y) {
+    public BVector2f(double x, double y) {
         this.x = (float) x;
         this.y = (float) y;
     }
 
-    public GVector2f(@NotNull GVector2f v) {
+    public BVector2f(@NotNull BVector2f v) {
         this.x = v.x;
         this.y = v.y;
     }
 
-    @NotNull
-    public GVector2f min(@NotNull GVector2f v) {
-        return new GVector2f(Math.min(x, v.x), Math.min(y, v.y));
+    public static BVector2f fromGVector(GVector2f vec) {
+        if (vec == null) {
+            return null;
+        }
+        return new BVector2f(vec.getX(), vec.getY());
     }
 
     @NotNull
-    public GVector2f max(@NotNull GVector2f v) {
-        return new GVector2f(Math.max(x, v.x), Math.max(y, v.y));
+    public BVector2f toInt() {
+        return new BVector2f(Math.floor(x), Math.floor(y));
+    }
+
+    public GVector2f toGVector() {
+        return new GVector2f(x, y);
+    }
+
+    @NotNull
+    public BVector2f min(@NotNull BVector2f v) {
+        return new BVector2f(Math.min(x, v.x), Math.min(y, v.y));
+    }
+
+    @NotNull
+    public BVector2f max(@NotNull BVector2f v) {
+        return new BVector2f(Math.max(x, v.x), Math.max(y, v.y));
     }
 
     @Contract(pure = true)
-    private float dot(@NotNull GVector2f v) {
+    private float dot(@NotNull BVector2f v) {
         return x * v.x + y * v.y;
     }
 
     @Contract(pure = true)
-    public boolean atLeastOneSame(@NotNull GVector2f v) {
+    public boolean atLeastOneSame(@NotNull BVector2f v) {
         return v.x == x || v.y == y;
     }
 
@@ -88,13 +100,13 @@ public final class GVector2f implements Serializable {
     }
 
     @NotNull
-    public GVector2f Normalized() {
+    public BVector2f Normalized() {
         float length = this.getLength();
-        return new GVector2f(x / length, y / length);
+        return new BVector2f(x / length, y / length);
     }
 
     @Contract(pure = true)
-    public float cross(@NotNull GVector2f r) {
+    public float cross(@NotNull BVector2f r) {
         return x * r.y - y * r.x;
     }
 
@@ -108,7 +120,7 @@ public final class GVector2f implements Serializable {
     }
 
     @Contract(pure = true)
-    public float dist(@NotNull GVector2f v) {
+    public float dist(@NotNull BVector2f v) {
         //return distance between 2 point
         float dx = x - v.x;
         float dy = y - v.y;
@@ -117,87 +129,87 @@ public final class GVector2f implements Serializable {
 
     @NotNull
     @Contract(pure = true)
-    public GVector2f Lerp(@NotNull GVector2f dest, float lerpFactor) {
-        return dest.sub(this).mul(lerpFactor).add(this);
+    public BVector2f Lerp(@NotNull BVector2f dest, float lerpFactor) {
+        return dest.getSub(this).getMul(lerpFactor).getAdd(this);
     }
 
     @Contract(pure = true)
-    public float distSQ(@NotNull GVector2f v) {
+    public float distSQ(@NotNull BVector2f v) {
         float distX = x - v.x;
         float distY = y - v.y;
         return distX * distX + distY * distY;
     }
 
     @NotNull
-    public GVector2f negate() {
+    public BVector2f negate() {
         this.x *= -1;
         this.y *= -1;
         return this;
     }
 
     @Contract(pure = true)
-    public float angleBetween(@NotNull GVector2f v) {
+    public float angleBetween(@NotNull BVector2f v) {
         float dotProduct = dot(v);
         return (float) Math.acos(dotProduct);
     }
 
     @NotNull
-    public GVector2f add(@NotNull GVector2f v) {
-        return new GVector2f(x + v.x, y + v.y);
+    public BVector2f getAdd(@NotNull BVector2f v) {
+        return new BVector2f(x + v.x, y + v.y);
     }
 
     @NotNull
-    public GVector2f add(float num) {
-        return new GVector2f(x + num, y + num);
+    public BVector2f getAdd(float num) {
+        return new BVector2f(x + num, y + num);
     }
 
     @NotNull
-    public GVector2f sub(@NotNull GVector2f v) {
-        return new GVector2f(x - v.x, y - v.y);
+    public BVector2f getSub(@NotNull BVector2f v) {
+        return new BVector2f(x - v.x, y - v.y);
     }
 
     @NotNull
-    public GVector2f sub(float num) {
-        return new GVector2f(x - num, y - num);
+    public BVector2f getSub(float num) {
+        return new BVector2f(x - num, y - num);
     }
 
     @NotNull
-    public GVector2f mul(@NotNull GVector2f v) {
-        return new GVector2f(x * v.x, y * v.y);
+    public BVector2f getMul(@NotNull BVector2f v) {
+        return new BVector2f(x * v.x, y * v.y);
     }
 
     @NotNull
-    public GVector2f mul(float num) {
-        return new GVector2f(x * num, y * num);
+    public BVector2f getMul(float num) {
+        return new BVector2f(x * num, y * num);
     }
 
     @NotNull
-    public GVector2f div(@NotNull GVector2f v) {
-        return new GVector2f(x / v.x, y / v.y);
+    public BVector2f getDiv(@NotNull BVector2f v) {
+        return new BVector2f(x / v.x, y / v.y);
     }
 
     @NotNull
-    public GVector2f div(float num) {
-        return new GVector2f(x / num, y / num);
+    public BVector2f getDiv(float num) {
+        return new BVector2f(x / num, y / num);
     }
 
     @NotNull
-    public GVector2f mod(@NotNull GVector2f v) {
-        return new GVector2f(x % v.x, y % v.y);
+    public BVector2f getMod(@NotNull BVector2f v) {
+        return new BVector2f(x % v.x, y % v.y);
     }
 
     @NotNull
-    public GVector2f mod(float num) {
-        return new GVector2f(x % num, y % num);
+    public BVector2f getMod(float num) {
+        return new BVector2f(x % num, y % num);
     }
 
     @NotNull
-    public GVector2f abs() {
-        return new GVector2f(Math.abs(x), Math.abs(y));
+    public BVector2f getAbs() {
+        return new BVector2f(Math.abs(x), Math.abs(y));
     }
 
     @Contract(pure = true)
-    public float average() {
+    public float avg() {
         return (x + y) / 2;
     }
 
@@ -213,9 +225,6 @@ public final class GVector2f implements Serializable {
 
     @Contract(pure = true)
     public float mul() {return x * y;}
-
-    @Contract(pure = true)
-    public float add() {return x + y;}
 
     @Contract(pure = true)
     public float getX() {return x;}
@@ -239,7 +248,7 @@ public final class GVector2f implements Serializable {
 
     public void set(float x, float y) {this.x = x; this.y = y;}
 
-    public void set(@NotNull GVector2f a) {set(a.x, a.y);}
+    public void set(@NotNull BVector2f a) {set(a.x, a.y);}
 
     @NotNull
     @Contract(pure = true)
@@ -248,8 +257,8 @@ public final class GVector2f implements Serializable {
     }
 
     /*
-        public static GVector2f interpolateLinear(float scale, GVector2f startValue, GVector2f endValue) {
-            GVector2f result = new GVector2f();
+        public static BVector2f interpolateLinear(float scale, BVector2f startValue, BVector2f endValue) {
+            BVector2f result = new BVector2f();
     //	    result.setX(GMath.interpolateLinear(scale, startValue.x, endValue.x));
     //	    result.setY(GMath.interpolateLinear(scale, startValue.y, endValue.y));
             return result;
@@ -257,12 +266,12 @@ public final class GVector2f implements Serializable {
     */
     @NotNull
     @Contract(pure = true)
-    public GVector2f getInstance() {
-        return new GVector2f(this);
+    public BVector2f getInstance() {
+        return new BVector2f(this);
     }
 
     @Contract(pure = true)
-    public boolean equals(@Nullable GVector2f v) {
+    public boolean equals(@Nullable BVector2f v) {
         return v != null && x == v.x && y == v.y;
     }
 
@@ -270,10 +279,5 @@ public final class GVector2f implements Serializable {
     @Contract(pure = true)
     public String toDecimal(int i) {
         return "[" + String.format("%0" + i + "d ", (int) x) + "x" + String.format("%0" + i + "d ", (int) y) + "]";
-    }
-
-    @Contract(pure = true)
-    public boolean isInRect(@NotNull GVector2f aPos, @NotNull GVector2f aSize) {
-        return x > aPos.x && x < aPos.x + aSize.x && y > aPos.y && y < aPos.y + aSize.y;
     }
 }

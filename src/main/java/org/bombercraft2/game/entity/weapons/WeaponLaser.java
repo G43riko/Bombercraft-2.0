@@ -2,7 +2,7 @@ package org.bombercraft2.game.entity.weapons;
 
 import org.bombercraft2.game.GameAble;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public class WeaponLaser extends Weapon {
     public WeaponLaser(GameAble parent, JSONObject data) {
@@ -10,7 +10,7 @@ public class WeaponLaser extends Weapon {
     }
 
     @Override
-    public void useOnLocalPos(GVector2f pos) {
+    public void useOnLocalPos(BVector2f pos) {
         getParent().getConnector().setPutBullet(getParent().getMyPlayer(), this);
     }
 

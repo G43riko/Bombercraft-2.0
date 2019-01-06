@@ -19,7 +19,7 @@ import org.play_ground.misc.selectors.SelectorManager;
 import org.play_ground.misc.selectors.SimpleLineSelector;
 import org.utils.MeasureUtils;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -29,10 +29,11 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
 
     public BomberDemo(CorePlayGround parent) {
         super(parent, GameStateType.BomberDemo);
-        final SimpleChunkedMap map = new SimpleChunkedMap(this, new GVector2f(2, 2));
+        final SimpleChunkedMap map = new SimpleChunkedMap(this, new BVector2f(2, 2));
         manager.setManagers(new MapManager(map));
         manager.setManagers(new PlayerManager(this, new SimpleMyPlayer(this,
-                                                                       manager.getMapManager().getFreePosition(),
+                                                                       // manager.getMapManager().getFreePosition(),
+                                                                       new BVector2f(50, 50),
                                                                        "Gabriel",
                                                                        3,
                                                                        10, "player1.png", 4)));
@@ -44,7 +45,7 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
         manager.setManagers(new PostFxManager(this, manager.getMapManager().getMapSize()));
         manager.setManagers(new SelectorManager(this, new SimpleLineSelector()));
         manager.setManagers(new SceneManager_(this));
-        manager.getPlayerManager().getMyPlayer().setPosition(StaticConfig.BLOCK_SIZE.mul(2));
+        manager.getPlayerManager().getMyPlayer().setPosition(StaticConfig.BLOCK_SIZE.getMul(2));
         raycast = new SimpleMapRaycast(map);
         for (int i = 1; i <= 100; i++) {
             int number = (int) Math.ceil(Math.random() * 3) + 1;
@@ -71,13 +72,13 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
                 gameLogs.render(g2);
             });
 
-            GVector2f playerPos = manager.getPlayerManager().getMyPlayer().getCenter();
-            GVector2f transformedPlayerPos = manager.getViewManager().transform(playerPos);
+            BVector2f playerPos = manager.getPlayerManager().getMyPlayer().getCenter();
+            BVector2f transformedPlayerPos = manager.getViewManager().transform(playerPos);
 
-            raycast.onHit((SimpleTypedBlock block, GVector2f position) -> {
-                GVector2f realPos = manager.getViewManager().transform(block.getPosition());
+            raycast.onHit((SimpleTypedBlock block, BVector2f position) -> {
+                BVector2f realPos = manager.getViewManager().transform(block.getPosition());
                 g2.setColor(Color.WHITE);
-                GVector2f realIntersectCollision = manager.getViewManager().transform(position);
+                BVector2f realIntersectCollision = manager.getViewManager().transform(position);
                 g2.drawArc(realPos.getXi(), realPos.getYi(), 20, 20, 0, 360);
                 g2.setColor(Color.RED);
                 g2.drawArc(realIntersectCollision.getXi(),
@@ -114,23 +115,26 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
                 parent.stopDemo();
             }
             if (Input.getMouseDown(Input.BUTTON_LEFT)) {
-                raycast.getFirstBlock(manager.getPlayerManager().getMyPlayer().getCenter(),
-                                      manager.getViewManager().transformInvert(Input.getMousePosition())).remove();
+                SimpleTypedBlock block = raycast.getFirstBlock(manager.getPlayerManager().getMyPlayer().getCenter(),
+                                                               manager.getViewManager().transformInvert(Input.getMousePosition()));
+                if (block != null) {
+                    block.remove();
+                }
             }
 
             if (Input.getKeyDown(Keys.LCONTROL)) {
                 SimpleMyPlayer player = manager.getPlayerManager().getMyPlayer();
                 if (player != null) {
-                    ImagedBomb bomb = new ImagedBomb(new GVector2f(player.getPosition()), this);
+                    ImagedBomb bomb = new ImagedBomb(new BVector2f(player.getPosition()), this);
                     bomb.callback = (b) -> {
                         manager.getSceneManager()
-                               .addExplosion(new Explosion(b.getPosition().add(StaticConfig.BLOCK_SIZE_HALF),
-                                                           this,
-                                                           StaticConfig.BLOCK_SIZE,
-                                                           Color.black,
-                                                           10 + ((int) (Math.random() * 20)),
-                                                           true,
-                                                           true));
+                                .addExplosion(new Explosion(b.getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF),
+                                                            this,
+                                                            StaticConfig.BLOCK_SIZE,
+                                                            Color.black,
+                                                            10 + ((int) (Math.random() * 20)),
+                                                            true,
+                                                            true));
                         manager.getPostFxManager().addImage(((ImagedBomb) b).getCrater(),
                                                             b.getPosition(),
                                                             b.getSize());

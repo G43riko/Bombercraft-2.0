@@ -4,7 +4,7 @@ import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.Iconable;
 import org.bombercraft2.game.entity.Helper;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -22,7 +22,7 @@ public class Shovel implements ToolAble, Iconable {
     }
 
     @Override
-    public void useOnLocalPos(GVector2f pos) {
+    public void useOnLocalPos(BVector2f pos) {
         parent.getConnector().setRemoveBlock(pos);
     }
 

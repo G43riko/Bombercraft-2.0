@@ -3,7 +3,7 @@ package org.play_ground.misc.drawable_line;
 import org.bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public class EntityStartDrawableLine extends BasicDrawableLine {
     @NotNull
@@ -11,7 +11,7 @@ public class EntityStartDrawableLine extends BasicDrawableLine {
 
     public EntityStartDrawableLine(@NotNull SimpleGameAble parent,
                                    @NotNull Entity startTarget,
-                                   @NotNull GVector2f end
+                                   @NotNull BVector2f end
                                   ) {
         super(parent);
         this.startTarget = startTarget;
@@ -19,7 +19,7 @@ public class EntityStartDrawableLine extends BasicDrawableLine {
     }
 
     @NotNull
-    protected GVector2f getStartPos() {
-        return startTarget.getPosition().add(startTarget.getSize().div(2));
+    protected BVector2f getStartPos() {
+        return startTarget.getPosition().getAdd(startTarget.getSize().getDiv(2));
     }
 }

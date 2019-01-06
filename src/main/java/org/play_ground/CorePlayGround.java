@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.play_ground.demos.*;
 import org.play_ground.demos.bomber_demo.BomberDemo;
 import org.utils.enums.Keys;
+import org.utils.logger.GLogger;
 
 import java.awt.*;
 
@@ -23,6 +24,7 @@ public class CorePlayGround extends CoreEngine {
 
     CorePlayGround(int fps, int ups, boolean renderTime) {
         super(fps, ups, renderTime);
+        GLogger.setStreams();
         guiManager.createMainPanel(getCanvas());
         guiManager.getMainPanel().addComponent(mainMenu);
         mainMenu.addButton("Ecs Demo", () -> setScene(new EcsDemo(this)));

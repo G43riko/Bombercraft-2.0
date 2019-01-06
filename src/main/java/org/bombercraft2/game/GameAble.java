@@ -13,7 +13,7 @@ import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -34,7 +34,7 @@ public interface GameAble extends InteractAbleG2, Visible, SimpleGameAble {
     String getLabelOf(@NotNull String key);
 
     @NotNull
-    GVector2f getPlayerDirection();
+    BVector2f getPlayerDirection();
 
     @NotNull
     SceneManager getSceneManager();
@@ -43,7 +43,7 @@ public interface GameAble extends InteractAbleG2, Visible, SimpleGameAble {
     ToolManager getToolsManager();
 
     @NotNull
-    GVector2f getPlayerTarget();
+    BVector2f getPlayerTarget();
 
     @NotNull
     Connector getConnector();
@@ -63,10 +63,10 @@ public interface GameAble extends InteractAbleG2, Visible, SimpleGameAble {
     @NotNull
     Level getLevel();
 
-    void addBullet(@NotNull BulletManager.Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position);
+    void addBullet(@NotNull BulletManager.Types bulletType, @NotNull BVector2f angle, @NotNull BVector2f position);
 
-    void addExplosion(@NotNull GVector2f position,
-                      @NotNull GVector2f size,
+    void addExplosion(@NotNull BVector2f position,
+                      @NotNull BVector2f size,
                       @NotNull Color color,
                       int number,
                       boolean explosion,
@@ -78,15 +78,15 @@ public interface GameAble extends InteractAbleG2, Visible, SimpleGameAble {
      * @param type        - type of explosion
      * @param createdTime - time when bomb was created by client - prevent network delay
      */
-    void addHelper(@NotNull GVector2f pos, @NotNull Type type, long createdTime);
+    void addHelper(@NotNull BVector2f pos, @NotNull Type type, long createdTime);
 
-    void addEmitter(@NotNull GVector2f position, @NotNull EmitterTypes type);
+    void addEmitter(@NotNull BVector2f position, @NotNull EmitterTypes type);
 
-    void addEnemy(@NotNull GVector2f position, @NotNull String type);
+    void addEnemy(@NotNull BVector2f position, @NotNull String type);
 
     void addPlayer(@NotNull String name, @NotNull String image);
 
-    void explodeBombAt(@NotNull GVector2f globalPosToLocalPos);
+    void explodeBombAt(@NotNull BVector2f globalPosToLocalPos);
 
     void switchVisibleOption(@NotNull String key);
 

@@ -6,7 +6,7 @@ import org.bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -19,13 +19,13 @@ public class ImagedBomb extends SimpleBomb {
     @Nullable
     private final Timer timer;
 
-    public ImagedBomb(@NotNull GVector2f position,
+    public ImagedBomb(@NotNull BVector2f position,
                       @NotNull SimpleGameAble parent
                      ) {
         this(position, parent, System.currentTimeMillis());
     }
 
-    public ImagedBomb(@NotNull GVector2f position,
+    public ImagedBomb(@NotNull BVector2f position,
                       @NotNull SimpleGameAble parent,
                       long addedAt
                      ) {
@@ -40,7 +40,7 @@ public class ImagedBomb extends SimpleBomb {
         if (!alive) {
             return;
         }
-        GVector2f actPos = position.sub(getParent().getManager().getViewManager().getOffset());
+        BVector2f actPos = position.getSub(getParent().getManager().getViewManager().getOffset());
 
         if (timer != null) {
             timer.render(g2);

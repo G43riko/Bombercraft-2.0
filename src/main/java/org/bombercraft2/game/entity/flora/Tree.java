@@ -4,24 +4,24 @@ import org.bombercraft2.game.GameAble;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class Tree extends Flora {
-    public Tree(Trees type, GVector2f position, GameAble parent) {
+    public Tree(Trees type, BVector2f position, GameAble parent) {
         super(position, parent, type);
         scale = (float) Math.random() / 2 + 0.25f;
     }
 
     public Tree(GameAble parent, JSONObject data) {
-        super(new GVector2f(), parent, Trees.TREE1);
+        super(new BVector2f(), parent, Trees.TREE1);
         fromJSON(data);
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        GVector2f pos = position.sub(getParent().getOffset());
+        BVector2f pos = position.getSub(getParent().getOffset());
         g2.drawImage(type.getImage(),
                      pos.getXi(),
                      pos.getYi(),
@@ -35,7 +35,7 @@ public class Tree extends Flora {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {
-        return type.getSize().mul(scale);
+    public BVector2f getSize() {
+        return type.getSize().getMul(scale);
     }
 }

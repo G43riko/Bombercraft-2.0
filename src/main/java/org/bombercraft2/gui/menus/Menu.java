@@ -9,7 +9,7 @@ import org.bombercraft2.gui.components.Button;
 import org.bombercraft2.gui.components.GuiComponent;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -17,8 +17,8 @@ import java.util.HashMap;
 //public abstract class Menu extends GuiComponent implements ClickAble{
 public abstract class Menu extends GameState implements ClickAble, Visible {
     final HashMap<String, GuiComponent> components = new HashMap<>();
-    final GVector2f                     position;
-    final GVector2f                     size;
+    final BVector2f                     position;
+    final BVector2f                     size;
     MenuAble parent;
 
     Menu(MenuAble parent, GameStateType type) {
@@ -26,7 +26,7 @@ public abstract class Menu extends GameState implements ClickAble, Visible {
         this.parent = parent;
         position = parent.getPosition();
         size = parent.getSize();
-        //scale = new GVector2f(0, 100);
+        //scale = new BVector2f(0, 100);
 
         calcPosition();
     }
@@ -64,12 +64,12 @@ public abstract class Menu extends GameState implements ClickAble, Visible {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getPosition() {return position;}
+    public BVector2f getPosition() {return position;}
 
     public MenuAble getParent() {return parent;}
 
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {return size;}
+    public BVector2f getSize() {return size;}
 }

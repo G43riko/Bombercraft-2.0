@@ -9,7 +9,7 @@ import org.engine.Input;
 import org.glib2.math.physics.Collisions;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -68,8 +68,8 @@ public class NavBar extends Bar {
     }
 
     public void calcPosition() {
-        totalSize = size.mul(new GVector2f(StaticConfig.NAV_BAR_NUMBER_OF_BLOCKS, 1));
-        totalPos = new GVector2f((getParent().getCanvas().getWidth() - totalSize.getX()) / 2,
+        totalSize = size.getMul(new BVector2f(StaticConfig.NAV_BAR_NUMBER_OF_BLOCKS, 1));
+        totalPos = new BVector2f((getParent().getCanvas().getWidth() - totalSize.getX()) / 2,
                                  getParent().getCanvas()
                                          .getHeight() - StaticConfig.NAV_BAR_BOTTOM_OFFSET - totalSize.getY());
     }
@@ -99,15 +99,15 @@ public class NavBar extends Bar {
     }
 
     @Override
-    public void doAct(GVector2f click) {
-        GVector2f mousePosition = Input.getMousePosition();
+    public void doAct(BVector2f click) {
+        BVector2f mousePosition = Input.getMousePosition();
         if (Collisions._2D.pointRect(totalPos.getX(),
                                      totalPos.getY(),
                                      totalSize.getX(),
                                      totalSize.getY(),
                                      mousePosition.getX(),
                                      mousePosition.getY())) {
-            selectedItem = Input.getMousePosition().sub(totalPos).div(size).getXi();
+            selectedItem = Input.getMousePosition().getSub(totalPos).getDiv(size).getXi();
             getParent().getToolsManager().setSelectedTool(getSelectedIcon());
         }
     }
@@ -115,14 +115,14 @@ public class NavBar extends Bar {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getPosition() {
+    public BVector2f getPosition() {
         return totalPos;
     }
 
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {
+    public BVector2f getSize() {
         return size;
     }
 }

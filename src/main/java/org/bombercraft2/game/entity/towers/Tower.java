@@ -8,7 +8,7 @@ import org.bombercraft2.game.entity.bullets.BulletManager.Types;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -31,7 +31,7 @@ public abstract class Tower extends Helper implements ShootAble {
     private int  damage      = 0;
     private int  bulletSpeed = 12;
 
-    Tower(GVector2f position, GameAble parent, Helper.Type type) {
+    Tower(BVector2f position, GameAble parent, Helper.Type type) {
         super(position, parent, type);
     }
 
@@ -43,8 +43,8 @@ public abstract class Tower extends Helper implements ShootAble {
     }
 
     @Override
-    public GVector2f getDirection() {
-        return new GVector2f(Math.sin(actAngle), Math.cos(actAngle)).negate();
+    public BVector2f getDirection() {
+        return new BVector2f(Math.sin(actAngle), Math.cos(actAngle)).negate();
     }
 
     @Override

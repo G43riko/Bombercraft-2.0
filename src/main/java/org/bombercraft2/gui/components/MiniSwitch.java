@@ -3,12 +3,12 @@ package org.bombercraft2.gui.components;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.Visible;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class MiniSwitch extends GuiComponent {
-    private final GVector2f indicatorSize = new GVector2f(24, 24);
+    private final BVector2f indicatorSize = new BVector2f(24, 24);
 
     public MiniSwitch(Visible parent, String text) {
         this(parent, text, true, SIDEBAR_DEFAULT_BUTTON_HEIGHT);
@@ -20,7 +20,7 @@ public class MiniSwitch extends GuiComponent {
 
     private MiniSwitch(Visible parent, String text, boolean value, int height) {
         super(parent);
-        this.size = new GVector2f(0, height);
+        this.size = new BVector2f(0, height);
         this.text = text;
         this.value = value;
         init();
@@ -34,9 +34,9 @@ public class MiniSwitch extends GuiComponent {
     }
 
     protected void init() {
-        offset = new GVector2f(2, 2);
+        offset = new BVector2f(2, 2);
         textSize = 20;
-        textOffset = new GVector2f(4, 0);
+        textOffset = new BVector2f(4, 0);
         round = 10;
         borderWidth = 1;
 
@@ -48,8 +48,8 @@ public class MiniSwitch extends GuiComponent {
 
     @Override
     public void calcPosition() {
-        position = getParent().getPosition().add(offset.add(new GVector2f(0, topCousePrevButtons)));
-        size = new GVector2f(getParent().getSize().getXi() - 2 * offset.getX(), size.getY() - offset.getY());
+        position = getParent().getPosition().getAdd(offset.getAdd(new BVector2f(0, topCousePrevButtons)));
+        size = new BVector2f(getParent().getSize().getXi() - 2 * offset.getX(), size.getY() - offset.getY());
     }
 
 //	@Override
@@ -67,7 +67,7 @@ public class MiniSwitch extends GuiComponent {
 
 
         int indicatorOffset = (int) (size.getY() - indicatorSize.getY()) / 2;
-        GVector2f indicatorPosition = new GVector2f(position.getX() + size.getX() - indicatorOffset - indicatorSize.getX(),
+        BVector2f indicatorPosition = new BVector2f(position.getX() + size.getX() - indicatorOffset - indicatorSize.getX(),
                                                     position.getY() + indicatorOffset);
         g2.setPaint(value ? Color.GREEN : Color.red);
         g2.fillRoundRect(indicatorPosition.getXi(),

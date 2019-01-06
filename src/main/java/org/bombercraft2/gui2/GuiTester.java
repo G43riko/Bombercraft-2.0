@@ -173,7 +173,7 @@ public class GuiTester {
             selectBox.addItem("button" + i, "Tlačítko " + i);
         }
         panel.getLayout().resize();
-        //manager.add(panel);
+        //manager.getAdd(panel);
         return panel;
     }
 

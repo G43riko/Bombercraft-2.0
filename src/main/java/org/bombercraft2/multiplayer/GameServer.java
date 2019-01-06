@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,24 +35,24 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setRemoveBlock(@NotNull GVector2f position) {
+    public void setRemoveBlock(@NotNull BVector2f position) {
         methods.setRemoveBlock(position);
     }
 
     @Override
-    public void setBuildBlock(@NotNull GVector2f position, @NotNull BlockType type) {
+    public void setBuildBlock(@NotNull BVector2f position, @NotNull BlockType type) {
         methods.setBuildBlock(position, type);
     }
 
     @Override
-    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull BlockType type) {
+    public void setBuildBlockArea(@NotNull BVector2f minPos, @NotNull BVector2f maxPos, @NotNull BlockType type) {
         methods.setBuildBlockArea(minPos, maxPos, type);
     }
 
     @Override
-    public void setBombExplode(@NotNull GVector2f position,
+    public void setBombExplode(@NotNull BVector2f position,
                                @NotNull List<Block> blocks,
-                               @NotNull List<GVector2f> damageAreas
+                               @NotNull List<BVector2f> damageAreas
                               ) {
         final int damage = 1;
         parent.getGame().explodeBombAt(position);
@@ -87,7 +87,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setPutHelper(@NotNull GVector2f position, @NotNull Helper.Type type) {
+    public void setPutHelper(@NotNull BVector2f position, @NotNull Helper.Type type) {
         methods.setPutHelper(position, type);
     }
 
@@ -186,7 +186,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void setPutEmitter(@NotNull EmitterTypes emitterOnHit, @NotNull GVector2f position) {
+    public void setPutEmitter(@NotNull EmitterTypes emitterOnHit, @NotNull BVector2f position) {
         // TODO Auto-generated method stub
 
     }
@@ -198,7 +198,7 @@ public class GameServer extends Server implements Connector {
     }
 
     @Override
-    public void hitBlock(@NotNull GVector2f position, int damage) {
+    public void hitBlock(@NotNull BVector2f position, int damage) {
         // TODO Auto-generated method stub
 
     }

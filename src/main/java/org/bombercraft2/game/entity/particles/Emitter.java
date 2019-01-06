@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -25,18 +25,18 @@ public abstract class Emitter extends Entity<GameAble> {
     ArrayList<Particle> particles = new ArrayList<>();
     float               particlePerFrame;
     private Color     color;
-    private GVector2f speed; // x - value, y - randomness
-    private GVector2f rotation; // - speed, y - randomness
-    private GVector2f health; // - normal, y - randomness
-    private GVector2f direction; // x - start angle, y - end angle
-    private GVector2f size;
+    private BVector2f speed; // x - value, y - randomness
+    private BVector2f rotation; // - speed, y - randomness
+    private BVector2f health; // - normal, y - randomness
+    private BVector2f direction; // x - start angle, y - end angle
+    private BVector2f size;
     private int       sizeRandomness;
-    private GVector2f positionRandomness;
+    private BVector2f positionRandomness;
     private long      renderedParticles;
     private int       particlesOnStart;
 //
 
-    Emitter(EmitterTypes type, GVector2f position, GameAble parent) {
+    Emitter(EmitterTypes type, BVector2f position, GameAble parent) {
         super(position, parent);
 
         loadDataFromJSON(predefinedParticles.get(type));
@@ -72,12 +72,12 @@ public abstract class Emitter extends Entity<GameAble> {
 
     void createParticles(int numOfParticles) {
         for (int i = 0; i < numOfParticles; i++) {
-            particles.add(new Particle(position.add(new GVector2f(Math.random() - 0.5, Math.random() - 0.5).mul(
+            particles.add(new Particle(position.getAdd(new BVector2f(Math.random() - 0.5, Math.random() - 0.5).getMul(
                     positionRandomness)),
                                        getParent(),
                                        color,
-                                       new GVector2f(Math.random() - 0.5, Math.random() - 0.5).mul(speed.getX()),
-                                       size.add(sizeRandomness * (float) (Math.random() - 0.5)),
+                                       new BVector2f(Math.random() - 0.5, Math.random() - 0.5).getMul(speed.getX()),
+                                       size.getAdd(sizeRandomness * (float) (Math.random() - 0.5)),
                                        (int) (health.getXi() + health.getYi() * (Math.random() - 0.5))));
         }
     }
@@ -85,13 +85,13 @@ public abstract class Emitter extends Entity<GameAble> {
     private void loadDataFromJSON(JSONObject object) {
         try {
             this.color = new Color(object.getInt("color"));
-            this.speed = new GVector2f(object.getString("speed"));
-            this.rotation = new GVector2f(object.getString("rotation"));
-            this.health = new GVector2f(object.getString("health"));
-            this.direction = new GVector2f(object.getString("speed"));
-            this.size = new GVector2f(object.getString("size"));
+            this.speed = new BVector2f(object.getString("speed"));
+            this.rotation = new BVector2f(object.getString("rotation"));
+            this.health = new BVector2f(object.getString("health"));
+            this.direction = new BVector2f(object.getString("speed"));
+            this.size = new BVector2f(object.getString("size"));
             this.sizeRandomness = object.getInt("sizeRandomness");
-            this.positionRandomness = new GVector2f(object.getString("positionRandomness"));
+            this.positionRandomness = new BVector2f(object.getString("positionRandomness"));
             this.particlePerFrame = (float) object.getDouble("particlePerFrame");
             this.particlesOnStart = object.getInt("particlesOnStart");
         }
@@ -104,7 +104,7 @@ public abstract class Emitter extends Entity<GameAble> {
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getSize() {return size;}
+    public BVector2f getSize() {return size;}
 
     public boolean isAlive() {return alive || !particles.isEmpty();}
 

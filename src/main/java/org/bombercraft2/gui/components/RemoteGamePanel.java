@@ -7,7 +7,7 @@ import org.bombercraft2.gui.ClickAble;
 import org.bombercraft2.gui.menus.JoinMenu;
 import org.bombercraft2.multiplayer.RemoteGameData;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -29,7 +29,7 @@ public class RemoteGamePanel extends GuiComponent implements ClickAble {
 
         joinButton = new Button(this, getLabelOf(Texts.CONNECT));
         joinButton.size.setX(200);
-        joinButton.position.set(position.add(size).sub(localOffset).sub(joinButton.size));
+        joinButton.position.set(position.getAdd(size).getSub(localOffset).getSub(joinButton.size));
     }
 
     private String getLabelOf(String key) {
@@ -44,11 +44,11 @@ public class RemoteGamePanel extends GuiComponent implements ClickAble {
         borderColor = Color.black;
         borderWidth = 5;
         textColor = Color.BLACK;
-        textOffset = new GVector2f();
-        offset = new GVector2f(40, 5);
+        textOffset = new BVector2f();
+        offset = new BVector2f(40, 5);
         round = StaticConfig.DEFAULT_ROUND;
         font = "Monospaced";
-        size = new GVector2f(600, 150);
+        size = new BVector2f(600, 150);
         textSize = 32;
     }
 
@@ -115,7 +115,7 @@ public class RemoteGamePanel extends GuiComponent implements ClickAble {
 
 
     @Override
-    public void doAct(GVector2f click) {
+    public void doAct(BVector2f click) {
         if (joinButton.isClickIn(click)) {
             ((JoinMenu) getParent()).stopSearch();
             coreGame.connectToGame(data.getIp());

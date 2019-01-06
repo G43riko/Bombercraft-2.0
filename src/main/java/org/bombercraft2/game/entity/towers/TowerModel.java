@@ -11,7 +11,7 @@ import org.json.JSONObject;
 
 public class TowerModel implements JSONAble {
 
-    //	private GVector2f 	size;
+    //	private BVector2f 	size;
     private int         canonSpeed;
     private int         maxHealth;
     private int         damage;
@@ -29,7 +29,7 @@ public class TowerModel implements JSONAble {
             this.canonSpeed = data.getInt("canonSpeed");
             this.maxHealth = data.getInt(Texts.HEALTH);
             this.bulletType = BulletManager.getBulletModel(data.getString(Texts.BULLET_TYPE));
-//			this.size 			= new GVector2f(data.getString(Texts.SIZE));
+//			this.size 			= new BVector2f(data.getString(Texts.SIZE));
             this.type = Helper.Type.valueOf(data.getString(Texts.TYPE));
         }
         catch (JSONException e) {
@@ -41,7 +41,7 @@ public class TowerModel implements JSONAble {
 
     public int getMaxHealth() {return maxHealth;}
 
-    //	public GVector2f getSize() {return size;}
+    //	public BVector2f getSize() {return size;}
     public int getDamage() {return damage;}
 
     public Helper.Type getType() {return type;}

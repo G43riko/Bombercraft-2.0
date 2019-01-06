@@ -2,7 +2,7 @@ package org.bombercraft2.game.player.placers;
 
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.GameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -10,20 +10,20 @@ public class AreaPlacer extends Placer {
     private final static Color     AREA_PLACER_FILL_COLOR = new Color(255, 173, 43, 150);
     private final static int       AREA_PLACER_OFFSET     = -5;
     private final static int       AREA_PLACER_ROUND      = 10;
-    private              GVector2f starPos                = null;
+    private              BVector2f starPos                = null;
 
     public AreaPlacer(GameAble parent) {
         super(parent);
     }
 
     @Override
-    public void useOnLocalPos(GVector2f pos) {
+    public void useOnLocalPos(BVector2f pos) {
         if (starPos == null) {
             starPos = pos;
         }
         else {
-            GVector2f minPos = pos.min(starPos);
-            GVector2f maxPos = pos.max(starPos);
+            BVector2f minPos = pos.min(starPos);
+            BVector2f maxPos = pos.max(starPos);
 
             parent.getConnector().setBuildBlockArea(minPos, maxPos, blockType);
 
@@ -38,12 +38,12 @@ public class AreaPlacer extends Placer {
             return;
         }
 
-        GVector2f globalPosStart = starPos.mul(StaticConfig.BLOCK_SIZE).sub(parent.getOffset());
-        GVector2f globalPosEnd = parent.getPlayerTarget().sub(parent.getOffset()).add(StaticConfig.BLOCK_SIZE);
-        GVector2f size = globalPosEnd.sub(globalPosStart)
-                                     .div(StaticConfig.BLOCK_SIZE)
+        BVector2f globalPosStart = starPos.getMul(StaticConfig.BLOCK_SIZE).getSub(parent.getOffset());
+        BVector2f globalPosEnd = parent.getPlayerTarget().getSub(parent.getOffset()).getAdd(StaticConfig.BLOCK_SIZE);
+        BVector2f size = globalPosEnd.getSub(globalPosStart)
+                .getDiv(StaticConfig.BLOCK_SIZE)
                                      .toInt()
-                                     .mul(StaticConfig.BLOCK_SIZE);
+                .getMul(StaticConfig.BLOCK_SIZE);
 
 
 //		System.out.println("size: " + size + ", globalPosStart: " + globalPosStart + ", globalPosEnd: " + globalPosEnd);
@@ -59,8 +59,8 @@ public class AreaPlacer extends Placer {
 
 
         g2.setColor(AREA_PLACER_FILL_COLOR);
-        globalPosStart = globalPosStart.add(AREA_PLACER_OFFSET);
-        size = size.abs().sub(AREA_PLACER_OFFSET * 2);
+        globalPosStart = globalPosStart.getAdd(AREA_PLACER_OFFSET);
+        size = size.getAbs().getSub(AREA_PLACER_OFFSET * 2);
 
         g2.fillRoundRect(globalPosStart.getXi(),
                          globalPosStart.getYi(),

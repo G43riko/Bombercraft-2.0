@@ -9,24 +9,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Path extends Entity<GameAble> {
-    private ArrayList<GVector2f> points;
+    private ArrayList<BVector2f> points;
 
-    public Path(@NotNull GameAble parent, @NotNull GVector2f start, @NotNull GVector2f end) {
-        super(new GVector2f(), parent);
+    public Path(@NotNull GameAble parent, @NotNull BVector2f start, @NotNull BVector2f end) {
+        super(new BVector2f(), parent);
         HashMap<String, Integer> h = new HashMap<>();
 
         getParent().getLevel()
                    .getMap()
                    .getBlocks()
-                   .forEach(a -> h.put(a.getPosition().div(StaticConfig.BLOCK_SIZE).toString(),
-                                       a.isWalkable() ? 0 : 1));
+                .forEach(a -> h.put(a.getPosition().getDiv(StaticConfig.BLOCK_SIZE).toString(),
+                                    a.isWalkable() ? 0 : 1));
         new Thread(() -> {
             points = PathFinder.findPath(h, start.toString(), end.toString(), true);
             if (!points.isEmpty()) {
@@ -42,16 +42,16 @@ public class Path extends Entity<GameAble> {
         g2.setColor(Color.blue);
 
         for (int i = 1; i < points.size(); i++) {
-            GVector2f a = points.get(i)
-                                .mul(StaticConfig.BLOCK_SIZE)
-                                .add(StaticConfig.BLOCK_SIZE_HALF)
-                                .mul(getParent().getZoom())
-                                .sub(getParent().getOffset());
-            GVector2f b = points.get(i - 1)
-                                .mul(StaticConfig.BLOCK_SIZE)
-                                .add(StaticConfig.BLOCK_SIZE_HALF)
-                                .mul(getParent().getZoom())
-                                .sub(getParent().getOffset());
+            BVector2f a = points.get(i)
+                    .getMul(StaticConfig.BLOCK_SIZE)
+                    .getAdd(StaticConfig.BLOCK_SIZE_HALF)
+                    .getMul(getParent().getZoom())
+                    .getSub(getParent().getOffset());
+            BVector2f b = points.get(i - 1)
+                    .getMul(StaticConfig.BLOCK_SIZE)
+                    .getAdd(StaticConfig.BLOCK_SIZE_HALF)
+                    .getMul(getParent().getZoom())
+                    .getSub(getParent().getOffset());
             g2.drawLine(a.getXi(), a.getYi(), b.getXi(), b.getYi());
         }
     }
@@ -71,15 +71,15 @@ public class Path extends Entity<GameAble> {
     }
 
     @Override
-    public GVector2f getSur() {
+    public BVector2f getSur() {
         return null;
     }
 
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {
-        return StaticConfig.BLOCK_SIZE.mul(getParent().getLevel().getMap().getNumberOfBlocks())
-                                      .mul(getParent().getZoom());
+    public BVector2f getSize() {
+        return StaticConfig.BLOCK_SIZE.getMul(getParent().getLevel().getMap().getNumberOfBlocks())
+                .getMul(getParent().getZoom());
     }
 }

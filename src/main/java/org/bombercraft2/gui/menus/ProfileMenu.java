@@ -8,7 +8,7 @@ import org.bombercraft2.core.Texts;
 import org.bombercraft2.gui.components.Button;
 import org.bombercraft2.gui.components.GuiComponent;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -29,7 +29,7 @@ public class ProfileMenu extends Menu {
     }
 
     @Override
-    public void doAct(GVector2f click) {
+    public void doAct(BVector2f click) {
         availableProfiles.forEach(a -> {
             if (components.get(a).isClickIn(click)) {
                 selectProfile(a);

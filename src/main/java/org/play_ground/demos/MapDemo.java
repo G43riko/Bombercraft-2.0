@@ -11,22 +11,22 @@ import org.play_ground.misc.ViewManager;
 import org.play_ground.misc.drawable_line.BasicDrawablePath;
 import org.play_ground.misc.map.SimpleMap;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
-    private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(100, 100);
+    private final static BVector2f NUMBERS_OF_BLOCKS = new BVector2f(100, 100);
     private final        SimpleMap map;
 
-    private GVector2f         firstClick;
+    private BVector2f         firstClick;
     private BasicDrawablePath path;
 
     public MapDemo(CorePlayGround parent) {
         super(parent, GameStateType.MapDemo);
-        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(StaticConfig.BLOCK_SIZE),
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.getMul(StaticConfig.BLOCK_SIZE),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),
                                                  3));
@@ -56,13 +56,13 @@ public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
                 firstClick = Input.getMousePosition();
             }
             else {
-                final GVector2f start = getManager().getViewManager().transformInvert(firstClick)
-                                                    .div(StaticConfig.BLOCK_SIZE)
+                final BVector2f start = getManager().getViewManager().transformInvert(firstClick)
+                        .getDiv(StaticConfig.BLOCK_SIZE)
                                                     .toInt();
-                final GVector2f end = getManager().getViewManager().transformInvert(Input.getMousePosition())
-                                                  .div(StaticConfig.BLOCK_SIZE)
+                final BVector2f end = getManager().getViewManager().transformInvert(Input.getMousePosition())
+                        .getDiv(StaticConfig.BLOCK_SIZE)
                                                   .toInt();
-                final List<GVector2f> result = new ArrayList<>();
+                final List<BVector2f> result = new ArrayList<>();
                 result.add(end);
                 result.addAll(PathFinder.findPath(map.getHashMap(),
                                                   start.toString(),

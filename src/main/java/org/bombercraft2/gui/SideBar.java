@@ -8,7 +8,7 @@ import org.bombercraft2.gui.components.MiniButton;
 import org.bombercraft2.gui.components.MiniSwitch;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -18,7 +18,7 @@ public class SideBar extends Bar {
     private final HashMap<String, GuiComponent> buttons = new HashMap<>();
 
     public SideBar(GameAble parent) {
-        super(parent, new GVector2f(200, 0));
+        super(parent, new BVector2f(200, 0));
         calcPosition();
         buttons.put("newGame", new MiniButton(this, "New game"));
         buttons.put("resetGame", new MiniButton(this, "Reset game"));
@@ -43,9 +43,9 @@ public class SideBar extends Bar {
     @Override
     public void calcPosition() {
         final int localOffset = 30;
-        totalPos = new GVector2f(getParent().getCanvas().getWidth() - size.getX() + offset, offset);
+        totalPos = new BVector2f(getParent().getCanvas().getWidth() - size.getX() + offset, offset);
         totalPos.addToX(-localOffset);
-        totalSize = new GVector2f(size).sub(offset * 2);
+        totalSize = new BVector2f(size).getSub(offset * 2);
         totalSize.addToX(localOffset);
 
         if (size.getY() == 0) {
@@ -91,19 +91,19 @@ public class SideBar extends Bar {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getPosition() {
+    public BVector2f getPosition() {
         return totalPos;
     }
 
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getSize() {
+    public BVector2f getSize() {
         return totalSize;
     }
 
     @Override
-    public void doAct(GVector2f click) {
+    public void doAct(BVector2f click) {
         if (!isVisible()) { return; }
         if (buttons.get("newGame").isClickIn(click)) {
             getParent().newGame();

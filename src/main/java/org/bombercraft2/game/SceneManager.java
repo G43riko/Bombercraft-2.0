@@ -15,15 +15,16 @@ import org.bombercraft2.game.entity.particles.ParticleEmitter;
 import org.bombercraft2.game.player.Player;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.interfaces.JSONAble;
+import org.glib2.math.physics.Collisions;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
-import java.util.*;
 import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class SceneManager implements InteractAbleG2, JSONAble {
@@ -146,7 +147,7 @@ public class SceneManager implements InteractAbleG2, JSONAble {
 
     }
 
-    public void addEnemy(GVector2f position, Types type) {
+    public void addEnemy(BVector2f position, Types type) {
         stats.put(Keys.ENEMIES, stats.get(Keys.ENEMIES) + 1);
         switch (type) {
             case A:
@@ -156,12 +157,12 @@ public class SceneManager implements InteractAbleG2, JSONAble {
 
     }
 
-    public void addEmitter(GVector2f position, EmitterTypes type) {
+    public void addEmitter(BVector2f position, EmitterTypes type) {
         emitters.add(new ParticleEmitter(type, position, parent));
     }
 
-    public void addExplosion(GVector2f position,
-                             GVector2f size,
+    public void addExplosion(BVector2f position,
+                             BVector2f size,
                              Color color,
                              int number,
                              boolean explosion,
@@ -189,10 +190,10 @@ public class SceneManager implements InteractAbleG2, JSONAble {
         return result;
     }
 
-    public List<Player> getPlayersInArea(GVector2f pos, GVector2f size) {
+    public List<Player> getPlayersInArea(BVector2f pos, BVector2f size) {
         List<Player> hitPlayers = new ArrayList<>();
         players.values().stream()
-               .filter(a -> a.getCenter().isInRect(pos, size))
+                .filter(a -> Collisions._2D.pointRect(a.getCenter().toGVector(), pos.toGVector(), size.toGVector()))
                .forEach(hitPlayers::add);
         return hitPlayers;
     }
@@ -200,7 +201,7 @@ public class SceneManager implements InteractAbleG2, JSONAble {
     public boolean isBombOn(int xi, int yi, Bomb lastPutBomb) {
         for (Helper helper : helpers.values()) {
             if (Helper.isBomb(helper.getType())) {
-                if (helper.getSur().equals(new GVector2f(xi, yi))) {
+                if (helper.getSur().equals(new BVector2f(xi, yi))) {
                     return helper != lastPutBomb;
                 }
             }

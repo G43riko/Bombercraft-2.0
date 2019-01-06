@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -53,29 +53,29 @@ public class FloraManager implements JSONAble {
         bushes.stream().filter(parent::isVisible).forEach(a -> a.render(g2));
     }
 
-    private void creteBushByType(Flora.Bushes type, GVector2f maxSize) {
-        GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
+    private void creteBushByType(Flora.Bushes type, BVector2f maxSize) {
+        BVector2f sur = new BVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
+        if (map.getBlockOnPosition(sur.getAdd(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
             addFlora(new Bush(type, sur, parent));
         }
     }
 
-    private void creteTreeByType(Flora.Trees type, GVector2f maxSize) {
-        GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
+    private void creteTreeByType(Flora.Trees type, BVector2f maxSize) {
+        BVector2f sur = new BVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
+        if (map.getBlockOnPosition(sur.getAdd(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
             addFlora(new Tree(type, sur, parent));
         }
     }
 
-    private void cretePlantByType(Flora.Plants type, GVector2f maxSize) {
-        GVector2f sur = new GVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
-        if (map.getBlockOnPosition(sur.add(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
+    private void cretePlantByType(Flora.Plants type, BVector2f maxSize) {
+        BVector2f sur = new BVector2f(Math.random() * maxSize.getX(), Math.random() * maxSize.getY());
+        if (map.getBlockOnPosition(sur.getAdd(StaticConfig.BLOCK_SIZE_HALF)).getType() == BlockType.GRASS) {
             addFlora(new Plant(type, sur, parent));
         }
     }
 
     private void createFlora() {
-        GVector2f numbers = map.getSize().sub(StaticConfig.BLOCK_SIZE);
+        BVector2f numbers = map.getSize().getSub(StaticConfig.BLOCK_SIZE);
         for (int i = 0; i < 33; i++) {
             for (int j = 0; j < Flora.Bushes.values().length; j++) {
                 creteBushByType(Flora.Bushes.values()[j], numbers);

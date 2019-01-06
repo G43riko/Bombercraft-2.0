@@ -3,12 +3,12 @@ package org.bombercraft2.game;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class Timer {
-    private final static GVector2f TIMER_SIZE         = StaticConfig.BLOCK_SIZE.mul(1.5f);
+    private final static BVector2f TIMER_SIZE         = StaticConfig.BLOCK_SIZE.getMul(1.5f);
     private final static Color     TIMER_FILL_COLOR   = new Color(255, 0, 0, 100);
     private final static Color     TIMER_BORDER_COLOR = new Color(0, 0, 0, 255);
     private final static int       TIMER_BORDER_WIDTH = 3;
@@ -27,8 +27,9 @@ public class Timer {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        GVector2f parentPos = parent.getPosition().sub(parent.getParent().getOffset()).add(parent.getSize().div(2));
-        GVector2f realPos = parentPos.sub(TIMER_SIZE.div(2));
+        BVector2f parentPos = parent.getPosition().getSub(parent.getParent().getOffset()).getAdd(parent.getSize().getDiv(
+                2));
+        BVector2f realPos = parentPos.getSub(TIMER_SIZE.getDiv(2));
 
         g2.setColor(TIMER_FILL_COLOR);
         g2.fillArc(realPos.getXi(), realPos.getYi(), TIMER_SIZE.getXi(), TIMER_SIZE.getYi(), 90, (int) angle);

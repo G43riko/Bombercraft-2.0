@@ -25,13 +25,14 @@ import org.bombercraft2.game.player.Player;
 import org.bombercraft2.gui.GameGui;
 import org.bombercraft2.multiplayer.Connector;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.enums.Keys;
 import utils.GLogger;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -52,8 +53,7 @@ public class Game extends GameState implements GameAble {
             BulletManager.init(gameConfig.getJSONObject("bullets"));
             JSONObject helpers = gameConfig.getJSONObject("helpers");
             TowerCreator.init(helpers.getJSONObject("towers"));
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             GLogger.error(GLogger.GError.CREATE_CORE_GAME_FAILED, e);
         }
     }
@@ -94,8 +94,7 @@ public class Game extends GameState implements GameAble {
                     for (int i = 0; i < gameData.getInt(Texts.PLAYERS_NUMBER); i++) {
                         sceneManager.addPlayer(new Player(this, new JSONObject(gameData.getString("player_" + i))));
                     }
-                }
-                catch (JSONException e) {
+                } catch (JSONException e) {
                     GLogger.error(GLogger.GError.CANNOT_ADD_PLAYERS, e);
                 }
             }
@@ -108,8 +107,7 @@ public class Game extends GameState implements GameAble {
                                              new GVector2f(300, 300),
                                              new GVector2f(300, 300), myPlayer));
             GLogger.log(GLogger.GLog.GAME_CREATED);
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             GLogger.error(GLogger.GError.CREATE_GAME_FAILED, e);
         }
     }
@@ -194,8 +192,8 @@ public class Game extends GameState implements GameAble {
 
         result.addAll(sceneManager.getLogInfo());
         result.add("blocks: " + level.getMap().getRenderedBlocks() + "/" + (int) level.getMap()
-                                                                                      .getNumberOfBlocks()
-                                                                                      .mul());
+                .getNumberOfBlocks()
+                .mul());
         result.add("Zoom: " + getZoom());
         return result;
     }
@@ -237,30 +235,29 @@ public class Game extends GameState implements GameAble {
                                               level.getDefaultPlayerInfo().getInt("health"),
                                               "player1.png",
                                               level.getDefaultPlayerInfo().getInt("range")));
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             GLogger.error(GLogger.GError.CANNOT_ADD_PLAYER, e);
         }
     }
 
     @Override
-    public void addExplosion(@NotNull GVector2f position,
-                             @NotNull GVector2f size,
+    public void addExplosion(@NotNull BVector2f position,
+                             @NotNull BVector2f size,
                              @NotNull Color color,
                              int number,
                              boolean explosion,
                              boolean shockWave
-                            ) {
+    ) {
         sceneManager.addExplosion(position, size, color, number, explosion, shockWave);
     }
 
     @Override
-    public void addEmitter(@NotNull GVector2f position, @NotNull EmitterTypes type) {
+    public void addEmitter(@NotNull BVector2f position, @NotNull EmitterTypes type) {
         sceneManager.addEmitter(position, type);
     }
 
     @Override
-    public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
+    public void addEnemy(@NotNull BVector2f position, @NotNull String type) {
         GLogger.notImplemented();
     }
 
@@ -306,12 +303,14 @@ public class Game extends GameState implements GameAble {
 
     @Override
     public void changeZoom(float value) {
-        if (!StaticConfig.ZOOM_ALLOWED || !level.isReady()) { return; }
+        if (!StaticConfig.ZOOM_ALLOWED || !level.isReady()) {
+            return;
+        }
 
         zoom += value;
 
         if (level.getMap().getNumberOfBlocks().getX() * StaticConfig.BLOCK_SIZE.getX() * zoom < parent.getCanvas()
-                                                                                                      .getWidth()) {
+                .getWidth()) {
             zoom -= value;
             return;
         }
@@ -323,17 +322,17 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void doAct(GVector2f click) {
+    public void doAct(BVector2f click) {
         gui.doAct(click);
     }
 
     @Override
-    public void addHelper(@NotNull GVector2f pos,
+    public void addHelper(@NotNull BVector2f pos,
                           @NotNull Helper.Type type,
                           long createTime
-                         ) {//TODO playerov bonus k poskodeniu tu ma byt
-        GVector2f localPos = Map.globalPosToLocalPos(pos);
-        pos = pos.div(StaticConfig.BLOCK_SIZE).toInt().mul(StaticConfig.BLOCK_SIZE);
+    ) {//TODO playerov bonus k poskodeniu tu ma byt
+        BVector2f localPos = Map.globalPosToLocalPos(pos);
+        pos = pos.getDiv(StaticConfig.BLOCK_SIZE).toInt().getMul(StaticConfig.BLOCK_SIZE);
 
         String key = localPos.getXi() + "_" + localPos.getYi();
         if (sceneManager.existHelperOn(key)) {
@@ -355,7 +354,7 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void explodeBombAt(@NotNull GVector2f pos) {
+    public void explodeBombAt(@NotNull BVector2f pos) {
         String key = pos.getXi() + "_" + pos.getYi();
         if (!sceneManager.existHelperOn(key)) {
             GLogger.printLine("Explodovala neexistujuca bomba na: " + pos);
@@ -372,11 +371,11 @@ public class Game extends GameState implements GameAble {
     @Contract(pure = true)
     @NotNull
     @Override
-    public GVector2f getPosition() {return new GVector2f();}
+    public BVector2f getPosition() {return new BVector2f();}
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getSize() {return new GVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
+    public BVector2f getSize() {return new BVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
 
     @NotNull
     public Level getLevel() {return level;}
@@ -389,7 +388,7 @@ public class Game extends GameState implements GameAble {
 
     @Contract(pure = true)
     @NotNull
-    public GVector2f getOffset() {return myPlayer.getOffset();}
+    public BVector2f getOffset() {return myPlayer.getOffset();}
 
     public Canvas getCanvas() {return parent.getCanvas();}
 
@@ -409,8 +408,7 @@ public class Game extends GameState implements GameAble {
             o.put(Texts.LEVEL_DATA, level.toJSON());
             o.put(Texts.GAME_DATA, toJSON());
             return o.toString();
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             GLogger.error(GLogger.GError.CANNOT_SERIALIZE_GAME_INFO, e);
         }
         return null;
@@ -426,8 +424,7 @@ public class Game extends GameState implements GameAble {
             result.put(Texts.MAX_PLAYERS, "5");
             result.put(Texts.PLAYERS_NUMBER, sceneManager.getPlayersCount());
             return result.toString();
-        }
-        catch (JSONException e) {
+        } catch (JSONException e) {
             GLogger.error(GLogger.GError.CANNOT_SERIALIZE_BASIC_INFO, e);
         }
         return "{}";
@@ -459,18 +456,18 @@ public class Game extends GameState implements GameAble {
 
     @NotNull
     @Override
-    public GVector2f getPlayerDirection() {
+    public BVector2f getPlayerDirection() {
         return myPlayer.getTargetDirection();
     }
 
     @NotNull
     @Override
-    public GVector2f getPlayerTarget() {
+    public BVector2f getPlayerTarget() {
         return myPlayer.getTargetLocation();
     }
 
     @Override
-    public void addBullet(@NotNull Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position) {
+    public void addBullet(@NotNull Types bulletType, @NotNull BVector2f angle, @NotNull BVector2f position) {
         Bullet bullet = null;
         switch (bulletType) {
             case LASER:

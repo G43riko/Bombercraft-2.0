@@ -3,7 +3,7 @@ package org.play_ground.misc;
 import org.bombercraft2.game.misc.GCanvas;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.map.BasicChunk;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BasicEntity {
-    public final  GVector2f        size;
+    public final  BVector2f        size;
     public final  SimpleGameAble   parent;
     public final  List<BasicChunk> actChunks = new ArrayList<>(4);
     private final boolean          isMoving  = true;
-    public        GVector2f        position;
+    public        BVector2f        position;
 
-    public BasicEntity(SimpleGameAble parent, GVector2f position, GVector2f size) {
+    public BasicEntity(SimpleGameAble parent, BVector2f position, BVector2f size) {
         this.position = position;
         this.parent = parent;
         this.size = size;

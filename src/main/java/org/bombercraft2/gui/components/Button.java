@@ -2,7 +2,7 @@ package org.bombercraft2.gui.components;
 
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.Visible;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -20,7 +20,7 @@ public class Button extends GuiComponent {
         buttons.put(parent, topCousePrevButtons + size.getYi() + offset.getYi());
 
         calcPosAndSize();
-        textOffset = new GVector2f(CENTER_ALIGN, 0);
+        textOffset = new BVector2f(CENTER_ALIGN, 0);
     }
 
     protected void init() {
@@ -30,12 +30,12 @@ public class Button extends GuiComponent {
         borderColor = Color.black;
         borderWidth = 5;
         textColor = Color.BLACK;
-        textOffset = new GVector2f();
-        offset = new GVector2f(40, 5);
+        textOffset = new BVector2f();
+        offset = new BVector2f(40, 5);
         textSize = 36;
         round = StaticConfig.DEFAULT_ROUND;
         font = "Monospaced";
-        size = new GVector2f(600, 50);
+        size = new BVector2f(600, 50);
     }
 
 

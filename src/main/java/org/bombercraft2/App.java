@@ -19,7 +19,7 @@ import org.glib2.cycle.SimpleLoop;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.utils.MiscUtils;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ public class App {
 
     public static void main(String[] args) {
         Bombercraft game = new Bombercraft();
-        // PlayGround game = new PlayGround();
+//        PlayGround game = new PlayGround();
         game.start();
         // testSimpleLoop();
         // testPathFinging();
@@ -65,7 +65,7 @@ public class App {
         TaskType taskType = new TaskType() {
             @NotNull
             @Override
-            public GVector2f getPosition() {
+            public BVector2f getPosition() {
                 return null;
             }
 
@@ -101,7 +101,7 @@ public class App {
             }
 
             @Override
-            public @NotNull GVector2f getPlayerDirection() {
+            public @NotNull BVector2f getPlayerDirection() {
                 return null;
             }
 
@@ -116,7 +116,7 @@ public class App {
             }
 
             @Override
-            public @NotNull GVector2f getPlayerTarget() {
+            public @NotNull BVector2f getPlayerTarget() {
                 return null;
             }
 
@@ -157,15 +157,15 @@ public class App {
 
             @Override
             public void addBullet(BulletManager.@NotNull Types bulletType,
-                                  @NotNull GVector2f angle,
-                                  @NotNull GVector2f position
+                                  @NotNull BVector2f angle,
+                                  @NotNull BVector2f position
                                  ) {
 
             }
 
             @Override
-            public void addExplosion(@NotNull GVector2f position,
-                                     @NotNull GVector2f size,
+            public void addExplosion(@NotNull BVector2f position,
+                                     @NotNull BVector2f size,
                                      @NotNull Color color,
                                      int number,
                                      boolean explosion,
@@ -175,19 +175,19 @@ public class App {
             }
 
             @Override
-            public void addHelper(@NotNull GVector2f pos, Helper.@NotNull Type type, long createdTime
+            public void addHelper(@NotNull BVector2f pos, Helper.@NotNull Type type, long createdTime
                                  ) {
 
             }
 
             @Override
-            public void addEmitter(@NotNull GVector2f position, EmitterTypes type
+            public void addEmitter(@NotNull BVector2f position, EmitterTypes type
                                   ) {
 
             }
 
             @Override
-            public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
+            public void addEnemy(@NotNull BVector2f position, @NotNull String type) {
 
             }
 
@@ -197,7 +197,7 @@ public class App {
             }
 
             @Override
-            public void explodeBombAt(@NotNull GVector2f globalPosToLocalPos) {
+            public void explodeBombAt(@NotNull BVector2f globalPosToLocalPos) {
 
             }
 
@@ -252,18 +252,18 @@ public class App {
             }
 
             @Override
-            public @NotNull GVector2f getPosition() {
+            public @NotNull BVector2f getPosition() {
                 return null;
             }
 
             @Override
-            public @NotNull GVector2f getSize() {
+            public @NotNull BVector2f getSize() {
                 return null;
             }
         };
-        BotWorker bot = new BotWorker(new GVector2f(), parent);
+        BotWorker bot = new BotWorker(new BVector2f(), parent);
         BotManager botManager = new BotManager();
-        botManager.addBot(new BotWorker(new GVector2f(), parent));
+        botManager.addBot(new BotWorker(new BVector2f(), parent));
         botManager.addBot(bot);
         Task task = new Task(parent, 1, 100, taskType);
 

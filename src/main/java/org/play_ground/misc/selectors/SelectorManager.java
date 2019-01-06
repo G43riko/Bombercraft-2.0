@@ -10,7 +10,7 @@ import org.play_ground.misc.PlayerManager;
 import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.bots.SimpleMyPlayer;
 import org.play_ground.misc.map.SimpleTypedBlock;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -31,7 +31,7 @@ public class SelectorManager extends AbstractManager {
         this.parent = parent;
     }
 
-    public GVector2f getStartPosition() {
+    public BVector2f getStartPosition() {
         PlayerManager manager = parent.getManager().getPlayerManager();
         if (manager == null) {
             return Input.getMousePosition();
@@ -48,8 +48,8 @@ public class SelectorManager extends AbstractManager {
         this.selector = selector;
     }
 
-    public GVector2f getTargetPosition() {
-        GVector2f startPosition = getStartPosition();
+    public BVector2f getTargetPosition() {
+        BVector2f startPosition = getStartPosition();
         if (selector == null) {
             return startPosition;
         }
@@ -59,13 +59,13 @@ public class SelectorManager extends AbstractManager {
     public void render(@NotNull Graphics2D g2) {
         SimpleTypedBlock block = parent.getManager()
                                        .getMapManager()
-                                       .getBlockOnAbsolutePos(getTargetPosition().sub(parent.getManager()
+                .getBlockOnAbsolutePos(getTargetPosition().getSub(parent.getManager()
                                                                                             .getViewManager()
                                                                                             .getOffset()));
-        GVector2f pos = block.getPosition()
-                             .sub(parent.getManager().getViewManager().getOffset().mod(StaticConfig.BLOCK_SIZE));
+        BVector2f pos = block.getPosition()
+                .getSub(parent.getManager().getViewManager().getOffset().getMod(StaticConfig.BLOCK_SIZE));
 
-        GCanvas.drawRect(g2, pos, new GVector2f(60, 60), selectorColor, selectorWidth);
+        GCanvas.drawRect(g2, pos, new BVector2f(60, 60), selectorColor, selectorWidth);
         // g2.setColor(selectorColor);
         // g2.setStroke(new BasicStroke(selectorWidth));
         // g2.drawRect(pos.getXi(), pos.getYi(), 60, 60);

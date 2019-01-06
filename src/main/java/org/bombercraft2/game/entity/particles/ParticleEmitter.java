@@ -5,7 +5,7 @@ import org.bombercraft2.game.entity.Entity;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 public class ParticleEmitter extends Emitter {
     private final Entity target;
 
-    public ParticleEmitter(EmitterTypes type, GVector2f position, GameAble parent) {
+    public ParticleEmitter(EmitterTypes type, BVector2f position, GameAble parent) {
         this(type, position, parent, null);
     }
 
-    private ParticleEmitter(EmitterTypes type, GVector2f position, GameAble parent, Entity target) {
+    private ParticleEmitter(EmitterTypes type, BVector2f position, GameAble parent, Entity target) {
         super(type, position, parent);
         this.target = target;
     }
@@ -27,7 +27,7 @@ public class ParticleEmitter extends Emitter {
     @Override
     public void update(float delta) {
         if (target != null) {
-            setPosition(target.getPosition().add(target.getSize().div(2)).mul(getParent().getZoom()));
+            setPosition(target.getPosition().getAdd(target.getSize().getDiv(2)).getMul(getParent().getZoom()));
             if (!target.isAlive()) { alive = false; }
         }
 

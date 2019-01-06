@@ -2,11 +2,11 @@ package org.play_ground.misc.bots;
 
 import org.bombercraft2.game.misc.Direction;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 public class SimpleNPC extends SimplePlayer {
     public SimpleNPC(SimpleGameAble parent,
-                     GVector2f position,
+                     BVector2f position,
                      String name,
                      int speed,
                      int health,
@@ -19,7 +19,7 @@ public class SimpleNPC extends SimplePlayer {
 
     @Override
     public void update(float delta) {
-        GVector2f move = getDirection().getDirection().mul(getSpeed() * delta);
+        BVector2f move = getDirection().getDirection().getMul(getSpeed() * delta);
 
 
         position.addToX(move.getX());

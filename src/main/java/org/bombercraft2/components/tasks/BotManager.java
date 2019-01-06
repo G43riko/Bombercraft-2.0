@@ -5,7 +5,7 @@ import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.play_ground.misc.AbstractManager;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -26,13 +26,13 @@ public class BotManager extends AbstractManager implements InteractAbleG2 {
     }
 
     @Nullable
-    public Bot getFreeBotNearestTo(@NotNull GVector2f position) {
+    public Bot getFreeBotNearestTo(@NotNull BVector2f position) {
         return bots.stream()
                    .filter(Bot::isFree)
                    .min(Comparator.comparing(a -> a.getPosition().dist(position))).orElse(null);
     }
 
-    public List<Bot> getFreeBotsNearestTo(int count, @NotNull GVector2f position) {
+    public List<Bot> getFreeBotsNearestTo(int count, @NotNull BVector2f position) {
         return bots.stream()
                    .filter(Bot::isFree)
                    .sorted(Comparator.comparing(a -> a.getPosition().dist(position)))

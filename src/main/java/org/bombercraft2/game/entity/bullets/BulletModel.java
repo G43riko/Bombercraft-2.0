@@ -5,7 +5,7 @@ import org.bombercraft2.game.entity.bullets.BulletManager.Types;
 import org.bombercraft2.game.entity.particles.EmitterTypes;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -18,7 +18,7 @@ public class BulletModel {
 
     private EmitterTypes emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
 
-    private GVector2f size;
+    private BVector2f size;
     private int       speed;
     private int       maxHealth;
     private int       damage;
@@ -38,7 +38,7 @@ public class BulletModel {
             this.speed = data.getInt(Texts.SPEED);
             this.maxHealth = data.getInt(Texts.HEALTH);
             this.color = new Color(data.getInt(Texts.COLOR));
-            this.size = new GVector2f(data.getString(Texts.SIZE));
+            this.size = new BVector2f(data.getString(Texts.SIZE));
             this.type = Types.valueOf(data.getString(Texts.TYPE));
         }
         catch (JSONException e) {
@@ -52,7 +52,7 @@ public class BulletModel {
 
     public int getMaxHealth() {return maxHealth;}
 
-    public GVector2f getSize() {return size;}
+    public BVector2f getSize() {return size;}
 
     public int getDamage() {return damage;}
 

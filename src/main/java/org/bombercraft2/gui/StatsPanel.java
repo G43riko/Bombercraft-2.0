@@ -4,7 +4,7 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.GameAble;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -16,9 +16,9 @@ public class StatsPanel implements InteractAbleG2 {
     private final int                     width;
     private final int                     verticalOffset = 10;
     private final int                     fontSize       = 22;
-    private final GVector2f               position;
+    private final BVector2f               position;
 
-    public StatsPanel(GameAble parent, GVector2f position, HashMap<String, String> hashMap) {
+    public StatsPanel(GameAble parent, BVector2f position, HashMap<String, String> hashMap) {
         this.position = position;
         this.parent = parent;
         width = parent.getCanvas().getWidth() - position.getXi() * 2;

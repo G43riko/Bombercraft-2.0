@@ -6,7 +6,7 @@ import org.bombercraft2.game.level.Map;
 import org.bombercraft2.game.player.ToolAble;
 import org.json.JSONException;
 import org.json.JSONObject;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.util.HashMap;
 
@@ -38,12 +38,12 @@ public class TowerCreator implements ToolAble {
     }
 
     @Override
-    public void useOnLocalPos(GVector2f pos) {
+    public void useOnLocalPos(BVector2f pos) {
         useOnGlobalPos(Map.localPosToGlobalPos(pos));
     }
 
     @Override
-    public void useOnGlobalPos(GVector2f pos) {
+    public void useOnGlobalPos(BVector2f pos) {
         //bombu chcemepoložiť iba tam kde sa da
         if (parent.getLevel().getMap().getBlockOnPosition(pos).isWalkable()) {
             parent.getConnector().setPutHelper(pos, type);

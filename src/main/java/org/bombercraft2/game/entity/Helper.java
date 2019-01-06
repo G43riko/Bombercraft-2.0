@@ -5,7 +5,7 @@ import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.Iconable;
 import org.jetbrains.annotations.NotNull;
 import org.utils.MiscUtils;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -27,7 +27,7 @@ public abstract class Helper extends Entity<GameAble> {
     public final static String      WEAPON_SHOTGUN      = "weaponShotgun";
     private final       Helper.Type type;
 
-    protected Helper(GVector2f position, GameAble parent, Type type) {
+    protected Helper(BVector2f position, GameAble parent, Type type) {
         super(position, parent);
         this.type = type;
     }

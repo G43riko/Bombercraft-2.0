@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.map.SimpleMap_old;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -46,7 +46,7 @@ public class BasicDemo extends GameState {
         }
 
 
-        GVector2f mousePos = Input.getMousePosition();
+        BVector2f mousePos = Input.getMousePosition();
         preRayCast(player.x + (playerSize >> 1), player.y + (playerSize >> 1), mousePos.getXi(), mousePos.getYi());
 
         g2.setColor(Color.GRAY);

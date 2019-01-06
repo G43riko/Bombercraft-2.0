@@ -14,14 +14,14 @@ import org.play_ground.SimpleAbstractGame;
 import org.play_ground.misc.particles.ParticleEmitterData;
 import org.play_ground.misc.particles.SimpleEmitter;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class ParticlesPreviewDemo extends SimpleAbstractGame<CorePlayGround> {
     private static VerticalScrollPanel panel      = new VerticalScrollPanel();
     private        GuiManagerImpl      guiManager = new GuiManagerImpl();
-    private        SimpleEmitter       emitter    = new SimpleEmitter(new GVector2f(400, 400),
+    private        SimpleEmitter       emitter    = new SimpleEmitter(new BVector2f(400, 400),
                                                                       this,
                                                                       ParticleEmitterData.Type.GREEN);
 
@@ -51,7 +51,7 @@ public class ParticlesPreviewDemo extends SimpleAbstractGame<CorePlayGround> {
         panel.addComponent(button);
 
         panel.getLayout().resize();
-        //manager.add(panel);
+        //manager.getAdd(panel);
         return panel;
     }
 

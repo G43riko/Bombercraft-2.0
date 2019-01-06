@@ -4,13 +4,13 @@ package org.bombercraft2.game.entity.towers;
 import org.bombercraft2.core.Render;
 import org.bombercraft2.game.GameAble;
 import org.jetbrains.annotations.NotNull;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class TowerMachineGun extends Tower {
 
-    public TowerMachineGun(GVector2f position, GameAble parent) {
+    public TowerMachineGun(BVector2f position, GameAble parent) {
         super(position, parent, Type.TOWER_MACHINE_GUN);
     }
 
@@ -21,8 +21,8 @@ public class TowerMachineGun extends Tower {
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        GVector2f pos = position.mul(getParent().getZoom()).sub(getParent().getOffset());
-        GVector2f size = getSize().mul(getParent().getZoom());
+        BVector2f pos = position.getMul(getParent().getZoom()).getSub(getParent().getOffset());
+        BVector2f size = getSize().getMul(getParent().getZoom());
         int[] xPos = new int[]{pos.getXi() + size.getXi() / 2,
                                pos.getXi() + size.getXi(),
                                pos.getXi() + size.getXi() / 2,
@@ -39,7 +39,7 @@ public class TowerMachineGun extends Tower {
         g2.setColor(borderColor);
         g2.drawPolygon(xPos, yPos, 4);
 
-        pos = pos.add(size.div(2));
+        pos = pos.getAdd(size.getDiv(2));
 
 
         if (angle - actAngle < cannonsSpeed) {
@@ -50,7 +50,7 @@ public class TowerMachineGun extends Tower {
         }
 
         if (target != null) {
-            GVector2f dir = position.sub(target.getPosition()).Normalized();
+            BVector2f dir = position.getSub(target.getPosition()).Normalized();
             angle = Math.atan2(dir.getX(), dir.getY());
 
             if (target.getPosition().dist(position) > range || !target.isAlive()) {
@@ -62,8 +62,8 @@ public class TowerMachineGun extends Tower {
         }
 
 
-        GVector2f toMouse = getDirection();
-        GVector2f point2 = pos.add(toMouse.mul(cannonLength * getParent().getZoom()));
+        BVector2f toMouse = getDirection();
+        BVector2f point2 = pos.getAdd(toMouse.getMul(cannonLength * getParent().getZoom()));
         g2.setStroke(new BasicStroke(cannonWidth * getParent().getZoom()));
         g2.setColor(canonColor);
         g2.drawLine(pos.getXi(), pos.getYi(), point2.getXi(), point2.getYi());
@@ -72,7 +72,7 @@ public class TowerMachineGun extends Tower {
         if (true || getParent().getVisibleOption(Render.TOWER_RANGE)) {
             g2.setColor(rangeColor);
             g2.setStroke(new BasicStroke(1));
-            pos = pos.sub(range * getParent().getZoom());
+            pos = pos.getSub(range * getParent().getZoom());
             int finalSize = (int) (range * 2 * getParent().getZoom());
             g2.drawArc(pos.getXi(), pos.getYi(), finalSize, finalSize, 0, 360);
         }
@@ -86,7 +86,7 @@ public class TowerMachineGun extends Tower {
 //			//target = enemies.get((int)(Math.random() * enemies.size())); -- vyberalo n�hodn�ho nie najbli��ie
 //			target = enemies.stream()
 //							.reduce((a, b) -> a.getPosition().dist(scale) > b.getPosition().dist(scale) ? a : b).get();
-//			GVector2f dir = scale.sub(target.getPosition()).Normalized();
+//			BVector2f dir = scale.getSub(target.getPosition()).Normalized();
 //			angle = Math.atan2(dir.getX(), dir.getY());
 //		}
     }

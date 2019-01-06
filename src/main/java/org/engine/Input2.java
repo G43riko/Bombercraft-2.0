@@ -6,7 +6,7 @@ import org.prototypes.IDisplay;
 import org.prototypes.IInput;
 import org.utils.enums.Buttons;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import javax.swing.*;
 import java.awt.*;
@@ -154,7 +154,7 @@ public class Input2 implements KeyListener, MouseListener, MouseMotionListener, 
 
     public void mouseClicked(MouseEvent e) {
         if (actMenu != null) {
-            actMenu.doAct(new GVector2f(e.getX(), e.getY()));
+            actMenu.doAct(new BVector2f(e.getX(), e.getY()));
         }
     }
 

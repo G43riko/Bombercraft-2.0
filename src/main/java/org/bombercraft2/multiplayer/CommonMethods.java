@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 class CommonMethods {
     @NotNull
@@ -31,7 +31,7 @@ class CommonMethods {
 
     public void onRemoveBlock(@NotNull JSONObject data) {
         try {
-            game.getLevel().getMap().remove(new GVector2f(data.getString(Texts.POSITION)));
+            game.getLevel().getMap().remove(new BVector2f(data.getString(Texts.POSITION)));
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -40,7 +40,7 @@ class CommonMethods {
 
     public void onBuildBlock(@NotNull JSONObject data) {
         try {
-            GVector2f position = new GVector2f(data.getString(Texts.POSITION));
+            BVector2f position = new BVector2f(data.getString(Texts.POSITION));
             Block block = game.getLevel().getMap().getBlock(position.getXi(), position.getYi());
             if (block == null) {
                 GLogger.printLine("ide sa postavit blok na neexistujucej pozicii: " + position);
@@ -57,7 +57,7 @@ class CommonMethods {
         try {
             Player p = game.getPlayerByName(data.getString(Texts.PLAYER));
             p.setDirection(Direction.valueOf(data.getString(Texts.DIRECTION)));
-            p.setPosition(new GVector2f(data.getString(Texts.POSITION)));
+            p.setPosition(new BVector2f(data.getString(Texts.POSITION)));
             p.setMoving(true);
         }
         catch (JSONException e) {
@@ -65,7 +65,7 @@ class CommonMethods {
         }
     }
 
-    public void setPutHelper(@NotNull GVector2f position, @NotNull Helper.Type type) {
+    public void setPutHelper(@NotNull BVector2f position, @NotNull Helper.Type type) {
         long createdAt = System.currentTimeMillis();
         game.addHelper(position, type, createdAt);
 
@@ -83,7 +83,7 @@ class CommonMethods {
 
     public void onPutHelper(@NotNull JSONObject data) {
         try {
-            game.addHelper(new GVector2f(data.getString(Texts.POSITION)),
+            game.addHelper(new BVector2f(data.getString(Texts.POSITION)),
                            Helper.Type.valueOf(data.getString(Texts.TYPE)),
                            data.getLong(Texts.CREATED_AT));
         }
@@ -92,7 +92,7 @@ class CommonMethods {
         }
     }
 
-    public void setRemoveBlock(@NotNull GVector2f position) {
+    public void setRemoveBlock(@NotNull BVector2f position) {
         game.getLevel().getMap().remove(position);
         try {
             JSONObject result = new JSONObject();
@@ -104,7 +104,7 @@ class CommonMethods {
         }
     }
 
-    public void setBuildBlock(@NotNull GVector2f position, @NotNull BlockType type) {
+    public void setBuildBlock(@NotNull BVector2f position, @NotNull BlockType type) {
         game.getLevel().getMap().getBlock(position.getXi(), position.getYi()).build(type);
         try {
             JSONObject result = new JSONObject();
@@ -117,7 +117,7 @@ class CommonMethods {
         }
     }
 
-    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull BlockType blockType) {
+    public void setBuildBlockArea(@NotNull BVector2f minPos, @NotNull BVector2f maxPos, @NotNull BlockType blockType) {
         for (int i = minPos.getXi(); i <= maxPos.getX(); i++) {
             for (int j = minPos.getYi(); j <= maxPos.getY(); j++) {
                 game.getLevel().getMap().getBlock(i, j).build(blockType);
@@ -126,7 +126,7 @@ class CommonMethods {
     }
 
     public void setPutBullet(@NotNull MyPlayer myPlayer, @NotNull ShootAble shooter) {
-        GVector2f angle = myPlayer.getTargetDirection();
+        BVector2f angle = myPlayer.getTargetDirection();
         angle.normalize();
         //TODO tu treba spracovať už aj bonusy od hraca
         try {
@@ -143,7 +143,7 @@ class CommonMethods {
     }
 
     //	public void setPutBullet(MyPlayer myPlayer, BulletManager.Types bulletType) {
-//		GVector2f angle = myPlayer.getTargetDirection();
+//		BVector2f angle = myPlayer.getTargetDirection();
 //		angle.normalize();
 //		//TODO tu treba spracovať už aj bonusy od hraca
 //		try {
@@ -161,8 +161,8 @@ class CommonMethods {
     public void onPutBullet(@NotNull JSONObject data) {
         try {
             game.addBullet(Types.valueOf(data.getString(Texts.TYPE)),
-                           new GVector2f(data.getString(Texts.DIRECTION)),
-                           new GVector2f(data.getString(Texts.POSITION)));
+                           new BVector2f(data.getString(Texts.DIRECTION)),
+                           new BVector2f(data.getString(Texts.POSITION)));
         }
         catch (JSONException e) {
             e.printStackTrace();

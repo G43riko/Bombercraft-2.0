@@ -6,7 +6,7 @@ import org.bombercraft2.components.health_bar.HealthBar;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -85,12 +85,12 @@ public class Task implements InteractAbleG2, HealthAble {
 
     @NotNull
     @Override
-    public GVector2f getPosition() {
+    public BVector2f getPosition() {
         return taskType.getPosition();
     }
 
     @Override
-    public @NotNull GVector2f getSize() {
+    public @NotNull BVector2f getSize() {
         return StaticConfig.BLOCK_SIZE;
     }
 

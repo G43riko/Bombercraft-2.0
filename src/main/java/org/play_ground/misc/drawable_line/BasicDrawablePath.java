@@ -3,7 +3,7 @@ package org.play_ground.misc.drawable_line;
 import org.bombercraft2.StaticConfig;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.List;
@@ -11,19 +11,19 @@ import java.util.stream.Collectors;
 
 public class BasicDrawablePath extends AbstractDrawable {
     @NotNull
-    private List<GVector2f> path;
+    private List<BVector2f> path;
 
-    public BasicDrawablePath(@NotNull SimpleGameAble parent, @NotNull List<GVector2f> points) {
+    public BasicDrawablePath(@NotNull SimpleGameAble parent, @NotNull List<BVector2f> points) {
         super(parent);
-        path = points.stream().map(a -> a.mul(StaticConfig.BLOCK_SIZE)
-                                         .add(StaticConfig.BLOCK_SIZE_HALF)).collect(Collectors.toList());
+        path = points.stream().map(a -> a.getMul(StaticConfig.BLOCK_SIZE)
+                .getAdd(StaticConfig.BLOCK_SIZE_HALF)).collect(Collectors.toList());
     }
 
     public void render(@NotNull Graphics2D g2) {
         final int[] surX = new int[path.size()];
         final int[] surY = new int[path.size()];
         for (int i = 0; i < path.size(); i++) {
-            final GVector2f actPoint = parent.getManager().getViewManager().transform(path.get(i));
+            final BVector2f actPoint = parent.getManager().getViewManager().transform(path.get(i));
             surX[i] = actPoint.getXi();
             surY[i] = actPoint.getYi();
         }

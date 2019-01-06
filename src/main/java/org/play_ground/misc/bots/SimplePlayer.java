@@ -11,7 +11,7 @@ import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -30,9 +30,9 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
 
     public SimplePlayer(SimpleGameAble parent, JSONObject object) {
-        super(new GVector2f(), parent);
+        super(new BVector2f(), parent);
         try {
-            position = new GVector2f(object.getString(Texts.POSITION));
+            position = new BVector2f(object.getString(Texts.POSITION));
             speed = object.getInt(Texts.SPEED);
             health = object.getInt(Texts.HEALTH);
             range = object.getInt(Texts.RANGE);
@@ -46,7 +46,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
     }
 
     public SimplePlayer(SimpleGameAble parent,
-                        GVector2f position,
+                        BVector2f position,
                         String name,
                         int speed,
                         int health,
@@ -70,22 +70,22 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
         final float rightOffset = 21;
         final float leftOffset = 19;
 
-        GVector2f t = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX(),
-                                                 StaticConfig.BLOCK_SIZE.getY() - topOffset).div(2))
-                              .div(StaticConfig.BLOCK_SIZE)
+        BVector2f t = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX(),
+                                                    StaticConfig.BLOCK_SIZE.getY() - topOffset).getDiv(2))
+                .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f b = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX(),
-                                                 StaticConfig.BLOCK_SIZE.getY() + bottomOffset).div(
+        BVector2f b = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX(),
+                                                    StaticConfig.BLOCK_SIZE.getY() + bottomOffset).getDiv(
                 2))
-                              .div(StaticConfig.BLOCK_SIZE)
+                .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f r = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
-                                                 StaticConfig.BLOCK_SIZE.getY()).div(2))
-                              .div(StaticConfig.BLOCK_SIZE)
+        BVector2f r = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
+                                                    StaticConfig.BLOCK_SIZE.getY()).getDiv(2))
+                .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        GVector2f l = position.add(new GVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
-                                                 StaticConfig.BLOCK_SIZE.getY()).div(2))
-                              .div(StaticConfig.BLOCK_SIZE)
+        BVector2f l = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
+                                                    StaticConfig.BLOCK_SIZE.getY()).getDiv(2))
+                .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
 
         try {
@@ -99,8 +99,8 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
         }
     }
 
-    public void move(GVector2f move) {
-        position = position.add(move.mul(speed));
+    public void move(BVector2f move) {
+        position = position.getAdd(move.getMul(speed));
     }
 
     @Override
@@ -189,11 +189,11 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
 
     protected boolean isOnEdge() {
-        GVector2f zoomedPosition = position.mul(parent.getManager().getViewManager().getZoom());
-        GVector2f zoomedMapSize = parent.getManager()
+        BVector2f zoomedPosition = position.getMul(parent.getManager().getViewManager().getZoom());
+        BVector2f zoomedMapSize = parent.getManager()
                                         .getMapManager()
                                         .getMapSize()
-                                        .mul(parent.getManager().getViewManager().getZoom());
+                .getMul(parent.getManager().getViewManager().getZoom());
 
         if (zoomedPosition.getX() < 0) {
             position.setX(0);

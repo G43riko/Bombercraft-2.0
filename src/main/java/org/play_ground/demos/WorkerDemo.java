@@ -23,21 +23,21 @@ import org.play_ground.misc.ViewManager;
 import org.play_ground.misc.map.SimpleMap;
 import org.play_ground.misc.map.SimpleTypedBlock;
 import org.utils.enums.Keys;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 
 public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements GameAble {
-    private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(40, 40);
+    private final static BVector2f NUMBERS_OF_BLOCKS = new BVector2f(40, 40);
     private final        SimpleMap map;
 
     public WorkerDemo(CorePlayGround parent) {
         super(parent, GameStateType.WorkerDemo);
         manager.setManagers(new BotManager());
         manager.setManagers(new TaskManager(manager.getBotManager(), this));
-        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.mul(StaticConfig.BLOCK_SIZE),
+        getManager().setManagers(new ViewManager(NUMBERS_OF_BLOCKS.getMul(StaticConfig.BLOCK_SIZE),
                                                  parent.getCanvas().getWidth(),
                                                  parent.getCanvas().getHeight(),
                                                  3));
@@ -45,7 +45,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void doAct(GVector2f click) {
+    public void doAct(BVector2f click) {
         SimpleTypedBlock block = map.getBlockOnAbsolutePos(click);
         if (block != null) {
             manager.getTaskManager().addTask(new Task(this, 1, 100, new TaskDestroyBlock(block)));
@@ -75,7 +75,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
         if (Input.getMouseDown(Input.BUTTON_RIGHT)) {
             manager.getBotManager()
                    .addBot(new BotWorker(getManager().getViewManager().transformInvert(Input.getMousePosition())
-                                                     .sub(StaticConfig.BLOCK_SIZE_HALF), this));
+                                                 .getSub(StaticConfig.BLOCK_SIZE_HALF), this));
         }
     }
 
@@ -101,7 +101,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull GVector2f getPlayerDirection() {
+    public @NotNull BVector2f getPlayerDirection() {
         return null;
     }
 
@@ -116,7 +116,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull GVector2f getPlayerTarget() {
+    public @NotNull BVector2f getPlayerTarget() {
         return null;
     }
 
@@ -157,14 +157,14 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void addBullet(BulletManager.@NotNull Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position
+    public void addBullet(BulletManager.@NotNull Types bulletType, @NotNull BVector2f angle, @NotNull BVector2f position
                          ) {
 
     }
 
     @Override
-    public void addExplosion(@NotNull GVector2f position,
-                             @NotNull GVector2f size,
+    public void addExplosion(@NotNull BVector2f position,
+                             @NotNull BVector2f size,
                              @NotNull Color color,
                              int number,
                              boolean explosion,
@@ -174,19 +174,19 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void addHelper(@NotNull GVector2f pos, Helper.@NotNull Type type, long createdTime
+    public void addHelper(@NotNull BVector2f pos, Helper.@NotNull Type type, long createdTime
                          ) {
 
     }
 
     @Override
-    public void addEmitter(@NotNull GVector2f position, EmitterTypes type
+    public void addEmitter(@NotNull BVector2f position, EmitterTypes type
                           ) {
 
     }
 
     @Override
-    public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
+    public void addEnemy(@NotNull BVector2f position, @NotNull String type) {
 
     }
 
@@ -196,7 +196,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void explodeBombAt(@NotNull GVector2f globalPosToLocalPos) {
+    public void explodeBombAt(@NotNull BVector2f globalPosToLocalPos) {
 
     }
 
@@ -251,12 +251,12 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull GVector2f getPosition() {
+    public @NotNull BVector2f getPosition() {
         return null;
     }
 
     @Override
-    public @NotNull GVector2f getSize() {
+    public @NotNull BVector2f getSize() {
         return null;
     }
 }

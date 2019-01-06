@@ -3,7 +3,7 @@ package org.play_ground.misc.map;
 import org.bombercraft2.StaticConfig;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.AbstractManager;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.List;
@@ -18,10 +18,10 @@ public class MapManager extends AbstractManager {
     }
 
     public SimpleTypedBlock getTypedBlock(int i, int j) {
-        return (SimpleTypedBlock) map.getBlockOnPos(new GVector2f(i, j));
+        return (SimpleTypedBlock) map.getBlockOnPos(new BVector2f(i, j));
     }
 
-    public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
+    public SimpleTypedBlock getBlockOnAbsolutePos(BVector2f click) {
         return (SimpleTypedBlock) map.getBlockOnAbsolutePos(click);
     }
 
@@ -31,30 +31,30 @@ public class MapManager extends AbstractManager {
         return map.getLogInfo();
     }
 
-    public GVector2f getFreePosition() {
+    public BVector2f getFreePosition() {
         Function<SimpleTypedBlock, Boolean> testBlock = (block) -> block != null && block.getType().isWalkable();
-        final GVector2f mapSize = map.getMapSize();
-        float offset = StaticConfig.BLOCK_SIZE.average();
+        final BVector2f mapSize = map.getMapSize();
+        float offset = StaticConfig.BLOCK_SIZE.avg();
 
         while (true) {
-            GVector2f result = new GVector2f(Math.random() * mapSize.getX(), Math.random() * mapSize.getY());
+            BVector2f result = new BVector2f(Math.random() * mapSize.getX(), Math.random() * mapSize.getY());
             if (testBlock.apply(getBlockOnAbsolutePos(result)) &&
-                    testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(offset, offset)))) &&
-                    testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(offset, -offset)))) &&
-                    testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(-offset, offset)))) &&
-                    testBlock.apply(getBlockOnAbsolutePos(result.add(new GVector2f(-offset, -offset))))) {
+                    testBlock.apply(getBlockOnAbsolutePos(result.getAdd(new BVector2f(offset, offset)))) &&
+                    testBlock.apply(getBlockOnAbsolutePos(result.getAdd(new BVector2f(offset, -offset)))) &&
+                    testBlock.apply(getBlockOnAbsolutePos(result.getAdd(new BVector2f(-offset, offset)))) &&
+                    testBlock.apply(getBlockOnAbsolutePos(result.getAdd(new BVector2f(-offset, -offset))))) {
                 return result;
             }
         }
     }
 
     @NotNull
-    public GVector2f getAABBOnPosition(@NotNull GVector2f position) {
-        return position.div(StaticConfig.BLOCK_SIZE).toInt().mul(StaticConfig.BLOCK_SIZE);
+    public BVector2f getAABBOnPosition(@NotNull BVector2f position) {
+        return position.getDiv(StaticConfig.BLOCK_SIZE).toInt().getMul(StaticConfig.BLOCK_SIZE);
     }
 
     @NotNull
-    public GVector2f getMapSize() {
+    public BVector2f getMapSize() {
         return map.getMapSize();
     }
 

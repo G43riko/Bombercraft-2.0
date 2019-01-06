@@ -3,7 +3,7 @@ package org.play_ground.misc.particles;
 import org.glib2.interfaces.InteractAbleG2;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.GVector2f;
+import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class ParticleManager implements InteractAbleG2 {
         this.parent = parent;
     }
 
-    public void createEmitter(@NotNull GVector2f position, @NotNull ParticleEmitterData.Type type) {
+    public void createEmitter(@NotNull BVector2f position, @NotNull ParticleEmitterData.Type type) {
         emitters.add(new SimpleEmitter(position, parent, type));
     }
 
