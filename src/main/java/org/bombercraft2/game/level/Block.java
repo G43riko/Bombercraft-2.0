@@ -5,13 +5,13 @@ import org.bombercraft2.core.Texts;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.misc.GCanvas;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.SpriteViewer;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -68,10 +68,10 @@ public class Block extends Entity<GameAble> {
 
 
     public Block(@NotNull JSONObject object, @NotNull GameAble parent) {
-        super(new BVector2f(), parent);
+        super(new GVector2f(), parent);
 
         try {
-            position = new BVector2f(object.getString(Texts.POSITION));
+            position = new GVector2f(object.getString(Texts.POSITION));
             health = object.getInt(Texts.HEALTH);
             type = BlockType.valueOf(object.getString(Texts.TYPE));
         }
@@ -80,11 +80,11 @@ public class Block extends Entity<GameAble> {
         }
     }
 
-    public Block(@NotNull BVector2f position, int type, @NotNull GameAble parent) {
+    public Block(@NotNull GVector2f position, int type, @NotNull GameAble parent) {
         this(position, getTypeFromInt(type), parent);
     }
 
-    private Block(@NotNull BVector2f position, BlockType type, @NotNull GameAble parent) {
+    private Block(@NotNull GVector2f position, BlockType type, @NotNull GameAble parent) {
         super(position, parent);
         this.health = type.getHealth();
         this.type = type;
@@ -98,8 +98,8 @@ public class Block extends Entity<GameAble> {
     public void render(@NotNull Graphics2D g2) {
 //		if(type == NOTHING)
 //			return;
-        BVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
-        BVector2f pos = position.getMul(size).getSub(getParent().getOffset());
+        GVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
+        GVector2f pos = position.getMul(size).getSub(getParent().getOffset());
 
         GCanvas.drawImage(g2, type.getImage(), pos, size);
         // g2.drawImage(type.getImage(), pos.getXi(), pos.getYi(), size.getXi(), size.getYi(), null);
@@ -153,8 +153,8 @@ public class Block extends Entity<GameAble> {
         Block r = getParent().getLevel().getMap().getBlock(position.getXi() + 1, position.getYi());
         Block l = getParent().getLevel().getMap().getBlock(position.getXi() - 1, position.getYi());
 
-        BVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
-        BVector2f pos = position.getMul(size).getSub(getParent().getOffset());
+        GVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
+        GVector2f pos = position.getMul(size).getSub(getParent().getOffset());
 
         if (t != null && t.getType() != type) {
             g2.drawImage(SpriteViewer.getImage("tileset2-b.png", 8, 4),
@@ -197,8 +197,8 @@ public class Block extends Entity<GameAble> {
         if (type == BlockType.NOTHING) { return; }
 
         double finalAngle = Math.toRadians(angle + 90);
-        BVector2f offset = new BVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).getMul(length);
-        BVector2f pos = position.getMul(StaticConfig.BLOCK_SIZE).getSub(getParent().getOffset());
+        GVector2f offset = new GVector2f(-Math.cos(finalAngle), Math.sin(finalAngle)).getMul(length);
+        GVector2f pos = position.getMul(StaticConfig.BLOCK_SIZE).getSub(getParent().getOffset());
         g2.setColor(color);
 
         /*   2---3
@@ -239,15 +239,15 @@ public class Block extends Entity<GameAble> {
         boolean l = map.isWalkable(position.getXi() - 1, position.getYi());
         boolean r = map.isWalkable(position.getXi() + 1, position.getYi());
 
-        BVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
-        BVector2f pos = position.getMul(size).getSub(getParent().getOffset());
+        GVector2f size = StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom());
+        GVector2f pos = position.getMul(size).getSub(getParent().getOffset());
 
         int offset = (int) (StaticConfig.WALL_OFFSET * getParent().getZoom());
 
-        BVector2f p0 = pos.getSub(offset);
-        BVector2f p1 = pos.getAdd(size).getSub(new BVector2f(-offset, offset + size.getY()));
-        BVector2f p2 = pos.getAdd(size).getAdd(offset);
-        BVector2f p3 = pos.getAdd(size).getSub(new BVector2f(offset + size.getX(), -offset));
+        GVector2f p0 = pos.getSub(offset);
+        GVector2f p1 = pos.getAdd(size).getSub(new GVector2f(-offset, offset + size.getY()));
+        GVector2f p2 = pos.getAdd(size).getAdd(offset);
+        GVector2f p3 = pos.getAdd(size).getSub(new GVector2f(offset + size.getX(), -offset));
 
         Block block0 = map.getBlock(position.getXi() - 1, position.getYi() - 1);
         Block block1 = map.getBlock(position.getXi() + 1, position.getYi() - 1);
@@ -330,11 +330,11 @@ public class Block extends Entity<GameAble> {
         }
     }
 
-    public BVector2f getSur() {return position/*.getDiv(SIZE).toInt()*/;}
+    public GVector2f getSur() {return position/*.getDiv(SIZE).toInt()*/;}
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getPosition() {return position.getMul(StaticConfig.BLOCK_SIZE);}
+    public GVector2f getPosition() {return position.getMul(StaticConfig.BLOCK_SIZE);}
 
     public BlockType getType() {return type;}
 

@@ -8,9 +8,9 @@ import org.bombercraft2.game.entity.BombCreator;
 import org.bombercraft2.game.level.BlockType;
 import org.bombercraft2.game.misc.Direction;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.EnumMap;
@@ -24,14 +24,14 @@ public class MyPlayer extends Player {
     private final int                cadenceBonus = 0;
     private final int                speedBonus   = 0;
     private final Map<Keys, Boolean> keys         = new EnumMap<>(Keys.class);
-    private       BVector2f          offset       = null;
-    private       BVector2f          move         = new BVector2f();
-    private       BVector2f          totalMove    = new BVector2f();
+    private       GVector2f          offset       = null;
+    private       GVector2f          move         = new GVector2f();
+    private       GVector2f          totalMove    = new GVector2f();
     private       int                damageBonus  = 0;
     private       Bomb               lastPutBomb  = null;
 
     public MyPlayer(GameAble parent,
-                    BVector2f position,
+                    GVector2f position,
                     String name,
                     int speed,
                     int health,
@@ -49,13 +49,13 @@ public class MyPlayer extends Player {
     }
 
     private void resetOffset() {
-        offset = new BVector2f(getParent().getCanvas().getWidth(),
+        offset = new GVector2f(getParent().getCanvas().getWidth(),
                                getParent().getCanvas().getHeight()).getDiv(-2);
     }
 
     @Override
     public void input() {
-        move = new BVector2f();
+        move = new GVector2f();
 
         if (!keys.get(Keys.W) && Input.isKeyDown(Keys.W)) {
             setDirection(Direction.UP);
@@ -173,20 +173,20 @@ public class MyPlayer extends Player {
         final float rightOffset = 21;
         final float leftOffset = 19;
 
-        BVector2f t = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX(),
+        GVector2f t = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX(),
                                                     StaticConfig.BLOCK_SIZE.getY() - topOffset).getDiv(2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        BVector2f b = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX(),
+        GVector2f b = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX(),
                                                     StaticConfig.BLOCK_SIZE.getY() + bottomOffset).getDiv(
                 2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        BVector2f r = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
+        GVector2f r = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
                                                     StaticConfig.BLOCK_SIZE.getY()).getDiv(2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        BVector2f l = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
+        GVector2f l = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
                                                     StaticConfig.BLOCK_SIZE.getY()).getDiv(2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
@@ -216,13 +216,13 @@ public class MyPlayer extends Player {
 
     private void checkOffset() {
 
-        BVector2f pos = getPosition().getMul(getParent().getZoom())
+        GVector2f pos = getPosition().getMul(getParent().getZoom())
                 .getAdd(StaticConfig.BLOCK_SIZE.getMul(getParent().getZoom() / 2));
 
         offset.setX(pos.getX() - getParent().getCanvas().getWidth() / 2);
         offset.setY(pos.getY() - getParent().getCanvas().getHeight() / 2);
 
-        BVector2f numbers = getParent().getLevel().getMap().getNumberOfBlocks();
+        GVector2f numbers = getParent().getLevel().getMap().getNumberOfBlocks();
 
         //skontroluje posun
         if (offset.getX() < 0) {
@@ -264,7 +264,7 @@ public class MyPlayer extends Player {
             }
         }
 
-        BVector2f nums = getParent().getLevel().getMap().getSize();
+        GVector2f nums = getParent().getLevel().getMap().getSize();
 
         if (position.getX() * getParent().getZoom() + StaticConfig.DEFAULT_BLOCK_WIDTH * getParent().getZoom() > nums.getX() * getParent()
                 .getZoom()) {
@@ -280,7 +280,7 @@ public class MyPlayer extends Player {
     }
 
     public void clearTotalMove() {
-        totalMove = new BVector2f();
+        totalMove = new GVector2f();
     }
 
     public void renderSelector(Graphics2D g2) {
@@ -291,7 +291,7 @@ public class MyPlayer extends Player {
         return showSelector;
     }
 
-    public BVector2f getOffset() {
+    public GVector2f getOffset() {
         return offset;
     }
 
@@ -303,12 +303,12 @@ public class MyPlayer extends Player {
         return speedBonus;
     }
 
-    public BVector2f getTargetLocation() {
+    public GVector2f getTargetLocation() {
         return getParent().getToolsManager().getSelectedTool() instanceof BombCreator ? getCenter() : pointer.getEndPos(
                 getCenter());
     }
 
-    public BVector2f getTargetDirection() {
+    public GVector2f getTargetDirection() {
         return getTargetLocation().getSub(getCenter());
     }
 }

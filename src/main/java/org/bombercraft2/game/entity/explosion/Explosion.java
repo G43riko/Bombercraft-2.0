@@ -2,12 +2,12 @@ package org.bombercraft2.game.entity.explosion;
 
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.entity.particles.Particle;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
 import org.utils.SpriteAnimation;
-import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -16,14 +16,14 @@ import java.util.stream.Collectors;
 
 public class Explosion extends Entity<SimpleGameAble> {
     private static Image                      explosionImage = ResourceLoader.loadTexture("explosion1.png");
-    private final  BVector2f                  size;
+    private final  GVector2f                  size;
     private        ArrayList<ShockWave>       waves          = new ArrayList<>();
     private        ArrayList<Particle>        particles      = new ArrayList<>();
     private        ArrayList<SpriteAnimation> animations     = new ArrayList<>();
 
-    public Explosion(BVector2f position,
+    public Explosion(GVector2f position,
                      SimpleGameAble parent,
-                     BVector2f size,
+                     GVector2f size,
                      Color color,
                      int number,
                      boolean explosion,
@@ -46,16 +46,16 @@ public class Explosion extends Entity<SimpleGameAble> {
     }
 
     private void createParticles(Color color, int number) {
-        BVector2f particleSize = size.getDiv(number);
+        GVector2f particleSize = size.getDiv(number);
         int particlesCount = number / 2;
         for (int i = -particlesCount; i < particlesCount; i++) {
             for (int j = -particlesCount; j < particlesCount; j++) {
-                BVector2f dir = new BVector2f(i, j);
+                GVector2f dir = new GVector2f(i, j);
                 particles.add(new Particle(position.getAdd(particleSize.getMul(dir)),
                                            getParent(),
                                            color,
-                                           dir.getAdd(new BVector2f(Math.random(),
-                                                                    Math.random()).getSub(0.5f).Normalized()),
+                                           dir.getAdd(new GVector2f(Math.random(),
+                                                                    Math.random()).getSub(0.5f).normalize()),
                                            particleSize.getMul((float) (Math.random() * 0.4f - 0.2f) + 1.0f),
                                            40 + (int) (Math.random() * 30) - 15));
             }
@@ -72,8 +72,8 @@ public class Explosion extends Entity<SimpleGameAble> {
     }
 
     private boolean drawExplosion(Graphics2D g2, SpriteAnimation sprite) {
-        BVector2f pos = position.getSub(getSize()).getMul(getParent().getZoom()).getSub(getParent().getOffset());
-        BVector2f size = getSize().getMul(2).getMul(getParent().getZoom());
+        GVector2f pos = position.getSub(getSize()).getMul(getParent().getZoom()).getSub(getParent().getOffset());
+        GVector2f size = getSize().getMul(2).getMul(getParent().getZoom());
 
         return sprite.renderAndCheckLastFrame(g2,
                                               new org.glib2.math.vectors.GVector2f(pos.getX(), pos.getY()),
@@ -108,7 +108,7 @@ public class Explosion extends Entity<SimpleGameAble> {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getSize() {
+    public GVector2f getSize() {
         return size;
     }
 

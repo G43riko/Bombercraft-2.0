@@ -4,6 +4,7 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.components.path.PathFinder;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.SimpleAbstractGame;
@@ -11,17 +12,16 @@ import org.play_ground.misc.ViewManager;
 import org.play_ground.misc.drawable_line.BasicDrawablePath;
 import org.play_ground.misc.map.SimpleMap;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
-    private final static BVector2f NUMBERS_OF_BLOCKS = new BVector2f(100, 100);
+    private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(100, 100);
     private final        SimpleMap map;
 
-    private BVector2f         firstClick;
+    private GVector2f         firstClick;
     private BasicDrawablePath path;
 
     public MapDemo(CorePlayGround parent) {
@@ -56,13 +56,13 @@ public class MapDemo extends SimpleAbstractGame<CorePlayGround> {
                 firstClick = Input.getMousePosition();
             }
             else {
-                final BVector2f start = getManager().getViewManager().transformInvert(firstClick)
+                final GVector2f start = getManager().getViewManager().transformInvert(firstClick)
                         .getDiv(StaticConfig.BLOCK_SIZE)
                                                     .toInt();
-                final BVector2f end = getManager().getViewManager().transformInvert(Input.getMousePosition())
+                final GVector2f end = getManager().getViewManager().transformInvert(Input.getMousePosition())
                         .getDiv(StaticConfig.BLOCK_SIZE)
                                                   .toInt();
-                final List<BVector2f> result = new ArrayList<>();
+                final List<GVector2f> result = new ArrayList<>();
                 result.add(end);
                 result.addAll(PathFinder.findPath(map.getHashMap(),
                                                   start.toString(),

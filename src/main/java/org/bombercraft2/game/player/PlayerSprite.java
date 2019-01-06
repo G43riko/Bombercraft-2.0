@@ -1,7 +1,7 @@
 package org.bombercraft2.game.player;
 
 import org.bombercraft2.game.misc.Direction;
-import utils.math.BVector2f;
+import org.glib2.math.vectors.GVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -14,7 +14,7 @@ public class PlayerSprite {
     private final int       numberOfImages;
     private final int       numberOfSteps;
     private final int       delay;
-    private final BVector2f imageSize;
+    private final GVector2f imageSize;
     private       int       step = 0;
     private       int       actDelay;
 
@@ -24,7 +24,7 @@ public class PlayerSprite {
         numberOfImages = numX * numY;
         actDelay = delay;
         numberOfSteps = numberOfImages / positions;
-        imageSize = new BVector2f(image.getWidth(null) / numX, image.getHeight(null) / numY);
+        imageSize = new GVector2f(image.getWidth(null) / numX, image.getHeight(null) / numY);
     }
 
     /**
@@ -47,8 +47,8 @@ public class PlayerSprite {
     }
 
 
-    public static void drawPlayer(BVector2f position,
-                                  BVector2f size,
+    public static void drawPlayer(GVector2f position,
+                                  GVector2f size,
                                   Graphics2D g2,
                                   Direction type,
                                   String name,
@@ -60,7 +60,7 @@ public class PlayerSprite {
             return;
         }
 
-        BVector2f position2 = position.getAdd(size);
+        GVector2f position2 = position.getAdd(size);
         int sourceX = sprite.step * sprite.imageSize.getXi();
         int sourceY = type.getID() * sprite.imageSize.getXi();
 

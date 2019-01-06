@@ -1,8 +1,8 @@
 package org.play_ground.misc.particles;
 
 import org.bombercraft2.core.Visible;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -80,12 +80,12 @@ public class SimpleParticle implements Visible {
     }
 
     @Override
-    public @NotNull BVector2f getPosition() {
-        return new BVector2f(posX, posY);
+    public @NotNull GVector2f getPosition() {
+        return new GVector2f(posX, posY);
     }
 
     @Override
-    public @NotNull BVector2f getSize() {
-        return new BVector2f(radius, radius);
+    public @NotNull GVector2f getSize() {
+        return new GVector2f(radius, radius);
     }
 }

@@ -32,7 +32,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.enums.Keys;
 import utils.GLogger;
-import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -241,8 +240,8 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void addExplosion(@NotNull BVector2f position,
-                             @NotNull BVector2f size,
+    public void addExplosion(@NotNull GVector2f position,
+                             @NotNull GVector2f size,
                              @NotNull Color color,
                              int number,
                              boolean explosion,
@@ -252,12 +251,12 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void addEmitter(@NotNull BVector2f position, @NotNull EmitterTypes type) {
+    public void addEmitter(@NotNull GVector2f position, @NotNull EmitterTypes type) {
         sceneManager.addEmitter(position, type);
     }
 
     @Override
-    public void addEnemy(@NotNull BVector2f position, @NotNull String type) {
+    public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
         GLogger.notImplemented();
     }
 
@@ -322,16 +321,16 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void doAct(BVector2f click) {
+    public void doAct(GVector2f click) {
         gui.doAct(click);
     }
 
     @Override
-    public void addHelper(@NotNull BVector2f pos,
+    public void addHelper(@NotNull GVector2f pos,
                           @NotNull Helper.Type type,
                           long createTime
     ) {//TODO playerov bonus k poskodeniu tu ma byt
-        BVector2f localPos = Map.globalPosToLocalPos(pos);
+        GVector2f localPos = Map.globalPosToLocalPos(pos);
         pos = pos.getDiv(StaticConfig.BLOCK_SIZE).toInt().getMul(StaticConfig.BLOCK_SIZE);
 
         String key = localPos.getXi() + "_" + localPos.getYi();
@@ -354,7 +353,7 @@ public class Game extends GameState implements GameAble {
     }
 
     @Override
-    public void explodeBombAt(@NotNull BVector2f pos) {
+    public void explodeBombAt(@NotNull GVector2f pos) {
         String key = pos.getXi() + "_" + pos.getYi();
         if (!sceneManager.existHelperOn(key)) {
             GLogger.printLine("Explodovala neexistujuca bomba na: " + pos);
@@ -371,11 +370,11 @@ public class Game extends GameState implements GameAble {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getPosition() {return new BVector2f();}
+    public GVector2f getPosition() {return new GVector2f();}
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getSize() {return new BVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
+    public GVector2f getSize() {return new GVector2f(getCanvas().getWidth(), getCanvas().getHeight());}
 
     @NotNull
     public Level getLevel() {return level;}
@@ -388,7 +387,7 @@ public class Game extends GameState implements GameAble {
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getOffset() {return myPlayer.getOffset();}
+    public GVector2f getOffset() {return myPlayer.getOffset();}
 
     public Canvas getCanvas() {return parent.getCanvas();}
 
@@ -456,18 +455,18 @@ public class Game extends GameState implements GameAble {
 
     @NotNull
     @Override
-    public BVector2f getPlayerDirection() {
+    public GVector2f getPlayerDirection() {
         return myPlayer.getTargetDirection();
     }
 
     @NotNull
     @Override
-    public BVector2f getPlayerTarget() {
+    public GVector2f getPlayerTarget() {
         return myPlayer.getTargetLocation();
     }
 
     @Override
-    public void addBullet(@NotNull Types bulletType, @NotNull BVector2f angle, @NotNull BVector2f position) {
+    public void addBullet(@NotNull Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position) {
         Bullet bullet = null;
         switch (bulletType) {
             case LASER:

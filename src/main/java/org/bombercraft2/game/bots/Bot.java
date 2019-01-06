@@ -4,17 +4,17 @@ import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.bots.BotFactory.Types;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.misc.Direction;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.BVector2f;
 
 public abstract class Bot extends Entity<GameAble> {
     private final BotPrototype prototype;
     protected     Direction    direction;
     private       int          health;
 
-    public Bot(BVector2f position, GameAble parent, Types type, Direction direction) {
+    public Bot(GVector2f position, GameAble parent, Types type, Direction direction) {
         super(position, parent);
         prototype = BotFactory.getBotPrototype(type);
         this.direction = direction;

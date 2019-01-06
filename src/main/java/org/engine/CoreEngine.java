@@ -3,11 +3,11 @@ package org.engine;
 import org.bombercraft2.Bombercraft;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.gui2.GuiTester;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.prototypes.IEngine;
 import org.utils.MiscUtils;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -92,7 +92,7 @@ public abstract class CoreEngine implements IEngine {
                     System.out.println(String.format("ups: %s, fps: %s, LOOPS: %s", ticks, frames, loops));
                 }
 
-                Bombercraft.totalMessages = new BVector2f(Bombercraft.sendMessages, Bombercraft.receiveMessages);
+                Bombercraft.totalMessages = new GVector2f(Bombercraft.sendMessages, Bombercraft.receiveMessages);
                 Bombercraft.sendMessages = 0;
                 Bombercraft.receiveMessages = 0;
                 actFPS = frames;

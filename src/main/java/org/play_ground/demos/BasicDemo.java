@@ -3,11 +3,11 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.map.SimpleMap_old;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -46,7 +46,7 @@ public class BasicDemo extends GameState {
         }
 
 
-        BVector2f mousePos = Input.getMousePosition();
+        GVector2f mousePos = Input.getMousePosition();
         preRayCast(player.x + (playerSize >> 1), player.y + (playerSize >> 1), mousePos.getXi(), mousePos.getYi());
 
         g2.setColor(Color.GRAY);

@@ -3,12 +3,12 @@ package org.play_ground.misc.map;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.misc.GCanvas;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
 import org.utils.noises.PerlinNoise;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -17,12 +17,12 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class SimpleChunk extends Entity<SimpleGameAble> {
-    public final static BVector2f                         SIZE           = StaticConfig.BLOCK_SIZE.getMul(StaticConfig.CHUNK_SIZE);
+    public final static GVector2f                         SIZE           = StaticConfig.BLOCK_SIZE.getMul(StaticConfig.CHUNK_SIZE);
     private             BufferedImage                     image          = null;
     private             int                               renderedBlocks = 0;
     private             HashMap<String, SimpleTypedBlock> blocks         = null;
 
-    public SimpleChunk(SimpleChunkedMap parent, BVector2f position) {
+    public SimpleChunk(SimpleChunkedMap parent, GVector2f position) {
         super(position, parent.getParent());
         createRandomMap();
     }
@@ -37,7 +37,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
 
         for (int i = 0; i < StaticConfig.CHUNK_SIZE.getXi(); i++) {
             for (int j = 0; j < StaticConfig.CHUNK_SIZE.getYi(); j++) {
-                addBlock(i, j, new SimpleTypedBlock(new BVector2f(i, j),
+                addBlock(i, j, new SimpleTypedBlock(new GVector2f(i, j),
                                                     (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
                                                     parent,
                                                     getPosition()));
@@ -56,7 +56,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
         blocks.put(i + "_" + j, block);
     }
 
-    public SimpleTypedBlock getBlock(BVector2f pos) {
+    public SimpleTypedBlock getBlock(GVector2f pos) {
         return getBlock(pos.getXi(), pos.getYi());
     }
 
@@ -77,8 +77,8 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
 
         if (StaticConfig.SHOW_CHUNK_BORDERS) {
 
-            final BVector2f transformedPosition = parent.getManager().getViewManager().transform(getPosition());
-            final BVector2f realSize = SIZE.getMul(parent.getManager().getViewManager().getZoom());
+            final GVector2f transformedPosition = parent.getManager().getViewManager().transform(getPosition());
+            final GVector2f realSize = SIZE.getMul(parent.getManager().getViewManager().getZoom());
 
             GCanvas.drawRect(g2, transformedPosition, realSize, Color.BLACK, 3);
             // g2.setColor(Color.black);
@@ -94,7 +94,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getPosition() {
+    public GVector2f getPosition() {
         return position.getMul(SIZE);
     }
 
@@ -108,7 +108,7 @@ public class SimpleChunk extends Entity<SimpleGameAble> {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getSize() {
+    public GVector2f getSize() {
         return SIZE;
     }
 }

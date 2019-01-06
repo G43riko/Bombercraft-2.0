@@ -4,8 +4,8 @@ import org.bombercraft2.core.GameStateType;
 import org.bombercraft2.core.MenuAble;
 import org.bombercraft2.gui.StatsPanel;
 import org.bombercraft2.gui.components.Button;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -17,7 +17,7 @@ public class EndGameMenu extends Menu {
 
     public EndGameMenu(MenuAble parent) {
         super(parent, GameStateType.EndGameMenu);
-        panel = new StatsPanel(parent.getGame(), new BVector2f(30, 200), parent.getGame().getStats());
+        panel = new StatsPanel(parent.getGame(), new GVector2f(30, 200), parent.getGame().getStats());
 
         mainMenuButton.getSize().setX(300);
         mainMenuButton.getPosition().setY(500);
@@ -28,7 +28,7 @@ public class EndGameMenu extends Menu {
     }
 
     @Override
-    public void doAct(BVector2f click) {
+    public void doAct(GVector2f click) {
         if (mainMenuButton.isClickIn(click)) {
             parent.stopGame();
 

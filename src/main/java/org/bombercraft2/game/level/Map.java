@@ -7,13 +7,13 @@ import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.misc.Direction;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.interfaces.JSONAble;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.utils.noises.PerlinNoise;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -26,12 +26,12 @@ public class Map implements InteractAbleG2, JSONAble {
     private final static boolean                PRE_RENDER     = false;
     private final        GameAble               parent;
     private              HashMap<String, Block> blocks         = null;
-    private              BVector2f              numberOfBlocks = null;
+    private              GVector2f              numberOfBlocks = null;
     private              boolean                render         = true;
     private              long                   renderedBlocks = 0;
     private              String                 defaultMap     = null;    //zaloha mapy pre reset
     private              BufferedImage          image          = null;
-    private              BVector2f              size           = null;
+    private              GVector2f              size           = null;
 
 
     public Map(@NotNull JSONObject object, @NotNull GameAble parent) {
@@ -41,7 +41,7 @@ public class Map implements InteractAbleG2, JSONAble {
         GLogger.log(GLogger.GLog.MAP_SUCCESSFULLY_CREATED);
     }
 
-    public Map(@NotNull GameAble parent, @NotNull BVector2f numberOfBlocks) {
+    public Map(@NotNull GameAble parent, @NotNull GVector2f numberOfBlocks) {
         this.parent = parent;
         this.numberOfBlocks = numberOfBlocks;
 
@@ -52,12 +52,12 @@ public class Map implements InteractAbleG2, JSONAble {
     }
 
     @NotNull
-    public static BVector2f globalPosToLocalPos(BVector2f pos) {
+    public static GVector2f globalPosToLocalPos(GVector2f pos) {
         return pos.getSub(pos.getMod(StaticConfig.BLOCK_SIZE)).getDiv(StaticConfig.BLOCK_SIZE);
     }
 
     @NotNull
-    public static BVector2f localPosToGlobalPos(BVector2f pos) {
+    public static GVector2f localPosToGlobalPos(GVector2f pos) {
         return pos.getMul(StaticConfig.BLOCK_SIZE);
     }
 
@@ -154,8 +154,8 @@ public class Map implements InteractAbleG2, JSONAble {
 
         for (int i = 0; i < numberOfBlocks.getXi(); i++) {
             for (int j = 0; j < numberOfBlocks.getYi(); j++) {
-//				addBlock(i, j, new Block(new BVector2f(i,j),(int)(Math.random() * 10), parent));
-                addBlock(i, j, new Block(new BVector2f(i, j),
+//				addBlock(i, j, new Block(new GVector2f(i,j),(int)(Math.random() * 10), parent));
+                addBlock(i, j, new Block(new GVector2f(i, j),
                                          (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
                                          parent));
             }
@@ -168,7 +168,7 @@ public class Map implements InteractAbleG2, JSONAble {
         render = false;
         blocks = new HashMap<>();
         try {
-            this.numberOfBlocks = new BVector2f(object.getString(Texts.BLOCKS_NUMBER));
+            this.numberOfBlocks = new GVector2f(object.getString(Texts.BLOCKS_NUMBER));
             for (int i = 0; i < numberOfBlocks.getXi(); i++) {
                 for (int j = 0; j < numberOfBlocks.getYi(); j++) {
                     addBlock(i, j, new Block(new JSONObject(object.getString("b" + i + "_" + j)), parent));
@@ -186,13 +186,13 @@ public class Map implements InteractAbleG2, JSONAble {
      *
      * @param zones - zoznam zón
      */
-    private void clearRespawnZones(@NotNull List<BVector2f> zones) {
+    private void clearRespawnZones(@NotNull List<GVector2f> zones) {
         zones.forEach(a -> remove(a.getDiv(StaticConfig.BLOCK_SIZE).toInt()));
     }
 
     //ADDERS
 
-    public void remove(BVector2f sur) {
+    public void remove(GVector2f sur) {
         Block b = getBlock(sur.getXi(), sur.getYi());
         if (b != null && b.getType() != BlockType.NOTHING) {
             b.remove();
@@ -214,7 +214,7 @@ public class Map implements InteractAbleG2, JSONAble {
 
     public long getRenderedBlocks() {return renderedBlocks;}
 
-    public BVector2f getNumberOfBlocks() {return numberOfBlocks;}
+    public GVector2f getNumberOfBlocks() {return numberOfBlocks;}
 
     public Block getBlock(String block) {return blocks.get(block);}
 
@@ -228,7 +228,7 @@ public class Map implements InteractAbleG2, JSONAble {
         return b != null && b.isWalkable();
     }
 
-    public Direction[] getPossibleWays(BVector2f sur) {
+    public Direction[] getPossibleWays(GVector2f sur) {
         ArrayList<Direction> result = new ArrayList<>();
         Block b;
 
@@ -277,9 +277,9 @@ public class Map implements InteractAbleG2, JSONAble {
         return b.get((int) (Math.random() * b.size()));
     }
 
-    public Block getBlockOnPosition(BVector2f sur) {
-        BVector2f blockSize = StaticConfig.BLOCK_SIZE;
-        BVector2f pos = sur.getSub(sur.getMod(blockSize)).getDiv(blockSize);
+    public Block getBlockOnPosition(GVector2f sur) {
+        GVector2f blockSize = StaticConfig.BLOCK_SIZE;
+        GVector2f pos = sur.getSub(sur.getMod(blockSize)).getDiv(blockSize);
 
         return getBlock(pos.getXi(), pos.getYi());
     }
@@ -296,7 +296,7 @@ public class Map implements InteractAbleG2, JSONAble {
         return new ArrayList<>();
     }
 
-    public BVector2f getSize() {
+    public GVector2f getSize() {
         return size;
     }
 

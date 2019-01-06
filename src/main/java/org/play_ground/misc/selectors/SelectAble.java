@@ -1,9 +1,9 @@
 package org.play_ground.misc.selectors;
 
-import utils.math.BVector2f;
+import org.glib2.math.vectors.GVector2f;
 
 public interface SelectAble {
-    BVector2f getPosition(BVector2f startPosition);
+    GVector2f getPosition(GVector2f startPosition);
 
     void showSelectedBlock(boolean value);
 }

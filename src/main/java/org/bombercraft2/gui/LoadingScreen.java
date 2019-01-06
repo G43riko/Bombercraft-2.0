@@ -3,8 +3,8 @@ package org.bombercraft2.gui;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -30,5 +30,5 @@ public class LoadingScreen extends GameState {
     }
 
     @Override
-    public void doAct(BVector2f click) {}
+    public void doAct(GVector2f click) {}
 }

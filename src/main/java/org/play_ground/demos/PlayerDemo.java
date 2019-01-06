@@ -3,6 +3,7 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameStateType;
 import org.bombercraft2.gui.GameLogs;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.SimpleAbstractGame;
@@ -13,7 +14,6 @@ import org.play_ground.misc.bots.SimpleNPC;
 import org.play_ground.misc.map.MapManager;
 import org.play_ground.misc.map.SimpleChunkedMap;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -22,7 +22,7 @@ public class PlayerDemo extends SimpleAbstractGame<CorePlayGround> {
 
     public PlayerDemo(CorePlayGround parent) {
         super(parent, GameStateType.PlayerDemo);
-        manager.setManagers(new MapManager(new SimpleChunkedMap(this, new BVector2f(2, 2))));
+        manager.setManagers(new MapManager(new SimpleChunkedMap(this, new GVector2f(2, 2))));
         manager.setManagers(new PlayerManager(this, new SimpleMyPlayer(this,
                                                                        manager.getMapManager().getFreePosition(),
                                                                        "Gabriel",

@@ -15,6 +15,7 @@ import org.bombercraft2.multiplayer.GameClient;
 import org.bombercraft2.multiplayer.GameServer;
 import org.engine.CoreEngine;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -23,7 +24,6 @@ import org.json.JSONObject;
 import org.utils.MiscUtils;
 import org.utils.enums.Keys;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.Stack;
@@ -272,14 +272,14 @@ public class CoreGame extends CoreEngine implements MenuAble {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getPosition() {
-        return new BVector2f();
+    public GVector2f getPosition() {
+        return new GVector2f();
     }
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getSize() {
-        return new BVector2f(getWindow().getWidth(), getWindow().getHeight());
+    public GVector2f getSize() {
+        return new GVector2f(getWindow().getWidth(), getWindow().getHeight());
     }
 
     @NotNull

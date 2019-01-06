@@ -6,7 +6,6 @@ import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.MultipleGradientPaint.CycleMethod;
@@ -26,13 +25,13 @@ public class Light extends Entity {
     private              int           flash     = 0;
 
 
-//	public Light(GameAble parent, BVector2f scale, BVector2f size, int radius) {
+//	public Light(GameAble parent, GVector2f scale, GVector2f size, int radius) {
 //		this(parent, scale, size, null);
 //		calcImage();
 //	}
 
     public Light(GameAble parent, GVector2f position, GVector2f size, Entity target) {
-        super(BVector2f.fromGVector(position), parent);
+        super(position, parent);
         this.target = target;
         this.size = size;
         radius = (int) size.avg();
@@ -49,7 +48,7 @@ public class Light extends Entity {
                  int luminance,
                  Entity target
                 ) {
-        super(BVector2f.fromGVector(position), parent);
+        super(position, parent);
 
         this.luminance = luminance;
         this.target = target;
@@ -88,13 +87,13 @@ public class Light extends Entity {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getPosition() {
+    public GVector2f getPosition() {
         return target == null ? super.getPosition() : target.getPosition();
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        BVector2f finalPos;
+        GVector2f finalPos;
         if (target == null) {
             finalPos = position.getSub(getParent().getOffset());
         }
@@ -167,8 +166,8 @@ public class Light extends Entity {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getSize() {
-        return BVector2f.fromGVector(size);
+    public GVector2f getSize() {
+        return size;
     }
 
     public boolean isStatic() {

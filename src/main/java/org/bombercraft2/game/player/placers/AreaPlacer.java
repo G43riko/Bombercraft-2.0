@@ -2,7 +2,7 @@ package org.bombercraft2.game.player.placers;
 
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.GameAble;
-import utils.math.BVector2f;
+import org.glib2.math.vectors.GVector2f;
 
 import java.awt.*;
 
@@ -10,20 +10,20 @@ public class AreaPlacer extends Placer {
     private final static Color     AREA_PLACER_FILL_COLOR = new Color(255, 173, 43, 150);
     private final static int       AREA_PLACER_OFFSET     = -5;
     private final static int       AREA_PLACER_ROUND      = 10;
-    private              BVector2f starPos                = null;
+    private              GVector2f starPos                = null;
 
     public AreaPlacer(GameAble parent) {
         super(parent);
     }
 
     @Override
-    public void useOnLocalPos(BVector2f pos) {
+    public void useOnLocalPos(GVector2f pos) {
         if (starPos == null) {
             starPos = pos;
         }
         else {
-            BVector2f minPos = pos.min(starPos);
-            BVector2f maxPos = pos.max(starPos);
+            GVector2f minPos = pos.min(starPos);
+            GVector2f maxPos = pos.max(starPos);
 
             parent.getConnector().setBuildBlockArea(minPos, maxPos, blockType);
 
@@ -38,9 +38,9 @@ public class AreaPlacer extends Placer {
             return;
         }
 
-        BVector2f globalPosStart = starPos.getMul(StaticConfig.BLOCK_SIZE).getSub(parent.getOffset());
-        BVector2f globalPosEnd = parent.getPlayerTarget().getSub(parent.getOffset()).getAdd(StaticConfig.BLOCK_SIZE);
-        BVector2f size = globalPosEnd.getSub(globalPosStart)
+        GVector2f globalPosStart = starPos.getMul(StaticConfig.BLOCK_SIZE).getSub(parent.getOffset());
+        GVector2f globalPosEnd = parent.getPlayerTarget().getSub(parent.getOffset()).getAdd(StaticConfig.BLOCK_SIZE);
+        GVector2f size = globalPosEnd.getSub(globalPosStart)
                 .getDiv(StaticConfig.BLOCK_SIZE)
                                      .toInt()
                 .getMul(StaticConfig.BLOCK_SIZE);

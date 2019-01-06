@@ -7,11 +7,11 @@ import org.bombercraft2.core.Texts;
 import org.bombercraft2.gui.components.GuiComponent;
 import org.bombercraft2.gui.components.RemoteGamePanel;
 import org.bombercraft2.multiplayer.RemoteGameData;
+import org.glib2.math.vectors.GVector2f;
 import org.glib2.network.InternetUtils;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.io.ObjectInputStream;
@@ -125,7 +125,7 @@ public class JoinMenu extends Menu {
     }
 
     @Override
-    public void doAct(BVector2f click) {
+    public void doAct(GVector2f click) {
 
         if (components.get(Texts.BACK).isClickIn(click)) {
             parent.showMainMenu();

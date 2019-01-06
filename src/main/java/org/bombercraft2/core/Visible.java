@@ -1,8 +1,8 @@
 package org.bombercraft2.core;
 
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 /**
  * @deprecated use {@link org.glib2.interfaces.Visible} instead
@@ -11,9 +11,9 @@ import utils.math.BVector2f;
 public interface Visible {
     @NotNull
     @Contract(pure = true)
-    BVector2f getPosition();
+    GVector2f getPosition();
 
     @NotNull
     @Contract(pure = true)
-    BVector2f getSize();
+    GVector2f getSize();
 }

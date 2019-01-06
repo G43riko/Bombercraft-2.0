@@ -1,7 +1,7 @@
 package org.bombercraft2.gui.components;
 
 import org.bombercraft2.core.Visible;
-import utils.math.BVector2f;
+import org.glib2.math.vectors.GVector2f;
 
 import java.awt.*;
 
@@ -12,7 +12,7 @@ public class MiniButton extends GuiComponent {
 
     private MiniButton(Visible parent, String text, int height) {
         super(parent);
-        this.size = new BVector2f(0, height);
+        this.size = new GVector2f(0, height);
         this.text = text;
         init();
 
@@ -25,9 +25,9 @@ public class MiniButton extends GuiComponent {
     }
 
     protected void init() {
-        offset = new BVector2f(2, 2);
+        offset = new GVector2f(2, 2);
         textSize = 20;
-        textOffset = new BVector2f(4, 0);
+        textOffset = new GVector2f(4, 0);
         round = 10;
         borderWidth = 1;
 
@@ -39,8 +39,8 @@ public class MiniButton extends GuiComponent {
 
     @Override
     public void calcPosition() {
-        position = getParent().getPosition().getAdd(offset.getAdd(new BVector2f(0, topCousePrevButtons)));
-        size = new BVector2f(getParent().getSize().getXi() - 2 * offset.getX(), size.getY() - offset.getY());
+        position = getParent().getPosition().getAdd(offset.getAdd(new GVector2f(0, topCousePrevButtons)));
+        size = new GVector2f(getParent().getSize().getXi() - 2 * offset.getX(), size.getY() - offset.getY());
     }
 
 }

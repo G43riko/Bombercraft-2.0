@@ -3,6 +3,7 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameStateType;
 import org.bombercraft2.gui2.GuiManagerImpl;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.gui.components.Button;
 import org.gui.components.Panel;
 import org.gui.components.VerticalScrollPanel;
@@ -14,14 +15,13 @@ import org.play_ground.SimpleAbstractGame;
 import org.play_ground.misc.particles.ParticleEmitterData;
 import org.play_ground.misc.particles.SimpleEmitter;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class ParticlesPreviewDemo extends SimpleAbstractGame<CorePlayGround> {
     private static VerticalScrollPanel panel      = new VerticalScrollPanel();
     private        GuiManagerImpl      guiManager = new GuiManagerImpl();
-    private        SimpleEmitter       emitter    = new SimpleEmitter(new BVector2f(400, 400),
+    private        SimpleEmitter       emitter    = new SimpleEmitter(new GVector2f(400, 400),
                                                                       this,
                                                                       ParticleEmitterData.Type.GREEN);
 

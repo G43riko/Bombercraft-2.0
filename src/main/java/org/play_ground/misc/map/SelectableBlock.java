@@ -2,9 +2,9 @@ package org.play_ground.misc.map;
 
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.misc.GCanvas;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -13,16 +13,16 @@ public class SelectableBlock extends AbstractBlock {
     public Color   defaultColor  = Color.LIGHT_GRAY;
     public Color   selectedColor = Color.DARK_GRAY;
 
-    public SelectableBlock(@NotNull BVector2f position,
+    public SelectableBlock(@NotNull GVector2f position,
                            @NotNull SimpleGameAble parent
                           ) {
         super(position, parent);
     }
 
     public void render(@NotNull Graphics2D g2) {
-        final BVector2f size = StaticConfig.BLOCK_SIZE.getMul(parent.getManager().getViewManager().getZoom());
-        final BVector2f realPos = position.getMul(size);
-        BVector2f pos = (offset == null ? realPos : realPos.getAdd(offset.getMul(parent.getManager()
+        final GVector2f size = StaticConfig.BLOCK_SIZE.getMul(parent.getManager().getViewManager().getZoom());
+        final GVector2f realPos = position.getMul(size);
+        GVector2f pos = (offset == null ? realPos : realPos.getAdd(offset.getMul(parent.getManager()
                                                                                  .getViewManager()
                                                                                          .getZoom()))).getSub(parent.getManager()
                                                                                                          .getViewManager()

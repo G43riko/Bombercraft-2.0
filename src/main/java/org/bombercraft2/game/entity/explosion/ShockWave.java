@@ -1,9 +1,9 @@
 package org.bombercraft2.game.entity.explosion;
 
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -12,14 +12,14 @@ public class ShockWave implements InteractAbleG2 {
     private final int            maxRadius;
     private final int            stroke;
     private final int            speed;
-    private final BVector2f      position;
+    private final GVector2f      position;
     private       int            radius    = 0;
     private       int            alphaDiff = 0;
     private       boolean        alive     = true;
     private       Color          color;
 
     public ShockWave(SimpleGameAble parent,
-                     BVector2f position,
+                     GVector2f position,
                      int maxRadius,
                      int stroke,
                      int speed,
@@ -42,7 +42,7 @@ public class ShockWave implements InteractAbleG2 {
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        BVector2f transformedPosition = parent.getManager().getViewManager().transform(position.getSub(radius));
+        GVector2f transformedPosition = parent.getManager().getViewManager().transform(position.getSub(radius));
         g2.setColor(color);
         int size = (int) (radius * 2 * parent.getZoom());
         g2.setStroke(new BasicStroke(stroke * parent.getZoom()));

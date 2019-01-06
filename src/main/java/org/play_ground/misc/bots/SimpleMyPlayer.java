@@ -3,10 +3,10 @@ package org.play_ground.misc.bots;
 
 import org.bombercraft2.game.misc.Direction;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -15,12 +15,12 @@ import java.util.Map;
 
 public class SimpleMyPlayer extends SimplePlayer {
     private final Map<Keys, Boolean> keys      = new EnumMap<>(Keys.class);
-    private       BVector2f          offset    = null;
-    private       BVector2f          move      = new BVector2f();
-    private       BVector2f          totalMove = new BVector2f();
+    private       GVector2f          offset    = null;
+    private       GVector2f          move      = new GVector2f();
+    private       GVector2f          totalMove = new GVector2f();
 
     public SimpleMyPlayer(SimpleGameAble parent,
-                          BVector2f position,
+                          GVector2f position,
                           String name,
                           int speed,
                           int health,
@@ -35,8 +35,8 @@ public class SimpleMyPlayer extends SimplePlayer {
         keys.put(Keys.D, false);
     }
 
-    private static BVector2f getMoveFromKeys(Map<Keys, Boolean> keys) {
-        BVector2f move = new BVector2f();
+    private static GVector2f getMoveFromKeys(Map<Keys, Boolean> keys) {
+        GVector2f move = new GVector2f();
         if (keys.get(Keys.W)) {
             move.addToY(-1);
         }
@@ -53,7 +53,7 @@ public class SimpleMyPlayer extends SimplePlayer {
     }
 
     private void resetOffset() {
-        offset = new BVector2f(parent.getCanvasSize().getXi(),
+        offset = new GVector2f(parent.getCanvasSize().getXi(),
                                parent.getCanvasSize().getYi()).getDiv(-2);
     }
 
@@ -123,19 +123,19 @@ public class SimpleMyPlayer extends SimplePlayer {
 
 
     public void clearTotalMove() {
-        totalMove = new BVector2f();
+        totalMove = new GVector2f();
     }
 
 
-    public BVector2f getOffset() {
+    public GVector2f getOffset() {
         return offset;
     }
 
-    public BVector2f getTargetLocation() {
+    public GVector2f getTargetLocation() {
         return getCenter();
     }
 
-    public BVector2f getTargetDirection() {
+    public GVector2f getTargetDirection() {
         return getTargetLocation().getSub(getCenter());
     }
 }

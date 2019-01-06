@@ -1,10 +1,10 @@
 package org.bombercraft2.components.health_bar;
 
 import org.bombercraft2.StaticConfig;
+import org.glib2.math.vectors.GVector2f;
 import org.gui.utils.ColorBox;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -21,7 +21,7 @@ public class HealthBar {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        BVector2f pos = target.getPosition().getMul(parent.getZoom()).getSub(parent.getOffset());
+        GVector2f pos = target.getPosition().getMul(parent.getZoom()).getSub(parent.getOffset());
         final int maxWidth = (int) ((target.getSize()
                                            .getXi() - (StaticConfig.HEALTH_BAR_HORIZONTAL_OFFSET << 1)) * parent.getZoom());
         final int height = (int) (StaticConfig.HEALTH_BAR_HORIZONTAL_HEIGHT * parent.getZoom());

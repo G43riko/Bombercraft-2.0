@@ -5,6 +5,7 @@ import org.bombercraft2.core.GameStateType;
 import org.bombercraft2.game.entity.explosion.Explosion;
 import org.bombercraft2.gui.GameLogs;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.SimpleAbstractGame;
@@ -19,7 +20,6 @@ import org.play_ground.misc.selectors.SelectorManager;
 import org.play_ground.misc.selectors.SimpleLineSelector;
 import org.utils.MeasureUtils;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -29,11 +29,11 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
 
     public BomberDemo(CorePlayGround parent) {
         super(parent, GameStateType.BomberDemo);
-        final SimpleChunkedMap map = new SimpleChunkedMap(this, new BVector2f(2, 2));
+        final SimpleChunkedMap map = new SimpleChunkedMap(this, new GVector2f(2, 2));
         manager.setManagers(new MapManager(map));
         manager.setManagers(new PlayerManager(this, new SimpleMyPlayer(this,
                                                                        // manager.getMapManager().getFreePosition(),
-                                                                       new BVector2f(50, 50),
+                                                                       new GVector2f(50, 50),
                                                                        "Gabriel",
                                                                        3,
                                                                        10, "player1.png", 4)));
@@ -72,13 +72,13 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
                 gameLogs.render(g2);
             });
 
-            BVector2f playerPos = manager.getPlayerManager().getMyPlayer().getCenter();
-            BVector2f transformedPlayerPos = manager.getViewManager().transform(playerPos);
+            GVector2f playerPos = manager.getPlayerManager().getMyPlayer().getCenter();
+            GVector2f transformedPlayerPos = manager.getViewManager().transform(playerPos);
 
-            raycast.onHit((SimpleTypedBlock block, BVector2f position) -> {
-                BVector2f realPos = manager.getViewManager().transform(block.getPosition());
+            raycast.onHit((SimpleTypedBlock block, GVector2f position) -> {
+                GVector2f realPos = manager.getViewManager().transform(block.getPosition());
                 g2.setColor(Color.WHITE);
-                BVector2f realIntersectCollision = manager.getViewManager().transform(position);
+                GVector2f realIntersectCollision = manager.getViewManager().transform(position);
                 g2.drawArc(realPos.getXi(), realPos.getYi(), 20, 20, 0, 360);
                 g2.setColor(Color.RED);
                 g2.drawArc(realIntersectCollision.getXi(),
@@ -125,7 +125,7 @@ public class BomberDemo extends SimpleAbstractGame<CorePlayGround> {
             if (Input.getKeyDown(Keys.LCONTROL)) {
                 SimpleMyPlayer player = manager.getPlayerManager().getMyPlayer();
                 if (player != null) {
-                    ImagedBomb bomb = new ImagedBomb(new BVector2f(player.getPosition()), this);
+                    ImagedBomb bomb = new ImagedBomb(new GVector2f(player.getPosition()), this);
                     bomb.callback = (b) -> {
                         manager.getSceneManager()
                                 .addExplosion(new Explosion(b.getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF),

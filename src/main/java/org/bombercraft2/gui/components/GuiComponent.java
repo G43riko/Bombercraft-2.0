@@ -5,9 +5,9 @@ import org.bombercraft2.core.Visible;
 import org.engine.Input;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.math.physics.Collisions;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
@@ -18,10 +18,10 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
 
     static final  HashMap<Visible, Integer> buttons = new HashMap<>();
     private final Visible                   parent;
-    BVector2f offset              = new BVector2f();
-    BVector2f textOffset          = new BVector2f();
-    BVector2f position;
-    BVector2f size;
+    GVector2f offset              = new GVector2f();
+    GVector2f textOffset          = new GVector2f();
+    GVector2f position;
+    GVector2f size;
     int       textSize            = 20;
     int       round               = 0;
     int       borderWidth         = 0;
@@ -49,7 +49,7 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
         value = !value;
     }
 
-    public boolean isClickIn(BVector2f click) {
+    public boolean isClickIn(GVector2f click) {
         if (disable) {
             return false;
         }
@@ -73,7 +73,7 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
         if (disable) {
             return;
         }
-        BVector2f mousePosition = Input.getMousePosition();
+        GVector2f mousePosition = Input.getMousePosition();
         hover = Collisions._2D.pointRect(position.getX(),
                                          position.getY(),
                                          size.getX(),
@@ -83,14 +83,14 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
     }
 
     public void calcPosition() {
-        position = getParent().getPosition().getAdd(offset.getAdd(new BVector2f(0, topCousePrevButtons)));
+        position = getParent().getPosition().getAdd(offset.getAdd(new GVector2f(0, topCousePrevButtons)));
 
     }
 
     public void calcPosAndSize() {
-        position = getParent().getPosition().getAdd(offset.getAdd(new BVector2f(0, topCousePrevButtons)));
+        position = getParent().getPosition().getAdd(offset.getAdd(new GVector2f(0, topCousePrevButtons)));
 //		size.setX(getParent().getSize().getXi() - 2 * offset.getX());
-        size = new BVector2f(getParent().getSize().getXi() - 2 * offset.getX(),
+        size = new GVector2f(getParent().getSize().getXi() - 2 * offset.getX(),
                              size.getY() - offset.getY());
 
     }
@@ -144,9 +144,9 @@ public abstract class GuiComponent implements InteractAbleG2, Visible {
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getPosition() {return position;}
+    public GVector2f getPosition() {return position;}
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getSize() {return size;}
+    public GVector2f getSize() {return size;}
 }

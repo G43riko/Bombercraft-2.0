@@ -3,11 +3,11 @@ package org.play_ground.misc;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.misc.GCanvas;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.function.Consumer;
@@ -19,11 +19,11 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
     @Nullable
     public          Consumer<SimpleBomb> callback;
 
-    public SimpleBomb(@NotNull BVector2f position, @NotNull SimpleGameAble parent) {
+    public SimpleBomb(@NotNull GVector2f position, @NotNull SimpleGameAble parent) {
         this(position, parent, System.currentTimeMillis());
     }
 
-    public SimpleBomb(@NotNull BVector2f position, @NotNull SimpleGameAble parent, long addedAt) {
+    public SimpleBomb(@NotNull GVector2f position, @NotNull SimpleGameAble parent, long addedAt) {
         super(position, parent);
         this.addedAt = addedAt;
     }
@@ -33,7 +33,7 @@ public class SimpleBomb extends Entity<SimpleGameAble> {
         if (!alive) {
             return;
         }
-        final BVector2f actPos = position.getSub(getParent().getManager().getViewManager().getOffset());
+        final GVector2f actPos = position.getSub(getParent().getManager().getViewManager().getOffset());
 
         GCanvas.fillRect(g2, actPos, StaticConfig.BOMB_SIZE, Color.BLACK);
         // g2.setColor(Color.BLACK);

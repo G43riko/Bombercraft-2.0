@@ -1,18 +1,18 @@
 package org.play_ground.misc.particles;
 
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class ParticleEmitterData {
     private float     particlePerFrame;
-    private BVector2f positionRandomness;
+    private GVector2f positionRandomness;
     private Color     color;
-    private BVector2f speed; // x - value, y - randomness
-    private BVector2f health; // - normal, y - randomness
-    private BVector2f direction; // x - start angle, y - end angle
-    private BVector2f size; // - normal, y - randomness
+    private GVector2f speed; // x - value, y - randomness
+    private GVector2f health; // - normal, y - randomness
+    private GVector2f direction; // x - start angle, y - end angle
+    private GVector2f size; // - normal, y - randomness
     private int       sizeRandomness;
     private int       particlesOnStart;
 
@@ -37,12 +37,12 @@ public class ParticleEmitterData {
         final ParticleEmitterData result = new ParticleEmitterData();
 
         result.particlePerFrame = 20f;
-        result.size = new BVector2f(5, 5);
-        result.speed = new BVector2f(10, 20);
-        result.positionRandomness = new BVector2f(1, 1);
-        result.direction = new BVector2f(0, 360);
+        result.size = new GVector2f(5, 5);
+        result.speed = new GVector2f(10, 20);
+        result.positionRandomness = new GVector2f(1, 1);
+        result.direction = new GVector2f(0, 360);
         result.sizeRandomness = 1;
-        result.health = new BVector2f(20, 20);
+        result.health = new GVector2f(20, 20);
         result.color = Color.GREEN;
 
         return result;
@@ -66,10 +66,10 @@ public class ParticleEmitterData {
         return (int) (particlePerFrame >= 1 ? particlePerFrame : Math.random() < particlePerFrame ? 1 : 0);
     }
 
-    public ParticleInstanceData getInstanceData(BVector2f position) {
-        return new ParticleInstanceData(position.getAdd(new BVector2f(random(), random()).getMul(positionRandomness)),
+    public ParticleInstanceData getInstanceData(GVector2f position) {
+        return new ParticleInstanceData(position.getAdd(new GVector2f(random(), random()).getMul(positionRandomness)),
                                         color,
-                                        new BVector2f(random(), random()).getMul(speed.getX()),
+                                        new GVector2f(random(), random()).getMul(speed.getX()),
                                         size.getAdd(sizeRandomness * (float) (random())),
                                         (int) (health.getXi() + health.getYi() * (Math.random() - 0.5)));
     }

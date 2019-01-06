@@ -3,13 +3,13 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.BasicEntity;
 import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.map.BasicChunk;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -19,11 +19,11 @@ import java.util.Map;
 
 public class ChunkDemo extends GameState implements SimpleGameAble {
     private final int                     items  = 10;
-    private final BVector2f               size   = new BVector2f(40, 40);
+    private final GVector2f               size   = new GVector2f(40, 40);
     private final Map<String, BasicChunk> chunks = new HashMap<>();
     private final BasicEntity             entity = new BasicEntity(this,
                                                                    Input.getMousePosition(),
-                                                                   new BVector2f(80, 80));
+                                                                   new GVector2f(80, 80));
     @NotNull
     private final CorePlayGround          parent;
 
@@ -36,7 +36,7 @@ public class ChunkDemo extends GameState implements SimpleGameAble {
         for (int i = 0; i < items; i++) {
             for (int j = 0; j < items; j++) {
                 chunks.put(i + "_" + j,
-                           new BasicChunk(new BVector2f(i, j).getMul(size),
+                           new BasicChunk(new GVector2f(i, j).getMul(size),
                                           size,
                                           new Color(actColor, actColor, actColor)));
                 actColor += colorSkip;
@@ -53,8 +53,8 @@ public class ChunkDemo extends GameState implements SimpleGameAble {
 
     @Override
     public List<BasicChunk> getActChunk(BasicEntity entity) {
-        BVector2f targetStartPos = Input.getMousePosition().getDiv(size);
-        BVector2f targetEndPos = Input.getMousePosition().getAdd(entity.size).getDiv(size);
+        GVector2f targetStartPos = Input.getMousePosition().getDiv(size);
+        GVector2f targetEndPos = Input.getMousePosition().getAdd(entity.size).getDiv(size);
         List<BasicChunk> result = new ArrayList<>();
         for (int i = targetStartPos.getXi(); i <= targetEndPos.getXi(); i++) {
             for (int j = targetStartPos.getYi(); j <= targetEndPos.getYi(); j++) {

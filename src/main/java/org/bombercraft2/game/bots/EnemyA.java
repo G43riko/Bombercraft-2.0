@@ -6,8 +6,8 @@ import org.bombercraft2.game.bots.BotFactory.Types;
 import org.bombercraft2.game.level.Block;
 import org.bombercraft2.game.level.Map;
 import org.bombercraft2.game.misc.Direction;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -16,17 +16,17 @@ public class EnemyA extends Enemy {
     private final Color color       = Color.RED;
     private final Color borderColor = Color.WHITE;
 
-    public EnemyA(BVector2f position, GameAble parent) {
+    public EnemyA(GVector2f position, GameAble parent) {
         this(position,
              parent,
              getRandPossibleDir(parent.getLevel().getMap(), position.getDiv(StaticConfig.BLOCK_SIZE).toInt()));
     }
 
-    private EnemyA(BVector2f position, GameAble parent, Direction direction) {
+    private EnemyA(GVector2f position, GameAble parent, Direction direction) {
         super(position, parent, Types.A, direction);
     }
 
-    private static Direction getRandPossibleDir(Map map, BVector2f sur) {
+    private static Direction getRandPossibleDir(Map map, GVector2f sur) {
         Direction[] ret = map.getPossibleWays(sur);
         if (ret.length == 0) {
             return null;
@@ -39,11 +39,11 @@ public class EnemyA extends Enemy {
     public void render(@NotNull Graphics2D g2) {
         int tempRound = (int) (StaticConfig.ENEMY_DEFAULT_ROUND * getParent().getZoom());
 
-        BVector2f pos = position.getAdd(StaticConfig.ENEMY_DEFAULT_OFFSET)
+        GVector2f pos = position.getAdd(StaticConfig.ENEMY_DEFAULT_OFFSET)
                 .getMul(getParent().getZoom())
                 .getSub(getParent().getOffset());
 
-        BVector2f tempSize = getSize().getMul(getParent().getZoom());
+        GVector2f tempSize = getSize().getMul(getParent().getZoom());
 
 
         g2.setStroke(new BasicStroke(getParent().getZoom() * borderSize));
@@ -65,7 +65,7 @@ public class EnemyA extends Enemy {
             return;
         }
         if (position.getMod(StaticConfig.BLOCK_SIZE).isNull()) {
-            BVector2f nextPos = position.getAdd(direction.getDirection().getMul(StaticConfig.BLOCK_SIZE));
+            GVector2f nextPos = position.getAdd(direction.getDirection().getMul(StaticConfig.BLOCK_SIZE));
             Block block = getParent().getLevel().getMap().getBlockOnPosition(nextPos);
             if (block == null || !block.isWalkable()) {
                 direction = getRandPossibleDir(getParent().getLevel().getMap(), getSur());

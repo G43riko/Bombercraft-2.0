@@ -1,8 +1,8 @@
 package org.bombercraft2.components.tasks;
 
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.map.SimpleTypedBlock;
-import utils.math.BVector2f;
 
 public class TaskDestroyBlock extends TaskType {
     @NotNull
@@ -15,7 +15,7 @@ public class TaskDestroyBlock extends TaskType {
 
     @NotNull
     @Override
-    public BVector2f getPosition() {
+    public GVector2f getPosition() {
         return block.getPosition();
     }
 

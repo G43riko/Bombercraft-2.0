@@ -4,6 +4,7 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
@@ -13,7 +14,6 @@ import org.play_ground.misc.SimpleBomb;
 import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.map.SimpleChunkedMap;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -29,8 +29,8 @@ public class BombDemo extends GameState implements SimpleGameAble {
         super(GameStateType.BombDemo);
         this.parent = parent;
         postFxManager = new PostFxManager(this,
-                                          new BVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
-        map = new SimpleChunkedMap(this, new BVector2f(4, 4));
+                                          new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight()));
+        map = new SimpleChunkedMap(this, new GVector2f(4, 4));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class BombDemo extends GameState implements SimpleGameAble {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getCanvasSize() {
-        return new BVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+    public GVector2f getCanvasSize() {
+        return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }
 }

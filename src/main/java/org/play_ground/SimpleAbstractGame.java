@@ -4,11 +4,11 @@ import org.bombercraft2.MainManager;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.CoreEngine;
+import org.glib2.math.vectors.GVector2f;
 import org.glib2.system_analytics.SystemInfoGrabber;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.ViewManager;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.List;
@@ -58,15 +58,15 @@ public abstract class SimpleAbstractGame<T extends CoreEngine> extends GameState
     }
 
     @Override
-    public @NotNull BVector2f getOffset() {
+    public @NotNull GVector2f getOffset() {
         ViewManager viewManager = manager.getViewManager();
-        return viewManager == null ? new BVector2f() : viewManager.getOffset();
+        return viewManager == null ? new GVector2f() : viewManager.getOffset();
     }
 
     @Override
-    public @NotNull BVector2f getCanvasSize() {
+    public @NotNull GVector2f getCanvasSize() {
         ViewManager viewManager = manager.getViewManager();
-        return viewManager == null ? new BVector2f() : viewManager.getCanvasSize();
+        return viewManager == null ? new GVector2f() : viewManager.getCanvasSize();
     }
 
     @Override

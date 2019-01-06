@@ -3,13 +3,13 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.SimpleGameAble;
 import org.play_ground.misc.SimpleGridCollision;
 import org.play_ground.misc.particles.SimpleParticle;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class ParticlesDemo extends GameState implements SimpleGameAble {
     }
 
     @Override
-    public @NotNull BVector2f getCanvasSize() {
-        return new BVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
+    public @NotNull GVector2f getCanvasSize() {
+        return new GVector2f(parent.getCanvas().getWidth(), parent.getCanvas().getHeight());
     }
 }

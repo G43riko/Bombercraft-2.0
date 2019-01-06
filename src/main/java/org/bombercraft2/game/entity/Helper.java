@@ -3,9 +3,9 @@ package org.bombercraft2.game.entity;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.Iconable;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.utils.MiscUtils;
-import utils.math.BVector2f;
 import utils.resouces.ResourceLoader;
 
 import java.awt.*;
@@ -27,7 +27,7 @@ public abstract class Helper extends Entity<GameAble> {
     public final static String      WEAPON_SHOTGUN      = "weaponShotgun";
     private final       Helper.Type type;
 
-    protected Helper(BVector2f position, GameAble parent, Type type) {
+    protected Helper(GVector2f position, GameAble parent, Type type) {
         super(position, parent);
         this.type = type;
     }

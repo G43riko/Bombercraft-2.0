@@ -6,9 +6,9 @@ import org.bombercraft2.gui.submenu.SubMenuCreator;
 import org.bombercraft2.gui.submenu.Submenu;
 import org.engine.Input;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -89,7 +89,7 @@ public class GameGui implements InteractAbleG2, ClickAble {
     }
 
     @Override
-    public void doAct(BVector2f click) {
+    public void doAct(GVector2f click) {
         if (navBar.isVisible()) {
             navBar.doAct(click);
         }

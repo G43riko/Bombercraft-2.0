@@ -6,18 +6,18 @@ import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.entity.flora.FloraManager;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.math.GMath;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Level implements InteractAbleG2 {
-    private final List<BVector2f> respawnZones = new ArrayList<>();
+    private final List<GVector2f> respawnZones = new ArrayList<>();
     private       Map             map          = null;
     private       GameAble        parent       = null;
     private       String          mapData      = null;
@@ -31,7 +31,7 @@ public class Level implements InteractAbleG2 {
             playerInfo = object.getJSONObject(Texts.PLAYER_INFO);
             int i = 0;
             while (object.has(Texts.RESPAWN_ZONE + i)) {
-                respawnZones.add(new BVector2f(object.getString((Texts.RESPAWN_ZONE + i))));
+                respawnZones.add(new GVector2f(object.getString((Texts.RESPAWN_ZONE + i))));
                 i++;
             }
             floraData = object.getJSONObject(Texts.FLORA);
@@ -50,7 +50,7 @@ public class Level implements InteractAbleG2 {
 
     //OTHERS
 
-    public void changeBlock(BVector2f position, int health, int type) {
+    public void changeBlock(GVector2f position, int health, int type) {
 
     }
 
@@ -89,9 +89,9 @@ public class Level implements InteractAbleG2 {
 
     public boolean isReady() {return parent != null && map != null;}
 
-    public List<BVector2f> getRespawnZones() {return new ArrayList<>(respawnZones);}
+    public List<GVector2f> getRespawnZones() {return new ArrayList<>(respawnZones);}
 
-    public BVector2f getRandomRespawnZone() {return new BVector2f(GMath.choose(respawnZones));}
+    public GVector2f getRandomRespawnZone() {return new GVector2f(GMath.choose(respawnZones));}
 
     //SETTERS
 
@@ -119,7 +119,7 @@ public class Level implements InteractAbleG2 {
             }
         }
         else {
-            map = new Map(game, new BVector2f(40, 40));
+            map = new Map(game, new GVector2f(40, 40));
         }
 
         floraManager = new FloraManager(game, map);

@@ -3,20 +3,20 @@ package org.play_ground.demos;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.SimpleAbstractGame;
 import org.play_ground.misc.SimpleMissile;
 import org.play_ground.misc.ViewManager;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MissileDemo extends SimpleAbstractGame<CorePlayGround> {
-    private final static BVector2f           NUMBERS_OF_BLOCKS = new BVector2f(100, 100);
+    private final static GVector2f           NUMBERS_OF_BLOCKS = new GVector2f(100, 100);
     private final        List<SimpleMissile> missiles          = new ArrayList<>();
 
     public MissileDemo(CorePlayGround parent) {

@@ -6,20 +6,20 @@ import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.entity.bullets.BulletManager.Types;
 import org.bombercraft2.game.entity.particles.EmitterTypes;
 import org.bombercraft2.game.level.Block;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
 public abstract class Bullet extends Entity<GameAble> {
-    private final BVector2f    direction;
+    private final GVector2f    direction;
     private final BulletModel  model;
     private       EmitterTypes emitterOnHit;// = Emitter.PARTICLE_EXPLOSION_TEST;
     private       int          health;
 
-    Bullet(BVector2f position, GameAble parent, Types type, BVector2f direction) {
+    Bullet(GVector2f position, GameAble parent, Types type, GVector2f direction) {
         super(position, parent);
         this.model = BulletManager.getBulletModel(type);
         this.direction = direction;
@@ -64,8 +64,8 @@ public abstract class Bullet extends Entity<GameAble> {
     }
 
     private void checkBorders() {
-        BVector2f a = position.getAdd(model.getSize());
-        BVector2f b = getParent().getLevel()
+        GVector2f a = position.getAdd(model.getSize());
+        GVector2f b = getParent().getLevel()
                                  .getMap()
                                  .getNumberOfBlocks()
                 .getMul(StaticConfig.BLOCK_SIZE)
@@ -84,9 +84,9 @@ public abstract class Bullet extends Entity<GameAble> {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getSize() {return model.getSize();}
+    public GVector2f getSize() {return model.getSize();}
 
-    BVector2f getDirection() {return direction;}
+    GVector2f getDirection() {return direction;}
 
     public int getDamage() {return model.getDamage();}
 

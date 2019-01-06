@@ -3,13 +3,13 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.SimpleParticlePlayer;
 import org.play_ground.misc.map.SimpleMap_old;
 import org.play_ground.misc.particles.SimpleParticle;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class ShootingDemo extends GameState {
         }
         // System.out.println("----------" + myPlayer.angle + " == " + sinA + " = " + cosA);
 
-        ArrayList<BVector2f> points = new ArrayList<>();
+        ArrayList<GVector2f> points = new ArrayList<>();
 
         float currentX = myPlayer.posX + offsetX;
         float currentY = myPlayer.posY + offsetY;
@@ -91,7 +91,7 @@ public class ShootingDemo extends GameState {
             if (field != null) {
                 field.selected = true;
             }
-            points.add(new BVector2f(currentX, currentY));
+            points.add(new GVector2f(currentX, currentY));
             currentY += offsetY;
             currentX += offsetX;
         }

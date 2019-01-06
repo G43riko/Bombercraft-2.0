@@ -1,27 +1,27 @@
 package org.bombercraft2.game.entity.flora;
 
 import org.bombercraft2.game.GameAble;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class Plant extends Flora {
-    public Plant(Plants type, BVector2f position, GameAble parent) {
+    public Plant(Plants type, GVector2f position, GameAble parent) {
         super(position, parent, type);
         scale = (float) Math.random() / 4 + 0.175f;
     }
 
     public Plant(GameAble parent, JSONObject data) {
-        super(new BVector2f(), parent, Plants.PLANT1);
+        super(new GVector2f(), parent, Plants.PLANT1);
         fromJSON(data);
     }
 
     @Override
     public void render(@NotNull Graphics2D g2) {
-        BVector2f pos = position.getSub(getParent().getOffset());
+        GVector2f pos = position.getSub(getParent().getOffset());
         g2.drawImage(type.getImage(),
                      pos.getXi(),
                      pos.getYi(),
@@ -34,7 +34,7 @@ public class Plant extends Flora {
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getSize() {
+    public GVector2f getSize() {
         return type.getSize().getMul(scale);
     }
 }

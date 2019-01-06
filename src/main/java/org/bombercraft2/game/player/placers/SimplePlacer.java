@@ -1,7 +1,7 @@
 package org.bombercraft2.game.player.placers;
 
 import org.bombercraft2.game.GameAble;
-import utils.math.BVector2f;
+import org.glib2.math.vectors.GVector2f;
 
 public class SimplePlacer extends Placer {
 
@@ -10,7 +10,7 @@ public class SimplePlacer extends Placer {
     }
 
     @Override
-    public void useOnLocalPos(BVector2f pos) {
+    public void useOnLocalPos(GVector2f pos) {
         parent.getConnector().setBuildBlock(pos, blockType);
 
     }

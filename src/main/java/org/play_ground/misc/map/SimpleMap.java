@@ -1,11 +1,11 @@
 package org.play_ground.misc.map;
 
 import org.bombercraft2.StaticConfig;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.play_ground.misc.SimpleGameAble;
 import org.utils.noises.PerlinNoise;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -15,7 +15,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
     private final static boolean       PRERENDER = false;
     private              BufferedImage image     = null;
 
-    public SimpleMap(SimpleGameAble parent, BVector2f numberOfBlocks) {
+    public SimpleMap(SimpleGameAble parent, GVector2f numberOfBlocks) {
         super(parent, numberOfBlocks, numberOfBlocks.getMul(StaticConfig.BLOCK_SIZE));
         createRandomMap();
     }
@@ -29,7 +29,7 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
 
         for (int i = 0; i < numberOfItems.getXi(); i++) {
             for (int j = 0; j < numberOfItems.getYi(); j++) {
-                addItem(i, j, new SimpleTypedBlock(new BVector2f(i, j),
+                addItem(i, j, new SimpleTypedBlock(new GVector2f(i, j),
                                                    (int) (Math.min(Math.max(data[i][j] * 10, 0), 10)),
                                                    parent));
             }
@@ -38,14 +38,14 @@ public class SimpleMap extends AbstractMap<SimpleTypedBlock> {
 
     @Nullable
     @Override
-    public SimpleTypedBlock getBlockOnAbsolutePos(BVector2f click) {
+    public SimpleTypedBlock getBlockOnAbsolutePos(GVector2f click) {
         return getItem(click.getAdd(parent.getManager().getViewManager().getOffset())
                                .getDiv(StaticConfig.BLOCK_SIZE)
                                .getDiv(parent.getManager().getViewManager().getZoom()));
     }
 
     @Override
-    public AbstractBlock getBlockOnPos(BVector2f click) {
+    public AbstractBlock getBlockOnPos(GVector2f click) {
         return getItem(click);
     }
 

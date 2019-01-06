@@ -1,9 +1,9 @@
 package org.play_ground.misc.particles;
 
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 public class SimpleEmitter implements InteractAbleG2 {
     @NotNull
     protected final SimpleGameAble              parent;
-    private final   BVector2f                   position;
+    private final   GVector2f                   position;
     private         ArrayList<AbstractParticle> particles = new ArrayList<>();
     @NotNull
     private         ParticleEmitterData         data;
 
-    public SimpleEmitter(@NotNull BVector2f position,
+    public SimpleEmitter(@NotNull GVector2f position,
                          @NotNull SimpleGameAble parent,
                          @NotNull ParticleEmitterData.Type type
                         ) {
@@ -50,7 +50,7 @@ public class SimpleEmitter implements InteractAbleG2 {
                                               .collect(Collectors.toCollection(ArrayList::new));
     }
 
-    public void setPosition(@NotNull BVector2f position) {
+    public void setPosition(@NotNull GVector2f position) {
         this.position.set(position);
     }
 

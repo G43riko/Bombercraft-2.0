@@ -15,6 +15,7 @@ import org.bombercraft2.game.player.MyPlayer;
 import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.CorePlayGround;
@@ -23,14 +24,13 @@ import org.play_ground.misc.ViewManager;
 import org.play_ground.misc.map.SimpleMap;
 import org.play_ground.misc.map.SimpleTypedBlock;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.HashMap;
 import java.util.List;
 
 public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements GameAble {
-    private final static BVector2f NUMBERS_OF_BLOCKS = new BVector2f(40, 40);
+    private final static GVector2f NUMBERS_OF_BLOCKS = new GVector2f(40, 40);
     private final        SimpleMap map;
 
     public WorkerDemo(CorePlayGround parent) {
@@ -45,7 +45,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void doAct(BVector2f click) {
+    public void doAct(GVector2f click) {
         SimpleTypedBlock block = map.getBlockOnAbsolutePos(click);
         if (block != null) {
             manager.getTaskManager().addTask(new Task(this, 1, 100, new TaskDestroyBlock(block)));
@@ -101,7 +101,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull BVector2f getPlayerDirection() {
+    public @NotNull GVector2f getPlayerDirection() {
         return null;
     }
 
@@ -116,7 +116,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull BVector2f getPlayerTarget() {
+    public @NotNull GVector2f getPlayerTarget() {
         return null;
     }
 
@@ -157,14 +157,14 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void addBullet(BulletManager.@NotNull Types bulletType, @NotNull BVector2f angle, @NotNull BVector2f position
+    public void addBullet(BulletManager.@NotNull Types bulletType, @NotNull GVector2f angle, @NotNull GVector2f position
                          ) {
 
     }
 
     @Override
-    public void addExplosion(@NotNull BVector2f position,
-                             @NotNull BVector2f size,
+    public void addExplosion(@NotNull GVector2f position,
+                             @NotNull GVector2f size,
                              @NotNull Color color,
                              int number,
                              boolean explosion,
@@ -174,19 +174,19 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void addHelper(@NotNull BVector2f pos, Helper.@NotNull Type type, long createdTime
+    public void addHelper(@NotNull GVector2f pos, Helper.@NotNull Type type, long createdTime
                          ) {
 
     }
 
     @Override
-    public void addEmitter(@NotNull BVector2f position, EmitterTypes type
+    public void addEmitter(@NotNull GVector2f position, EmitterTypes type
                           ) {
 
     }
 
     @Override
-    public void addEnemy(@NotNull BVector2f position, @NotNull String type) {
+    public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
 
     }
 
@@ -196,7 +196,7 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public void explodeBombAt(@NotNull BVector2f globalPosToLocalPos) {
+    public void explodeBombAt(@NotNull GVector2f globalPosToLocalPos) {
 
     }
 
@@ -251,12 +251,12 @@ public class WorkerDemo extends SimpleAbstractGame<CorePlayGround> implements Ga
     }
 
     @Override
-    public @NotNull BVector2f getPosition() {
+    public @NotNull GVector2f getPosition() {
         return null;
     }
 
     @Override
-    public @NotNull BVector2f getSize() {
+    public @NotNull GVector2f getSize() {
         return null;
     }
 }

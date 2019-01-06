@@ -3,11 +3,11 @@ package org.play_ground.misc.map;
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.core.Visible;
 import org.glib2.interfaces.InteractAbleG2;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,22 +28,22 @@ public abstract class AbstractMap<T extends Visible> implements InteractAbleG2 {
     protected final SimpleGameAble parent;
 
     @NotNull
-    protected final BVector2f numberOfItems;
+    protected final GVector2f numberOfItems;
 
     @NotNull
-    protected final BVector2f mapSize;
+    protected final GVector2f mapSize;
 
 
     protected int renderedBlocks = 0;
 
 
-    public AbstractMap(@NotNull SimpleGameAble parent, @NotNull BVector2f numberOfItems, @NotNull BVector2f mapSize) {
+    public AbstractMap(@NotNull SimpleGameAble parent, @NotNull GVector2f numberOfItems, @NotNull GVector2f mapSize) {
         this.numberOfItems = numberOfItems;
         this.parent = parent;
         this.mapSize = mapSize;
     }
 
-    public BVector2f getBlockSize() {
+    public GVector2f getBlockSize() {
         return StaticConfig.BLOCK_SIZE;
     }
 
@@ -64,7 +64,7 @@ public abstract class AbstractMap<T extends Visible> implements InteractAbleG2 {
         return items.get(i + "_" + j);
     }
 
-    public BVector2f getMapSize() {
+    public GVector2f getMapSize() {
         return mapSize;
     }
 
@@ -73,7 +73,7 @@ public abstract class AbstractMap<T extends Visible> implements InteractAbleG2 {
     }
 
     @Nullable
-    protected T getItem(BVector2f pos) {
+    protected T getItem(GVector2f pos) {
         return items.get(pos.getXi() + "_" + pos.getYi());
     }
 
@@ -85,7 +85,7 @@ public abstract class AbstractMap<T extends Visible> implements InteractAbleG2 {
         return result;
     }
 
-    public abstract <S extends AbstractBlock> S getBlockOnAbsolutePos(BVector2f click);
+    public abstract <S extends AbstractBlock> S getBlockOnAbsolutePos(GVector2f click);
 
-    public abstract <S extends AbstractBlock> S getBlockOnPos(BVector2f click);
+    public abstract <S extends AbstractBlock> S getBlockOnPos(GVector2f click);
 }

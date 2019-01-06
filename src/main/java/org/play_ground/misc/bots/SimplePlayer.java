@@ -7,11 +7,11 @@ import org.bombercraft2.core.Texts;
 import org.bombercraft2.game.entity.Entity;
 import org.bombercraft2.game.misc.Direction;
 import org.bombercraft2.game.player.PlayerSprite;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -30,9 +30,9 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
 
     public SimplePlayer(SimpleGameAble parent, JSONObject object) {
-        super(new BVector2f(), parent);
+        super(new GVector2f(), parent);
         try {
-            position = new BVector2f(object.getString(Texts.POSITION));
+            position = new GVector2f(object.getString(Texts.POSITION));
             speed = object.getInt(Texts.SPEED);
             health = object.getInt(Texts.HEALTH);
             range = object.getInt(Texts.RANGE);
@@ -46,7 +46,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
     }
 
     public SimplePlayer(SimpleGameAble parent,
-                        BVector2f position,
+                        GVector2f position,
                         String name,
                         int speed,
                         int health,
@@ -70,20 +70,20 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
         final float rightOffset = 21;
         final float leftOffset = 19;
 
-        BVector2f t = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX(),
+        GVector2f t = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX(),
                                                     StaticConfig.BLOCK_SIZE.getY() - topOffset).getDiv(2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        BVector2f b = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX(),
+        GVector2f b = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX(),
                                                     StaticConfig.BLOCK_SIZE.getY() + bottomOffset).getDiv(
                 2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        BVector2f r = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
+        GVector2f r = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX() - rightOffset,
                                                     StaticConfig.BLOCK_SIZE.getY()).getDiv(2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
-        BVector2f l = position.getAdd(new BVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
+        GVector2f l = position.getAdd(new GVector2f(StaticConfig.BLOCK_SIZE.getX() + leftOffset,
                                                     StaticConfig.BLOCK_SIZE.getY()).getDiv(2))
                 .getDiv(StaticConfig.BLOCK_SIZE)
                               .toInt();
@@ -99,7 +99,7 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
         }
     }
 
-    public void move(BVector2f move) {
+    public void move(GVector2f move) {
         position = position.getAdd(move.getMul(speed));
     }
 
@@ -189,8 +189,8 @@ public class SimplePlayer extends Entity<SimpleGameAble> implements HealthAble {
 
 
     protected boolean isOnEdge() {
-        BVector2f zoomedPosition = position.getMul(parent.getManager().getViewManager().getZoom());
-        BVector2f zoomedMapSize = parent.getManager()
+        GVector2f zoomedPosition = position.getMul(parent.getManager().getViewManager().getZoom());
+        GVector2f zoomedMapSize = parent.getManager()
                                         .getMapManager()
                                         .getMapSize()
                 .getMul(parent.getManager().getViewManager().getZoom());

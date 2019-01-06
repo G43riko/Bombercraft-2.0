@@ -1,19 +1,19 @@
 package org.play_ground.misc.particles;
 
 import org.bombercraft2.game.entity.Entity;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
 public class AbstractParticle extends Entity<SimpleGameAble> {
     @NotNull
-    private final BVector2f direction;
+    private final GVector2f direction;
     @NotNull
-    private       BVector2f size;
+    private       GVector2f size;
     @NotNull
     private       Color     color;
     private       int       health;
@@ -41,8 +41,8 @@ public class AbstractParticle extends Entity<SimpleGameAble> {
     }
 
     public void render(@NotNull Graphics2D g2) {
-        BVector2f pos = parent.getManager().getViewManager().transform(position.getSub(size.getDiv(2)));
-        BVector2f transformedSize = getTransformedSize();
+        GVector2f pos = parent.getManager().getViewManager().transform(position.getSub(size.getDiv(2)));
+        GVector2f transformedSize = getTransformedSize();
         g2.setColor(color);
         g2.fillArc(pos.getXi(), pos.getYi(), transformedSize.getXi(), transformedSize.getYi(), 0, 360);
     }
@@ -57,14 +57,14 @@ public class AbstractParticle extends Entity<SimpleGameAble> {
 
     @Contract(pure = true)
     @NotNull
-    public BVector2f getSize() {
+    public GVector2f getSize() {
         return size;
     }
 
     @Contract(pure = true)
     @NotNull
     @Override
-    public BVector2f getPosition() {
+    public GVector2f getPosition() {
         return position;
     }
 

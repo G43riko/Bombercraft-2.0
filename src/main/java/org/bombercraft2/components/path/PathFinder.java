@@ -1,6 +1,6 @@
 package org.bombercraft2.components.path;
 
-import utils.math.BVector2f;
+import org.glib2.math.vectors.GVector2f;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -12,15 +12,15 @@ public class PathFinder {
     private final static int NOTHING = 0;
     private final static int PATH    = 4;
 
-    public static ArrayList<BVector2f> findPath2(HashMap<String, Integer> map,
+    public static ArrayList<GVector2f> findPath2(HashMap<String, Integer> map,
                                                  String start,
                                                  String ciel,
                                                  boolean diagonal
-                                                ) {
+    ) {
         Map<String, Node> res = map.entrySet()
-                                   .stream()
-                                   .collect(Collectors.toMap(Map.Entry::getKey,
-                                                             (a) -> new Node(a.getKey(), a.getValue())));
+                .stream()
+                .collect(Collectors.toMap(Map.Entry::getKey,
+                                          (a) -> new Node(a.getKey(), a.getValue())));
 
         PriorityQueue<Node> queue = new PriorityQueue<>(11, Comparator.comparingInt(a -> a.distance));
 
@@ -45,16 +45,16 @@ public class PathFinder {
         return null;
     }
 
-    public static ArrayList<BVector2f> findPath(HashMap<String, Integer> map,
+    public static ArrayList<GVector2f> findPath(HashMap<String, Integer> map,
                                                 String start,
                                                 String ciel,
                                                 boolean diagonal
-                                               ) {
+    ) {
         diagonal = !diagonal;
         final Map<String, Float> distances = new HashMap<>();
         final Set<String> checked = new HashSet<>();
         Set<String> act = new HashSet<>();
-        final ArrayList<BVector2f> res = new ArrayList<>();
+        final ArrayList<GVector2f> res = new ArrayList<>();
         distances.put(start, 0f);
         act.add(start);
 
@@ -62,7 +62,7 @@ public class PathFinder {
         while (!act.isEmpty()) {
             final Set<String> newAct = new HashSet<>();
             for (String a : act) {
-                final BVector2f p = new BVector2f(a);
+                final GVector2f p = new GVector2f(a);
                 checked.add(a);
                 distances.put(a, d);
                 for (int i = -1; i <= 1; i++) {
@@ -73,7 +73,7 @@ public class PathFinder {
                         if (i != 0 && j != 0) {
                             continue;
                         }
-                        final String b = p.getAdd(new BVector2f(i, j)).toString();
+                        final String b = p.getAdd(new GVector2f(i, j)).toString();
                         if (!map.containsKey(b) || map.get(b) != NOTHING) {
                             continue;
                         }
@@ -102,7 +102,7 @@ public class PathFinder {
                     if (diagonal && i != 0 && j != 0) {
                         continue;
                     }
-                    final String b = new BVector2f(current).getAdd(new BVector2f(i, j)).toString();
+                    final String b = new GVector2f(current).getAdd(new GVector2f(i, j)).toString();
                     if (!map.containsKey(b) || map.get(b) != NOTHING) {
                         continue;
                     }
@@ -116,7 +116,7 @@ public class PathFinder {
             if (shortestD == 0) {
                 break;
             }
-            res.add(new BVector2f(current));
+            res.add(new GVector2f(current));
             map.put(current, PATH);
         }
         return res;
@@ -127,20 +127,20 @@ public class PathFinder {
 
         for (float i = 0; i < size; i++) {
             for (float j = 0; j < size; j++) {
-                m.put(new BVector2f(i + "_" + j).toString(), NOTHING);
+                m.put(new GVector2f(i + "_" + j).toString(), NOTHING);
             }
         }
 
-        m.put(new BVector2f(0 + "_" + 1).toString(), WALL);
-        m.put(new BVector2f(1 + "_" + 1).toString(), WALL);
-        m.put(new BVector2f(2 + "_" + 1).toString(), WALL);
-        m.put(new BVector2f(3 + "_" + 1).toString(), WALL);
+        m.put(new GVector2f(0 + "_" + 1).toString(), WALL);
+        m.put(new GVector2f(1 + "_" + 1).toString(), WALL);
+        m.put(new GVector2f(2 + "_" + 1).toString(), WALL);
+        m.put(new GVector2f(3 + "_" + 1).toString(), WALL);
 
-        m.put(new BVector2f(1 + "_" + 3).toString(), WALL);
-        m.put(new BVector2f(2 + "_" + 3).toString(), WALL);
-        m.put(new BVector2f(3 + "_" + 3).toString(), WALL);
-        m.put(new BVector2f(4 + "_" + 3).toString(), WALL);
-        System.out.println(findPath(m, new BVector2f(start).toString(), new BVector2f(ciel).toString(), true));
+        m.put(new GVector2f(1 + "_" + 3).toString(), WALL);
+        m.put(new GVector2f(2 + "_" + 3).toString(), WALL);
+        m.put(new GVector2f(3 + "_" + 3).toString(), WALL);
+        m.put(new GVector2f(4 + "_" + 3).toString(), WALL);
+        System.out.println(findPath(m, new GVector2f(start).toString(), new GVector2f(ciel).toString(), true));
     }
 
     private static class Node {

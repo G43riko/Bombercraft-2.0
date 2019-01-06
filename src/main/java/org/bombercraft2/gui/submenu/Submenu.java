@@ -4,15 +4,15 @@ import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.gui.submenu.SubmenuItem.Types;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.List;
 
 
 public class Submenu {
-    private BVector2f         position      = null;
+    private GVector2f         position      = null;
     private boolean           visible       = false;
     private List<SubmenuItem> items         = null;
     private int               selectedIndex = 0;
@@ -189,8 +189,8 @@ public class Submenu {
         }
     }
 
-    private BVector2f getChildrenPosition() {
-        return new BVector2f(position.getX() + StaticConfig.SUBMENU_WIDTH,
+    private GVector2f getChildrenPosition() {
+        return new GVector2f(position.getX() + StaticConfig.SUBMENU_WIDTH,
                              position.getY() + StaticConfig.SUBMENU_LINE_HEIGHT * selectedIndex);
     }
 

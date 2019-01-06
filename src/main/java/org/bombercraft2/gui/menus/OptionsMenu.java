@@ -3,8 +3,8 @@ package org.bombercraft2.gui.menus;
 import org.bombercraft2.core.GameStateType;
 import org.bombercraft2.core.MenuAble;
 import org.bombercraft2.core.Texts;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -28,7 +28,7 @@ public class OptionsMenu extends Menu {
     }
 
     @Override
-    public void doAct(BVector2f click) {
+    public void doAct(GVector2f click) {
         if (components.get(Texts.BACK).isClickIn(click)) {
             parent.showMainMenu();
         }

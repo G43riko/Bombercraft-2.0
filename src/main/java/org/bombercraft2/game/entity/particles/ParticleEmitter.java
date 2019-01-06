@@ -2,10 +2,10 @@ package org.bombercraft2.game.entity.particles;
 
 import org.bombercraft2.game.GameAble;
 import org.bombercraft2.game.entity.Entity;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
-import utils.math.BVector2f;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 public class ParticleEmitter extends Emitter {
     private final Entity target;
 
-    public ParticleEmitter(EmitterTypes type, BVector2f position, GameAble parent) {
+    public ParticleEmitter(EmitterTypes type, GVector2f position, GameAble parent) {
         this(type, position, parent, null);
     }
 
-    private ParticleEmitter(EmitterTypes type, BVector2f position, GameAble parent, Entity target) {
+    private ParticleEmitter(EmitterTypes type, GVector2f position, GameAble parent, Entity target) {
         super(type, position, parent);
         this.target = target;
     }

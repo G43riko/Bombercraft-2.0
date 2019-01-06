@@ -4,13 +4,13 @@ import org.bombercraft2.core.Texts;
 import org.bombercraft2.game.level.Block;
 import org.bombercraft2.game.level.BlockType;
 import org.bombercraft2.game.misc.GCanvas;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 import org.play_ground.misc.SimpleGameAble;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -18,23 +18,23 @@ public class SimpleTypedBlock extends AbstractBlock {
     @NotNull
     protected BlockType type;
 
-    public SimpleTypedBlock(@NotNull BVector2f position, int type, @NotNull SimpleGameAble parent) {
+    public SimpleTypedBlock(@NotNull GVector2f position, int type, @NotNull SimpleGameAble parent) {
         this(position, type, parent, null);
     }
 
-    public SimpleTypedBlock(@NotNull BVector2f position,
+    public SimpleTypedBlock(@NotNull GVector2f position,
                             int type,
                             @NotNull SimpleGameAble parent,
-                            @Nullable BVector2f offset
+                            @Nullable GVector2f offset
                            ) {
         super(position, parent, offset);
         this.type = Block.getTypeFromInt(type);
     }
 
     public void render(@NotNull Graphics2D g2) {
-        final BVector2f size = getTransformedSize();
-        final BVector2f realPos = position.getMul(size);
-        BVector2f pos = (offset == null ? realPos : realPos.getAdd(offset.getMul(parent.getManager()
+        final GVector2f size = getTransformedSize();
+        final GVector2f realPos = position.getMul(size);
+        GVector2f pos = (offset == null ? realPos : realPos.getAdd(offset.getMul(parent.getManager()
                                                                                  .getViewManager()
                                                                                          .getZoom()))).getSub(parent.getManager()
                                                                                                          .getViewManager()

@@ -4,9 +4,9 @@ import org.bombercraft2.core.Visible;
 import org.bombercraft2.game.misc.GCanvas;
 import org.glib2.interfaces.InteractAbleG2;
 import org.glib2.math.physics.Collisions;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.demos.ParticlesDemo;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ import java.util.List;
 
 public class SimpleGridCollision implements InteractAbleG2 {
     private final static int                   MIN_SIZE = 10;
-    private              BVector2f             position;
-    private              BVector2f             size;
+    private              GVector2f             position;
+    private              GVector2f             size;
     private              SimpleGridCollision   parentGrid;
     private              SimpleGameAble        parent;
     private              boolean               visible  = false;
@@ -32,7 +32,7 @@ public class SimpleGridCollision implements InteractAbleG2 {
      * @param position   - scale of grid
      * @param size       - size of grid
      */
-    private SimpleGridCollision(SimpleGridCollision parentGrid, BVector2f position, BVector2f size) {
+    private SimpleGridCollision(SimpleGridCollision parentGrid, GVector2f position, GVector2f size) {
         this.parentGrid = parentGrid;
         this.position = position;
         this.size = size;
@@ -45,7 +45,7 @@ public class SimpleGridCollision implements InteractAbleG2 {
      * @param parent - parent object
      */
     public SimpleGridCollision(SimpleGameAble parent) {
-        position = new BVector2f();
+        position = new GVector2f();
         this.parent = parent;
         size = parent.getCanvasSize();
         create();
@@ -65,13 +65,13 @@ public class SimpleGridCollision implements InteractAbleG2 {
         if (size.getY() < MIN_SIZE || size.getX() < MIN_SIZE) {
             return;
         }
-        final BVector2f halfSize = size.getDiv(2);
-        children[0] = new SimpleGridCollision(this, position.getAdd(new BVector2f(halfSize.getXi(), 0)), halfSize);
+        final GVector2f halfSize = size.getDiv(2);
+        children[0] = new SimpleGridCollision(this, position.getAdd(new GVector2f(halfSize.getXi(), 0)), halfSize);
         children[1] = new SimpleGridCollision(this,
-                                              position.getAdd(new BVector2f(halfSize.getXi(), halfSize.getYi())),
+                                              position.getAdd(new GVector2f(halfSize.getXi(), halfSize.getYi())),
                                               halfSize);
-        children[2] = new SimpleGridCollision(this, position.getAdd(new BVector2f(0, halfSize.getYi())), halfSize);
-        children[3] = new SimpleGridCollision(this, position.getAdd(new BVector2f(0, 0)), halfSize);
+        children[2] = new SimpleGridCollision(this, position.getAdd(new GVector2f(0, halfSize.getYi())), halfSize);
+        children[3] = new SimpleGridCollision(this, position.getAdd(new GVector2f(0, 0)), halfSize);
     }
 
     @Override

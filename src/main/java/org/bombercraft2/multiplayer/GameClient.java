@@ -13,13 +13,13 @@ import org.bombercraft2.game.player.MyPlayer;
 import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.core.Client;
 import org.bombercraft2.multiplayer.core.Server;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import utils.GLogger;
-import utils.math.BVector2f;
 
 import java.util.List;
 
@@ -39,9 +39,9 @@ public class GameClient extends Client implements Connector {
 
 
     @Override
-    public void setBombExplode(@NotNull BVector2f position,
+    public void setBombExplode(@NotNull GVector2f position,
                                @NotNull List<Block> blocks,
-                               @NotNull List<BVector2f> damageAreas
+                               @NotNull List<GVector2f> damageAreas
                               ) {
         parent.getGame().explodeBombAt(position);
     }
@@ -52,7 +52,7 @@ public class GameClient extends Client implements Connector {
             int damage = data.getInt(Texts.DAMAGE);
             JSONArray blocks = data.getJSONArray(Texts.HIT_BLOCKS);
             for (int i = 0; i < blocks.length(); i++) {
-                BVector2f position = new BVector2f(blocks.getString(i));
+                GVector2f position = new GVector2f(blocks.getString(i));
                 parent.getGame().getLevel().getMap().getBlock(position.getXi(), position.getYi()).remove();
             }
             JSONArray players = data.getJSONArray(Texts.HIT_PLAYERS);
@@ -70,7 +70,7 @@ public class GameClient extends Client implements Connector {
         return 0;
     }
 
-    public BVector2f getMyPosition() {
+    public GVector2f getMyPosition() {
         GLogger.notImplemented();
         return null;
     }
@@ -83,7 +83,7 @@ public class GameClient extends Client implements Connector {
     //OTHERS
 
 
-    public void eatItem(BVector2f sur, int type) {
+    public void eatItem(GVector2f sur, int type) {
         GLogger.notImplemented();
     }
 
@@ -135,7 +135,7 @@ public class GameClient extends Client implements Connector {
                     onPutHelper(msg);
                     break;
                 case Server.HIT_BLOCK:
-                    //				BVector2f pos = new BVector2f(msg.getString("scale"));
+                    //				GVector2f pos = new GVector2f(msg.getString("scale"));
                     //				actLevel.getParent().getLevel().getHashMap().getBlockOnPosition(pos).hit(msg.getInt("damage"));
                     break;
             }
@@ -152,22 +152,22 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void setRemoveBlock(@NotNull BVector2f position) {
+    public void setRemoveBlock(@NotNull GVector2f position) {
         methods.setRemoveBlock(position);
     }
 
     @Override
-    public void setBuildBlock(@NotNull BVector2f position, @NotNull BlockType type) {
+    public void setBuildBlock(@NotNull GVector2f position, @NotNull BlockType type) {
         methods.setBuildBlock(position, type);
     }
 
     @Override
-    public void setBuildBlockArea(@NotNull BVector2f minPos, @NotNull BVector2f maxPos, @NotNull BlockType blockType) {
+    public void setBuildBlockArea(@NotNull GVector2f minPos, @NotNull GVector2f maxPos, @NotNull BlockType blockType) {
         methods.setBuildBlockArea(minPos, maxPos, blockType);
     }
 
     @Override
-    public void setPutHelper(@NotNull BVector2f position, @NotNull Helper.Type type) {
+    public void setPutHelper(@NotNull GVector2f position, @NotNull Helper.Type type) {
         methods.setPutHelper(position, type);
     }
 
@@ -208,7 +208,7 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void setPutEmitter(@NotNull EmitterTypes emitterOnHit, @NotNull BVector2f position) {
+    public void setPutEmitter(@NotNull EmitterTypes emitterOnHit, @NotNull GVector2f position) {
         // TODO Auto-generated method stub
 
     }
@@ -220,7 +220,7 @@ public class GameClient extends Client implements Connector {
     }
 
     @Override
-    public void hitBlock(@NotNull BVector2f position, int damage) {
+    public void hitBlock(@NotNull GVector2f position, int damage) {
         // TODO Auto-generated method stub
 
     }

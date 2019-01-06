@@ -16,10 +16,10 @@ import org.bombercraft2.game.player.MyPlayer;
 import org.bombercraft2.game.player.Player;
 import org.bombercraft2.multiplayer.Connector;
 import org.glib2.cycle.SimpleLoop;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONObject;
 import org.utils.MiscUtils;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class App {
         TaskType taskType = new TaskType() {
             @NotNull
             @Override
-            public BVector2f getPosition() {
+            public GVector2f getPosition() {
                 return null;
             }
 
@@ -101,7 +101,7 @@ public class App {
             }
 
             @Override
-            public @NotNull BVector2f getPlayerDirection() {
+            public @NotNull GVector2f getPlayerDirection() {
                 return null;
             }
 
@@ -116,7 +116,7 @@ public class App {
             }
 
             @Override
-            public @NotNull BVector2f getPlayerTarget() {
+            public @NotNull GVector2f getPlayerTarget() {
                 return null;
             }
 
@@ -157,15 +157,15 @@ public class App {
 
             @Override
             public void addBullet(BulletManager.@NotNull Types bulletType,
-                                  @NotNull BVector2f angle,
-                                  @NotNull BVector2f position
+                                  @NotNull GVector2f angle,
+                                  @NotNull GVector2f position
                                  ) {
 
             }
 
             @Override
-            public void addExplosion(@NotNull BVector2f position,
-                                     @NotNull BVector2f size,
+            public void addExplosion(@NotNull GVector2f position,
+                                     @NotNull GVector2f size,
                                      @NotNull Color color,
                                      int number,
                                      boolean explosion,
@@ -175,19 +175,19 @@ public class App {
             }
 
             @Override
-            public void addHelper(@NotNull BVector2f pos, Helper.@NotNull Type type, long createdTime
+            public void addHelper(@NotNull GVector2f pos, Helper.@NotNull Type type, long createdTime
                                  ) {
 
             }
 
             @Override
-            public void addEmitter(@NotNull BVector2f position, EmitterTypes type
+            public void addEmitter(@NotNull GVector2f position, EmitterTypes type
                                   ) {
 
             }
 
             @Override
-            public void addEnemy(@NotNull BVector2f position, @NotNull String type) {
+            public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
 
             }
 
@@ -197,7 +197,7 @@ public class App {
             }
 
             @Override
-            public void explodeBombAt(@NotNull BVector2f globalPosToLocalPos) {
+            public void explodeBombAt(@NotNull GVector2f globalPosToLocalPos) {
 
             }
 
@@ -252,18 +252,18 @@ public class App {
             }
 
             @Override
-            public @NotNull BVector2f getPosition() {
+            public @NotNull GVector2f getPosition() {
                 return null;
             }
 
             @Override
-            public @NotNull BVector2f getSize() {
+            public @NotNull GVector2f getSize() {
                 return null;
             }
         };
-        BotWorker bot = new BotWorker(new BVector2f(), parent);
+        BotWorker bot = new BotWorker(new GVector2f(), parent);
         BotManager botManager = new BotManager();
-        botManager.addBot(new BotWorker(new BVector2f(), parent));
+        botManager.addBot(new BotWorker(new GVector2f(), parent));
         botManager.addBot(bot);
         Task task = new Task(parent, 1, 100, taskType);
 

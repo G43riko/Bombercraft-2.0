@@ -3,12 +3,12 @@ package org.play_ground.demos;
 import org.bombercraft2.core.GameState;
 import org.bombercraft2.core.GameStateType;
 import org.engine.Input;
+import org.glib2.math.vectors.GVector2f;
 import org.jetbrains.annotations.NotNull;
 import org.play_ground.CorePlayGround;
 import org.play_ground.misc.SimpleParticlePlayer;
 import org.play_ground.misc.particles.SimpleParticle;
 import org.utils.enums.Keys;
-import utils.math.BVector2f;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -37,8 +37,8 @@ public class CollisionDemo extends GameState {
         barrels.add(barrel);
     }
 
-    private static BVector2f rotate(float x, float y, float angle) {
-        return new BVector2f(x * Math.cos(angle) - y * Math.sin(angle),
+    private static GVector2f rotate(float x, float y, float angle) {
+        return new GVector2f(x * Math.cos(angle) - y * Math.sin(angle),
                              x * Math.sin(angle) + y * Math.cos(angle));
     }
 
@@ -67,18 +67,18 @@ public class CollisionDemo extends GameState {
             final float m2 = otherParticle.mass;
 
             // Velocity before equation
-            final BVector2f u1 = rotate(particle.velX, particle.velY, angle);
-            final BVector2f u2 = rotate(otherParticle.velX, otherParticle.velY, angle);
+            final GVector2f u1 = rotate(particle.velX, particle.velY, angle);
+            final GVector2f u2 = rotate(otherParticle.velX, otherParticle.velY, angle);
 
             // Velocity after 1d collision equation
-            final BVector2f v1 = new BVector2f(u1.getX() * (m1 - m2) / (m1 + m2) + u2.getX() * 2 * m2 / (m1 + m2),
+            final GVector2f v1 = new GVector2f(u1.getX() * (m1 - m2) / (m1 + m2) + u2.getX() * 2 * m2 / (m1 + m2),
                                                u1.getY());
-            final BVector2f v2 = new BVector2f(u2.getX() * (m1 - m2) / (m1 + m2) + u1.getX() * 2 * m2 / (m1 + m2),
+            final GVector2f v2 = new GVector2f(u2.getX() * (m1 - m2) / (m1 + m2) + u1.getX() * 2 * m2 / (m1 + m2),
                                                u2.getY());
 
             // Final velocity after rotating axis back to original location
-            final BVector2f vFinal1 = rotate(v1.getX(), v1.getY(), -angle);
-            final BVector2f vFinal2 = rotate(v2.getX(), v2.getY(), -angle);
+            final GVector2f vFinal1 = rotate(v1.getX(), v1.getY(), -angle);
+            final GVector2f vFinal2 = rotate(v2.getX(), v2.getY(), -angle);
 
             // Swap particle velocities for realistic bounce effect
             particle.velX = vFinal1.getX();

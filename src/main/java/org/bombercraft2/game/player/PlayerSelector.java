@@ -2,8 +2,8 @@ package org.bombercraft2.game.player;
 
 import org.bombercraft2.StaticConfig;
 import org.bombercraft2.game.misc.GCanvas;
+import org.glib2.math.vectors.GVector2f;
 import utils.BombercraftUtils;
-import utils.math.BVector2f;
 
 import java.awt.*;
 
@@ -17,13 +17,13 @@ public class PlayerSelector {
     }
 
     public void render(Graphics2D g2) {
-        BVector2f pos = getSelectorPos().getMul(parent.getParent().getZoom()).getSub(parent.getParent().getOffset());
-        BVector2f size = StaticConfig.BLOCK_SIZE.getMul(parent.getParent().getZoom());
+        GVector2f pos = getSelectorPos().getMul(parent.getParent().getZoom()).getSub(parent.getParent().getOffset());
+        GVector2f size = StaticConfig.BLOCK_SIZE.getMul(parent.getParent().getZoom());
         GCanvas.drawRect(g2, pos, size, selectorColor, selectorWidth);
     }
 
-    private BVector2f getSelectorPos() {
-        BVector2f pos = parent.getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF).getDiv(StaticConfig.BLOCK_SIZE).toInt();
+    private GVector2f getSelectorPos() {
+        GVector2f pos = parent.getPosition().getAdd(StaticConfig.BLOCK_SIZE_HALF).getDiv(StaticConfig.BLOCK_SIZE).toInt();
         pos = pos.getAdd(BombercraftUtils.getNormalMoveFromDir(parent.getDirection())).getMul(StaticConfig.BLOCK_SIZE);
         return pos;
     }
