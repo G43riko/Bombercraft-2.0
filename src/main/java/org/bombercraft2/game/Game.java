@@ -51,7 +51,7 @@ public class Game extends GameState implements GameAble {
         try {
             JSONObject jsonResult = ResourceUtils.getJSON(StaticConfig.FILE_GAME_CONFIG);
             if (jsonResult == null) {
-                GLogger.throwError(GError.CANNOT_READ_JSON);
+                GLogger.Utils.throwError(GError.CANNOT_READ_JSON);
             }
             gameConfig = jsonResult.getJSONObject("data");
             BotFactory.init(gameConfig.getJSONObject("enemies"));
@@ -218,8 +218,7 @@ public class Game extends GameState implements GameAble {
 
     @Override
     public boolean hasWall(float i, float j) {
-        GLogger.notImplemented();
-        return false;
+        throw GLogger.Utils.notImplemented();
     }
 
     public boolean getVisibleOption(@NotNull String key) {
@@ -263,7 +262,7 @@ public class Game extends GameState implements GameAble {
 
     @Override
     public void addEnemy(@NotNull GVector2f position, @NotNull String type) {
-        GLogger.notImplemented();
+        GLogger.Utils.notImplementedThrow();
     }
 
     @Override

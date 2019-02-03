@@ -66,29 +66,26 @@ public class GameClient extends Client implements Connector {
     }
 
     public int getNumberPlayersInGame() {
-        GLogger.notImplemented();
-        return 0;
+        throw GLogger.Utils.notImplemented();
     }
 
     public GVector2f getMyPosition() {
-        GLogger.notImplemented();
-        return null;
+        throw GLogger.Utils.notImplemented();
     }
 
     public boolean isOnline() {
-        GLogger.notImplemented();
-        return false;
+        throw GLogger.Utils.notImplemented();
     }
 
     //OTHERS
 
 
     public void eatItem(GVector2f sur, int type) {
-        GLogger.notImplemented();
+        GLogger.Utils.notImplementedThrow();
     }
 
     public void bombExplode(Bomb bomb) {
-        GLogger.notImplemented();
+        GLogger.Utils.notImplementedThrow();
     }
 
     private void connectToGame() {
